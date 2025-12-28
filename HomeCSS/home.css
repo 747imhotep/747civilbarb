@@ -1,0 +1,71 @@
+/* HomeCSS/home.css */
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 60px auto;
+  color: #333;
+  line-height: 1.6;
+}
+
+#hero-image {
+  background-image: url(/PICTURES/Hero/HeroHome.jpg);
+  background-size: cover;
+  margin-bottom: 80px;
+  width: 100%;
+  height: auto;
+}
+
+h1 {
+  color: #dfdfdf;
+  font-size: 36px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #555;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+
+.quote {
+  color: #777;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+p {
+  color: #666;
+  font-size: 18px;
+}
+em {
+  color: #999;
+  font-size: 16px;
+}
+
+.cta{
+    margin-top: 30px;
+}
+
+.cta a{
+    color: #222;
+    margin-right: 20px;
+    text-decoration: underline;
+}
+
+.cta a.secondary{
+    color: #666;
+}
+
+a:hover{
+    text-decoration: none;
+}
