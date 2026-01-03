@@ -1,18 +1,10 @@
-#hero-image h1 {
-  max-width: 1000px;
-}
-
-#hero-image .subtitle,
 #hero-image .quote {
-  max-width: 720px;
+    color: #eeccf0;
+    font-size: 17px;
+    font-style: italic;
+    margin-top: 20px;
+    max-width: 800px;
 }
-
-#hero-image .manifesto {
-  max-width: 680px;
-}
-
-
-#hero-image p {
-  margin-left: auto;
-  margin-right: auto;
+#hero-image .quote em {
+    font-size: 17px;
 }

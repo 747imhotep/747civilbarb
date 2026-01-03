@@ -1,13 +1,13 @@
-/* Librairie - HomeCSS/home.css */
-
+/* ===== Global ===== */
 body {
   font-family: 'Times New Roman', Times, serif;
-  text-align: center;
-  margin-top: 60px auto;
   color: #333;
   line-height: 1.6;
+  margin: 60px auto 0 auto;
+  background-color: #fff;
 }
 
+/* ===== Hero Section ===== */
 #hero-image {
   position: relative;
   display: flex;
@@ -19,4 +19,153 @@ body {
   background-position: center;
   min-height: 70vh;
   margin-bottom: 80px;
+  text-align: center;
+}
+
+#hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#hero-image > * {
+  position: relative;
+  max-width: 900px;
+  padding: 20px 40px;
+}
+
+#hero-image h1 {
+  max-width: 1000px;
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#hero-image .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+#hero-image .quote {
+  color: #eeccf0;
+  font-size: 17px;
+  font-style: italic;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+#hero-image .quote em {
+  font-size: 17px;
+  color: #e4bfbf;
+}
+
+/* ===== Library Header ===== */
+.library-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.library-header h2 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 15px;
+}
+
+.library-header .library-intro {
+  font-size: 18px;
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.library-header em {
+  color: #d30b83;
+  font-style: italic;
+}
+
+.library-hero-image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto 40px auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ===== Article List ===== */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.article-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.article-title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.article-title a {
+  color: #730101;
+  text-decoration: none;
+}
+
+.article-title a:hover {
+  text-decoration: underline;
+}
+
+.article-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.article-abstract {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.article-meta {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #777;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #hero-image h1 {
+    font-size: 40px;
+  }
+  #hero-image .manifesto,
+  #hero-image .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+  .article-list {
+    max-width: 95%;
+    margin: 0 auto 40px auto;
+  }
 }
