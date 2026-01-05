@@ -301,7 +301,8 @@ All Draft pages are already pre-wrote:
 6. **Privacy / Terms**
 7. **Sommaire**
 
-At this stage, I already wrote Home and library pages.
+At this stage, I already wrote Home, library pages and premium page.
+as well as cancel.html success.html
 I need to create premium page.
 
 here is the home page, html and css:
@@ -314,6 +315,99 @@ my-worker/
 │   └─ subscribe.html
 └─ library/
     └─ library.html
+------------------------------------
+------------------------------------
 
+
+
+Option A — Simple (good for start)
+
+PDFs hosted privately (Cloudflare / hidden URLs)
+
+Download link emailed after Stripe success
+
+No login system
+
+✅ Easiest
+❌ Links can be shared
+
+Option B — Token-based links (better)
+
+Stripe success triggers server
+
+Server generates temporary link
+
+Link expires after X hours
+
+✅ Much safer
+⚠️ Some backend logic
+
+Option C — Accounts / Login (advanced)
+
+Users create accounts
+
+Login required to access PDFs
+
+✅ Best long-term
+❌ Big jump in complexity
+
+
+
+B. maybe we can upgrade to C later
+
+Why Cloudflare R2 is the right choice (for you)
+
+Cloudflare R2 gives you:
+
+🔐 Private storage (files not public)
+
+⏱ Signed URLs with expiration
+
+💸 No egress fees (huge advantage)
+
+🔄 Easy upgrade path to accounts later
+
+This fits Option B perfectly.
+
+Stripe stays focused on what it does best:
+👉 payment + trust
+
+
+✅ Decisions (now fixed)
+
+Storage: Cloudflare R2 (private bucket)
+
+Link lifetime: 24 hours
+
+Delivery:
+
+Immediate link on success.html
+
+Backup link via email (Sender.net)
+
+Backend: Minimal Node.js (server.js only)
+
+Nothing here conflicts with upgrading to accounts later.
+
+
+🧠 Architecture (simple mental picture)
+Stripe Checkout
+      ↓
+Stripe Webhook (payment success)
+      ↓
+server.js
+  - verify payment
+  - generate signed R2 URL (24h)
+  - store token (temporary)
+      ↓
+success.html  ← fetch link
+      ↓
+Email (Sender.net) ← same link
+
+Step 1 (ONLY this step): Prepare Cloudflare R2
+2️⃣ Step 2 — Connect server.js to Cloudflare R2
+3️⃣ 
+4️⃣ 
+5️⃣ 
 
 

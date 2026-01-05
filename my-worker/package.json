@@ -1,6 +1,7 @@
 {
   "name": "my-worker",
   "version": "1.0.0",
+  "type": "module",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.962.0",
+    "@aws-sdk/s3-request-presigner": "^3.962.0",
+    "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "stripe": "^20.1.0"
   },
-  "devDependencies": {},
   "description": ""
 }

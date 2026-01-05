@@ -1,19 +1,32 @@
 my-worker/
 │
-├── public/           <- your HTML files (home.html, library.html, premium.html, subscribe.html, etc.)
-├── csspremium/       <- CSS for Premium page
-├── csslibrary/       <- CSS for Library page
-├── pictures/         <- all images
-└── server.js         <- Node.js server for Stripe
-
-
-
-
-my-worker/
 │
-├─ subscribe/
-│   ├─ csssubscribe/subscribe.css
-│   └─ subscribe.html
-└─ library/
-    └─ library.html
+├── cancel/           <- 
+│   ├─ csscancel/cancel.css
+│   └─ cancel.html
+├── csslibrary/       <- CSS for Library page
+├── csspremium/       <- CSS for Premium page
+├── node_modules/     <- 
+│
+├── package.json      <- 
+├── package-lock.json <- 
+│
+├── pictures/	      <- hero images
+│    └─ hero/
+│
+├── public/           <- your HTML files (home.html, library.html, premium.html, subscribe.html, etc.)
+│
+├── Readme.txt        <- 
+│
+├── server.js         <- Node.js server for Stripe
+│
+│
+└── succes/
+     ├─ csssuccess/csssuccess.css
+     └─ csssuccess.html
+
+
+
+
+
 
