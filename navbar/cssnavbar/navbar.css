@@ -1,8 +1,16 @@
 /* Nav bar styles */
+/* Nav bar styles */
 #main-nav {
   background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
   color: #fff;
   font-weight: 600;
+
+  /* NEW: make navbar fixed at top */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .nav-container {
@@ -51,7 +59,7 @@
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 60px;
+    top: 60px; /* height of navbar */
     right: 0;
     background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
     flex-direction: column;
@@ -70,6 +78,63 @@
 }
 /* End of Nav bar styles */
 
+/* ===== Body adjustment for fixed navbar ===== */
+body {
+  padding-top: 60px; /* height of navbar, prevents content from being hidden */
+}
+
+/* ===== GDPR Banner ===== */
+#gdpr-banner {
+  display: none; /* hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #730101;
+  color: #fff;
+  padding: 15px 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  line-height: 1.5;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999; /* above all content except navbar (1000) */
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#gdpr-banner p {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+#gdpr-banner a {
+  color: #ffd4d4;
+  text-decoration: underline;
+}
+
+#gdpr-banner button {
+  background-color: #fff;
+  color: #730101;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 15px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  #gdpr-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #gdpr-banner button {
+    margin: 10px 0 0 0;
+  }
+}
 
 /* ===== Footer ===== */
 footer {
