@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact — Civilisation ou Barbarie</title>
+  <link rel="stylesheet" href="csscontact/contact.css">
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav id="main-nav">
+  <div class="nav-container">
+    <!-- Logo / Site name -->
+    <a href="/home.html" class="logo">Civilisation ou Barbarie</a>
+
+    <!-- Navigation links -->
+    <ul class="nav-links">
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="/library/library.html">Bibliothèque</a></li>
+      <li><a href="/premium/premium.html">Premium</a></li>
+      <li><a href="/about/about.html">À propos</a></li>
+      <li><a href="/contact/contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Hamburger icon for mobile -->
+    <button class="nav-toggle" aria-label="Menu">
+      ☰
+    </button>
+  </div>
+</nav>
+
+  
+       <main id="contact">
+
+  <header class="contact-header">
+    <h1>Contact</h1>
+  </header>
+
+  <section class="contact-intro">
+    <p>
+      Pour toute question, remarque ou demande liée aux publications
+      de <em>Civilisation ou Barbarie</em>, vous pouvez utiliser
+      le formulaire ci-dessous.
+    </p>
+  </section>
+
+  <section class="contact-form">
+  <form action="https://formspree.io/f/XXXXXXX" method="POST">
+
+    <label>
+      Nom
+      <input type="text" name="name" required>
+    </label>
+
+    <label>
+      Adresse email
+      <input type="email" name="email" required>
+    </label>
+
+    <label>
+      Message
+      <textarea name="message" rows="6" required></textarea>
+    </label>
+
+ <div class="gdpr-consent">
+  <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required>
+  <label for="gdpr-consent">
+    En envoyant ce message, vous consentez au traitement 
+    de vos données personnelles selon notre 
+    <a href="/privacy/privacy.html">Politique de confidentialité</a>.
+  </label>
+</div>
+
+
+    <button type="submit">Envoyer</button>
+
+  </form>
+</section>
+  <!-- Note about commercial messages -->
+
+  <section class="contact-note">
+    <p>
+      Les messages à caractère commercial ne sont pas traités.
+    </p>
+  </section>
+
+
+</main>
+
+          
+
+
+<!-- Footer -->
+        <footer>
+          <p>
+            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
+          </p>
+          <p class="footer-links">
+            <a href="/privacy/privacy.html">Politique de confidentialité</a> | 
+            <a href="/terms/terms.html">CGU</a>
+          </p>
+        </footer>
+        <script src="/navbar/jsnavbar/navbar.js"></script>
+    </body>
+</html>

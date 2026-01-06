@@ -1,0 +1,125 @@
+
+
+/* ===== Global ===== */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  margin: 0px auto 0 auto; /* 60px top, auto left/right, 0 bottom */
+  text-align: center;
+}
+
+/* ===== Header ===== */
+.contact-header h1 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 40px;
+}
+
+/* ===== Intro Text ===== */
+.contact-intro p {
+  font-size: 17px;
+  color: #444;
+  max-width: 750px;
+  margin: 0 auto 40px auto;
+  text-align: left;
+}
+
+/* ===== Form ===== */
+.contact-form form {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column; /* without it, it's a mess */
+  
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.contact-form button {
+  background-color: #730101;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #a30003;
+}
+
+
+/* ===== Contact Note ===== */
+.contact-note {
+  font-size: 14px;
+  color: #555;
+  margin-top: 20px;
+}
+
+
+
+/* ===== GDPR note ===== */
+.gdpr-consent {
+  display: block;           /* each label is a block */
+  flex-direction: row;     /* inline checkbox + text */
+  align-items: flex-start; /* aligns checkbox with first line */
+  gap: 1px;                /* spacing between checkbox and text */
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0 15px 0;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;          /* clickable label */
+}
+
+.gdpr-consent input[type="checkbox"] {
+  vertical-align: middle;   /* aligns with first line of text */
+  margin-right: 5px;        /* spacing between checkbox and text */
+}
+
+.gdpr-consent label {
+  display: inline;
+  cursor: pointer;
+}
+
+.gdpr-consent a {
+  color: #730101;
+  text-decoration: underline;
+}
+
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .contact-form form {
+    max-width: 95%;
+  }
+  .gdpr-consent {
+    font-size: 12px;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 15px;
+  }
+}

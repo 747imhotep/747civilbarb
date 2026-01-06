@@ -1,38 +1,132 @@
 /* ===== PREMIUM Global ===== */
 body {
   font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 60px auto;
+  background-color: #fff;
   color: #333;
   line-height: 1.6;
-  margin: 60px auto 0 auto;
-  background-color: #fff;
 }
 
 /* ===== Hero Section ===== */
-
-
-.hero-text-box .quote {
+#hero-premium {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(/pictures/hero/hero_premium.jpg);
+  background-image: url(../../pictures/hero/hero_premium.jpg);
   background-size: cover;
   background-position: center;
   min-height: 70vh;
   margin-bottom: 80px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.hero-text-box .quote em {
+#hero-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#hero-premium > * {
+  position: relative;
+  max-width: 900px;
+  padding: 40px;
+}
+
+#hero-premium .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+#hero-premium .quote {
+  max-width: 800px;
+}
+
+#hero-premium p {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hero-premium h1 {
+  max-width: 1000px;
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#hero-premium .hero-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hero-premium .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+#hero-premium .quote {
+  color: #eeccf0;
+  font-size: 17px;
+  font-style: italic;
+  max-width: 800px;
+  margin-top: 20px;
+  background: rgba(50, 0, 50, 0.6);
+}
+
+#hero-premium .quote em {
+  font-size: 17px;
+  color: #e4bfbf;
+}
+
+#hero-premium .manifesto,
+#hero-premium .quote {
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+  padding: 25px 30px;
+  border-radius: 12px;          /* rounded corners for card effect */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* soft shadow for depth */
+  display: inline-block;         /* shrink to fit content */
+  max-width: 700px;              /* constrain width */
+  margin: 15px auto 25px auto;   /* centered with spacing */
+}
+
+#hero-premium .quote {
+  background: rgba(50, 0, 50, 0.6); /* slightly tinted for distinction */
+}
+
+#hero-premium .manifesto em,
+#hero-premium .quote em {
   color: #ffe0e0;
 }
+
+#hero-premium .manifesto,
+#hero-premium .quote {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hero-premium .manifesto:hover,
+#hero-premium .quote:hover {
+  transform: translateY(-8px); /* slightly lifts the box */
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 15px rgba(255, 200, 200, 0.3); /* subtle glow */
+}
+
+
+
 
 /* ===== Premium Header ===== */
 .premium-header {
   text-align: center;
   margin-bottom: 60px;
+  color: aquamarine;
 }
 
 .premium-header h2 {
@@ -96,7 +190,7 @@ body {
 
 .premium-title {
   font-size: 24px;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 
 .premium-title a {
@@ -107,7 +201,8 @@ body {
 .premium-subtitle {
   font-size: 18px;
   color: #555;
-  margin-bottom: 10px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .premium-abstract {

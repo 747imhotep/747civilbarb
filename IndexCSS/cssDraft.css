@@ -1,22 +1,86 @@
-.back-button {
-  display: inline-flex;      /* change from inline-block */
-  align-items: center;       /* vertical center */
-  justify-content: center;   /* horizontal center */
 
-  background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
-  color: #fff !important;
-  text-decoration: none;
-  padding: 16px 40px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 18px;
+body {
+  font-family: 'Times New Roman', Times, serif;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(211, 11, 131, 0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  margin-top: 60px auto;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Hero Section ===== */
+#hero-image {
   position: relative;
-  overflow: hidden;
-  min-height: 54px;
-  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(../pictures/hero/hero_home.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  margin-bottom: 80px;
+}
+
+#hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+#hero-image > * {
+  position: relative;
+  max-width: 900px;
+  padding: 40px;
+}
+
+#hero-image .manifesto { /* */
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+#hero-image .quote {
+  max-width: 800px;
+}
+
+
+#hero-image p { /* principe me*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#hero-image h1 { /* Title*/
+  max-width: 1000px;
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ===== Premium BACKUP ===== */
+.gdpr-consent {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0 15px 0;
+  text-align: left;
+}
+
+.gdpr-consent input[type="checkbox"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.gdpr-consent label {
+  display: inline;
+  cursor: pointer;
+}
+
+.gdpr-consent a {
+  color: #730101;
+  text-decoration: underline;
 }

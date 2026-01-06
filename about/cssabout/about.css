@@ -1,0 +1,46 @@
+/* ===== ABOUT ===== */
+
+/* ===== Global ===== */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 60px auto; /* kept as requested */
+  text-align: center;
+}
+
+/* ===== Header ===== */
+.about-header h1 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 40px;
+}
+
+/* ===== Sections ===== */
+.about-section {
+  max-width: 750px;
+  margin: 0 auto 50px auto;
+  text-align: left;
+}
+
+.about-section h2 {
+  font-size: 28px;
+  color: #730101;
+  margin-bottom: 15px;
+}
+
+.about-section p {
+  font-size: 17px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.about-section ul {
+  margin-left: 20px;
+  color: #444;
+}
+
+.about-section ul li {
+  margin-bottom: 8px;
+}

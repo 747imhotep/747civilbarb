@@ -5,6 +5,7 @@
   <title>Civilisation ou Barbarie</title>
   <link rel="stylesheet" href="IndexCSS/index.css">
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="navbar/CSSsnippet/snippet.css">
 </head>
 
 <body>
@@ -21,7 +22,6 @@
       <li><a href="/premium/premium.html">Premium</a></li>
       <li><a href="/about/about.html">À propos</a></li>
       <li><a href="/contact/contact.html">Contact</a></li>
-      <li><a href="/privacy/privacy.html">CGU / Privacy</a></li>
     </ul>
 
     <!-- Hamburger icon for mobile -->
@@ -79,12 +79,28 @@
   </section>
 
 </main>
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner">
+  <p>
+    Ce site utilise des cookies et services tiers pour améliorer votre expérience.
+    En continuant, vous acceptez notre 
+    <a href="/privacy/privacy.html">Politique de confidentialité</a>.
+  </p>
+  <button id="gdpr-accept">J'accepte</button>
+</div>
 
 
         <!-- Footer -->
-            <footer>
-              <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
-            </footer>
+        <footer>
+          <p>
+            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
+          </p>
+          <p class="footer-links">
+            <a href="/privacy/privacy.html">Politique de confidentialité</a> | 
+            <a href="/terms/terms.html">CGU</a>
+          </p>
+        </footer>
         <script src="/navbar/jsnavbar/navbar.js"></script>
+        <script src="navbar/JSsnippet/snippet.js"></script>
     </body>
 </html>

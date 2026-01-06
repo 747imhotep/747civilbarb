@@ -1,10 +1,11 @@
 /* ===== Global ===== */
 body {
   font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 60px auto;
+  background-color: #fff;
   color: #333;
   line-height: 1.6;
-  margin: 60px auto 0 auto;
-  background-color: #fff;
 }
 
 /* ===== Hero Section ===== */
@@ -32,7 +33,7 @@ body {
 #hero-image > * {
   position: relative;
   max-width: 900px;
-  padding: 20px 40px;
+  padding: 40px;
 }
 
 #hero-image h1 {
