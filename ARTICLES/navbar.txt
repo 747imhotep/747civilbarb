@@ -1,0 +1,69 @@
+747CivilBarb/
+│
+├── about/
+│
+├── ARTICLES/		<-- Few drafts texts
+├── biblio/		<-- Store articles
+│
+├── contact/
+│   ├─ contact.html
+│   └─ csscontact/contact.css
+│
+├── index.html
+│
+├── IndexCSS/
+│   └─ index.css
+│
+├── library/
+│   ├─ library.html
+│   └─ csslibrary/library.css
+│
+├── my-worker/		<-- details of tree here below
+│
+├── navbar/           
+│   ├─ cssnavbar/navbar.css
+│   └─ jsnavbar/navbar.js
+│
+├── pictures/
+│   ├─ hero/
+│   └─ livrary-pic
+│
+│
+├── premium/
+│   ├─ premium.html
+│   └─ csspremium/premium.css
+│
+├── privacy/
+│   ├─ privacy.html
+│   └─ cssprivacy/privacy.css
+│
+├── subscribe/
+│   ├─ subscribe.html
+│   └─ csssubscribe/subscribe.css
+│
+
+integrate it directly into your succes.html and make it look perfectly consistent with your existing style, including the back button colors and fonts.
+
+✅ What you now have
+
+✔ Reusable navbar
+
+✔ Mobile responsive
+
+✔ Matches your site style
+
+✔ Clean separation (HTML / CSS / JS)
+
+✔ Future-proof (can be auto-loaded later)
+
+Next logical upgrades (when you’re ready):
+
+🔹 Active link highlighting
+
+🔹 Sticky shadow on scroll
+
+🔹 Logged-in / Premium state
+
+🔹 Load navbar dynamically (one file only)
+
+Just tell me what you want next, and we’ll do it cleanly and calmly.

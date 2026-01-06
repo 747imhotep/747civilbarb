@@ -287,7 +287,7 @@ here is the home page, html and css:
 ------------------------------------
 
 
-
+5 janv 2026
 I'm writing a website in html, dedicated to articles in pdf that can be monetized.
 Need help continue to write it down.
 I already have tools like Sender.net, Formspree, Cloudflare, tawk.to, Github, Hover.com
@@ -426,5 +426,74 @@ Signed URLs are generated ✅
 3️⃣ 
 4️⃣ 
 5️⃣ 
+------------------------------------
+------------------------------------
+6 janv 2026
 
+I'm writing a website in html, dedicated to articles in pdf that can be monetized.
+I Need help continue to write it down.
+I already have tools like Sender.net, Formspree, Cloudflare, tawk.to, Github, Hover.com
+Not to mention Stripe.
+All Draft pages are already pre-wrote:
+1. **Home**
+2. **Library / Articles**
+3. **Premium**
+4. **About**
+5. **Contact**
+6. **Privacy / Terms**
+7. **Sommaire**
 
+At this stage, I already wrote Home, library pages and premium page.
+as well as cancel.html success.html
+I need to create premium page.
+
+here is my tree
+747CivilBarb/
+│
+├── about/
+│
+├── ARTICLES/		<-- Few drafts texts
+├── biblio/		<-- Store articles
+│
+├── contact/
+│   ├─ contact.html
+│   └─ csscontact/contact.css
+│
+├── index.html
+│
+├── IndexCSS/
+│   └─ index.css
+│
+├── library/
+│   ├─ library.html
+│   └─ csslibrary/library.css
+│
+├── my-worker/		<-- details of tree here below
+│
+├── navbar/           
+│   ├─ cssnavbar/navbar.css
+│   └─ jsnavbar/navbar.js
+│
+├── pictures/
+│   ├─ hero/
+│   └─ livrary-pic
+│
+│
+├── premium/
+│   ├─ premium.html
+│   └─ csspremium/premium.css
+│
+├── privacy/
+│   ├─ privacy.html
+│   └─ cssprivacy/privacy.css
+│
+├── subscribe/
+│   ├─ subscribe.html
+│   └─ csssubscribe/subscribe.css
+│
+
+I'd like to finish About, Contact and Term and privacy pages today
+
+Then we will come back later for premium page
+------------------------------------
+------------------------------------

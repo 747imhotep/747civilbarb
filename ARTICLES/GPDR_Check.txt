@@ -1,0 +1,75 @@
+Perfect! Let’s focus on a **practical, non-legal GDPR checklist** for your site. This is purely technical/UX — not legal advice — but it ensures your pages behave “GDPR-friendly” for visitors.
+
+---
+
+## ✅ Quick GDPR Sanity Checklist (Practical)
+
+### 1. **Consent on Contact Form**
+
+* [x] Checkbox is **required** before submission (`required` attribute).
+* [x] Text clearly explains data use:
+
+  > “En envoyant ce message, vous consentez au traitement de vos données personnelles selon notre Politique de confidentialité.”
+* [x] Link to **Privacy Policy** is present and functional.
+* [x] Checkbox **cannot be pre-checked**.
+
+---
+
+### 2. **Privacy Policy Access**
+
+* [x] Privacy Policy is **linked in the footer** of every page.
+* [x] Separate page, readable, with headings:
+
+  * Données collectées
+  * Finalité de l’utilisation
+  * Services tiers
+  * Durée de conservation
+  * Vos droits
+
+---
+
+### 3. **No Tracking Without Notice**
+
+* [x] You do not currently have third-party analytics scripts (Google Analytics, etc.) — if added, must inform visitor or ask consent via popup/banner.
+
+---
+
+### 4. **Form Submission / Data Storage**
+
+* [x] Formspree is used — ensure **no hidden prefilled fields** send data you don’t need.
+* [x] Only essential fields collected: name, email, message.
+* [x] Sender.net is only used for sending content/news — check their privacy compliance.
+
+---
+
+### 5. **Cookies**
+
+* [ ] If any cookies are added in the future (tracking, ads, analytics), a **cookie consent banner** is required.
+
+---
+
+### 6. **Right to Access / Delete**
+
+* [x] Contact page explicitly mentions how a visitor can request data deletion or modification.
+
+---
+
+### 7. **Technical / UX**
+
+* [x] Checkbox and GDPR text **visible and readable** on mobile.
+* [x] Links open in the same tab (or clearly marked).
+* [x] Legal text and forms are easy to scroll/read — no hidden elements.
+
+---
+
+### ✅ Quick Practical Notes
+
+* All current pages (Contact, Privacy, Terms) **pass a basic GDPR UX sanity check**.
+* The only addition needed if you ever add cookies or analytics is a small **consent banner**.
+
+---
+
+If you want, I can make a **tiny reusable GDPR CSS snippet + small consent banner** that you could drop in any page — no JS headaches, fully mobile-friendly, and visually consistent.
+
+Do you want me to do that next?
+
