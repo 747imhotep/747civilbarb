@@ -1,9 +1,9 @@
-/* Civilisation ou Barbarie - HomeCSS/home.css */
+/* Civilisation ou Barbarie - IndexCSS/index.css */
 
 body {
   font-family: 'Times New Roman', Times, serif;
-  text-align: center;
-  margin-top: 60px auto;
+  text-align: left;
+  margin: 60px 0 0 0;
   color: #333;
   line-height: 1.6;
 }
@@ -15,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   background-image: url(../pictures/hero/hero_home.jpg);
   background-size: cover;
   background-position: center;
