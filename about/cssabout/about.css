@@ -1,46 +1,47 @@
-/* ===== ABOUT ===== */
+/* ==================================
+   About Page — Scoped Styles
+   Wrapper: .about-page
+================================== */
 
-/* ===== Global ===== */
-body {
+.about-page {
   font-family: 'Times New Roman', Times, serif;
   background-color: #fff;
   color: #333;
   line-height: 1.6;
-  margin: 60px 0 0 0; /* kept as requested */
   text-align: center;
 }
 
 /* ===== Header ===== */
-.about-header h1 {
+.about-page .about-header h1 {
   font-size: 48px;
   color: #641e1e;
   margin-bottom: 40px;
 }
 
 /* ===== Sections ===== */
-.about-section {
+.about-page .about-section {
   max-width: 750px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 50px;
   text-align: left;
 }
 
-.about-section h2 {
+.about-page .about-section h2 {
   font-size: 28px;
   color: #730101;
   margin-bottom: 15px;
 }
 
-.about-section p {
+.about-page .about-section p {
   font-size: 17px;
   color: #444;
   margin-bottom: 15px;
 }
 
-.about-section ul {
+.about-page .about-section ul {
   margin-left: 20px;
   color: #444;
 }
 
-.about-section ul li {
+.about-page .about-section ul li {
   margin-bottom: 8px;
 }

@@ -32,60 +32,41 @@
 </nav>
 
   
-       <main id="contact">
-
+   <main class="contact-page">
+  <!-- Contact header -->
   <header class="contact-header">
-    <h1>Contact</h1>
+    <h1>Contactez-nous</h1>
   </header>
 
-  <section class="contact-intro">
-    <p>
-      Pour toute question, remarque ou demande liée aux publications
-      de <em>Civilisation ou Barbarie</em>, vous pouvez utiliser
-      le formulaire ci-dessous.
-    </p>
-  </section>
+  <div class="contact-intro">
+    <p>Votre message nous intéresse. Merci de remplir le formulaire ci-dessous.</p>
+  </div>
 
-  <section class="contact-form">
-  <form action="https://formspree.io/f/XXXXXXX" method="POST">
+  <div class="contact-form">
+    <form>
+      <label>
+        Nom
+        <input type="text" name="name">
+      </label>
+      <label>
+        Email
+        <input type="email" name="email">
+      </label>
+      <label>
+        Message
+        <textarea name="message"></textarea>
+      </label>
+      <label class="gdpr-consent">
+  <input type="checkbox" name="gdpr">
+  J’accepte la <a href="/privacy/privacy.html">Politique de confidentialité</a>
+</label>
 
-    <label>
-      Nom
-      <input type="text" name="name" required>
-    </label>
-
-    <label>
-      Adresse email
-      <input type="email" name="email" required>
-    </label>
-
-    <label>
-      Message
-      <textarea name="message" rows="6" required></textarea>
-    </label>
-
- <div class="gdpr-consent">
-  <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required>
-  <label for="gdpr-consent">
-    En envoyant ce message, vous consentez au traitement 
-    de vos données personnelles selon notre 
-    <a href="/privacy/privacy.html">Politique de confidentialité</a>.
-  </label>
-</div>
-
-
-    <button type="submit">Envoyer</button>
-
-  </form>
-</section>
-  <!-- Note about commercial messages -->
-
-  <section class="contact-note">
-    <p>
-      Les messages à caractère commercial ne sont pas traités.
-    </p>
-  </section>
+      <button type="submit">Envoyer</button>
+    </form>
+    <p class="contact-note">Nous vous répondrons sous 48 heures.</p>
+  </div>
 </main>
+
 
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner">

@@ -1,13 +1,15 @@
+/* ==================================
+   Contact Page — Scoped Styles
+   Wrapper: .contact-page
+================================== */
 
-
-/* ===== Global ===== */
-body {
+.contact-page {
   font-family: 'Times New Roman', Times, serif;
-  text-align: center;
   background-color: #fff;
   color: #333;
   line-height: 1.6;
-  margin: 60px 0 0 0; /* 60px top, auto left/right, 0 bottom */
+  text-align: center;
+  padding-top: 60px; /* preserves spacing from top */
 }
 
 /* ===== Header ===== */
@@ -18,12 +20,17 @@ body {
 }
 
 /* ===== Intro Text ===== */
+.contact-intro {
+  max-width: 750px;
+  margin: 0 auto 40px auto;
+  text-align: center; /* fixed: properly center paragraph */
+}
+
 .contact-intro p {
   font-size: 17px;
   color: #444;
-  max-width: 750px;
-  margin: 0 auto 40px auto;
-  text-align: left;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 /* ===== Form ===== */
@@ -40,8 +47,7 @@ body {
   font-size: 16px;
   color: #555;
   display: flex;
-  flex-direction: column; /* without it, it's a mess */
-  
+  flex-direction: column; /* labels above inputs */
 }
 
 .contact-form input,
@@ -62,45 +68,39 @@ body {
   font-size: 16px;
   cursor: pointer;
   border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-form button:hover {
   background-color: #a30003;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(200, 0, 0, 0.4);
 }
-
 
 /* ===== Contact Note ===== */
 .contact-note {
   font-size: 14px;
   color: #555;
   margin-top: 20px;
+  text-align: center;
 }
 
-
-
-/* ===== GDPR note ===== */
+/* ===== GDPR Checkbox ===== */
 .gdpr-consent {
-  display: block;           /* each label is a block */
-  flex-direction: row;     /* inline checkbox + text */
-  align-items: flex-start; /* aligns checkbox with first line */
-  gap: 1px;                /* spacing between checkbox and text */
+  display: inline-flex !important; /* forces inline horizontal layout */
+  flex-direction: row !important;  /* absolutely required */
+  align-items: center;
+  gap: 5px;                        /* space between checkbox and text */
   font-size: 13px;
   color: #666;
   margin: 8px 0 15px 0;
   line-height: 1.4;
+  cursor: pointer;
   text-align: left;
-  cursor: pointer;          /* clickable label */
 }
 
 .gdpr-consent input[type="checkbox"] {
-  vertical-align: middle;   /* aligns with first line of text */
-  margin-right: 5px;        /* spacing between checkbox and text */
-}
-
-.gdpr-consent label {
-  display: inline;
-  cursor: pointer;
+  margin: 0; /* spacing handled by gap */
 }
 
 .gdpr-consent a {
@@ -108,18 +108,22 @@ body {
   text-decoration: underline;
 }
 
-
-
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .contact-form form {
     max-width: 95%;
   }
+
   .gdpr-consent {
     font-size: 12px;
   }
+
   .contact-form input,
   .contact-form textarea {
     font-size: 15px;
+  }
+
+  .contact-intro p {
+    font-size: 16px;
   }
 }

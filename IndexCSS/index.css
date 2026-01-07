@@ -1,15 +1,19 @@
-/* Civilisation ou Barbarie - IndexCSS/index.css */
+/* ==================================
+   Civilisation ou Barbarie
+   IndexCSS/index.css
+   Scoped to .page-content ONLY
+================================== */
 
-body {
+/* ===== Page Container ===== */
+.page-content {
   font-family: 'Times New Roman', Times, serif;
   text-align: left;
-  margin: 60px 0 0 0;
   color: #333;
   line-height: 1.6;
 }
 
 /* ===== Hero Section ===== */
-#hero-image {
+.page-content #hero-image {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,38 +27,20 @@ body {
   margin-bottom: 80px;
 }
 
-#hero-image::before {
+.page-content #hero-image::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
 
-#hero-image > * {
+.page-content #hero-image > * {
   position: relative;
   max-width: 900px;
   padding: 40px;
 }
 
-#hero-image .manifesto { /* */
-  font-weight: 300;
-  font-size: 20px;
-  color: #e0e0e0;
-  max-width: 740px;
-  margin: 20px auto 30px;
-}
-
-#hero-image .quote {
-  max-width: 800px;
-}
-
-
-#hero-image p { /* principe me*/
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#hero-image h1 { /* Title*/
+.page-content #hero-image h1 {
   max-width: 1000px;
   color: #dfdfdf;
   font-size: 61px;
@@ -63,54 +49,81 @@ body {
   letter-spacing: 0.03em;
 }
 
-
-.quote { /* Principe methodologique*/
-  color: #919191;
-  font-size: 17px;
-  font-style: italic;
-  margin-top: 20px;
-}
-
-em { /* En paleontologie...*/
-  font-style: italic;
-  color: #dfdfdf;
+.page-content #hero-image .manifesto {
+  font-weight: 300;
   font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
 }
-/* ================================== */
 
-
-h2 { /* Corps Text*/
-  color: #3d0101;
-  text-align: center;
-  font-size: 34px;
-  font-weight: normal;
-  margin-bottom: 20px;
+.page-content #hero-image .quote {
+  max-width: 800px;
 }
-p {
+
+/* ===== Text Elements ===== */
+.page-content p {
   color: #666;
   font-size: 18px;
   max-width: 720px;
   margin: 0 auto 1.2em;
 }
 
-.cta{ /* Lire les articles */
-    margin-top: 30px;
-    text-align: center;
+.page-content .quote {
+  color: #919191;
+  font-size: 17px;
+  font-style: italic;
+  margin-top: 20px;
 }
 
-.cta a{
-    color: #3d0101;
-    margin-right: 20px;
-    text-decoration: underline;
+.page-content em {
+  font-style: italic;
+  color: #dfdfdf;
+  font-size: 20px;
 }
 
-.cta a.secondary{
-    color: #ae8888;
+/* ===== Section Titles ===== */
+.page-content h2 {
+  color: #3d0101;
+  text-align: center;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 20px;
 }
 
-a:hover{
-    text-decoration: none;
+/* ===== Call-to-Action ===== */
+.page-content .cta {
+  margin-top: 30px;
+  text-align: center;
 }
-/* ================================== */
 
+.page-content .cta a {
+  color: #3d0101;
+  margin-right: 20px;
+  text-decoration: underline;
+}
 
+.page-content .cta a.secondary {
+  color: #ae8888;
+}
+
+.page-content a:hover {
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .page-content #hero-image h1 {
+    font-size: 40px;
+  }
+
+  .page-content #hero-image .manifesto,
+  .page-content #hero-image .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .page-content .cta {
+    margin-top: 20px;
+  }
+}

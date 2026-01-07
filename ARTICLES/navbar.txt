@@ -22,7 +22,9 @@
 │
 ├── navbar/           
 │   ├─ cssnavbar/navbar.css
-│   └─ jsnavbar/navbar.js
+│   ├─ CSSsnippet/snippet.css
+│   ├─ jsnavbar/navbar.js
+│   └─ JSsnippet/snippet.js
 │
 ├── pictures/
 │   ├─ hero/

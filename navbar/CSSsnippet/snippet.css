@@ -1,35 +1,33 @@
-/* ===== GDPR Banner (consistent across all pages) ===== */
+/* ===== snippet.css — GDPR Banner Improved ===== */
 #gdpr-banner {
-  display: none; /* hidden by default */
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #730101; /* dark red, same as buttons/nav accent */
+  background-color: #730101;
   color: #fff;
   padding: 15px 20px;
   font-family: 'Times New Roman', Times, serif;
   font-size: 14px;
   line-height: 1.5;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 9999; /* below navbar, above page content */
+  z-index: 9999;
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 #gdpr-banner p {
-  margin: 0 !important;
-  flex: 1 1 auto !important;
-  max-width: none !important;
-  color: #fff !important;
-  text-align: left !important;
+  margin: 0;
+  flex: 1 1 auto;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-
 #gdpr-banner a {
-  color: #ffd4d4; /* light pink link to contrast with red bg */
+  color: #ffd4d4;
   text-decoration: underline;
 }
 
@@ -51,7 +49,7 @@
   color: #730101;
 }
 
-/* Mobile adjustments */
+/* ===== Mobile adjustments ===== */
 @media (max-width: 600px) {
   #gdpr-banner {
     flex-direction: column;

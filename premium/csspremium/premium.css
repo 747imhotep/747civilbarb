@@ -1,15 +1,17 @@
-/* ===== PREMIUM Global ===== */
-body {
+/* ==================================
+   Premium Page — Scoped Styles
+   Wrapper: .premium-page
+================================== */
+
+.premium-page {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
-  margin: 60px 0 0 0;
-  background-color: #fff;
   color: #333;
   line-height: 1.6;
 }
 
 /* ===== Hero Section ===== */
-#hero-premium {
+.premium-page #hero-premium {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,37 +24,20 @@ body {
   margin-bottom: 80px;
 }
 
-#hero-premium::before {
+.premium-page #hero-premium::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
 
-#hero-premium > * {
+.premium-page #hero-premium > * {
   position: relative;
   max-width: 900px;
   padding: 40px;
 }
 
-#hero-premium .manifesto {
-  font-weight: 300;
-  font-size: 20px;
-  color: #e0e0e0;
-  max-width: 740px;
-  margin: 20px auto 30px;
-}
-
-#hero-premium .quote {
-  max-width: 800px;
-}
-
-#hero-premium p {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#hero-premium h1 {
+.premium-page #hero-premium h1 {
   max-width: 1000px;
   color: #dfdfdf;
   font-size: 61px;
@@ -60,13 +45,13 @@ body {
   margin-bottom: 20px;
 }
 
-#hero-premium .hero-text-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.premium-page #hero-premium .hero-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#hero-premium .manifesto {
+.premium-page #hero-premium .manifesto {
   font-weight: 300;
   font-size: 20px;
   color: #e0e0e0;
@@ -74,81 +59,86 @@ body {
   margin: 20px auto 30px;
 }
 
-#hero-premium .quote {
-  color: #eeccf0;
+.premium-page #hero-premium .quote {
   font-size: 17px;
   font-style: italic;
+  color: #eeccf0;
   max-width: 800px;
   margin-top: 20px;
   background: rgba(50, 0, 50, 0.6);
 }
 
-#hero-premium .quote em {
-  font-size: 17px;
-  color: #e4bfbf;
-}
-
-#hero-premium .manifesto,
-#hero-premium .quote {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+.premium-page #hero-premium .manifesto,
+.premium-page #hero-premium .quote {
+  background: rgba(0, 0, 0, 0.6);
   padding: 25px 30px;
-  border-radius: 12px;          /* rounded corners for card effect */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* soft shadow for depth */
-  display: inline-block;         /* shrink to fit content */
-  max-width: 700px;              /* constrain width */
-  margin: 15px auto 25px auto;   /* centered with spacing */
-}
-
-#hero-premium .quote {
-  background: rgba(50, 0, 50, 0.6); /* slightly tinted for distinction */
-}
-
-#hero-premium .manifesto em,
-#hero-premium .quote em {
-  color: #ffe0e0;
-}
-
-#hero-premium .manifesto,
-#hero-premium .quote {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  max-width: 700px;
+  margin: 15px auto 25px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#hero-premium .manifesto:hover,
-#hero-premium .quote:hover {
-  transform: translateY(-8px); /* slightly lifts the box */
-  box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 15px rgba(255, 200, 200, 0.3); /* subtle glow */
+.premium-page #hero-premium .manifesto:hover,
+.premium-page #hero-premium .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6),
+              0 0 15px rgba(255, 200, 200, 0.3);
 }
 
-
-
+.premium-page #hero-premium em {
+  color: #ffe0e0;
+}
 
 /* ===== Premium Header ===== */
-.premium-header {
+.premium-page .premium-header {
   text-align: center;
   margin-bottom: 60px;
-  color: aquamarine;
 }
 
-.premium-header h2 {
+.premium-page .premium-header h2 {
   font-size: 48px;
   color: #641e1e;
   margin-bottom: 15px;
 }
 
-.premium-header .premium-intro {
+.premium-page .premium-intro {
   font-size: 18px;
   color: #555;
   max-width: 720px;
   margin: 0 auto;
 }
 
-.premium-header em {
+.premium-page .premium-header em {
   color: #d30b83;
-  font-style: italic;
 }
 
 /* ===== Premium List ===== */
-.premium-badge {
+.premium-page .premium-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.premium-page .premium-item {
+  position: relative;
+  border: 2px solid #d30b83;
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(240, 230, 250, 0.1);
+  box-shadow: 0 6px 15px rgba(200, 100, 200, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-page .premium-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(200, 100, 200, 0.4);
+}
+
+.premium-page .premium-badge {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -158,99 +148,66 @@ body {
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-.premium-item {
-  position: relative; /* needed for the badge to stay in top-right */
 }
 
-
-.premium-list {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  text-align: left;
-  max-width: 800px;
-  margin: 0 auto 60px auto;
-}
-
-.premium-item {
-  border: 2px solid #d30b83;   /* highlight premium articles */
-  border-radius: 12px;
-  padding: 20px;
-  background: rgba(240, 230, 250, 0.1); /* subtle tinted background */
-  box-shadow: 0 6px 15px rgba(200, 100, 200, 0.2); /* soft glow effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.premium-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(200, 100, 200, 0.4);
-}
-
-.premium-title {
+/* Text */
+.premium-page .premium-title {
   font-size: 24px;
-  margin-bottom: 1px;
 }
 
-.premium-title a {
+.premium-page .premium-title a {
   color: #730101;
   text-decoration: none;
 }
 
-.premium-subtitle {
+.premium-page .premium-subtitle {
   font-size: 18px;
   color: #555;
-  margin-top: 0;
   margin-bottom: 20px;
 }
 
-.premium-abstract {
+.premium-page .premium-abstract {
   font-size: 16px;
   color: #444;
-  margin-bottom: 8px;
 }
 
-.premium-meta {
+.premium-page .premium-meta {
   font-size: 14px;
   color: #999;
   font-style: italic;
-  margin-bottom: 10px;
 }
 
 /* ===== Subscribe Button ===== */
-.subscribe-button {
+.premium-page .subscribe-button {
   display: inline-block;
   background-color: #730101;
   color: #fff;
-  border: none;
   padding: 10px 25px;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
 }
 
-.subscribe-button:hover {
+.premium-page .subscribe-button:hover {
   background-color: #a00b0b;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(200,0,0,0.4);
 }
 
-
-
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  #hero-premium h1 {
+  .premium-page #hero-premium h1 {
     font-size: 40px;
   }
-  .hero-text-box .manifesto,
-  .hero-text-box .quote {
+
+  .premium-page #hero-premium .manifesto,
+  .premium-page #hero-premium .quote {
     font-size: 16px;
     padding: 20px;
   }
-  .premium-list {
+
+  .premium-page .premium-list {
     max-width: 95%;
-    margin: 0 auto 40px auto;
   }
 }

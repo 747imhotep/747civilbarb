@@ -1,15 +1,19 @@
-/* ===== Global ===== */
-body {
+/* ==================================
+   Library Page — Scoped Styles
+   Wrapper: .library-page
+================================== */
+
+
+
+.library-page {
   font-family: 'Times New Roman', Times, serif;
-  text-align: center;
-  margin: 60px 0 0 0;
-  background-color: #fff;
   color: #333;
   line-height: 1.6;
+  text-align: center;
 }
 
 /* ===== Hero Section ===== */
-#hero-image {
+.library-page #hero-image {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -23,20 +27,20 @@ body {
   text-align: center;
 }
 
-#hero-image::before {
+.library-page #hero-image::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
 
-#hero-image > * {
+.library-page #hero-image > * {
   position: relative;
   max-width: 900px;
   padding: 40px;
 }
 
-#hero-image h1 {
+.library-page #hero-image h1 {
   max-width: 1000px;
   color: #dfdfdf;
   font-size: 61px;
@@ -44,13 +48,13 @@ body {
   margin-bottom: 20px;
 }
 
-#hero-image .hero-text-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.library-page #hero-image .hero-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#hero-image .manifesto {
+.library-page #hero-image .manifesto {
   font-weight: 300;
   font-size: 20px;
   color: #e0e0e0;
@@ -58,7 +62,7 @@ body {
   margin: 20px auto 30px;
 }
 
-#hero-image .quote {
+.library-page #hero-image .quote {
   color: #eeccf0;
   font-size: 17px;
   font-style: italic;
@@ -67,68 +71,60 @@ body {
   background: rgba(50, 0, 50, 0.6);
 }
 
-#hero-image .quote em {
+.library-page #hero-image .quote em {
   font-size: 17px;
   color: #e4bfbf;
 }
 
-#hero-image .manifesto,
-#hero-image .quote {
-  background: rgba(0, 0, 0, 0.6); /* semi-transparent dark background */
+.library-page #hero-image .manifesto,
+.library-page #hero-image .quote {
+  background: rgba(0, 0, 0, 0.6);
   padding: 25px 30px;
-  border-radius: 12px;          /* rounded corners for card effect */
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* soft shadow for depth */
-  display: inline-block;         /* shrink to fit content */
-  max-width: 700px;              /* constrain width */
-  margin: 15px auto 25px auto;   /* centered with spacing */
-}
-
-#hero-image .quote {
-  background: rgba(50, 0, 50, 0.6); /* slightly tinted for distinction */
-}
-
-#hero-image .manifesto em,
-#hero-image .quote em {
-  color: #ffe0e0;
-}
-
-#hero-image .manifesto,
-#hero-image .quote {
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  display: inline-block;
+  max-width: 700px;
+  margin: 15px auto 25px auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#hero-image .manifesto:hover,
-#hero-image .quote:hover {
-  transform: translateY(-8px); /* slightly lifts the box */
-  box-shadow: 0 12px 25px rgba(0,0,0,0.6), 0 0 15px rgba(255, 200, 200, 0.3); /* subtle glow */
+.library-page #hero-image .manifesto em,
+.library-page #hero-image .quote em {
+  color: #ffe0e0;
 }
 
+.library-page #hero-image .manifesto:hover,
+.library-page #hero-image .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6),
+              0 0 15px rgba(255, 200, 200, 0.3);
+}
 
 /* ===== Library Header ===== */
-.library-header {
+.library-page .library-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.library-header h2 {
+.library-page .library-header h2 {
   font-size: 48px;
   color: #641e1e;
   margin-bottom: 15px;
 }
 
-.library-header .library-intro {
+.library-page .library-header .library-intro {
   font-size: 18px;
   color: #555;
   max-width: 720px;
   margin: 0 auto;
 }
 
-.library-header em {
+.library-page .library-header em {
   color: #d30b83;
   font-style: italic;
 }
 
-.library-hero-image {
+.library-page .library-hero-image {
   width: 100%;
   max-width: 900px;
   height: auto;
@@ -138,66 +134,65 @@ body {
 }
 
 /* ===== Article List ===== */
-.article-list {
+.library-page .article-list {
   display: flex;
   flex-direction: column;
   gap: 40px;
   text-align: left;
-  max-width: 800px;  <link rel="stylesheet" href="/subscribe/csssubscribe/subscribe.css">
+  max-width: 800px;
   margin: 0 auto 60px auto;
 }
 
-.article-item {
+.library-page .article-item {
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
 }
 
-.article-title {
+.library-page .article-title {
   font-size: 24px;
   margin-bottom: 5px;
 }
 
-.article-title a {
+.library-page .article-title a {
   color: #730101;
   text-decoration: none;
 }
 
-.article-title a:hover {
+.library-page .article-title a:hover {
   text-decoration: underline;
 }
 
-.article-subtitle {
+.library-page .article-subtitle {
   font-size: 18px;
   color: #555;
   margin-bottom: 10px;
 }
 
-.article-abstract {
+.library-page .article-abstract {
   font-size: 16px;
   color: #444;
   margin-bottom: 8px;
 }
 
-.article-meta {
+.library-page .article-meta {
   font-size: 14px;
   color: #999;
   font-style: italic;
 }
 
-
-
-
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  #hero-image h1 {
+  .library-page #hero-image h1 {
     font-size: 40px;
   }
-  #hero-image .manifesto,
-  #hero-image .quote {
+
+  .library-page #hero-image .manifesto,
+  .library-page #hero-image .quote {
     font-size: 16px;
     padding: 20px;
   }
-  .article-list {
+
+  .library-page .article-list {
     max-width: 95%;
     margin: 0 auto 40px auto;
   }
