@@ -55,6 +55,11 @@
   color: #730101;
 }
 
+footer {
+  padding-bottom: 80px;
+}
+
+
 /* ===== Mobile adjustments ===== */
 @media (max-width: 600px) {
   #gdpr-banner {
