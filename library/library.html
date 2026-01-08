@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="/navbar/CSSsnippet/snippet.css">
 </head>
 
-<body>
+<body class="has-fixed-nav">
+
 <!-- Navigation Bar -->
 <nav id="main-nav">
   <div class="nav-container">
     <!-- Logo / Site name -->
-    <a href="/home.html" class="logo">Civilisation ou Barbarie</a>
+    <a href="/index.html" class="logo"></a>
 
     <!-- Navigation links -->
     <ul class="nav-links">
@@ -54,19 +55,19 @@
 
   <!-- Library Header -->
   <header class="library-header">
-    <h2>Nos articles</h2>
+    <h2 id="articles-heading">Nos articles</h2>
     <p class="library-intro">
       Notre bibliothèque rassemble l’ensemble des articles publiés par <em>Civilisation 
       ou Barbarie</em>. Chaque texte est proposé au format PDF selon les modalités d’accès précisées ci-dessous.
     </p>
   </header>
 
-  <img src="/pictures/library-pic/hapi-syncronisation" alt="hapi-syncronisation" class="library-hero-image">
+  <img src="/pictures/library-pic/hapi-syncronisation.jpg" alt="hapi-syncronisation" class="library-hero-image">
 
   <!-- Article List -->
-  <section class="article-list" role="list">
+  <section class="article-list" aria-labelledby="article-heading">
     <!-- Article item 001 -->
-    <article class="article-item" role="listitem">
+    <article class="article-item">
       <h3 class="article-title">
         <a href="/articles/exemple-article.html">Se synchroniser à Hapi</a>
       </h3>
@@ -87,7 +88,7 @@
     </article>
 
     <!-- Article item 002-->
-    <article class="article-item" role="listitem">
+    <article class="article-item">
       <h3 class="article-title">
         <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
       </h3>
@@ -115,7 +116,7 @@
     <nav class="cta">
       <a href="/premium/premium.html">Lire les articles récents</a>
       <a href="/library/library.html">Découvrir un article gratuit</a>
-      <a href="/library" class="secondary">Explorer la bibliothèque</a>
+      <a href="/library/library.html" class="secondary">Explorer la bibliothèque</a>
     </nav>
   </section>
 

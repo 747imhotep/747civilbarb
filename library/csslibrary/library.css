@@ -3,6 +3,22 @@
    Wrapper: .library-page
 ================================== */
 
+/* ===== Call to Action ===== */
+/* to move later into /shared/css/cta.css */
+.library-page .cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.library-page .cta a {
+  color: #730101;
+  margin: 0 15px;
+  text-decoration: underline;
+}
+
+.library-page .cta a.secondary {
+  color: #ae8888;
+}
 
 
 .library-page {
@@ -181,6 +197,12 @@
 }
 
 /* ===== Responsive ===== */
+@media (hover: hover) {
+  .library-page #hero-image .manifesto:hover,
+  .library-page #hero-image .quote:hover {
+    transform: translateY(-8px);
+}
+
 @media (max-width: 768px) {
   .library-page #hero-image h1 {
     font-size: 40px;
