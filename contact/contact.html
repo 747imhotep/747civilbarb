@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="/navbar/CSSsnippet/snippet.css">
 </head>
 
-<body>
+<body class="has-fixed-nav">
+
 <!-- Navigation Bar -->
 <nav id="main-nav">
   <div class="nav-container">
     <!-- Logo / Site name -->
-    <a href="/home.html" class="logo">Civilisation ou Barbarie</a>
+    <a href="/index.html" class="logo"></a>
 
     <!-- Navigation links -->
     <ul class="nav-links">
@@ -43,25 +44,24 @@
   </div>
 
   <div class="contact-form">
-    <form>
-      <label>
-        Nom
-        <input type="text" name="name">
-      </label>
-      <label>
-        Email
-        <input type="email" name="email">
-      </label>
-      <label>
-        Message
-        <textarea name="message"></textarea>
-      </label>
-      <label class="gdpr-consent">
-  <input type="checkbox" name="gdpr">
-  J’accepte la <a href="/privacy/privacy.html">Politique de confidentialité</a>
-</label>
+    <form method="post" action="https://Formspree.io/f/yourformid">
+      <label>Nom</label>
+      <input type="text" id="name" name="name" required>
+      
 
-      <button type="submit">Envoyer</button>
+      <label>Email</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label>Message</label>
+      <textarea id="message" name="message" required></textarea>
+      
+
+      <label class="gdpr-consent">
+      <input type="checkbox" name="gdpr" required>
+      J’accepte la <a href="/privacy/privacy.html">Politique de confidentialité</a>
+      </label>
+
+      <button type="submit" aria-label="Envoyer le formulaire de contact">Envoyer</button>
     </form>
     <p class="contact-note">Nous vous répondrons sous 48 heures.</p>
   </div>

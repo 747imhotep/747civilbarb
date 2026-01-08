@@ -9,7 +9,11 @@
   color: #333;
   line-height: 1.6;
   text-align: center;
-  padding-top: 60px; /* preserves spacing from top */
+  padding-top: 60px; /* preserves spacing from top */ 
+  /* The .contact-page uses padding-top: 60px; 
+  — check that it doesn’t push content under 
+  fixed nav on smaller screens.
+  Consider padding-top: 80px if nav height increases on mobile. */
 }
 
 /* ===== Header ===== */
@@ -43,6 +47,13 @@
   gap: 15px;
 }
 
+.contact-form p{
+  margin-top: 2px;
+  padding-top: 2px;
+  color: #641e1e;
+  font-size: 14px;
+}
+
 .contact-form label {
   font-size: 16px;
   color: #555;
@@ -60,11 +71,19 @@
   font-family: 'Times New Roman', Times, serif;
 }
 
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #730101;
+  outline: none;
+  box-shadow: 0 0 5px rgba(115, 1, 1, 0.5);
+}
+
 .contact-form button {
   background-color: #730101;
   color: #fff;
   border: none;
   padding: 12px;
+  margin-bottom: 1px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 6px;
