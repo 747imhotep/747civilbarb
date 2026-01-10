@@ -3,6 +3,13 @@
    Wrapper: .premium-page
 ================================== */
 
+/* ❌ In page CSS, rmove global styles like:
+body { ... }
+html { ... }
+a { ... }
+footer { ... }  /* unless explicitly scoped */
+
+/* ===== Page Container ===== */
 .premium-page {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
