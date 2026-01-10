@@ -1,0 +1,72 @@
+/* ==================================
+   Civilisation ou Barbarie
+   base.css — Global foundation
+================================== */
+
+/* ---- Root & Reset ---- */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ---- Body (GLOBAL, ONLY HERE) ---- */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+  background-color: #ffffff;
+}
+
+/* ---- Headings (neutral baseline) ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  margin: 0 0 0.6em 0;
+  line-height: 1.25;
+}
+
+/* ---- Text ---- */
+p {
+  margin: 0 0 1.2em 0;
+}
+
+/* ---- Links ---- */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Page wrapper ---- */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Main ---- */
+main {
+  display: block;
+}
+
+/* ---- Footer (baseline only) ---- */
+footer {
+  margin-top: 80px;
+  padding: 40px 24px 120px; /* bottom space for GDPR */
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #eee;
+}
