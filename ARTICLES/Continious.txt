@@ -541,7 +541,7 @@ no conflict whith
 10 janv 2026
 
 I'm writing a website in html5, dedicated to articles in investigation style that can be monetized.
-I Need help continue to write it down with separate HTML, CSS, JS pages.
+I has been writen with separate HTML, CSS, JS pages.
 I already have tools like Sender.net, Formspree, Cloudflare, tawk.to, Github, Hover.com, 
 Not to mention Stripe.
 
