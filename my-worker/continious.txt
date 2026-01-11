@@ -1,3 +1,5 @@
+hi, this is were we left. You said:
+
 I can now build a complete STEP 2 example with:
 
 CTA buttons linked to Stripe checkout
