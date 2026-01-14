@@ -1,0 +1,4 @@
+STRIPE_PRICE_ID=price_2EUR_prod_Tl1QPb37whnnqD
+
+STRIPE_PRICE_ID=price_2EUR_(Stripe product id)
+
