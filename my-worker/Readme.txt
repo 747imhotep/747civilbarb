@@ -39,11 +39,11 @@ my-worker/
 │
 ├── Readme.txt        <- 
 │
-├── server.js         <- Node.js server for Stripe (Stripe backend)
-├── .env              <- secrets
+├──  
+├── 
 │
-├── server/         <- name as been change to: sserver-backup
-│   └─ backupserver.txt
+├──  
+│    
 │
 ├── succes/
 │     ├─ csssuccess/csssuccess.css
