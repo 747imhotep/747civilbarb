@@ -4,9 +4,10 @@
 ================================== */
 
 #main-nav {
-  background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
+  background: linear-gradient(135deg, #570134 10%, #d30b83 85%);
   color: #fff;
   font-weight: 600;
+  background-color: rgba(0, 0, 0, 0, 3.6);
 
   /* NEW: make navbar fixed at top */
   position: fixed;
@@ -29,11 +30,14 @@
   color: #fff;
   text-decoration: none;
   font-size: 1.3rem;
-  background-image: url(/pictures/logo/Civilisation_ou_Barbarie_T5.png);
+  padding: 4px 8px;
+  border-radius: 2px;
+  background-image: url(/pictures/logo/Civilisation_ou_Barbarie_T7.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100px;
-  height: 40px;
+  background-position: center;
+  width: 250px;
+  height: 48px;
 }
 
 .nav-links {

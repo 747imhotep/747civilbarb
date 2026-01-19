@@ -1,5 +1,13 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+#main-nav .logo {
+  background-color: #f5f3ee;   /* logo background */
+  padding: 6px 10px;
+  border-radius: 2px;
+
+  background-image: url(/pictures/logo/Civilisation_ou_Barbarie_B1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  width: 120px;
+  height: 48px;
 }
