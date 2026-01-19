@@ -1,0 +1,68 @@
+here is my tree
+747CivilBarb/
+│
+├── about/
+│
+├── ARTICLES/		<-- Few drafts texts
+├── biblio/		<-- Stored PDF articles
+│
+├── contact/
+│   ├─ contact.html
+│   └─ csscontact/contact.css
+│
+├── index.html
+│
+├── IndexCSS/
+│   └─ index.css
+│
+├── library/
+│   ├─ library.html
+│   └─ csslibrary/library.css
+│
+├── my-worker/		<-- detailed tree: please ask if needed
+│
+├── navbar/          	<-- Navbar HTML is duplicated across pages
+│   ├─ cssnavbar/navbar.css
+│   ├─ CSSsnippet/snippet.css
+│   ├─ jsnavbar/navbar.js
+│   └─ JSsnippet/snippet.js
+│
+│
+├── nosarticles/
+│   ├─ articles.html
+│   └─ cssaricles/cssaricles.css
+│
+├── pictures/
+│   ├─ articles/
+│   ├─ hero/
+│   ├─ library-pic/
+│   └─ logo/
+│
+│
+├── premium/
+│   ├─ premium.html
+│   └─ csspremium/premium.css
+│
+├── privacy/
+│   ├─ privacy.html
+│   └─ cssprivacy/privacy.css
+│
+├── Readme.txt
+│
+├── shared/
+│   ├─ base.css        ✅ NEW
+│   ├─ cssshared/
+│   │	├─ cta.css
+│   │	└─ footer.css
+│   │
+│   ├─ layout.css      (later, optional)
+│   └─ moouse/center_zoom.js
+│   
+│
+├── subscribe/
+│   ├─ subscribe.html
+│   └─ csssubscribe/subscribe.css
+│
+├── terms/
+│   ├─ terms.html
+│   └─ cssterms/terms.css
