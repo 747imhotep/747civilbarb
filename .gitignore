@@ -4,7 +4,12 @@ node_modules/
 # Environment variables
 .env
 
+# Worker secrets & data
+my-worker/.env
+my-worker/data/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
