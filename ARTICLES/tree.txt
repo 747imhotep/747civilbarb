@@ -1,5 +1,5 @@
 here is my Root tree
-747CivilBarb/
+747civilcarb/
 │
 ├── about/
 │
@@ -46,6 +46,7 @@ here is my Root tree
 │
 ├── premium/
 │   ├─ premium.html
+│   ├─ endpoint/endpoint.js
 │   └─ csspremium/premium.css
 │
 ├── privacy/

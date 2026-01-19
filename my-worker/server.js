@@ -137,6 +137,48 @@ app.get("/health", (req, res) => {
 });
 
 // ---------------------------
+// 9️⃣.1️⃣ Read-only entitlement check (STEP 7.3.1)
+// ---------------------------
+app.get("/entitlement", (req, res) => {
+  const email = req.query.email;
+
+  // Always return a safe response
+  if (!email) {
+    return res.status(200).json({
+      email: null,
+      entitled: false,
+    });
+  }
+
+  try {
+    // If entitlements file does not exist yet
+    if (!fs.existsSync(ENTITLEMENTS_FILE)) {
+      return res.status(200).json({
+        email,
+        entitled: false,
+      });
+    }
+
+    const raw = fs.readFileSync(ENTITLEMENTS_FILE, "utf-8");
+    const entitlements = JSON.parse(raw);
+
+    const entitled = Boolean(entitlements[email]);
+
+    return res.status(200).json({
+      email,
+      entitled,
+    });
+  } catch (err) {
+    console.error("❌ Error checking entitlement:", err);
+    return res.status(200).json({
+      email,
+      entitled: false,
+    });
+  }
+});
+
+
+// ---------------------------
 // 🔟 Start server
 // ---------------------------
 app.listen(PORT, () => {
