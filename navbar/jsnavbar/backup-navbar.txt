@@ -1,0 +1,61 @@
+/* ==================================
+   navbar JS
+   - mobile toggle
+   - active page highlight
+================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  /* Mobile menu toggle */
+  const toggle = document.querySelector(".nav-toggle");
+  const links = document.querySelector(".nav-links");
+
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      links.classList.toggle("show");
+    });
+  }
+
+  /* Close mobile menu when a link is clicked */
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    const linksContainer = document.querySelector(".nav-links");
+    if (linksContainer.classList.contains("show")) {
+      linksContainer.classList.remove("show");
+    }
+  });
+});
+
+
+  /* Active link detection */
+  let currentPath = window.location.pathname.replace(/\/$/, "");
+
+  // Handle home page (/ and /index.html)
+  if (currentPath === "" || currentPath === "/index.html") {
+    currentPath = "/";
+  }
+
+    const currentSection = currentPath.split("/")[1];
+
+  document.querySelectorAll(".nav-link").forEach(link => {
+    const linkPath = link.getAttribute("href").replace(/\/$/, "");
+    const linkSection = linkPath.split("/")[1];
+
+    // Exact page match
+    if (linkPath === currentPath) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+      return;
+    }
+
+    // Parent section match (/library/* → Library)
+    if (
+      currentSection &&
+      linkSection &&
+      currentSection === linkSection
+    ) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
+});
+
