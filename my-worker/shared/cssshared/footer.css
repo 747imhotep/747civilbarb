@@ -1,0 +1,19 @@
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #777;
+  font-size: 14px;
+  margin: 50px 0 20px 0;
+}
+
+footer .footer-links a {
+  color: #730101;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer .footer-links a:hover {
+  text-decoration: underline;
+}
