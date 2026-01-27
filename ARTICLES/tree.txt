@@ -1,5 +1,5 @@
 here is my Root tree
-747civilcarb/
+🌳 747civilcarb/
 │
 ├── about/
 │
@@ -22,14 +22,23 @@ here is my Root tree
 │
 ├── library/
 │   ├─ library.html
-│   └─ csslibrary/library.css
+│   ├─ csslibrary/library.css
+│   │
+│   └─ anything/ 
+│   	├─ anything.html 
+│   	└─ cssanything/anything.css
 │
-├── my-worker/		<-- detailed tree: please ask if needed
+├── my-worker/		<-- detailed tree in another file: I will share with you.
 │
 ├── navbar/          	<-- Navbar HTML is duplicated across pages
+│   ├─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
 │   ├─ cssnavbar/navbar.css
 │   ├─ CSSsnippet/snippet.css
-│   ├─ jsnavbar/navbar.js
+│   │
+│   ├─ jsnavbar/
+│   │	├─ load-navbar.js
+│   │	└─ navbar.js
+│   │
 │   └─ JSsnippet/snippet.js
 │
 │
@@ -45,7 +54,7 @@ here is my Root tree
 │
 │
 ├── premium/
-│   ├─ premium.html
+│   ├─ premium.html		<---Node server DOENS'T SEE THIS (what about button >S’abonner< )
 │   ├─ endpoint/endpoint.js
 │   └─ csspremium/premium.css
 │
@@ -58,10 +67,10 @@ here is my Root tree
 ├── shared/
 │   ├─ base.css        ✅ NEW
 │   ├─ cssshared/
-│   │	├─ cta.css
+│   │	├─ cta.css	<-- Actualy empty for the moment
 │   │	└─ footer.css
 │   │
-│   ├─ layout.css      (later, optional)
+│   ├─ layout.css      <-- Actualy empty for the moment (later, optional)
 │   └─ moouse/center_zoom.js
 │   
 │
