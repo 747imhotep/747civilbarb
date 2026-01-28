@@ -1,0 +1,162 @@
+/* ==================================
+   Civilisation ou Barbarie
+   csssubscribe/subscribe.css
+   s'abonner
+    Scoped to .subscribe-page ONLY
+================================== */
+
+
+/* ❌ In page CSS, rmove global styles like:
+body { ... }
+html { ... }
+a { ... }
+footer { ... }  /* unless explicitly scoped */
+
+
+/* ===== Global Styles ===== */
+.subscribe-page {
+  font-family: 'Times New Roman', Times, serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+/* ===== Hero Section ===== */
+.subscribe-page #hero-subscribe {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/pictures/hero/hero_premium.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 65vh;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.subscribe-page #hero-subscribe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.subscribe-page #hero-subscribe > * {
+  position: relative;
+  max-width: 900px;
+  padding: 20px 40px;
+}
+
+.subscribe-page #hero-subscribe h1 {
+  color: #ffd700;
+  font-size: 56px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.subscribe-page #hero-subscribe .manifesto {
+  font-size: 18px;
+  color: #eee;
+  max-width: 720px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 25px;
+  border-radius: 12px;
+  margin: 15px auto 25px auto;
+  text-align: center;
+}
+
+/* Subscribe Section */
+.subscribe-page .subscribe-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f9f0f0;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.subscribe-page .subscribe-button {
+  align-items: center;
+  background-color: #d30b83;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 20px;
+}
+
+.subscribe-page .subscribe-button:hover {
+  background-color: #a00862;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* Articles */
+.subscribe-page .premium-articles {
+  max-width: 900px;
+  margin: 60px auto 80px auto;
+  text-align: left;
+}
+
+.subscribe-page .premium-articles h2 {
+  font-size: 42px;
+  text-align: center;
+  color: #641e1e;
+  margin-bottom: 40px;
+}
+
+.subscribe-page .article-item {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 25px 30px;
+  margin-bottom: 30px;
+  background-color: #fff8f8;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+.subscribe-page .article-title { font-size: 24px; margin-bottom: 5px; }
+
+.subscribe-page .article-title a {
+  color: #730101;
+  text-decoration: none;
+}
+
+.subscribe-page .article-title a:hover {
+  text-decoration: underline;
+}
+
+.subscribe-page .article-subtitle { font-size: 18px; color: #555; margin-bottom: 12px; }
+
+.subscribe-page .article-abstract { font-size: 16px; color: #444; margin-bottom: 10px; }
+
+.subscribe-page .article-meta { font-size: 14px; color: #999; font-style: italic; }
+
+.subscribe-page .premium-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #d30b83;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+/* ===== Responsive ===== */
+

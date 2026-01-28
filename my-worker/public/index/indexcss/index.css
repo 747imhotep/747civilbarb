@@ -1,0 +1,148 @@
+/* ==================================
+   Civilisation ou Barbarie
+   IndexCSS/index.css
+   Scoped to .page-content ONLY (except hero)
+================================== */
+
+/* ===== Hero Section (FULL WIDTH) ===== */
+#hero-image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/pictures/hero/hero_yaa_home01.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100vw;           /* full width */
+  min-height: 70vh;
+  text-align: center;
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+#hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1; /* overlay behind text */
+}
+
+#hero-image .hero-inner {
+  position: relative;
+  z-index: 2;  /* text above overlay */
+  max-width: 900px;
+  padding: 40px;
+}
+
+#hero-image h1 {
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 0.03em;
+}
+
+#hero-image .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+#hero-image .quote {
+  font-style: italic;
+  color: #e0e0e0;
+  max-width: 800px;
+}
+
+/* ===== Page Content ===== */
+.page-content {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Text Elements ===== */
+.page-content p {
+  color: #666;
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto 1.2em;
+}
+
+.page-content .quote {
+  color: #919191;
+  font-size: 17px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.page-content em {
+  font-style: italic;
+  color: #dfdfdf;
+  font-size: 20px;
+}
+
+/* ===== Section Titles ===== */
+.page-content h2 {
+  color: #3d0101;
+  text-align: center;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+/* ===== Call-to-Action ===== */
+.page-content .cta {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.page-content .cta a {
+  color: #3d0101;
+  margin-right: 20px;
+  text-decoration: underline;
+}
+
+.page-content .cta a.secondary {
+  color: #ae8888;
+}
+
+.page-content a:hover {
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #hero-image h1 {
+    font-size: 40px;
+  }
+
+  #hero-image .hero-inner {
+    padding: 20px;
+  }
+
+  #hero-image .manifesto,
+  #hero-image .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .page-content .cta {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-image h1 {
+    font-size: 32px;
+  }
+}

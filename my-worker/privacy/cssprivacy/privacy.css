@@ -1,0 +1,70 @@
+/* ===== PRIVACY ===== */
+body {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 60px auto;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+.privacy-header h1 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 40px;
+}
+
+/* ===== Content Sections ===== */
+#privacy {
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.privacy-section {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.privacy-section h2 {
+  font-size: 22px;
+  color: #730101;
+  margin-bottom: 15px;
+}
+
+.privacy-section p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.privacy-section ul {
+  margin-left: 20px;
+}
+
+.privacy-section li {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+/* ===== Emphasis ===== */
+.privacy-section em {
+  color: #730101;
+  font-style: italic;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #privacy {
+    max-width: 95%;
+  }
+
+  .privacy-header h1 {
+    font-size: 36px;
+  }
+
+  .privacy-section h2 {
+    font-size: 20px;
+  }
+}

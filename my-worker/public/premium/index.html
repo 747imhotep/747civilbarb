@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Premium — Civilisation ou Barbarie</title>
+  <link rel="stylesheet" href="/shared/base.css">
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/premium/csspremium/premium.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+</head>
+<!-- PREMIUM -->
+<body class="has-fixed-nav">
+
+<div id="navbar-placeholder"></div>
+
+<main class="premium-page">
+  <!-- Hero Section -->
+  <section id="hero-premium">
+    <h1>Accès Premium</h1>
+    <div class="hero-text-box">
+      <p class="manifesto">
+        Explorez la bibliothèque dans son intégralité et accédez à des articles exclusifs, 
+        des analyses approfondies et des archives rares. L’accès Premium vous ouvre un 
+        monde de connaissance et d’exploration méthodique.
+      </p>
+      <blockquote class="quote">
+        <p><em>Investir dans la connaissance, c’est multiplier sa puissance 
+          intellectuelle.</em></p>
+        — Civilisation ou Barbarie
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Premium Articles Section -->
+  <header class="premium-header">
+    <h2>Articles Premium</h2>
+    <p class="premium-intro">
+      Les articles suivants sont disponibles dans votre abonnement Premium. <br> Cliquez sur 
+      « Accéder » pour lire ou télécharger.
+    </p>
+  </header>
+
+  <section class="premium-list" aria-labelledby="premium-articles-heading">
+
+
+    <!-- Using the same articles from Library -->
+    <article class="premium-item">
+      <div class="premium-badge">Premium</div>
+        <h3 class="premium-title">
+        <a href="/subscribe/">Se synchroniser à Hapi</a>
+      </h3>
+      <h4 class="premium-subtitle">
+        Se réapproprier le rite, aujourd’hui
+      </h4>
+      <p class="premium-abstract">
+        L’article éclaire les divinités-poissons peu connues et explore la temporalité de 
+        Hapi, leurs représentations et leurs cultes. Il souligne la dimension opérative 
+        des pratiques kamites, les offrandes et célébrations, et leur continuité dans 
+        la culture ancestrale.
+      </p>
+      <p class="premium-meta">
+        PDF — 2 pages — Accès Premium
+      </p>
+      <button type="button"
+              class="subscribe-button" 
+              onclick="window.location.href='/subscribe/'">
+        Accéder
+      </button>
+    </article>
+
+    <article class="premium-item">
+        <div class="premium-badge">Premium</div>
+      <h3 class="premium-title">
+        <a href="/subscribe/subscribe.html">Richesse et Sorcellerie</a>
+      </h3>
+      <h4 class="premium-subtitle">
+        Dynamiques invisibles et blocages dans les projets collectifs
+      </h4>
+      <p class="premium-abstract">
+        L’article explore les forces visibles et invisibles perçues comme entravant la 
+        réussite des projets collectifs. Il interroge les croyances, les héritages 
+        historiques et les dynamiques de groupe qui façonnent ces blocages, et ouvre 
+        la réflexion sur leurs effets profonds sur la coopération et le développement 
+        communautaire.
+      </p>
+      <p class="premium-meta">
+        PDF — 12 pages — Accès Premium
+      </p>
+      <button type="button"
+              class="subscribe-button" 
+              onclick="window.location.href='/subscribe/'">
+        Accéder
+      </button>
+    </article>
+
+    <!-- Add more Library articles here as Premium -->
+    
+  </section>
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner">
+  <p>
+    Ce site utilise des cookies et services tiers pour améliorer votre expérience.
+    En continuant, vous acceptez notre 
+    <a href="/privacy/privacy.html">Politique de confidentialité</a>.
+  </p>
+  <button id="gdpr-accept">J'accepte</button>
+</div>
+
+<!-- Footer -->
+        <footer>
+          <p>
+            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
+          </p>
+          <p class="footer-links">
+            <a href="/privacy/privacy.html">Politique de confidentialité</a> | 
+            <a href="/terms/terms.html">CGU</a>
+          </p>
+        </footer>
+
+
+        <script src="/navbar/jsnavbar/load-navbar.js"></script>
+        <script src="/navbar/jssnippet/snippet.js"></script>
+        <script src="/premium/endpoint/endpoint.js"></script>
+    </body>
+</html>
