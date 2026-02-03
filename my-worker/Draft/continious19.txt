@@ -7,14 +7,13 @@ If you have any question, feel free to ask.
 Also, as you might see, it is wise to not push all answers at once.
 step by step is better as we might encounter many problem on route.
 
-Also, I have two trees to share. Feel free to ask if you need it. 
+Also, I have two trees to share. It is necessary to read it before start. 
 I repeat two trees
-Having said the, here's the record from yesterday:
+Having said the, here's the record from last week:
 
 
 
 
-If you want, tomorrow we can **write the webhook + entitlement logic first** and test it locally with Stripe CLI before touching the front-end. That’s the safest way to go step by step.
 
 🟢 Where we are now (January 20th 2026)
 # ⏭️ What comes NEXT (but we do NOT do it yet)
@@ -79,7 +78,7 @@ This tree must remain:
 > ❌ unaware of entitlements.json
 > ❌ unaware of server internals
 
----
+----------------
 
 ### 🌳 Tree 2 — **Worker / Backend**
 `747civilcarb/my-worker/`
@@ -98,7 +97,7 @@ This tree is the **only authority** for:
 * Stripe events
 * Read/write to `entitlements.json`
 
----
+----------------
 
 ## 🔒 Separation check (this was the critical risk)
 
@@ -155,7 +154,7 @@ Just tell me when you’re ready — I won’t move without your signal.
 
 ----------------------------------------------------
 
-Also, Few days ago you said:
+Also, few weeks ago you said:
 
 ## 3️⃣ Premium page
 
@@ -167,21 +166,21 @@ Flow:
 Visitor → Premium page          (root tree, static UX)
    |
    | clicks “Accéder”
-   ↓
+    ↓
 Visitor → Subscribe page        (root tree)
    |
    | clicks “S’abonner”
-   ↓
+    ↓
 Stripe Checkout                 (Stripe-hosted)
-   ↓
+    ↓
 Redirect (success_url)
-   ↓
+    ↓
 my-worker/succes/succes.html    ✅ AUTHORITATIVE
-   ↓
+    ↓
 JS → /api/me   (or /entitlement)
-   ↓
+    ↓
 Backend checks entitlements.json
-   ↓
+    ↓
 Frontend unlocks premium access
    or redirects to worker /premium
 
@@ -200,7 +199,7 @@ It will:
 3. JS unlocks premium links
 
 This is **where the magic happens**.
-----------------------------------------------------
+----------------------------------------------------end of what you said few weeks ago.
 
 Perfect. We are now officially entering STEP 7.3, and only the part you approved:
 
