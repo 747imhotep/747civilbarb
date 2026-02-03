@@ -6,7 +6,9 @@
   <link rel="stylesheet" href="csssprivacy/privacy.css">
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
 </head>
-
+<!-- ============================ -->
+<!--        CIVILBARB TERMS       -->
+<!-- ============================ -->
 <body>
 <!-- Navigation Bar -->
 <nav id="main-nav">
@@ -70,6 +72,22 @@
 
         </main>
 
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/privacy.html">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
 <!-- Footer -->
         <footer>
           <p>
@@ -80,6 +98,8 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
+        <script src="/navbar/jsnavbar/load-navbar.js"></script>
         <script src="/navbar/jsnavbar/navbar.js"></script>
+        <script src="/shared/gdpr.js" defer></script>
     </body>
 </html>
