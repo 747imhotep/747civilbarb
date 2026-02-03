@@ -3,12 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Terms & Policy — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="/terms/cssterms/terms.css">
+
+<!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="/navbar/CSSsnippet/snippet.css">
-  <link rel="stylesheet" href="cssterms/terms.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
 </head>
+<!-- ============================ -->
+<!--        CIVILBARB TERMS       -->
+<!-- ============================ -->
 
 <body class="has-fixed-nav">
 
@@ -70,15 +81,21 @@
   </section>
         </main>
 
-        <!-- GDPR Consent Banner -->
-<div id="gdpr-banner">
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
   <p>
-    Ce site utilise des cookies et services tiers pour améliorer votre expérience.
-    En continuant, vous acceptez notre 
-    <a href="/privacy/privacy.html">Politique de confidentialité</a>.
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/privacy.html">En savoir plus</a>
   </p>
-  <button id="gdpr-accept">J'accepte</button>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
 </div>
+<!-- GDPR Consent Banner END -->
 
 <!-- Footer -->
         <footer>
@@ -90,7 +107,8 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
-        <script src="/navbar/jsnavbar/navbar.js"></script>
-        <script src="/navbar/JSsnippet/snippet.js"></script>
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/gdpr.js" defer></script>
     </body>
 </html>
