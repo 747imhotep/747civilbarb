@@ -1,0 +1,154 @@
+/* ==================================
+   Civilisation ou Barbarie
+   indexcss/index.css
+   Scoped to .page-content ONLY (except hero)
+================================== */
+
+/* ===== Hero Section (FULL WIDTH) ===== */
+#hero-index {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/pictures/hero/hero_yaa_home01.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 70vh;
+  text-align: center;
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+#hero-index::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+#hero-index .hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 40px;
+}
+
+#hero-index h1 {
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#hero-index .manifesto {
+  font-size: 20px;
+  color: #eee;
+  max-width: 740px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 25px;
+  border-radius: 12px;
+  margin: 15px auto auto;
+  text-align: center;
+}
+
+#hero-index .quote {
+  font-style: italic;
+  color: #eee;
+  max-width: 800px;
+  background: rgba(16, 15, 15, 0.6);
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+
+/* ===== Page Content ===== */
+.page-content {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Text Elements ===== */
+.page-content p {
+  color: #666;
+  font-size: 18px;
+  max-width: 720px;
+  margin: 0 auto 1.2em;
+}
+
+.page-content .quote {
+  color: #919191;
+  font-size: 17px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.page-content em {
+  font-style: italic;
+  color: #dfdfdf;
+  font-size: 20px;
+}
+
+/* ===== Section Titles ===== */
+.page-content h2 {
+  color: #3d0101;
+  text-align: center;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+/* ===== Call-to-Action ===== */
+.page-content .cta {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.page-content .cta a {
+  color: #3d0101;
+  margin-right: 20px;
+  text-decoration: underline;
+}
+
+.page-content .cta a.secondary {
+  color: #ae8888;
+}
+
+.page-content a:hover {
+  text-decoration: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #hero-index h1 {
+    font-size: 40px;
+  }
+
+  #hero-index .hero-inner {
+    padding: 20px;
+  }
+
+  #hero-index .manifesto,
+  #hero-index .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .page-content .cta {
+    display: block;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-index h1 {
+    font-size: 32px;
+  }
+}
