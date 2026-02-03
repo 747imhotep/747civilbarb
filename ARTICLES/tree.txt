@@ -17,7 +17,7 @@ here is my Root tree
 │
 ├── index.html
 │
-├── IndexCSS/
+├── indexcss/
 │   └─ index.css
 │
 ├── library/
@@ -39,7 +39,7 @@ here is my Root tree
 │   │	├─ load-navbar.js
 │   │	└─ navbar.js
 │   │
-│   └─ JSsnippet/snippet.js
+│   └─ jssnippet/snippet.js	<-- I've just change the Folder name
 │
 │
 ├── nosarticles/
@@ -66,6 +66,7 @@ here is my Root tree
 │
 ├── shared/
 │   ├─ base.css        ✅ NEW
+│   ├─ gpdr.css        ✅ NEW
 │   ├─ cssshared/
 │   │	├─ cta.css	<-- Actualy empty for the moment
 │   │	└─ footer.css
