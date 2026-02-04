@@ -18,6 +18,7 @@
 .about-page .about-header h1 {
   font-size: 48px;
   color: #641e1e;
+  margin-top: 50px;
   margin-bottom: 40px;
   text-align: center;
 }
@@ -31,6 +32,7 @@
 
 .about-page .about-section h2 {
   font-size: 28px;
+  font-weight: 600;
   color: #730101;
   margin-bottom: 3px;
 }
