@@ -62,12 +62,6 @@ main {
   display: block;
 }
 
-/* ---- Footer (baseline only) ---- */
-footer {
-  margin-top: 80px;
-  padding: 40px 24px 120px; /* bottom space for GDPR */
-  text-align: center;
-  font-size: 14px;
-  color: #555;
-  border-top: 1px solid #eee;
-}
+/* ---- Images ---- */
+img {
+  max-width: 100%;}
