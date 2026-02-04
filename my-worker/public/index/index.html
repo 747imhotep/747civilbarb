@@ -3,15 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
+
+  <!-- Page-specific -->
+  <link rel="stylesheet" href="/index/indexcss/index.css"> <!-- it doens't work with "/" --> 
+
+  <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-    <link rel="stylesheet" href="/index/indexcss/index.css"> <!-- it doens't work with "/" -->
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">  
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
 
 
 </head>
-<!-- INDEX -->
+<!-- ============================ -->
+<!--       my-worker INDEX        --> 
+<!-- ============================ -->
+
 <body class="has-fixed-nav">
 
 <!-- Navigation Bar -->
@@ -72,11 +83,18 @@
     En continuant, vous acceptez notre 
     <a href="/privacy/privacy.html">Politique de confidentialité</a>.
   </p>
-  <button id="gdpr-accept">J'accepte</button>
+  
+  <div>
+    <div class="gdpr-actions"> 
+      <button id="gdpr-accept">Accepter</button>
+      <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
 </div>
+<!--GDPR Consent Banner END -->
+
 
 <!-- Footer -->
-<footer>
+        <footer>
           <p>
             &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
           </p>
@@ -85,7 +103,12 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
-<script src="/navbar/jsnavbar/load-navbar.js"></script>
-<script src="/navbar/jssnippet/snippet.js"></script>
+<!--Footer END-->
+
+
+<SCript src="/navbar/jsnavbar/load-navbar.js" defer></SCript>
+<script src="/navbar/jsnavbar/navbar.js" defer></script>
+<script src="/shared/gdpr.js" defer></script>
+
 </body>
 </html>

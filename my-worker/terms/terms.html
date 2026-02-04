@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Terms & Policy — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
+
+  <!-- Page-specific -->
+   <link rel="stylesheet" href="cssterms/terms.css">
+
+
+
+  <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-  <link rel="stylesheet" href="cssterms/terms.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
 </head>
-<!-- TERMS -->
+<!-- ============================ -->
+<!--        my-worker TERMS       -->
+<!-- ============================ -->
 
 <body class="has-fixed-nav">
 
@@ -74,7 +86,8 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
-        <script src="/navbar/jsnavbar/navbar.js"></script>
-        <script src="/navbar/JSsnippet/snippet.js"></script>
+        <script src="/my-worker/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/my-worker/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/my-worker/shared/gdpr.js" defer></script>
     </body>
 </html>

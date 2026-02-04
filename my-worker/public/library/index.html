@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Bibliothèque — Civilisation ou Barbarie</title>
-  <link rel="stylesheet" href="/shared/base.css">
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="../../shared/base.css">
+
+  <!-- Page-specific -->
+  <link rel="stylesheet" href="/library/csslibrary/library.css">
+
+  <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-  <link rel="stylesheet" href="/library/csslibrary/library.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
 </head>
-<!-- LIBRARY -->
+<!-- ============================ -->
+<!--       my-worker LIBRARY      -->
+<!-- ============================ -->
+
 <body class="has-fixed-nav">
 
 <!-- Navigation Bar -->
@@ -139,8 +150,13 @@
     En continuant, vous acceptez notre 
     <a href="/privacy/privacy.html">Politique de confidentialité</a>.
   </p>
-  <button id="gdpr-accept">J'accepte</button>
+
+  <div class="gdpr-actions"> 
+  <button id="gdpr-accept">Accepter</button>
+  <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
 </div>
+
 
 <!-- Footer -->
         <footer>
@@ -152,7 +168,10 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
-        <script src="/navbar/jsnavbar/load-navbar.js"></script>
-        <script src="/navbar/jssnippet/snippet.js"></script>
+<!--Footer END-->
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script> <!-- my-worker/navbar/jsnavbar/load-navbar.js address doensn't work -->
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/gdpr.js" defer></script>
     </body>
 </html>

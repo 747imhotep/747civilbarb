@@ -3,14 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Abonnement Premium — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
+
+  <!-- Page-specific -->
+  <link rel="stylesheet" href="/subscribe/csssubscribe/subscribe.css">
+
+  <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-
-  <link rel="stylesheet" href="/subscribe/csssubscribe/subscribe.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
 </head>
-<!-- SUBSCRIBE -->
+<!-- ============================ -->
+<!--     my-worker SUBSCRIBE      -->
+<!-- ============================ -->  
+
 
 <body class="subscribe-page">
 
@@ -105,11 +115,17 @@
 <div id="gdpr-banner">
   <p>
     Ce site utilise des cookies et services tiers pour améliorer votre expérience.
-    En continuant, vous acceptez notre 
+    Vous pouvez accepter ou refuser les cookies non .  
     <a href="/privacy/privacy.html">Politique de confidentialité</a>.
   </p>
-  <button id="gdpr-accept">J'accepte</button>
+  
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
 </div>
+
+
 <!-- Footer -->
             <footer>
           <p>
@@ -146,6 +162,7 @@
             </script>
             
         <script src="/navbar/jsnavbar/load-navbar.js"></script>
-        <script src="/navbar/jssnippet/snippet.js"></script>
+        <script src="/navbar/jsnavbar/navbar.js"></script>
+        <script src="/shared/gdpr.js"></script>
     </body>
 </html>
