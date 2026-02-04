@@ -53,6 +53,24 @@
   text-align: center;
 }
 
+#hero-index .manifesto,
+#hero-index .quote {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 19px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  max-width: 800px;
+  margin: 25px auto 25px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hero-index .manifesto:hover,
+#hero-index .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
 #hero-index .quote {
   font-style: italic;
   color: #eee;
