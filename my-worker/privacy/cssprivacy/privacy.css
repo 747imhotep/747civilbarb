@@ -1,4 +1,8 @@
-/* ===== PRIVACY ===== */
+/* ==============================
+   Privacy Policy Stylesheet
+   my-worker/privacy/cssprivacy/privacy.css
+================================= */
+
 body {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
@@ -12,6 +16,7 @@ body {
 .privacy-header h1 {
   font-size: 48px;
   color: #641e1e;
+  padding-top: 40px;
   margin-bottom: 40px;
 }
 
