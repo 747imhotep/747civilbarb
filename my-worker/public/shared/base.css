@@ -5,7 +5,7 @@
 ================================== */
 
 /* ---- Root & Reset ---- */
-html {
+html { /* <--- problem here ??? */
   margin: 0;
   padding: 0;
   width: 100%;
@@ -13,12 +13,12 @@ html {
   font-size: 16px;
 }
 
-*, *::before, *::after {
+*, *::before, *::after { /* <--- problem here ??? */
   box-sizing: inherit;
 }
 
 /* ---- Body (GLOBAL, ONLY HERE) ---- */
-body {
+body { /* <--- problem here ??? */
   margin: 0;
   padding: 0;
   width: 100%;

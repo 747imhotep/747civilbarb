@@ -6,19 +6,18 @@
 
 footer {
   text-align: center;
-  padding: 4px 24px; /* bottom space for GDPR */
-  padding-bottom: 5px; /* to avoid overlap with gdpr banner */
-  background-color: #f5f5f5;
-  color: #777;
-  margin: 50px 0 2px 0; /* top and bottom margin */
+  padding-top: 7px;
+  padding-bottom: 30px; /* to avoid overlap with gdpr banner */
+  background-color: #e7e7e7;
+  color: #585858;
   font-size: 14px;
-  border-top: 1px solid #eee;
+  margin: 90px 0 2px 0; /* top and bottom margin */
 }
 
 footer .footer-links a {
-  color: #730101;
+  color: #690000;
   text-decoration: none;
-  margin: 0 5px;
+  margin: 5px 5px;
 }
 
 footer .footer-links a:hover {
