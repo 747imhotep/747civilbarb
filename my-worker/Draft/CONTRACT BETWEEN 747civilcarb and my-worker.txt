@@ -1,0 +1,250 @@
+CONTRACT BETWEEN 747civilcarb and my-worker
+
+
+Hello,
+
+Remember, last week we left the job here for a pause.
+Please read it carrefully, so you can remember what we've been true.
+If you have any question, feel free to ask.
+
+Also, as you might see, it is wise to not push all answers at once.
+step by step is better as we might encounter many problem on route.
+
+Also, I have two trees to share. It is necessary to read it before start. 
+I repeat two trees
+Having said the, here's the record from last week:
+
+
+
+
+---
+
+## 🟢 Now we can safely choose the REAL next step
+
+Given everything you locked, STEP 4 options change slightly.
+Here are the **correct** ones *for your architecture*:
+
+### STEP 4 — choose ONE
+
+1️⃣ **Define the contract between `747civilcarb` and `my-worker`**
+→ which pages stay static, which ones Node owns (premium, subscribe, success, cancel)
+
+2️⃣ **Unify navigation logic conceptually (not technically yet)**
+→ what the navbar *means* across both worlds (links, auth state, premium CTA)
+
+3️⃣ **Premium flow on paper**
+→ click “S’abonner” → what exact URL → which server → which response
+
+4️⃣ **Do nothing technical — just clean mental model & documentation**
+
+Reply with **just the number**.
+We’ll go step by step, and I’ll stop you if we’re about to break a lock.
+
+You’re doing this carefully — that’s why it’s holding together.
+
+
+
+
+
+
+Perfect choice 👍
+This is **exactly** the right step to do *before* touching code again.
+
+We are going to do **STEP 4.1 — Define the contract**
+This is **pure thinking + rules**, no refactor, no moving files.
+
+I’ll go slow and we’ll **lock each subsection**.
+
+---
+
+# STEP 4.1 — CONTRACT BETWEEN `747civilcarb` and `my-worker`
+
+Think of this as a **treaty** between two countries.
+
+* No country changes its borders yet
+* We only define **who is responsible for what**
+* Later, code will simply *enforce* this treaty
+
+---
+
+## 1️⃣ The two roles (hard definition)
+
+### 🟦 `747civilcarb/` — SOURCE OF TRUTH
+
+This is **authoritative**.
+
+It owns:
+
+* Content
+* Copy
+* Visual hierarchy
+* Static navigation intent
+* SEO-facing pages
+
+If something is written here, it is **conceptually correct**, even if Node doesn’t serve it yet.
+
+🔒 **LOCK**
+`747civilcarb` decides *what the site is*.
+
+---
+
+### 🟩 `my-worker/` — RUNTIME & LOGIC
+
+This is **executive**, not editorial.
+
+It owns:
+
+* HTTP serving
+* Dynamic decisions
+* Premium logic
+* Auth / entitlements (now or later)
+* Technical navbar injection
+
+It must **respect** the intent defined in `747civilcarb`.
+
+🔒 **LOCK**
+`my-worker` decides *how things are delivered*, not *what they mean*.
+
+---
+
+## 2️⃣ Page ownership (this is the core)
+
+We classify pages into **three categories**.
+
+### 🟢 Category A — Static & Canonical (747 owns)
+
+Examples:
+
+* Home / index
+* Library (free content)
+* About / manifesto / philosophy
+* Legal text (privacy, terms) — *content-wise*
+
+Rules:
+
+* Written and structured in `747civilcarb`
+* Node may **mirror** them
+* Node may **serve** them
+* Node may **inject navbar/footer**
+
+But:
+
+❌ Node does NOT redefine content
+❌ Node does NOT invent variants
+
+🔒 **LOCK Category A**
+
+---
+
+### 🟡 Category B — Static content, dynamic wrapper (shared)
+
+Examples:
+
+* Subscribe page (marketing copy + dynamic behavior)
+* Premium landing (explains value + checks state)
+
+Rules:
+
+* **Copy & layout** originate in `747civilcarb`
+* **Behavior** belongs to `my-worker`
+* URLs must be **stable and agreed**
+
+This is where most coordination happens.
+
+🔒 **LOCK Category B**
+
+---
+
+### 🔴 Category C — Runtime-only (Node owns)
+
+Examples:
+
+* `/success`
+* `/cancel`
+* entitlement checks
+* redirects
+* API endpoints
+
+Rules:
+
+* These pages may **not exist at all** in `747civilcarb`
+* If they do exist there, they are **illustrative only**
+* Node is the authority
+
+🔒 **LOCK Category C**
+
+---
+
+## 3️⃣ Concrete mapping (initial, no changes yet)
+
+Based on what exists **today**, the implied contract is:
+
+| Page / Concept | Canonical owner | Served by Node? | Notes         |
+| -------------- | --------------- | --------------- | ------------- |
+| `/index`       | 747             | yes (mirrored)  | content-first |
+| `/library`     | 747             | yes (mirrored)  | free access   |
+| `/premium`     | shared          | yes             | dynamic state |
+| `/subscribe`   | shared          | yes             | CTA + logic   |
+| `/success`     | Node            | yes             | runtime-only  |
+| `/cancel`      | Node            | yes             | runtime-only  |
+| `/privacy`     | 747             | later           | content-first |
+| `/terms`       | 747             | later           | content-first |
+
+⚠️ This table is **descriptive**, not prescriptive.
+We are not enforcing it yet.
+
+---
+
+## 4️⃣ The most important rule (bookmark this)
+
+> **Links in `747civilcarb` describe intent, not implementation**
+
+So when `747civilcarb/index.html` has:
+
+```html
+<a href="/premium/">S’abonner</a>
+```
+
+It means:
+
+* “User wants premium”
+* NOT “this file must exist locally”
+* NOT “Node is broken if it 404s today”
+
+Node’s job later is to **honor that intent**.
+
+🔒 **LOCK THIS RULE**
+
+This single rule prevents 90% of confusion.
+
+---
+
+## 5️⃣ What we explicitly do NOT do yet
+
+Just to be very clear:
+
+❌ We do not move files
+❌ We do not sync folders
+❌ We do not delete duplicates
+❌ We do not rewrite links
+❌ We do not add routes yet
+
+Today is **definition only**.
+
+---
+
+## ✅ STEP 4.1 STATUS
+
+If you agree with the above, then:
+
+* Contract is defined
+* Responsibilities are clear
+* Future steps won’t fight each other
+
+Before we proceed, I need **one confirmation** (yes/no is enough):
+
+> Do you agree that **`/premium` and `/subscribe` are Category B (shared)**
+> — content from `747civilcarb`, behavior from `my-worker`?
+
+Once you confirm, we’ll move to **STEP 4.2** and design **the premium flow on paper**, click by click, with zero code.
+
