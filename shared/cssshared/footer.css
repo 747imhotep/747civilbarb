@@ -6,11 +6,12 @@
 
 footer {
   text-align: center;
-  padding: 7px;
+  padding-top: 7px;
+  padding-bottom: 25px; /* to avoid overlap with gdpr banner */
   background-color: #e7e7e7;
   color: #585858;
   font-size: 14px;
-  margin: 90px 0 10px 0; /* top and bottom margin */
+  margin: 90px 0 3px 0; /* top and bottom margin */
 }
 
 footer .footer-links a {

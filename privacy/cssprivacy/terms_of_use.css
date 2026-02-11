@@ -1,4 +1,9 @@
-/* ===== Global ===== */
+
+/* ==============================
+   terms Policy Stylesheet
+   civilbarb/terms/cssterms/terms.css
+================================= */  
+
 body {
   font-family: 'Times New Roman', Times, serif;
   text-align: center;
@@ -8,13 +13,12 @@ body {
   line-height: 1.6;
 }
 
-
 /* ===== Header ===== */
 .terms-header h1 {
+
   font-size: 58px;
-  text-align: left;
   color: #641e1e;
-  margin-top: 215px;
+  margin-top: 220px;
   margin-bottom: 40px;
 }
 
@@ -39,6 +43,16 @@ body {
   font-size: 16px;
   color: #444;
   margin-bottom: 12px;
+}
+
+.terms-section ul {
+  margin-left: 20px;
+}
+
+.terms-section li {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 8px;
 }
 
 /* ===== Emphasis ===== */
