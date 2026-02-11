@@ -4,6 +4,7 @@ here is my Root tree
 ├── about/
 │
 ├── ARTICLES/		<-- Few drafts texts
+│
 ├── biblio/		<-- Stored PDF articles
 │
 ├── contact/
@@ -59,8 +60,17 @@ here is my Root tree
 │   └─ csspremium/premium.css
 │
 ├── privacy/
+│   │
+│   ├─ cssprivacy/
+│   │   │
+│   │   ├─ privacy.css
+│   │   │
+│   │   └─ terms_of_use.css
+│   │   
 │   ├─ privacy.html
-│   └─ cssprivacy/privacy.css
+│   │
+│   └─ terms_of_use.html
+│   
 │
 ├── Readme.txt
 │

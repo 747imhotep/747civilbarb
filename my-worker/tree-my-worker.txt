@@ -19,22 +19,8 @@
 │
 ├── .env     	        <- 
 │
-├── navbar/	
-│	├── navbar.html
-│	│
-│	│
-│	├── cssnavbar/
-│	│	└──  navbar.css
-│	│
-│	├── csssnippet/	  
-│	│	└───  snippet.css
-│	│
-│	├── jsnavbar/
-│	│	├──  load-navbar.js
-│	│	└──  navbar.js
-│	│	
-│	└── jssnippet/	  
-│		└───  snippet.js
+├── navbar/		<-- obsolet
+
 │
 ├── node_modules/     <- many folders (not shown here)
 │
@@ -44,11 +30,6 @@
 ├── package-lock.json <- 
 │
 │
-├── pictures/	      <- hero images
-│   ├─ articles/
-│   ├─ hero/
-│   ├─ library-pic/
-│   └─ logo/
 │    
 │
 │
@@ -58,11 +39,16 @@
 │   └─ Terms_of_Use.html
 │
 │
-├── public/			<---Node server DOENS'T SEE THIS (what about button >S’abonner< )
+├── public/			<---what about button >S’abonner< 
+│	│			👉 The button always points to /subscribe/
+│	│
+│	├── css/
 │	│
 │	├── index/
 │	│	├──  index/index.html
 │	│	└──  indexcss/index.css
+│	│
+│	├── js/
 │	│
 │	│
 │	├── library/
@@ -70,33 +56,109 @@
 │	│	└──  csslibrary/library.css
 │	│
 │	│
+│	├── navbar
+│	│	├
+│	│	│
+│	│	│
+│	│	├── cssnavbar/
+│	│	│	└──  navbar.css
+│	│	│
+│	│	├── csssnippet/	  
+│	│	│	└───  snippet.css
+│	│	│
+│	│	│
+│	│	├── jsnavbar/
+│	│	│	├──  load-navbar.js
+│	│	│	└──  navbar.js
+│	│	│
+│	│	│
+│	│	├── jssnippet/	  
+│	│	│	│
+│	│	│	└───  snippet.js
+│	│	│
+│	│	└── navbar.html
+│	│	
+│	│
+│	│
+│	├── pictures/	      <- hero images
+│	│	├──  articles/
+│	│	├──  fav-icone/
+│	│	├──  hero/
+│	│	├──  library-pic/
+│	│	└──  logo/  
+│	│
+│	│
 │	├── premium/
-│	│	├──  index.html			<---Node server might see this one instead
+│	│	│		
 │	│	├──  csspremium/premium.css
-│	│	└──  endpoint/endpoint.js	<---
+│	│	│		
+│	│	├──  endpoint/endpoint.js
+│	│	│		
+│	│	├──  index.html			<---Node server might see this one instead
+│	│	│				← template + editorial conten
+│	│	│		
+│	│	└──  files/			<--- containes premium files 
+│	│					Node may: allow access to premium files
+│	│					← PDF, articles, resources 
+│	│					(Node serves only if entitled)
 │	│
 │	│
-│	└── subscribe/
-│		├──  index.html
+│	├──── privacy/         
+│	│	│
+│	│	├── cssprivacy
+│	│	│
+│	│	├── privacy.html
+│	│	│
+│	│	└── terms_of_use.html
+│	│
+│	│
+│	│
+│	├──── shared/         
+│	│	│
+│	│	│
+│	│	│  
+│	│	├── base.css
+│	│	│     
+│	│	├── cssshared/footer.css
+│	│	│
+│	│	├── gdpr.css		<-- to be move soon
+│	│	│
+│	│	├── gdpr.js		<-- to be move soon
+│	│	│
+│	│	│
+│	│	│
+│	│	├── layout.css		<-- Empty for the moment
+│	│	│
+│	│	│
+│	│	│
+│	│	└── mouse/center_zoom.js
+│	│
+│	│
+│	├──── subscribe/         
+│	│
+│	│	├──  csssubscribe/subscribe.css
+│	│	│
+│	│	├──  index.html
+│	│	│
+│	│	└──  jssubscribe/subscribe.js	<---
+│	│
+│	│
+│	│	
+│	│	
+│	│
+│	└── terms/
 │		│
-│		├──  csssubscribe/subscribe.css
-│		└──  jssubscribe/subscribe.js	<---
-│
-│
+│		├──  cssterms
+│		│
+│		└──  terms.html	<---
+│	
 │
 ├── Readme.txt        <- 
 │
 │
 ├──  server.js
 │
-├── shared/    
-│     ├─ base.css
-│     │     
-│     ├─ cssshared/footer.css
-│     │     
-│     ├─ layout.css		<-- Empty for the moment
-│     │	
-│     └─ mouse/center_zoom.js
+│	
 │
 │
 │
