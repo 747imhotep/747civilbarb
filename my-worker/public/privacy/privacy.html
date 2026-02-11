@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Terms & Policy — Civilisation ou Barbarie</title>
-  <!-- Global foundation -->
-  <link rel="stylesheet" href="/shared/base.css">
+  <!-- 1. Global foundation -->
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="/shared/layout.css">
 
-  <!-- Page-specific -->
-  <link rel="stylesheet" href="/privacy/cssprivacy/privacy.css">
+<!-- 2. Components -->
+<link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+<link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+<link rel="stylesheet" href="/shared/cssshared/footer.css">
 
-  <!-- Shared UI components -->
-  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+<!-- 3. Page-specific CSS -->
+<link rel="stylesheet" href="/privacy/cssprivacy/privacy.css"> <!-- relative path -->
 
-  <!-- Overlays / fixed UI LAST -->
-  <link rel="stylesheet" href="/shared/gdpr.css">
+<!-- 4. Overlays / fixed UI LAST -->
+<link rel="stylesheet" href="/shared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone04.png">
 
   
 </head>
@@ -26,7 +30,7 @@
 <body class="has-fixed-nav">
 
   <!-- Navigation Bar -->
-  <div id="navbar-placeholder"></div>
+  <!-- removed placeholder -->
 
 
 <main id="privacy">
@@ -109,9 +113,9 @@
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
   <p>
-    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
-    ainsi que des services tiers optionnels.
-    Vous pouvez accepter ou refuser les cookies non essentiels.
+    Ce site utilise des cookies et services tiers pour améliorer votre 
+    expérience.
+    Vous pouvez accepter ou refuser leur utilisation.
     <a href="/privacy/privacy.html">En savoir plus</a>
   </p>
 
@@ -131,12 +135,11 @@
           </p>
           <p class="footer-links">
             <a href="/privacy/privacy.html">Politique de confidentialité</a> | 
-            <a href="/my-worker/terms/terms.html">CGU</a>
+            <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
 
         <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
-        <script src="/navbar/jsnavbar/navbar.js" defer></script>
         <script src="/shared/gdpr.js" defer></script>
     </body>
 </html>
