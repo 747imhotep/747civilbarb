@@ -211,9 +211,18 @@ footer { ... }  unless explicitly scoped */
 }
 
 .article-page .article-title {
+  font-weight: 700;
+  text-decoration: solid underline #730101 2px;
   font-size: 24px;
   margin-top: 60px;
   margin-bottom: 5px;
+}
+
+.article-page .article-title :hover {
+  text-decoration: solid underline #730101 3px;
+  color: #baff9a;
+  transform: scale(2.2);
+  transition: all 0.3s ease;
 }
 
 .article-page .article-title a {
