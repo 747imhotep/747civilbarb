@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Civilisation ou Barbarie</title>
-  <!-- Global foundation -->
-  <link rel="stylesheet" href="/shared/base.css">
+<!-- 1. Global foundation -->
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="/shared/layout.css">
 
-  <!-- Page-specific -->
-  <link rel="stylesheet" href="/index/indexcss/index.css"> <!-- it doens't work with "/" --> 
+<!-- 2. Components -->
+<link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+<link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+<link rel="stylesheet" href="/shared/cssshared/footer.css">
 
-  <!-- Shared UI components -->
-  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">  
-  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+<!-- 3. Page-specific CSS -->
+<link rel="stylesheet" href="indexcss/index.css"> <!-- relative path -->
 
-  <!-- Overlays / fixed UI LAST -->
-  <link rel="stylesheet" href="/shared/gdpr.css">
+<!-- 4. Overlays / fixed UI LAST -->
+<link rel="stylesheet" href="/shared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone04.png">
+
+
 
 
 </head>
@@ -26,7 +32,7 @@
 <body class="has-fixed-nav">
 
 <!-- Navigation Bar -->
-<div id="navbar-placeholder"></div>
+<!-- removed placeholder -->
 
 <section id="hero-image">
   <div class="hero-inner">
@@ -71,7 +77,6 @@
       <a href="/premium/">Lire les articles récents</a>
       <a href="/nosarticles/articles.html">Découvrir un article gratuit</a> <!-- to be redirected to 747civilbarb -->
       <a href="/library/" class="secondary">Explorer la bibliothèque</a>
-      <a href="../../../nosarticles/articles.html">Découvrir un article gratuit</a> <!-- I tried this. Doesn't work -->
     </nav>
   </section>
 </main>
@@ -79,12 +84,13 @@
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner">
   <p>
-    Ce site utilise des cookies et services tiers pour améliorer votre expérience.
-    En continuant, vous acceptez notre 
+    Ce site utilise des cookies et services tiers pour améliorer votre 
+    expérience.
+    Vous pouvez accepter ou refuser leur utilisation.
     <a href="/privacy/privacy.html">Politique de confidentialité</a>.
   </p>
   
-  <div>
+  
     <div class="gdpr-actions"> 
       <button id="gdpr-accept">Accepter</button>
       <button id="gdpr-refuse" class="secondary">Refuser</button>
@@ -106,8 +112,7 @@
 <!--Footer END-->
 
 
-<SCript src="/navbar/jsnavbar/load-navbar.js" defer></SCript>
-<script src="/navbar/jsnavbar/navbar.js" defer></script>
+<script src="/navbar/jsnavbar/load-navbar.js" defer></script>
 <script src="/shared/gdpr.js" defer></script>
 
 </body>

@@ -2,6 +2,7 @@
    Civilisation ou Barbarie
    IndexCSS/index.css
    Scoped to .page-content ONLY (except hero)
+   my-worker
 ================================== */
 
 /* ===== Hero Section (FULL WIDTH) ===== */
@@ -50,6 +51,30 @@
   color: #e0e0e0;
   max-width: 740px;
   margin: 20px auto 30px;
+}
+
+#hero-image .manifesto,
+#hero-image .quote {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  max-width: 700px;
+  margin: 15px auto 25px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hero-image .manifesto:hover,
+#hero-image .quote:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5),
+              0 0 15px rgba(255, 200, 200, 0.4);
+}
+#hero-image .manifesto em,
+#hero-image .quote em {
+  font-size: 20px;
+  color: #dfdfdf;
 }
 
 #hero-image .quote {

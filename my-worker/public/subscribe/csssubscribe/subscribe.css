@@ -68,6 +68,28 @@ footer { ... }  /* unless explicitly scoped */
   text-align: center;
 }
 
+.subscribe-page #hero-subscribe .manifesto {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  display: inline-block;
+  max-width: 700px;
+  margin: 15px auto 25px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subscribe-page #hero-subscribe .manifesto em {
+  color: #ffddaa;
+}
+
+.subscribe-page #hero-subscribe .manifesto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5),
+              0 0 15px rgba(255, 200, 200, 0.4);
+}
+  
+
 /* Subscribe Section */
 .subscribe-page .subscribe-section {
   display: flex;

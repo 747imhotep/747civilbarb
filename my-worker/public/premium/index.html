@@ -3,19 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Premium — Civilisation ou Barbarie</title>
-  <!-- Global foundation -->
-  <link rel="stylesheet" href="/shared/base.css">
+  
+  <!-- FIVE INCONE-->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone04.png">
 
-  <!-- Page-specific -->
-  <link rel="stylesheet" href="/premium/csspremium/premium.css">
+  <!-- 1. Global foundation -->
+<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="/shared/layout.css">
 
-  <!-- Shared UI components -->
-  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+<!-- 2. Components -->
+<link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+<link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+<link rel="stylesheet" href="/shared/cssshared/footer.css">
 
-  <!-- Overlays / fixed UI LAST -->
-  <link rel="stylesheet" href="/shared/gdpr.css">
+<!-- 3. Page-specific CSS -->
+<link rel="stylesheet" href="csspremium/premium.css"> <!-- relative path -->
+
+<!-- 4. Overlays / fixed UI LAST -->
+<link rel="stylesheet" href="/shared/gdpr.css">
+
 </head>
 <!-- ============================ -->
 <!--      my-worker PREMIUM       --> 
@@ -23,7 +29,7 @@
 
 <body class="has-fixed-nav">
 
-<div id="navbar-placeholder"></div>
+<!-- removed placeholder -->
 
 <main class="premium-page">
   <!-- Hero Section -->
@@ -113,8 +119,9 @@
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner">
   <p>
-    Ce site utilise des cookies et services tiers pour améliorer votre expérience.
-    Vous pouvez accepter ou refuser les cookies non .  
+    Ce site utilise des cookies et services tiers pour améliorer votre 
+    expérience.
+    Vous pouvez accepter ou refuser leur utilisation.
     <a href="/privacy/privacy.html">Politique de confidentialité</a>.
   </p>
   
@@ -137,7 +144,6 @@
 
 
         <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
-        <script src="/navbar/jsnavbar/navbar.js" defer></script>
         <script src="/shared/gdpr.js" defer></script>
         <script src="/premium/endpoint/endpoint.js" defer></script>
     </body>
