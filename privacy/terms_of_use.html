@@ -3,40 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Terms & Policy — Civilisation ou Barbarie</title>
-  <link rel="stylesheet" href="csssprivacy/privacy.css">
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="/privacy/cssprivacy/terms_of_use.css">
+
+<!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
 </head>
 <!-- ============================ -->
-<!--        CIVILBARB TERMS       -->
+<!--     CIVILBARB TERMS OF USE   -->
 <!-- ============================ -->
-<body>
-<!-- Navigation Bar -->
-<nav id="main-nav">
-  <div class="nav-container">
-    <!-- Logo / Site name -->
-    <a href="/home.html" class="logo">Civilisation ou Barbarie</a>
 
-    <!-- Navigation links -->
-    <ul class="nav-links">
-      <li><a href="/index.html">Accueil</a></li>
-      <li><a href="/library/library.html">Bibliothèque</a></li>
-      <li><a href="/premium/premium.html">Premium</a></li>
-      <li><a href="/about/about.html">À propos</a></li>
-      <li><a href="/contact/contact.html">Contact</a></li>
-    </ul>
+<body class="has-fixed-nav">
+
+<!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+
 
     <!-- Hamburger icon for mobile -->
     <button class="nav-toggle" aria-label="Menu">
       ☰
     </button>
-  </div>
-</nav>
+
+
 
 
         <main id="terms">
 
   <header class="terms-header">
-    <h1>CGU</h1>
+    <h1>Conditions d’utilisation</h1>
   </header>
 
   <section class="terms-section">
@@ -98,8 +104,8 @@
             <a href="/terms/terms.html">CGU</a>
           </p>
         </footer>
-        <script src="/navbar/jsnavbar/load-navbar.js"></script>
-        <script src="/navbar/jsnavbar/navbar.js"></script>
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
         <script src="/shared/gdpr.js" defer></script>
     </body>
 </html>
