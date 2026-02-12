@@ -55,7 +55,8 @@ here is my Root tree
 │
 │
 ├── premium/
-│   ├─ premium.html		<---Node server DOENS'T SEE THIS (what about button >S’abonner< )
+│   ├─ premium.html		<---📍 It means: “I want to start a subscription”
+│   │   				👉 The button always points to `/subscribe/`
 │   ├─ endpoint/endpoint.js
 │   └─ csspremium/premium.css
 │
