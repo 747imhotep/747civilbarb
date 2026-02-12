@@ -4,71 +4,71 @@
 │
 │
 ├── cancel/           <- 
+│   │
 │   ├─ csscancel/cancel.css
+│   │
 │   └─ cancel.html
 │
-├──  
 │
-├── 
 │
 ├── data/     	      <- 
 │   │
 │   └─ entitlements.json	 
+│   
 │
 ├── endpoint.js		<-- Empty for the moment
 │
 ├── .env     	        <- 
 │
-├── navbar/		<-- obsolet
-
 │
 ├── node_modules/     <- many folders (not shown here)
 │
 │
-│
 ├── package.json      <- confirm the "type": "module" status. We are officially in ES Modules mode.
+│
+│
 ├── package-lock.json <- 
 │
 │
-│    
 │
 │
-├── privacy/	      <- hero images
-│   ├─ cssprivacy/privacy.css
-│   ├─ privacy.html
-│   └─ Terms_of_Use.html
-│
-│
-├── public/			<---what about button >S’abonner< 
+├── public/			<--- 
 │	│			👉 The button always points to /subscribe/
 │	│
-│	├── css/
+│	│
+│	├── css/		<---empty folder
 │	│
 │	├── index/
 │	│	├──  index/index.html
+│	│	│	
 │	│	└──  indexcss/index.css
 │	│
-│	├── js/
+│	├── js/			<---empty folder
 │	│
 │	│
 │	├── library/
-│	│	├──  index.html
-│	│	└──  csslibrary/library.css
+│	│	├── csslibrary/
+│	│	│	│
+│	│	│	└──  library.css
+│	│	│	
+│	│	└──  index.html
 │	│
 │	│
 │	├── navbar
-│	│	├
-│	│	│
 │	│	│
 │	│	├── cssnavbar/
+│	│	│	│
 │	│	│	└──  navbar.css
 │	│	│
 │	│	├── csssnippet/	  
+│	│	│	│
 │	│	│	└───  snippet.css
 │	│	│
 │	│	│
 │	│	├── jsnavbar/
+│	│	│	│
 │	│	│	├──  load-navbar.js
+│	│	│	│
 │	│	│	└──  navbar.js
 │	│	│
 │	│	│
@@ -80,11 +80,16 @@
 │	│	
 │	│
 │	│
-│	├── pictures/	      <- hero images
+│	├── pictures/	      			<- same images as 747cililbarb/
+│	│	│
 │	│	├──  articles/
+│	│	│
 │	│	├──  fav-icone/
+│	│	│
 │	│	├──  hero/
+│	│	│
 │	│	├──  library-pic/
+│	│	│
 │	│	└──  logo/  
 │	│
 │	│
@@ -94,18 +99,19 @@
 │	│	│		
 │	│	├──  endpoint/endpoint.js
 │	│	│		
-│	│	├──  index.html			<---Node server might see this one instead
-│	│	│				← template + editorial conten
-│	│	│		
-│	│	└──  files/			<--- containes premium files 
-│	│					Node may: allow access to premium files
-│	│					← PDF, articles, resources 
-│	│					(Node serves only if entitled)
+│	│	├──  files/			<--- containes premium files 
+│	│	│				Node may: allow access to premium files
+│	│	│				← PDF, articles, resources 
+│	│	│				(Node serves only if entitled. Never in 747civilbarb)
+│	│	│
+│	│	│	
+│	│	└──  index.html			<---Node server might see this one instead
+│	│					← template + editorial conten
 │	│
 │	│
 │	├──── privacy/         
 │	│	│
-│	│	├── cssprivacy
+│	│	├── cssprivacy/
 │	│	│
 │	│	├── privacy.html
 │	│	│
@@ -114,7 +120,6 @@
 │	│
 │	│
 │	├──── shared/         
-│	│	│
 │	│	│
 │	│	│  
 │	│	├── base.css
@@ -135,7 +140,8 @@
 │	│
 │	│
 │	├──── subscribe/         
-│	│
+│   	│	│   
+│   	│	│   
 │	│	├──  csssubscribe/subscribe.css
 │	│	│
 │	│	├──  index.html
@@ -163,14 +169,14 @@
 │
 │
 ├── succes/
+│     │
 │     ├─ csssucces/succes.css
+│     │
 │     └─ succes.html
+│   
 │
 ├── success-backup/         
 │
-├── terms/
-│     ├─ cssterms/terms.css
-│     └─ terms.html
 │
 │
 └── test-env.js       <- This will later evolve into : server.js (deleted later)
