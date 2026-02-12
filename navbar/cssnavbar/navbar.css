@@ -30,7 +30,7 @@
 .nav-link.active,
 .nav-link[aria-current="page"] {
   border-bottom: 0.5px solid #1700ad; /* bright accent color */
-  color: #dfa4eb;                  /* optional: matches border */
+  color: #f1f66a;                  /* Active page */
   transition: border-color 0.3s ease;
 }
 
@@ -38,7 +38,7 @@
 /* ===== Navbar Styles ===== */
 
 #main-nav {
-  background: linear-gradient(135deg, #570134 10%, #d30b83 85%);
+  background: linear-gradient(135deg, #3d0025 10%, #d30b83 85%);
   color: #fff;
   font-weight: 600;
   background-color: rgba(0, 0, 0, 0, 3.6);
