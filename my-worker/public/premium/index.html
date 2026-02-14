@@ -8,19 +8,19 @@
   <link rel="icon" href="/pictures/fav-icone/fav-icone04.png">
 
   <!-- 1. Global foundation -->
-<link rel="stylesheet" href="/shared/base.css">
+<link rel="stylesheet" href="../css/base.css">
 <link rel="stylesheet" href="/shared/layout.css">
 
 <!-- 2. Components -->
-<link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
-<link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
-<link rel="stylesheet" href="/shared/cssshared/footer.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/snippet.css">
+<link rel="stylesheet" href="../css/footer.css">
 
 <!-- 3. Page-specific CSS -->
-<link rel="stylesheet" href="csspremium/premium.css"> <!-- relative path -->
+<link rel="stylesheet" href="../css/premium.css"> <!-- relative path -->
 
 <!-- 4. Overlays / fixed UI LAST -->
-<link rel="stylesheet" href="/shared/gdpr.css">
+<link rel="stylesheet" href="../css/gdpr.css">
 
 </head>
 <!-- ============================ -->
@@ -81,7 +81,7 @@
       </p>
       <button type="button"
               class="subscribe-button" 
-              onclick="window.location.href='/subscribe/'">
+              data-premium-file="file1.pdf">
         Accéder
       </button>
     </article>
@@ -106,7 +106,7 @@
       </p>
       <button type="button"
               class="subscribe-button" 
-              onclick="window.location.href='/subscribe/'">
+              data-premium-file="report.pdf">
         Accéder
       </button>
     </article>
@@ -143,8 +143,8 @@
         </footer>
 
 
-        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
-        <script src="/shared/gdpr.js" defer></script>
-        <script src="/premium/endpoint/endpoint.js" defer></script>
+        <script src="../js/load-navbar.js" defer></script>
+        <script src="../js/gdpr.js" defer></script>
+        <script src="../js/premium-entitlement.js" defer></script>
     </body>
 </html>
