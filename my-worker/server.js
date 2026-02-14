@@ -20,13 +20,6 @@ const PORT = process.env.PORT || 3000;
 // ---------------------------
 app.use(express.static(path.join(process.cwd(), 'public')));
 
-// Shared / external folders
-app.use('/shared', express.static(path.join(process.cwd(), 'shared')));
-app.use('/navbar', express.static(path.join(process.cwd(), 'navbar')));
-app.use('/pictures', express.static(path.join(process.cwd(), 'pictures')));
-app.use('/privacy', express.static(path.join(process.cwd(), 'privacy')));
-app.use('/terms', express.static(path.join(process.cwd(), 'terms')));
-
 
 
 // ---------------------------
@@ -58,6 +51,7 @@ function grantEntitlement(customerId, email) {
 
     if (!entitlements[customerId]) {
       entitlements[customerId] = {
+        customerId,
         email,
         grantedAt: new Date().toISOString(),
       };
@@ -201,6 +195,48 @@ app.get("/api/me", (req, res) => {
     return res.status(500).json({ authenticated: false, error: "Server error" });
   }
 });
+
+// ---------------------------
+// 🔐 Protected premium files
+// ---------------------------
+app.get("/premium/files/:filename", (req, res) => {
+  const email = req.query.email;
+  const { filename } = req.params;
+
+  if (!email) {
+    return res.status(401).send("Email required");
+  }
+
+  try {
+    if (!fs.existsSync(ENTITLEMENTS_FILE)) {
+      return res.status(403).send("Access denied");
+    }
+
+    const raw = fs.readFileSync(ENTITLEMENTS_FILE, "utf-8");
+    const entitlements = JSON.parse(raw);
+
+    const entitled = Object.values(entitlements).some(
+      r => r.email === email
+    );
+
+    if (!entitled) {
+      return res.status(403).send("Access denied");
+    }
+
+    const filePath = path.join(process.cwd(), "premium-files", filename);
+
+    if (!fs.existsSync(filePath)) {
+      return res.status(404).send("File not found");
+    }
+
+    return res.sendFile(filePath);
+
+  } catch (err) {
+    console.error("❌ Error serving premium file:", err);
+    return res.status(500).send("Server error");
+  }
+});
+
 
 // ---------------------------
 // 🔹 Start server
