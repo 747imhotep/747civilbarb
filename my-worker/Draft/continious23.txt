@@ -1147,4 +1147,65 @@ We proceed carefully.
 
 
 ---------------- 
+Perfect — your Node server is running on **port 3000**, and the Stripe key is loaded. ✅
+
+Here’s the key issue with the **522 error**: Cloudflare cannot reach your server on the public internet. Right now, your server is only running locally (on your machine or a private network) on **port 3000**, which Cloudflare cannot access.
+
+Cloudflare expects your server to be reachable via:
+
+* **Port 80** → HTTP
+* **Port 443** → HTTPS
+
+Port 3000 works for local testing, but not through Cloudflare.
+
+---
+
+### What to do next
+
+1. **Deploy your server publicly**
+
+   * You need a public IP or hosting service. Options:
+
+     * **VPS / cloud server** (e.g., DigitalOcean, AWS, Hetzner)
+     * **Cloudflare Tunnel** (formerly Argo Tunnel) → keeps your server local but accessible via Cloudflare
+     * **Render / Railway / Fly.io** → easy Node.js hosting
+
+2. **Update DNS in Cloudflare**
+
+   * Point your **A record** to the **public IP of your server** (not `localhost` or `127.0.0.1`).
+   * Use **orange cloud** for Cloudflare proxy or **gray cloud** for DNS-only testing.
+
+3. **Adjust firewall / ports**
+
+   * Ensure **ports 80 and 443** are open to the public.
+   * If using Cloudflare Tunnel, your local port 3000 is fine — Cloudflare handles the external access.
+
+---
+
+💡 Quick test:
+
+If you run:
+
+```bash
+curl http://<your-public-IP>:3000/health
+```
+
+From a machine **outside your network**, you should get:
+
+```json
+{"status":"ok"}
+```
+
+If you don’t, Cloudflare cannot reach your server yet, and the 522 error will persist.
+
+---
+
+I can guide you with the **simplest way to make your local Node server public using Cloudflare Tunnel**, so you can skip buying a VPS.
+
+Do you want me to do that?
+Perfect — we’ll pause here and pick it up tomorrow. 🌙
+
+When you’re ready, we can finish setting up your server so Cloudflare can reach it without touching your local port issues.
+
+Get some rest — your server and premium content will be waiting!
 
