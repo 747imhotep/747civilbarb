@@ -1,5 +1,6 @@
 {
   "stripe@example.com": {
+    "customerId": "cus_XXXX",
     "email": "stripe@example.com",
     "grantedAt": "2026-01-19T01:37:11.204Z"
   }
