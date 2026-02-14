@@ -3,12 +3,6 @@
 🌳 my-worker/
 │
 │
-├── cancel/           <- 
-│   │
-│   ├─ csscancel/cancel.css
-│   │
-│   └─ cancel.html
-│
 │
 │
 ├── data/     	      <- 
@@ -16,7 +10,8 @@
 │   └─ entitlements.json	 
 │   
 │
-├── endpoint.js		<-- Empty for the moment
+├── endpoint.js		<-- it's empty  / Placeholder for entitlement logic.
+│
 │
 ├── .env     	        <- 
 │
@@ -30,51 +25,91 @@
 ├── package-lock.json <- 
 │
 │
+├── premium-files/			
+│	│			 
+│	│
+│	├── file1.pdf           <- this is a test file
+│	│    
+│	└── report.pdf
 │
 │
-├── public/			<--- 
-│	│			👉 The button always points to /subscribe/
+├── public/			
+│	│			 
 │	│
-│	│
-│	├── css/		<---empty folder
+│	├── cancel/           <- 
+│	│    │
+│	│    │
+│	│    └─ cancel.html
+│	│   
+│	│   
+│	├── css/
+│	│    ├
+│	│    │
+│	│    ├── base.css
+│	│    │
+│	│    ├── cancel.css
+│	│    │
+│	│    ├── footer.css
+│	│    │
+│	│    ├── gdpr.css
+│	│    │
+│	│    ├── index.css
+│	│    │
+│	│    ├── library.css
+│	│    │
+│	│    ├── navbar.css
+│	│    │
+│	│    ├── premium.css
+│	│    │
+│	│    ├── privacy.css
+│	│    │
+│	│    ├── snippet.css
+│	│    │
+│	│    ├── subscribe.css
+│	│    │
+│	│    ├── succes.css
+│	│    │
+│	│    └── terms.css
+│	│    
+│	│	
+│	│    
+│	│	
 │	│
 │	├── index/
-│	│	├──  index/index.html
-│	│	│	
-│	│	└──  indexcss/index.css
-│	│
-│	├── js/			<---empty folder
-│	│
-│	│
-│	├── library/
-│	│	├── csslibrary/
-│	│	│	│
-│	│	│	└──  library.css
 │	│	│	
 │	│	└──  index.html
 │	│
 │	│
-│	├── navbar
-│	│	│
-│	│	├── cssnavbar/
-│	│	│	│
-│	│	│	└──  navbar.css
-│	│	│
-│	│	├── csssnippet/	  
-│	│	│	│
-│	│	│	└───  snippet.css
+│	├── js/
+│	│    │
+│	│    │
+│	│    ├── center_zoom.js
+│	│    │
+│	│    ├── gdpr.js
+│	│    │
+│	│    ├── load-navbar
+│	│    │
+│	│    ├── navbar.js
+│	│    │
+│	│    ├── premium-entitlement.js
+│	│    │
+│	│    ├── snippet.js
+│	│    │
+│	│    └── subscribe.js
+│	│
+│	│
+│	├── library/
+│	│	│	
+│	│	└──  index.html
+│	│
+│	│
+│	├── navbar/
 │	│	│
 │	│	│
 │	│	├── jsnavbar/
 │	│	│	│
-│	│	│	├──  load-navbar.js
-│	│	│	│
-│	│	│	└──  navbar.js
+│	│	│	└──  backup-navbar.txt
 │	│	│
-│	│	│
-│	│	├── jssnippet/	  
-│	│	│	│
-│	│	│	└───  snippet.js
 │	│	│
 │	│	└── navbar.html
 │	│	
@@ -95,14 +130,12 @@
 │	│
 │	├── premium/				<---📍 👉 The button always points to **`/subscribe/`**
 │	│	│		
-│	│	├──  csspremium/premium.css
 │	│	│		
-│	│	├──  endpoint/endpoint.js
-│	│	│		
-│	│	├──  files/			<--- containes premium files 
+│	│	├──  files/			<--- ⚠️ has been moved to my-worker/premium-files/ 
 │	│	│				Node may: allow access to premium files
 │	│	│				← PDF, articles, resources 
 │	│	│				(Node serves only if entitled. Never in 747civilbarb)
+│	│	│				Later we will protect this route via server.js.
 │	│	│
 │	│	│	
 │	│	└──  index.html			<---Node server might see this one instead
@@ -111,7 +144,6 @@
 │	│
 │	├──── privacy/         
 │	│	│
-│	│	├── cssprivacy/
 │	│	│
 │	│	├── privacy.html
 │	│	│
@@ -119,44 +151,26 @@
 │	│
 │	│
 │	│
-│	├──── shared/         
-│	│	│
-│	│	│  
-│	│	├── base.css
-│	│	│     
-│	│	├── cssshared/footer.css
-│	│	│
-│	│	├── gdpr.css		<-- to be move soon
-│	│	│
-│	│	├── gdpr.js		<-- to be move soon
-│	│	│
-│	│	│
-│	│	│
-│	│	├── layout.css		<-- Empty for the moment
-│	│	│
-│	│	│
-│	│	│
-│	│	└── mouse/center_zoom.js
 │	│
 │	│
 │	├──── subscribe/         
 │   	│	│   
-│   	│	│   
-│	│	├──  csssubscribe/subscribe.css
+│	│	├──  backup-index.html
 │	│	│
-│	│	├──  index.html
-│	│	│
-│	│	└──  jssubscribe/subscribe.js	<---
+│	│	└──  index.html		<--- 
 │	│
 │	│
+│	├── succes/
+│	│	│
+│	│	│
+│	│	└─ succes.html
 │	│	
 │	│	
 │	│
 │	└── terms/
 │		│
-│		├──  cssterms
 │		│
-│		└──  terms.html	<---
+│		└──  terms.html		<---
 │	
 │
 ├── Readme.txt        <- 
@@ -165,17 +179,8 @@
 ├──  server.js
 │
 │	
-│
-│
-│
-├── succes/
-│     │
-│     ├─ csssucces/succes.css
-│     │
-│     └─ succes.html
 │   
-│
-├── success-backup/         
+├── success-backup/succes.html         
 │
 │
 │
