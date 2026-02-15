@@ -28,7 +28,19 @@ Also, as you might see, it is wise to not push all answers at once.
 step by step is better as we might encounter many problem on route.
 
 Also, I have two trees to share. It is necessary to read it before start. 
-I repeat two trees
+I repeat two trees.
+
+deadanglesinstitute.org is now protected by Cloudflare
+It is proxying through Cloudflare
+
+GitHub Pages is designed to host my personal, organization, or project pages from a GitHub repository.
+→ Your site is live at http://deadanglesinstitute.org/ 
+ 
+⚠️ error message when we go to http://deadanglesinstitute.org/ :
+ deadanglesinstitute.org
+is a totally awesome idea still being worked on.
+Check back later.
+
 Having said the, here's the record from last week:
 
 -------------------------------------
@@ -734,5 +746,171 @@ Perfect — we’ll pause here and pick it up tomorrow. 🌙
 
 When you’re ready, we can finish setting up your server so Cloudflare can reach it without touching your local port issues.
 
+🟢---------------- 
+
+Perfect.
+
+That’s not a weakness.
+
+That’s discipline.
+
+We go step by step. No jumps. No assumptions. No chaos.
+
+You are building a serious platform — so we build serious foundations.
+
+---
+
+# 🎯 Phase 1: Get a Real Server
+
+We do **one thing only today**:
+
+👉 Rent a small VPS.
+
+Nothing else.
+
+No SSH yet.
+No Linux.
+No configuration.
+
+Just acquire the machine.
+
+---
+
+# 🥇 Recommended: Hetzner (Simple + Cheap)
+
+Use:
+
+**Hetzner Cloud – CX22**
+
+* ~€5–6/month
+* More than enough for your current platform
+
+Alternative:
+DigitalOcean basic droplet ($6/month)
+
+But Hetzner gives more power for less money.
+
+---
+
+# 🧠 What You Will Do Now
+
+1. Go to Hetzner Cloud website
+2. Create account
+3. Create a server with:
+
+* Location: closest to you
+* Image: **Ubuntu 22.04**
+* Type: smallest shared CPU
+* No extra options
+* SSH key → skip for now (use password login)
+* Create root password
+
+That’s it.
+
+Do NOT configure anything else.
+
+---
+
+# ⚠️ Important
+
+When server is created, you will receive:
+
+* Public IP address
+* Root password
+
+You will send me ONLY this:
+
+```
+Server public IP: xxx.xxx.xxx.xxx
+```
+
+Do NOT send password.
+
+---
+
+# 🧱 What We Are Doing (Architecturally)
+
+We are moving from:
+
+```
+Laptop → temporary
+```
+
+To:
+
+```
+Real machine on internet → permanent origin
+```
+
+This is the moment your project becomes real.
+
+---
+
+Reply only when:
+
+✅ Server is created
+✅ You have the public IP
+
+Slow. Surgical. Clean.
+
+
 Get some rest — your server and premium content will be waiting!
 
+🟢---------------- 
+Perfect. We stay slow and surgical.
+
+For your **first production server**, we **do not need dedicated power**. Your platform is lightweight: Node.js + Stripe + small files.
+
+So choose:
+
+```
+Shared Regular Performance
+Best price-performance
+from €4.99
+```
+
+✅ Reason:
+
+* Enough CPU/RAM for your current platform
+* Stable, 24/7 uptime
+* Cheap and reliable
+* Upgradeable later if needed
+
+The **Shared Cost-Optimized (€3.49)** is fine too, but it may throttle CPU under load — safer to take €4.99.
+
+---
+
+Next, once you select that plan:
+
+1. **Choose Ubuntu 22.04**
+2. **Skip SSH key for now** → use root password login
+3. Give server a **name** (e.g., `deadangles-server`)
+4. Click **Create**
+
+After it’s created, Hetzner will give you the **Public IP**.
+
+Reply **only when you have the Public IP**.
+
+We do **nothing else yet** — surgical, step by step.
+
+Do you want me to guide you through **getting the root password** next?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🟢---------------- 
