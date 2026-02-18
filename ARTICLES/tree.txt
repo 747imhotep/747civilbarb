@@ -2,14 +2,18 @@ here is my Root tree
 🌳 747civilcarb/
 │
 ├── about/
+│   ├─ cssabout/about.css
+│   └─ index.html
 │
-├── ARTICLES/		<-- Few drafts texts
+├── ARTICLES/		<-- Few drafts texts for me
 │
-├── biblio/		<-- Stored PDF articles
+├── biblio/		<-- Stored PDF articles will be move to: my-worker/premium-files
+│
+├── CNAME
 │
 ├── contact/
-│   ├─ contact.html
-│   └─ csscontact/contact.css
+│   ├─ csscontact/contact.css
+│   └─ index.html
 │
 ├── .env.example
 │
@@ -19,77 +23,145 @@ here is my Root tree
 ├── index.html
 │
 ├── indexcss/
+│   │
 │   └─ index.css
 │
 ├── library/
-│   ├─ library.html
-│   ├─ csslibrary/library.css
 │   │
-│   └─ anything/ 
-│   	├─ anything.html 
-│   	└─ cssanything/anything.css
+│   │
+│   ├──	anything/ 
+│   │	│
+│   │	├─ anything.html 
+│   │	│
+│   │	└─ cssanything/anything.css
+│   │
+│   ├──	csslibrary
+│   │	│
+│   │	└─ library.css
+│   │
+│   └─ index.html
 │
 ├── my-worker/		<-- detailed tree in another file: I will share with you.
 │
+│
 ├── navbar/          	<-- Navbar HTML is duplicated across pages
-│   ├─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
-│   ├─ cssnavbar/navbar.css
-│   ├─ CSSsnippet/snippet.css
+│   │
+│   │
+│   ├─ cssnavbar
+│   │	│
+│   │	└─ navbar.css
+│   │	
+│   ├─ csssnippet
+│   │	│
+│   │	└─ ssnippet.css
 │   │
 │   ├─ jsnavbar/
+│   │	│
 │   │	├─ load-navbar.js
+│   │	│
 │   │	└─ navbar.js
-│   │
-│   └─ jssnippet/snippet.js	<-- I've just change the Folder name
+│   │	
+│   └─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
 │
 │
 ├── nosarticles/
-│   ├─ articles.html
-│   └─ cssaricles/cssaricles.css
+│   │	│
+│   │	└─ cssaricles/
+│   │
+│   └─ index.html
 │
 ├── pictures/
+│   │	
 │   ├─ articles/
+│   │	
+│   ├─ fav-icone/
+│   │	
 │   ├─ hero/
+│   │	
 │   ├─ library-pic/
+│   │	
 │   └─ logo/
 │
 │
 ├── premium/
-│   ├─ premium.html		<---📍 It means: “I want to start a subscription”
-│   │   				👉 The button always points to `/subscribe/`
-│   ├─ endpoint/endpoint.js
-│   └─ csspremium/premium.css
+│   │	
+│   ├─ csspremium
+│   │   │	
+│   │   └─ premium.css
+│   │   
+│   ├─ endpoint
+│   │   │
+│   │	└─ endpoint.js
+│   │   
+│   └─  index.html		<---📍 It means: “I want to start a subscription”
+│      				👉 The button always points to `/subscribe/`
+│   
+│   
 │
 ├── privacy/
 │   │
 │   ├─ cssprivacy/
 │   │   │
-│   │   ├─ privacy.css
-│   │   │
-│   │   └─ terms_of_use.css
+│   │   └─ privacy.css
 │   │   
-│   ├─ privacy.html
-│   │
-│   └─ terms_of_use.html
+│   └─ index.html
 │   
 │
 ├── Readme.txt
 │
+│
 ├── shared/
+│   │
 │   ├─ base.css        ✅ NEW
-│   ├─ gpdr.css        ✅ NEW
+│   │
+│   │
 │   ├─ cssshared/
+│   │	│
 │   │	├─ cta.css	<-- Actualy empty for the moment
+│   │	│
 │   │	└─ footer.css
+│   │	
+│   │	
+│   ├─ gpdr.css        ✅ NEW
+│   │
+│   │
 │   │
 │   ├─ layout.css      <-- Actualy empty for the moment (later, optional)
-│   └─ moouse/center_zoom.js
+│   │	
+│   └─ moouse
+│   	│
+│   	└─ center_zoom.js
 │   
 │
 ├── subscribe/
-│   ├─ subscribe.html
-│   └─ csssubscribe/subscribe.css
+│   │	
+│   ├─ csssubscribe
+│   │	│
+│   │  	└─ subscribe.css
+│   │
+│   ├── index.html
+│   │
+│   │	
+│   └─ jssubscribe
+│   	│
+│   	└─ subscribe.js
 │
 ├── terms/
-│   ├─ terms.html
-│   └─ cssterms/terms.css
+│   │	
+│   ├─ cssterms
+│   │	│   
+│   │	└─  terms.css
+│   │	
+│   └─  index.html 
+│   
+└─  terms_of_use/
+    │	
+    ├─ csstermsofuse
+    │	│   
+    │   └─ terms_of_use.css
+    │
+    └─ index.html
+
+
+
+
