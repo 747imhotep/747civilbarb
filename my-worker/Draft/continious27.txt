@@ -507,11 +507,11 @@ Next recommended order:
 
 1. contact/	✅
 2. library/	✅
-3. premium/	
-4. subscribe/	
-5. terms/	
-6. privacy/	
-7. nosarticles/	
+3. premium/	✅
+4. subscribe/	✅
+5. terms/	✅
+6. privacy/	✅
+7. nosarticles/	✅
 
 Same 4-step process every time.
 
