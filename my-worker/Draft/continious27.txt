@@ -594,6 +594,14 @@ Then tell me:
 
 Does `/about` load correctly?
 
+Yes.
+Should I create 
+🌳 747civilcarb/
+│
+├── css/	<-- Does all css should come here ?
+│
+├── About/index
+
 
 
 
