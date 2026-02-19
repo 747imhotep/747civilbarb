@@ -7,32 +7,31 @@
 
 (async function checkEntitlement() {
   try {
-    // TEMP: hardcoded email for testing
-    const email = "stripe@example.com";
+    const email = "stripe@example.com"; // TODO: replace with actual logged-in user
 
-    // Call backend /api/me endpoint
     const res = await fetch(`/api/me?email=${encodeURIComponent(email)}`);
     const data = await res.json();
     console.log("🚀 /api/me response:", data);
 
-    // Find all subscribe buttons on the page
     const buttons = document.querySelectorAll(".subscribe-button");
 
     if (data.entitled) {
-      // User has premium access — optionally enable buttons
-      buttons.forEach(btn => btn.disabled = false);
-      // buttons.forEach(btn => btn.disabled = !data.entitled);
-      buttons.forEach(btn => btn.style.cursor = "pointer");
-    } else {
-      // User does NOT have access — disable buttons and change text
       buttons.forEach(btn => {
-        btn.disabled = true;
+        btn.disabled = false;
+        btn.style.cursor = "pointer";
+      });
+    } else {
+      buttons.forEach(btn => {
+        btn.disabled = false; // keep clickable
         btn.textContent = "Abonnement requis";
-        btn.style.backgroundColor = "#999";  // greyed-out
-        btn.style.cursor = "not-allowed";
+        btn.classList.add("disabled-button"); // define in CSS
+        btn.addEventListener('click', () => {
+          window.location.href = '/subscribe/';
+        });
       });
     }
   } catch (err) {
     console.error("❌ Error fetching /api/me:", err);
   }
 })();
+
