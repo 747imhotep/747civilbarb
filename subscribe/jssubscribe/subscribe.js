@@ -5,37 +5,38 @@
 document.addEventListener('DOMContentLoaded', async () => {
   const checkoutButton = document.getElementById('checkout-button');
 
-  // Example: fetch entitlement for a test email
   const email = "test@example.com"; // replace with logged-in user
 
   try {
     const res = await fetch(`/entitlement?email=${encodeURIComponent(email)}`);
     const data = await res.json();
 
-    console.log("Entitlement data:", data);
-
     if (data.entitled) {
-      checkoutButton.disabled = false;
-      checkoutButton.style.cursor = "pointer";
+      checkoutButton.disabled = true;
       checkoutButton.textContent = "Vous êtes déjà abonné !";
     } else {
-      checkoutButton.disabled = false; // allow checkout
-      checkoutButton.style.cursor = "pointer";
+      checkoutButton.disabled = false;
       checkoutButton.textContent = "S’abonner";
+
+      checkoutButton.addEventListener('click', async () => {
+        try {
+          const sessionRes = await fetch('https://api.deadanglesinstitute.org/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ plan: checkoutButton.dataset.plan })
+          });
+          const session = await sessionRes.json();
+          const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4qRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
+          const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+          if (error) alert(error.message);
+        } catch (err) {
+          console.error('Stripe Checkout Error:', err);
+        }
+      });
     }
 
-    checkoutButton.addEventListener('click', async () => {
-      if (!data.entitled) {
-        // Redirect to Stripe checkout
-        const sessionRes = await fetch('/create-checkout-session', { method: 'POST' });
-        const session = await sessionRes.json();
-        const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
-        stripe.redirectToCheckout({ sessionId: session.id });
-      }
-    });
-
   } catch (err) {
-    console.error("❌ Error fetching entitlement:", err);
+    console.error('❌ Error fetching entitlement:', err);
+    checkoutButton.disabled = false; // fallback
   }
 });
-
