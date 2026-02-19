@@ -43,64 +43,8 @@
   </section>
 
   <section class="premium-articles" role="list">
-  <h2>Exemples d’articles Premium</h2>
+  <h2>Vos articles réservés</h2>
 
-  <!-- Article 001 -->
-  <article class="article-item" role="listitem">
-    <span class="premium-badge">Premium</span>
-    <h3 class="article-title">
-      <a href="/articles/exemple-article.html">Se synchroniser à Hapi</a>
-    </h3>
-    <h4 class="article-subtitle">
-      Se réapproprier le rite, aujourd’hui
-    </h4>
-    <p class="article-abstract">
-      L’article éclaire les divinités-poissons peu connues et explore la temporalité de 
-      Hapi, leurs représentations et leurs cultes. Il souligne la dimension opérative 
-      des pratiques kamites, les offrandes et célébrations, et leur continuité dans 
-      la culture ancestrale.
-    </p>
-    <p class="article-meta">
-      PDF — 12 pages — Accès Premium
-    </p>
-  </article>
-
-  <!-- Article 002 -->
-  <article class="article-item" role="listitem">
-    <span class="premium-badge">Premium</span>
-    <h3 class="article-title">
-      <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
-    </h3>
-    <h4 class="article-subtitle">
-      Dynamiques invisibles et blocages dans les projets collectifs
-    </h4>
-    <p class="article-abstract">
-      L’article explore les forces visibles et invisibles perçues comme entravant la 
-      réussite des projets collectifs. Il interroge les croyances, les héritages 
-      historiques et les dynamiques de groupe qui façonnent ces blocages.
-    </p>
-    <p class="article-meta">
-      PDF — 14 pages — Accès Premium
-    </p>
-  </article>
-
-  <!-- Article 003 -->
-  <article class="article-item" role="listitem">
-    <span class="premium-badge">Premium</span>
-    <h3 class="article-title">
-      <a href="/articles/exemple-article.html">Mystères des Manuscrits Anciens</a>
-    </h3>
-    <h4 class="article-subtitle">
-      Découverte et interprétation
-    </h4>
-    <p class="article-abstract">
-      Cet article dévoile des archives rares et manuscrits anciens, offrant un regard 
-      inédit sur les pratiques culturelles et spirituelles de civilisations oubliées.
-    </p>
-    <p class="article-meta">
-      PDF — 18 pages — Accès Premium
-    </p>
-  </article>
 
 </section>
 
@@ -108,7 +52,8 @@
   <section class="subscribe-section">
     <h2>Tarif Premium</h2>
     <p>12,99 € / mois — paiement sécurisé via Stripe</p>
-    <button onclick="window.location.href='/subscribe/'" 
+    <button 
+        type="button" 
         id="checkout-button" 
         class="subscribe-button" 
         aria-label="S’abonner au plan Premium" 
@@ -155,7 +100,8 @@
   const checkoutButton = document.getElementById('checkout-button');
 
   checkoutButton.addEventListener('click', function () {
-    fetch('/create-checkout-session', {
+    fetch('https://api.deadanglesinstitute.org/create-checkout-session', {
+
       method: 'POST',
     })
       .then((response) => response.json())
