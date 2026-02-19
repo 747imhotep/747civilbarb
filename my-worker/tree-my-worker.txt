@@ -128,7 +128,12 @@
 │	│	└──  logo/  
 │	│
 │	│
-│	├── premium/				<---📍 👉 The button always points to **`/subscribe/`**
+│	├── premium/				
+│	│	│
+│	│	└── index.html		<---📍 "s'abonner" button always points to here
+
+│	│	│
+│	│	│subscribe/
 │	│	│		
 │	│	│		
 │	│	├──  files/			<--- ⚠️ has been moved to my-worker/premium-files/ 
