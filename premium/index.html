@@ -3,33 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Premium — Civilisation ou Barbarie</title>
-<!-- Global foundation -->
+
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
   
-<!-- Page-specific -->  
+  <!-- Page-specific CSS -->
   <link rel="stylesheet" href="csspremium/premium.css">
   
-<!-- Shared UI components -->
+  <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
 
-<!-- Overlays / fixed UI LAST -->
+  <!-- Overlays / fixed UI LAST -->
   <link rel="stylesheet" href="/shared/gdpr.css">
 
-<!-- Optional: Favicon -->
+  <!-- Optional: Favicon -->
   <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
 </head>
-<!-- ============================ -->
-<!--       CIVILBARB PREMIUM      -->
+
+<!-- ============================ --> 
+<!--       CIVILBARB PREMIUM      --> 
 <!-- ============================ -->
 
 <body class="has-fixed-nav">
 
+<!-- Navbar placeholder -->
 <div id="navbar-placeholder"></div>
 
-
 <main class="premium-page">
+
   <!-- Hero Section -->
   <section id="hero-premium">
     <h1>Accès Premium</h1>
@@ -58,11 +61,10 @@
 
   <section class="premium-list" aria-labelledby="premium-articles-heading">
 
-
-    <!-- Using the same articles from Library -->
+    <!-- Premium Article 001 -->
     <article class="premium-item">
       <div class="premium-badge">Premium</div>
-        <h3 class="premium-title">
+      <h3 class="premium-title">
         <a href="/articles/exemple-article.html">Se synchroniser à Hapi</a>
       </h3>
       <h4 class="premium-subtitle">
@@ -77,15 +79,14 @@
       <p class="premium-meta">
         PDF — 2 pages — Accès Premium
       </p>
-      <button type="button"
-              class="subscribe-button" 
-              onclick="window.location.href='/subscribe/subscribe.html'">
+      <button type="button" class="subscribe-button">
         Accéder
       </button>
     </article>
 
+    <!-- Premium Article 002 -->
     <article class="premium-item">
-        <div class="premium-badge">Premium</div>
+      <div class="premium-badge">Premium</div>
       <h3 class="premium-title">
         <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
       </h3>
@@ -102,14 +103,12 @@
       <p class="premium-meta">
         PDF — 12 pages — Accès Premium
       </p>
-      <button type="button"
-              class="subscribe-button" 
-              onclick="window.location.href='/subscribe/subscribe.html'">
+      <button type="button" class="subscribe-button">
         Accéder
       </button>
     </article>
 
-    <!-- Add more Library articles here as Premium -->
+    <!-- Additional premium articles can be added here -->
     
   </section>
 </main>
@@ -122,28 +121,30 @@
     Vous pouvez accepter ou refuser les cookies non essentiels.
     <a href="/privacy/">En savoir plus</a>
   </p>
-
   <div class="gdpr-actions">
     <button id="gdpr-accept">Accepter</button>
     <button id="gdpr-refuse" class="secondary">Refuser</button>
   </div>
 </div>
-<!-- GDPR Consent Banner END -->
 
 <!-- Footer -->
-        <footer>
-          <p>
-            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
-          </p>
-          <p class="footer-links">
-            <a href="/privacy/">Politique de confidentialité</a> | 
-            <a href="/terms/">CGU</a>
-          </p>
-        </footer>
+<footer>
+  <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+  <p class="footer-links">
+    <a href="/privacy/">Politique de confidentialité</a> | 
+    <a href="/terms/">CGU</a>
+  </p>
+</footer>
 
-        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
-        <script src="/navbar/jsnavbar/navbar.js" defer></script>
-        <script src="/premium/endpoint/endpoint.js" defer></script>
-        <script src="/shared/gdpr.js" defer></script>
-    </body>
+<!-- Scripts -->
+<script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+<script src="/navbar/jsnavbar/navbar.js" defer></script>
+
+<!-- Premium entitlement / access control -->
+<script src="/premium/endpoint/endpoint.js" defer></script>
+
+<!-- GDPR -->
+<script src="/shared/gdpr.js" defer></script>
+
+</body>
 </html>
