@@ -2,170 +2,181 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Abonnement Premium — Civilisation ou Barbarie</title>
-
-  <!-- ============================ -->
-  <!-- Global foundation CSS -->
-  <!-- ============================ -->
+  <title>Souscription Premium — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/base.css">
 
-  <!-- Page-specific CSS -->
-  <link rel="stylesheet" href="/premium/csspremium/premium.css">
+<!-- Page-specific -->
+  <link rel="stylesheet" href="/subscribe/csssubscribe/subscribe.css">
 
-  <!-- Shared UI components -->
+<!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
 
-  <!-- Overlays / fixed UI LAST -->
+<!-- Overlays / fixed UI LAST -->
   <link rel="stylesheet" href="/shared/gdpr.css">
 
-  <!-- Optional: Favicon -->
+<!-- Optional: Favicon -->
   <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
-
-  <!-- Stripe JS (publishable key used in JS file) -->
-  <script src="https://js.stripe.com/v3/"></script>
+  
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe JS -->
 </head>
-
 <!-- ============================ -->
 <!--      CIVILBARB SUBSCRIBE     -->
 <!-- ============================ --> 
 
 <body class="subscribe-page">
 
-  <!-- ============================ -->
-  <!--      Navigation Bar         -->
-  <!-- ============================ -->
-  <div id="navbar-placeholder"></div>
+    <!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
 
-  <!-- ============================ -->
-  <!--      Main Content           -->
-  <!-- ============================ -->
-  <main id="subscribe" class="subscribe-page">
 
-    <!-- Hero Section -->
-    <section id="hero-subscribe">
-      <h1>Abonnement Premium</h1>
-      <p class="manifesto">
-        Accédez à tous nos articles exclusifs et archives rares. L’abonnement Premium 
-        vous permet de lire, télécharger et explorer le contenu complet de notre bibliothèque.
-      </p>
-    </section>
+<main id="subscribe" class="subscribe-page">
 
-    <!-- Premium Articles Examples -->
-    <section class="premium-articles" role="list">
-      <h2>Exemples d’articles Premium</h2>
+  <section id="hero-subscribe">
+    <h1>Abonnement Premium</h1>
+    <p class="manifesto">
+      Accédez à tous nos articles exclusifs et archives rares. L’abonnement Premium 
+      vous permet de lire, télécharger et explorer le contenu complet de notre bibliothèque.
+    </p>
+  </section>
 
-      <!-- Article 001 -->
-      <article class="article-item" role="listitem">
-        <span class="premium-badge">Premium</span>
-        <h3 class="article-title">
-          <a href="/articles/exemple-article.html">Se synchroniser à Hapi</a>
-        </h3>
-        <h4 class="article-subtitle">
-          Se réapproprier le rite, aujourd’hui
-        </h4>
-        <p class="article-abstract">
-          L’article éclaire les divinités-poissons peu connues et explore la temporalité de 
-          Hapi, leurs représentations et leurs cultes.
-        </p>
-        <p class="article-meta">
-          PDF — 12 pages — Accès Premium
-        </p>
-      </article>
+  <section class="premium-articles" role="list">
+  <h2>Exemples d’articles Premium</h2>
 
-      <!-- Article 002 -->
-      <article class="article-item" role="listitem">
-        <span class="premium-badge">Premium</span>
-        <h3 class="article-title">
-          <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
-        </h3>
-        <h4 class="article-subtitle">
-          Dynamiques invisibles et blocages dans les projets collectifs
-        </h4>
-        <p class="article-abstract">
-          L’article explore les forces visibles et invisibles perçues comme entravant la 
-          réussite des projets collectifs.
-        </p>
-        <p class="article-meta">
-          PDF — 14 pages — Accès Premium
-        </p>
-      </article>
+  <!-- Article 001 -->
+  <article class="article-item" role="listitem">
+    <span class="premium-badge">Premium</span>
+    <h3 class="article-title">
+      <a href="/articles/exemple-article.html">Se synchroniser à Hapi</a>
+    </h3>
+    <h4 class="article-subtitle">
+      Se réapproprier le rite, aujourd’hui
+    </h4>
+    <p class="article-abstract">
+      L’article éclaire les divinités-poissons peu connues et explore la temporalité de 
+      Hapi, leurs représentations et leurs cultes. Il souligne la dimension opérative 
+      des pratiques kamites, les offrandes et célébrations, et leur continuité dans 
+      la culture ancestrale.
+    </p>
+    <p class="article-meta">
+      PDF — 12 pages — Accès Premium
+    </p>
+  </article>
 
-      <!-- Article 003 -->
-      <article class="article-item" role="listitem">
-        <span class="premium-badge">Premium</span>
-        <h3 class="article-title">
-          <a href="/articles/exemple-article.html">Mystères des Manuscrits Anciens</a>
-        </h3>
-        <h4 class="article-subtitle">
-          Découverte et interprétation
-        </h4>
-        <p class="article-abstract">
-          Cet article dévoile des archives rares et manuscrits anciens, offrant un regard 
-          inédit sur les pratiques culturelles et spirituelles de civilisations oubliées.
-        </p>
-        <p class="article-meta">
-          PDF — 18 pages — Accès Premium
-        </p>
-      </article>
+  <!-- Article 002 -->
+  <article class="article-item" role="listitem">
+    <span class="premium-badge">Premium</span>
+    <h3 class="article-title">
+      <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
+    </h3>
+    <h4 class="article-subtitle">
+      Dynamiques invisibles et blocages dans les projets collectifs
+    </h4>
+    <p class="article-abstract">
+      L’article explore les forces visibles et invisibles perçues comme entravant la 
+      réussite des projets collectifs. Il interroge les croyances, les héritages 
+      historiques et les dynamiques de groupe qui façonnent ces blocages.
+    </p>
+    <p class="article-meta">
+      PDF — 14 pages — Accès Premium
+    </p>
+  </article>
 
-    </section>
+  <!-- Article 003 -->
+  <article class="article-item" role="listitem">
+    <span class="premium-badge">Premium</span>
+    <h3 class="article-title">
+      <a href="/articles/exemple-article.html">Mystères des Manuscrits Anciens</a>
+    </h3>
+    <h4 class="article-subtitle">
+      Découverte et interprétation
+    </h4>
+    <p class="article-abstract">
+      Cet article dévoile des archives rares et manuscrits anciens, offrant un regard 
+      inédit sur les pratiques culturelles et spirituelles de civilisations oubliées.
+    </p>
+    <p class="article-meta">
+      PDF — 18 pages — Accès Premium
+    </p>
+  </article>
 
-    <!-- Subscribe Section -->
-    <section class="subscribe-section">
-      <h2>Tarif Premium</h2>
-      <p>12,99 € / mois — paiement sécurisé via Stripe</p>
+</section>
 
-      <!-- Stripe Checkout Button -->
-      <button id="checkout-button" 
-              class="subscribe-button" 
-              aria-label="S’abonner au plan Premium" 
-              data-plan="premium">
+
+  <section class="subscribe-section">
+    <h2>Tarif Premium</h2>
+    <p>12,99 € / mois — paiement sécurisé via Stripe</p>
+    <button onclick="window.location.href='/subscribe/'" 
+        id="checkout-button" 
+        class="subscribe-button" 
+        aria-label="S’abonner au plan Premium" 
+        data-plan="premium">
         S’abonner
-      </button>
-    </section>
+    </button>
 
-  </main>
+  </section>
 
-  <!-- GDPR Consent Banner -->
-  <div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
-    <p>
-      Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
-      ainsi que des services tiers optionnels.
-      Vous pouvez accepter ou refuser les cookies non essentiels.
-      <a href="/privacy/">En savoir plus</a>
-    </p>
+  
 
-    <div class="gdpr-actions">
-      <button id="gdpr-accept">Accepter</button>
-      <button id="gdpr-refuse" class="secondary">Refuser</button>
-    </div>
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
   </div>
-  <!-- GDPR Banner END -->
+</div>
+<!-- GDPR Consent Banner END -->
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
-    <p class="footer-links">
-      <a href="/privacy/">Politique de confidentialité</a> | 
-      <a href="/terms/">CGU</a>
-    </p>
-  </footer>
 
-  <!-- ============================ -->
-  <!--      Scripts                -->
-  <!-- ============================ -->
+<!-- Footer -->
+            <footer>
+  <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+  <p class="footer-links">
+    <a href="/privacy/">Politique de confidentialité</a> | 
+    <a href="/terms/">CGU</a>
+  </p>
+</footer>
+<!-- Footer -->
+ 
+            <script>
+  const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI'); // publishable key ONLY
 
-  <!-- Navbar JS -->
-  <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
-  <script src="/navbar/jsnavbar/navbar.js" defer></script>
+  const checkoutButton = document.getElementById('checkout-button');
 
-  <!-- Premium JS (Stripe Checkout logic) -->
-  <script src="/premium/premium.js" defer></script>
+  checkoutButton.addEventListener('click', function () {
+    fetch('/create-checkout-session', {
+      method: 'POST',
+    })
+      .then((response) => response.json())
+      .then((session) => {
+        return stripe.redirectToCheckout({ sessionId: session.id });
+      })
+      .then((result) => {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  });
 
-  <!-- GDPR JS -->
-  <script src="/shared/gdpr.js" defer></script>
-
-</body>
+            </script>
+            
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/subscribe/jssubscribe/subscribe.js" defer></script>
+        <script src="/shared/gdpr.js" defer></script>
+    </body>
 </html>
