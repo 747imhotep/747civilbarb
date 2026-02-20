@@ -1,9 +1,6 @@
 // ---------------------------
-// SUBSCRIBE PAGE JS
-// ---------------------------
-
-// ---------------------------
-// SUBSCRIBE PAGE JS
+// SUBSCRIBE PAGE JS (SESSION AUTH)
+// TEST MODE - USES TEST STRIPE KEY
 // ---------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -15,40 +12,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // Initialize Stripe ONCE
-  const stripe = Stripe('pk_live_51SmCfSDYXHnYU3nmXlzEgaVmXzXjGr4LvqhqJcgImNnNZubQpGsq9tUy8VgcQeNiJhSSaE9PHYIchyJuvchbd7nk002gEG6wTw');
-
-  const email = "test@example.com"; // TODO: replace with real logged-in user
+  // Initialize Stripe (test key for now)
+  const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
 
   try {
-
-    // Call your production API
+    // Call API to check entitlement via session cookie
     const res = await fetch(
-      `https://api.deadanglesinstitute.org/api/me?email=${encodeURIComponent(email)}`
+      'https://api.deadanglesinstitute.org/api/me',
+      { credentials: 'include' }
     );
+
+    if (!res.ok) {
+      throw new Error("Impossible de récupérer les droits de l'utilisateur.");
+    }
 
     const data = await res.json();
 
     if (data.entitled) {
-
       checkoutButton.disabled = true;
       checkoutButton.textContent = "Vous êtes déjà abonné !";
       checkoutButton.style.cursor = "not-allowed";
-
     } else {
-
       checkoutButton.disabled = false;
       checkoutButton.textContent = "S’abonner";
       checkoutButton.style.cursor = "pointer";
 
       checkoutButton.addEventListener('click', async () => {
         try {
-
           const sessionRes = await fetch(
             'https://api.deadanglesinstitute.org/create-checkout-session',
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
+              credentials: 'include',      // send session cookie
               body: JSON.stringify({ plan: checkoutButton.dataset.plan })
             }
           );
@@ -75,7 +71,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
   } catch (err) {
-
     console.error('❌ Error fetching entitlement:', err);
 
     // Safe fallback
@@ -84,4 +79,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
 });
-
