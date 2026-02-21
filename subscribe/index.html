@@ -49,19 +49,40 @@
 </section>
 
 
-  <section class="subscribe-section">
-    <h2>Tarif Premium</h2>
-    <p>12,99 € / mois — paiement sécurisé via Stripe</p>
-    <button 
-        type="button" 
-        id="checkout-button" 
-        class="subscribe-button" 
-        aria-label="S’abonner au plan Premium" 
-        data-plan="premium">
-        S’abonner
-    </button>
+    <section class="subscribe-section">
+  <h2>Tarif Premium</h2>
+  <p>12,99 € / mois — paiement sécurisé via Stripe</p>
 
-  </section>
+  <!-- ============================ -->
+  <!--  Email input for subscription -->
+  <!--  Static fallback (for no-JS users) -->
+  <!-- ============================ -->
+  <noscript>
+    <label for="userEmail" class="subscribe-email-label">
+      Email pour votre abonnement :
+    </label>
+    <input 
+        type="email" 
+        id="userEmail" 
+        class="subscribe-email-input" 
+        placeholder="Votre email" 
+        required>
+  </noscript>
+
+  <!-- ============================ -->
+  <!--  Checkout button -->
+  <!-- ============================ -->
+  <button 
+      type="button" 
+      id="checkout-button" 
+      class="subscribe-button" 
+      aria-label="S’abonner au plan Premium" 
+      data-plan="premium">
+      S’abonner
+  </button>
+</section>
+
+
 
   
 
