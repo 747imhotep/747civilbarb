@@ -1,11 +1,45 @@
 // ============================
-// PREMIUM PAGE JS
+// PREMIUM PAGE JS (with entitlement check)
 // ============================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+
+  const API_BASE = 'https://api.deadanglesinstitute.org'; // your API base URL
+  const userEmail = sessionStorage.getItem('userEmail');  // or get it from login/session
 
   // ---------------------------
-  // Hero Section Fade-In
+  // 1️⃣ Check user entitlement
+  // ---------------------------
+  async function checkEntitlement(email) {
+    if (!email) return { entitled: false };
+
+    try {
+      const res = await fetch(`${API_BASE}/api/me?email=${encodeURIComponent(email)}`, {
+        credentials: 'include'
+      });
+
+      if (!res.ok) throw new Error("Impossible de récupérer les droits de l'utilisateur.");
+
+      return await res.json();
+    } catch (err) {
+      console.error('❌ Error fetching /api/me:', err);
+      return { entitled: false };
+    }
+  }
+
+  const entitlement = await checkEntitlement(userEmail);
+  console.log('User entitlement:', entitlement);
+
+  // Optional: hide premium items if not entitled
+  if (!entitlement.entitled) {
+    document.querySelectorAll('.premium-item').forEach(item => {
+      item.style.opacity = 0.3;  // visually de-emphasize
+      item.style.pointerEvents = 'none';
+    });
+  }
+
+  // ---------------------------
+  // 2️⃣ Hero Section Fade-In
   // ---------------------------
   const hero = document.getElementById('hero-premium');
   if (hero) {
@@ -15,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------------------
-  // Premium Articles Staggered Animation
+  // 3️⃣ Premium Articles Staggered Animation
   // ---------------------------
-  const premiumArticles = document.querySelectorAll('.premium-item'); // updated
+  const premiumArticles = document.querySelectorAll('.premium-item');
   premiumArticles.forEach((article, index) => {
     article.style.opacity = 0;
     article.style.transform = 'translateY(20px)';
@@ -29,11 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ---------------------------
-  // Track clicks on "Accéder" buttons
+  // 4️⃣ Track clicks on "Accéder" buttons
   // ---------------------------
   document.querySelectorAll('.subscribe-button').forEach(btn => {
     btn.addEventListener('click', (e) => {
       console.log('Accéder clicked:', e.currentTarget);
+
+      if (!entitlement.entitled) {
+        alert("⚠️ Vous devez être abonné pour accéder à ce contenu.");
+        return;
+      }
+
       // Optional: add analytics or tracking here
     });
   });
