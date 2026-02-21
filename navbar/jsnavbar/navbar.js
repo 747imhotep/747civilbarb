@@ -12,6 +12,10 @@ function initNavbar() {
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
 
+  toggle.addEventListener('click', () => {
+  links.classList.toggle('active');
+});
+
   if (toggle && links) {
     toggle.addEventListener("click", () => {
       links.classList.toggle("show");
