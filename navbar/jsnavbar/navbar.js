@@ -12,22 +12,17 @@ function initNavbar() {
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
 
-  toggle.addEventListener('click', () => {
-  links.classList.toggle('active');
-});
+  if (!toggle || !links) return; // Important for dynamic load
 
-  if (toggle && links) {
-    toggle.addEventListener("click", () => {
-      links.classList.toggle("show");
-    });
-  }
+  // Mobile toggle
+  toggle.addEventListener("click", () => {
+    links.classList.toggle("active"); // Use ONE class only
+  });
 
-  // ---------------------------
-  // Close mobile menu when a link is clicked
-  // ---------------------------
+  // Close menu when link clicked
   document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
-      if (links.classList.contains("show")) links.classList.remove("show");
+      links.classList.remove("active");
     });
   });
 
@@ -47,15 +42,17 @@ function initNavbar() {
     const linkPath = normalizePath(link.href);
     const linkSection = linkPath.split("/")[1];
 
-    // Exact match
-    if (linkPath === currentPath) {
+    if (linkPath === currentPath || currentSection === linkSection) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
-      return;
     }
+  });
+}
 
-    // Parent section highlight (for subpages)
-    if (currentSection && linkSection && currentSection === linkSection) {
+/* ==================================
+   Initialize navbar on load
+================================== */
+document.addEventListener("DOMContentLoaded", initNavbar);
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     }
