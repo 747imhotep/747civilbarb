@@ -114,6 +114,16 @@
     display: none;
   }
 
+  @media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+}
+
   .nav-links.show {
     display: flex;
   }
