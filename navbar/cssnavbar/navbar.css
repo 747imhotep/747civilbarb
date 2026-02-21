@@ -105,7 +105,7 @@
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
-    top: 60px; /* height of navbar */
+    top: 60px;
     right: 0;
     background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
     flex-direction: column;
@@ -114,17 +114,7 @@
     display: none;
   }
 
-  @media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-  }
   .nav-links.active {
-    display: flex;
-  }
-}
-
-  .nav-links.show {
     display: flex;
   }
 
@@ -132,6 +122,8 @@
     display: block;
   }
 }
+
+
 /* End of Nav bar styles */
 
 /* ===== Body adjustment for fixed navbar ===== */
