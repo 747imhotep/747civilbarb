@@ -48,17 +48,7 @@ function initNavbar() {
     }
   });
 }
-
-/* ==================================
-   Initialize navbar on load
-================================== */
-document.addEventListener("DOMContentLoaded", initNavbar);
-      link.classList.add("active");
-      link.setAttribute("aria-current", "page");
-    }
-  });
-}
-
+  
 /* ==================================
    End navbar JS
 ================================== */
