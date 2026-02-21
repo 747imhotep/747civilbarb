@@ -202,6 +202,27 @@ footer { ... }  /* unless explicitly scoped */
   box-shadow: 0 6px 12px rgba(200,0,0,0.4);
 }
 
+/* ===== Access Warning Message ===== */
+.premium-page .access-warning {
+  display: block;
+  color: #d30b83;           /* matches premium accent */
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 12px;
+  text-align: center;
+  padding: 8px 12px;
+  border: 1px solid #d30b83;
+  border-radius: 8px;
+  background-color: rgba(211, 11, 131, 0.1);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.premium-page .access-warning.show {
+  background-color: rgba(211, 11, 131, 0.2);
+  transform: translateY(-2px);
+}
+
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .premium-page #hero-premium h1 {
