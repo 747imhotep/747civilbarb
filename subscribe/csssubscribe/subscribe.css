@@ -141,6 +141,39 @@
   box-shadow: 0 2px 6px rgba(211,11,131,0.3);
 }
 
+/* ==================================
+   Subscribe error/status messages
+================================== */
+.subscribe-page .subscribe-message {
+  display: none; /* hidden by default */
+  max-width: 400px;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  border-radius: 7px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #d30b83; /* error pink */
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.subscribe-page .subscribe-message.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.subscribe-page .subscribe-message.success {
+  background-color: #007700; /* green for success */
+}
+
+.subscribe-page .subscribe-message.info {
+  background-color: #0055aa; /* blue for info */
+}
+
+
 /* ===== Articles ===== */
 .subscribe-page .premium-articles {
   max-width: 900px;
