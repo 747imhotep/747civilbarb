@@ -143,23 +143,26 @@
 
 /* ==================================
    Subscribe error/status messages
+   Final error / status message above checkout button
+   Scoped to .subscribe-page ONLY
 ================================== */
-.subscribe-page .subscribe-message {
-  display: none; /* hidden by default */
+.subscribe-page .subscribe-final-message {
+  display: none;               /* hidden by default */
   max-width: 400px;
-  margin-bottom: 15px;
+  width: 100%;
   padding: 12px 15px;
-  border-radius: 7px;
-  font-size: 15px;
-  font-weight: 500;
-  color: #fff;
-  background-color: #d30b83; /* error pink */
-  text-align: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+  border-left: 4px solid #d30b83; /* accent color */
+  background-color: #ffe6f0;       /* light pink background */
+  color: #d30b83;                  /* text matches accent color */
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.subscribe-page .subscribe-message.show {
+.subscribe-page .subscribe-final-message.show {
   display: block;
   opacity: 1;
   transform: translateY(0);
