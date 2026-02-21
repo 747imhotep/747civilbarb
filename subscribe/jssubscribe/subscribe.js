@@ -14,41 +14,40 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---------------------------
   // 1️⃣ Add email input dynamically above checkout button
   // ---------------------------
-  const emailInput = document.createElement('input');
-  emailInput.type = 'email';
-  emailInput.id = 'userEmail';
-  emailInput.className = 'subscribe-email-input';
-  emailInput.placeholder = 'Votre email';
-  emailInput.required = true;
+  if (!document.getElementById('userEmail')) {
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.id = 'userEmail';
+    emailInput.className = 'subscribe-email-input';
+    emailInput.placeholder = 'Votre email';
+    emailInput.required = true;
 
-  // Label for accessibility
-  const emailLabel = document.createElement('label');
-  emailLabel.htmlFor = 'userEmail';
-  emailLabel.className = 'subscribe-email-label';
-  emailLabel.textContent = 'Email pour votre abonnement :';
+    const emailLabel = document.createElement('label');
+    emailLabel.htmlFor = 'userEmail';
+    emailLabel.className = 'subscribe-email-label';
+    emailLabel.textContent = 'Email pour votre abonnement :';
 
-  // Insert label and input above the checkout button
-  checkoutButton.parentNode.insertBefore(emailLabel, checkoutButton);
-  checkoutButton.parentNode.insertBefore(emailInput, checkoutButton);
+    checkoutButton.parentNode.insertBefore(emailLabel, checkoutButton);
+    checkoutButton.parentNode.insertBefore(emailInput, checkoutButton);
+  }
+
+  const emailInput = document.getElementById('userEmail');
 
   // ---------------------------
-  // 2️⃣ Initialize Stripe (test key for now)
+  // 2️⃣ Initialize Stripe
   // ---------------------------
   const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
 
   // ---------------------------
-  // 3️⃣ Function to check entitlement
+  // 3️⃣ Check entitlement
   // ---------------------------
   async function checkEntitlement(email) {
     if (!email) return { entitled: false };
-
     try {
       const res = await fetch(`https://api.deadanglesinstitute.org/api/me?email=${encodeURIComponent(email)}`, {
         credentials: 'include'
       });
-
       if (!res.ok) throw new Error("Impossible de récupérer les droits de l'utilisateur.");
-
       return await res.json();
     } catch (err) {
       console.error('❌ Error fetching entitlement:', err);
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // ---------------------------
-  // 4️⃣ Event listener on checkout button
+  // 4️⃣ Checkout button click handler
   // ---------------------------
   checkoutButton.addEventListener('click', async () => {
 
@@ -67,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-    // Disable button while checking
     checkoutButton.disabled = true;
     checkoutButton.textContent = "Vérification en cours…";
 

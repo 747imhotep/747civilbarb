@@ -2,11 +2,8 @@
    Civilisation ou Barbarie
    csssubscribe/subscribe.css
    s'abonner
-    Scoped to .subscribe-page ONLY
+   Scoped to .subscribe-page ONLY
 ================================== */
-
-
-
 
 /* ===== Global Styles ===== */
 .subscribe-page {
@@ -14,8 +11,6 @@
   color: #333;
   line-height: 1.6;
 }
-
-
 
 /* ===== Hero Section ===== */
 .subscribe-page #hero-subscribe {
@@ -57,20 +52,12 @@
   color: #eee;
   max-width: 720px;
   background: rgba(0, 0, 0, 0.6);
-  padding: 20px 25px;
-  border-radius: 12px;
-  margin: 15px auto 25px auto;
-  text-align: center;
-}
-
-.subscribe-page #hero-subscribe .manifesto {
-  background: rgba(0, 0, 0, 0.6);
   padding: 15px 20px;
   border-radius: 10px;
   box-shadow: 0 8px 19px rgba(0, 0, 0, 0.5);
   display: inline-block;
-  max-width: 800px;
   margin: 25px auto 25px auto;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -79,7 +66,7 @@
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
 }
 
-/* Subscribe Section */
+/* ===== Subscribe Section ===== */
 .subscribe-page .subscribe-section {
   display: flex;
   flex-direction: column;
@@ -117,14 +104,13 @@
 
 /* ==================================
    Email input for subscription
-   Scoped to .subscribe-page ONLY
 ================================== */
 .subscribe-page .subscribe-email-label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 8px;
   font-size: 16px;
   font-weight: bold;
-  color: #641e1e; /* matches headings for visual hierarchy */
+  color: #641e1e; /* matches headings */
   text-align: left;
   width: 100%;
   max-width: 400px;
@@ -135,7 +121,7 @@
   width: 100%;
   max-width: 400px;
   padding: 10px 12px;
-  margin-top: 6px;
+  margin-bottom: 15px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 7px;
@@ -145,12 +131,17 @@
 
 .subscribe-page .subscribe-email-input:focus {
   outline: none;
-  border-color: #770048; /* matches subscribe button */
+  border-color: #770048;
   box-shadow: 0 3px 6px rgba(119,0,72,0.3);
 }
 
+/* Optional invalid state for email */
+.subscribe-page .subscribe-email-input.invalid {
+  border-color: #d30b83;
+  box-shadow: 0 2px 6px rgba(211,11,131,0.3);
+}
 
-/* Articles */
+/* ===== Articles ===== */
 .subscribe-page .premium-articles {
   max-width: 900px;
   margin: 60px auto 80px auto;
@@ -204,5 +195,19 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-/* ===== Responsive ===== */
 
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .subscribe-page .subscribe-email-input,
+  .subscribe-page .subscribe-email-label {
+    max-width: 100%;
+  }
+
+  .subscribe-page #hero-subscribe h1 {
+    font-size: 36px;
+  }
+
+  .subscribe-page .premium-articles h2 {
+    font-size: 32px;
+  }
+}
