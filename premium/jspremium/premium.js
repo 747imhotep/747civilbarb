@@ -4,8 +4,10 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-  const API_BASE = 'https://api.deadanglesinstitute.org'; // your API base URL
-  const userEmail = sessionStorage.getItem('userEmail');  // or get it from login/session
+  const API_BASE = 'https://api.deadanglesinstitute.org';
+
+  // Retrieve email stored from subscribe page
+  const userEmail = sessionStorage.getItem('userEmail');
 
   // ---------------------------
   // 1️⃣ Check user entitlement
@@ -29,14 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const entitlement = await checkEntitlement(userEmail);
   console.log('User entitlement:', entitlement);
-
-  // Optional: hide premium items if not entitled
-  if (!entitlement.entitled) {
-    document.querySelectorAll('.premium-item').forEach(item => {
-      item.style.opacity = 0.3;  // visually de-emphasize
-      item.style.pointerEvents = 'none';
-    });
-  }
 
   // ---------------------------
   // 2️⃣ Hero Section Fade-In
@@ -67,13 +61,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---------------------------
   document.querySelectorAll('.subscribe-button').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      console.log('Accéder clicked:', e.currentTarget);
 
       if (!entitlement.entitled) {
-        alert("⚠️ Vous devez être abonné pour accéder à ce contenu.");
+        // Show a small inline message above the button instead of alert
+        let msg = btn.parentNode.querySelector('.access-warning');
+        if (!msg) {
+          msg = document.createElement('div');
+          msg.className = 'access-warning';
+          msg.textContent = "⚠️ Vous devez être abonné pour accéder à ce contenu.";
+          msg.style.color = '#d30b83';
+          msg.style.fontWeight = 'bold';
+          msg.style.marginBottom = '10px';
+          btn.parentNode.insertBefore(msg, btn);
+        }
         return;
       }
 
+      console.log('Accéder clicked:', e.currentTarget);
       // Optional: add analytics or tracking here
     });
   });
