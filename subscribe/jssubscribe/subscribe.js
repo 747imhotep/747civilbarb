@@ -1,11 +1,10 @@
 // ---------------------------
-// SUBSCRIBE PAGE JS (SESSION AUTH + EMAIL INPUT + STYLED MESSAGES)
+// SUBSCRIBE PAGE JS (SESSION AUTH + EMAIL INPUT + FINAL ERROR ABOVE BUTTON)
 // ---------------------------
 
 document.addEventListener('DOMContentLoaded', async () => {
 
   const checkoutButton = document.getElementById('checkout-button');
-  const messageEl = document.getElementById('subscribe-message');
 
   if (!checkoutButton) {
     console.error("❌ Checkout button not found.");
@@ -29,25 +28,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     emailLabel.className = 'subscribe-email-label';
     emailLabel.textContent = 'Email pour votre abonnement :';
 
+    // Insert above button
     checkoutButton.parentNode.insertBefore(emailLabel, checkoutButton);
     checkoutButton.parentNode.insertBefore(emailInput, checkoutButton);
   }
 
   // ---------------------------
-  // 2️⃣ Initialize Stripe
+  // 2️⃣ Add final error message div (hidden by default)
   // ---------------------------
-  const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
+  let messageDiv = document.getElementById('subscribe-final-message');
+  if (!messageDiv) {
+    messageDiv = document.createElement('div');
+    messageDiv.id = 'subscribe-final-message';
+    messageDiv.className = 'subscribe-final-message';
+    messageDiv.style.display = 'none';
+    messageDiv.style.marginBottom = '10px';
+    messageDiv.style.color = '#d30b83'; // error color
+    messageDiv.style.fontWeight = 'bold';
+    checkoutButton.parentNode.insertBefore(messageDiv, checkoutButton);
+  }
 
   // ---------------------------
-  // 3️⃣ Message helper
+  // 3️⃣ Initialize Stripe
   // ---------------------------
-  function showMessage(text, type = 'error') {
-    if (!messageEl) return;
-    messageEl.textContent = text;
-    messageEl.className = 'subscribe-message show';
-    messageEl.classList.remove('error', 'success', 'info');
-    messageEl.classList.add(type);
-  }
+  const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
 
   // ---------------------------
   // 4️⃣ Check entitlement
@@ -71,27 +75,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---------------------------
   checkoutButton.addEventListener('click', async () => {
 
+    // Hide previous message
+    messageDiv.style.display = 'none';
+    messageDiv.textContent = '';
+
     const email = emailInput.value.trim();
     if (!email) {
-      showMessage('Veuillez saisir votre email.', 'error');
+      alert('Veuillez saisir votre email.');
       return;
     }
 
     checkoutButton.disabled = true;
     checkoutButton.textContent = "Vérification en cours…";
-    showMessage('Vérification des droits en cours...', 'info');
 
     const entitlement = await checkEntitlement(email);
 
     if (entitlement.entitled) {
       checkoutButton.textContent = "Vous êtes déjà abonné !";
       checkoutButton.style.cursor = "not-allowed";
-      showMessage('Vous êtes déjà abonné à ce plan.', 'success');
       return;
     }
 
     checkoutButton.textContent = "Création de session…";
-    showMessage('Création de session Stripe...', 'info');
 
     // ---------------------------
     // 6️⃣ Create Stripe Checkout session
@@ -109,11 +114,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       const session = await sessionRes.json();
 
       const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
-      if (error) showMessage(error.message, 'error');
+      if (error) {
+        // Show final error above button
+        messageDiv.textContent = error.message;
+        messageDiv.style.display = 'block';
+      }
 
     } catch (err) {
       console.error('❌ Stripe Checkout Error:', err);
-      showMessage("Impossible de lancer le paiement.", 'error');
+      // Show final error above button
+      messageDiv.textContent = "Impossible de lancer le paiement.";
+      messageDiv.style.display = 'block';
       checkoutButton.disabled = false;
       checkoutButton.textContent = "S’abonner";
     }
