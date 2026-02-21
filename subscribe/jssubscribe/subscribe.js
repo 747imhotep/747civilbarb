@@ -17,10 +17,18 @@ document.addEventListener('DOMContentLoaded', async () => {
   const emailInput = document.createElement('input');
   emailInput.type = 'email';
   emailInput.id = 'userEmail';
+  emailInput.className = 'subscribe-email-input';
   emailInput.placeholder = 'Votre email';
   emailInput.required = true;
-  emailInput.style.display = 'block';
-  emailInput.style.marginBottom = '10px';
+
+  // Label for accessibility
+  const emailLabel = document.createElement('label');
+  emailLabel.htmlFor = 'userEmail';
+  emailLabel.className = 'subscribe-email-label';
+  emailLabel.textContent = 'Email pour votre abonnement :';
+
+  // Insert label and input above the checkout button
+  checkoutButton.parentNode.insertBefore(emailLabel, checkoutButton);
   checkoutButton.parentNode.insertBefore(emailInput, checkoutButton);
 
   // ---------------------------

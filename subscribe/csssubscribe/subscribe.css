@@ -115,6 +115,41 @@
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
+/* ==================================
+   Email input for subscription
+   Scoped to .subscribe-page ONLY
+================================== */
+.subscribe-page .subscribe-email-label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #641e1e; /* matches headings for visual hierarchy */
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+
+.subscribe-page .subscribe-email-input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 12px;
+  margin-top: 6px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subscribe-page .subscribe-email-input:focus {
+  outline: none;
+  border-color: #770048; /* matches subscribe button */
+  box-shadow: 0 3px 6px rgba(119,0,72,0.3);
+}
+
+
 /* Articles */
 .subscribe-page .premium-articles {
   max-width: 900px;
