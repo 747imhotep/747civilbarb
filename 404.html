@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Angle Mort — Dead Angles Institute</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Shared base and layout -->
+  <link rel="stylesheet" href="/shared/base.css">
+
+  <!-- Navbar CSS -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+
+  <!-- Footer CSS -->
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Optional Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+
+  <style>
+    /* 404-specific styling */
+    body {
+      background-color: #e7e7e7;
+      color: #160101;
+      margin-top: 200px;
+      font-family: Georgia, serif;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    .btn-home {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 28px;
+      border: 1px solid #880000;
+      text-decoration: none;
+      color: #880000;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn-home:hover {
+      background-color: #880000;
+      color: #efefef;
+      border-radius: 7px;
+      box-shadow: #160101 0px 4px 15px;
+    }
+
+    footer {
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body class="has-fixed-nav">
+
+  <!-- Optional: Navbar placeholder if you want consistent top nav -->
+  <div id="navbar-placeholder"></div>
+
+  <h1>Vous avez pénétré un angle mort.</h1>
+  <p>La page que vous recherchez n’existe pas.  
+     Peut-être avez-vous exploré un territoire encore inexploré…</p>
+
+  <a href="/" class="btn-home">Retour à l'accueil</a>
+
+  <footer>
+    <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+    <p class="footer-links">
+      <a href="/privacy/">Politique de confidentialité</a> | 
+      <a href="/terms/">CGU</a>
+    </p>
+  </footer>
+
+  <!-- Optional: navbar JS if you use dynamic loading -->
+  <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+  <script src="/navbar/jsnavbar/navbar.js" defer></script>
+</body>
+</html>
