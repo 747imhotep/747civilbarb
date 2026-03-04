@@ -82,9 +82,13 @@ button:hover, .btn:hover {
 
 /* ---- Page wrapper ---- */
 .page-content {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
+  line-height: 1.6;
+  color: #333; /* softer tone for body text */
 }
 
 /* ---- Main ---- */
