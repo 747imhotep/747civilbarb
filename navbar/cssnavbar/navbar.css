@@ -1,12 +1,10 @@
 /* ==================================
-   Navbar Page — Scoped Styles
-   Wrapper: navbar.css
-   747civilbarb
+   Navbar Page — Updated for Deep Burgundy Institute Style
 ================================== */
 
 /* Active navigation link */
 .nav-link.active {
-  color: #dfa4eb;           /* stronger contrast #dfa4eb */
+  color: #880000;           /* brighter burgundy for active link */
   font-weight: 600;
 }
 
@@ -19,36 +17,36 @@
   background-color: currentColor;
 }
 
+#hero-index {
+  margin-top: -38px; /* pulls hero up slightly under navbar */
+}
+
 .nav-link:hover {
-  opacity: 0.8;          /* subtle hover effect on text */
+  opacity: 0.85;          /* subtle hover effect */
 }
 
 .nav-link.active:hover {
-  opacity: 1;            /* no hover effect on active link */
-} 
+  opacity: 1;
+}
 
 .nav-link.active,
 .nav-link[aria-current="page"] {
-  border-bottom: 0.5px solid #1700ad; /* bright accent color */
-  color: #f1f66a;                  /* Active page */
+  border-bottom: 0.5px solid #880000; /* muted accent underline */
   transition: border-color 0.3s ease;
 }
 
-
 /* ===== Navbar Styles ===== */
-
 #main-nav {
-  background: linear-gradient(135deg, #3d0025 10%, #d30b83 85%);
-  color: #fff;
-  font-weight: 600;
-  background-color: rgba(0, 0, 0, 0, 3.6);
-
-  /* NEW: make navbar fixed at top */
+  background: #3b0000;      /* deep burgundy solid background */
+  color: #e6dcd1;           /* soft warm cream text */
+  font-family: Georgia, serif;
+  font-weight: 500;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .nav-container {
@@ -61,7 +59,7 @@
 }
 
 #main-nav .logo {
-  color: #fff;
+  color: #e6dcd1;
   text-decoration: none;
   font-size: 1.3rem;
   padding: 4px 8px;
@@ -83,12 +81,13 @@
 }
 
 .nav-links li a {
-  color: #fff;
+  color: #e6dcd1;
   text-decoration: none;
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
+  color: #880000;
   text-decoration: underline;
 }
 
@@ -96,7 +95,7 @@
   display: none;
   background: none;
   border: none;
-  color: #fff;
+  color: #e6dcd1;
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -107,7 +106,7 @@
     position: absolute;
     top: 60px;
     right: 0;
-    background: linear-gradient(135deg, #d30b83 0%, #a00862 100%);
+    background: linear-gradient(135deg, #3b0000 0%, #550000 100%);
     flex-direction: column;
     width: 200px;
     padding: 12px;
@@ -123,13 +122,7 @@
   }
 }
 
-
-/* End of Nav bar styles */
-
 /* ===== Body adjustment for fixed navbar ===== */
 body {
-  padding-top:  60px; /* height of navbar */
+  padding-top: 60px; /* height of navbar */
 }
-
-
-

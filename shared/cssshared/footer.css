@@ -1,25 +1,27 @@
 /* ==================================
    Civilisation ou Barbarie
-   footer.css — Global footer styles
-   civilbarb
+   footer.css — Updated for Institute Philosophy
 ================================== */
 
 footer {
   text-align: center;
-  padding-top: 7px;
-  padding-bottom: 25px; /* to avoid overlap with gdpr banner */
-  background-color: #e7e7e7;
-  color: #585858;
+  padding: 30px 24px 60px;   /* more breathing room, aligns with base.css */
+  background-color: #f7f7f7; /* lighter neutral matching global body */
+  color: #555;               /* subtle dark gray for reflective tone */
   font-size: 14px;
-  margin: 90px 0 3px 0; /* top and bottom margin */
+  font-family: Georgia, serif; /* match global typography */
+  border-top: 1px solid #eee; /* subtle separation */
+  margin: 80px 0 0 0;        /* top spacing consistent with layout */
 }
 
 footer .footer-links a {
-  color: #690000;
+  color: #880000;  /* matches global link/button accent */
   text-decoration: none;
-  margin: 5px 5px;
+  margin: 0 8px;   /* consistent spacing */
+  transition: color 0.3s ease;
 }
 
 footer .footer-links a:hover {
+  color: #160101;  /* darker on hover, institute tone */
   text-decoration: underline;
 }
