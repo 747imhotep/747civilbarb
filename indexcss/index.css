@@ -126,22 +126,6 @@
   text-align: center;
 }
 
-/*
-.page-content .cta a {
-  display: inline-block;
-  padding: 12px 22px;
-  border: 1px solid #880000;
-  margin: 10px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.page-content .cta a:hover {
-  background: #880000;
-  color: #f7f7f7;
-}
-*/
-
 .page-content .cta a {
   display: inline-block;
   color: #3d0101;

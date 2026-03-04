@@ -21,13 +21,24 @@ footer { ... }  /* unless explicitly scoped */
 }
 
 .library-page .cta a {
-  color: #730101;
-  margin: 0 15px;
-  text-decoration: underline;
+  display: inline-block;
+  color: #3d0101;
+  border: 1px solid #880000;
+  margin: 20px;
+  padding: 12px 22px;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .library-page .cta a.secondary {
-  color: #ae8888;
+  background: #880000;
+  color: #f7f7f7;
+}
+
+.library-page .cta a:hover {
+  text-decoration: underline;
+  background-color: #880000;
+  color: #f7f7f7;
 }
 
 
