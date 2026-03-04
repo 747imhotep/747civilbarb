@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           msg.style.marginBottom = '10px';
           btn.parentNode.insertBefore(msg, btn);
         }
-        return;
+        return; handled the spacing
       }
 
       console.log('Accéder clicked:', e.currentTarget);
