@@ -29,6 +29,7 @@ footer { ... }  /* unless explicitly scoped */
   background-position: center;
   min-height: 70vh;
   margin-bottom: 80px;
+  margin-top: -29px; /* pulls hero up slightly under navbar */
 }
 
 .premium-page #hero-premium::before {

@@ -24,6 +24,7 @@
   background-position: center;
   min-height: 65vh;
   margin-bottom: 60px;
+  margin-top: -29px; /* pulls hero up slightly under navbar */
   text-align: center;
 }
 
