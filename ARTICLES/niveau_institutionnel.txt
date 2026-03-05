@@ -269,7 +269,15 @@ Mais il faut que ça reste **sobre** pour ton site.
 ---
 
 # Demain nous pourrons donc
+il faudrait verifier:
+1️⃣ Page Articles gratuits						-
+2️⃣ Page Premium							-
+3️⃣ Page Privacy / RGPD							-
+4️⃣ Amélioration SEO et crédibilité					-
+5️⃣ Petits détails qui donnent un effet “site d’institut sérieux”	-
 
+
+ensuite
 1️⃣ trancher **le nom du site**
 2️⃣ concevoir **le système des Clés d’Imhotep**
 3️⃣ créer :

@@ -1,9 +1,12 @@
 here is my Root tree
 🌳 747civilcarb/
 │
+├── 404.html
+│
 ├── about/
-│   ├─ cssabout/about.css
-│   └─ index.html
+│   	├─ cssabout/about.css
+│	│
+│   	└─ index.html
 │
 ├── ARTICLES/		<-- Few drafts texts for me
 │
@@ -12,8 +15,17 @@ here is my Root tree
 ├── CNAME
 │
 ├── contact/
-│   ├─ csscontact/contact.css
-│   └─ index.html
+│   	├─ csscontact/contact.css
+│	│
+│   	└─ index.html
+│
+├── imhotep/
+│   	├─ imhotepcss/imhotep.css
+│	│
+│   	├─ imhotepjs/imhotep.js
+│	│
+│   	└─ index.html
+│
 │
 ├── .env.example
 │
@@ -41,7 +53,7 @@ here is my Root tree
 │   │
 │   └─ index.html
 │
-├── my-worker/		<-- detailed tree in another file: I will share with you.
+├── my-worker/		<-- detailed tree in another file: I can share with you.
 │
 │
 ├── navbar/          	<-- Navbar HTML is duplicated across pages
@@ -53,7 +65,7 @@ here is my Root tree
 │   │	
 │   ├─ csssnippet
 │   │	│
-│   │	└─ ssnippet.css
+│   │	└─ snippet.css
 │   │
 │   ├─ jsnavbar/
 │   │	│
@@ -65,12 +77,21 @@ here is my Root tree
 │
 │
 ├── nosarticles/
-│   │	│
-│   │	└─ cssaricles/
-│   │
-│   └─ index.html
+│   	│
+│   	├─ cssaricles/
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├─ index.html	<-- 👉 Free articles here
+│   	│
+│   	└─ jsarticles
+│   		│
+│    		└─ articles.js
+│   
 │
 ├── pictures/
+│   │	
+│   ├─ 404/
 │   │	
 │   ├─ articles/
 │   │	
@@ -92,9 +113,14 @@ here is my Root tree
 │   ├─ endpoint
 │   │   │
 │   │	└─ endpoint.js
-│   │   
-│   └─  index.html		<---📍 It means: “I want to start a subscription”
-│      				👉 The button always points to `/subscribe/`
+│   │	
+│   ├─ index.html		<---📍 It means: “I want to start a subscription”
+│   │   				👉 The button always points to `/subscribe/`
+│   │  
+│   └─ jspremium
+│       │ 
+│       └─ premium.js
+│      		
 │   
 │   
 │
@@ -117,20 +143,24 @@ here is my Root tree
 │   │
 │   ├─ cssshared/
 │   │	│
+│   │	├─ 404.css	
+│   │	│
+│   │	├─ base.css	
+│   │	│
 │   │	├─ cta.css	<-- Actualy empty for the moment
 │   │	│
-│   │	└─ footer.css
+│   │	├─ footer.css	
+│   │	│
+│   │	├─ gdpr.css	
+│   │	│
+│   │	└─ layout.css	<-- Actualy empty for the moment (later, optional)
 │   │	
 │   │	
-│   ├─ gpdr.css        ✅ NEW
-│   │
-│   │
-│   │
-│   ├─ layout.css      <-- Actualy empty for the moment (later, optional)
-│   │	
-│   └─ moouse
+│   └─ jsshared/
 │   	│
-│   	└─ center_zoom.js
+│   	├─ center_zoom.js.js	
+│   	│
+│   	└─ gpdr.js        ✅ NEW
 │   
 │
 ├── subscribe/
