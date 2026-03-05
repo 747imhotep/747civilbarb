@@ -19,12 +19,12 @@ here is my Root tree
 │	│
 │   	└─ index.html
 │
-├── imhotep/
-│   	├─ imhotepcss/imhotep.css
+├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
+│   	├─ imhotepcss/imhotep.css	empty
 │	│
-│   	├─ imhotepjs/imhotep.js
+│   	├─ imhotepjs/imhotep.js		empty
 │	│
-│   	└─ index.html
+│   	└─ index.html			empty
 │
 │
 ├── .env.example
@@ -65,7 +65,7 @@ here is my Root tree
 │   │	
 │   ├─ csssnippet
 │   │	│
-│   │	└─ snippet.css
+│   │	└─ snippet.css	<-- empty
 │   │
 │   ├─ jsnavbar/
 │   │	│
@@ -115,7 +115,7 @@ here is my Root tree
 │   │	└─ endpoint.js
 │   │	
 │   ├─ index.html		<---📍 It means: “I want to start a subscription”
-│   │   				👉 The button always points to `/subscribe/`
+│   │   				👉 The button "Acceder" doesn't work for the moment
 │   │  
 │   └─ jspremium
 │       │ 
@@ -138,7 +138,7 @@ here is my Root tree
 │
 ├── shared/
 │   │
-│   ├─ base.css        ✅ NEW
+│   ├─ base.css        
 │   │
 │   │
 │   ├─ cssshared/
@@ -160,7 +160,7 @@ here is my Root tree
 │   	│
 │   	├─ center_zoom.js.js	
 │   	│
-│   	└─ gpdr.js        ✅ NEW
+│   	└─ gpdr.js
 │   
 │
 ├── subscribe/
@@ -183,14 +183,16 @@ here is my Root tree
 │   │	└─  terms.css
 │   │	
 │   └─  index.html 
+│
 │   
+│      
 └─  terms_of_use/
-    │	
-    ├─ csstermsofuse
-    │	│   
-    │   └─ terms_of_use.css
-    │
-    └─ index.html
+   	 │	
+   	 ├─ csstermsofuse
+   	 │   │   
+   	 │   └─ terms_of_use.css
+   	 │
+   	 └─ index.html
 
 
 
