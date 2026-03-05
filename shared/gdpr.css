@@ -1,18 +1,18 @@
 /* ==============================
-   GDPR Consent Banner — Civilisation ou Barbarie Style
+   GDPR Consent Banner — Premium Institut Style
 ============================== */
 
 #gdpr-banner {
   position: fixed;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(100%);
   width: 90%;
   max-width: 500px;
-  background-color: #f7f7f7; /* clair et neutre */
-  color: #160101;            /* texte sombre */
+  background-color: rgba(247, 247, 247, 0.95); /* légèrement transparent */
+  color: #160101;            
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -23,9 +23,18 @@
   font-family: Georgia, serif;
   font-size: 0.95rem;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(22,1,1,0.3);
+  box-shadow: 0 8px 24px rgba(22,1,1,0.35);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
 }
 
+/* Active / visible state */
+#gdpr-banner.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* Text */
 #gdpr-banner p {
   margin: 0;
   flex: 1 1 100%;
@@ -43,12 +52,13 @@
   color: #160101;
 }
 
+/* Actions container */
 .gdpr-actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 12px;
   width: 100%;
 }
 
@@ -60,7 +70,7 @@
   padding: 8px 16px;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, transform 0.15s ease;
   border: 1px solid #880000;
 }
 
@@ -72,9 +82,10 @@
 }
 
 #gdpr-accept:hover {
-  background-color: #031601; /* couleur choix du client */
+  background-color: #031601;
   color: #f7f7f7;
   border-color: #e80000;
+  transform: scale(1.05); /* légère vibration / effet “premium” */
 }
 
 /* Refuse / Secondary Button */
@@ -85,9 +96,10 @@
 }
 
 #gdpr-banner button.secondary:hover {
-  background-color: #031601; /* couleur choix du client */
+  background-color: #031601;
   color: #f7f7f7;
   border-color: #e80000;
+  transform: scale(1.05);
 }
 
 /* ===== Mobile adjustments ===== */
@@ -96,6 +108,7 @@
     flex-direction: column;
     align-items: center;
     padding: 16px;
+    gap: 10px;
   }
 
   .gdpr-actions {
@@ -105,5 +118,10 @@
 
   #gdpr-banner p {
     text-align: center;
+  }
+
+  #gdpr-accept,
+  #gdpr-banner button.secondary {
+    width: 100%;
   }
 }
