@@ -170,6 +170,7 @@ footer { ... }  unless explicitly scoped */
 .article-page .article-image-wrapper {
   overflow: hidden;
   border-radius: 8px;
+  margin-bottom: 5px;
 }
 
 .article-page .pdf-close-btn {
