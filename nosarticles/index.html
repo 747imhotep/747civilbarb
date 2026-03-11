@@ -22,7 +22,7 @@
   <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
 </head>
 <!-- ============================ -->
-<!--      CIVILBARB NOS ARTICLES      -->
+<!--    CIVILBARB NOS ARTICLES    -->
 <!-- ============================ -->
 
 <body class="has-fixed-nav">
@@ -59,7 +59,16 @@
   
   <header class="article-header">
     <h2 id="article-heading">Nos articles</h2> 
-    <input type="text" id="article-search" placeholder="Rechercher un article...">
+    
+    <div class="search-box">
+  <input 
+    type="search" 
+    id="article-search" 
+    placeholder="Rechercher un article, un thème, un mot-clé..."
+    aria-label="Rechercher un article"
+  >
+  <button id="search-clear" aria-label="Effacer la recherche">✕</button>
+</div>
       <p class="article-intro">
         Cette page permet la consultation en ligne de documents mis à disposition
         gratuitement par <em>Civilisation ou Barbarie</em>.  

@@ -3,7 +3,9 @@
 // =====================================================================
 
 let articles = []; // global variable to hold all JSON articles
-const category = "Afrique"; // optional: can be dynamic
+const category = null; // optional: can be dynamic
+
+  let currentQuery = "";
 
 // 1️⃣ Fetch JSON and render articles
 fetch("/nosarticles/jsarticles/articles.json")
@@ -31,13 +33,24 @@ function renderArticles(listToRender) {
   listToRender.forEach(article => {
     const clone = template.content.cloneNode(true);
 
+    function highlightText(text, query){
+
+  if(!query) return text;
+
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, "gi");
+
+  return text.replace(regex, '<span class="search-highlight">$1</span>');
+}
+
     // Populate fields
     const link = clone.querySelector('.pdf-link');
-    link.textContent = article.title;
+    link.innerHTML = highlightText(article.title, currentQuery);
     link.href = article.pdf;
 
-    clone.querySelector('.article-subtitle').textContent = article.subtitle;
-    clone.querySelector('.article-abstract').innerHTML = article.abstract;
+    
+    clone.querySelector('.article-subtitle').innerHTML = highlightText(article.subtitle, currentQuery);
+    clone.querySelector('.article-abstract').innerHTML = highlightText(article.abstract, currentQuery);
     const img = clone.querySelector('.article-hero-image');
     img.src = article.image;
     img.alt = article.imageAlt || '';
@@ -64,21 +77,35 @@ function renderArticles(listToRender) {
 
 // 3️⃣ Search/filter
 const searchInput = document.getElementById('article-search');
-if (searchInput) {
-  searchInput.addEventListener('input', e => {
-    const query = e.target.value.toLowerCase();
 
-    const filtered = articles.filter(a => 
-      // category filter
-      (!category || (a.tags && a.tags.includes(category))) &&
-      // search filter
-      (
-        a.title.toLowerCase().includes(query) ||
-        a.subtitle.toLowerCase().includes(query) ||
-        (a.tags || []).some(tag => tag.toLowerCase().includes(query))
-      )
-    );
+if (searchInput) {
+
+  searchInput.addEventListener('input', e => {
+
+    currentQuery = e.target.value.toLowerCase();
+    const query = currentQuery;
+
+    const filtered = articles.filter(a => {
+
+      const title = (a.title || "").toLowerCase();
+      const subtitle = (a.subtitle || "").toLowerCase();
+      const abstract = (a.abstract || "").toLowerCase();
+      const tags = (a.tags || []).map(tag => tag.toLowerCase());
+
+      return (
+        (!category || tags.includes(category.toLowerCase())) &&
+        (
+          title.includes(query) ||
+          subtitle.includes(query) ||
+          abstract.includes(query) ||
+          tags.some(tag => tag.includes(query))
+        )
+      );
+
+    });
 
     renderArticles(filtered);
+
   });
+
 }
