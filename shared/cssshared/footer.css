@@ -8,7 +8,7 @@ footer {
   padding: 30px 24px 60px;   /* more breathing room, aligns with base.css */
   background-color: #f7f7f7; /* lighter neutral matching global body */
   color: #555;               /* subtle dark gray for reflective tone */
-  font-size: 14px;
+  font-size: 10px;
   font-family: Georgia, serif; /* match global typography */
   border-top: 1px solid #eee; /* subtle separation */
   margin: 80px 0 0 0;        /* top spacing consistent with layout */
