@@ -1,39 +1,40 @@
 /* ==================================
    Civilisation ou Barbarie
    imhotep.css — Specific styles for Imhotep page
-   Scoped to .page-content ONLY (except hero)
-   747civilbarb
 ================================== */
 
-/* Imhotep container */
+/* Container with Ankh */
 #imhotep-container {
     position: relative;
-    min-height: 300px;          /* larger space for reading */
+    min-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 20px;
     font-style: italic;
-    font-size: 1.1rem;          /* bigger text */
-    line-height: 1.6;           /* comfortable reading */
+    font-size: 1.1rem;
+    line-height: 1.6;
     color: #2a1a1a;
-    background-image: url('/pictures/hero/ankh.png');
+    /* no background image here */
     background-repeat: no-repeat;
     background-position: center;
     background-size: 120px;
-    transition: background-image 0.8s ease;
 }
 
+/* Ankh overlay for fade */
 #imhotep-container::before {
     content: "";
     position: absolute;
     inset: 0;
+    background-image: url('/pictures/hero/ankh.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 120px;
-    pointer-events: none; /* allows clicks through the pseudo-element */
-    z-index: 2;         /* ensures the ankh is above the text */
+    opacity: var(--ankh-opacity, 1);  /* Use CSS variable with default 1 */
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Key text */
@@ -46,12 +47,12 @@
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     font-style: italic;
     color: #2a1a1a;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
-    z-index: 1; /* ensures text is below the ankh */
+    z-index: 1;
 }
 
-/* Fade-in animation */
+/* Fade-in class for text */
 #imhotep-container p.fade-in {
     opacity: 1;
     transform: translateY(0);
