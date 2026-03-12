@@ -31,19 +31,66 @@
   font-weight: normal;
 }
 
+.home-left{
+  background: #f4f3f1;
+  padding: 28px;
+  border-left: 4px solid #730101;
+  border-radius: 7px;
+  border: 1px solid #e2e2e2;
+  line-height: 1.6;
+}
+
+.home-left h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.home-left p{
+  text-align: justify;
+}
+
+
+.home-left .read-more{
+  display: block;
+  text-align: center;
+  margin-top:20px;
+  font-size:0.9rem;
+}
+
 .home-right{
   position:sticky;
   top:120px;
   height:fit-content;
+  border: 1px solid #e2e2e2;
+  border-radius: 7px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.home-right h2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: #3d0101;
+  margin-bottom: 15px;
+}
+
+.home-right .ankh-icon {
+  width: 43px; /* adjust size as needed */
+  height: auto;
+}
+
+#imhotep-container p{
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: #2a1a1a;
 }
 
 
-
-.read-more{
-  display:inline-block;
-  margin-top:10px;
-  font-size:0.9rem;
-}
 
 /* ===== Hero Section (FULL WIDTH) ===== */
 #hero-index {
