@@ -22,11 +22,16 @@ here is my Root tree
 │   	└─ index.html
 │
 ├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
-│   	├─ imhotepcss/imhotep.css	empty
 │	│
-│   	├─ imhotepjs/imhotep.js		empty
+│	├─ imhotepcss/
+│	│	│
+│	│	└─ imhotep.css       <-- add all animation & style here
 │	│
-│   	└─ index.html			empty
+│	├─ imhotepjs/
+│	│	│
+│	│	└─ imhotep.js        <-- add random key + fade animation here
+│	│   
+│	└─ index.html	             <-- optional test page
 │
 │
 ├── .env.example
