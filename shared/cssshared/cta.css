@@ -12,24 +12,49 @@
 .cta a {
   display: inline-block;
   color: #3d0101;
-  border: 1px solid #880000;
+  border: 1px solid #730101;
+  border-radius: 7px;
   padding: 12px 22px;
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* secondary button */
+/* ===== secondary button ===== */
 .cta a.secondary {
-  background: #880000;
-  color: #f7f7f7;
+  background: #730101;
+  color: #fff;
 }
 
 /* hover */
 .cta a:hover {
-  background-color: #880000;
-  color: #f7f7f7;
+  background-color: #a30003; /* here */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(200, 0, 0, 0.4);
+  color: #fff;
 }
+
+
+/* ===== Template buttons ===== */
+.contact-form button {
+  background-color: #730101;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  margin-bottom: 1px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #a30003;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(200, 0, 0, 0.4);
+}
+
 
 /* ===== Mobile layout ===== */
 @media (max-width: 768px) {
