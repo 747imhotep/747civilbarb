@@ -1,0 +1,47 @@
+/* ===== CTA container ===== */
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* ===== CTA buttons ===== */
+.cta a {
+  display: inline-block;
+  color: #3d0101;
+  border: 1px solid #880000;
+  padding: 12px 22px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* secondary button */
+.cta a.secondary {
+  background: #880000;
+  color: #f7f7f7;
+}
+
+/* hover */
+.cta a:hover {
+  background-color: #880000;
+  color: #f7f7f7;
+}
+
+/* ===== Mobile layout ===== */
+@media (max-width: 768px) {
+
+  .cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta a {
+    width: 100%;
+    max-width: 320px;
+  }
+
+}
