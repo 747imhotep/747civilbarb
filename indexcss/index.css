@@ -84,12 +84,54 @@
   height: auto;
 }
 
+#imhotep-container {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 #imhotep-container p{
   margin-bottom: 12px;
-  font-size: 0.95rem;
+  font-size:1rem;
   color: #2a1a1a;
 }
 
+/* ===== Reading Counter  ===== */
+
+#imhotep-progress {
+  position: relative;
+  width: 180px;        /* same width */
+  height: 2px;         /* thinner line */
+  background: #000;    /* black color */
+  border-radius: 2px;  /* smaller rounding for thin bar */
+  margin-top: 14px;
+}
+
+#imhotep-progress-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 8px;              /* slightly elongated for elegance */
+  background-color: #0df1f1; /* turquoise/cyan accent */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left linear;    /* JS sets actual duration */
+  z-index: 2;
+}
+
+#imhotep-progress-ankh {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #3d0101;
+  z-index: 1;
+}
 
 
 /* ===== Hero Section (FULL WIDTH) ===== */

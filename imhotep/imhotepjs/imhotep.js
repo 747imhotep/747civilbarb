@@ -1,10 +1,9 @@
 // ========================
-//  Civilisation ou Barbarie
-//  imhotep.js — JavaScript for Imhotep page
-//  747civilbarb
+// Imhotep.js — Clean Version
+// Handles random keys, fade-in/out, progress animation
 // ========================
 
-// List of your "Clés d'Imhotep"
+// Array of Imhotep keys (text snippets)
 const imhotepKeys = [
   "Clé 01. Selon les chercheurs, sous irradiation UVB, la phéomélanine peut agir comme photosensibilisateur en générant des radicaux libres, ce qui accentue les dommages oxydatifs infligés à l’ADN des cellules cutanées. La phéomélanine, jaune-rouge, a un faible pouvoir absorbant UVB.", 
   "Clé 02. La vitamine D3 module l’activité des lymphocytes T et B, ce qui aide à calibrer la réponse immunitaire pour qu’elle soit efficace sans être excessive. Une heure sous le soleil génère 2000 unités.",
@@ -15,57 +14,73 @@ const imhotepKeys = [
   "Clé 07. TEMPLATE: Rien n’est perdu tant qu’on continue à chercher."
 ];
 
+// ====== Config ======
+const displayTime = 35000; // 35 seconds per key
+const fadeDuration = 1200; // 1.2s fade-in/out
+
+// ====== DOM References ======
 const container = document.getElementById('imhotep-container');
+const screenReader = document.getElementById('imhotep-text'); // ARIA live region
 
-// Duration for which a key is displayed (in ms)
-const displayTime = 35000; // 35 seconds for reading
+const progressDot = document.getElementById('imhotep-progress-dot');
+const progressAnkh = document.getElementById('imhotep-progress-ankh');
 
-/**
- * Show a random Imhotep key with bold "Clé XX." and smooth fade
- */
+// ====== Helper: Format key with bold prefix ======
+function formatKey(key) {
+  const match = key.match(/^(Clé \d+\.)\s*(.*)/);
+  if (!match) return key;
+  return `<strong>${match[1]}</strong> ${match[2]}`;
+}
+
+// ====== Show Random Key ======
 function showRandomKey() {
-  // Pick a random key
   const key = imhotepKeys[Math.floor(Math.random() * imhotepKeys.length)];
 
-  // Split bold prefix
-  const parts = key.split(' ', 2); // e.g. ["Clé", "01."]
+  // Update ARIA live region
+  screenReader.textContent = key;
 
-  // Fade out existing paragraph if any
-  const oldParagraph = container.querySelector('p');
-  if (oldParagraph) {
-    oldParagraph.classList.remove('fade-in');
-    // Remove after fade-out duration (match CSS transition: 1.2s)
+  // Remove existing key if present
+  const oldKey = container.querySelector('p.imhotep-key');
+  if (oldKey) {
+    oldKey.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
     setTimeout(() => {
-      if (oldParagraph.parentNode) {
-        oldParagraph.parentNode.removeChild(oldParagraph);
-      }
-    }, 1200);
+      if (oldKey.parentNode) oldKey.parentNode.removeChild(oldKey);
+      insertNewKey(key);
+    }, fadeDuration);
+  } else {
+    insertNewKey(key);
   }
+}
 
-  // Create new paragraph element
+// ====== Insert New Key ======
+function insertNewKey(key) {
   const p = document.createElement('p');
   p.classList.add('imhotep-key');
+  p.innerHTML = formatKey(key);
 
-  // Insert HTML with bold prefix "Clé XX."
-  p.innerHTML = `<strong>${parts[0]} ${parts[1]}</strong> ${key.slice(parts.join(' ').length + 1)}`;
+  // Insert before the progress bar
+  container.insertBefore(p, progressDot.parentNode);
 
-  container.appendChild(p);
-
-  // Fade out ankh background smoothly by setting CSS variable
+  // Trigger fade-in
+  requestAnimationFrame(() => p.classList.add('fade-in'));
   container.style.setProperty('--ankh-opacity', '0');
 
-  // Trigger fade-in for text after next animation frame
-  requestAnimationFrame(() => p.classList.add('fade-in'));
+  // Animate progress dot
+  progressDot.style.transition = 'none';
+  progressDot.style.left = '0';
+  progressDot.offsetHeight; // Force reflow
+  progressDot.style.transition = `left ${displayTime}ms linear`;
+  progressDot.style.left = '100%';
 
-  // After displayTime, fade out text and restore ankh opacity
+  // Schedule fade-out
   setTimeout(() => {
     p.classList.remove('fade-in');
     container.style.setProperty('--ankh-opacity', '1');
   }, displayTime);
 }
 
-// Show first key immediately
+// ====== Kickoff ======
 showRandomKey();
-
-// Repeat showing keys every displayTime + 5 seconds buffer
-setInterval(showRandomKey, displayTime + 5000);
+setInterval(showRandomKey, displayTime + fadeDuration);

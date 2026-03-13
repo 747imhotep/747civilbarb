@@ -8,6 +8,9 @@
   <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/cssshared/base.css">
 
+  <!-- Imhotep page specific -->
+  <link rel="stylesheet" href="/imhotep/imhotepcss/imhotep.css">
+
   <!-- Shared UI components -->
    <link rel="stylesheet" href="/indexcss/index.css">
 
@@ -23,8 +26,7 @@
   <!-- Optional: Favicon -->
   <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
 
-  <!-- Imhotep page specific -->
-  <link rel="stylesheet" href="/imhotep/imhotepcss/imhotep.css">
+
 </head>
 <!-- ============================ -->
 <!--          CIVILBARB INDEX     -->
@@ -61,7 +63,7 @@
     <h2>Dead Angle Institute</h2>
 
     <p>
-      Dead Angle Institute est un espace de recherche indépendant consacré
+      <strong>Dead Angle Institute</strong> est un espace de recherche indépendant consacré
       à l’exploration des angles morts intellectuels, culturels et historiques.
       Notre travail consiste à examiner des sujets négligés, obscurs ou
       volontairement écartés du débat public.
@@ -131,8 +133,16 @@
     </h2> 
 
     <div id="imhotep-container">
-      <!-- Random key inserted by JS -->
-    </div>
+
+  <p id="imhotep-text" aria-live="polite"></p>
+
+  <div id="imhotep-progress">
+    <span id="imhotep-progress-dot"></span>
+    <span id="imhotep-progress-ankh">☥</span>
+  </div>
+
+
+</div>
 
   </aside>
 

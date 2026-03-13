@@ -5,9 +5,6 @@
 
 /* Container with Ankh */
 #imhotep-container {
-    position: relative;
-    min-height: 300px;
-    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
