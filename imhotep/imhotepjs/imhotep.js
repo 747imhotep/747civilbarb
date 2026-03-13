@@ -11,7 +11,7 @@ const imhotepKeys = [
   "Clé 04. Si l’on reconsidère l’énoncé « Imhotep est le père de la médecine et de l’architecture », on constate que, d’une certaine manière, il repose sur la même logique que des expressions comme « miracle grec » ou « l’Afrique a aussi pratiqué l’esclavage ». Dans tous ces cas, des réalités historiques complexes sont réduites à des formules simplificatrices, souvent chargées idéologiquement.",
   "Clé 05. L'agriculture est un sujet sensible. Certains utilisent la datation des premiers agriculteurs pour construire un narratif à des fins politiques pour - selon l'expression de Kalala Omotunde - \"organiser une escroquerie intellectuelle\".",
   "Clé 06. La diplomite. Une maladie liée au besoin de valorisation. A l'instar de la sapologie, elle pousse les individus à se focaliser sur la forme qui devient un outil d'argumentation.",
-  "Clé 07. TEMPLATE: Rien n’est perdu tant qu’on continue à chercher."
+  "Clé 07. A SUIVRE...: Rien n’est perdu tant qu’on continue à chercher."
 ];
 
 // ====== Config ======
