@@ -99,37 +99,38 @@
   color: #2a1a1a;
 }
 
-/* ===== Reading Counter  ===== */
-
+/* ===== Imhotep Progress Bar ===== */
 #imhotep-progress {
   position: relative;
-  width: 180px;        /* same width */
-  height: 2px;         /* thinner line */
-  background: #000;    /* black color */
-  border-radius: 2px;  /* smaller rounding for thin bar */
+  width: 180px;
+  height: 2px;           /* thin line */
+  background: #000;       /* black bar */
+  border-radius: 2px;
   margin-top: 14px;
 }
 
+/* Dot sliding along the bar */
 #imhotep-progress-dot {
   position: absolute;
   top: 50%;
   left: 0;
   width: 6px;
-  height: 8px;              /* slightly elongated for elegance */
-  background-color: #0df1f1; /* turquoise/cyan accent */
+  height: 8px;           /* slightly elongated for elegance */
+  background-color: #0df1f1; /* turquoise Egyptian accent */
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  transition: left linear;    /* JS sets actual duration */
+  transition: left linear; /* duration handled by JS */
   z-index: 2;
 }
 
+/* Ankh symbol at the end of the bar */
 #imhotep-progress-ankh {
   position: absolute;
   right: -18px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
-  color: #3d0101;
+  color: rgba(61, 1, 1, 0.7); /* muted dark red, subtle */
   z-index: 1;
 }
 
