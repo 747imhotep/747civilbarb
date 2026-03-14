@@ -9,43 +9,42 @@ function initImhotepComments() {
   const container = document.getElementById('imhotep-container');
   if (!container) return; // Exit if container not found
 
-  // Check if comment box already exists to avoid duplicates
-  if (document.getElementById('imhotep-comments')) return;
-
-  // ========================
-  // Create the comment box
-  // ========================
-  const commentsBox = document.createElement('div');
-  commentsBox.id = 'imhotep-comments';
-
-  // Title of the comment section
-  const title = document.createElement('h3');
-  title.textContent = "💬 Laissez un commentaire";
-
-  // Button to open Sender.net popup
-  const btn = document.createElement('button');
-  btn.id = 'imhotep-comment-btn';
-  btn.textContent = "Ouvrir le formulaire";
+  // Check if comment button already exists to avoid duplicates
+  const btn = document.getElementById('imhotep-comment-btn');
+  if (!btn) return;
 
   // ========================
   // Button click handler
   // ========================
   btn.addEventListener('click', () => {
-    // Check if Sender.net popup function is available
+    // Get current key from the dataset
+    const currentKey = btn.dataset.currentKey || "Clé inconnue";
+    window.currentImhotepKey = currentKey; // store globally for popup injection
+
+    // Open the Sender.net popup
     if (typeof window.SENDER_POPUP === "function") {
-      window.SENDER_POPUP.open(); // Open the popup
+      window.SENDER_POPUP.open();
     } else {
       // Fallback: open contact page in new tab
       window.open("/contact/", "_blank");
     }
   });
 
-  // Append title and button to comment box
-  commentsBox.appendChild(title);
-  commentsBox.appendChild(btn);
+  // ========================
+  // Observe DOM to detect Sender.net popup and prefill the textarea
+  // ========================
+  const observer = new MutationObserver(() => {
+    const textarea = document.querySelector("textarea");
+    if (textarea && window.currentImhotepKey && !textarea.value) {
+      textarea.value = window.currentImhotepKey + " — ";
+      textarea.focus();
+    }
+  });
 
-  // Append comment box **below Imhotep keys container**
-  container.parentNode.insertBefore(commentsBox, container.nextSibling);
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 }
 
 // ========================

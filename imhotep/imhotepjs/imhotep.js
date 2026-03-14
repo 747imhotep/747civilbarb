@@ -65,6 +65,12 @@ if(saved && saved.week === currentWeek){
 function showRandomKey() {
   if(keysThisWeekShuffled.length === 0) return; // safety check
 
+  const commentBtn = document.getElementById('imhotep-comment-btn');
+
+    if (commentBtn) {
+    commentBtn.dataset.currentKey = key;
+}
+
 
 // Find indexes of keys not yet shown
   const availableIndexes = keysThisWeekShuffled
