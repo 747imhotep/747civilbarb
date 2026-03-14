@@ -14,7 +14,9 @@ const imhotepKeys = [
     { text: "Clé 07. A SUIVRE...: Rien n’est perdu tant qu’on continue à chercher.", week: 13 }
 ];
 
+// ========================
 // Step 2: function to calculate current week
+// ========================
 function getCurrentWeek() {
   const now = new Date();
   const start = new Date(now.getFullYear(), 0, 1); // January 1st
@@ -65,14 +67,7 @@ if(saved && saved.week === currentWeek){
 function showRandomKey() {
   if(keysThisWeekShuffled.length === 0) return; // safety check
 
-  const commentBtn = document.getElementById('imhotep-comment-btn');
-
-    if (commentBtn) {
-    commentBtn.dataset.currentKey = key;
-}
-
-
-// Find indexes of keys not yet shown
+  // Find indexes of keys not yet shown
   const availableIndexes = keysThisWeekShuffled
     .map((k, i) => i)
     .filter(i => !seenKeys.includes(i));
@@ -84,7 +79,7 @@ function showRandomKey() {
     availableIndexes.push(0,1,2); // all keys available again
   }
 
-  // Pick a random index from available indexes
+  // Pick a random index
   const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
   const keyObj = keysThisWeekShuffled[randomIndex];
 
@@ -93,6 +88,11 @@ function showRandomKey() {
   localStorage.setItem(storageKey, JSON.stringify({ week: currentWeek, seen: seenKeys }));
 
   const key = keyObj.text;
+
+  // ========================
+  // Update global variable for Sender popup
+  // ========================
+  window.currentImhotepKey = key;
 
   // Update ARIA live region
   screenReader.textContent = key;
@@ -145,3 +145,19 @@ showRandomKey();
 
 // Repeat showing keys every displayTime + fadeDuration
 setInterval(showRandomKey, displayTime + fadeDuration);
+
+// ========================
+// Observe Sender popup textarea and prefill with current key
+// ========================
+const observer = new MutationObserver(() => {
+  const textarea = document.querySelector("textarea");
+  if (textarea && window.currentImhotepKey && !textarea.value) {
+    textarea.value = window.currentImhotepKey + " — ";
+    textarea.focus();
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
