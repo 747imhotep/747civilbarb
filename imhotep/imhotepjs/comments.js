@@ -24,9 +24,7 @@ function initImhotepComments() {
     // Open the Sender.net popup
     if (typeof window.SENDER_POPUP === "function") {
       window.SENDER_POPUP.open();
-    } else {
-      // Fallback: open contact page in new tab
-      window.open("/contact/", "_blank");
+ 
     }
   });
 
