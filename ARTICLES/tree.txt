@@ -25,13 +25,17 @@ here is my Root tree
 │	│
 │	├─ imhotepcss/
 │	│	│
-│	│	└─ imhotep.css       <-- add all animation & style here
+│   	│	├─ comments.css
+│	│	│
+│	│	└─ imhotep.css    	<-- 
 │	│
 │	├─ imhotepjs/
 │	│	│
-│	│	└─ imhotep.js        <-- add random key + fade animation here
+│   	│	├─ comments.js		<-- comment button logic
+│	│	│
+│	│	└─ imhotep.js   	<-- rotating keys
 │	│   
-│	└─ index.html	             <-- optional test page
+│	└─ index.html	           	<-- optional test page
 │
 │
 ├── .env.example
@@ -165,7 +169,9 @@ here is my Root tree
 │   	│
 │   	├─ center_zoom.js	
 │   	│
-│   	└─ gpdr.js
+│   	├─ gdpr.js	
+│   	│
+│   	└─ sender.js
 │   
 │
 ├── subscribe/
