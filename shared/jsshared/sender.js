@@ -1,12 +1,19 @@
 // ========================
-// civilisationoubarbarie.com
+// civilisationoubarbarie.org
 // sender.js — Script d'intégration de Sender.net pour les commentaires
 // ========================
 
+const host = location.hostname;
+
 if (
-  (location.hostname.includes("civilisationoubarbarie.com") ||
-   location.hostname === "127.0.0.1" ||
-   location.hostname === "localhost") &&
+  (
+    host === "civilisationoubarbarie.org" ||
+    host === "www.civilisationoubarbarie.org" ||
+    host === "deadangles.org" ||
+    host === "www.deadangles.org" ||
+    host === "127.0.0.1" ||
+    host === "localhost"
+  ) &&
   document.getElementById('imhotep-comment-btn')
 ) {
   (function (s, e, n, d, er) {
