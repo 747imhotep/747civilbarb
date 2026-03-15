@@ -1,0 +1,18 @@
+One question before we continue
+
+What do you want to work on next?
+
+For example:
+
+1️⃣ Improve Imhotep keys system
+2️⃣ Improve comment system
+3️⃣ Improve homepage UX
+4️⃣ Improve premium subscription system
+5️⃣ Improve site architecture / performance
+6️⃣ Improve SEO / indexing / article visibility
+7️⃣ Improve security / abuse protection
+
+
+imhotep-container in index.css:87
+imhotep-container  in imhotep.css:7
+imhotep-container p in imhotep.css:38

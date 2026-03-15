@@ -1,0 +1,977 @@
+Hi, I will share with you few documents from my website.
+please read them carefully, even twice. Make sure you come back to them before giving any answer, so you don't propose something that is already there.
+
+Also, if you have any stepping solution, make sure to share it step by step and ask before, if ever I already have any code yet. This will avoid pretending I don't have it and avoid wasting time and effort.
+
+Having said that, pleas find html file, css files and tree 
+=========================================
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dead angle institute</title>
+  
+
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+  <!-- Imhotep page specific -->
+  <link rel="stylesheet" href="/imhotep/imhotepcss/imhotep.css">
+
+  <!-- Shared UI components -->
+   <link rel="stylesheet" href="/indexcss/index.css">
+
+  <!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/cta.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+  <!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+
+  <!-- Imhotep CSS -->
+  <link rel="stylesheet" href="/imhotep/imhotepcss/comments.css">
+
+
+</head>
+<!-- ============================ -->
+<!--          CIVILBARB INDEX     -->
+<!-- ============================ --> 
+
+<body class="has-fixed-nav">
+
+<!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+<section id="hero-index">
+  <div class="hero-inner">
+    <h1>Civilisation ou Barbarie</h1>
+    <p class="manifesto">
+      Nos enquêtes s’orientent vers l’exploration de zones peu éclairées, l’examen attentif 
+      des angles morts et l’analyse de territoires sombres ou tabous — non pour clore le 
+      débat, mais pour l’ouvrir. Nous publions ces textes au format PDF afin de favoriser 
+      une lecture continue et attentive.
+    </p>
+    <p class="quote">
+      <em>En paléontologie, l’absence de preuve ne constitue pas la preuve de l’absence.</em>
+      <br>— Principe méthodologique
+    </p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main >
+
+<div class="homepage-grid">
+
+  <!-- LEFT COLUMN -->
+  <aside class="home-left">
+    <h2>Dead Angle Institute</h2>
+
+    <p>
+      <strong>Dead Angle Institute</strong> est un espace de recherche indépendant consacré
+      à l’exploration des angles morts intellectuels, culturels et historiques.
+      Notre travail consiste à examiner des sujets négligés, obscurs ou
+      volontairement écartés du débat public.
+    </p>
+
+    <p>
+      À travers la revue <strong>Civilisation ou Barbarie</strong>,
+      nous publions des enquêtes longues consacrées à ces zones d’ombre.
+      Chaque texte vise moins à conclure qu’à rouvrir des questions
+      que l’époque préfère souvent éviter.
+    </p>
+
+    <p>
+      L’objectif n’est pas de produire de l’opinion rapide,
+      mais de construire une archive critique durable.
+    </p>
+
+    <a href="/about/" class="read-more">Lire la présentation complète</a>
+  </aside>
+
+
+  <!-- CENTER -->
+  <section class="home-center page-content">
+
+    <section id="why-pdf">
+      <h2>Pourquoi le format PDF ?</h2>
+
+      <p>
+        Nous avons choisi le format PDF de manière délibérée.
+        Dans un monde façonné par la vitesse et le défilement permanent,
+        certaines écritures appellent le ralentissement.
+      </p>
+
+      <p>
+        Le PDF invite à un autre rapport au texte — un rapport qui valorise 
+        l’attention, la réflexion et la continuité.
+      </p>
+
+      <p>
+        Nos articles sont conçus pour être lus calmement, imprimés et conservés,
+        annotés à la main, partagés dans des contextes d’enseignement
+        ou de discussion.
+      </p>
+
+      <p>
+        Ce ne sont pas des articles pour l’instant.
+        Ce sont des textes faits pour durer.
+      </p>
+    </section>
+
+
+    <nav class="cta">
+      <a href="/premium/">Lire les articles récents</a>
+      <a href="/nosarticles/">Découvrir un article gratuit</a>
+      <a href="/library/" class="secondary">Explorer la bibliothèque</a>
+    </nav>
+
+  </section>
+
+
+  <!-- RIGHT COLUMN -->
+  <aside class="home-right">
+
+    <h2>
+      <img src="/pictures/hero/ankh.png" alt="Ankh" class="ankh-icon">
+      Les Clés d’Imhotep
+    </h2> 
+
+    <div id="imhotep-container">
+
+  <p id="imhotep-text" aria-live="polite"></p>
+
+  <div id="imhotep-progress">
+    <span id="imhotep-progress-dot"></span>
+    <span id="imhotep-progress-ankh">☥</span>
+  </div>
+
+
+</div>
+<div id="imhotep-comments">
+  <h3>💬 Réagir à cette clé</h3>
+  <button id="imhotep-comment-btn" aria-label="Ouvrir le formulaire de commentaire">Ouvrir le formulaire</button>
+</div>
+
+  </aside>
+  
+
+</div>
+
+</main>
+
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+  <p class="footer-links">
+    <a href="/privacy/">Politique de confidentialité</a> | 
+    <a href="/terms/">CGU</a>
+  </p>
+</footer>
+
+
+
+<script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+<script src="/navbar/jsnavbar/navbar.js" defer></script>
+<script src="/shared/jsshared/sender.js" defer ></script>
+<script src="/shared/jsshared/gdpr.js" defer></script>
+<script src="/imhotep/imhotepjs/imhotep.js" defer></script>
+<script src="/imhotep/imhotepjs/comments.js" defer></script>
+</body>
+</html>
+
+
+/* ==================================
+   Civilisation ou Barbarie
+   indexcss/index.css
+   Scoped to .page-content ONLY (except hero)
+   747civilbarb
+================================== */
+
+.homepage-grid{
+  display:grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  gap:40px;
+  width:100%;
+  padding:0 40px;
+}
+
+.home-center{
+  max-width: 820px;
+}
+
+.home-left,
+.home-right{
+  font-size:0.95rem;
+  line-height:1.6;
+}
+
+.home-left h2,
+.home-right h2{
+  font-size:1.2rem;
+  margin-bottom:15px;
+  color: #3d0101;
+  font-weight: normal;
+}
+
+.home-left{
+  background: #f4f3f1;
+  padding: 28px;
+  border-left: 4px solid #730101;
+  border-radius: 7px;
+  border: 1px solid #e2e2e2;
+  line-height: 1.6;
+}
+
+.home-left h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.home-left p{
+  text-align: justify;
+}
+
+
+.home-left .read-more{
+  display: block;
+  text-align: center;
+  margin-top:20px;
+  font-size:0.9rem;
+}
+
+.home-right{
+  position:sticky;
+  top:120px;
+  height:fit-content;
+  border: 1px solid #e2e2e2;
+  border-radius: 7px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+}
+
+.home-right h2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  color: #3d0101;
+  margin-bottom: 15px;
+}
+
+.home-right .ankh-icon {
+  width: 43px; /* adjust size as needed */
+  height: auto;
+}
+
+#imhotep-container {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#imhotep-container p{
+  margin-bottom: 12px;
+  font-size:1rem;
+  color: #2a1a1a;
+}
+
+/* ===== Imhotep Progress Bar ===== */
+#imhotep-progress {
+  position: relative;
+  width: 180px;
+  height: 2px;           /* thin line */
+  background: #000;       /* black bar */
+  border-radius: 2px;
+  margin-top: 14px;
+}
+
+/* Dot sliding along the bar */
+#imhotep-progress-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 6px;
+  height: 8px;           /* slightly elongated for elegance */
+  background-color: #0df1f1; /* turquoise Egyptian accent */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: left linear; /* duration handled by JS */
+  z-index: 2;
+}
+
+/* Ankh symbol at the end of the bar */
+#imhotep-progress-ankh {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: rgba(61, 1, 1, 0.7); /* muted dark red, subtle */
+  z-index: 1;
+}
+
+
+/* ===== Hero Section (FULL WIDTH) ===== */
+#hero-index {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/pictures/hero/hero_yaa_home01.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  min-height: 70vh;
+  text-align: center;
+  margin-bottom: 80px;
+  overflow: hidden;
+}
+
+#hero-index::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+#hero-index .hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 40px;
+}
+
+#hero-index h1 {
+  color: #dfdfdf;
+  font-size: clamp(42px, 5vw, 58px);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#hero-index .manifesto {
+  font-size: 20px;
+  color: #eee;
+  max-width: 740px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px 25px;
+  border-radius: 12px;
+  margin: 15px auto auto;
+  text-align: center;
+}
+
+#hero-index .manifesto,
+#hero-index .quote {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 19px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  max-width: 800px;
+  margin: 25px auto 25px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hero-index .manifesto:hover,
+#hero-index .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+#hero-index .quote {
+  font-style: italic;
+  color: #eee;
+  max-width: 800px;
+  background: rgba(16, 15, 15, 0.6);
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 25px auto 0 auto;
+  text-align: center;
+}
+
+/* ===== Page Content ===== */
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== Text Elements ===== */
+.page-content p {
+  color: #2a1a1a;
+  font-size: 18px;
+  max-width: 720px;
+}
+
+.page-content .quote {
+  color: #919191;
+  font-size: 17px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.page-content em {
+  font-style: italic;
+  color: #dfdfdf;
+  font-size: 20px;
+}
+
+/* ===== Section Titles ===== */
+.page-content h2 {
+  color: #3d0101;
+  text-align: center;
+  font-size: 34px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+
+
+.page-content a:hover {
+  text-decoration: underline;
+  background-color: #880000;
+  color: #f7f7f7;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  #hero-index h1 {
+    font-size: 40px;
+  }
+
+  #hero-index .hero-inner {
+    padding: 20px;
+  }
+
+  #hero-index .manifesto,
+  #hero-index .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  #hero-index h1 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width:900px){
+
+  .homepage-grid{
+    grid-template-columns:1fr;
+  }
+
+  .home-left,
+  .home-right{
+    max-width:650px;
+    margin:auto;
+  }
+
+}
+=========================================
+
+// ========================
+// Imhotep.js — Clean Version
+// Handles random keys, fade-in/out, progress animation
+// ========================
+
+// Array of Imhotep keys (text snippets)
+const imhotepKeys = [
+    { text: "Clé 01. Selon les chercheurs, sous irradiation UVB, la phéomélanine peut agir comme photosensibilisateur en générant des radicaux libres, ce qui accentue les dommages oxydatifs infligés à l’ADN des cellules cutanées. La phéomélanine, jaune-rouge, a un faible pouvoir absorbant UVB.", week: 11 }, 
+    { text: "Clé 02. La vitamine D3 module l’activité des lymphocytes T et B, ce qui aide à calibrer la réponse immunitaire pour qu’elle soit efficace sans être excessive. Une heure sous le soleil génère 2000 unités.", week: 11 },
+    { text: "Clé 03. Métissage: Le Brésil a connu une dynamique similaire à celle de l’Argentine, notamment au XIXᵉ siècle, avec une politique de métissage qui cherchait à effacer les distinctions raciales et à promouvoir un idéal de «blanchissement »", week: 11 },
+    { text: "Clé 04. Si l’on reconsidère l’énoncé « Imhotep est le père de la médecine et de l’architecture », on constate que, d’une certaine manière, il repose sur la même logique que des expressions comme « miracle grec » ou « l’Afrique a aussi pratiqué l’esclavage ». Dans tous ces cas, des réalités historiques complexes sont réduites à des formules simplificatrices, souvent chargées idéologiquement.", week: 12 },
+    { text: "Clé 05. L'agriculture est un sujet sensible. Certains utilisent la datation des premiers agriculteurs pour construire un narratif à des fins politiques pour - selon l'expression de Kalala Omotunde - \"organiser une escroquerie intellectuelle\".", week: 12 },
+    { text: "Clé 06. La diplomite. Une maladie liée au besoin de valorisation. A l'instar de la sapologie, elle pousse les individus à se focaliser sur la forme qui devient un outil d'argumentation.", week: 12 },
+    { text: "Clé 07. A SUIVRE...: Rien n’est perdu tant qu’on continue à chercher.", week: 13 }
+];
+
+// ========================
+// Step 2: function to calculate current week
+// ========================
+function getCurrentWeek() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1); // January 1st
+  const diff = now - start;                        // milliseconds since Jan 1
+  const oneWeek = 1000 * 60 * 60 * 24 * 7;        // milliseconds in a week
+  return Math.floor(diff / oneWeek) + 1;          // week number starting at 1
+}
+
+// ====== Config ======
+const displayTime = 35000; // 35 seconds per key
+const fadeDuration = 1200; // 1.2s fade-in/out
+
+// ====== DOM References ======
+const container = document.getElementById('imhotep-container');
+const screenReader = document.getElementById('imhotep-text'); // ARIA live region
+
+const progressDot = document.getElementById('imhotep-progress-dot');
+const progressAnkh = document.getElementById('imhotep-progress-ankh');
+
+// ====== Helper: Format key with bold prefix ======
+function formatKey(key) {
+  const match = key.match(/^(Clé \d+\.)\s*(.*)/);
+  if (!match) return key;
+  return `<strong>${match[1]}</strong> ${match[2]}`;
+}
+
+// ====== Step 3: Determine keys for current week ======
+const currentWeek = getCurrentWeek();
+const keysThisWeek = imhotepKeys.filter(key => key.week === currentWeek);
+
+// Optional: shuffle keys
+function shuffleArray(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+const keysThisWeekShuffled = shuffleArray(keysThisWeek);
+
+// ====== Step 4: Track seen keys per visitor ======
+let seenKeys = [];
+const storageKey = "imhotepSeenKeys";
+const saved = JSON.parse(localStorage.getItem(storageKey));
+if(saved && saved.week === currentWeek){
+  seenKeys = saved.seen;
+} else {
+  seenKeys = [];
+}
+
+// ====== Show Random Key ======
+function showRandomKey() {
+  if(keysThisWeekShuffled.length === 0) return; // safety check
+
+  // Find indexes of keys not yet shown
+  const availableIndexes = keysThisWeekShuffled
+    .map((k, i) => i)
+    .filter(i => !seenKeys.includes(i));
+
+  // If all keys already seen, reset seenKeys
+  if(availableIndexes.length === 0){
+    seenKeys = [];
+    localStorage.setItem(storageKey, JSON.stringify({ week: currentWeek, seen: seenKeys }));
+    availableIndexes.push(0,1,2); // all keys available again
+  }
+
+  // Pick a random index
+  const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+  const keyObj = keysThisWeekShuffled[randomIndex];
+
+  // Mark as seen
+  seenKeys.push(randomIndex);
+  localStorage.setItem(storageKey, JSON.stringify({ week: currentWeek, seen: seenKeys }));
+
+  const key = keyObj.text;
+
+  // ========================
+  // Update global variable for Sender popup
+  // ========================
+  window.currentImhotepKey = key;
+
+  // Update ARIA live region
+  screenReader.textContent = key;
+
+  // Remove existing key if present
+  const oldKey = container.querySelector('p.imhotep-key');
+  if (oldKey) {
+    oldKey.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
+    setTimeout(() => {
+      if (oldKey.parentNode) oldKey.parentNode.removeChild(oldKey);
+      insertNewKey(key);
+    }, fadeDuration);
+  } else {
+    insertNewKey(key);
+  }
+}
+
+// ====== Insert New Key ======
+function insertNewKey(key) {
+  const p = document.createElement('p');
+  p.classList.add('imhotep-key');
+  p.innerHTML = formatKey(key);
+
+  // Insert before the progress bar
+  container.insertBefore(p, progressDot.parentNode);
+
+  // Trigger fade-in
+  requestAnimationFrame(() => p.classList.add('fade-in'));
+  container.style.setProperty('--ankh-opacity', '0');
+
+  // Animate progress dot
+  progressDot.style.transition = 'none';
+  progressDot.style.left = '0';
+  progressDot.offsetHeight; // Force reflow
+  progressDot.style.transition = `left ${displayTime}ms linear`;
+  progressDot.style.left = '100%';
+
+  // Schedule fade-out
+  setTimeout(() => {
+    p.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+  }, displayTime);
+}
+
+// ====== Kickoff ======
+// Show the first key immediately
+showRandomKey();
+
+// Repeat showing keys every displayTime + fadeDuration
+setInterval(showRandomKey, displayTime + fadeDuration);
+
+// ========================
+// Observe Sender popup textarea and prefill with current key
+// ========================
+const observer = new MutationObserver(() => {
+  const textarea = document.querySelector("textarea");
+  if (textarea && window.currentImhotepKey && !textarea.value) {
+    textarea.value = window.currentImhotepKey + " — ";
+    textarea.focus();
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+=========================================
+
+// ========================
+// civilisationoubarbarie.com
+// sender.js — Script d'intégration de Sender.net pour les commentaires
+// ========================
+
+if (
+  (location.hostname.includes("civilisationoubarbarie.com") ||
+   location.hostname === "127.0.0.1" ||
+   location.hostname === "localhost") &&
+  document.getElementById('imhotep-comment-btn')
+) {
+  (function (s, e, n, d, er) {
+      s['Sender'] = er;
+      s[er] = s[er] || function () {
+        (s[er].q = s[er].q || []).push(arguments)
+      }, s[er].l = 1 * new Date();
+      var a = e.createElement(n),
+          m = e.getElementsByTagName(n)[0];
+      a.async = 1;
+      a.src = d;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+  sender('8ff476a5273454');
+}
+=========================================
+
+
+// ========================
+// comments.js — Clean Version
+// Handles the Imhotep comment section (button + Sender.net popup)
+// ========================
+
+// ===== Imhotep Comments Section JS =====
+function initImhotepComments() {
+  // Reference the main Imhotep container
+  const container = document.getElementById('imhotep-container');
+  if (!container) return; // Exit if container not found
+
+  // Check if comment button already exists to avoid duplicates
+  const btn = document.getElementById('imhotep-comment-btn');
+  if (!btn) return;
+
+  // ========================
+  // Button click handler
+  // ========================
+  btn.addEventListener('click', () => {
+    // Get current key from the dataset
+    const currentKey = btn.dataset.currentKey || "Clé inconnue";
+    window.currentImhotepKey = currentKey; // store globally for popup injection
+
+    // Open the Sender.net popup
+    if (typeof window.SENDER_POPUP === "function") {
+      window.SENDER_POPUP.open();
+ 
+    }
+  });
+
+  // ========================
+  // Observe DOM to detect Sender.net popup and prefill the textarea
+  // ========================
+  const observer = new MutationObserver(() => {
+    const textarea = document.querySelector("textarea");
+    if (textarea && window.currentImhotepKey && !textarea.value) {
+      textarea.value = window.currentImhotepKey + " — ";
+      textarea.focus();
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+}
+
+// ========================
+// Initialize on page load
+// ========================
+document.addEventListener('DOMContentLoaded', initImhotepComments);
+=========================================
+here is my Root tree
+🌳 747civilcarb/
+│
+├── 404.html
+│
+├── about/
+│   	├─ cssabout/about.css
+│	│
+│   	└─ index.html
+│
+├── ARTICLES/		<-- Few drafts texts for me
+│
+├── biblio/		<-- Stored PDF articles will be move to: my-worker/premium-files
+│
+├── CNAME
+│
+├── contact/
+│   	├─ csscontact/contact.css
+│	│
+│   	├─ jscontact.js
+│	│
+│   	└─ index.html
+│
+├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
+│	│
+│	├─ imhotepcss/
+│	│	│
+│   	│	├─ comments.css
+│	│	│
+│	│	└─ imhotep.css    	<-- 
+│	│
+│	├─ imhotepjs/
+│	│	│
+│   	│	├─ comments.js		<-- comment button logic
+│	│	│
+│	│	└─ imhotep.js   	<-- rotating keys
+│	│   
+│	└─ index.html	           	<-- optional test page. Empty for now.
+│
+│
+├── .env.example
+│
+├── .gitignore
+│
+│
+├── index.html
+│
+├── indexcss/
+│   │
+│   └─ index.css
+│
+├── library/
+│   │
+│   │
+│   ├──	anything/ 
+│   │	│
+│   │	├─ anything.html 
+│   │	│
+│   │	└─ cssanything/anything.css
+│   │
+│   ├──	csslibrary
+│   │	│
+│   │	└─ library.css
+│   │
+│   └─ index.html
+│
+├── my-worker/		<-- detailed tree in another file: I can share with you.
+│
+│
+├── navbar/          	<-- Navbar HTML is duplicated across pages
+│   │
+│   │
+│   ├─ cssnavbar
+│   │	│
+│   │	└─ navbar.css
+│   │	
+│   ├─ csssnippet
+│   │	│
+│   │	└─ snippet.css	<-- empty
+│   │
+│   ├─ jsnavbar/
+│   │	│
+│   │	├─ load-navbar.js
+│   │	│
+│   │	└─ navbar.js
+│   │	
+│   └─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
+│
+│
+├── nosarticles/
+│   	│
+│   	├─ cssaricles/
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├─ index.html	<-- 👉 Free articles here
+│   	│
+│   	└─ jsarticles
+│   		│
+│    		└─ articles.js
+│   
+│
+├── pictures/
+│   │	
+│   ├─ 404/
+│   │	
+│   ├─ articles/
+│   │	
+│   ├─ fav-icone/
+│   │	
+│   ├─ hero/
+│   │	
+│   ├─ library-pic/
+│   │	
+│   └─ logo/
+│
+│
+├── premium/
+│   │	
+│   ├─ csspremium
+│   │   │	
+│   │   └─ premium.css
+│   │   
+│   ├─ endpoint
+│   │   │
+│   │	└─ endpoint.js
+│   │	
+│   ├─ index.html		<---📍 It means: “I want to start a subscription”
+│   │   				👉 The button "Acceder" doesn't work for the moment
+│   │  
+│   └─ jspremium
+│       │ 
+│       └─ premium.js
+│      		
+│   
+│   
+│
+├── privacy/
+│   │
+│   ├─ cssprivacy/
+│   │   │
+│   │   └─ privacy.css
+│   │   
+│   └─ index.html
+│   
+│
+├── Readme.txt
+│
+│
+├── shared/
+│   │
+│   │
+│   ├─ cssshared/
+│   │	│
+│   │	├─ 404.css	
+│   │	│
+│   │	├─ base.css	
+│   │	│
+│   │	├─ cta.css	<-- Actualy empty for the moment
+│   │	│
+│   │	├─ footer.css	
+│   │	│
+│   │	├─ gdpr.css	
+│   │	│
+│   │	└─ layout.css	<-- Actualy empty for the moment (later, optional)
+│   │	
+│   │	
+│   └─ jsshared/
+│   	│
+│   	├─ center_zoom.js	
+│   	│
+│   	├─ gdpr.js	
+│   	│
+│   	└─ sender.js
+│   
+│
+├── subscribe/
+│   │	
+│   ├─ csssubscribe
+│   │	│
+│   │  	└─ subscribe.css
+│   │
+│   ├── index.html
+│   │
+│   │	
+│   └─ jssubscribe
+│   	│
+│   	└─ subscribe.js
+│
+├── terms/
+│   │	
+│   ├─ cssterms
+│   │	│   
+│   │	└─  terms.css
+│   │	
+│   └─  index.html 
+│
+│   
+│      
+└─  terms_of_use/
+   	 │	
+   	 ├─ csstermsofuse
+   	 │   │   
+   	 │   └─ terms_of_use.css
+   	 │
+   	 └─ index.html
+
+
+
+
+One question before we continue
+
+What do you want to work on next?
+
+For example:
+
+1️⃣ Improve Imhotep keys system
+2️⃣ Improve comment system
+3️⃣ Improve homepage UX
+4️⃣ Improve premium subscription system
+5️⃣ Improve site architecture / performance
+6️⃣ Improve SEO / indexing / article visibility
+7️⃣ Improve security / abuse protection
+
+
+imhotep-container in index.css:87
+imhotep-container  in imhotep.css:7
+imhotep-container p in imhotep.css:38

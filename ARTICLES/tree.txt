@@ -35,7 +35,7 @@ here is my Root tree
 │	│	│
 │	│	└─ imhotep.js   	<-- rotating keys
 │	│   
-│	└─ index.html	           	<-- optional test page
+│	└─ index.html	           	<-- optional test page. Empty for now.
 │
 │
 ├── .env.example
