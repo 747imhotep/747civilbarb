@@ -38,3 +38,4 @@ const checkPopup = setInterval(() => {
     clearInterval(checkPopup);
   }
 }, 100);
+

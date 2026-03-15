@@ -16,3 +16,74 @@ For example:
 imhotep-container in index.css:87
 imhotep-container  in imhotep.css:7
 imhotep-container p in imhotep.css:38
+
+
+
+
+Ah, now I understand exactly what’s happening: the current code hardcodes `imhotepKeyNumber = "12345"`, so it never picks the real key for each visitor. Also, since the Sender popup is dynamically injected inside an iframe, `document.querySelector('input[name="imhotep-key"]')` will **not find it if it’s inside the iframe**, which explains why the field sometimes doesn’t populate.
+
+We can improve it with **two main changes**:
+
+---
+
+### **1️⃣ Get the real Imhotep key dynamically**
+
+Assuming each visitor has a key shown somewhere in the page (for example, in a `data-imhotep-key` attribute or a field like `#imhotep-key`), we can pull it dynamically:
+
+```javascript
+const imhotepKeyNumber = document.getElementById('imhotep-key')?.textContent?.trim() || '';
+```
+
+Or if it’s stored in an attribute:
+
+```javascript
+const imhotepKeyNumber = document.getElementById('imhotep-key')?.dataset.key || '';
+```
+
+---
+
+### **2️⃣ Populate the field inside the Sender popup iframe**
+
+Since the popup is inside an iframe, we **cannot directly select the input from the parent document**. We need to **wait for the iframe to load** and then access its `contentDocument`. Example:
+
+```javascript
+const checkIframe = setInterval(() => {
+  const iframe = document.querySelector('#imhotep-comment-btn iframe');
+  if (iframe && iframe.contentDocument) {
+    const popupField = iframe.contentDocument.querySelector('input[name="imhotep-key"]');
+    if (popupField) {
+      popupField.value = imhotepKeyNumber;
+      popupField.readOnly = true;
+      popupField.style.backgroundColor = "#f7f7f7";
+
+      // optional fade-in
+      popupField.style.opacity = 0;
+      popupField.style.transition = "opacity 0.6s ease";
+      setTimeout(() => popupField.style.opacity = 1, 50);
+
+      clearInterval(checkIframe);
+    }
+  }
+}, 100);
+```
+
+---
+
+### ✅ **Where to place this code**
+
+1. **After `sender.js` initialization** on your page (`contact.html`), at the bottom of the page (before `</body>`).
+2. This way, the observer only starts **after Sender is loaded**, and the Imhotep key is ready to be read from the page.
+
+---
+
+If you want, I can **rewrite your full script** combining:
+
+* Host check (`civilisationoubarbarie.org` etc.)
+* Fade-in effect for popup
+* Dynamic Imhotep key detection
+* Proper iframe handling
+
+…so that it’s **fully automated and works on localhost, live domain, and all hosts**.
+
+Do you want me to do that?
+
