@@ -86,17 +86,22 @@
 
 #imhotep-container {
     position: relative;
-    min-height: 300px;
+    min-height: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    padding-top: 5px;
 }
 
 #imhotep-container p{
-  margin-bottom: 12px;
   font-size:1rem;
   color: #2a1a1a;
+}
+
+#imhotep-container .imhotep-key{
+  margin-bottom: 5px;
 }
 
 /* ===== Imhotep Progress Bar ===== */
@@ -107,6 +112,7 @@
   background: #000;       /* black bar */
   border-radius: 2px;
   margin-top: 14px;
+  margin-bottom: 14px;
 }
 
 /* Dot sliding along the bar */

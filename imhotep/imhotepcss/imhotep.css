@@ -37,7 +37,7 @@
 /* Key text */
 #imhotep-container p {
     display: block;
-    margin: 0 auto;
+    margin: 0 ;
     max-width: 600px;
     opacity: 0;
     transform: translateY(15px);
@@ -54,3 +54,5 @@
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ===== END ===== */
