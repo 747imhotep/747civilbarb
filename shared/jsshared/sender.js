@@ -11,6 +11,8 @@ if (
     host === "www.civilisationoubarbarie.org" ||
     host === "deadangles.org" ||
     host === "www.deadangles.org" ||
+    host === "https://www.deadanglesinstitute.org/" ||
+    host === "www.deadanglesinstitute.org" ||
     host === "127.0.0.1" ||
     host === "localhost"
   ) &&
