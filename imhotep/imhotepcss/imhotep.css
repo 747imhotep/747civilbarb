@@ -55,4 +55,16 @@
     transform: translateY(0);
 }
 
+/* Fade in the Sender popup */
+#imhotep-comment-btn > div,
+#imhotep-comment-btn iframe {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#imhotep-comment-btn.loaded > div,
+#imhotep-comment-btn.loaded > iframe {
+  opacity: 1;
+}
+
 /* ===== END ===== */

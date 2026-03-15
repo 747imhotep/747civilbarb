@@ -29,3 +29,12 @@ if (
     })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
   sender('8ff476a5273454');
 }
+
+// ===== Fade in Sender popup when it loads =====
+const checkPopup = setInterval(() => {
+  const popup = document.querySelector('#imhotep-comment-btn iframe');
+  if (popup) {
+    document.getElementById('imhotep-comment-btn').classList.add('loaded');
+    clearInterval(checkPopup);
+  }
+}, 100);
