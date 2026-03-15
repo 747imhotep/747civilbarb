@@ -149,13 +149,15 @@ setInterval(showRandomKey, displayTime + fadeDuration);
 // ========================
 // Observe Sender popup textarea and prefill with current key
 // ========================
-const observer = new MutationObserver(() => {
-  const textarea = document.querySelector("textarea");
-  if (textarea && window.currentImhotepKey && !textarea.value) {
-    textarea.value = window.currentImhotepKey + " — ";
-    textarea.focus();
-  }
-});
+// ========================== START OF OBSERVER (commented out for now) ==========================
+// const observer = new MutationObserver(() => {
+//   const textarea = document.querySelector("textarea");
+//   if (textarea && window.currentImhotepKey && !textarea.value) {
+//     textarea.value = window.currentImhotepKey + " — ";
+//     textarea.focus();
+//   }
+// });
+// ======================== ENND OF OBSERVER ========================
 
 observer.observe(document.body, {
   childList: true,
