@@ -1,0 +1,42 @@
+Now you understand why, in the beginning, I asked you to not rush and work step by step.
+I you have any question, you need to ask, so you get the all picture.
+This is why I shared the tree, in the beginning.
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ ...
+
+Remember, I've just shared Yesterday topic.
+Today, many thins have changed.
+
+sender.js initializes Sender.net with account ID '8ff476a5273454'
+we no longer use sender.net popup
+
+🎯 The Core Issues:
+
+    Button doesn't work on live site - Likely a path/loading issue
+-> Yes, now it works on my live website.
+    Dropdown list - You want the visitor to select key number (Clé 01, Clé 02, etc.) in the Sender popup
+->same anser
+    Comment field problem - The textarea approach isn't working well
+-> Yes we talked about it today. Please read all we've just said few minuts ago.
+you might have a momory issue.
+
+On https://www.deadanglesinstitute.org/
+Step 1: Fix the Button on Live Site
+-> it has been fixed Yesterday
+
+your
+Step 3: Updated sender.js with Dropdown Support
+will not work. Forget this solution.
+
+I can see you're confuse.
+Do not mess with what we discuss Yesterday.
