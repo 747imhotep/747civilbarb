@@ -1,0 +1,65 @@
+<!-- ✅ RFQ Modal Quotation Starts -->
+<div id="RFQ-modal" class="modal" style="display: none;">
+  <div class="modal-content" style="max-width: 600px; margin: auto; background-color: #001d4f; padding: 30px; color: antiquewhite; border-radius: 8px; position: relative;">
+    <span class="close" style="position: absolute; top: 10px; right: 20px; font-size: 1.5rem; cursor: pointer;">&times;</span>
+
+    <div class="boxquote">
+      <h2>Ask for Quotation!</h2>
+      <form id="contactForm" action="https://formspree.io/f/xeopbykq" method="POST"> 
+      
+
+      <!-- I need to keep formspree method. Formsubmit is way too simple and useless.
+       But sender.net is important to keep suscribers and and capturing the lead in 
+       Sender.net (so you can tag / follow up). Formspree helps for
+       immediate email notification of the request (so someone on your team responds)
+       
+      -->
+      <!-- 
+      <form id="contactForm" action="https://formsubmit.co/customserv1@lunyns.com/" method="POST">
+        -->
+      
+        
+        <!-- Required for FormSubmit -->
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_subject" value="New submission!">
+          <input type="hidden" name="_blacklist,scammer" value="spammy pattern, banned term, phrase">
+          <input type="hidden" name="_next" value="https://lunyns.com/Thanks/Thanks.html">
+          <input type="text" name="_honey" style="position: absolute; left: -9999px;">
+
+
+        <label for="name">Name:*</label>
+        <input type="text" id="name" name="name" required class="form-control mb-3">
+
+        <label for="email">Email:*</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" class="form-control mb-3">
+
+        <label for="subject">Subject:*</label>
+        <input type="text" id="subject" name="subject" class="form-control mb-3">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required class="form-control mb-4" rows="4"></textarea>
+
+        <label for="consent" class="form-check-label mb-3">
+        <input type="checkbox" id="consent" name="consent" required class="form-check-input">
+        I consent to receive business-related emails and updates from www.lunyns.com. 
+        I agree to LUNYNS Ltd.'s 
+        <a href="http://privacy-policy/terms-and-privacy.html">Terms of use & Privacy-Policy.</a>
+        </label>
+
+
+        <button type="submit" class="btn btn-light">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+        <button type="button" id="clearFormBtn" class="btn btn-secondary ms-2">
+            <i class="fas fa-eraser"></i> Clear Form
+        </button>
+      </form>
+    </div><!-- box quote END-->
+  </div>
+</div>
+<!-- RFQ Modal Quotation Ends -->
+
+
+
+
