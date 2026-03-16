@@ -27,13 +27,25 @@ here is my Root tree
 │	│	│
 │   	│	├─ comments.css
 │	│	│
-│	│	└─ imhotep.css    	<-- 
+│   	│	├─ imhotep.css
+│	│	│
+│	│	└─ rfq-modal.css    	<-- 
 │	│
 │	├─ imhotepjs/
 │	│	│
-│   	│	├─ comments.js		<-- comment button logic
+│   	│	├─ comments.js		<-- backup file
 │	│	│
-│	│	└─ imhotep.js   	<-- rotating keys
+│   	│	├─ comments-new.js	<-- comment button logic
+│	│	│
+│	│	│
+│   	│	├─ imhotep.js		<-- rotating keys
+│	│	│
+│	│	│
+│   	│	├─ rfq-modal.js		<-- comment: New file
+│	│	│
+│	│	│
+│	│	└─ sender-dropdown.js   <-- 
+│	│   
 │	│   
 │	└─ index.html	           	<-- optional test page. Empty for now.
 │
