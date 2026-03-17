@@ -127,6 +127,13 @@
   color: #ffd6d6;
 }
 
+label[for="consent"] {
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
 
 /* ==================================
    Modal Buttons
@@ -134,10 +141,11 @@
 
 .cmt-modal-content button {
   font-family: Georgia, serif;
+  font-weight: 600;
 
-  border: 1px solid #880000;
+  border: 1px solid #4e0000;
   background-color: #ef0808;
-  color: #f7f7f7;
+  color: #100000;
 
   padding: 12px 25px;
 
