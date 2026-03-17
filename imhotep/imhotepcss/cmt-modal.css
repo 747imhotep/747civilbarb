@@ -3,9 +3,7 @@
    CMT Modal overlay
 ================================== */
 
-
 .cmt-modal {
-  display: flex;
   position: fixed;
   z-index: 9999;
   top: 0;
@@ -21,15 +19,8 @@
 
   /* smooth fade-in/out for visibility */
   transition: opacity 0.3s ease;
-    opacity: 0; /* opacity 0 = completely hidden */
-    pointer-events: none; /* prevent interaction when hidden */
-    
-}
-
-.cmt-modal {
-  display: flex;
-  opacity: 0; /* hidden by default */
-  pointer-events: none;
+  opacity: 0; /* opacity 0 = completely hidden */
+  pointer-events: none; /* prevent interaction when hidden */
 }
 
 .cmt-modal.active {
@@ -37,26 +28,44 @@
   pointer-events: auto;
 }
 
+
+/* ==================================
+   Modal content box
+================================== */
+
 .cmt-modal-content {
   width: 90%;
   max-width: 720px;
-  max-height: 75vh; /* limit height to 75% of viewport */
-  overflow-y: auto; /* allow scrolling if content is too tall */
+
+  /* limit height so modal never fills the screen */
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   background: linear-gradient(135deg, #0e0c0c, #672c2c);
   color: antiquewhite;
-  margin-top: 50px;
+
   padding: 40px 30px;
   border-radius: 7px;
+
   position: relative;
+
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+
   animation: modalFade 0.35s ease forwards;
+
+  /* subtle floating effect */
   transform: translateY(-10px);
 
   /* Responsive tweak: smaller padding on narrow screens */
   box-sizing: border-box;
 }
 
-/* Modal form inputs */
+
+/* ==================================
+   Modal form inputs
+================================== */
+
 .cmt-modal-content form {
   display: flex;
   flex-direction: column;
@@ -75,10 +84,13 @@
   width: 100%;
   padding: 10px 12px;
   font-size: 1rem;
+
   border: 1px solid #aaa;
   border-radius: 5px;
+
   background-color: #fff;
   color: #000;
+
   box-sizing: border-box;
 }
 
@@ -100,96 +112,154 @@
   margin-bottom: 15px;
 }
 
-/* Links inside the modal */
+
+/* ==================================
+   Links inside modal
+================================== */
+
 .cmt-modal-content a {
-  color: #d8c9a3;          /* light color */
+  color: #d8c9a3; /* parchment style */
   text-decoration: underline;
 }
 
 .cmt-modal-content a:hover {
-  color: #ffd6d6;          /* subtle hover */
+  color: #ffd6d6;
 }
 
-/* Modal Buttons */
+
+/* ==================================
+   Modal Buttons
+================================== */
+
 .cmt-modal-content button {
   font-family: Georgia, serif;
+
   border: 1px solid #880000;
   background-color: #ef0808;
   color: #f7f7f7;
+
   padding: 12px 25px;
+
   cursor: pointer;
   border-radius: 5px;
+
   transition: all 0.3s ease;
+
   margin-top: 10px;
+
   width: fit-content; /* shrink to content */
 }
 
 .cmt-modal-content button:hover {
   background-color: #f7f7f7;
   color: #880000;
+
   box-shadow: 0 4px 12px rgba(22,1,1,0.4);
 }
 
-/* Boxquote container */
+
+/* ==================================
+   Boxquote container
+================================== */
+
 .boxquote {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid #fff;
-    border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 600px;
+  margin: 0 auto;
+
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-left: 4px solid #fff;
+  border-radius: 4px;
 }
 
-/* Heading */
+
+/* ==================================
+   Headings
+================================== */
+
 .boxquote h2 {
-    margin-top: 0;
-    font-size: 1.8rem;
-    color: #fff;
-    font-weight: 700;
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
 }
 
 .boxquote h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
-    color: #fff;
-    text-align: center;
-    font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  font-size: 1.2rem;
+
+  color: #fff;
+  text-align: center;
+
+  font-weight: 600;
 }
 
 .boxquote p {
-    font-size: 1rem;
-    color: #ddd;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 40px;
-    font-weight: 500;
+  font-size: 1rem;
+  color: #ddd;
+
+  text-align: center;
+
+  margin-top: 0;
+  margin-bottom: 40px;
+
+  font-weight: 500;
 }
+
+
+/* ==================================
+   Imhotep key field (readonly)
+================================== */
 
 #cle {
   background: rgba(255,255,255,0.08);
   color: #ddd;
+
   border: 1px solid rgba(255,255,255,0.25);
+
+  font-style: italic;
+  cursor: default;
 }
 
-/* close button */
+
+/* ==================================
+   Close button
+================================== */
+
 .cmt-close {
   position: absolute;
+
   top: 14px;
   right: 20px;
 
   font-size: 28px;
+
   cursor: pointer;
+
   color: antiquewhite;
+
   user-select: none;
+
   transition: color 0.2s ease;
 }
 
+.cmt-close:hover {
+  color: #ffd6d6;
+}
 
-/* animation */
+
+/* ==================================
+   Modal animation
+================================== */
+
 @keyframes modalFade {
 
   from {
@@ -204,7 +274,13 @@
 
 }
 
+
+/* ==================================
+   Responsive adjustments
+================================== */
+
 @media (max-width: 768px) {
+
   .cmt-modal-content {
     padding: 20px 15px;
     width: 95%;
@@ -223,9 +299,11 @@
     font-size: 1rem;
     margin-bottom: 30px;
   }
-.cmt-close {
+
+  .cmt-close {
     top: 10px;
     right: 15px;
     font-size: 24px;
   }
+
 }
