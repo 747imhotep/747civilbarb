@@ -19,25 +19,34 @@ const imhotepKeys = [
 // ========================
 function getCurrentWeek() {
   const now = new Date();
-  const start = new Date(now.getFullYear(), 0, 1); // January 1st
-  const diff = now - start;                        // milliseconds since Jan 1
-  const oneWeek = 1000 * 60 * 60 * 24 * 7;        // milliseconds in a week
-  return Math.floor(diff / oneWeek) + 1;          // week number starting at 1
+  const start = new Date(now.getFullYear(), 0, 1);
+  const diff = now - start;
+  const oneWeek = 1000 * 60 * 60 * 24 * 7;
+  return Math.floor(diff / oneWeek) + 1;
 }
 
 // ====== Config ======
-const displayTime = 35000; // 35 seconds per key
-const fadeDuration = 1200; // 1.2s fade-in/out
+const displayTime = 35000;
+const fadeDuration = 1200;
 
 // ====== DOM References ======
 const container = document.getElementById('imhotep-container');
-const screenReader = document.getElementById('imhotep-text'); // ARIA live region
-
+const screenReader = document.getElementById('imhotep-text');
 const progressDot = document.getElementById('imhotep-progress-dot');
 const progressAnkh = document.getElementById('imhotep-progress-ankh');
 
 // ====== Track recent key numbers ======
-let recentKeyNumbers = []; // Array to store last 3 key numbers (e.g., "Clé 02", "Clé 05")
+let recentKeyNumbers = []; // SINGLE DECLARATION - KEEP THIS ONE ONLY
+
+// ====== Clear any stale textarea data on page load ======
+document.addEventListener('DOMContentLoaded', function() {
+  // Clear any textarea that might already exist
+  const existingTextarea = document.querySelector("textarea");
+  if (existingTextarea) {
+    existingTextarea.value = '';
+  }
+  // DO NOT clear window.currentImhotepKey here!
+});
 
 // ====== Helper: Format key with bold prefix ======
 function formatKey(key) {
@@ -50,7 +59,6 @@ function formatKey(key) {
 const currentWeek = getCurrentWeek();
 const keysThisWeek = imhotepKeys.filter(key => key.week === currentWeek);
 
-// Optional: shuffle keys
 function shuffleArray(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
@@ -68,51 +76,42 @@ if(saved && saved.week === currentWeek){
 
 // ====== Show Random Key ======
 function showRandomKey() {
-  if(keysThisWeekShuffled.length === 0) return; // safety check
+  if(keysThisWeekShuffled.length === 0) return;
 
-  // Find indexes of keys not yet shown
   const availableIndexes = keysThisWeekShuffled
     .map((k, i) => i)
     .filter(i => !seenKeys.includes(i));
 
-  // If all keys already seen, reset seenKeys
   if(availableIndexes.length === 0){
     seenKeys = [];
     localStorage.setItem(storageKey, JSON.stringify({ week: currentWeek, seen: seenKeys }));
-    availableIndexes.push(0,1,2); // all keys available again
+    availableIndexes.push(0,1,2);
   }
 
-  // Pick a random index
   const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
   const keyObj = keysThisWeekShuffled[randomIndex];
 
-  // Mark as seen
   seenKeys.push(randomIndex);
   localStorage.setItem(storageKey, JSON.stringify({ week: currentWeek, seen: seenKeys }));
 
   const key = keyObj.text;
 
-  // ========================
-  // Update global variable for Sender popup
-  // ========================
+  // Extract just the "Clé XX" part
+  const keyNumberMatch = key.match(/^(Clé \d+\.)/);
+  const keyNumber = keyNumberMatch ? keyNumberMatch[1] : "Clé";
 
-  // Extract just the "Clé XX" part from the key text
-const keyNumberMatch = key.match(/^(Clé \d+\.)/);
-const keyNumber = keyNumberMatch ? keyNumberMatch[1] : "Clé";
+  // Update recent key numbers array (keep last 3)
+  recentKeyNumbers.push(keyNumber);
+  if (recentKeyNumbers.length > 3) {
+    recentKeyNumbers.shift();
+  }
 
-// Update recent key numbers array (keep last 3)
-recentKeyNumbers.push(keyNumber);
-if (recentKeyNumbers.length > 3) {
-    recentKeyNumbers.shift(); // Remove oldest key number if we have more than 3
-}
-
-// Update global variable with formatted string of last 3 key numbers
-window.currentImhotepKey = recentKeyNumbers.join(' ');
+  // Update global variable with formatted string of last 3 key numbers
+  window.currentImhotepKey = recentKeyNumbers.join(' ');
 
   // Update ARIA live region
   screenReader.textContent = key;
 
-  // Remove existing key if present
   const oldKey = container.querySelector('p.imhotep-key');
   if (oldKey) {
     oldKey.classList.remove('fade-in');
@@ -133,21 +132,17 @@ function insertNewKey(key) {
   p.classList.add('imhotep-key');
   p.innerHTML = formatKey(key);
 
-  // Insert before the progress bar
   container.insertBefore(p, progressDot.parentNode);
 
-  // Trigger fade-in
   requestAnimationFrame(() => p.classList.add('fade-in'));
   container.style.setProperty('--ankh-opacity', '0');
 
-  // Animate progress dot
   progressDot.style.transition = 'none';
   progressDot.style.left = '0';
-  progressDot.offsetHeight; // Force reflow
+  progressDot.offsetHeight;
   progressDot.style.transition = `left ${displayTime}ms linear`;
   progressDot.style.left = '100%';
 
-  // Schedule fade-out
   setTimeout(() => {
     p.classList.remove('fade-in');
     container.style.setProperty('--ankh-opacity', '1');
@@ -155,39 +150,30 @@ function insertNewKey(key) {
 }
 
 // ====== Kickoff ======
-// Show the first key immediately
 showRandomKey();
-
-// Repeat showing keys every displayTime + fadeDuration
 setInterval(showRandomKey, displayTime + fadeDuration);
 
 // ========================
-// Observe Sender popup textarea and prefill with current key
+// Observe Sender popup textarea and prefill with key numbers
 // ========================
-
-
-// ========================== START OF OBSERVER (commented out for now) ==========================
-
-
 const observer = new MutationObserver(() => {
   const textarea = document.querySelector("textarea");
-  if (textarea && window.currentImhotepKey && !textarea.value) {
-    // Get the last key number from the array (most recent)
-    const lastKeyNumber = recentKeyNumbers.length > 0 ? recentKeyNumbers[recentKeyNumbers.length - 1] : "Clé";
+  if (textarea && recentKeyNumbers.length > 0 && !textarea.value) {
     
-    // Format with colon and line break
-    textarea.value = lastKeyNumber + ": \n";
-    textarea.focus();
+    const isVisible = textarea.offsetParent !== null;
     
-    // Place cursor on the empty line (after the two line breaks)
-    // This puts cursor on line 3, ready for typing
-    textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+    if (isVisible) {
+      const lastKeyNumber = recentKeyNumbers.length > 0 ? recentKeyNumbers[recentKeyNumbers.length - 1] : "Clé";
+      
+      textarea.value = lastKeyNumber + ":\n\n";
+      textarea.focus();
+      textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+      sessionStorage.setItem('lastCommentKey', lastKeyNumber);
+    }
   }
 });
-// ======================== ENND OF OBSERVER ========================
+
 observer.observe(document.body, {
   childList: true,
   subtree: true
 });
-
-
