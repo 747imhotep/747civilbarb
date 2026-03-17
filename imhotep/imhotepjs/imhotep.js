@@ -36,6 +36,9 @@ const screenReader = document.getElementById('imhotep-text'); // ARIA live regio
 const progressDot = document.getElementById('imhotep-progress-dot');
 const progressAnkh = document.getElementById('imhotep-progress-ankh');
 
+// ====== Track recent key numbers ======
+let recentKeyNumbers = []; // Array to store last 3 key numbers (e.g., "Clé 02", "Clé 05")
+
 // ====== Helper: Format key with bold prefix ======
 function formatKey(key) {
   const match = key.match(/^(Clé \d+\.)\s*(.*)/);
@@ -92,7 +95,19 @@ function showRandomKey() {
   // ========================
   // Update global variable for Sender popup
   // ========================
-  window.currentImhotepKey = key;
+
+  // Extract just the "Clé XX" part from the key text
+const keyNumberMatch = key.match(/^(Clé \d+\.)/);
+const keyNumber = keyNumberMatch ? keyNumberMatch[1] : "Clé";
+
+// Update recent key numbers array (keep last 3)
+recentKeyNumbers.push(keyNumber);
+if (recentKeyNumbers.length > 3) {
+    recentKeyNumbers.shift(); // Remove oldest key number if we have more than 3
+}
+
+// Update global variable with formatted string of last 3 key numbers
+window.currentImhotepKey = recentKeyNumbers.join(' ');
 
   // Update ARIA live region
   screenReader.textContent = key;
@@ -149,17 +164,30 @@ setInterval(showRandomKey, displayTime + fadeDuration);
 // ========================
 // Observe Sender popup textarea and prefill with current key
 // ========================
-// ========================== START OF OBSERVER (commented out for now) ==========================
-// const observer = new MutationObserver(() => {
-//   const textarea = document.querySelector("textarea");
-//   if (textarea && window.currentImhotepKey && !textarea.value) {
-//     textarea.value = window.currentImhotepKey + " — ";
-//     textarea.focus();
-//   }
-// });
-// ======================== ENND OF OBSERVER ========================
 
+
+// ========================== START OF OBSERVER (commented out for now) ==========================
+
+
+const observer = new MutationObserver(() => {
+  const textarea = document.querySelector("textarea");
+  if (textarea && window.currentImhotepKey && !textarea.value) {
+    // Get the last key number from the array (most recent)
+    const lastKeyNumber = recentKeyNumbers.length > 0 ? recentKeyNumbers[recentKeyNumbers.length - 1] : "Clé";
+    
+    // Format with colon and line break
+    textarea.value = lastKeyNumber + ": \n";
+    textarea.focus();
+    
+    // Place cursor on the empty line (after the two line breaks)
+    // This puts cursor on line 3, ready for typing
+    textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+  }
+});
+// ======================== ENND OF OBSERVER ========================
 observer.observe(document.body, {
   childList: true,
   subtree: true
 });
+
+
