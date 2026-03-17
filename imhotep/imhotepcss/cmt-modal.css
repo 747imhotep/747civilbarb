@@ -38,6 +38,7 @@
   max-width: 720px;
 
   /* limit height so modal never fills the screen */
+  margin-top: 50px;
   max-height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
