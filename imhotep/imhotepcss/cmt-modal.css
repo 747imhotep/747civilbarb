@@ -144,7 +144,7 @@ label[for="consent"] {
   font-weight: 600;
 
   border: 1px solid #4e0000;
-  background-color: #ef0808;
+  background-color: #ff5d5d;
   color: #100000;
 
   padding: 12px 25px;
@@ -163,7 +163,7 @@ label[for="consent"] {
   background-color: #f7f7f7;
   color: #880000;
 
-  box-shadow: 0 4px 12px rgba(22,1,1,0.4);
+  box-shadow: 0 4px 12px rgba(216, 201, 163, 0.4);
 }
 
 
