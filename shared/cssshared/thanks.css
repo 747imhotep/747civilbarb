@@ -1,0 +1,105 @@
+
+
+body {
+  background: radial-gradient(circle at center, #f7f7f7 0%, #3b0000 100%);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
+
+.hero-contact {
+  height: 16vh;  
+  padding: 100px 0;             /* Add vertical spacing */
+
+}
+
+/* Thanks.css */
+.merci{
+  background: url('/IMAGES/mainIMAGES/imgBANNER/ThankYou\ 02.jpg') center center/cover no-repeat;
+  background-size: cover;       /* Makes sure image covers entire section */
+  background-position: bottom;  /* Centers the image */
+  background-repeat: no-repeat; /* No repeating */
+  color: #fff;                /* Text color */
+  padding: 100px 0;             /* Add vertical spacing */
+}
+
+
+
+.thank-you-container {
+  background-color: rgba(59, 0, 0, 0.43); /* ✅ Makes background transparent */
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: right;
+  text-align: center;
+  height: 12vh;
+  width: 420px;
+  border-radius: 7px;
+  box-shadow: 0 4px 8px rgba(32, 2, 2, 0.5);
+  margin: 0 auto; /* Center the container horizontally */
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  padding: 40px 20px;
+  color : #ebe5c8; /* text brand blue */
+  font-weight: 700;
+  font-size: 25px;
+}
+
+
+.thank-you-container h1 {
+  font-size: 2.7rem;
+  color: #002f81; /* brand blue */
+  margin-bottom: 20px;
+}
+
+.thank-you-container h2 {
+  font-size: 2.5rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.thank-you-container h3 {
+  font-size: 1.90rem;
+  margin-bottom: 20px;
+}
+
+.thank-you-container h4{
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.countdown {
+   font-style: small; 
+   color: #a4fff0;
+   margin-bottom: 10px;
+}
+
+
+.goback {
+    padding: 10px 20px;
+    background-color: #860000;
+    color: #a4fff0;
+    border: none;
+    border-radius: 7px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goback:hover {
+    background-color: #ff6a6a;
+    border: solid 1px #880000;
+    color: #fff;
+    box-shadow: #3b0000 0px 4px 12px;
+}
+
+
+
+ /* ==================================
+    SMARTPHONE OPTIMIZATION
+================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
