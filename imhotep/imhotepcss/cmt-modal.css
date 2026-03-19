@@ -1,26 +1,21 @@
 /* ==================================
-   Civilisation ou Barbarie
-   CMT Modal overlay
+   1. MODAL LAYOUT
 ================================== */
 
 .cmt-modal {
   position: fixed;
+  inset: 0;
   z-index: 9999;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.65); /* overlay background */
 
-  /* center content using flexbox */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* smooth fade-in/out for visibility */
+  background: rgba(0,0,0,0.65);
+
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
-  opacity: 0; /* opacity 0 = completely hidden */
-  pointer-events: none; /* prevent interaction when hidden */
 }
 
 .cmt-modal.active {
@@ -30,58 +25,118 @@
 
 
 /* ==================================
-   Modal content box
+   2. MODAL CONTENT
 ================================== */
 
 .cmt-modal-content {
+  position: relative;
+
   width: 90%;
   max-width: 720px;
 
-  /* limit height so modal never fills the screen */
   margin-top: 50px;
+
   max-height: 75vh;
   overflow-y: auto;
   overflow-x: hidden;
 
-  background: linear-gradient(135deg, #0e0c0c, #672c2c);
-  color: antiquewhite;
-
   padding: 40px 30px;
   border-radius: 7px;
 
-  position: relative;
+  background: linear-gradient(135deg, #0e0c0c, #672c2c);
+  color: antiquewhite;
 
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 
+  transform: translateY(-10px);
   animation: modalFade 0.35s ease forwards;
 
-  /* subtle floating effect */
-  transform: translateY(-10px);
-
-  /* Responsive tweak: smaller padding on narrow screens */
   box-sizing: border-box;
 }
 
 
 /* ==================================
-   Modal form inputs
+   3. INNER CONTAINER (BOX)
 ================================== */
-.cmt-modal-content [hidden] {
-  display: none !important;
+
+.boxquote {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  border-left: 4px solid #fff;
+  border-radius: 4px;
 }
+
+
+/* ==================================
+   4. TYPOGRAPHY
+================================== */
+
+.boxquote h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.boxquote h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+.boxquote p {
+  margin: 0 0 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: #ddd;
+}
+
+
+/* ==================================
+   5. FORM STRUCTURE
+================================== */
 
 .cmt-modal-content form {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* spacing between fields */
   width: 100%;
 }
 
 .cmt-modal-content label {
   font-weight: 600;
-  margin-bottom: 5px;
-  display: none !important;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 49px; /* space BETWEEN groups */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px; /* space INSIDE group (label → input) */
+}
+
+label[for="consent"] {
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* ==================================
+   6. FORM ELEMENTS
+================================== */
 
 .cmt-modal-content input,
 .cmt-modal-content textarea {
@@ -99,22 +154,18 @@
 }
 
 .cmt-modal-content textarea {
-  resize: vertical; /* allow vertical resizing */
+  resize: vertical;
 }
 
-.cmt-modal-content form label + input,
-.cmt-modal-content form label + textarea {
-  margin-bottom: 10px;
-}
-
-.cmt-modal-content form label input[type="checkbox"] {
+.cmt-modal-content input[type="checkbox"] {
   width: auto;
   margin-right: 8px;
 }
 
-.cmt-modal-content form p {
-  margin-bottom: 15px;
-}
+
+/* ==================================
+   7. SPECIAL FIELDS
+================================== */
 
 #cle_display {
   background: rgba(255,255,255,0.08);
@@ -122,12 +173,28 @@
   cursor: not-allowed;
 }
 
+#cle {
+  background: rgba(255,255,255,0.08);
+  color: #ddd;
+  border: 1px solid rgba(255,255,255,0.25);
+  font-style: italic;
+  cursor: default;
+}
+
+#charCount {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-align: right;
+  margin-top: -10px;
+}
+
+
 /* ==================================
-   Links inside modal
+   8. LINKS
 ================================== */
 
 .cmt-modal-content a {
-  color: #d8c9a3; /* parchment style */
+  color: #d8c9a3;
   text-decoration: underline;
 }
 
@@ -144,125 +211,64 @@ label[for="consent"] {
 
 
 /* ==================================
-   Modal Buttons
+   9. BUTTONS
 ================================== */
 
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+.consent-label input {
+  margin-top: 4px; /* aligns checkbox with first line */
+}
+
 .cmt-modal-content button {
+  align-self: flex-start;
+
   font-family: Georgia, serif;
   font-weight: 600;
 
-  border: 1px solid #4e0000;
-  background-color: #ff5d5d;
-  color: #100000;
-
   padding: 12px 25px;
 
-  cursor: pointer;
+  border: 1px solid #4e0000;
   border-radius: 5px;
 
+  background-color: transparent;
+  border: 1px solid #fff1cd;
+  color: #d8c9a3;
+
+  cursor: pointer;
   transition: all 0.3s ease;
-
-  margin-top: 10px;
-
-  width: fit-content; /* shrink to content */
 }
 
 .cmt-modal-content button:hover {
   background-color: #f7f7f7;
   color: #880000;
-
-  box-shadow: 0 4px 12px rgba(216, 201, 163, 0.4);
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: 0 4px 12px rgba(237, 219, 173, 0.4);
 }
 
 
 /* ==================================
-   Boxquote container
-================================== */
-
-.boxquote {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  max-width: 600px;
-  margin: 0 auto;
-
-  padding: 20px;
-
-  background: rgba(255, 255, 255, 0.1);
-
-  border-left: 4px solid #fff;
-  border-radius: 4px;
-}
-
-
-/* ==================================
-   Headings
-================================== */
-
-.boxquote h2 {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: #fff;
-  font-weight: 700;
-}
-
-.boxquote h3 {
-  margin-top: 10px;
-  margin-bottom: 5px;
-
-  font-size: 1.2rem;
-
-  color: #fff;
-  text-align: center;
-
-  font-weight: 600;
-}
-
-.boxquote p {
-  font-size: 1rem;
-  color: #ddd;
-
-  text-align: center;
-
-  margin-top: 0;
-  margin-bottom: 40px;
-
-  font-weight: 500;
-}
-
-
-/* ==================================
-   Imhotep key field (readonly)
-================================== */
-
-#cle {
-  background: rgba(255,255,255,0.08);
-  color: #ddd;
-
-  border: 1px solid rgba(255,255,255,0.25);
-
-  font-style: italic;
-  cursor: default;
-}
-
-
-/* ==================================
-   Close button
+   10. CLOSE BUTTON
 ================================== */
 
 .cmt-close {
   position: absolute;
-
   top: 14px;
   right: 20px;
 
   font-size: 28px;
-
-  cursor: pointer;
-
   color: antiquewhite;
 
+  cursor: pointer;
   user-select: none;
 
   transition: color 0.2s ease;
@@ -274,33 +280,30 @@ label[for="consent"] {
 
 
 /* ==================================
-   Modal animation
+   11. ANIMATION
 ================================== */
 
 @keyframes modalFade {
-
   from {
     transform: translateY(-20px);
     opacity: 0;
   }
-
   to {
     transform: translateY(0);
     opacity: 1;
   }
-
 }
 
 
 /* ==================================
-   Responsive adjustments
+   12. RESPONSIVE
 ================================== */
 
 @media (max-width: 768px) {
 
   .cmt-modal-content {
-    padding: 20px 15px;
     width: 95%;
+    padding: 20px 15px;
   }
 
   .boxquote {
@@ -322,5 +325,4 @@ label[for="consent"] {
     right: 15px;
     font-size: 24px;
   }
-
 }
