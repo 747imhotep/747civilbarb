@@ -25,15 +25,21 @@ here is my Root tree
 │	│
 │	├─ imhotepcss/
 │	│	│
+│   	│	├─ cmt-modal.css
+│	│	│
 │   	│	├─ comments.css
 │	│	│
-│   	│	├─ imhotep.css
-│	│	│
-│	│	└─ rfq-modal.css    	<-- 
+│	│	└─ imhotep.css    	<-- 
+│	│
 │	│
 │	├─ imhotepjs/
 │	│	│
+│	│	│
+│   	│	├─ cmt-modal.js		<-- New file
+│	│	│
+│	│	│
 │   	│	├─ comments.js		<-- backup file
+│	│	│
 │	│	│
 │   	│	├─ comments-new.js	<-- comment button logic
 │	│	│
@@ -41,10 +47,17 @@ here is my Root tree
 │   	│	├─ imhotep.js		<-- rotating keys
 │	│	│
 │	│	│
-│   	│	├─ rfq-modal.js		<-- comment: New file
+│   	│	├─ sender-dropdown.js	<-- rotating keys
 │	│	│
 │	│	│
-│	│	└─ sender-dropdown.js   <-- 
+│   	│	├─ sender_emb.js	<-- New file
+│	│	│
+│	│	│
+│	│	└─ sender_emb_gpt.js   	<-- 
+│	│
+│	│
+│	├─ imhotep-keys.json
+│	│
 │	│   
 │	│   
 │	└─ index.html	           	<-- optional test page. Empty for now.

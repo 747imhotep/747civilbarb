@@ -1,0 +1,69 @@
+Please take a look of the schematic:
+
+where is the memory ???
+I just add line 3
+
+
+
+
+    
+    
+    
+
+
+    
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+
+
+
+
+
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+
+
+┌───────────────────────────────────────────────────────────────────────┐
+│  🔵 TRY THIS SEQUENCE:                                           	│
+│                                                                	│
+│  1. User clicks to open modal                                     	│
+│  2. Observer detects modal active                                 	│
+│  3. Keep recentKeyNumbers in a memory
+│  4. STEP A runs:                                                  	│
+│     ✅ dropdown.value = ''                                        	│
+│     ✅ textarea.value = ''                                        	│
+│     🔵 populate recentKeyNumbers from memory = []  ←                     	│
+│     ❓ window.currentImhotepKey = ''                              	│
+│                                                                   	│
+│  4. STEP B tries to run:                                          	│	
+│     Check: textarea? ✅                                           	│
+│     Check: modalJustOpened? ✅                                    	│
+│     Check: recentKeyNumbers.length > 0? ❌ (now empty)            	│
+│     Check: !textarea.value? ✅                                    	│
+│                                                                   	│
+│  RESULT: Condition fails → nothing fills the form! 💥             	│
+└───────────────────────────────────────────────────────────────────────┘

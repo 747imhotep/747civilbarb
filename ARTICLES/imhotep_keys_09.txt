@@ -1,0 +1,362 @@
+Please take a look of the file:
+imhotep.js
+This version make Key Field show "cle xx" correctly
+But empty Comments Field
+
+Please give me a schematic of this entire code.
+
+
+
+
+
+    
+    
+    
+
+
+    
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+
+
+
+
+
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+// ========================
+// Imhotep.js — JSON Version
+// Handles random keys, fade-in/out, progress animation
+// ========================
+
+let imhotepKeys = [];
+let recentKeyNumbers = [];
+let keysThisWeekShuffled = [];
+let seenKeys = [];
+let currentWeek;
+let modalJustOpened = false; // Track when modal opens
+
+// ====== DOM References ======
+const container = document.getElementById('imhotep-container');
+const screenReader = document.getElementById('imhotep-text');
+const progressDot = document.getElementById('imhotep-progress-dot');
+const progressAnkh = document.getElementById('imhotep-progress-ankh');
+
+// ====== Config ======
+const displayTime = 35000;
+const fadeDuration = 1200;
+
+// ====== Load keys from JSON ======
+fetch('/imhotep/imhotep-keys.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    imhotepKeys = data;
+    initializeImhotep();
+  })
+  .catch(error => {
+    console.error('Error loading Imhotep keys:', error);
+    if (container) {
+      container.innerHTML = '<p class="error">Clés temporairement indisponibles</p>';
+    }
+  });
+
+// ====== Initialize everything once keys are loaded ======
+function initializeImhotep() {
+
+  currentWeek = getCurrentWeek();
+
+  const keysThisWeek = imhotepKeys.filter(key => key.week === currentWeek);
+  keysThisWeekShuffled = shuffleArray(keysThisWeek);
+
+  const storageKey = "imhotepSeenKeys";
+  const saved = JSON.parse(localStorage.getItem(storageKey));
+
+  if(saved && saved.week === currentWeek){
+    seenKeys = saved.seen;
+  } else {
+    seenKeys = [];
+  }
+
+  const existingTextarea = document.querySelector("textarea");
+  if (existingTextarea) {
+    existingTextarea.value = '';
+  }
+
+  showRandomKey();
+  setInterval(showRandomKey, displayTime + fadeDuration);
+}
+
+// ====== Helper: Get current week number ======
+function getCurrentWeek() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1);
+  const diff = now - start;
+  const oneWeek = 1000 * 60 * 60 * 24 * 7;
+  return Math.floor(diff / oneWeek) + 1;
+}
+
+// ====== Helper: Shuffle array ======
+function shuffleArray(arr) {
+  if (!arr || arr.length === 0) return [];
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+// ====== Helper: Format key ======
+function formatKey(key) {
+  const match = key.match(/^(Clé \d+\.)\s*(.*)/);
+  if (!match) return key;
+  return `<strong>${match[1]}</strong> ${match[2]}`;
+}
+
+// ====== Show Random Key ======
+function showRandomKey() {
+
+  if(!keysThisWeekShuffled || keysThisWeekShuffled.length === 0) return;
+
+  const availableIndexes = keysThisWeekShuffled
+    .map((k, i) => i)
+    .filter(i => !seenKeys.includes(i));
+
+  if(availableIndexes.length === 0){
+    seenKeys = [];
+    localStorage.setItem("imhotepSeenKeys", JSON.stringify({ week: currentWeek, seen: seenKeys }));
+    availableIndexes.push(...keysThisWeekShuffled.map((_, i) => i));
+  }
+
+  const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+  const keyObj = keysThisWeekShuffled[randomIndex];
+
+  seenKeys.push(randomIndex);
+  localStorage.setItem("imhotepSeenKeys", JSON.stringify({ week: currentWeek, seen: seenKeys }));
+
+  const key = keyObj.text;
+
+  const keyNumberMatch = key.match(/^(Clé \d+\.)/);
+  const keyNumber = keyNumberMatch ? keyNumberMatch[1] : "Clé";
+
+  recentKeyNumbers.push(keyNumber);
+  if (recentKeyNumbers.length > 3) {
+    recentKeyNumbers.shift();
+  }
+
+  window.currentImhotepKey = recentKeyNumbers.join(' ');
+
+  screenReader.textContent = key;
+
+  const oldKey = container.querySelector('p.imhotep-key');
+
+  if (oldKey) {
+
+    oldKey.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
+    setTimeout(() => {
+
+      if (oldKey.parentNode) oldKey.parentNode.removeChild(oldKey);
+      insertNewKey(key);
+
+    }, fadeDuration);
+
+  } else {
+    insertNewKey(key);
+  }
+}
+
+// ====== Insert New Key ======
+function insertNewKey(key) {
+
+  const p = document.createElement('p');
+  p.classList.add('imhotep-key');
+  p.innerHTML = formatKey(key);
+
+  container.insertBefore(p, progressDot.parentNode);
+
+  requestAnimationFrame(() => p.classList.add('fade-in'));
+  container.style.setProperty('--ankh-opacity', '0');
+
+  progressDot.style.transition = 'none';
+  progressDot.style.left = '0';
+  progressDot.offsetHeight;
+
+  progressDot.style.transition = `left ${displayTime}ms linear`;
+  progressDot.style.left = '100%';
+
+  setTimeout(() => {
+
+    p.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
+  }, displayTime);
+}
+
+
+// ============================================
+// MODAL + COMMENT SYSTEM
+// ============================================
+
+const observer = new MutationObserver(() => {
+
+  const textarea = document.querySelector("textarea");
+  const modal = document.querySelector('.cmt-modal');
+
+  if (modal && modal.classList.contains('active')) {
+
+    modalJustOpened = true;
+
+    setTimeout(() => {
+
+      const dropdown = document.querySelector('select[name="num_cle"]');
+
+      if (dropdown) {
+        dropdown.value = '';
+      }
+
+      if (textarea) {
+        textarea.value = '';
+      }
+
+      recentKeyNumbers = [];
+      window.currentImhotepKey = '';
+
+    }, 100);
+  }
+
+  if (textarea && modalJustOpened && recentKeyNumbers.length > 0 && !textarea.value) {
+
+    const isVisible = textarea.offsetParent !== null;
+
+    if (isVisible) {
+
+      const lastKeyNumber =
+        recentKeyNumbers.length > 0
+        ? recentKeyNumbers[recentKeyNumbers.length - 1]
+        : "Clé";
+
+      const keyNum = lastKeyNumber.replace('Clé ', '').replace('.', '');
+
+      textarea.value = lastKeyNumber + ":\n\n";
+
+      const dropdown = document.querySelector('select[name="num_cle"]');
+
+      if (dropdown) {
+        dropdown.value = keyNum;
+      }
+
+      textarea.focus();
+      textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+
+      modalJustOpened = false;
+    }
+  }
+
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+
+// ============================================
+// FORM VALIDATION + CLEANUP
+// ============================================
+
+document.addEventListener('submit', function(e) {
+
+  if (e.target.classList.contains('cmt-modal-content') || e.target.querySelector('textarea')) {
+
+    const dropdown = document.querySelector('select[name="num_cle"]');
+    const textarea = document.querySelector('textarea');
+
+    if (dropdown && textarea) {
+
+      const dropdownValue = dropdown.value;
+      const textareaMatch = textarea.value.match(/Clé (\d+)/);
+
+      if (textareaMatch && dropdownValue) {
+
+        if (textareaMatch[1] !== dropdownValue) {
+
+          e.preventDefault();
+          alert('Erreur: Le numéro de clé dans le commentaire ne correspond pas à la sélection');
+          return false;
+        }
+      }
+    }
+
+    setTimeout(() => {
+
+      if (dropdown) dropdown.value = '';
+      if (textarea) textarea.value = '';
+
+      recentKeyNumbers = [];
+      window.currentImhotepKey = '';
+
+      const modal = document.querySelector('.cmt-modal');
+
+      if (modal) {
+        modal.classList.remove('active');
+      }
+
+      console.log('✅ Champs nettoyés après envoi');
+
+    }, 500);
+  }
+
+});
+
+
+// ============================================
+// MANUAL RESET FUNCTION
+// ============================================
+
+function resetCommentFields() {
+
+  const dropdown = document.querySelector('select[name="num_cle"]');
+  const textarea = document.querySelector('textarea');
+
+  if (dropdown) dropdown.value = '';
+  if (textarea) textarea.value = '';
+
+  recentKeyNumbers = [];
+  window.currentImhotepKey = '';
+
+  console.log('🔄 Champs réinitialisés manuellement');
+
+}
+
+window.resetCommentFields = resetCommentFields;
+
+
+
+
+
