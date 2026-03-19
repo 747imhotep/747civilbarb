@@ -89,6 +89,16 @@ here is my Root tree
 │   │
 │   └─ index.html
 │
+├── live/
+│   │
+│   ├─ csss/
+│   │ 
+│   ├─ index.html
+│   │ 
+│   │ 
+│   └─ js/
+│
+│
 ├── my-worker/		<-- detailed tree in another file: I can share with you.
 │
 │
