@@ -66,6 +66,9 @@
 /* ==================================
    Modal form inputs
 ================================== */
+.cmt-modal-content [hidden] {
+  display: none !important;
+}
 
 .cmt-modal-content form {
   display: flex;
@@ -77,7 +80,7 @@
 .cmt-modal-content label {
   font-weight: 600;
   margin-bottom: 5px;
-  display: block;
+  display: none !important;
 }
 
 .cmt-modal-content input,
@@ -113,6 +116,11 @@
   margin-bottom: 15px;
 }
 
+#cle_display {
+  background: rgba(255,255,255,0.08);
+  color: #ddd;
+  cursor: not-allowed;
+}
 
 /* ==================================
    Links inside modal
