@@ -3,25 +3,10 @@
 // sender_emb.js
 // Dead Angle Institute
 // Comment Modal + Sender API integration
+// 502 lines
 // ======================================
 
 
-
-  // ==============================
-  //      1️⃣  OPEN MODAL
-  // ==============================
-
-  
-
-  // ==============================
-  //   2️⃣  CLOSE MODAL
-  // ==============================
-
-  
-
-  // ==============================
-  //   3️⃣ SUBMIT FORM
-  // ==============================
 
   // sender_emb.js - For your exact form structure
 // sender_emb.js - For your exact form structure
@@ -30,9 +15,8 @@
 
     // Configuration
     const CONFIG = {
-        SENDER_API_ENDPOINT: 'https://deadangleinstitute.org/api/sender-subscribe',
         FORMSPREE_ENDPOINT: 'https://formspree.io/f/mkoqrerw',
-        SENDER_LIST_ID: 'YOUR_SENDER_LIST_ID',
+        SENDER_LIST_ID: 'eV2XyW',  // ⚠️ REPLACE THIS WITH YOUR SENDER.NET LIST ID
         HONEYPOT_FIELD: '_honey',
         DEBUG: true
     };
@@ -49,23 +33,41 @@
         }
 
         init() {
-            if (!this.form) {
-                console.error('❌ Form not found');
-                return;
-            }
-
-            this.setupEventListeners();
-            this.setupKeySelection();
-            this.populateKeyField();
-            this.watchForKeyChanges();
+            // Retry mechanism for form detection
+            let attempts = 0;
+            const maxAttempts = 10;
             
-            if (CONFIG.DEBUG) {
-                console.log('✅ Imhotep Comment Handler initialized');
-            }
+            const findForm = () => {
+                this.form = document.getElementById('cmtForm');
+                
+                if (this.form) {
+                    console.log('✅ Form found');
+                    this.setupEventListeners();
+                    this.setupKeySelection();
+                    this.populateKeyField();
+                    this.watchForKeyChanges();
+                    
+                    if (CONFIG.DEBUG) {
+                        console.log('✅ Imhotep Comment Handler initialized');
+                    }
+                } else {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        console.log(`⏳ Form not found, retrying (${attempts}/${maxAttempts})...`);
+                        setTimeout(findForm, 100);
+                    } else {
+                        console.error('❌ Form not found after multiple attempts');
+                    }
+                }
+            };
+    
+            findForm();
         }
 
         setupEventListeners() {
+            // ==============================
             // Modal controls
+            // ==============================
             if (this.openBtn) {
                 this.openBtn.addEventListener('click', () => this.openModal());
             }
@@ -78,17 +80,23 @@
                 this.clearBtn.addEventListener('click', () => this.clearForm());
             }
 
+            //==============================
             // Close modal when clicking outside
+            //==============================
             window.addEventListener('click', (e) => {
                 if (e.target === this.modal) {
                     this.closeModal();
                 }
             });
 
+            //==============================
             // Form submission
+            //==============================
             this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
+            //==============================
             // Listen for key selection from your comments-new.js
+            //==============================
             document.addEventListener('imhotep:keySelected', (e) => {
                 this.setSelectedKey(e.detail.key);
             });
@@ -187,7 +195,9 @@
         async handleSubmit(e) {
             e.preventDefault();
 
+            //==============================
             // Check honeypot
+            //==============================
             if (this.isSpam()) {
                 console.log('🤖 Spam detected');
                 this.showMessage('Message envoyé', 'success');
@@ -198,14 +208,18 @@
 
             const formData = new FormData(this.form);
 
+            //==============================
             // Validate
+            //==============================
             const errors = this.validateForm(formData);
             if (errors.length > 0) {
                 this.showMessage(errors.join('<br>'), 'error');
                 return;
             }
 
+            //==============================
             // Prepare data
+            //==============================
             const commentData = {
                 name: formData.get('name'),
                 email: formData.get('email'),
@@ -221,7 +235,9 @@
             this.showLoading(true);
 
             try {
+                //==============================
                 // Submit to both endpoints in parallel
+                //==============================
                 const [senderResult, formspreeResult] = await Promise.allSettled([
                     this.submitToSender(commentData).catch(err => {
                         console.error('Sender error:', err);
@@ -233,7 +249,9 @@
                     })
                 ]);
 
+                //==============================
                 // Handle results
+                //==============================
                 if (senderResult.status === 'fulfilled' && formspreeResult.status === 'fulfilled') {
                     this.showMessage('✨ Commentaire envoyé avec la Clé d\'Imhotep!', 'success');
                     this.form.reset();
@@ -262,35 +280,51 @@
         }
 
         async submitToSender(data) {
-            const senderPayload = {
-                email: data.email,
-                firstname: data.name,
-                lists: [CONFIG.SENDER_LIST_ID],
-                tags: [
-                    `cle-${data.cle.replace(/\s+/g, '-').toLowerCase()}`,
-                    `ref-${data.reference_id}`,
-                    `page-${data.page.replace(/\//g, '-')}`
-                ],
-                custom_fields: {
-                    reference_id: data.reference_id,
-                    cle_imhotep: data.cle,
-                    comment_date: data.timestamp.split('T')[0]
-                }
-            };
-
-            const response = await fetch(CONFIG.SENDER_API_ENDPOINT, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(senderPayload)
-            });
-
-            if (!response.ok) {
-                throw new Error(`Sender error: ${response.status}`);
+            //==============================
+            // Check if Sender library is loaded
+            //==============================
+            if (typeof sender === 'undefined') {
+                console.error('❌ Sender.net library not loaded');
+                throw new Error('Sender.net not available');
             }
 
-            return await response.json();
+            return new Promise((resolve, reject) => {
+                try {
+                    //==============================
+                    // Prepare custom fields matching your Sender.net setup
+                    //==============================
+                    const customFields = {
+                        num_cle: data.cle,
+                        message: data.message,
+                        comment_count: (this.getCommentCount() + 1),
+                        last_comment_date: new Date().toISOString()
+                    };
+
+                    //==============================
+                    // Subscribe using Sender.net universal JS
+                    //==============================
+                    sender('subscribe', {
+                        list: CONFIG.SENDER_LIST_ID,
+                        email: data.email,
+                        name: data.name,
+                        fields: customFields
+                    });
+
+                    if (CONFIG.DEBUG) {
+                        console.log('✅ Sender.net subscription initiated:', {
+                            email: data.email,
+                            name: data.name,
+                            fields: customFields
+                        });
+                    }
+
+                    resolve({ success: true, message: 'Subscribed to newsletter' });
+
+                } catch (error) {
+                    console.error('❌ Sender.net error:', error);
+                    reject(error);
+                }
+            });
         }
 
         async submitToFormspree(data) {
@@ -326,6 +360,15 @@
 
         generateReferenceId() {
             return 'ref_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+        }
+
+        getCommentCount() {
+            let count = localStorage.getItem('imhotep_comment_count');
+            if (count === null) {
+                count = 0;
+                localStorage.setItem('imhotep_comment_count', count);
+            }
+            return parseInt(count);
         }
 
         isSpam() {
@@ -446,7 +489,9 @@
         }
     }
 
+    //==============================
     // Initialize when DOM is ready
+    //==============================
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => new ImhotepCommentHandler());
     } else {

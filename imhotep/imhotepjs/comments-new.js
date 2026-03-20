@@ -1,5 +1,5 @@
 // ========================
-// comments.js — Simplified
+// comments-new.js — Simplified
 // Just handles the button click and global key storage
 // ========================
 

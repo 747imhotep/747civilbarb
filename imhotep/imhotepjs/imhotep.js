@@ -1,6 +1,7 @@
 // ========================
 // Imhotep.js — JSON Version
 // Handles random keys, fade-in/out, progress animation
+// 289 lines
 // ========================
 
 let imhotepKeys = [];

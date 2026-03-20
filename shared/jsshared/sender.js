@@ -1,6 +1,7 @@
 // ========================
 // civilisationoubarbarie.org
 // sender.js — Script d'intégration de Sender.net pour les commentaires
+// 43 lines
 // ========================
 
 const host = location.hostname;
@@ -16,7 +17,7 @@ if (
     host === "127.0.0.1" ||
     host === "localhost"
   ) &&
-  document.getElementById('imhotep-comment-btn')
+  document.getElementById('open-cmt-modal')
 ) {
   (function (s, e, n, d, er) {
       s['Sender'] = er;
@@ -31,13 +32,4 @@ if (
     })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
   sender('8ff476a5273454');
 }
-
-// ===== Fade in Sender popup when it loads =====
-const checkPopup = setInterval(() => {
-  const popup = document.querySelector('#imhotep-comment-btn iframe');
-  if (popup) {
-    document.getElementById('imhotep-comment-btn').classList.add('loaded');
-    clearInterval(checkPopup);
-  }
-}, 100);
 

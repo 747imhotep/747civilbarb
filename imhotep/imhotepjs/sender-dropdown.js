@@ -1,12 +1,13 @@
 // ========================
 // sender-dropdown.js - PostMessage Version
+// 102 lines
 // ========================
 
 // sender-dropdown.js - Updated to work with your Sender.net iframe
 (function() {
     'use strict';
     
-    const commentBtn = document.getElementById('imhotep-comment-btn');
+    const commentBtn = document.getElementById('open-cmt-modal');
     if (!commentBtn) {
         console.warn('⚠️ Comment button not found');
         return;

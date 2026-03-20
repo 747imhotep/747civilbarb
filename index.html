@@ -183,9 +183,10 @@
             Vous pouvez également recevoir la Lettre du Dead Angle 
             Institute.</p>
 
-        <form id="cmtForm">
+        
+        <form id="cmtForm" action="https://formspree.io/f/mkoqrerw" method="POST">
             <!-- Formspree form BACKUP 
-              <form id="contactForm" action="https://formspree.io/f/mkoqrerw" method="POST">
+              <form id="cmtForm">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="box">
               <input type="hidden" name="_next" value="/shared/htmlshared/thank-you.html">
@@ -288,11 +289,13 @@
 <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
 <script src="/navbar/jsnavbar/navbar.js" defer></script>
 <script src="/shared/jsshared/sender.js" defer ></script>
+<!-- we've removed form-handler.js to avoid conflicts with sender_emb.js -->
 <script src="/shared/jsshared/gdpr.js" defer></script>
 <script src="/imhotep/imhotepjs/imhotep.js" defer></script>
 <script src="/imhotep/imhotepjs/comments-new.js" defer></script>
 <script src="/imhotep/imhotepjs/cmt-modal.js" defer></script>
 <script src="/imhotep/imhotepjs/sender_emb.js" defer></script>
 <script src="/imhotep/imhotepjs/charCount.js" defer></script>
+
 </body>
 </html>

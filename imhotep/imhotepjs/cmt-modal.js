@@ -1,6 +1,7 @@
 // ==================================
 // Civilisation ou Barbarie
 // CMT Modal JavaScript
+// 31 lines
 // ==================================
 
 document.addEventListener("DOMContentLoaded", function () {
