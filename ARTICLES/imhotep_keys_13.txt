@@ -1,0 +1,563 @@
+please find the content of these files here:
+
+// ========================
+//
+sender.js
+Imhotep.js
+CMT Modal
+sender-dropdown.js
+sender.js
+
+    
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+// ========================
+// civilisationoubarbarie.org
+// sender.js — Script d'intégration de Sender.net pour les commentaires
+// 43 lines
+// ========================
+
+const host = location.hostname;
+
+if (
+  (
+    host === "civilisationoubarbarie.org" ||
+    host === "www.civilisationoubarbarie.org" ||
+    host === "deadangles.org" ||
+    host === "www.deadangles.org" ||
+    host === "https://www.deadanglesinstitute.org/" ||
+    host === "www.deadanglesinstitute.org" ||
+    host === "127.0.0.1" ||
+    host === "localhost"
+  ) &&
+  document.getElementById('imhotep-comment-btn')
+) {
+  (function (s, e, n, d, er) {
+      s['Sender'] = er;
+      s[er] = s[er] || function () {
+        (s[er].q = s[er].q || []).push(arguments)
+      }, s[er].l = 1 * new Date();
+      var a = e.createElement(n),
+          m = e.getElementsByTagName(n)[0];
+      a.async = 1;
+      a.src = d;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+  sender('8ff476a5273454');
+}
+
+// ===== Fade in Sender popup when it loads =====
+const checkPopup = setInterval(() => {
+  const popup = document.querySelector('#imhotep-comment-btn iframe');
+  if (popup) {
+    document.getElementById('imhotep-comment-btn').classList.add('loaded');
+    clearInterval(checkPopup);
+  }
+}, 100);
+ // ========================
+// Imhotep.js — JSON Version
+// Handles random keys, fade-in/out, progress animation
+// 289 lines
+// ========================
+
+let imhotepKeys = [];
+let recentKeyNumbers = [];
+let keysThisWeekShuffled = [];
+let seenKeys = [];
+let currentWeek;
+let modalJustOpened = false; // Track when modal opens
+
+// ====== PROFESSIONAL: Store latest key instantly ======
+let latestKey = ''; // Add this line
+
+// ====== DOM References ======
+const container = document.getElementById('imhotep-container');
+const screenReader = document.getElementById('imhotep-text');
+const progressDot = document.getElementById('imhotep-progress-dot');
+const progressAnkh = document.getElementById('imhotep-progress-ankh');
+
+// ====== Config ======
+const displayTime = 35000;
+const fadeDuration = 1200;
+
+// ====== Load keys from JSON ======
+fetch('/imhotep/imhotep-keys.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to load Imhotep keys');
+    }
+    return response.json();
+  })
+  .then(data => {
+    imhotepKeys = data;
+    initializeImhotep();
+  })
+  .catch(error => {
+    console.error('Error loading Imhotep keys:', error);
+    if (container) {
+      container.innerHTML = '<p class="error">Clés temporairement indisponibles</p>';
+    }
+  });
+
+// ====== Initialize everything once keys are loaded ======
+function initializeImhotep() {
+
+  currentWeek = getCurrentWeek();
+
+  const keysThisWeek = imhotepKeys.filter(key => key.week === currentWeek);
+  keysThisWeekShuffled = shuffleArray(keysThisWeek);
+
+  const storageKey = "imhotepSeenKeys";
+  const saved = JSON.parse(localStorage.getItem(storageKey));
+
+  if(saved && saved.week === currentWeek){
+    seenKeys = saved.seen;
+  } else {
+    seenKeys = [];
+  }
+
+  const existingTextarea = document.querySelector("textarea");
+  if (existingTextarea) {
+    existingTextarea.value = '';
+  }
+
+  showRandomKey();
+  setInterval(showRandomKey, displayTime + fadeDuration);
+}
+
+// ====== Helper: Get current week number ======
+function getCurrentWeek() {
+  const now = new Date();
+  const start = new Date(now.getFullYear(), 0, 1);
+  const diff = now - start;
+  const oneWeek = 1000 * 60 * 60 * 24 * 7;
+  return Math.floor(diff / oneWeek) + 1;
+}
+
+// ====== Helper: Shuffle array ======
+function shuffleArray(arr) {
+  if (!arr || arr.length === 0) return [];
+  return [...arr].sort(() => Math.random() - 0.5);
+}
+
+// ====== Helper: Format key ======
+function formatKey(key) {
+  const match = key.match(/^(Clé \d+\.)\s*(.*)/);
+  if (!match) return key;
+  return `<strong>${match[1]}</strong> ${match[2]}`;
+}
+
+// ====== Show Random Key ======
+function showRandomKey() {
+
+  if(!keysThisWeekShuffled || keysThisWeekShuffled.length === 0) return;
+
+  const availableIndexes = keysThisWeekShuffled
+    .map((k, i) => i)
+    .filter(i => !seenKeys.includes(i));
+
+  if(availableIndexes.length === 0){
+    seenKeys = [];
+    localStorage.setItem("imhotepSeenKeys", JSON.stringify({ week: currentWeek, seen: seenKeys }));
+    availableIndexes.push(...keysThisWeekShuffled.map((_, i) => i));
+  }
+
+  const randomIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)];
+  const keyObj = keysThisWeekShuffled[randomIndex];
+
+  seenKeys.push(randomIndex);
+  localStorage.setItem("imhotepSeenKeys", JSON.stringify({ week: currentWeek, seen: seenKeys }));
+
+  const key = keyObj.text;
+
+  const keyNumberMatch = key.match(/^(Clé \d+\.)/);
+  const keyNumber = keyNumberMatch ? keyNumberMatch[1] : "Clé";
+
+  // ====== STORE LATEST KEY INSTANTLY ======
+  latestKey = keyNumber; // THIS IS THE KEY LINE
+
+  recentKeyNumbers.push(keyNumber);
+  if (recentKeyNumbers.length > 3) {
+    recentKeyNumbers.shift();
+  }
+
+  // Backup to sessionStorage
+  sessionStorage.setItem('imhotep_backup', JSON.stringify(recentKeyNumbers));
+  console.log('💾 Keys backed up to sessionStorage:', recentKeyNumbers);
+
+  window.currentImhotepKey = recentKeyNumbers.join(' ');
+
+  screenReader.textContent = key;
+
+  const oldKey = container.querySelector('p.imhotep-key');
+
+  if (oldKey) {
+
+    oldKey.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
+    setTimeout(() => {
+
+      if (oldKey.parentNode) oldKey.parentNode.removeChild(oldKey);
+      insertNewKey(key);
+
+    }, fadeDuration);
+
+  } else {
+    insertNewKey(key);
+  }
+}
+
+// ====== Insert New Key ======
+function insertNewKey(key) {
+
+  const p = document.createElement('p');
+  p.classList.add('imhotep-key');
+  p.innerHTML = formatKey(key);
+
+  container.insertBefore(p, progressDot.parentNode);
+
+  requestAnimationFrame(() => p.classList.add('fade-in'));
+  container.style.setProperty('--ankh-opacity', '0');
+
+  progressDot.style.transition = 'none';
+  progressDot.style.left = '0';
+  progressDot.offsetHeight;
+
+  progressDot.style.transition = `left ${displayTime}ms linear`;
+  progressDot.style.left = '100%';
+
+  setTimeout(() => {
+
+    p.classList.remove('fade-in');
+    container.style.setProperty('--ankh-opacity', '1');
+
+  }, displayTime);
+}
+
+
+// ============================================
+// PROFESSIONAL: MODAL WITH INSTANT KEY DISPLAY
+// ============================================
+
+const observer = new MutationObserver(() => {
+
+  const textarea = document.querySelector("textarea");
+  const modal = document.querySelector('.cmt-modal');
+  const cleField = document.querySelector('#cle'); // Hidden field for backend
+  const cleDisplay = document.querySelector('#cle_display'); // Visible field for users
+
+  if (modal && modal.classList.contains('active') && !modalJustOpened) {
+
+    modalJustOpened = true;
+
+    // Clear fields immediately
+    if (cleField) cleField.value = '';
+    if (cleDisplay) cleDisplay.value = '';
+    if (textarea) textarea.value = '';
+
+    // ====== INSTANT FILL - NO DELAY ======
+    if (latestKey) {
+      // Use the stored key - INSTANT!
+      if (cleField) cleField.value = latestKey;
+      if (cleDisplay) cleDisplay.value = latestKey;
+      console.log('✅ INSTANT Key display:', latestKey);
+    } else {
+      // Fallback to DOM if no stored key
+      const currentDisplay = document.querySelector('#imhotep-container .imhotep-key');
+      if (currentDisplay) {
+        const displayedText = currentDisplay.innerText || currentDisplay.textContent;
+        const match = displayedText.match(/(Clé\s+\d+\.)/);
+        if (match) {
+          const currentKey = match[1];
+          if (cleField) cleField.value = currentKey;
+          if (cleDisplay) cleDisplay.value = currentKey;
+          console.log('✅ Fallback Key display:', currentKey);
+        }
+      }
+    }
+  }
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+
+// ============================================
+// FORM VALIDATION + CLEANUP
+// ============================================
+
+document.addEventListener('submit', function(e) {
+
+  if (e.target.classList.contains('cmt-modal-content') || e.target.querySelector('textarea')) {
+
+    const cleField = document.querySelector('#cle');
+    const cleDisplay = document.querySelector('#cle_display');
+    const textarea = document.querySelector('textarea');
+
+    // Clean up after submission
+    setTimeout(() => {
+
+      if (cleField) cleField.value = '';
+      if (cleDisplay) cleDisplay.value = '';
+      if (textarea) textarea.value = '';
+
+      recentKeyNumbers = [];
+      window.currentImhotepKey = '';
+
+      const modal = document.querySelector('.cmt-modal');
+
+      if (modal) {
+        modal.classList.remove('active');
+      }
+
+      console.log('✅ Champs nettoyés après envoi');
+
+    }, 500);
+  }
+
+});
+
+
+// ============================================
+// MANUAL RESET FUNCTION
+// ============================================
+
+function resetCommentFields() {
+
+  const cleField = document.querySelector('#cle');
+  const cleDisplay = document.querySelector('#cle_display');
+  const textarea = document.querySelector('textarea');
+
+  if (cleField) cleField.value = '';
+  if (cleDisplay) cleDisplay.value = '';
+  if (textarea) textarea.value = '';
+
+  recentKeyNumbers = [];
+  window.currentImhotepKey = '';
+
+  console.log('🔄 Champs réinitialisés manuellement');
+
+}
+
+window.resetCommentFields = resetCommentFields;
+
+
+
+
+✅✅✅
+// ==================================
+// Civilisation ou Barbarie
+// CMT Modal JavaScript
+// 31 lines
+// ==================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const modal = document.getElementById("cmt-modal");
+  const openBtn = document.getElementById("open-cmt-modal");
+  const closeBtn = document.querySelector("#cmt-modal .cmt-close");
+
+  if (openBtn) {
+    openBtn.addEventListener("click", () => {
+      modal.classList.add("active");
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+  }
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+
+});
+
+
+
+
+✅✅✅
+// ========================
+// sender-dropdown.js - PostMessage Version
+// 102 lines
+// ========================
+
+// sender-dropdown.js - Updated to work with your Sender.net iframe
+(function() {
+    'use strict';
+    
+    const commentBtn = document.getElementById('imhotep-comment-btn');
+    if (!commentBtn) {
+        console.warn('⚠️ Comment button not found');
+        return;
+    }
+    
+    function extractKeyNumber(keyText) {
+        if (!keyText) return null;
+        const match = keyText.match(/Clé\s*(\d+)\.?/);
+        return match ? match[1] : null;
+    }
+    
+    // Function to find Sender iframe
+    function findSenderIframe() {
+        const iframes = document.querySelectorAll('iframe');
+        for (let iframe of iframes) {
+            // Check if this is likely the Sender iframe
+            const src = iframe.src || '';
+            if (src.includes('sender') || src.includes('sender.net') || iframe.id.includes('sender')) {
+                return iframe;
+            }
+        }
+        return null;
+    }
+    
+    commentBtn.addEventListener('click', function() {
+        const keyNumber = extractKeyNumber(window.currentImhotepKey);
+        console.log('🔑 Selected key number:', keyNumber);
+        
+        if (!keyNumber) {
+            console.warn('⚠️ No key number found');
+            return;
+        }
+        
+        // Try multiple times to find and update the iframe
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        const tryUpdateIframe = setInterval(() => {
+            attempts++;
+            
+            const senderIframe = findSenderIframe();
+            
+            if (senderIframe) {
+                try {
+                    // Try to access iframe content
+                    const iframeDoc = senderIframe.contentDocument || senderIframe.contentWindow.document;
+                    
+                    // Look for your dropdown field
+                    const numCleField = iframeDoc.querySelector('[name="num_cle"], [data-field="num_cle"]');
+                    
+                    if (numCleField) {
+                        numCleField.value = keyNumber;
+                        // Trigger change event
+                        const event = new Event('change', { bubbles: true });
+                        numCleField.dispatchEvent(event);
+                        
+                        console.log('✅ Successfully set num_cle to:', keyNumber);
+                        clearInterval(tryUpdateIframe);
+                    } else {
+                        // Try postMessage as fallback
+                        senderIframe.contentWindow.postMessage({
+                            type: 'setField',
+                            field: 'num_cle',
+                            value: keyNumber
+                        }, '*');
+                        console.log('📤 Sent postMessage to iframe');
+                    }
+                    
+                } catch (e) {
+                    // Cross-origin error - try postMessage instead
+                    try {
+                        senderIframe.contentWindow.postMessage({
+                            type: 'setField',
+                            field: 'num_cle',
+                            value: keyNumber
+                        }, '*');
+                        console.log('📤 Sent postMessage (cross-origin)');
+                    } catch (postError) {
+                        console.log('❌ Cannot access iframe:', postError);
+                    }
+                }
+            }
+            
+            if (attempts >= maxAttempts) {
+                console.log('⏱️ Max attempts reached, stopping');
+                clearInterval(tryUpdateIframe);
+            }
+            
+        }, 500); // Check every 500ms
+        
+    });
+})();
+
+
+
+
+
+✅✅✅
+// ========================
+// civilisationoubarbarie.org
+// sender.js — Script d'intégration de Sender.net pour les commentaires
+// 43 lines
+// ========================
+
+const host = location.hostname;
+
+if (
+  (
+    host === "civilisationoubarbarie.org" ||
+    host === "www.civilisationoubarbarie.org" ||
+    host === "deadangles.org" ||
+    host === "www.deadangles.org" ||
+    host === "https://www.deadanglesinstitute.org/" ||
+    host === "www.deadanglesinstitute.org" ||
+    host === "127.0.0.1" ||
+    host === "localhost"
+  ) &&
+  document.getElementById('imhotep-comment-btn')
+) {
+  (function (s, e, n, d, er) {
+      s['Sender'] = er;
+      s[er] = s[er] || function () {
+        (s[er].q = s[er].q || []).push(arguments)
+      }, s[er].l = 1 * new Date();
+      var a = e.createElement(n),
+          m = e.getElementsByTagName(n)[0];
+      a.async = 1;
+      a.src = d;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+  sender('8ff476a5273454');
+}
+
+// ===== Fade in Sender popup when it loads =====
+const checkPopup = setInterval(() => {
+  const popup = document.querySelector('#imhotep-comment-btn iframe');
+  if (popup) {
+    document.getElementById('imhotep-comment-btn').classList.add('loaded');
+    clearInterval(checkPopup);
+  }
+}, 100);
+✅✅✅
