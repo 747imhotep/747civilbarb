@@ -1,7 +1,6 @@
 // ========================
 // civilisationoubarbarie.org
 // sender.js — Script d'intégration de Sender.net pour les commentaires
-// 43 lines
 // ========================
 
 const host = location.hostname;
@@ -12,13 +11,14 @@ if (
     host === "www.civilisationoubarbarie.org" ||
     host === "deadangles.org" ||
     host === "www.deadangles.org" ||
-    host === "https://www.deadanglesinstitute.org/" ||
-    host === "www.deadanglesinstitute.org" ||
+    host === "deadangleinstitute.org" ||
+    host === "www.deadangleinstitute.org" ||
     host === "127.0.0.1" ||
     host === "localhost"
   ) &&
   document.getElementById('open-cmt-modal')
 ) {
+  // Load Sender.net universal library
   (function (s, e, n, d, er) {
       s['Sender'] = er;
       s[er] = s[er] || function () {
@@ -30,6 +30,11 @@ if (
       a.src = d;
       m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-  sender('8ff476a5273454');
+  
+  // Initialize with your tracking ID
+  // Note: This might need to be your brand ID, not tracking ID
+  sender('init', {
+    trackingId: '8ff476a5273454',  // Your tracking ID
+    apiKey: 'YOUR_API_KEY_HERE'     // You might need an API key
+  });
 }
-

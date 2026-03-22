@@ -3,31 +3,30 @@
 // sender_emb.js
 // Dead Angle Institute
 // Comment Modal + Sender API integration
-// 502 lines
+// 504 lines
+// Last updated: 2024-06-10
 // ======================================
 
-
-
-  // sender_emb.js - For your exact form structure
-// sender_emb.js - For your exact form structure
 (function() {
     'use strict';
 
     // Configuration
     const CONFIG = {
         FORMSPREE_ENDPOINT: 'https://formspree.io/f/mkoqrerw',
-        SENDER_LIST_ID: 'eV2XyW',  // ⚠️ REPLACE THIS WITH YOUR SENDER.NET LIST ID
+        SENDER_API_ENDPOINT: 'https://dea.deadangleinstitute.org/api/sender-subscribe',  // producion endpoint
+        SENDER_LIST_ID: 'eV2XyW',  // Your Sender.net list ID
         HONEYPOT_FIELD: '_honey',
         DEBUG: true
     };
 
     class ImhotepCommentHandler {
         constructor() {
-            this.form = document.getElementById('cmtForm');
-            this.modal = document.getElementById('cmt-modal');
-            this.openBtn = document.getElementById('open-cmt-modal');
-            this.closeBtn = document.getElementById('cmt-close');
-            this.clearBtn = document.getElementById('clearFormBtn');
+            this.form = null;
+            this.modal = null;
+            this.openBtn = null;
+            this.closeBtn = null;
+            this.clearBtn = null;
+            this.keyAtOpen = null;
             
             this.init();
         }
@@ -35,10 +34,15 @@
         init() {
             // Retry mechanism for form detection
             let attempts = 0;
-            const maxAttempts = 10;
+            const maxAttempts = 20;
+            const interval = 200;
             
             const findForm = () => {
                 this.form = document.getElementById('cmtForm');
+                this.modal = document.getElementById('cmt-modal');
+                this.openBtn = document.getElementById('open-cmt-modal');
+                this.closeBtn = document.getElementById('cmt-close');
+                this.clearBtn = document.getElementById('clearFormBtn');
                 
                 if (this.form) {
                     console.log('✅ Form found');
@@ -54,7 +58,7 @@
                     attempts++;
                     if (attempts < maxAttempts) {
                         console.log(`⏳ Form not found, retrying (${attempts}/${maxAttempts})...`);
-                        setTimeout(findForm, 100);
+                        setTimeout(findForm, interval);
                     } else {
                         console.error('❌ Form not found after multiple attempts');
                     }
@@ -95,7 +99,7 @@
             this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
             //==============================
-            // Listen for key selection from your comments-new.js
+            // Listen for key selection from comments-new.js
             //==============================
             document.addEventListener('imhotep:keySelected', (e) => {
                 this.setSelectedKey(e.detail.key);
@@ -123,6 +127,7 @@
 
         openModal() {
             if (this.modal) {
+                this.modal.classList.add('active');
                 this.modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
@@ -130,6 +135,7 @@
 
         closeModal() {
             if (this.modal) {
+                this.modal.classList.remove('active');
                 this.modal.style.display = 'none';
                 document.body.style.overflow = '';
             }
@@ -159,13 +165,12 @@
         }
 
         watchForKeyChanges() {
-            const modal = document.getElementById('cmt-modal');
-            if (!modal) return;
+            if (!this.modal) return;
             
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
-                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                        if (modal.style.display === 'block') {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (this.modal.classList.contains('active')) {
                             this.populateKeyField();
                             this.keyAtOpen = document.getElementById('cle')?.value;
                             
@@ -177,7 +182,7 @@
                 });
             });
             
-            observer.observe(modal, { attributes: true });
+            observer.observe(this.modal, { attributes: true });
         }
 
         clearKeyField() {
@@ -280,51 +285,49 @@
         }
 
         async submitToSender(data) {
-            //==============================
-            // Check if Sender library is loaded
-            //==============================
-            if (typeof sender === 'undefined') {
-                console.error('❌ Sender.net library not loaded');
-                throw new Error('Sender.net not available');
-            }
-
-            return new Promise((resolve, reject) => {
-                try {
-                    //==============================
-                    // Prepare custom fields matching your Sender.net setup
-                    //==============================
-                    const customFields = {
+            try {
+                // Prepare custom fields matching your Sender.net setup
+                const payload = {
+                    email: data.email,
+                    name: data.name,
+                    list_id: CONFIG.SENDER_LIST_ID,
+                    fields: {
                         num_cle: data.cle,
                         message: data.message,
-                        comment_count: (this.getCommentCount() + 1),
+                        comment_count: (this.getCommentCount() + 1).toString(),
                         last_comment_date: new Date().toISOString()
-                    };
-
-                    //==============================
-                    // Subscribe using Sender.net universal JS
-                    //==============================
-                    sender('subscribe', {
-                        list: CONFIG.SENDER_LIST_ID,
-                        email: data.email,
-                        name: data.name,
-                        fields: customFields
-                    });
-
-                    if (CONFIG.DEBUG) {
-                        console.log('✅ Sender.net subscription initiated:', {
-                            email: data.email,
-                            name: data.name,
-                            fields: customFields
-                        });
                     }
+                };
 
-                    resolve({ success: true, message: 'Subscribed to newsletter' });
-
-                } catch (error) {
-                    console.error('❌ Sender.net error:', error);
-                    reject(error);
+                if (CONFIG.DEBUG) {
+                    console.log('📤 Sending to Sender.net:', payload);
                 }
-            });
+
+                const response = await fetch(CONFIG.SENDER_API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    console.error('Sender API error response:', result);
+                    throw new Error(result.error || `Sender API error: ${response.status}`);
+                }
+
+                if (CONFIG.DEBUG) {
+                    console.log('✅ Sender.net subscription successful:', result);
+                }
+
+                return result;
+
+            } catch (error) {
+                console.error('❌ Sender.net error:', error);
+                throw error;
+            }
         }
 
         async submitToFormspree(data) {
@@ -455,7 +458,7 @@
                                 border-radius: 50%;
                                 width: 40px;
                                 height: 40px;
-                                animation: spin 1s linear infinite;
+                                animation: spin 1s linear無限;
                                 margin: 0 auto 15px;
                             "></div>
                             <p>Envoi en cours...</p>
@@ -499,4 +502,3 @@
     }
 
 })();
-  // ==== 4️⃣ END ====
