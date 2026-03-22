@@ -1,0 +1,112 @@
+please let me answer to your questions here
+
+
+
+    
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+Option 1: Check Your GitHub Repository for my-worker Folder
+Option 2: Test the Endpoint Directly
+Option 3: Check Cloudflare DNS Settings
+Option 4: Check Your Hetzner VPS
+Option 5: Search Your Project Files
+=====================================================================
+
+Next time, I need you to go step by step. Not all options like this at once.
+
+✅Option 1: Check Your GitHub Repository for my-worker Folder
+
+Since I have a VPS Hetzner, maybe that would be good to login and try to find what you're looking for?
+just let me know because, the 747civilbarb/my-worker/ in my PC might not be up-to-date.
+
+
+✅Option 2: Test the Endpoint Directly
+
+$ curl -X GET https://deadangleinstitute.org/api/sender-subscribe
+curl: (6) Could not resolve host: deadangleinstitute.org
+
+
+~/my-worker$ curl -X GET https://deadangleinstitute.org/api/sender-subscribe
+curl: (6) Could not resolve host: deadangleinstitute.org
+
+
+Console:
+GET
+https://deadangleinstitute.org/api/sender-subscribe
+NS_ERROR_UNKNOWN_HOST
+
+
+
+✅Option 3: Check Cloudflare DNS Settings
+
+|Type	|Name		|Content	|		|
+|A	|api		|5.223.56.165	|Proxied	|
+
+
+
+✅Option 4: Check Your Hetzner VPS
+
+/var/www/747civilcarb/api/sender-subscribe/index.js
+
+✅Option 5: Search Your Project Files
+I didn't try out the option 5
+
+
+✅✅✅
+// ==================================
+// Civilisation ou Barbarie
+// CMT Modal JavaScript
+// 31 lines
+// ==================================
+
+
+
+
+
+
+✅✅✅
+// ========================
+// sender-dropdown.js - PostMessage Version
+// 102 lines
+// ========================
+
+
+
+
+
+
+
+✅✅✅
+// ========================
+// civilisationoubarbarie.org
+// sender.js — Script d'intégration de Sender.net pour les commentaires
+// 43 lines
+// ========================
+
+
+✅✅✅

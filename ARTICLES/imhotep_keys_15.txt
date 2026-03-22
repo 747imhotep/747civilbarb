@@ -1,0 +1,279 @@
+please the server.js here below:
+
+Note that https://www.deadanglesinstitute.org/
+is my second website that stands in Cloudflare.
+My first website is also linked to sender.net.
+I'm not a developer, but I linked the API's sender.net for 
+my 1st website in Cloudflare.
+
+I don't remember all the operation.
+
+    
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+Option 1: Check Your GitHub Repository for my-worker Folder
+Option 2: Test the Endpoint Directly
+Option 3: Check Cloudflare DNS Settings
+Option 4: Check Your Hetzner VPS
+Option 5: Search Your Project Files
+=====================================================================
+
+// ---------------------------
+// SERVER.JS - DEADANGLES INSTITUTE
+// ---------------------------
+
+// Imports
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables from .env
+console.log("Stripe key loaded:", !!process.env.STRIPE_SECRET_KEY);
+
+import express from "express";
+import Stripe from "stripe";
+import fs from "fs";
+import path from "path";
+import session from "express-session";
+import cors from "cors";
+
+
+// In your webhook endpoint, BEFORE stripe.webhooks.constructEvent
+
+
+
+
+
+// ---------------------------
+// Config
+// ---------------------------
+const PORT = process.env.PORT || 3000;
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET; //🚨
+// new add
+console.log("Webhook secret from env:", STRIPE_WEBHOOK_SECRET);
+const ENTITLEMENTS_FILE = path.join(process.cwd(), "data", "entitlements.json");
+
+if (!STRIPE_SECRET_KEY) {
+  console.error("❌ STRIPE_SECRET_KEY is missing. Server cannot start.");
+}
+
+
+
+// ---------------------------
+// 1️⃣ Initialize Stripe safely
+// ---------------------------
+let stripe = null;
+if (STRIPE_SECRET_KEY) {
+  stripe = new Stripe(STRIPE_SECRET_KEY);
+}
+
+// ---------------------------
+// 2️⃣ Express app
+// ---------------------------
+const app = express();
+
+
+// ---------------------------
+// 3️⃣ Stripe Webhook endpoint (debug version)
+// Must be BEFORE app.use(express.json())
+// ---------------------------
+app.post("/api/webhook", express.raw({ type: "application/json" }), (req, res) => {
+  if (!stripe) return res.status(500).send("Stripe not configured");
+
+  const sig = req.headers["stripe-signature"];
+
+  // 🚨 DEBUG: log raw body and signature
+  console.log("🔹 Received Stripe webhook");
+  console.log("🔹 Signature header:", sig ? "present" : "missing");
+  console.log("🔹 Raw body length:", req.body.length);
+  console.log("🔹 Raw body preview:", req.body.toString().substring(0, 200));
+
+  // 🔴🔴🔴 ADD THIS TEMPORARY CODE HERE 🔴🔴🔴
+  const timestamp = Date.now();
+  fs.writeFileSync(/tmp/webhook-body-${timestamp}.json, req.body); // Use backticks
+  console.log(✅ Full body saved to /tmp/webhook-body-${timestamp}.json); // Use backticks
+  // 🔴🔴🔴 END TEMPORARY CODE 🔴🔴🔴
+
+  let event;
+
+  try {
+    console.log("=== WEBHOOK DEBUG ===");
+    console.log("Buffer:", Buffer.isBuffer(req.body));
+    console.log("Type:", typeof req.body);
+    console.log("====================");
+    event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
+    console.log("✅ Signature verified, event type:", event.type);
+  } catch (err) {
+    console.error("❌ Webhook error:", err.message);
+   return res.status(400).send(Webhook Error: ${err.message}); // Use backticks
+  }
+
+
+
+  // Handle checkout.session.completed
+  if (event.type === "checkout.session.completed") {
+    const session = event.data.object;
+    const email = session.customer_details?.email || session.customer_email;
+    const customerId = session.customer || email;
+
+    if (customerId && email) {
+      grantEntitlement(customerId, email);
+    }
+  }
+
+  // Optional: log other event types for debugging
+  else {
+    console.log("ℹ️ Received other event:", event.type);
+  }
+
+  res.status(200).send("Received");
+});
+
+
+// ---------------------------
+// 4️⃣ JSON parser (global)
+// ---------------------------
+app.use(express.json());
+
+// ---------------------------
+// 5️⃣ CORS
+// ---------------------------
+app.use(cors({
+  origin: "https://deadanglesinstitute.org",
+  credentials: true
+}));
+
+// ---------------------------
+// 6️⃣ Session
+// ---------------------------
+app.use(session({
+  secret: process.env.SESSION_SECRET || "supersecretkey",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,        // Ensure HTTPS in production
+    sameSite: "none"
+  }
+}));
+
+// ---------------------------
+// 7️⃣ Static files
+// ---------------------------
+app.use(express.static(path.join(process.cwd(), "public")));
+
+// ---------------------------
+// 8️⃣ Health check
+// ---------------------------
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+// ---------------------------
+// 9️⃣ Helper: grantEntitlement
+// ---------------------------
+function grantEntitlement(customerId, email) {
+  try {
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    if (!entitlements[customerId]) {
+      entitlements[customerId] = {
+        customerId,
+        email,
+        grantedAt: new Date().toISOString(),
+      };
+      console.log(`✅ Granted entitlement for ${email}`);
+    } else {
+      console.log(`ℹ️ Entitlement already exists for ${email}`);
+    }
+
+    fs.writeFileSync(ENTITLEMENTS_FILE, JSON.stringify(entitlements, null, 2), "utf-8");
+  } catch (err) {
+    console.error("❌ Error granting entitlement:", err);
+  }
+}
+
+// ---------------------------
+// 🔟 Entitlement check
+// ---------------------------
+app.get("/api/me", (req, res) => {
+  const email = req.query.email;
+  if (!email) return res.status(400).json({ authenticated: false, error: "Missing email parameter" });
+
+  try {
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    const record = Object.values(entitlements).find(r => r.email === email);
+
+    if (!record) {
+      return res.json({ authenticated: true, email, customerId: null, entitled: false, source: null });
+    }
+
+    return res.json({ authenticated: true, email, customerId: record.customerId || null, entitled: true, source: "stripe" });
+  } catch (err) {
+    return res.status(500).json({ authenticated: false, error: "Server error" });
+  }
+});
+
+// ---------------------------
+// 1️⃣1️⃣ Protected premium files
+// ---------------------------
+app.get("/premium/files/:filename", (req, res) => {
+  const email = req.query.email;
+  const { filename } = req.params;
+
+  if (!email) return res.status(401).send("Email required");
+
+  try {
+    if (!fs.existsSync(ENTITLEMENTS_FILE)) return res.status(403).send("Access denied");
+
+    const entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    const entitled = Object.values(entitlements).some(r => r.email === email);
+
+    if (!entitled) return res.status(403).send("Access denied");
+
+    const filePath = path.join(process.cwd(), "premium-files", filename);
+    if (!fs.existsSync(filePath)) return res.status(404).send("File not found");
+
+    res.sendFile(filePath);
+  } catch (err) {
+    return res.status(500).send("Server error");
+  }
+});
+
+// ---------------------------
+// 1️⃣2️⃣ Start server
+// ---------------------------
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
+
