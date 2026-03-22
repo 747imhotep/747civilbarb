@@ -13,7 +13,7 @@
     // Configuration
     const CONFIG = {
         FORMSPREE_ENDPOINT: 'https://formspree.io/f/mkoqrerw',
-        SENDER_API_ENDPOINT: 'https://dea.deadangleinstitute.org/api/sender-subscribe',  // producion endpoint
+        SENDER_API_ENDPOINT: 'https://deadangleinstitute.org/api/sender-subscribe',  // producion endpoint
         SENDER_LIST_ID: 'eV2XyW',  // Your Sender.net list ID
         HONEYPOT_FIELD: '_honey',
         DEBUG: true
