@@ -1,0 +1,83 @@
+Since it still sends message to the wrong Group, 
+we need to check again.
+
+
+
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+In sender.net config:
+Groups: 	Lettre du Dead Angle Institute
+ID:		eV2XyW
+link adddress:	https://app.sender.net/subscribers?filter=[[%22tag%22,%22have%22,%22eV2XyW%22,%22Tags%22,%22g-IUm6Ur%22,%22or%22,%22and%22,null,null,null]]
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+🔹 LOCAL TERMINAL 
+$ dig MX deadangles.org +short
+10 mx.hover.com.cust.hostedemail.com.
+
+$ dig TXT deadangles.org +short | grep "v=spf1"
+"v=spf1 include:spf.hover.com include:sendersrv.com ~all"
+
+$ dig TXT default._domainkey.deadangles.org +short
+
+
+🔹 SMTP/Email Server Tests
+
+
+# Check if mail server is listening on port 25
+netstat -tlnp | grep :25
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+
+# OR
+ss -tlnp | grep :25
+Nothing happened
+
+# Check mail service status
+systemctl status postfix
+Unit postfix.service could not be found.
+# OR if using sendmail
+systemctl status sendmail
+Unit sendmail.service could not be found.
+
+# Test sending email from VPS
+echo "Test email body" | mail -s "Test Subject" your-personal-email@gmail.com
+ect" your-personal-email@gmail.com
+Command 'mail' not found, but can be installed with:
+sudo apt install mailutils
+
+# View mail logs
+tail -50 /var/log/mail.log
+tail: cannot open '/var/log/mail.log' for reading: No such file or directory
+# OR
+tail -50 /var/log/mail/mail.log
+tail: cannot open '/var/log/mail/mail.log' for reading: No such file or directory
+
+
+$ curl -I https://deadangles.org/contact
+curl: (6) Could not resolve host: deadangles.org
+

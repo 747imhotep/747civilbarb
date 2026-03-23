@@ -1,0 +1,102 @@
+Since it still sends message to the wrong Group, 
+we need to check again.
+
+
+
+In sender.net, we've created:
+|Field name		|Type		|code
+|-----------------------|---------------|-----------
+| Num Cle		| dropdown	| {{num_cle}}
+| Message		| text		| {{message}}
+| comment_count		| number	| {{comment_count}}
+| last_comment_date	| datetime	| {{last_comment_date}}
+
+In sender.net config:
+Groups: 	Lettre du Dead Angle Institute
+ID:		eV2XyW
+link adddress:	https://app.sender.net/subscribers?filter=[[%22tag%22,%22have%22,%22eV2XyW%22,%22Tags%22,%22g-IUm6Ur%22,%22or%22,%22and%22,null,null,null]]
+
+
+
+
+🔵 MY SETUP: 🔵
+---------------------
+✅ UBUNTU 22.04.5 LTS
+✅ Cloudflare
+✅ Hover
+✅ Hetzner VPS
+✅ GitHub (static pages)
+✅ Formspree
+✅ ipInfo
+✅ Tawk.to
+✅ Domain main: deadangleinstitute.org
+✅ Domain  301: deadangles.org
+✅ email: contact@deadangles.org
+✅ ...
+
+
+WORKER.JS:
+
+
+export default {
+  async fetch(request, env) {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type',
+        },
+      });
+    }
+
+    if (request.method !== 'POST') {
+      return new Response('Method not allowed', { status: 405 });
+    }
+
+    try {
+      const data = await request.json();
+      
+      // Determine which group to use
+      // If it's a newsletter subscription, use NEWSLETTER_GROUP_ID
+      // Otherwise use SENDER_GROUP_ID
+      const groupId = data.is_newsletter 
+        ? env.NEWSLETTER_GROUP_ID 
+        : env.SENDER_GROUP_ID;
+
+      const payload = {
+        email: data.email,
+        name: data.name,
+        list_id: groupId,
+        fields: data.fields || {}
+      };
+
+      const response = await fetch('https://api.sender.net/v2/subscribers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${env.SENDER_API_KEY}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      return new Response(JSON.stringify(result), {
+        status: response.status,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+    } catch (error) {
+      return new Response(JSON.stringify({ error: error.message }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+    }
+  },
+};
