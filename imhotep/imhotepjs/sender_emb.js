@@ -3,18 +3,21 @@
 // sender_emb.js
 // Dead Angle Institute
 // Comment Modal + Sender API integration
-// 504 lines
+// 520 lines
 // Last updated: 2024-06-10
 // ======================================
 
 (function() {
     'use strict';
 
+    // ==============================
     // Configuration
+    // ==============================
     const CONFIG = {
         FORMSPREE_ENDPOINT: 'https://formspree.io/f/mkoqrerw',
-        SENDER_API_ENDPOINT: 'https://sender-proxy-worker.my-workerlunyns.workers.dev',  // producion endpoint
-        SENDER_LIST_ID: 'eV2XyW',  // Your Sender.net list ID
+        // Production endpoint - Cloudflare Worker
+        SENDER_API_ENDPOINT: 'https://sender-proxy-worker.my-workerlunyns.workers.dev',
+        SENDER_LIST_ID: 'eV2XyW',  // Lettre du Dead Angle Institute group
         HONEYPOT_FIELD: '_honey',
         DEBUG: true
     };
@@ -31,6 +34,9 @@
             this.init();
         }
 
+        // ==============================
+        // Initialize: find form and set up
+        // ==============================
         init() {
             // Retry mechanism for form detection
             let attempts = 0;
@@ -68,10 +74,11 @@
             findForm();
         }
 
+        // ==============================
+        // Set up all event listeners
+        // ==============================
         setupEventListeners() {
-            // ==============================
             // Modal controls
-            // ==============================
             if (this.openBtn) {
                 this.openBtn.addEventListener('click', () => this.openModal());
             }
@@ -84,28 +91,25 @@
                 this.clearBtn.addEventListener('click', () => this.clearForm());
             }
 
-            //==============================
             // Close modal when clicking outside
-            //==============================
             window.addEventListener('click', (e) => {
                 if (e.target === this.modal) {
                     this.closeModal();
                 }
             });
 
-            //==============================
             // Form submission
-            //==============================
             this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
-            //==============================
             // Listen for key selection from comments-new.js
-            //==============================
             document.addEventListener('imhotep:keySelected', (e) => {
                 this.setSelectedKey(e.detail.key);
             });
         }
 
+        // ==============================
+        // Key selection handling
+        // ==============================
         setupKeySelection() {
             const keyButtons = document.querySelectorAll('[data-imhotep-key]');
             keyButtons.forEach(btn => {
@@ -125,6 +129,9 @@
             }
         }
 
+        // ==============================
+        // Modal controls
+        // ==============================
         openModal() {
             if (this.modal) {
                 this.modal.classList.add('active');
@@ -141,6 +148,9 @@
             }
         }
 
+        // ==============================
+        // Form handling
+        // ==============================
         clearForm() {
             this.form.reset();
             
@@ -197,12 +207,13 @@
             }
         }
 
+        // ==============================
+        // Main form submission handler
+        // ==============================
         async handleSubmit(e) {
             e.preventDefault();
 
-            //==============================
             // Check honeypot
-            //==============================
             if (this.isSpam()) {
                 console.log('🤖 Spam detected');
                 this.showMessage('Message envoyé', 'success');
@@ -213,18 +224,14 @@
 
             const formData = new FormData(this.form);
 
-            //==============================
             // Validate
-            //==============================
             const errors = this.validateForm(formData);
             if (errors.length > 0) {
                 this.showMessage(errors.join('<br>'), 'error');
                 return;
             }
 
-            //==============================
             // Prepare data
-            //==============================
             const commentData = {
                 name: formData.get('name'),
                 email: formData.get('email'),
@@ -240,9 +247,7 @@
             this.showLoading(true);
 
             try {
-                //==============================
                 // Submit to both endpoints in parallel
-                //==============================
                 const [senderResult, formspreeResult] = await Promise.allSettled([
                     this.submitToSender(commentData).catch(err => {
                         console.error('Sender error:', err);
@@ -254,9 +259,7 @@
                     })
                 ]);
 
-                //==============================
                 // Handle results
-                //==============================
                 if (senderResult.status === 'fulfilled' && formspreeResult.status === 'fulfilled') {
                     this.showMessage('✨ Commentaire envoyé avec la Clé d\'Imhotep!', 'success');
                     this.form.reset();
@@ -284,12 +287,16 @@
             }
         }
 
+        // ==============================
+        // Sender.net API call via Cloudflare Worker
+        // ==============================
         async submitToSender(data) {
             try {
-                // Prepare custom fields matching your Sender.net setup
+                // Prepare payload matching Worker expectations
                 const payload = {
                     email: data.email,
                     name: data.name,
+                    is_newsletter: true,  // Routes to the correct Sender.net group
                     list_id: CONFIG.SENDER_LIST_ID,
                     fields: {
                         num_cle: data.cle,
@@ -330,6 +337,9 @@
             }
         }
 
+        // ==============================
+        // Formspree API call
+        // ==============================
         async submitToFormspree(data) {
             const formspreePayload = {
                 name: data.name,
@@ -361,6 +371,9 @@
             return result;
         }
 
+        // ==============================
+        // Helper functions
+        // ==============================
         generateReferenceId() {
             return 'ref_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
         }
@@ -407,6 +420,9 @@
             return re.test(email);
         }
 
+        // ==============================
+        // UI feedback
+        // ==============================
         showMessage(message, type) {
             const alertDiv = document.createElement('div');
             alertDiv.className = `imhotep-alert imhotep-alert-${type}`;
@@ -429,12 +445,14 @@
 
         showLoading(show) {
             let loader = document.getElementById('imhotep-loader');
-            
+            // 
+
+            // this is line 450. it looks like there is a problem from line 453 to 484
             if (show && !loader) {
                 loader = document.createElement('div');
                 loader.id = 'imhotep-loader';
                 loader.innerHTML = `
-                    <div style="
+                    <div style="  
                         position: fixed;
                         top: 0;
                         left: 0;
@@ -458,14 +476,14 @@
                                 border-radius: 50%;
                                 width: 40px;
                                 height: 40px;
-                                animation: spin 1s linear無限;
+                                animation: spin 1s linear infinite;
                                 margin: 0 auto 15px;
                             "></div>
                             <p>Envoi en cours...</p>
                         </div>
                     </div>
                 `;
-                
+                // this is line 486
                 const style = document.createElement('style');
                 style.textContent = `
                     @keyframes spin {
@@ -492,9 +510,9 @@
         }
     }
 
-    //==============================
+    // ==============================
     // Initialize when DOM is ready
-    //==============================
+    // ==============================
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => new ImhotepCommentHandler());
     } else {
