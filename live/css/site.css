@@ -1,0 +1,31 @@
+/* Site-specific styles */
+
+body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 77vh;
+      background: #856c6c;
+      color: #d8c9a3;
+      text-align: center;
+    }
+    a {
+      color: #d8c9a3;
+      text-decoration: underline;
+    }
+
+    .coming-soon h1 {
+      font-size: 3em;
+      margin: 0.5em 0;
+      font-weight: bold;
+    }
+    .coming-soon h2 {
+      font-size: 1.5em;
+      margin: 0.5em 0;
+    }
+    
+    .coming-soon p {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+    }
