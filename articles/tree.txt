@@ -91,7 +91,7 @@ here is my Root tree
 │
 ├── live/
 │   │
-│   ├─ csss/
+│   ├─ css/
 │   │ 
 │   ├─ index.html
 │   │ 

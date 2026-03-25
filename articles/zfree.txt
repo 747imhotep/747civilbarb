@@ -1,0 +1,12 @@
+EMAIL ADDRESS		| Status	| TYPE	  | FORWORDED TO	| SERVER| AUTO RENIW	|		
+contact@deadangles.org	|   ✅ 	| Forward | example@gmail.com 	| 	| 		|
+support@deadangles.org	|   ✅		| Forward | example@gmail.com 	| 	| 		|
+
+on deadangles.org domain:
+| TYPE 	| HOST	 | value						| TTL		| ADDED BY 	|
+| MX	| @	 | 10 mx.hover.com.cust.hostedemail.com			| 15 Minutes	| HOVER		|
+| TXT	| _dmarc | v=DMARC1; p=none; rua=mailto:contact@deadangles.org	| 15 Minutes	| 		|
+
+
+v=DMARC1; p=none; rua=mailto:contact@lunyns.com; fo=1
+

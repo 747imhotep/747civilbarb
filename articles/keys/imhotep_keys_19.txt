@@ -1,0 +1,54 @@
+🔹 DNS/MX Record Tests
+
+Run from: YOUR LOCAL TERMINAL (Linux)
+
+
+→ $ dig MX deadangles.org +short
+10 mx.hover.com.cust.hostedemail.com.
+
+→ $ dig TXT deadangles.org +short | grep "v=spf1"
+"v=spf1 include:spf.hover.com include:sendersrv.com ~all"
+
+→ $ dig TXT default._domainkey.deadangles.org +short
+nothing shown
+
+
+🔹 SMTP/Email Server Tests
+
+
+# Connect to VPS first
+→ ssh root@your-vps-ip
+ssh: Could not resolve hostname your-vps-ip: Temporary failure in name resolution
+
+
+# Check if mail server is listening on port 25
+→ netstat -tlnp | grep :25
+(N<pre>ot all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)</pre>
+# OR
+→ ss -tlnp | grep :25
+Nothing Shown
+
+# Check mail service status
+→ systemctl status postfix
+Unit postfix.service could not be found.
+# OR if using sendmail
+→ systemctl status sendmail
+Unit sendmail.service could not be found.
+
+# Test sending email from VPS
+→ echo "Test email body" | mail -s "Test Subject" contact@deadangles.org
+est Subject" contact@deadangles.org
+mail: cannot send message: Process exited with a non-zero status
+
+# View mail logs
+→ tail -50 /var/log/mail.log
+tail: cannot open '/var/log/mail.log' for reading: Permission denied
+# OR
+→ tail -50 /var/log/mail/mail.log
+tail: cannot open '/var/log/mail/mail.log' for reading: No such file or directory
+
+
+
+
+
