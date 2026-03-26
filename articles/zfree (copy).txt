@@ -1,0 +1,502 @@
+Do you want me to update my server.js ?
+
+
+// ---------------------------
+// SERVER.JS - DEADANGLES INSTITUTE
+// ---------------------------
+
+console.log("🔥 SERVER.JS ACTIVE VERSION LOADED");
+
+// Imports
+import dotenv from "dotenv";
+dotenv.config();
+
+import express from "express";
+import Stripe from "stripe";
+import fs from "fs";
+import path from "path";
+import session from "express-session";
+import cors from "cors";
+
+// ---------------------------
+// Config
+// ---------------------------
+const PORT = process.env.PORT || 3000;
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
+const SENDER_API_KEY = process.env.SENDER_API_KEY;
+const ENTITLEMENTS_FILE = path.join(process.cwd(), "data", "entitlements.json");
+
+// ---------------------------
+// Initialize Stripe safely
+// ---------------------------
+let stripe = null;
+if (STRIPE_SECRET_KEY) {
+  stripe = new Stripe(STRIPE_SECRET_KEY);
+}
+
+// ---------------------------
+// Express app
+// ---------------------------
+const app = express();
+
+// ALSO add this:
+app.use((req, res, next) => {
+  console.log("➡️ REQUEST:", req.method, req.url);
+  next();
+});
+
+// =======================================================
+// 1️⃣ GLOBAL CORS (ONLY SYSTEM USED)
+// =======================================================
+app.use(cors({
+  origin: [
+    "https://www.deadanglesinstitute.org",
+    "https://deadanglesinstitute.org"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+// =======================================================
+// 2️⃣ JSON PARSER
+// =======================================================
+app.use(express.json());
+
+// =======================================================
+// 3️⃣ SESSION
+// =======================================================
+app.use(session({
+  secret: process.env.SESSION_SECRET || "supersecretkey",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+  }
+}));
+
+// =======================================================
+// 4️⃣ STATIC FILES
+// =======================================================
+app.use(express.static(path.join(process.cwd(), "public")));
+
+// =======================================================
+// 5️⃣ STRIPE CHECKOUT SESSION
+// =======================================================
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!stripe) {
+      return res.status(500).json({ error: "Stripe not initialized" });
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: "DeadAngles Institute Subscription",
+            },
+            unit_amount: 1000,
+            recurring: {
+              interval: "month",
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      customer_email: email,
+      success_url: "https://www.deadanglesinstitute.org/succes/succes.html",
+      cancel_url: "https://www.deadanglesinstitute.org/cancel/cancel.html",
+    });
+
+    return res.json({ url: session.url });
+
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// =======================================================
+// 6️⃣ STRIPE WEBHOOK (RAW BODY REQUIRED)
+// =======================================================
+app.post(
+  "/api/webhook",
+  express.raw({ type: "application/json" }),
+  (req, res) => {
+    if (!stripe) return res.status(500).send("Stripe not configured");
+
+    const sig = req.headers["stripe-signature"];
+
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        sig,
+        STRIPE_WEBHOOK_SECRET
+      );
+
+      console.log("✅ Webhook verified:", event.type);
+
+    } catch (err) {
+      console.error("❌ Webhook error:", err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    // Handle successful checkout
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
+
+      const email =
+        session.customer_details?.email ||
+        session.customer_email;
+
+      const customerId = session.customer || email;
+
+      if (customerId && email) {
+        grantEntitlement(customerId, email);
+      }
+    }
+
+    res.status(200).send("Received");
+  }
+);
+
+// =======================================================
+// 7️⃣ ENTITLEMENT CHECK
+// =======================================================
+app.get("/api/me", (req, res) => {
+  const email = req.query.email;
+
+  if (!email) {
+    return res.status(400).json({ error: "Missing email" });
+  }
+
+  try {
+    let entitlements = {};
+
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(
+        fs.readFileSync(ENTITLEMENTS_FILE, "utf-8")
+      );
+    }
+
+    const record = Object.values(entitlements)
+      .find(r => r.email === email);
+
+    if (!record) {
+      return res.json({
+        authenticated: true,
+        email,
+        entitled: false
+      });
+    }
+
+    return res.json({
+      authenticated: true,
+      email,
+      entitled: true,
+      source: "stripe"
+    });
+
+  } catch (err) {
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// =======================================================
+// 8️⃣ ENTITLEMENT GRANT
+// =======================================================
+function grantEntitlement(customerId, email) {
+  try {
+    let entitlements = {};
+
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(
+        fs.readFileSync(ENTITLEMENTS_FILE, "utf-8")
+      );
+    }
+
+    if (!entitlements[customerId]) {
+      entitlements[customerId] = {
+        customerId,
+        email,
+        grantedAt: new Date().toISOString(),
+      };
+    }
+
+    fs.writeFileSync(
+      ENTITLEMENTS_FILE,
+      JSON.stringify(entitlements, null, 2)
+    );
+
+    console.log("✅ Entitlement granted:", email);
+
+  } catch (err) {
+    console.error("❌ Entitlement error:", err);
+  }
+}
+
+// =======================================================
+// 9️⃣ SENDER SUBSCRIBE
+// =======================================================
+app.post("/api/sender-subscribe", async (req, res) => {
+  try {
+    const { email, name } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: "Email required" });
+    }
+
+    const response = await fetch(
+      "https://api.sender.net/v2/subscribers",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${SENDER_API_KEY}`
+        },
+        body: JSON.stringify({
+          email,
+          name: name || ""
+        })
+      }
+    );
+
+    const result = await response.json();
+    return res.status(response.status).json(result);
+
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// =======================================================
+// 🔟 HEALTH CHECK
+// =======================================================
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+// =======================================================
+// 1️⃣1️⃣ START SERVER
+// =======================================================
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
+deploy@deadangles-api-01:~/my-worker$ sudo nano /etc/nginx/sites-available/api.deadanglesinstitute.org
+[sudo] password for deploy: 
+deploy@deadangles-api-01:~/my-worker$ sudo cat /etc/nginx/sites-available/api.deadanglesinstitute.org
+
+
+# ===============================
+# API Server — Deadangles Institute
+# ===============================
+
+# HTTPS Server — API
+server {
+    listen 443 ssl;
+    server_name api.deadanglesinstitute.org;
+
+    # Reject any request not using correct host
+    if ($host != "api.deadanglesinstitute.org") {
+        return 444;
+    }
+
+    # ✅ MAIN API LOCATION (FIXED)
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+
+        # 🔥 CORS FIX (THIS WAS MISSING)
+        add_header Access-Control-Allow-Origin https://www.deadanglesinstitute.org always;
+        add_header Access-Control-Allow-Credentials true always;
+        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization" always;
+
+        # 🔥 HANDLE PREFLIGHT REQUESTS
+        if ($request_method = OPTIONS) {
+            return 204;
+        }
+
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # SSL / Certbot
+    ssl_certificate /etc/letsencrypt/live/api.deadanglesinstitute.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.deadanglesinstitute.org/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# ===============================
+# HTTP → HTTPS redirect (API)
+# ===============================
+server {
+    listen 80;
+    server_name api.deadanglesinstitute.org;
+
+    if ($host = api.deadanglesinstitute.org) {
+        return 301 https://$host$request_uri;
+    }
+
+    return 404;
+}
+
+# ===============================
+# Webhook Server — DO NOT TOUCH
+# ===============================
+
+server {
+    listen 443 ssl;
+    server_name hooks.deadanglesinstitute.org;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/hooks.deadanglesinstitute.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/hooks.deadanglesinstitute.org/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# HTTP → HTTPS redirect for hooks
+server {
+    listen 80;
+    server_name hooks.deadanglesinstitute.org;
+
+    return 301 https://$host$request_uri;
+}
+
+
+api.deadanglesinstitute.org
+
+# ===============================
+# API Server — Deadangles Institute
+# ===============================
+
+# HTTPS Server — API
+server {
+    listen 443 ssl;
+    server_name api.deadanglesinstitute.org;
+
+    # Reject any request not using correct host
+    if ($host != "api.deadanglesinstitute.org") {
+        return 444;
+    }
+
+    # ✅ MAIN API LOCATION (FIXED)
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+
+        # 🔥 CORS FIX (THIS WAS MISSING)
+        add_header Access-Control-Allow-Origin https://www.deadanglesinstitute.org always;
+        add_header Access-Control-Allow-Credentials true always;
+        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Content-Type, Authorization" always;
+
+        # 🔥 HANDLE PREFLIGHT REQUESTS
+        if ($request_method = OPTIONS) {
+            return 204;
+        }
+
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # SSL / Certbot
+    ssl_certificate /etc/letsencrypt/live/api.deadanglesinstitute.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.deadanglesinstitute.org/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# ===============================
+# HTTP → HTTPS redirect (API)
+# ===============================
+server {
+    listen 80;
+    server_name api.deadanglesinstitute.org;
+
+    if ($host = api.deadanglesinstitute.org) {
+        return 301 https://$host$request_uri;
+    }
+
+    return 404;
+}
+
+# ===============================
+# Webhook Server — DO NOT TOUCH
+# ===============================
+
+server {
+    listen 443 ssl;
+    server_name hooks.deadanglesinstitute.org;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/hooks.deadanglesinstitute.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/hooks.deadanglesinstitute.org/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+
+# HTTP → HTTPS redirect for hooks
+server {
+    listen 80;
+    server_name hooks.deadanglesinstitute.org;
+
+    return 301 https://$host$request_uri;
+}
+
+

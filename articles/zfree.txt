@@ -10,3 +10,11 @@ on deadangles.org domain:
 
 v=DMARC1; p=none; rua=mailto:contact@lunyns.com; fo=1
 
+
+What i did:
+✔ 1. Created/verified webhook endpoint in Stripe
+✔ 2. Replaced webhook secret
+✔ 3. Restarted server properly
+can't find 
+Developers → Webhooks → Event destination → Event deliveries tab
+
