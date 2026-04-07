@@ -1,8 +1,0 @@
-{ text: "Clé 01. Selon les chercheurs, sous irradiation UVB, la phéomélanine peut agir comme photosensibilisateur en générant des radicaux libres, ce qui accentue les dommages oxydatifs infligés à l’ADN des cellules cutanées. La phéomélanine, jaune-rouge, a un faible pouvoir absorbant UVB.", week: 1 }, 
-{ text: "Clé 02. La vitamine D3 module l’activité des lymphocytes T et B, ce qui aide à calibrer la réponse immunitaire pour qu’elle soit efficace sans être excessive. Une heure sous le soleil génère 2000 unités.", week: 1 },
-{ text: "Clé 03. Métissage: Le Brésil a connu une dynamique similaire à celle de l’Argentine, notamment au XIXᵉ siècle, avec une politique de métissage qui cherchait à effacer les distinctions raciales et à promouvoir un idéal de «blanchissement »", week: 2 },
-{ text: "Clé 04. Si l’on reconsidère l’énoncé « Imhotep est le père de la médecine et de l’architecture », on constate que, d’une certaine manière, il repose sur la même logique que des expressions comme « miracle grec » ou « l’Afrique a aussi pratiqué l’esclavage ». Dans tous ces cas, des réalités historiques complexes sont réduites à des formules simplificatrices, souvent chargées idéologiquement.", week: 2 },
-{ text: "Clé 05. L'agriculture est un sujet sensible. Certains utilisent la datation des premiers agriculteurs pour construire un narratif à des fins politiques pour - selon l'expression de Kalala Omotunde - \"organiser une escroquerie intellectuelle\".", week: 2 },
-{ text: "Clé 06. La diplomite. Une maladie liée au besoin de valorisation. A l'instar de la sapologie, elle pousse les individus à se focaliser sur la forme qui devient un outil d'argumentation.", week: 3 },
-{ text: "Clé 07. A SUIVRE...: Rien n’est perdu tant qu’on continue à chercher."
-];
