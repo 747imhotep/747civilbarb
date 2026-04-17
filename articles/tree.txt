@@ -8,7 +8,7 @@ here is my Root tree
 │	│
 │   	└─ index.html
 │
-├── ARTICLES/		<-- Few drafts texts for me
+├── articles/		<-- Few drafts texts for me
 │
 ├── biblio/		<-- Stored PDF articles will be move to: my-worker/premium-files
 │
@@ -17,11 +17,14 @@ here is my Root tree
 ├── contact/
 │   	├─ csscontact/contact.css
 │	│
-│   	├─ jscontact.js
+│   	├─ index.html
 │	│
-│   	└─ index.html
+│   	└─ jscontact.js
 │
 ├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
+│	│
+│	├─ cle_imhotep/les_cles.txt
+│	│
 │	│
 │	├─ imhotepcss/
 │	│	│
@@ -71,35 +74,37 @@ here is my Root tree
 ├── index.html
 │
 ├── indexcss/
-│   │
-│   └─ index.css
+│   	│
+│   	└─ index.css
+│
+│
 │
 ├── library/
-│   │
-│   │
-│   ├──	anything/ 
-│   │	│
-│   │	├─ anything.html 
-│   │	│
-│   │	└─ cssanything/anything.css
-│   │
-│   ├──	csslibrary
-│   │	│
-│   │	└─ library.css
-│   │
-│   └─ index.html
+│   	│
+│   	│
+│   	├── anything/ 
+│   	│	│
+│   	│	├─ anything.html 
+│   	│	│
+│   	│	└─ cssanything/anything.css
+│   	│
+│   	├── csslibrary
+│   	│	│
+│   	│	└─ library.css
+│   	│
+│   	└─ index.html
 │
 ├── live/
 │   │
-│   ├─ css/
+│   ├─ css/site.css	<-- 
 │   │ 
-│   ├─ index.html
+│   ├─ index.html	<-- coming soon page with private access (to be setup)
 │   │ 
 │   │ 
-│   └─ js/
+│   └─ js/		<-- empty for the moment
 │
 │
-├── my-worker/		<-- detailed tree in another file: I can share with you.
+├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
 │
 │
 ├── navbar/          	<-- Navbar HTML is duplicated across pages
@@ -111,7 +116,7 @@ here is my Root tree
 │   │	
 │   ├─ csssnippet
 │   │	│
-│   │	└─ snippet.css	<-- empty
+│   │	└─ snippet.css	<-- empty for the moment
 │   │
 │   ├─ jsnavbar/
 │   │	│
@@ -130,10 +135,14 @@ here is my Root tree
 │   	│
 │   	├─ index.html	<-- 👉 Free articles here
 │   	│
-│   	└─ jsarticles
-│   		│
-│    		└─ articles.js
-│   
+│   	├─ jsarticles
+│   	│	│
+│   	│	├─ articles.js			<-- whitch one is the good one ?
+│   	│	│
+│   	│	└─ articles.json
+│   	│
+│   	│
+│   	└─ jsarticles.js/articles.js		<-- whitch one is the good one ?
 │
 ├── pictures/
 │   │	
@@ -201,17 +210,24 @@ here is my Root tree
 │   │	│
 │   │	├─ gdpr.css	
 │   │	│
-│   │	└─ layout.css	<-- Actualy empty for the moment (later, optional)
+│   │	├─ layout.css	<-- Actualy empty for the moment (later, optional)	
+│   │	│
+│   │	└─ thanks.css
 │   │	
 │   │	
-│   └─ jsshared/
-│   	│
-│   	├─ center_zoom.js	
-│   	│
-│   	├─ gdpr.js	
-│   	│
-│   	└─ sender.js
-│   
+│   │	
+│   ├─ jsshared/
+│   │   │
+│   │	├─ center_zoom.js	
+│   │	│
+│   │	├─ form-handler.js	
+│   │	│
+│   │	├─ gdpr.js	
+│   │	│
+│   │	└─ sender.js
+│   │
+│   │
+│   └─ thanks.html
 │
 ├── subscribe/
 │   │	
