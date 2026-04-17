@@ -1,6 +1,0 @@
-Hi, I will share with you few documents from my website.
-please read them carefully, even twice. Make sure you come back to them before giving any answer, so you don't propose something that is already there.
-
-Also, if you have any stepping solution, make sure to share it step by step and ask before, if ever I already have any code yet. This will avoid pretending I don't have it and avoid wasting time and effort.
-
-Having said that, pleas find html file, css files and tree 
