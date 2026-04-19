@@ -63,7 +63,7 @@ here is my Root tree
 │	│
 │	│   
 │	│   
-│	└─ index.html	           	<-- optional test page. Empty for now.
+│	└─ index.html	           	<-- this page has been moved into private/ Folder
 │
 │
 ├── .env.example
@@ -180,6 +180,10 @@ here is my Root tree
 │       │ 
 │       └─ premium.js
 │      		
+│      
+│   └─ private 
+│	│   
+│	└─ index.html	           	<-- actual protected website (so, we can work on it and give access to it)
 │   
 │   
 │
