@@ -181,7 +181,7 @@ here is my Root tree
 │       └─ premium.js
 │      		
 │      
-│   └─ private 
+├── private 
 │	│   
 │	└─ index.html	           	<-- actual protected website (so, we can work on it and give access to it)
 │   

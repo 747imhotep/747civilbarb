@@ -1,0 +1,45 @@
+What we want:
+
+visitor insert any of 
+
+1. https://deadangles.org/
+2. http://www.deadangles.org
+3. https://www.deadangles.org
+4. www.deadangles.org
+
+THEN 
+1. visitor ended up at "coming soon" page
+2. visitor click on "Accès privé"
+3. CloudFlare opens  "Live Area"
+4. visitor insert any email address 
+5. visitor receive OTP Code 
+6. visitor insert OTP Code
+7. CloudFlare opens website.
+8. We need to create an animation before leaving the "Coming soon" page 
+
+TODAY April 19th
+We will setup "Coming soon" page 
+On this page visitor can ask for 
+or instruction (new email)
+
+Now we need to clean up few links a little bit on home page.
+
+
+We will add a login request on the "Coming soon" page 
+That would be linked to sender.com embade filling form with:
+- Name
+- email
+- purpose
+
+1) let's clean up links on the coming soon page
+
+2) setup the sender.com form
+so we can generate the API or the embade Code.
+
+3) Modify the privat/index.html with 2 buttons:
+button1 --> Accès privé
+button2 --> Demande d'Accès
+
+
+
+
