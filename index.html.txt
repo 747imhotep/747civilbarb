@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Coming Soon | Dead Angles Institute</title>
+
+  <!-- global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+  <!-- site-specific styles -->
+  <link rel="stylesheet" href="/live/css/site.css">
+
+  <!-- shared UI components -->
+  <link rel="stylesheet" href="/shared/cssshared/navbar.css">
+  <link rel="stylesheet" href="/shared/snippets/snippets.css">
+  <link rel="stylesheet" href="/shared/shared/cta.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png" type="image/png">
+</head>
+
+<!-- ============================ -->
+<!--          Coming Soon         -->
+<!-- ============================ -->
+
+<body class="has-fixed-nav">
+  <!-- Navigation Bar -->
+    <!--<div id="navbar-placeholder"></div>  Restricted access-->
+
+  <div class="coming-soon">
+  <h1>Coming Soon</h1>
+  <h2>Dead Angle Institute</h2>
+  <p>Le site sera prochainement accessible.</p> <!-- Needs authentication -->
+  <p>
+    <a href="https://deadanglesinstitute.org/private/">Accès privé</a> <!-- nothing happens when clicked -->
+  </p>
+</div>
+
+
+    <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+    <script src="/navbar/jsnavbar/navbar.js" defer></script>
+    
+    <script src="/shared/jsshared/gdpr.js" defer></script>
+    
+</body>
+</html>
