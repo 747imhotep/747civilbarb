@@ -14,19 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!btn || !container) return;
 
   btn.addEventListener("click", function () {
-
     container.style.display = "block";
+
+    setTimeout(() => {
+    container.classList.add("visible");
+    }, 10);
     container.scrollIntoView({ behavior: "smooth" });
-
-    // Load Sender script ONLY once
-    if (container.dataset.loaded === "true") return;
-    container.dataset.loaded = "true";
-
-    const script = document.createElement("script");
-    script.src = "https://cdn.sender.net/YOUR_SENDER_SCRIPT.js";
-    script.async = true;
-
-    document.body.appendChild(script);
   });
+
+  const link = document.querySelector(".btn-primary");
+
+if (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const overlay = document.getElementById("page-transition");
+    overlay.classList.add("active");
+
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 500);
+  });
+}
 
 });
