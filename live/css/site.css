@@ -61,6 +61,11 @@ body {
       padding: 40px 20px;
     }
 
+    .coming-soon.blur{
+      filter: blur(4px);
+      opacity: 0.6;
+    }
+
     .coming-soon h1 {
       font-size: 3.2em;
       margin: 0.5em 0;
