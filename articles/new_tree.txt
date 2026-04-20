@@ -1,0 +1,219 @@
+here is my Root tree
+🌳 747civilcarb/en/
+│
+├── 404.html
+│
+│
+├── articles/		<-- Few drafts texts for me
+│
+├── biblio/		<-- Stored PDF articles will be move to: my-worker/premium-files
+│
+├── CNAME
+│
+│
+├── en/
+│
+├── fr/
+│
+│
+│
+├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
+│	│
+│	├─ cle_imhotep/les_cles.txt
+│	│
+│	│
+│	├─ imhotepcss/
+│	│	│
+│   	│	├─ cmt-modal.css
+│	│	│
+│   	│	├─ comments.css
+│	│	│
+│	│	└─ imhotep.css    	<-- 
+│	│
+│	│
+│	├─ imhotepjs/
+│	│	│
+│	│	│
+│   	│	├─ cmt-modal.js		<-- New file
+│	│	│
+│	│	│
+│   	│	├─ comments.js		<-- backup file
+│	│	│
+│	│	│
+│   	│	├─ comments-new.js	<-- comment button logic
+│	│	│
+│	│	│
+│   	│	├─ imhotep.js		<-- rotating keys
+│	│	│
+│	│	│
+│   	│	├─ sender-dropdown.js	<-- rotating keys
+│	│	│
+│	│	│
+│   	│	├─ sender_emb.js	<-- New file
+│	│	│
+│	│	│
+│	│	└─ sender_emb_gpt.js   	<-- 
+│	│
+│	│
+│	├─ imhotep-keys.json
+│	│
+│	│   
+│	│   
+│	└─ index.html	           	
+│
+│
+├── .env.example
+│
+├── .gitignore
+│
+│
+├── index.html		<-- this page has been moved into private/ Folder
+│
+├── indexcss/
+│   	│
+│   	└─ index.css
+│
+├── live/
+│
+│
+│
+├── live/
+│   │
+│   ├─ css/site.css	<-- 
+│   │ 
+│   ├─ index.html	<-- coming soon page with private access (to be setup)
+│   │ 
+│   │ 
+│   └─ js/		<-- empty for the moment
+│
+│
+├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
+│
+│
+├── navbar/          	<-- Navbar HTML is duplicated across pages
+│   │
+│   │
+│   ├─ cssnavbar
+│   │	│
+│   │	└─ navbar.css
+│   │	
+│   ├─ csssnippet
+│   │	│
+│   │	└─ snippet.css	<-- empty for the moment
+│   │
+│   ├─ jsnavbar/
+│   │	│
+│   │	├─ load-navbar.js
+│   │	│
+│   │	└─ navbar.js
+│   │	
+│   └─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
+│
+│
+├── nosarticles/
+│   	│
+│   	├─ cssaricles/
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├─ index.html	<-- 👉 Free articles here
+│   	│
+│   	├─ jsarticles
+│   	│	│
+│   	│	├─ articles.js			<-- whitch one is the good one ?
+│   	│	│
+│   	│	└─ articles.json
+│   	│
+│   	│
+│   	└─ jsarticles.js/articles.js		<-- whitch one is the good one ?
+│
+├── pictures/
+│   │	
+│   ├─ 404/
+│   │	
+│   ├─ articles/
+│   │	
+│   ├─ fav-icone/
+│   │	
+│   ├─ hero/
+│   │	
+│   ├─ library-pic/
+│   │	
+│   ├─ logo/
+│   │	
+│   ├─ og/
+│   │	
+│   └─ pages/
+│
+│
+├── privacy/
+│   │
+│   ├─ cssprivacy/
+│   │   │
+│   │   └─ privacy.css
+│   │   
+│   └─ index.html
+│   
+│
+│
+├── Readme.txt
+│
+│
+├── shared/
+│   │
+│   │
+│   ├─ cssshared/
+│   │	│
+│   │	├─ 404.css	
+│   │	│
+│   │	├─ base.css	
+│   │	│
+│   │	├─ cta.css	<-- Actualy empty for the moment
+│   │	│
+│   │	├─ footer.css	
+│   │	│
+│   │	├─ gdpr.css	
+│   │	│
+│   │	├─ layout.css	<-- Actualy empty for the moment (later, optional)	
+│   │	│
+│   │	└─ thanks.css
+│   │	
+│   │	
+│   │	
+│   ├─ jsshared/
+│   │   │
+│   │	├─ center_zoom.js	
+│   │	│
+│   │	├─ form-handler.js	
+│   │	│
+│   │	├─ gdpr.js	
+│   │	│
+│   │	└─ sender.js
+│   │
+│   │
+│   └─ thanks.html
+│
+│
+│
+│
+├── terms/
+│   │	
+│   ├─ cssterms
+│   │	│   
+│   │	└─  terms.css
+│   │	
+│   └─  index.html 
+│
+│   
+│      
+└─  terms_of_use/
+   	 │	
+   	 ├─ csstermsofuse
+   	 │   │   
+   	 │   └─ terms_of_use.css
+   	 │
+   	 └─ index.html
+
+
+
+
