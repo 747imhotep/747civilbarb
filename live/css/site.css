@@ -24,7 +24,7 @@ body {
       justify-content: center;
       height: 100vh;
       /* background: radial-gradient(circle at center, #8f7676 0%, #6f5a5a 100%); */
-      background: radial-gradient(circle, #8f7676, #5f4a4a);
+      background: radial-gradient(circle, #594949, #b47d7d);
       color: #e6d8b5;
       text-align: center;
     }
@@ -41,20 +41,17 @@ body {
   transform: translateY(0);
 }
   
-  /*
-    body {
-  
-  
-  
-}
-    */
-
 
 
     a {
       color: #d8c9a3;
       text-decoration: underline;
     }
+
+
+/* :::::::::::::: */
+/*::: COMING SOON :::*/
+/* :::::::::::::: */
 
     .coming-soon {
       max-width: 500px;
@@ -73,14 +70,19 @@ body {
       letter-spacing: 1.5px;
       font-weight: bold;
       color: #e6d8b5;
+      text-shadow: #660000 2px 2px 4px;
     }
 
-.coming-soon h2 {
+    .coming-soon h2 {
       font-size: 1.4em;
       margin: 0.5em 0;
       margin-bottom: 20px;
-      opacity: 0.05;
-      color: #ebbd48;
+      color: #e8b943;
+    }
+
+    .tm {
+    font-size: 0.6em;
+    vertical-align: super;
     }
     
 .coming-soon p {
@@ -92,7 +94,8 @@ body {
     }
 
 /*::::::::::::::*/
-/*:::BUTTONS:::*/    
+/*:::BUTTONS:::*/ 
+/*::::::::::::::*/   
 
 .cta-buttons {
   margin-top: 30px;
@@ -111,14 +114,13 @@ body {
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(149, 129, 129, 0.8);
-  /* background: transparent; */
   color: white;
   transition: 0.25s ease;
 }
 
 .btn-primary:hover{
   border-color: rgba(255,255,255,0.6);
-  background-color: #5a0505;
+  background-color: #660000;
   transform: translateY(-3px);
   color: #f5e0ac;
   font-size: larger;
