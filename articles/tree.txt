@@ -196,6 +196,13 @@ here is my Root tree
 │   └─ index.html
 │   
 │
+├── private/
+│   │
+│   └─ index.html 	<-- THIS IS THE ORIGINAL HOME PAGE 
+│
+│
+│   
+│
 ├── Readme.txt
 │
 │
