@@ -80,6 +80,7 @@ body {
       margin: 0.5em 0;
       margin-bottom: 20px;
       opacity: 0.05;
+      color: #ebbd48;
     }
     
 .coming-soon p {
@@ -90,6 +91,7 @@ body {
       font-weight: 500;
     }
 
+/*::::::::::::::*/
 /*:::BUTTONS:::*/    
 
 .cta-buttons {
@@ -108,7 +110,7 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(97, 69, 69, 0.8);
+  background: rgba(149, 129, 129, 0.8);
   /* background: transparent; */
   color: white;
   transition: 0.25s ease;
