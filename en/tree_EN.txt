@@ -1,0 +1,78 @@
+here is my EN tree
+🌳 747civilcarb/en
+│
+│
+│
+├── about/
+│   	├─ cssabout/about.css
+│	│
+│   	└─ index.html
+│
+│
+│
+├── contact/
+│   	├─ csscontact/contact.css
+│	│
+│   	├─ index.html
+│	│
+│   	└─ jscontact.js
+│
+│
+├── library/
+│   	│
+│   	│
+│   	├── anything/ 
+│   	│	│
+│   	│	├─ anything.html 
+│   	│	│
+│   	│	└─ cssanything/anything.css
+│   	│
+│   	├── csslibrary
+│   	│	│
+│   	│	└─ library.css
+│   	│
+│   	└─ index.html
+│
+│
+├── premium/
+│   │	
+│   ├─ csspremium
+│   │   │	
+│   │   └─ premium.css
+│   │   
+│   ├─ endpoint
+│   │   │
+│   │	└─ endpoint.js
+│   │	
+│   ├─ index.html		<---📍 It means: “I want to start a subscription”
+│   │   				👉 The button "Acceder" doesn't work for the moment
+│   │  
+│   └─ jspremium
+│       │ 
+│       └─ premium.js
+│      		
+│      
+├── private 
+│	│   
+│	└─ index.html	           	<-- actual protected website (so, we can work on it and give access to it)
+│   
+│   
+│   
+│   
+│
+│
+├── subscribe/
+│   │	
+│   ├─ csssubscribe
+│   │	│
+│   │  	└─ subscribe.css
+│   │
+│   ├── index.html
+│   │
+│   │	
+│   └─ jssubscribe
+│   	│
+│   	└─ subscribe.js
+│
+
+
