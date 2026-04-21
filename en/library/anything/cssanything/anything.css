@@ -1,0 +1,231 @@
+/* ==================================
+   Anything Page — Scoped Styles
+   Wrapper: .anything-page
+================================== */
+
+
+/* ❌ In page CSS, rmove global styles like:
+body { ... }
+html { ... }
+a { ... }
+footer { ... }  /* unless explicitly scoped */
+
+
+
+/* ===== Call to Action ===== */
+/* to move later into /shared/css/cta.css */
+.library-page .cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.library-page .cta a {
+  color: #730101;
+  margin: 0 15px;
+  text-decoration: underline;
+}
+
+.library-page .cta a.secondary {
+  color: #ae8888;
+}
+
+
+.library-page {
+  font-family: 'Times New Roman', Times, serif;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ===== Hero Section ===== */
+.library-page #hero-image {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/pictures/hero/hero_library01.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.library-page #hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.library-page #hero-image > * {
+  position: relative;
+  max-width: 900px;
+  padding: 40px;
+}
+
+.library-page #hero-image h1 {
+  max-width: 1000px;
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.library-page #hero-image .hero-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.library-page #hero-image .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+.library-page #hero-image .quote {
+  color: #eeccf0;
+  font-size: 17px;
+  font-style: italic;
+  max-width: 800px;
+  margin-top: 20px;
+  background: rgba(50, 0, 50, 0.6);
+}
+
+.library-page #hero-image .quote em {
+  font-size: 17px;
+  color: #e4bfbf;
+}
+
+.library-page #hero-image .manifesto,
+.library-page #hero-image .quote {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  display: inline-block;
+  max-width: 700px;
+  margin: 15px auto 25px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.library-page #hero-image .manifesto em,
+.library-page #hero-image .quote em {
+  color: #ffe0e0;
+}
+
+.library-page #hero-image .manifesto:hover,
+.library-page #hero-image .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6),
+              0 0 15px rgba(255, 200, 200, 0.3);
+}
+
+/* ===== Library Header ===== */
+.library-page .library-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.library-page .library-header h2 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 15px;
+}
+
+.library-page .library-header .library-intro {
+  font-size: 18px;
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.library-page .library-header em {
+  color: #d30b83;
+  font-style: italic;
+}
+
+.library-page .library-hero-image {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 0 auto 40px auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* ===== Article List ===== */
+.library-page .article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.library-page .article-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.library-page .article-title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.library-page .article-title a {
+  color: #730101;
+  text-decoration: none;
+}
+
+.library-page .article-title a:hover {
+  text-decoration: underline;
+}
+
+.library-page .article-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.library-page .article-abstract {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 8px;
+}
+
+.library-page .article-meta {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ===== Responsive ===== */
+@media (hover: hover) {
+  .library-page #hero-image .manifesto:hover,
+  .library-page #hero-image .quote:hover {
+    transform: translateY(-8px);
+}
+}
+
+@media (max-width: 768px) {
+  .library-page #hero-image h1 {
+    font-size: 40px;
+  }
+
+  .library-page #hero-image .manifesto,
+  .library-page #hero-image .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .library-page .article-list {
+    max-width: 95%;
+    margin: 0 auto 40px auto;
+  }
+}

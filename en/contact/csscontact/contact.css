@@ -1,0 +1,155 @@
+/* ==================================
+   Contact Page — Scoped Styles
+   Wrapper: .contact-page
+================================== */
+
+/* ❌ In page CSS, rmove global styles like:
+body { ... }
+html { ... }
+a { ... }
+footer { ... }  /* unless explicitly scoped */
+
+/* ===== Page Container ===== */
+.contact-page {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+  padding-top: 60px; /* preserves spacing from top */ 
+  /* The .contact-page uses padding-top: 60px; 
+  — check that it doesn’t push content under 
+  fixed nav on smaller screens.
+  Consider padding-top: 80px if nav height increases on mobile. */
+}
+
+/* ===== Header ===== */
+.contact-header h1 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 40px;
+}
+
+/* ===== Intro Text ===== */
+.contact-intro {
+  max-width: 750px;
+  margin: 0 auto 40px auto;
+  text-align: center; /* fixed: properly center paragraph */
+}
+
+.contact-intro p {
+  font-size: 17px;
+  color: #444;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ===== Form ===== */
+.contact-form form {
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form p{
+  margin-top: 2px;
+  padding-top: 2px;
+  color: #641e1e;
+  font-size: 14px;
+}
+
+.contact-form label {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column; /* labels above inputs */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #730101;
+  outline: none;
+  box-shadow: 0 0 5px rgba(115, 1, 1, 0.5);
+}
+
+.contact-form button {
+  background-color: #730101;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  margin-bottom: 1px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form button:hover {
+  background-color: #a30003;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(200, 0, 0, 0.4);
+}
+
+/* ===== Contact Note ===== */
+.contact-note {
+  font-size: 14px;
+  color: #555;
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ===== GDPR Checkbox ===== */
+.gdpr-consent {
+  display: inline-flex !important; /* forces inline horizontal layout */
+  flex-direction: row !important;  /* absolutely required */
+  align-items: center;
+  gap: 5px;                        /* space between checkbox and text */
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0 15px 0;
+  line-height: 1.4;
+  cursor: pointer;
+  text-align: left;
+}
+
+.gdpr-consent input[type="checkbox"] {
+  margin: 0; /* spacing handled by gap */
+}
+
+.gdpr-consent a {
+  color: #730101;
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .contact-form form {
+    max-width: 95%;
+  }
+
+  .gdpr-consent {
+    font-size: 12px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 15px;
+  }
+
+  .contact-intro p {
+    font-size: 16px;
+  }
+}

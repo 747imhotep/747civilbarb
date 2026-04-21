@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact — Civilisation ou Barbarie</title>
+<!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="csscontact/contact.css">
+  
+<!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+</head>
+<!-- ============================ -->
+<!--       CIVILBARB CONTACT      -->
+<!-- ============================ -->
+
+<body class="has-fixed-nav">
+
+    <!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+  
+   <main class="contact-page">
+  <!-- Contact header -->
+  <header class="contact-header">
+    <h1>Contactez-nous</h1>
+  </header>
+
+  <div class="contact-intro">
+    <p>Votre message nous intéresse. Merci de remplir le formulaire ci-dessous.</p>
+  </div>
+
+  <div class="contact-form">
+    <form method="post" action="https://formspree.io/f/mkoqrerw">
+      <label>Nom</label>
+      <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      
+
+      <label>Email</label>
+      <input type="email" id="email" name="email" placeholder="Votre email" required>
+      
+      <label>Message</label>
+      <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+      
+
+      <label class="gdpr-consent">
+      <input type="checkbox" name="gdpr" required>
+      J’accepte la <a href="/privacy/privacy.html">Politique de confidentialité</a>
+      </label>
+
+      <button type="submit" aria-label="Envoyer le formulaire de contact">Envoyer</button>
+    </form>
+    <p class="contact-note">Nous vous répondrons sous 48 heures.</p>
+  </div>
+</main>
+
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/privacy.html">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+          
+
+
+<!-- Footer -->
+        <footer>
+          <p>
+            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
+          </p>
+          <p class="footer-links">
+            <a href="/privacy/">Politique de confidentialité</a> | 
+            <a href="/terms/">CGU</a>
+          </p>
+        </footer>
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+        <script src="/contact/jscontact.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Souscription Premium — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="/subscribe/csssubscribe/subscribe.css">
+
+<!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+  
+  <script src="https://js.stripe.com/v3/"></script> <!-- Stripe JS -->
+</head>
+<!-- ============================ -->
+<!--      CIVILBARB SUBSCRIBE     -->
+<!-- ============================ --> 
+
+<body class="subscribe-page">
+
+    <!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+
+<main id="subscribe" class="subscribe-page">
+
+  <section id="hero-subscribe">
+    <h1>Abonnement Premium</h1>
+    <p class="manifesto">
+      Accédez à tous nos articles exclusifs et archives rares. L’abonnement Premium 
+      vous permet de lire, télécharger et explorer le contenu complet de notre bibliothèque.
+    </p>
+  </section>
+
+  <section class="premium-articles" role="list">
+  <h2>Vos articles réservés</h2>
+
+
+</section>
+
+
+    <section class="subscribe-section">
+  <h2>Tarif Premium</h2>
+  <p>12,99 € / mois — paiement sécurisé via Stripe</p>
+
+  <!-- Error / Status message -->
+<div id="subscribe-message" class="subscribe-message" role="alert" aria-live="polite"></div>
+
+
+  <!-- ============================ -->
+  <!--  Email input for subscription -->
+  <!--  Static fallback (for no-JS users) -->
+  <!-- ============================ -->
+  <noscript>
+    <label for="userEmail" class="subscribe-email-label">
+      Email pour votre abonnement :
+    </label>
+    <input 
+        type="email" 
+        id="userEmail" 
+        class="subscribe-email-input" 
+        placeholder="Votre email" 
+        required>
+  </noscript>
+
+  <!-- ============================ -->
+  <!--  Checkout button -->
+  <!-- ============================ -->
+  <button 
+      type="button" 
+      id="checkout-button" 
+      class="subscribe-button" 
+      aria-label="S’abonner au plan Premium" 
+      data-plan="premium">
+      S’abonner
+  </button>
+</section>
+
+
+
+  
+
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+
+<!-- Footer -->
+            <footer>
+  <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+  <p class="footer-links">
+    <a href="/privacy/">Politique de confidentialité</a> | 
+    <a href="/terms/">CGU</a>
+  </p>
+</footer>
+<!-- Footer -->
+ 
+            
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/subscribe/jssubscribe/subscribe.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+    </body>
+</html>

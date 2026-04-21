@@ -1,0 +1,98 @@
+/* ==================================
+   About Page — Scoped Styles
+   Wrapper: .about-page
+================================== */
+
+/* ===== Page Container ===== */
+.about-page {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.65; /* légèrement plus respirant pour lecture longue */
+  padding: 0 24px;   /* marge horizontale globale */
+}
+
+/* ===== Header ===== */
+.about-page .about-header h1 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-top: 50px;
+  margin-bottom: 60px; /* espacement uniforme */
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ===== Sections ===== */
+.about-page .about-section {
+  max-width: 750px;
+  margin: 0 auto 60px; /* marges uniformes entre sections */
+  text-align: left;
+  padding: 0 12px; /* léger padding interne */
+}
+
+.about-page .about-section h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #730101;
+  margin-bottom: 10px; /* espacement cohérent avec paragraphes */
+  line-height: 1.3;
+}
+
+.about-page .about-section p {
+  font-size: 17px;
+  color: #444;
+  margin-top: 4px;
+  margin-bottom: 25px; /* plus respirant */
+}
+
+.about-page .about-section ul {
+  margin-left: 25px;
+  color: #444;
+  line-height: 1.5;
+}
+
+.about-page .about-section ul li {
+  margin-bottom: 10px; /* espacement confortable */
+}
+
+/* ===== Signature éditoriale & Méthode (optionnel) ===== */
+.about-page .about-section .editors,
+.about-page .about-section .method {
+  font-style: italic;
+  color: #555;
+  padding-left: 15px;
+  border-left: 2px solid #880000; /* accent discret */
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+/* ===== Mobile optimization ===== */
+@media (max-width: 600px) {
+  .about-page .about-section {
+    padding: 0 15px;
+  }
+
+  .about-page .about-header h1 {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .about-page .about-section h2 {
+    font-size: 24px;
+  }
+
+  .about-page .about-section p,
+  .about-page .about-section ul li {
+    font-size: 16px;
+  }
+}
+
+/* ===== GDPR Banner (reuse global style) ===== */
+#gdpr-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
