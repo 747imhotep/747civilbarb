@@ -1,9 +1,7 @@
 /* ==================================
    load-navbar.js
-   - Dynamically load navbar HTML
-   - Initialize navbar logic after script is loaded
-   - initNavbar() is only called after the script 
-   is loaded, so the function exists.
+   - Dynamically load navbar (FR / EN)
+   - Initialize navbar logic after load
 ================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -11,16 +9,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!placeholder) return;
 
   try {
-    // 1️⃣ Fetch and insert navbar HTML
-    const response = await fetch("/navbar/navbar.html");
+    // 1️⃣ Detect language from URL
+    const path = window.location.pathname;
+    let navbarFile = "/navbar/navbar-en.html";
+
+    if (path.startsWith("/fr/") || path === "/fr") {
+      navbarFile = "/navbar/navbar-fr.html";
+    }
+
+    // 2️⃣ Fetch and insert correct navbar
+    const response = await fetch(navbarFile);
     const navbarHTML = await response.text();
     placeholder.innerHTML = navbarHTML;
 
-    // 2️⃣ Load navbar.js dynamically
+    // 3️⃣ Load navbar.js dynamically
     const script = document.createElement("script");
     script.src = "/navbar/jsnavbar/navbar.js";
 
-    // 3️⃣ Initialize navbar AFTER script loads
+    // 4️⃣ Initialize AFTER script loads
     script.onload = () => {
       if (typeof initNavbar === "function") {
         initNavbar();
