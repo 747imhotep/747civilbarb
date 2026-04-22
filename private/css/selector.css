@@ -9,6 +9,22 @@ body {
       color: white;
     }
 
+    
+    #lang-text {
+      transition: opacity 0.7s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .fade-in {
+      opacity: 1;
+    }
+
+
+
+
     .lang-container {
       text-align: center;
     }
