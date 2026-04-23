@@ -8,7 +8,7 @@ pay attention it migh contain some minor errors.
 │
 ├── articles/		<-- Few drafts texts for me
 │
-├── biblio/		<-- Stored PDF articles will be move to: my-worker/premium-files
+├── biblio/		<-- 🚨 Store PDF articles. They shall be moved to: my-worker/premium-files later
 │
 ├── CNAME
 │
@@ -69,14 +69,13 @@ pay attention it migh contain some minor errors.
 ├── .gitignore
 │
 │
-├── index.html		<-- this page has been moved into private/ Folder
+├── index.html		<-- 🚨 This page has been moved into private/ Folder
+│
+│
 │
 ├── indexcss/
 │   	│
 │   	└─ index.css
-│
-├── live/
-│
 │
 │
 ├── live/
@@ -92,125 +91,123 @@ pay attention it migh contain some minor errors.
 ├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
 │
 │
+│
 ├── navbar/          	<-- Navbar HTML is duplicated across pages
-│   │
-│   │
-│   ├─ cssnavbar
-│   │	│
-│   │	└─ navbar.css
-│   │	
-│   ├─ csssnippet
-│   │	│
-│   │	└─ snippet.css	<-- empty for the moment
-│   │
-│   ├─ jsnavbar/
-│   │	│
-│   │	├─ load-navbar.js
-│   │	│
-│   │	└─ navbar.js
-│   │	
-│   └─ navbar.html	<-- 👉 Later improvement:Server includes / JS injection / static partials
+│   	│
+│   	│	
+│   	├─ cssnavbar/
+│   	│	│
+│   	│	└─ navbar.css
+│   	│	
+│   	├─ csssnippet/
+│   	│	│
+│   	│	└─ snippet.css	<-- empty for the moment
+│   	│
+│   	├─ jsnavbar/
+│   	│	│
+│   	│	├─ load-navbar.js
+│   	│	│
+│   	│	└─ navbar.js
+│   	│	
+│   	└─ navbar.html		<-- 👉 Later improvement:Server includes / JS injection / static partials
 │
 │
-├── nosarticles/
-│   	│
-│   	├─ cssaricles/
-│   	│	│
-│   	│	└─ articles.css
-│   	│
-│   	├─ index.html	<-- 👉 Free articles here
-│   	│
-│   	├─ jsarticles
-│   	│	│
-│   	│	├─ articles.js			<-- whitch one is the good one ?
-│   	│	│
-│   	│	└─ articles.json
-│   	│
-│   	│
-│   	└─ jsarticles.js/articles.js		<-- whitch one is the good one ?
+│
 │
 ├── pictures/
-│   │	
-│   ├─ 404/
-│   │	
-│   ├─ articles/
-│   │	
-│   ├─ fav-icone/
-│   │	
-│   ├─ hero/
-│   │	
-│   ├─ library-pic/
-│   │	
-│   ├─ logo/
-│   │	
-│   ├─ og/
-│   │	
-│   └─ pages/
+│   	│	
+│   	├─ 404/
+│   	│	
+│   	├─ articles/
+│   	│	
+│   	├─ fav-icone/
+│   	│	
+│   	├─ hero/
+│   	│	
+│   	├─ library-pic/
+│   	│	
+│   	├─ logo/
+│   	│	
+│   	├─ og/
+│   	│	
+│   	└─ pages/
 │
 │
 ├── privacy/
-│   │
-│   ├─ cssprivacy/
-│   │   │
-│   │   └─ privacy.css
-│   │   
-│   └─ index.html
+│   	│
+│   	├─ cssprivacy/
+│   	│   │
+│   	│   └─ privacy.css
+│   	│   
+│   	└─ index.html
 │   
+│
+├── private/
+│   	│
+│   	├─ css/
+│   	│   │
+│   	│   └─ selector.css
+│   	│   
+│   	├─ index.html
+│   	│   
+│   	└─ js/
+│   	    │
+│   	    └─ select-lang.js
 │
 │
 ├── Readme.txt
 │
 │
 ├── shared/
-│   │
-│   │
-│   ├─ cssshared/
-│   │	│
-│   │	├─ 404.css	
-│   │	│
-│   │	├─ base.css	
-│   │	│
-│   │	├─ cta.css	<-- Actualy empty for the moment
-│   │	│
-│   │	├─ footer.css	
-│   │	│
-│   │	├─ gdpr.css	
-│   │	│
-│   │	├─ layout.css	<-- Actualy empty for the moment (later, optional)	
-│   │	│
-│   │	└─ thanks.css
-│   │	
-│   │	
-│   │	
-│   ├─ jsshared/
-│   │   │
-│   │	├─ center_zoom.js	
-│   │	│
-│   │	├─ form-handler.js	
-│   │	│
-│   │	├─ gdpr.js	
-│   │	│
-│   │	└─ sender.js
-│   │
-│   │
-│   └─ thanks.html
+│   	│
+│   	│
+│   	├─ cssshared/
+│   	│	│
+│   	│	├─ 404.css	
+│   	│	│
+│   	│	├─ base.css	
+│   	│	│
+│   	│	├─ cta.css	<-- Actualy empty for the moment
+│   	│	│
+│   	│	├─ footer.css	
+│   	│	│
+│   	│	├─ gdpr.css	
+│   	│	│
+│   	│	├─ layout.css	<-- Actualy empty for the moment (later, optional)	
+│   	│	│
+│   	│	└─ thanks.css
+│   	│	
+│   	│	
+│   	│	
+│   	├─ jsshared/
+│   	│   	│
+│   	│	├─ center_zoom.js	
+│   	│	│
+│   	│	├─ form-handler.js	
+│   	│	│
+│   	│	├─ gdpr.js	
+│   	│	│
+│   	│	└─ sender.js
+│   	│
+│   	│
+│  	└─ thanks.html
 │
 │
 │
 │
 ├── terms/
-│   │	
-│   ├─ cssterms
-│   │	│   
-│   │	└─  terms.css
-│   │	
-│   └─  index.html 
+│   	│	
+│   	├─ cssterms/
+│   	│	│   
+│   	│	└─  terms.css
+│   	│	
+│   	└─  index.html 
 │
 │   
 │      
 └─  terms_of_use/
    	 │	
-   	 ├─ csstermsofuse
+   	 ├─ csstermsofuse/
    	 │   │   
    	 │   └─ terms_of_use.css
    	 │
