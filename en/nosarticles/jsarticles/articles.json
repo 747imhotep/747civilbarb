@@ -1,26 +1,25 @@
-
-
 [
   {
-    "title": "DEMOGRAPHIC DISTORTIONS",
-    "subtitle": "State Lies and Manipulation of Population Figures in Africa",
-    "pdf": "/../../../biblio/biblio-en/free-articles/Demographic_Distortions.pdf",
-    "abstract": "(...) Former ambassador in America, former permanent representative to the UN Security Council, he is the author of the book « We Were Alone ». Gérard Araud, likewise, believes that the African population « doubles every 30 years ».\n\nHe uses the keyword « explosion » demographic and presents the following situation :\n⟶ 4 million Nigerians in 1960\n⟶ 25 million Nigerians today\n⟶ 50 million in 30 years.\n\nThe website The True Size, mentioned above, allows dragging and dropping a country on any continent with the mouse, to better understand its size.",
-    "image": "/pictures/articles/niger_01.PNG",
-    "imageAlt": "Demographic Comparison Niger and France",
-    "meta": "PDF — 6 pages — Free access",
-    "tags": ["démographie", "Afrique"],
-    "date": "2026-02-01"
+  "title": "DEMOGRAPHIC DISTORTIONS",
+  "subtitle": "State Lies and the Manipulation of Population Figures in Africa",
+  "pdf": "/../../../biblio/biblio-en/free-articles/Demographic_Distortions.pdf",
+  "abstract": "(...) Former ambassador to the United States and former permanent representative to the UN Security Council, he is the author of the book « We Were Alone ». Gérard Araud likewise claims that the African population « doubles every 30 years ».\n\nHe uses the term « demographic explosion » and presents the following figures:\n⟶ 4 million Nigerians in 1960\n⟶ 25 million Nigerians today\n⟶ 50 million in 30 years.\n\nThe website The True Size, mentioned above, allows users to drag and drop a country onto any continent to better understand its scale.",
+  "image": "/pictures/articles/niger_01.PNG",
+  "imageAlt": "Demographic Comparison Niger and France",
+  "meta": "PDF — 6 pages — Free access",
+  "tags": ["démographie", "Afrique"],
+  "date": "2026-02-01"
   },
+
   {
-    "title": "WEALTH AND INVISIBLE POWERS",
-    "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
-    "pdf": "/../../../biblio/biblio-en/free-articles/Wealth_and_Invisible_Powers.pdf",
-    "abstract": "(...) En mars 2010, dans le sillage de l'élection de Barack Obama, aux Etats Désunis d'Amérique - pour employer l'expression de la Dr. S. Mumbi - un symposium important était organisé à Chicago, sur le campus de Chicago State University, à l'initiative du journaliste et intellectuel Tavis Smiley. Cet événement visait à lancer l'ouvrage collectif 'The Covenant with Black America' et à ouvrir un débat critique sur l'absence perçue d'un 'agenda noir' dans la politique de la nouvelle administration.",
-    "image": "/pictures/articles/sorcellerie01.jpg",
-    "imageAlt": "Dynamiques et blocages collectifs",
-    "meta": "PDF — 12 pages — Accès libre",
-    "tags": ["sorcellerie", "richesse", "collectif"],
-    "date": "2026-02-15"
+  "title": "WEALTH AND INVISIBLE POWERS",
+  "subtitle": "Invisible Dynamics and Obstacles in Collective Projects",
+  "pdf": "/../../../biblio/biblio-en/free-articles/Wealth_and_Invisible_Powers.pdf",
+  "abstract": "(...) In March 2010, in the wake of the election of Barack Obama, in the United States of America—referred to as the « Disunited States of America » by Dr. S. Mumbi—a major symposium was organized in Chicago, on the campus of Chicago State University, at the initiative of journalist and intellectual Tavis Smiley. This event aimed to launch the collective work 'The Covenant with Black America' and to open a critical debate on the perceived absence of a « Black agenda » in the policies of the new administration.",
+  "image": "/pictures/articles/sorcellerie01.jpg",
+  "imageAlt": "Collective dynamics and obstacles",
+  "meta": "PDF — 12 pages — Free access",
+  "tags": ["sorcellerie", "richesse", "collectif"],
+  "date": "2026-02-15"
   }
 ]
