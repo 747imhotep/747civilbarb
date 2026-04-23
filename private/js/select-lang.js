@@ -1,3 +1,8 @@
+//::::::::::::::::::::::::::::::::::::::
+// Language selection text animation
+//::::::::::::::::::::::::::::::::::::::
+
+
 
   const texts = [
     "Select your language",
