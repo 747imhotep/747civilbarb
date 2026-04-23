@@ -10,6 +10,7 @@ here is my FR tree
 │
 │
 ├── contact/
+│	│
 │   	├─ csscontact/contact.css
 │	│
 │   	├─ index.html
@@ -29,7 +30,7 @@ here is my FR tree
 │   	│	│
 │   	│	└─ cssanything/anything.css
 │   	│
-│   	├── csslibrary
+│   	├── csslibrary/
 │   	│	│
 │   	│	└─ library.css
 │   	│
@@ -54,7 +55,7 @@ here is my FR tree
 │   	│	└─ articles.json
 │   	│
 │   	│
-│   	├── jsarticles.js/ 		<-- this Folder needs to be verified
+│   	├── jsarticles.js/ 		<-- 🚨This Folder needs to be verified
 │   	│	│
 │   		│
 │   		└─ articles.js
@@ -63,11 +64,11 @@ here is my FR tree
 │
 ├── premium/
 │   	│	
-│   	├── csspremium
+│   	├── csspremium/
 │   	│	│	
 │   	│	└─ premium.css
 │   	│   
-│   	├── endpoint
+│   	├── endpoint/
 │   	│	│
 │   	│	└─ endpoint.js
 │   	│	
@@ -76,12 +77,12 @@ here is my FR tree
 │   	│   				👉 The button "Acceder" doesn't work for the moment
 │   	│
 │   	│  
-│   	└─ jspremium
+│   	└─ jspremium/
 │   	    	│ 
 │   	    	└─ premium.js
 │      		
 │      
-├── private 			<-- REMOVED
+├── private/ 			<-- REMOVED
 │	│   
 │	└─ index.html	        <-- actual protected website (so, we can work on it and give access to it)
 │   
