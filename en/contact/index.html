@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Contact — Civilisation ou Barbarie</title>
@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/shared/cssshared/base.css">
 
 <!-- Page-specific -->
-  <link rel="stylesheet" href="/fr/contact/csscontact/contact.css">
+  <link rel="stylesheet" href="/en/contact/css/contact.css">
   
 <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
@@ -33,34 +33,34 @@
    <main class="contact-page">
   <!-- Contact header -->
   <header class="contact-header">
-    <h1>Contactez-nous</h1>
+    <h1>Contact Us</h1>
   </header>
 
   <div class="contact-intro">
-    <p>Votre message nous intéresse. Merci de remplir le formulaire ci-dessous.</p>
+    <p>Your message interests us. Please fill out the form below.</p>
   </div>
 
   <div class="contact-form">
     <form method="post" action="https://formspree.io/f/mkoqrerw">
-      <label>Nom</label>
-      <input type="text" id="name" name="name" placeholder="Votre nom" required>
+      <label>Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
       
 
       <label>Email</label>
-      <input type="email" id="email" name="email" placeholder="Votre email" required>
+      <input type="email" id="email" name="email" placeholder="Your email" required>
       
       <label>Message</label>
-      <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+      <textarea id="message" name="message" placeholder="Your message" required></textarea>
       
 
       <label class="gdpr-consent">
       <input type="checkbox" name="gdpr" required>
-      J’accepte la <a href="/privacy/privacy.html">Politique de confidentialité</a>
+      I accept the <a href="/privacy/privacy.html">Privacy Policy</a>
       </label>
 
-      <button type="submit" aria-label="Envoyer le formulaire de contact">Envoyer</button>
+      <button type="submit" aria-label="Send contact form">Send</button>
     </form>
-    <p class="contact-note">Nous vous répondrons sous 48 heures.</p>
+    <p class="contact-note">We will respond to you within 48 hours.</p>
   </div>
 </main>
 
@@ -68,15 +68,15 @@
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
   <p>
-    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
-    ainsi que des services tiers optionnels.
-    Vous pouvez accepter ou refuser les cookies non essentiels.
-    <a href="/privacy/privacy.html">En savoir plus</a>
+    This site uses strictly necessary cookies for its operation,
+    as well as optional third-party services.
+    You can accept or refuse non-essential cookies.
+    <a href="/privacy/privacy.html">Learn more</a>
   </p>
 
   <div class="gdpr-actions">
-    <button id="gdpr-accept">Accepter</button>
-    <button id="gdpr-refuse" class="secondary">Refuser</button>
+    <button id="gdpr-accept">Accept</button>
+    <button id="gdpr-refuse" class="secondary">Refuse</button>
   </div>
 </div>
 <!-- GDPR Consent Banner END -->
@@ -87,10 +87,10 @@
 <!-- Footer -->
         <footer>
           <p>
-            &copy; 2026 Civilisation ou Barbarie. Tous droits réservés.
+            &copy; 2026 Civilization ou Barbarie. All rights reserved.
           </p>
           <p class="footer-links">
-            <a href="/privacy/">Politique de confidentialité</a> | 
+            <a href="/privacy/">Privacy Policy</a> | 
             <a href="/terms/">CGU</a>
           </p>
         </footer>
@@ -98,6 +98,6 @@
         <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
         <script src="/navbar/jsnavbar/navbar.js" defer></script>
         <script src="/shared/jsshared/gdpr.js" defer></script>
-        <script src="/fr/contact/jscontact.js" defer></script>
+        <script src="/en/contact/js/jscontact.js" defer></script>
     </body>
 </html>
