@@ -9,13 +9,15 @@ here is my FR tree
 │   	└─ index.html
 │
 │
-│
 ├── contact/
 │   	├─ csscontact/contact.css
 │	│
 │   	├─ index.html
 │	│
 │   	└─ jscontact.js
+│
+│
+├── index.html
 │
 │
 ├── library/
@@ -34,27 +36,54 @@ here is my FR tree
 │   	└─ index.html
 │
 │
+├── nosarticles/
+│   	│
+│   	│
+│   	├── cssarticles/ 
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├── index.html
+│   	│	
+│   	│
+│   	├── jsarticles/ 
+│   	│	│
+│   	│	│
+│   	│	├── articles.js 
+│	│	│
+│   	│	└─ articles.json
+│   	│
+│   	│
+│   	├── jsarticles.js/ 		<-- this Folder needs to be verified
+│   	│	│
+│   		│
+│   		└─ articles.js
+│
+│
+│
 ├── premium/
-│   │	
-│   ├─ csspremium
-│   │   │	
-│   │   └─ premium.css
-│   │   
-│   ├─ endpoint
-│   │   │
-│   │	└─ endpoint.js
-│   │	
-│   ├─ index.html		<---📍 It means: “I want to start a subscription”
-│   │   				👉 The button "Acceder" doesn't work for the moment
-│   │  
-│   └─ jspremium
-│       │ 
-│       └─ premium.js
+│   	│	
+│   	├── csspremium
+│   	│	│	
+│   	│	└─ premium.css
+│   	│   
+│   	├── endpoint
+│   	│	│
+│   	│	└─ endpoint.js
+│   	│	
+│   	│	
+│   	├─ index.html		<---📍 It means: “I want to start a subscription”
+│   	│   				👉 The button "Acceder" doesn't work for the moment
+│   	│
+│   	│  
+│   	└─ jspremium
+│   	    	│ 
+│   	    	└─ premium.js
 │      		
 │      
-├── private 
+├── private 			<-- REMOVED
 │	│   
-│	└─ index.html	           	<-- actual protected website (so, we can work on it and give access to it)
+│	└─ index.html	        <-- actual protected website (so, we can work on it and give access to it)
 │   
 │   
 │   
@@ -62,16 +91,16 @@ here is my FR tree
 │
 │
 ├── subscribe/
-│   │	
-│   ├─ csssubscribe
-│   │	│
-│   │  	└─ subscribe.css
-│   │
-│   ├── index.html
-│   │
-│   │	
-│   └─ jssubscribe
+│   	│	
+│   	├─ csssubscribe
+│   	│	│
+│   	│  	└─ subscribe.css
 │   	│
-│   	└─ subscribe.js
+│   	├── index.html
+│   	│
+│   	│	
+│   	└─ jssubscribe
+│   		│
+│   		└─ subscribe.js
 │
 

@@ -18,6 +18,10 @@ here is my EN tree
 │   	└─ jscontact.js
 │
 │
+├── index.html
+│
+│
+│
 ├── library/
 │   	│
 │   	│
@@ -34,45 +38,44 @@ here is my EN tree
 │   	└─ index.html
 │
 │
+│
+├── nosarticles
+│
+│
+│
 ├── premium/
-│   │	
-│   ├─ csspremium
-│   │   │	
-│   │   └─ premium.css
-│   │   
-│   ├─ endpoint
-│   │   │
-│   │	└─ endpoint.js
-│   │	
-│   ├─ index.html		<---📍 It means: “I want to start a subscription”
-│   │   				👉 The button "Acceder" doesn't work for the moment
-│   │  
-│   └─ jspremium
-│       │ 
-│       └─ premium.js
+│   	│	
+│   	├─ csspremium
+│   	│   │	
+│   	│   └─ premium.css
+│   	│   
+│   	├─ endpoint
+│   	│	│
+│   	│	└─ endpoint.js
+│   	│	
+│   	├─ index.html		<---📍 It means: “I want to start a subscription”
+│   	│   				👉 The button "Acceder" doesn't work for the moment
+│   	│  
+│   	└─ jspremium
+│       	│ 
+│       	└─ premium.js
 │      		
 │      
-├── private 
-│	│   
-│	└─ index.html	           	<-- actual protected website (so, we can work on it and give access to it)
-│   
-│   
-│   
-│   
 │
 │
 ├── subscribe/
-│   │	
-│   ├─ csssubscribe
-│   │	│
-│   │  	└─ subscribe.css
-│   │
-│   ├── index.html
-│   │
-│   │	
-│   └─ jssubscribe
+│   	│	
+│   	├─ csssubscribe
+│   	│	│
+│   	│  	└─ subscribe.css
 │   	│
-│   	└─ subscribe.js
+│   	│
+│   	├── index.html
+│   	│
+│   	│	
+│   	└─ jssubscribe
+│   		│
+│   		└─ subscribe.js
 │
 
 
