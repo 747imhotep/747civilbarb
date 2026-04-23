@@ -4,7 +4,7 @@ here is my EN tree
 │
 │
 ├── about/
-│   	├─ cssabout/about.css
+│   	├─ css/about.css
 │	│
 │   	└─ index.html
 │
