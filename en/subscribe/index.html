@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Souscription Premium — Civilisation ou Barbarie</title>
+  <title>Premium Subscription — Civilization or Barbarism</title>
 
   <!-- Global foundation -->
   <link rel="stylesheet" href="/shared/cssshared/base.css">
 
 <!-- Page-specific -->
-  <link rel="stylesheet" href="/fr/subscribe/csssubscribe/subscribe.css">
+  <link rel="stylesheet" href="/en/subscribe/csssubscribe/subscribe.css">
 
 <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
@@ -36,23 +36,21 @@
 <main id="subscribe" class="subscribe-page">
 
   <section id="hero-subscribe">
-    <h1>Abonnement Premium</h1>
-    <p class="manifesto">
-      Accédez à tous nos articles exclusifs et archives rares. L’abonnement Premium 
-      vous permet de lire, télécharger et explorer le contenu complet de notre bibliothèque.
-    </p>
-  </section>
+  <h1>Premium Subscription</h1>
+  <p class="manifesto">
+    Access all our exclusive articles and rare archives. The Premium subscription
+    allows you to read, download, and explore the full content of our library.
+  </p>
+</section>
 
   <section class="premium-articles" role="list">
-  <h2>Vos articles réservés</h2>
-
-
+  <h2>Your reserved articles</h2>
 </section>
 
 
     <section class="subscribe-section">
-  <h2>Tarif Premium</h2>
-  <p>12,99 € / mois — paiement sécurisé via Stripe</p>
+  <h2>Premium Pricing</h2>
+  <p>€12.99 / month — secure payment via Stripe</p>
 
   <!-- Error / Status message -->
 <div id="subscribe-message" class="subscribe-message" role="alert" aria-live="polite"></div>
@@ -81,9 +79,9 @@
       type="button" 
       id="checkout-button" 
       class="subscribe-button" 
-      aria-label="S’abonner au plan Premium" 
+      aria-label="Subscribe to Premium plan" 
       data-plan="premium">
-      S’abonner
+      Subscribe
   </button>
 </section>
 
@@ -96,15 +94,15 @@
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
   <p>
-    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
-    ainsi que des services tiers optionnels.
-    Vous pouvez accepter ou refuser les cookies non essentiels.
-    <a href="/privacy/">En savoir plus</a>
+    This site uses strictly necessary cookies for its operation,
+    as well as optional third-party services.
+    You can accept or refuse non-essential cookies.
+    <a href="/privacy/">Learn more</a>
   </p>
 
   <div class="gdpr-actions">
-    <button id="gdpr-accept">Accepter</button>
-    <button id="gdpr-refuse" class="secondary">Refuser</button>
+    <button id="gdpr-accept">Accept</button>
+    <button id="gdpr-refuse" class="secondary">Decline</button>
   </div>
 </div>
 <!-- GDPR Consent Banner END -->
@@ -112,10 +110,10 @@
 
 <!-- Footer -->
             <footer>
-  <p>&copy; 2026 Civilisation ou Barbarie. Tous droits réservés.</p>
+  <p>&copy; 2026 Civilization or Barbarism. All rights reserved.</p>
   <p class="footer-links">
-    <a href="/privacy/">Politique de confidentialité</a> | 
-    <a href="/terms/">CGU</a>
+    <a href="/privacy/">Privacy Policy</a> | 
+    <a href="/terms/">Terms of Use</a>
   </p>
 </footer>
 <!-- Footer -->
@@ -123,7 +121,7 @@
             
         <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
         <script src="/navbar/jsnavbar/navbar.js" defer></script>
-        <script src="/fr/subscribe/jssubscribe/subscribe.js" defer></script>
+        <script src="/en/subscribe/jssubscribe/subscribe.js" defer></script>
         <script src="/shared/jsshared/gdpr.js" defer></script>
     </body>
 </html>
