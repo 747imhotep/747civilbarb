@@ -13,9 +13,9 @@ pay attention it migh contain some minor errors.
 ├── CNAME
 │
 │
-├── en/			<-- detailed tree in another Tree File
+├── en/			<-- detailed tree in another Tree File. Public
 │
-├── fr/			<-- detailed tree in another Tree File
+├── fr/			<-- detailed tree in another Tree File. Public
 │
 │
 │
@@ -69,16 +69,15 @@ pay attention it migh contain some minor errors.
 ├── .gitignore
 │
 │
-├── index.html		<-- 🚨 This page has been moved into private/ Folder
 │
 │
 │
 ├── indexcss/
 │   	│
-│   	└─ index.css
+│   	└─ index.css	<-- 🟢 This is not orphan. It is intentional.
 │
 │
-├── live/
+├── live/		<-- here, visitor click on "access" to open cloudflare
 │   │
 │   ├─ css/site.css	<-- 
 │   │ 
