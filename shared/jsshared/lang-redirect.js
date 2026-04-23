@@ -1,3 +1,8 @@
+//:::::::::::::::::::::::::::::
+// Language Redirect Script
+//:::::::::::::::::::::::::::::
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const delay = 6000;
 
