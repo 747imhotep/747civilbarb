@@ -1,0 +1,225 @@
+April 23th
+
+Here’s a **simple, linear flight plan** you can actually follow without breaking your site.
+
+------------------------------------------------------------
+# ✈️ Phase 1 — Stabilize (don’t break anything)
+
+### 🎯 Goal: Make the current project safe to modify
+
+**1. Create a backup**
+
+* Zip the whole project
+* Or commit to Git
+
+**2. Freeze features**
+
+* No new features
+* No design changes
+* Only structure fixes
+
+-------------------------------------------------------------
+
+# ✈️ Phase 2 — Fix the structure foundation
+
+### 🎯 Goal: Make everything consistent
+
+**3. Standardize folder pattern everywhere**
+
+Apply this rule:
+
+```
+page/
+ ├── index.html
+ ├── css/
+ └── js/
+```
+
+👉 Do this for:
+
+* `about`
+* `contact`
+* `library`
+* `premium`
+* `subscribe`
+* `nosarticles`
+
+-------------------------------------------------------------
+
+**4. Fix naming inconsistencies**
+
+Replace:
+
+* `cssabout` → `css`
+* `csspremium` → `css`
+* `jssubscribe` → `js`
+* `jscontact.js` → `js/contact.js`
+
+👉 Same logic everywhere.
+
+-------------------------------------------------------------
+
+**5. Remove broken/duplicate folders**
+
+Fix:
+
+* ❌ `jsarticles.js/` → delete it
+* Keep only one clean `js/` folder per feature
+
+-------------------------------------------------------------
+
+# ✈️ Phase 3 — Align EN / FR (critical)
+
+### 🎯 Goal: Perfect mirror structure
+
+**6. Make `/en/` and `/fr/` identical**
+
+If something exists in FR:
+
+```
+fr/nosarticles/
+```
+
+👉 it MUST exist in EN:
+
+```
+en/nosarticles/
+```
+
+Even if empty.
+
+-------------------------------------------------------------
+
+**7. Keep same file names**
+
+Example:
+
+```
+fr/nosarticles/index.html
+en/nosarticles/index.html
+```
+
+👉 Only content changes, not structure.
+
+-------------------------------------------------------------
+
+# ✈️ Phase 4 — Centralize shared assets
+
+### 🎯 Goal: reduce duplication
+
+**8. Clean `shared/`**
+
+Rename:
+
+```
+cssshared → css
+jsshared → js
+```
+
+-------------------------------------------------------------
+
+**9. Move reusable code into shared**
+
+* forms
+* GDPR
+* footer
+* utilities
+
+-------------------------------------------------------------
+
+# ✈️ Phase 5 — Fix navigation system
+
+### 🎯 Goal: eliminate duplication
+
+**10. Use your navbar loader everywhere**
+
+You already have:
+
+```
+navbar/load-navbar.js
+navbar/navbar.html
+```
+
+👉 Now:
+
+* Remove hardcoded navbars
+* Inject it on every page
+
+-------------------------------------------------------------
+
+# ✈️ Phase 6 — Fix the premium flow
+
+### 🎯 Goal: make money path work
+
+**11. Define roles clearly**
+
+* `premium/` → explain offer
+* `subscribe/` → payment
+* `private/` → protected content
+
+-------------------------------------------------------------
+
+**12. Fix "Acceder" button**
+
+Make sure it:
+
+* points to correct path (`/subscribe/` or similar)
+* works in BOTH languages
+
+-------------------------------------------------------------
+
+# ✈️ Phase 7 — Clean root structure
+
+### 🎯 Goal: future-proof backend
+
+**13. Prepare secure content**
+
+Move later:
+
+```
+biblio/ → my-worker/premium-files
+```
+
+-------------------------------------------------------------
+
+**14. Keep root clean**
+
+Only keep:
+
+* global assets
+* shared
+* language folders
+* backend
+
+-------------------------------------------------------------
+
+# 🧠 Golden rule going forward
+
+👉 Every new feature must follow:
+
+```
+/en/feature/
+ /fr/feature/
+```
+
+Same structure. Always.
+
+-------------------------------------------------------------
+
+# 🚀 If you want to go faster
+
+Next step I recommend:
+
+👉 I can give you a **clean “final ideal structure”** (copy-paste ready)
+
+OR
+
+👉 we fix **one phase together (hands-on)**, starting with:
+**Phase 2 (structure cleanup)**
+
+Just tell me:
+
+> “Do Phase 2 with me”
+
+and we’ll refactor it step by step without breaking anything.
+

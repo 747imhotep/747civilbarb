@@ -1,7 +1,7 @@
 here is my Root tree
 pay attention it migh contain some minor errors.
 
-🌳 747civilcarb/
+🌳 747civilcarb/	<-- this stands in GitHub via GitHub Deskstop
 │
 ├── 404.html
 │
@@ -13,9 +13,9 @@ pay attention it migh contain some minor errors.
 ├── CNAME
 │
 │
-├── en/
+├── en/			<-- detailed tree in another Tree File
 │
-├── fr/
+├── fr/			<-- detailed tree in another Tree File
 │
 │
 │
