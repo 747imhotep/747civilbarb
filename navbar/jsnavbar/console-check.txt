@@ -1,0 +1,126 @@
+GET
+http://127.0.0.1:5500/en/
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/shared/cssshared/base.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepcss/imhotep.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/indexcss/index.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/navbar/cssnavbar/navbar.css
+[HTTP/1.1 304 Not Modified 2ms]
+
+GET
+http://127.0.0.1:5500/navbar/csssnippet/snippet.css
+[HTTP/1.1 304 Not Modified 2ms]
+
+GET
+http://127.0.0.1:5500/shared/cssshared/cta.css
+[HTTP/1.1 304 Not Modified 2ms]
+
+GET
+http://127.0.0.1:5500/shared/cssshared/footer.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/shared/cssshared/gdpr.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepcss/comments.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepcss/cmt-modal.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/navbar/jsnavbar/load-navbar.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/shared/jsshared/sender.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/shared/jsfooter/load-footer.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/shared/jsshared/gdpr.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepjs/imhotep.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepjs/comments-new.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepjs/cmt-modal.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepjs/sender_emb.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/imhotep/imhotepjs/charCount.js
+[HTTP/1.1 304 Not Modified 0ms]
+
+GET
+http://127.0.0.1:5500/favicon.ico
+NS_BINDING_ABORTED
+
+GET
+http://127.0.0.1:5500/pictures/hero/ankh.png
+NS_BINDING_ABORTED
+
+✅ Form found sender_emb.js:54:29
+✅ Imhotep Comment Handler initialized sender_emb.js:61:33
+GET
+http://127.0.0.1:5500/pictures/hero/hero_yaa_home01.jpg
+NS_BINDING_ABORTED
+
+GET
+https://cdn.sender.net/accounts_resources/universal.js
+[HTTP/1.1 304 Not Modified 22ms]
+
+GET
+ws://127.0.0.1:5500/en//ws
+[HTTP/1.1 101 Switching Protocols 1ms]
+
+💾 Keys backed up to sessionStorage: 
+Array [ "Clé 20." ]
+imhotep.js:130:11
+GET
+http://127.0.0.1:5500/pictures/fav-icone/fav-icone03.png
+[HTTP/1.1 200 OK 0ms]
+
+XHR
+GET
+https://cdn.sender.net/accounts_resources/base/init.json
+[HTTP/1.1 404 Not Found 77ms]
+
+GET
+http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/pictures/logo/Civilisation_ou_Barbarie_T7.png
+NS_BINDING_ABORTED
+
