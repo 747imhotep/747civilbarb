@@ -1,30 +1,14 @@
 GET
-http://127.0.0.1:5500/en/
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/shared/cssshared/base.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/imhotep/imhotepcss/imhotep.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/indexcss/index.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
 http://127.0.0.1:5500/navbar/cssnavbar/navbar.css
-[HTTP/1.1 304 Not Modified 2ms]
+[HTTP/1.1 304 Not Modified 1ms]
 
 GET
 http://127.0.0.1:5500/navbar/csssnippet/snippet.css
-[HTTP/1.1 304 Not Modified 2ms]
+[HTTP/1.1 304 Not Modified 1ms]
 
 GET
 http://127.0.0.1:5500/shared/cssshared/cta.css
-[HTTP/1.1 304 Not Modified 2ms]
+[HTTP/1.1 304 Not Modified 1ms]
 
 GET
 http://127.0.0.1:5500/shared/cssshared/footer.css
@@ -56,7 +40,7 @@ http://127.0.0.1:5500/shared/jsshared/sender.js
 
 GET
 http://127.0.0.1:5500/shared/jsfooter/load-footer.js
-[HTTP/1.1 304 Not Modified 1ms]
+[HTTP/1.1 304 Not Modified 0ms]
 
 GET
 http://127.0.0.1:5500/shared/jsshared/gdpr.js
@@ -68,7 +52,7 @@ http://127.0.0.1:5500/imhotep/imhotepjs/imhotep.js
 
 GET
 http://127.0.0.1:5500/imhotep/imhotepjs/comments-new.js
-[HTTP/1.1 304 Not Modified 1ms]
+[HTTP/1.1 304 Not Modified 0ms]
 
 GET
 http://127.0.0.1:5500/imhotep/imhotepjs/cmt-modal.js
@@ -76,7 +60,7 @@ http://127.0.0.1:5500/imhotep/imhotepjs/cmt-modal.js
 
 GET
 http://127.0.0.1:5500/imhotep/imhotepjs/sender_emb.js
-[HTTP/1.1 304 Not Modified 1ms]
+[HTTP/1.1 304 Not Modified 0ms]
 
 GET
 http://127.0.0.1:5500/imhotep/imhotepjs/charCount.js
@@ -98,29 +82,37 @@ NS_BINDING_ABORTED
 
 GET
 https://cdn.sender.net/accounts_resources/universal.js
-[HTTP/1.1 304 Not Modified 22ms]
+[HTTP/1.1 200 OK 0ms]
 
 GET
 ws://127.0.0.1:5500/en//ws
 [HTTP/1.1 101 Switching Protocols 1ms]
 
-💾 Keys backed up to sessionStorage: 
-Array [ "Clé 20." ]
-imhotep.js:130:11
-GET
-http://127.0.0.1:5500/pictures/fav-icone/fav-icone03.png
-[HTTP/1.1 200 OK 0ms]
-
-XHR
-GET
+XHRGET
 https://cdn.sender.net/accounts_resources/base/init.json
-[HTTP/1.1 404 Not Found 77ms]
+[HTTP/1.1 404 Not Found 154ms]
 
+💾 Keys backed up to sessionStorage: 
+Array [ "Clé 21." ]
+imhotep.js:130:11
 GET
 http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
 [HTTP/1.1 304 Not Modified 1ms]
 
 GET
-http://127.0.0.1:5500/pictures/logo/Civilisation_ou_Barbarie_T7.png
+http://127.0.0.1:5500/pictures/logo/logo_T7.png
 NS_BINDING_ABORTED
 
+GET
+http://127.0.0.1:5500/pictures/fav-icone/fav-icone03.png
+[HTTP/1.1 200 OK 0ms]
+
+console.log("Toggle exists:", !!document.querySelector('.nav-toggle'));
+console.log("Viewport width:", window.innerWidth);
+console.log("CSS loaded:", !!document.querySelector('link[href*="navbar.css"]'));
+console.log("Media query active?", window.matchMedia("(max-width: 768px)").matches);
+Toggle exists: true debugger eval code:1:9
+Viewport width: 1864 debugger eval code:2:9
+CSS loaded: true debugger eval code:3:9
+Media query active? false debugger eval code:4:9
+undefined
