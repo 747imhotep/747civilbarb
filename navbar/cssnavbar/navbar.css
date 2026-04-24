@@ -73,10 +73,35 @@
 }
 
 /* ===== RESPONSIVE (JS toggle version) ===== */
+.nav-toggle {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-links.show {
+    display: flex !important; /* Ensure links are visible on desktop */
+  }
+
+  .nav-links {
+    display: flex !important; /* Ensure links are visible on desktop */
+    position: static;
+    flex-direction: row;
+    background: none;
+    width: auto;
+    padding: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
   }
+
+
 
   .nav-links {
     position: absolute;
