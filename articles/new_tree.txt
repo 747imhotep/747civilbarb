@@ -107,8 +107,11 @@ pay attention it migh contain some minor errors.
 │   	│	├─ load-navbar.js
 │   	│	│
 │   	│	└─ navbar.js
+│   	│
+│   	├─ navbar-en.html		<-- 👉 I forgot to update those files
 │   	│	
-│   	└─ navbar.html		<-- 👉 Later improvement:Server includes / JS injection / static partials
+│   	│	
+│   	└─ navbar-fr.html		<-- 👉 I forgot to update those files
 │
 │
 │
