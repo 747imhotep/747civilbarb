@@ -1,118 +1,72 @@
-GET
-http://127.0.0.1:5500/navbar/cssnavbar/navbar.css
-[HTTP/1.1 304 Not Modified 1ms]
+I get this message on console, for premium page html
 
 GET
-http://127.0.0.1:5500/navbar/csssnippet/snippet.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/en/premium/
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/shared/cssshared/cta.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/shared/cssshared/base.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/shared/cssshared/footer.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/en/premium/css/premium.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/shared/cssshared/gdpr.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/imhotep/imhotepcss/comments.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/shared/cssshared/footer.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/imhotep/imhotepcss/cmt-modal.css
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/navbar/csssnippet/snippet.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/navbar/jsnavbar/load-navbar.js
-[HTTP/1.1 304 Not Modified 1ms]
+https://www.deadanglesinstitute.org/shared/cssshared/gdpr.css
+[HTTP/3 200 OK 0ms]
 
 GET
-http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/shared/jsshared/sender.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/shared/jsfooter/load-footer.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/en/premium/endpoint/endpoint.js
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/shared/jsshared/gdpr.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/en/premium/js/premium.js
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/imhotep/imhotepjs/imhotep.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/shared/jsshared/gdpr.js
+[HTTP/3 200  0ms]
 
 GET
-http://127.0.0.1:5500/imhotep/imhotepjs/comments-new.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/shared/jsfooter/load-footer.js
+[HTTP/3 200  0ms]
+
+Navbar elements not ready yet navbar.js:16:15
+Uncaught SyntaxError: unexpected token: identifier premium.js:77:25
+XHR
+GET
+https://www.deadanglesinstitute.org/api/me?email=stripe@example.com
+[HTTP/3 404  23ms]
 
 GET
-http://127.0.0.1:5500/imhotep/imhotepjs/cmt-modal.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
 
+Navbar found, attaching event listeners navbar.js:20:13
+❌ Error fetching /api/me: SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data endpoint.js:34:13
 GET
-http://127.0.0.1:5500/imhotep/imhotepjs/sender_emb.js
-[HTTP/1.1 304 Not Modified 0ms]
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
+[HTTP/2 200  0ms]
 
-GET
-http://127.0.0.1:5500/imhotep/imhotepjs/charCount.js
-[HTTP/1.1 304 Not Modified 0ms]
-
-GET
-http://127.0.0.1:5500/favicon.ico
-NS_BINDING_ABORTED
-
-GET
-http://127.0.0.1:5500/pictures/hero/ankh.png
-NS_BINDING_ABORTED
-
-✅ Form found sender_emb.js:54:29
-✅ Imhotep Comment Handler initialized sender_emb.js:61:33
-GET
-http://127.0.0.1:5500/pictures/hero/hero_yaa_home01.jpg
-NS_BINDING_ABORTED
-
-GET
-https://cdn.sender.net/accounts_resources/universal.js
-[HTTP/1.1 200 OK 0ms]
-
-GET
-ws://127.0.0.1:5500/en//ws
-[HTTP/1.1 101 Switching Protocols 1ms]
-
-XHRGET
-https://cdn.sender.net/accounts_resources/base/init.json
-[HTTP/1.1 404 Not Found 154ms]
-
-💾 Keys backed up to sessionStorage: 
-Array [ "Clé 21." ]
-imhotep.js:130:11
-GET
-http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/pictures/logo/logo_T7.png
-NS_BINDING_ABORTED
-
-GET
-http://127.0.0.1:5500/pictures/fav-icone/fav-icone03.png
-[HTTP/1.1 200 OK 0ms]
-
-console.log("Toggle exists:", !!document.querySelector('.nav-toggle'));
-console.log("Viewport width:", window.innerWidth);
-console.log("CSS loaded:", !!document.querySelector('link[href*="navbar.css"]'));
-console.log("Media query active?", window.matchMedia("(max-width: 768px)").matches);
-Toggle exists: true debugger eval code:1:9
-Viewport width: 1864 debugger eval code:2:9
-CSS loaded: true debugger eval code:3:9
-Media query active? false debugger eval code:4:9
-undefined
+Navbar found, attaching event listeners navbar.js:20:13
