@@ -176,6 +176,17 @@ pay attention it migh contain some minor errors.
 │   	│	│
 │   	│	└─ thanks.css
 │   	│	
+│   	│
+│   	├─ footer/
+│   	│	│
+│   	│	├─ footer-en.html
+│   	│	│
+│   	│	└─ footer-fr.html
+│   	│
+│   	│
+│   	├─ jsfooter/
+│   	│	│
+│   	│	└─ load-footer.js
 │   	│	
 │   	│	
 │   	├─ jsshared/
@@ -210,7 +221,7 @@ pay attention it migh contain some minor errors.
    	 │   │   
    	 │   └─ terms_of_use.css
    	 │
-   	 └─ index.html
+   	 └─ index.html		<-- In the futur, needs EN & FR terms of use maybe to place in shared.
 
 
 
