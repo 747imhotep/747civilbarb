@@ -11,11 +11,11 @@ here is my EN tree
 │
 │
 ├── contact/
-│   	├─ csscontact/contact.css
+│   	├─ css/contact.css
 │	│
 │   	├─ index.html
 │	│
-│   	└─ jscontact.js
+│   	└─ js/jscontact.js
 │
 │
 ├── index.html
@@ -29,9 +29,9 @@ here is my EN tree
 │   	│	│
 │   	│	├─ anything.html 
 │   	│	│
-│   	│	└─ cssanything/anything.css
+│   	│	└─ css/anything.css
 │   	│
-│   	├── csslibrary/
+│   	├── css/
 │   	│	│
 │   	│	└─ library.css
 │   	│
@@ -41,20 +41,20 @@ here is my EN tree
 │
 ├── nosarticles/
 │   	│
-│   	├─ cssaricles/
+│   	├─ css/
 │   	│	│
 │   	│	└─ articles.css
 │   	│
 │   	├─ index.html		<-- 👉 Free articles here
 │   	│
-│   	├─ jsarticles/
-│   	│	│
-│   	│	├─ articles.js			<-- whitch one is the good one ?
-│   	│	│
-│   	│	└─ articles.json
-│   	│
-│   	│
-│   	└─ jsarticles.js/articles.js		<-- 🚨 whitch one is the good one ?
+│   	└─  js/
+│   		│
+│   		├─ articles.js			<-- whitch one is the good one ?
+│   		│
+│   		└─ articles.json
+│   	
+│   	
+│   	
 │
 │
 │
@@ -71,7 +71,7 @@ here is my EN tree
 │   	├─ index.html		<---📍 It means: “I want to start a subscription”
 │   	│   				👉 The button "Acceder" doesn't work for the moment
 │   	│  
-│   	└─ jspremium/
+│   	└─ js/
 │       	│ 
 │       	└─ premium.js
 │      		
@@ -80,7 +80,7 @@ here is my EN tree
 │
 ├── subscribe/
 │   	│	
-│   	├─ csssubscribe/
+│   	├─ css/
 │   	│	│
 │   	│  	└─ subscribe.css
 │   	│
@@ -88,7 +88,7 @@ here is my EN tree
 │   	├── index.html
 │   	│
 │   	│	
-│   	└─ jssubscribe/
+│   	└─ js/
 │   		│
 │   		└─ subscribe.js
 │
