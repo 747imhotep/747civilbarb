@@ -1,54 +1,116 @@
 /* ==================================
-   navbar JS
+   Navbar JS (FINAL — robust version)
    - mobile toggle
-   - active page highlight
-   - works with dynamically loaded navbar
+   - active page highlight (exact + section fallback)
+   - multilingual support (/fr/, /en/)
+   - safe for dynamically loaded navbar
 ================================== */
 
 function initNavbar() {
+
+  // ---------------------------
+  // DOM references
+  // ---------------------------
+  const toggle = document.querySelector(".nav-toggle");
+  const linksContainer = document.querySelector(".nav-links");
+  const links = document.querySelectorAll(".nav-link");
+
+  // If navbar not yet in DOM, stop safely
+  if (!toggle || !linksContainer || links.length === 0) return;
+
   // ---------------------------
   // Mobile menu toggle
   // ---------------------------
-  const toggle = document.querySelector(".nav-toggle");
-  const links = document.querySelector(".nav-links");
-
-  if (!toggle || !links) return; // Important for dynamic load
-
-  // Mobile toggle
   toggle.addEventListener("click", () => {
-    links.classList.toggle("active"); // Use ONE class only
+    linksContainer.classList.toggle("active");
   });
 
-  // Close menu when link clicked
-  document.querySelectorAll(".nav-links a").forEach(link => {
+  // Close menu when any link is clicked (mobile UX)
+  links.forEach(link => {
     link.addEventListener("click", () => {
-      links.classList.remove("active");
+      linksContainer.classList.remove("active");
     });
   });
 
   // ---------------------------
-  // Active link detection
+  // Helper: normalize paths
+  // - removes trailing slash
+  // - ensures consistent comparison
   // ---------------------------
   function normalizePath(path) {
-    const a = document.createElement("a");
-    a.href = path;
-    return a.pathname.replace(/\/$/, "") || "/";
+    const url = new URL(path, window.location.origin);
+    return url.pathname.replace(/\/$/, "") || "/";
   }
 
-  const currentPath = normalizePath(window.location.href);
-  const currentSection = currentPath.split("/")[1];
+  // ---------------------------
+  // Current page info
+  // ---------------------------
+  const currentPath = normalizePath(window.location.pathname);
 
-  document.querySelectorAll(".nav-link").forEach(link => {
-    const linkPath = normalizePath(link.href);
-    const linkSection = linkPath.split("/")[1];
+  // Example:
+  // "/fr/library/book1" → ["", "fr", "library", "book1"]
+  const pathParts = currentPath.split("/");
 
-    if (linkPath === currentPath || currentSection === linkSection) {
+  const currentLang = pathParts[1] || "";     // "fr" or "en"
+  const currentSection = pathParts[2] || "";  // "library", "about", etc.
+
+  // ---------------------------
+  // Reset any previous active states
+  // (important if navbar re-initializes)
+  // ---------------------------
+  links.forEach(link => {
+    link.classList.remove("active");
+    link.removeAttribute("aria-current");
+  });
+
+  // ---------------------------
+  // Active link detection logic
+  // Priority:
+  // 1. Exact match (best)
+  // 2. Section match within SAME language
+  // ---------------------------
+  links.forEach(link => {
+
+    const linkPath = normalizePath(link.pathname);
+    const linkParts = linkPath.split("/");
+
+    const linkLang = linkParts[1] || "";
+    const linkSection = linkParts[2] || "";
+
+    const isSameLang = linkLang === currentLang;
+
+    const isExactMatch = linkPath === currentPath;
+
+    const isSectionMatch =
+      isSameLang &&
+      linkSection &&
+      linkSection === currentSection;
+
+    if (isExactMatch || isSectionMatch) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     }
+
   });
 }
-  
+
 /* ==================================
-   End navbar JS
+   INIT HANDLING
+================================== */
+
+// Case 1: Static navbar (already in DOM)
+document.addEventListener("DOMContentLoaded", initNavbar);
+
+// Case 2: If you dynamically inject navbar,
+// call initNavbar() manually AFTER insertion:
+//
+// fetch("/navbar.html")
+//   .then(res => res.text())
+//   .then(html => {
+//     document.body.insertAdjacentHTML("afterbegin", html);
+//     initNavbar(); // REQUIRED after injection
+//   });
+
+/* ==================================
+   End Navbar JS
 ================================== */

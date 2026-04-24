@@ -4,7 +4,7 @@
 
 /* Active navigation link */
 .nav-link.active {
-  color: #880000;           /* brighter burgundy for active link */
+  color: #dda4eb;  /* Active link */
   font-weight: 600;
 }
 
@@ -58,9 +58,9 @@
   padding: 12px 24px;
 }
 
-#main-nav .logo {
+#main-nav .logo { /* some of the styles are not useful, because, we use a logo. */
   color: #e6dcd1;
-  text-decoration: none;
+  text-decoration: none; /* remove underline */
   font-size: 1.3rem;
   padding: 4px 8px;
   border-radius: 2px;
@@ -81,13 +81,13 @@
 }
 
 .nav-links li a {
-  color: #e6dcd1;
+  color: #dea5ec; /* lighter pink for links */
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #880000;
+  color: #e5fa26; /* Mouse over color */
   text-decoration: underline;
 }
 
@@ -99,6 +99,10 @@
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+
+/* ===== RESPONSIVE STYLES ===== */
+
 
 /* Responsive (mobile) */
 @media (max-width: 768px) {
