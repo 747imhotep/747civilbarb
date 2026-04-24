@@ -21,9 +21,11 @@ function initNavbar() {
   // ---------------------------
   // Mobile menu toggle
   // ---------------------------
-  toggle.addEventListener("click", () => {
-    linksContainer.classList.toggle("active");
-  });
+  // Mobile toggle
+toggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevents weird bubbling issues
+  linksContainer.classList.toggle("active");
+});
 
   // Close menu when any link is clicked (mobile UX)
   links.forEach(link => {
