@@ -105,24 +105,32 @@
 
 
 /* Responsive (mobile) */
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: linear-gradient(135deg, #3b0000 0%, #550000 100%);
-    flex-direction: column;
-    width: 200px;
-    padding: 12px;
-    display: none;
-  }
+#nav-check {
+  display: none;
+}
 
-  .nav-links.active {
-    display: flex;
-  }
+@media (max-width: 768px) {
 
   .nav-toggle {
     display: block;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: linear-gradient(135deg, #3b0000 0%, #550000 100%);
+    flex-direction: column;
+    width: 220px;
+    padding: 12px;
+
+    display: none;
+  }
+
+  /* 🔥 THIS is what makes it work */
+  #nav-check:checked ~ .nav-links {
+    display: flex;
   }
 }
 
