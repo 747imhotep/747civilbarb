@@ -104,12 +104,12 @@ document.addEventListener("DOMContentLoaded", initNavbar);
 // Case 2: If you dynamically inject navbar,
 // call initNavbar() manually AFTER insertion:
 //
-// fetch("/navbar.html")
-//   .then(res => res.text())
-//   .then(html => {
-//     document.body.insertAdjacentHTML("afterbegin", html);
-//     initNavbar(); // REQUIRED after injection
-//   });
+ fetch("/navbar.html")
+   .then(res => res.text())
+   .then(html => {
+     document.body.insertAdjacentHTML("afterbegin", html);
+     initNavbar(); // REQUIRED after injection
+   });
 
 /* ==================================
    End Navbar JS
