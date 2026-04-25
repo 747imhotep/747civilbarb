@@ -1,23 +1,11 @@
-I get this message on console, for premium page html
+I get this message on console, for en/premium page html
 
-GET
+ET
 https://www.deadanglesinstitute.org/en/premium/
-[HTTP/3 200  0ms]
+[HTTP/3 304  132ms]
 
 GET
 https://www.deadanglesinstitute.org/shared/cssshared/base.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/en/premium/css/premium.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/footer.css
 [HTTP/3 200 OK 0ms]
 
 GET
@@ -25,7 +13,19 @@ https://www.deadanglesinstitute.org/navbar/csssnippet/snippet.css
 [HTTP/3 200 OK 0ms]
 
 GET
+https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/en/premium/css/premium.css
+[HTTP/3 200 OK 0ms]
+
+GET
 https://www.deadanglesinstitute.org/shared/cssshared/gdpr.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/cssshared/footer.css
 [HTTP/3 200 OK 0ms]
 
 GET
@@ -54,19 +54,107 @@ https://www.deadanglesinstitute.org/shared/jsfooter/load-footer.js
 
 Navbar elements not ready yet navbar.js:16:15
 Uncaught SyntaxError: unexpected token: identifier premium.js:77:25
-XHR
-GET
+XHRGET
 https://www.deadanglesinstitute.org/api/me?email=stripe@example.com
-[HTTP/3 404  23ms]
+[HTTP/3 404  22ms]
+
+❌ Error fetching /api/me: SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data endpoint.js:34:13
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
+[HTTP/2 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
+
+Navbar found, attaching event listeners 2 navbar.js:20:13
+
+
+
+
+NOW, fr/premium pge html
+
+GET
+https://www.deadanglesinstitute.org/fr/premium/
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/cssshared/base.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/fr/premium/csspremium/premium.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/cssshared/gdpr.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/cssshared/footer.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/csssnippet/snippet.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/jsshared/gdpr.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/jsfooter/load-footer.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/jsfooter/footer.js
+[HTTP/3 404  16ms]
+
+GET
+https://www.deadanglesinstitute.org/premium/endpoint/endpoint.js
+[HTTP/3 404  136ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/jsshared/gdpr.js
+[HTTP/3 200  0ms]
+
+Navbar elements not ready yet navbar.js:16:15
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/shared/jsfooter/footer.js”. premium:139:56
+Navbar elements not ready yet navbar.js:16:15
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/premium/endpoint/endpoint.js”. premium:147:51
+GDPR banner elements not found. gdpr.js:13:13
+Navbar elements not ready yet 2 navbar.js:16:15
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
+[HTTP/2 200  0ms]
 
 GET
 https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
 [HTTP/3 200  0ms]
 
 Navbar found, attaching event listeners navbar.js:20:13
-❌ Error fetching /api/me: SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data endpoint.js:34:13
 GET
-https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
-[HTTP/2 200  0ms]
+https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
+[HTTP/3 200  0ms]
 
 Navbar found, attaching event listeners navbar.js:20:13
