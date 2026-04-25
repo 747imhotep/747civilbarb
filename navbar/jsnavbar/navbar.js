@@ -7,19 +7,25 @@
 ================================== */
 
 (function() {
-  // Wait a short moment for DOM to settle
+  let attempts = 0;
+  const maxAttempts = 20;
+  
   function initNavbar() {
     const toggle = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector(".nav-links");
     
     if (!toggle || !navLinks) {
-      console.log("Navbar elements not ready yet");
-      return false;
+      attempts++;
+      if (attempts < maxAttempts) {
+        console.log(`Waiting for navbar elements (attempt ${attempts})...`);
+        setTimeout(initNavbar, 100);
+      }
+      return;
     }
     
     console.log("Navbar found, attaching event listeners");
     
-    // Remove any existing listener by cloning (prevents duplicates)
+    // Remove existing listeners by cloning
     const newToggle = toggle.cloneNode(true);
     toggle.parentNode.replaceChild(newToggle, toggle);
     
@@ -27,24 +33,21 @@
       e.preventDefault();
       e.stopPropagation();
       navLinks.classList.toggle("show");
-      console.log("Menu toggled, show class:", navLinks.classList.contains("show"));
     });
     
-    // Close menu when clicking a link (mobile UX)
     const links = document.querySelectorAll(".nav-link");
     links.forEach(link => {
       link.addEventListener("click", function() {
         navLinks.classList.remove("show");
       });
     });
-    
-    return true;
   }
   
-  // Try immediately
-  if (!initNavbar()) {
-    // If failed, retry after 100ms
-    setTimeout(initNavbar, 100);
+  // Start after DOM ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNavbar);
+  } else {
+    initNavbar();
   }
 })();
 
