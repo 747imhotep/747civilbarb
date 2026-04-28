@@ -8,7 +8,7 @@ const category = null; // optional: can be dynamic
   let currentQuery = "";
 
 // 1️⃣ Fetch JSON and render articles
-fetch("/fr/nosarticles/jsarticles/articles.json")
+fetch("/fr/nosarticles/articles.json")
   .then(res => res.json())
   .then(data => {
     articles = data;
