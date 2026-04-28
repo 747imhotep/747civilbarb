@@ -41,6 +41,12 @@ here is my EN tree
 │
 ├── nosarticles/
 │   	│
+│	│
+│	├─ articles.js			<-- whitch one is the good one ?
+│	│
+│	├─ articles.json
+│	│
+│	│
 │   	├─ css/
 │   	│	│
 │   	│	└─ articles.css
@@ -48,13 +54,6 @@ here is my EN tree
 │   	├─ index.html		<-- 👉 Free articles here
 │   	│
 │   	└─  js/
-│   		│
-│   		├─ articles.js			<-- whitch one is the good one ?
-│   		│
-│   		└─ articles.json
-│   	
-│   	
-│   	
 │
 │
 │

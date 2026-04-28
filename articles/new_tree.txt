@@ -11,7 +11,7 @@ pay attention it migh contain some minor errors.
 ├── biblio/		<-- 🚨 Store PDF articles. They shall be moved to: my-worker/premium-files later
 │	│
 │	│
-│	├─ biblio-en/
+│	├─ en/
 │	│	│	
 │	│	│
 │	│	├─ free/
@@ -23,29 +23,26 @@ pay attention it migh contain some minor errors.
 │	│	│	└── Wealth_and_Invisible_Powers.pdf
 │	│	│	
 │	│	│
-│	│	└── premium/
+│	│	└── premium/				<-- 🚨 DELETE THIS 
 │	│		│	
 │	│		├── Melanin, benefits of selenium 003.pdf
 │	│		│
 │	│		└── Synchronizing with EBA.odt
 │	│
 │	│
-│	├─ biblio-fr/
+│	├─ fr/
 │	│	│	
 │	│	├─ free/
-│	│	│	│	
-│	│	│	├── couleur-de-peau-v005.pdf
-│	│	│	│
-│	│	│	├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
-│		│	│
-│		│	└── Richesse_et_Sorcellerie.pdf
-│		│	
-│		│
-│		└── premium/
-│			│	
-│			├── melanine-bienfaits-selenium-v003.pdf
-│			│
-│			└── Se synchroniser a EBA.odt
+│	│		│	
+│	│		├── couleur-de-peau-v005.pdf
+│	│		│
+│	│		├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│		│
+│	│		└── Richesse_et_Sorcellerie.pdf
+│	│	
+│	│
+│	└── index.json
+│			
 │
 ├── CNAME
 │
