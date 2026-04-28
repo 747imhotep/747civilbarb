@@ -28,17 +28,17 @@
 ├── premium-files/			
 │	│			 
 │	│
-│	├─ biblio-en/
+│	├─ en/
 │	│	│	
-│	│	└── premium-files/
+│	│	└── files/
 │	│		│	
 │   	│		├── Mélanine, bienfaits du sélénium 003.pdf
 │   	│		│
 │   	│		└── Synchronizing with EBA.docx
 │	│
-│   	└─ biblio-fr/
+│   	└─ fr/
 │		│	
-│		└── premium-files/
+│		└── files/
 │			│	
 │   			├── Mélanine, bienfaits du sélénium 003.pdf
 │   			│
