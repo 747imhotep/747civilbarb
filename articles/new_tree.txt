@@ -9,6 +9,43 @@ pay attention it migh contain some minor errors.
 ├── articles/		<-- Few drafts texts for me
 │
 ├── biblio/		<-- 🚨 Store PDF articles. They shall be moved to: my-worker/premium-files later
+│	│
+│	│
+│	├─ biblio-en/
+│	│	│	
+│	│	│
+│	│	├─ free/
+│	│	│	│	
+│	│	│	├── Couleur de peau v. 005.pdf
+│	│	│	│
+│	│	│	├── Demographic_Distortions.pdf
+│	│	│	│
+│	│	│	└── Wealth_and_Invisible_Powers.pdf
+│	│	│	
+│	│	│
+│	│	└── premium/
+│	│		│	
+│	│		├── Melanin, benefits of selenium 003.pdf
+│	│		│
+│	│		└── Synchronizing with EBA.odt
+│	│
+│	│
+│	├─ biblio-fr/
+│	│	│	
+│	│	├─ free/
+│	│	│	│	
+│	│	│	├── couleur-de-peau-v005.pdf
+│	│	│	│
+│	│	│	├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│		│	│
+│		│	└── Richesse_et_Sorcellerie.pdf
+│		│	
+│		│
+│		└── premium/
+│			│	
+│			├── melanine-bienfaits-selenium-v003.pdf
+│			│
+│			└── Se synchroniser a EBA.odt
 │
 ├── CNAME
 │

@@ -28,9 +28,21 @@
 ├── premium-files/			
 │	│			 
 │	│
-│	├── file1.pdf           <- this is a test file
-│	│    
-│	└── report.pdf
+│	├─ biblio-en/
+│	│	│	
+│	│	└── premium-files/
+│	│		│	
+│   	│		├── Mélanine, bienfaits du sélénium 003.pdf
+│   	│		│
+│   	│		└── Synchronizing with EBA.docx
+│	│
+│   	└─ biblio-fr/
+│		│	
+│		└── premium-files/
+│			│	
+│   			├── Mélanine, bienfaits du sélénium 003.pdf
+│   			│
+│   			└── Se synchroniser a EBA.odt
 │
 │
 ├── public/			

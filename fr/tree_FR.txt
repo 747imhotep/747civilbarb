@@ -39,6 +39,9 @@ here is my FR tree
 │
 ├── nosarticles/
 │   	│
+│   	├── articles.js 
+│   	│
+│   	├── articles.json 
 │   	│
 │   	├── cssarticles/ 
 │   	│	│
@@ -47,16 +50,10 @@ here is my FR tree
 │   	├── index.html
 │   	│	
 │   	│
-│   	├── jsarticles/ 
-│   	│	│
-│   	│	│
-│   	│	├── articles.js 
-│	│	│
-│   	│	└─ articles.json
 │   	│
 │   	│
-│   	├── jsarticles.js/ 		<-- 🚨This Folder needs to be verified
-│   	│	│
+│   	└─  jsarticles.js/ 		<-- 🚨This Folder needs to be verified before removed.
+│   		│
 │   		│
 │   		└─ articles.js
 │
