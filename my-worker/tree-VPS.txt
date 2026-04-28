@@ -1,0 +1,123 @@
+📌my worker tree IN VPS
+
+
+🌳 my-worker/public/
+│
+│
+│
+│
+├── cancel/
+│	│
+│	└─ cancel.html
+│
+│
+├── css/
+│	│
+│	└─ cancel.html
+│	    │
+│	    ├── base.css
+│	    │
+│	    ├── cancel.css
+│	    │
+│	    ├── footer.css
+│	    │
+│	    ├── gdpr.css
+│	    │
+│	    ├── index.css
+│	    │
+│	    ├── library.css
+│	    │
+│	    ├── navbar.css
+│	    │
+│	    ├── premium.css
+│	    │
+│	    ├── privacy.css
+│	    │
+│	    ├── snippet.css
+│	    │
+│	    ├── subscribe.css
+│	    │
+│	    ├── succes.css
+│	    │
+│	    └── terms.css
+│	    
+│
+├── index/
+│	    │
+│	    └── index.html
+│
+│
+├── js/
+│	    │
+│	    │
+│	    ├── center_zoom.js
+│	    │
+│	    ├── gdpr.js
+│	    │
+│	    ├── load-navbar
+│	    │
+│	    ├── navbar.js
+│	    │
+│	    ├── premium-entitlement.js
+│	    │
+│	    ├── snippet.js
+│	    │
+│	    └── subscribe.js
+│
+│
+├── library/
+│	    │
+│	    └── index.html
+│
+│
+├── navbar/
+│	│
+│	├── jsnavbar/
+│	│	│
+│	│	└──  backup-navbar.txt
+│	│
+│	│
+│	└── navbar.html
+│
+│
+├── pictures/
+│	│
+│	├──  articles/
+│	│
+│	├──  fav-icone/
+│	│
+│	├──  hero/
+│	│
+│	├──  library-pic/
+│	│
+│	└──  logo/  
+│
+│
+├── premium/
+│	│
+│	└── index.html
+│
+│
+├── privacy/
+│	│
+│	├──  privacy.html
+│	│
+│	└──  terms_of_use.html
+│
+│
+├── subscribe/
+│	│
+│	├──  backup-index.html
+│	│
+│	└──  index.html
+│
+│
+├── succes/
+│	│
+│	└──  succes.html
+│
+│
+└── terms/
+	│
+	└──  terms.html 
+
