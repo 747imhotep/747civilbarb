@@ -5,6 +5,14 @@
         "title": "Skin Color",
         "file": "couleur-de-peau-v005.pdf"
       }
+      {
+        "title": "Demographic Distortions",
+        "file": "Demographic_Distortions.pdf"
+      },
+      {
+        "title": "Wealth and invisible powers",
+        "file": "Wealth_and_Invisible_Powers.pdf"
+      }
     ]
   },
   "fr": {
@@ -12,6 +20,14 @@
       {
         "title": "Couleur de peau",
         "file": "couleur-de-peau-v005.pdf"
+      }
+      {
+        "title": "Mensonges démographiques",
+        "file": "MENSONGES_DEMOGRAPHIQUES_V2.pdf"
+      },
+      {
+        "title": "Mensonges démographiques",
+        "file": "MENSONGES_DEMOGRAPHIQUES_V2.pdf"
       }
     ]
   }
