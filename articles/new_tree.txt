@@ -8,40 +8,35 @@ pay attention it migh contain some minor errors.
 │
 ├── articles/		<-- Few drafts texts for me
 │
-├── biblio/		<-- 🚨 Store PDF articles. They shall be moved to: my-worker/premium-files later
+├── biblio/		
 │	│
 │	│
 │	├─ en/
 │	│	│	
 │	│	│
-│	│	├─ free/
-│	│	│	│	
-│	│	│	├── Couleur de peau v. 005.pdf
-│	│	│	│
-│	│	│	├── Demographic_Distortions.pdf
-│	│	│	│
-│	│	│	└── Wealth_and_Invisible_Powers.pdf
-│	│	│	
-│	│	│
-│	│	└── premium/				<-- 🚨 DELETE THIS 
+│	│	└──  free/
 │	│		│	
-│	│		├── Melanin, benefits of selenium 003.pdf
+│	│		├── Couleur de peau v. 005.pdf
 │	│		│
-│	│		└── Synchronizing with EBA.odt
+│	│		├── Demographic_Distortions.pdf
+│	│		│
+│	│		└── Wealth_and_Invisible_Powers.pdf
+│	│		
+│	│	
 │	│
 │	│
 │	├─ fr/
 │	│	│	
-│	│	├─ free/
+│	│	└── free/
 │	│		│	
 │	│		├── couleur-de-peau-v005.pdf
 │	│		│
 │	│		├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
 │	│		│
-│	│		└── Richesse_et_Sorcellerie.pdf
+│	│		└── MENSONGES_DEMOGRAPHIQUES_V2.pdf
 │	│	
 │	│
-│	└── index.json
+│	└── index.json	<-- 🚨 PDF articles. have been moved to: my-worker/premium-files 
 │			
 │
 ├── CNAME
