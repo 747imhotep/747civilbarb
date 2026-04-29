@@ -21,7 +21,7 @@ here is my FR tree
 ├── index.html
 │
 │
-├── library/
+├── library/	<-- 🚨 I think this needs to be connected to biblio/ as a list of all articles (free, premium,..)
 │   	│
 │   	│
 │   	├── anything/ 
