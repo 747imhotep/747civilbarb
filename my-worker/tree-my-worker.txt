@@ -32,17 +32,17 @@
 │	│	│	
 │	│	└── files/
 │	│		│	
-│   	│		├── Mélanine, bienfaits du sélénium 003.pdf
+│   	│		├── Melanin-benefits_of_selenium_003.pdf
 │   	│		│
-│   	│		└── Synchronizing with EBA.docx
+│   	│		└── Synchronizing_with_EBA.docx
 │	│
 │   	└─ fr/
 │		│	
 │		└── files/
 │			│	
-│   			├── Mélanine, bienfaits du sélénium 003.pdf
+│   			├── melanine-bienfaits-selenium-v003.pdf
 │   			│
-│   			└── Se synchroniser a EBA.odt
+│   			└── Se_synchroniser_a_EBA.odt
 │
 │
 ├── public/			
