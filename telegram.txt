@@ -1,0 +1,310 @@
+Short answer: move them to the VPS version of my-worker, not just your PC.
+
+But let’s be precise, because there are actually 3 roles here:
+🧠 Understand the roles (this is the key decision)
+1. 💻 Your PC (my-worker/ local)
+
+    Your development environment
+
+    Safe, private
+
+    Not accessible to users
+
+👉 Use it to:
+
+    organize files
+
+    rename properly
+
+    test structure
+
+2. 🌐 Your VPS (my-worker/public/ + server)
+
+    Your production backend
+
+    This is where users will request files
+
+👉 This is where premium files MUST live
+3. 🌍 GitHub (747civilcarb)
+
+    Your public frontend
+
+    Must NEVER contain premium files long-term
+
+🚨 So what should you do?
+✅ Correct workflow (do this)
+Step 1 — Clean locally FIRST (PC)
+
+Move and rename files in:
+
+my-worker/premium-files/
+
+Fix:
+
+    filenames (no spaces, no accents)
+
+    structure
+
+Example:
+
+premium-files/
+├── en/
+│   └── files/
+│       └── couleur-de-peau-v005.pdf
+├── fr/
+│   └── files/
+
+👉 This is your source of truth
+Step 2 — Push to VPS
+
+Upload from PC → VPS:
+
+my-worker/premium-files/
+
+👉 Now your server can access them
+Step 3 — REMOVE from GitHub
+
+Delete from:
+
+747civilcarb/biblio/**/premium-files/
+
+👉 This is critical:
+
+    no direct public access
+
+    no SEO indexing
+
+    no “right-click download”
+
+⚠️ Important mistake to avoid
+
+Do NOT:
+
+    ❌ only move files on your PC
+
+    ❌ forget to upload to VPS
+
+    ❌ keep duplicates in GitHub “just in case”
+
+That leads to:
+
+    version drift
+
+    broken links
+
+    security leaks
+
+🔐 Final architecture (clean + secure)
+GitHub (public)
+
+biblio/
+├── en/free/
+├── fr/free/
+
+VPS (private serving via Node)
+
+premium-files/
+├── en/files/
+├── fr/files/
+
+💡 One subtle but important improvement
+
+Right now you have:
+
+premium-files/en/premium-files/
+
+👉 That’s redundant.
+
+Rename to:
+
+premium-files/en/files/
+
+Cleaner, shorter, future-proof.
+🚀 What happens next (important)
+
+Once files are on VPS:
+
+Your flow becomes:
+
+    User clicks premium content
+
+    Frontend calls:
+
+/api/check-entitlement
+
+    If allowed:
+    👉 server returns secure file URL
+
+🧭 If you're unsure right now
+
+Answer this and I’ll guide you exactly:
+
+👉 “How are you currently uploading files to your VPS?”
+
+    SFTP (FileZilla?)
+
+    Git deploy?
+
+    rsync?
+
+    manual copy?
+
+Because the next step depends on that.
+
+
+You’re viewing user-generated content that may be unverified or unsafe.
+Report
+
+Short answer: move them to the VPS version of my-worker, not just your PC.
+
+But let’s be precise, because there are actually 3 roles here:
+🧠 Understand the roles (this is the key decision)
+1. 💻 Your PC (my-worker/ local)
+
+    Your development environment
+
+    Safe, private
+
+    Not accessible to users
+
+👉 Use it to:
+
+    organize files
+
+    rename properly
+
+    test structure
+
+2. 🌐 Your VPS (my-worker/public/ + server)
+
+    Your production backend
+
+    This is where users will request files
+
+👉 This is where premium files MUST live
+3. 🌍 GitHub (747civilcarb)
+
+    Your public frontend
+
+    Must NEVER contain premium files long-term
+
+🚨 So what should you do?
+✅ Correct workflow (do this)
+Step 1 — Clean locally FIRST (PC)
+
+Move and rename files in:
+
+my-worker/premium-files/
+
+Fix:
+
+    filenames (no spaces, no accents)
+
+    structure
+
+Example:
+
+premium-files/
+├── en/
+│   └── files/
+│       └── couleur-de-peau-v005.pdf
+├── fr/
+│   └── files/
+
+👉 This is your source of truth
+Step 2 — Push to VPS
+
+Upload from PC → VPS:
+
+my-worker/premium-files/
+
+👉 Now your server can access them
+Step 3 — REMOVE from GitHub
+
+Delete from:
+
+747civilcarb/biblio/**/premium-files/
+
+👉 This is critical:
+
+    no direct public access
+
+    no SEO indexing
+
+    no “right-click download”
+
+⚠️ Important mistake to avoid
+
+Do NOT:
+
+    ❌ only move files on your PC
+
+    ❌ forget to upload to VPS
+
+    ❌ keep duplicates in GitHub “just in case”
+
+That leads to:
+
+    version drift
+
+    broken links
+
+    security leaks
+
+🔐 Final architecture (clean + secure)
+GitHub (public)
+
+biblio/
+├── en/free/
+├── fr/free/
+
+VPS (private serving via Node)
+
+premium-files/
+├── en/files/
+├── fr/files/
+
+💡 One subtle but important improvement
+
+Right now you have:
+
+premium-files/en/premium-files/
+
+👉 That’s redundant.
+
+Rename to:
+
+premium-files/en/files/
+
+Cleaner, shorter, future-proof.
+🚀 What happens next (important)
+
+Once files are on VPS:
+
+Your flow becomes:
+
+    User clicks premium content
+
+    Frontend calls:
+
+/api/check-entitlement
+
+    If allowed:
+    👉 server returns secure file URL
+
+🧭 If you're unsure right now
+
+Answer this and I’ll guide you exactly:
+
+👉 “How are you currently uploading files to your VPS?”
+
+    SFTP (FileZilla?)
+
+    Git deploy?
+
+    rsync?
+
+    manual copy?
+
+Because the next step depends on that.
+
