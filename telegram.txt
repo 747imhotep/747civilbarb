@@ -1,6 +1,11 @@
 ✅ There is an issue with library/index.html library.js biblio/ something isn't right
 ✅ You will find fr/library/index.html
 part of the tree in VPS my-worker/
+✅ Honestly, library supposed to hold all titles of the entire website, free and premium. Probably, the best way is to show them with a nice looking effect. Then when its free, the visitor is redirected to "nos articles" and premium is for premium. So, there are only two places with title + summary: "nos articles" and "premium"
+
+
+
+
 🌳 my-worker/
 │
 │
