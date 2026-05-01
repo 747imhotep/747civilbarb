@@ -1,6 +1,1028 @@
-✅ connection to VPS via: SSH username + IP address
+✅ There is an issue with library/index.html library.js biblio/ something isn't right
+✅ You will find fr/library/index.html
+part of the tree in VPS my-worker/
+🌳 my-worker/
+│
+│
+(...)
+│
+│
+├── package-lock.json
+│
+│
+├── package.json
+│
+│
+├── premium-files/			
+│	│			 
+│	│
+│	├─ en/
+│	│	│	
+│	│	└── files/
+│	│		│	
+│   	│		├── Melanin-benefits_of_selenium_003.pdf
+│   	│		│
+│   	│		└── Synchronizing_with_EBA.docx
+│	│
+│   	└─ fr/
+│		│	
+│		└── files/
+│			│	
+│   			├── melanine-bienfaits-selenium-v003.pdf
+│   			│
+│   			└── Se_synchroniser_a_EBA.odt
+│
+(...)
+│
+│
+
+
 ✅ 
-✅ 
-✅ 
-✅ 
-✅ 
+here is my Root tree
+pay attention it migh contain some minor errors.
+
+🌳 747civilcarb/	<-- this stands in GitHub via GitHub Deskstop
+│
+├── 404.html
+│
+│
+├── articles/		<-- Few drafts texts for me
+│
+
+│			
+│
+├── CNAME
+│
+│
+├── en/			<-- detailed tree in another Tree File. Public
+│
+├── fr/			<-- detailed tree in another Tree File. Public
+│
+│
+│
+├── imhotep/        			✅ NEW for "les Clés d’Imhotep"
+│	│
+│	├─ cle_imhotep/les_cles.txt
+│	│
+│	│
+│	├─ imhotepcss/
+│	│	│
+│   	│	├─ cmt-modal.css
+│	│	│
+│   	│	├─ comments.css
+│	│	│
+│	│	└─ imhotep.css    	<-- 
+│	│
+│	│
+│	├─ imhotepjs/
+│	│	│
+│	│	│
+│   	│	├─ cmt-modal.js		<-- New file
+│	│	│
+│	│	│
+│   	│	├─ comments.js		<-- backup file
+│	│	│
+│	│	│
+│   	│	├─ comments-new.js	<-- comment button logic
+│	│	│
+│	│	│
+│   	│	├─ imhotep.js		<-- rotating keys
+│	│	│
+│	│	│
+│   	│	├─ sender-dropdown.js	<-- rotating keys
+│	│	│
+│	│	│
+│   	│	├─ sender_emb.js	<-- New file
+│	│	│
+│	│	│
+│	│	└─ sender_emb_gpt.js   	<-- 
+│	│
+│	│
+│	├─ imhotep-keys.json
+│	│
+│	│   
+│	│   
+│	└─ index.html	           	
+│
+│
+├── .env.example
+│
+├── .gitignore
+│
+│
+│
+│
+│
+├── indexcss/
+│   	│
+│   	└─ index.css	<-- 🟢 This is not orphan. It is intentional.
+│
+│
+├── live/		<-- here, visitor click on "access" to open cloudflare
+│   │
+│   ├─ css/site.css	<-- 
+│   │ 
+│   ├─ index.html	<-- coming soon page with private access (to be setup)
+│   │ 
+│   │ 
+│   └─ js/		<-- empty for the moment
+│
+│
+├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
+│
+│
+│
+├── navbar/          	<-- Navbar HTML is duplicated across pages
+│   	│
+│   	│	
+│   	├─ cssnavbar/
+│   	│	│
+│   	│	└─ navbar.css
+│   	│	
+│   	├─ csssnippet/
+│   	│	│
+│   	│	└─ snippet.css	<-- empty for the moment
+│   	│
+│   	├─ jsnavbar/
+│   	│	│
+│   	│	├─ load-navbar.js
+│   	│	│
+│   	│	└─ navbar.js
+│   	│
+│   	├─ navbar-en.html		<-- 👉 I forgot to update those files
+│   	│	
+│   	│	
+│   	└─ navbar-fr.html		<-- 👉 I forgot to update those files
+│
+│
+│
+│
+├── pictures/
+│   	│	
+│   	├─ 404/
+│   	│	
+│   	├─ articles/
+│   	│	
+│   	├─ fav-icone/
+│   	│	
+│   	├─ hero/
+│   	│	
+│   	├─ library-pic/
+│   	│	
+│   	├─ logo/
+│   	│	
+│   	├─ og/
+│   	│	
+│   	└─ pages/
+│
+│
+├── privacy/
+│   	│
+│   	├─ cssprivacy/
+│   	│   │
+│   	│   └─ privacy.css
+│   	│   
+│   	└─ index.html
+│   
+│
+├── private/
+│   	│
+│   	├─ css/
+│   	│   │
+│   	│   └─ selector.css
+│   	│   
+│   	├─ index.html
+│   	│   
+│   	└─ js/
+│   	    │
+│   	    └─ select-lang.js
+│
+│
+├── Readme.txt
+│
+│
+├── shared/
+│   	│
+│   	│
+│   	├─ cssshared/
+│   	│	│
+│   	│	├─ 404.css	
+│   	│	│
+│   	│	├─ base.css	
+│   	│	│
+│   	│	├─ cta.css	<-- Actualy empty for the moment
+│   	│	│
+│   	│	├─ footer.css	
+│   	│	│
+│   	│	├─ gdpr.css	
+│   	│	│
+│   	│	├─ layout.css	<-- Actualy empty for the moment (later, optional)	
+│   	│	│
+│   	│	└─ thanks.css
+│   	│	
+│   	│
+│   	├─ footer/
+│   	│	│
+│   	│	├─ footer-en.html
+│   	│	│
+│   	│	└─ footer-fr.html
+│   	│
+│   	│
+│   	├─ jsfooter/
+│   	│	│
+│   	│	└─ load-footer.js
+│   	│	
+│   	│	
+│   	├─ jsshared/
+│   	│   	│
+│   	│	├─ center_zoom.js	
+│   	│	│
+│   	│	├─ form-handler.js	
+│   	│	│
+│   	│	├─ gdpr.js	
+│   	│	│
+│   	│	└─ sender.js
+│   	│
+│   	│
+│  	└─ thanks.html
+│
+│
+│
+│
+├── terms/
+│   	│	
+│   	├─ cssterms/
+│   	│	│   
+│   	│	└─  terms.css
+│   	│	
+│   	└─  index.html 
+│
+│   
+│      
+└─  terms_of_use/
+   	 │	
+   	 ├─ csstermsofuse/
+   	 │   │   
+   	 │   └─ terms_of_use.css
+   	 │
+   	 └─ index.html		<-- In the futur, needs EN & FR terms of use maybe to place in shared.
+
+
+
+
+
+here is my FR tree
+🌳 747civilcarb/fr/
+│
+│
+│
+├── about/
+│   	├─ css/about.css
+│	│
+│   	└─ index.html
+│
+│
+├── contact/
+│	│
+│   	├─ css/contact.css
+│	│
+│   	├─ index.html
+│	│
+│   	└─ js/jscontact.js
+│
+│
+├── index.html
+│
+│
+├── library/	<-- 🚨 I think this needs to be connected to biblio/ as a list of all articles (free, premium,..)
+│   	│
+│   	│
+│   	├── anything/ 
+│   	│	│
+│   	│	├─ anything.html 
+│   	│	│
+│   	│	└─ cssanything/anything.css
+│	│
+│	├── biblio/		
+│	│	│
+│	│	│
+│	│	│
+│	│	└─ fr/
+│	│		│	
+│	│		└── free/
+│	│			│	
+│	│			├── couleur-de-peau-v005.pdf
+│	│			│
+│	│			├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│			│
+│	│			└── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│
+│   	│
+│   	├── csslibrary/
+│   	│	│
+│   	│	└─ library.css
+│   	│
+│   	├── index.html
+│   	│	
+│   	│
+│   	└─ js/
+│   		│
+│   		└─ library.js
+│
+│
+├── nosarticles/
+│   	│
+│   	├── articles.js 
+│   	│
+│   	├── articles.json 
+│   	│
+│   	├── css/ 
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├── index.html
+│   	│	
+│   	│
+│   	│
+│   	└─  jsarticles.js/ 		<-- 🚨This Folder needs to be verified before removed.
+│   		│
+│   		│
+│   		└─ articles.js
+│
+│
+│
+├── premium/
+│   	│	
+│   	├── csspremium/
+│   	│	│	
+│   	│	└─ premium.css
+│   	│   
+│   	├── endpoint/
+│   	│	│
+│   	│	└─ endpoint.js
+│   	│	
+│   	│	
+│   	├─ index.html		<---📍 It means: “I want to start a subscription”
+│   	│   				👉 The button "Acceder" doesn't work for the moment
+│   	│
+│   	│  
+│   	└─ jspremium/
+│   	    	│ 
+│   	    	└─ premium.js
+│      		
+│      
+├── private/ 			<-- REMOVED
+│	│   
+│	└─ index.html	        <-- actual protected website (so, we can work on it and give access to it)
+│   
+│   
+│   
+│   
+│
+│
+├── subscribe/
+│   	│	
+│   	├─ csssubscribe
+│   	│	│
+│   	│  	└─ subscribe.css
+│   	│
+│   	├── index.html
+│   	│
+│   	│	
+│   	└─ jssubscribe
+│   		│
+│   		└─ subscribe.js
+│
+
+
+
+here is my EN tree
+🌳 747civilcarb/en
+│
+│
+│
+├── about/
+│   	├─ css/about.css
+│	│
+│   	└─ index.html
+│
+│
+│
+├── contact/
+│   	├─ css/contact.css
+│	│
+│   	├─ index.html
+│	│
+│   	└─ js/jscontact.js
+│
+│
+├── index.html
+│
+│
+│
+├── library/			<-- ???
+│   	│
+│   	│
+│   	├── anything/ 
+│   	│	│
+│   	│	├─ anything.html 
+│   	│	│
+│   	│	└─ css/anything.css
+│	│
+│	├── biblio/		
+│	│	│
+│	│	│
+│	│	└──  en/
+│	│		│	
+│	│		│
+│	│		└──  free/
+│	│			│	
+│	│			├── Couleur de peau v. 005.pdf
+│	│			│
+│	│			├── Demographic_Distortions.pdf
+│	│			│
+│	│			└── Wealth_and_Invisible_Powers.pdf
+│	│			
+│   	│
+│   	├── css/
+│   	│	│
+│   	│	└─ library.css
+│   	│
+│   	│
+│   	├── index.html
+│   	│	
+│   	│
+│   	└─ js/
+│   		│
+│   		└─ library.js
+│
+│
+│
+├── nosarticles/
+│   	│
+│	│
+│	├─ articles.js			<-- whitch one is the good one ?
+│	│
+│	├─ articles.json
+│	│
+│	│
+│   	├─ css/
+│   	│	│
+│   	│	└─ articles.css
+│   	│
+│   	├─ index.html		<-- 👉 Free articles here
+│   	│
+│   	└─  js/
+│
+│
+│
+├── premium/
+│   	│	
+│   	├─ csspremium/
+│   	│   │	
+│   	│   └─ premium.css
+│   	│   
+│   	├─ endpoint/
+│   	│	│
+│   	│	└─ endpoint.js
+│   	│	
+│   	├─ index.html		<---📍 It means: “I want to start a subscription”
+│   	│   				👉 The button "Acceder" doesn't work for the moment
+│   	│  
+│   	└─ js/
+│       	│ 
+│       	└─ premium.js
+│      		
+│      
+│
+│
+├── subscribe/
+│   	│	
+│   	├─ css/
+│   	│	│
+│   	│  	└─ subscribe.css
+│   	│
+│   	│
+│   	├── index.html
+│   	│
+│   	│	
+│   	└─ js/
+│   		│
+│   		└─ subscribe.js
+│
+
+
+
+📌my worker tree IN PC
+
+🌳 my-worker/
+│
+│
+│
+│
+├── data/     	      <- 
+│   │
+│   └─ entitlements.json	 
+│   
+│
+├── endpoint.js		<-- it's empty  / Placeholder for entitlement logic.
+│
+│
+├── .env     	        <- 
+│
+│
+├── node_modules/     <- many folders (not shown here)
+│
+│
+├── package.json      <- confirm the "type": "module" status. We are officially in ES Modules mode.
+│
+│
+├── package-lock.json <- 
+│
+│
+├── premium-files/			
+│	│			 
+│	│
+│	├─ en/
+│	│	│	
+│	│	└── files/
+│	│		│	
+│   	│		├── Melanin-benefits_of_selenium_003.pdf
+│   	│		│
+│   	│		└── Synchronizing_with_EBA.docx
+│	│
+│   	└─ fr/
+│		│	
+│		└── files/
+│			│	
+│   			├── melanine-bienfaits-selenium-v003.pdf
+│   			│
+│   			└── Se_synchroniser_a_EBA.odt
+│
+│
+├── public/			
+│	│			 
+│	│
+│	├── cancel/           <- 
+│	│    │
+│	│    │
+│	│    └─ cancel.html
+│	│   
+│	│   
+│	├── css/
+│	│    ├
+│	│    │
+│	│    ├── base.css
+│	│    │
+│	│    ├── cancel.css
+│	│    │
+│	│    ├── footer.css
+│	│    │
+│	│    ├── gdpr.css
+│	│    │
+│	│    ├── index.css
+│	│    │
+│	│    ├── library.css
+│	│    │
+│	│    ├── navbar.css
+│	│    │
+│	│    ├── premium.css
+│	│    │
+│	│    ├── privacy.css
+│	│    │
+│	│    ├── snippet.css
+│	│    │
+│	│    ├── subscribe.css
+│	│    │
+│	│    ├── succes.css
+│	│    │
+│	│    └── terms.css
+│	│    
+│	│	
+│	│    
+│	│	
+│	│
+│	├── index/
+│	│	│	
+│	│	└──  index.html
+│	│
+│	│
+│	├── js/
+│	│    │
+│	│    │
+│	│    ├── center_zoom.js
+│	│    │
+│	│    ├── gdpr.js
+│	│    │
+│	│    ├── load-navbar
+│	│    │
+│	│    ├── navbar.js
+│	│    │
+│	│    ├── premium-entitlement.js
+│	│    │
+│	│    ├── snippet.js
+│	│    │
+│	│    └── subscribe.js
+│	│
+│	│
+│	├── library/
+│	│	│	
+│	│	└──  index.html
+│	│
+│	│
+│	├── navbar/
+│	│	│
+│	│	│
+│	│	├── jsnavbar/
+│	│	│	│
+│	│	│	└──  backup-navbar.txt
+│	│	│
+│	│	│
+│	│	└── navbar.html
+│	│	
+│	│
+│	│
+│	├── pictures/	      			<- same images as 747cililbarb/
+│	│	│
+│	│	├──  articles/
+│	│	│
+│	│	├──  fav-icone/
+│	│	│
+│	│	├──  hero/
+│	│	│
+│	│	├──  library-pic/
+│	│	│
+│	│	└──  logo/  
+│	│
+│	│
+│	├── premium/				
+│	│	│
+│	│	└── index.html		<---📍 "s'abonner" button always points to here
+
+│	│	│
+│	│	│subscribe/
+│	│	│		
+│	│	│		
+│	│	├──  files/			<--- ⚠️ has been moved to my-worker/premium-files/ 
+│	│	│				Node may: allow access to premium files
+│	│	│				← PDF, articles, resources 
+│	│	│				(Node serves only if entitled. Never in 747civilbarb)
+│	│	│				Later we will protect this route via server.js.
+│	│	│
+│	│	│	
+│	│	└──  index.html			<---Node server might see this one instead
+│	│					← template + editorial conten
+│	│
+│	│
+│	├──── privacy/         
+│	│	│
+│	│	│
+│	│	├── privacy.html
+│	│	│
+│	│	└── terms_of_use.html
+│	│
+│	│
+│	│
+│	│
+│	│
+│	├──── subscribe/         
+│   	│	│   
+│	│	├──  backup-index.html
+│	│	│
+│	│	└──  index.html		<--- 
+│	│
+│	│
+│	├── succes/
+│	│	│
+│	│	│
+│	│	└─ succes.html
+│	│	
+│	│	
+│	│
+│	└── terms/
+│		│
+│		│
+│		└──  terms.html		<---
+│	
+│
+├── Readme.txt        <- 
+│
+│
+├──  server.js
+│
+│	
+│   
+├── success-backup/succes.html         
+│
+│
+│
+└── test-env.js       <- This will later evolve into : server.js (deleted later)
+
+
+
+
+📌my worker tree IN VPS
+
+
+🌳 my-worker/public/
+│
+│
+│
+│
+├── cancel/
+│	│
+│	└─ cancel.html
+│
+│
+├── css/
+│	│
+│	└─ cancel.html
+│	    │
+│	    ├── base.css
+│	    │
+│	    ├── cancel.css
+│	    │
+│	    ├── footer.css
+│	    │
+│	    ├── gdpr.css
+│	    │
+│	    ├── index.css
+│	    │
+│	    ├── library.css
+│	    │
+│	    ├── navbar.css
+│	    │
+│	    ├── premium.css
+│	    │
+│	    ├── privacy.css
+│	    │
+│	    ├── snippet.css
+│	    │
+│	    ├── subscribe.css
+│	    │
+│	    ├── succes.css
+│	    │
+│	    └── terms.css
+│	    
+│
+├── index/
+│	    │
+│	    └── index.html
+│
+│
+├── js/
+│	    │
+│	    │
+│	    ├── center_zoom.js
+│	    │
+│	    ├── gdpr.js
+│	    │
+│	    ├── load-navbar
+│	    │
+│	    ├── navbar.js
+│	    │
+│	    ├── premium-entitlement.js
+│	    │
+│	    ├── snippet.js
+│	    │
+│	    └── subscribe.js
+│
+│
+├── library/
+│	    │
+│	    └── index.html
+│
+│
+├── navbar/
+│	│
+│	├── jsnavbar/
+│	│	│
+│	│	└──  backup-navbar.txt
+│	│
+│	│
+│	└── navbar.html
+│
+│
+├── pictures/
+│	│
+│	├──  articles/
+│	│
+│	├──  fav-icone/
+│	│
+│	├──  hero/
+│	│
+│	├──  library-pic/
+│	│
+│	└──  logo/  
+│
+│
+├── premium/
+│	│
+│	└── index.html
+│
+│
+├── privacy/
+│	│
+│	├──  privacy.html
+│	│
+│	└──  terms_of_use.html
+│
+│
+├── subscribe/
+│	│
+│	├──  backup-index.html
+│	│
+│	└──  index.html
+│
+│
+├── succes/
+│	│
+│	└──  succes.html
+│
+│
+└── terms/
+	│
+	└──  terms.html 
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bibliothèque — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="../library/csslibrary/library.css">
+
+<!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/cta.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+  
+</head>
+<!-- ============================ -->
+<!--        CIVILBARB LIBRARY     -->
+<!-- ============================ --> 
+
+<body class="has-fixed-nav">
+
+<!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+
+
+<main id="library" class="library-page">
+
+  <!-- Hero Section -->
+  <section id="hero-image">
+    <h1>Bibliothèque</h1>
+    <div class="hero-text-box">
+        <p class="manifesto">
+        La bibliothèque de <em>Civilisation ou Barbarie</em> rassemble l’ensemble des textes, 
+        articles et archives publiés. Chaque document est une exploration de la pensée, de 
+        la culture et de la mémoire humaine — un espace où le lecteur devient chercheur et 
+        la lecture, une aventure méthodique.
+        </p>
+        <p class="quote">
+            <em>Les idées traversent le temps, les textes en sont les véhicules.</em>
+            <br>— Civilisation ou Barbarie
+        </p>
+    </div>
+  </section>
+
+  <!-- Library Header -->
+  <header class="library-header">
+    <h2 id="articles-heading">Nos articles</h2>
+    <p class="library-intro">
+      Notre bibliothèque rassemble l’ensemble des articles publiés par <em>Civilisation 
+      ou Barbarie</em>. Chaque texte est proposé au format PDF selon les modalités d’accès précisées ci-dessous.
+    </p>
+  </header>
+
+  <img src="/pictures/library-pic/hapi-syncronisation.jpg" alt="hapi-syncronisation" class="library-hero-image">
+
+  <!-- Article List -->
+  <section class="article-list" aria-labelledby="article-heading">
+    <!-- Article item 001 -->
+    <article class="article-item">
+      <h3 class="article-title">
+        <a href="/my-worker/premium-files/fr/files/melanine-bienfaits-selenium-v003.pdf" target="_blank">Melanine bienfaits selenium v003</a>
+      </h3>
+      <h4 class="article-subtitle">
+        Mensonge d'État et manipulation des chiffres de la population en Afrique
+      </h4>
+
+      <p class="article-abstract">
+        (...) Ancien ambassadeur en Amérique, ancien représentant permanent au 
+      Conseil de sécurité de l'ONU, il est l'auteur du livre 
+      « <u>Nous étions seuls</u> ».
+      Gérard Araud, lui aussi, estime que la population africaine 
+      « double tous les 30 ans ».
+      <br><br>
+
+      Il emploie le mot-clé <strong>« explosion »</strong> démographique 
+      et présente la situation suivante :
+      </p>
+
+      <p class="article-meta">
+        PDF — 6 pages — Accès libre
+      </p>
+    </article>
+
+    <!-- Article item 002-->
+    <article class="article-item">
+      <h3 class="article-title">
+        <a href="/fr/library/biblio/fr/free/Se_synchroniser_a_Hapi.pdf" target="_blank">Se synchroniser à Hapi</a>
+      </h3>
+      <h4 class="article-subtitle">
+        Se réapproprier le rite, aujourd’hui
+      </h4>
+
+      <p class="article-abstract">
+        L’article éclaire les divinités-poissons peu connues et explore la temporalité de 
+        Hapi, leurs représentations et leurs cultes. Il souligne la dimension opérative 
+        des pratiques kamites, les offrandes et célébrations, et leur continuité dans 
+        la culture ancestrale.
+      </p>
+
+      <p class="article-meta">
+        PDF — 2 pages — Accès libre
+      </p>
+      <a href="/library/anything/anything.html">anything</a>
+    </article>
+
+    <!-- Article item 001 -->
+    <article class="article-item">
+      <h3 class="article-title">
+        <a href="/fr/library/biblio/fr/free/Richesse_et_Sorcellerie.pdf" target="_blank">Richesse et Sorcellerie</a>
+      </h3>
+      <h4 class="article-subtitle">
+        Dynamiques invisibles et blocages dans les projets collectifs
+      </h4>
+
+      <p class="article-abstract">
+        L’article explore les forces visibles et invisibles perçues comme entravant la 
+        réussite des projets collectifs. Il interroge les croyances, les héritages 
+        historiques et les dynamiques de groupe qui façonnent ces blocages, et ouvre 
+        la réflexion sur leurs effets profonds sur la coopération et le développement 
+        communautaire.
+      </p>
+
+      <p class="article-meta">
+        PDF — 12 pages — Accès libre
+      </p>
+    </article>
+
+    <!-- Add more articles here -->
+  </section>
+
+  <section>
+    <nav class="cta">
+      <a href="/premium/">Lire les articles récents</a>
+      <a href="/nosarticles/">Découvrir un article gratuit</a>
+      <a href="/library/" class="secondary">Explorer la bibliothèque</a>
+    </nav>
+  </section>
+
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+<!-- Footer -->
+        <div id="footer-placeholder"></div>
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+        <script src="/shared/jsfooter/load-footer.js" defer></script>
+        <script src="/fr/library/js/library.js" defer></script>
+    </body>
+</html>
+
