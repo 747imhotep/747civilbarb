@@ -8,35 +8,7 @@ pay attention it migh contain some minor errors.
 │
 ├── articles/		<-- Few drafts texts for me
 │
-├── biblio/		
-│	│
-│	│
-│	├─ en/
-│	│	│	
-│	│	│
-│	│	└──  free/
-│	│		│	
-│	│		├── Couleur de peau v. 005.pdf
-│	│		│
-│	│		├── Demographic_Distortions.pdf
-│	│		│
-│	│		└── Wealth_and_Invisible_Powers.pdf
-│	│		
-│	│	
-│	│
-│	│
-│	├─ fr/
-│	│	│	
-│	│	└── free/
-│	│		│	
-│	│		├── couleur-de-peau-v005.pdf
-│	│		│
-│	│		├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
-│	│		│
-│	│		└── MENSONGES_DEMOGRAPHIQUES_V2.pdf
-│	│	
-│	│
-│	└── index.json	<-- 🚨 PDF articles. have been moved to: my-worker/premium-files 
+
 │			
 │
 ├── CNAME

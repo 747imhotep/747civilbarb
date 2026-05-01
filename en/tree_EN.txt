@@ -30,12 +30,33 @@ here is my EN tree
 │   	│	├─ anything.html 
 │   	│	│
 │   	│	└─ css/anything.css
+│	│
+│	├── biblio/		
+│	│	│
+│	│	│
+│	│	└──  en/
+│	│		│	
+│	│		│
+│	│		└──  free/
+│	│			│	
+│	│			├── Couleur de peau v. 005.pdf
+│	│			│
+│	│			├── Demographic_Distortions.pdf
+│	│			│
+│	│			└── Wealth_and_Invisible_Powers.pdf
+│	│			
 │   	│
 │   	├── css/
 │   	│	│
 │   	│	└─ library.css
 │   	│
-│   	└─ index.html
+│   	│
+│   	├── index.html
+│   	│	
+│   	│
+│   	└─ js/
+│   		│
+│   		└─ library.js
 │
 │
 │

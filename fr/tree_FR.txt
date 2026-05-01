@@ -29,12 +29,32 @@ here is my FR tree
 │   	│	├─ anything.html 
 │   	│	│
 │   	│	└─ cssanything/anything.css
+│	│
+│	├── biblio/		
+│	│	│
+│	│	│
+│	│	│
+│	│	└─ fr/
+│	│		│	
+│	│		└── free/
+│	│			│	
+│	│			├── couleur-de-peau-v005.pdf
+│	│			│
+│	│			├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│			│
+│	│			└── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│
 │   	│
 │   	├── csslibrary/
 │   	│	│
 │   	│	└─ library.css
 │   	│
-│   	└─ index.html
+│   	├── index.html
+│   	│	
+│   	│
+│   	└─ js/
+│   		│
+│   		└─ library.js
 │
 │
 ├── nosarticles/
