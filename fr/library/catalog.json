@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "id": "mensonges-demographiques",
+      "title": "Mensonges démographiques",
+      "summary": "Analyse critique des manipulations des chiffres de population en Afrique...",
+      "type": "free",
+      "pages": 12,
+      "path": "/fr/nosarticles/mensonges-demographiques"
+    },
+    {
+      "id": "melanine-selenium",
+      "title": "Mélanine et bienfaits du sélénium",
+      "summary": "Exploration des propriétés de la mélanine et son interaction avec le sélénium...",
+      "type": "premium",
+      "pages": 8,
+      "path": "/fr/premium/"
+    }
+  ]
+}
