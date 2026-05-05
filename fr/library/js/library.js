@@ -1,3 +1,9 @@
+//::::::::::::::::::::::::::::::::::::::::
+// Library JS - handles both free and premium content display
+//::::::::::::::::::::::::::::::::::::::::
+
+
+
 // Unified library - combines free + premium
 async function loadLibrary() {
   const userEmail = getEmailFromSession(); // You need to implement this
