@@ -26,12 +26,14 @@ here is my FR tree
 │   	│
 │   	├── anything/ 
 │   	│	│
-│   	│	├─ anything.html 
+│   	│	├─ anything.html 		<-- don't know why it was created for.
 │   	│	│
 │   	│	└─ cssanything/anything.css
 │	│
 │	├── biblio/		
 │	│	│
+│	│	│
+│   	│	├── free_index.json 		<-- list of free texts: title and file name.
 │	│	│
 │	│	│
 │	│	└─ fr/
@@ -57,11 +59,11 @@ here is my FR tree
 │   		└─ library.js
 │
 │
-├── nosarticles/
+├── nosarticles/			<-- FOLDER NEEDS TO BE CLEAN
 │   	│
-│   	├── articles.js 
+│   	├── articles.js 		<-- 🚨 compare files
 │   	│
-│   	├── articles.json 
+│   	├── articles.json 		<-- ref. articles.js
 │   	│
 │   	├── css/ 
 │   	│	│
@@ -69,12 +71,13 @@ here is my FR tree
 │   	│
 │   	├── index.html
 │   	│	
+│   	├── js/ 			<-- 🚨This Folder is empty for the moment.
 │   	│
 │   	│
-│   	└─  jsarticles.js/ 		<-- 🚨This Folder needs to be verified before removed.
+│   	└─  jsarticles.js/ 		<-- This Folder needs to be verified before removed.
 │   		│
 │   		│
-│   		└─ articles.js
+│   		└─ articles.js		<-- 🚨 compare files
 │
 │
 │
@@ -86,11 +89,11 @@ here is my FR tree
 │   	│   
 │   	├── endpoint/
 │   	│	│
-│   	│	└─ endpoint.js
+│   	│	└─ endpoint.js	<-- There is a code but it's not used somwhere.
 │   	│	
 │   	│	
 │   	├─ index.html		<---📍 It means: “I want to start a subscription”
-│   	│   				👉 The button "Acceder" doesn't work for the moment
+│   	│   				👉 The button "Acceder" doesn't work for the moment. Probably endpoint.js
 │   	│
 │   	│  
 │   	└─ jspremium/
@@ -98,11 +101,6 @@ here is my FR tree
 │   	    	└─ premium.js
 │      		
 │      
-├── private/ 			<-- REMOVED
-│	│   
-│	└─ index.html	        <-- actual protected website (so, we can work on it and give access to it)
-│   
-│   
 │   
 │   
 │
