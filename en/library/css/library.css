@@ -135,6 +135,47 @@
   border-radius: 8px;
 }
 
+/* ===== Badge Styles for catalog ===== */
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.article-item.free .badge {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.article-item.premium .badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.read-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.read-link:hover {
+  text-decoration: underline;
+}
+
+/* Section title spacing */
+.section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
 /* ===== Article List ===== */
 .library-page .article-list {
   display: flex;
