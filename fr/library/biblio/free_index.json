@@ -1,0 +1,34 @@
+{
+  "en": {
+    "free": [
+      {
+        "title": "Skin Color",
+        "file": "couleur-de-peau-v005.pdf"
+      },
+      {
+        "title": "Demographic Distortions",
+        "file": "Demographic_Distortions.pdf"
+      },
+      {
+        "title": "Wealth and invisible powers",
+        "file": "Wealth_and_Invisible_Powers.pdf"
+      }
+    ]
+  },
+  "fr": {
+    "free": [
+      {
+        "title": "Couleur de peau",
+        "file": "couleur-de-peau-v005.pdf"
+      },
+      {
+        "title": "Mensonges démographiques",
+        "file": "mensonges_demographiques_v2.pdf"
+      },
+      {
+        "title": "Richesse et Sorcellerie",
+        "file": "richesse_et_sorcellerie.pdf"
+      }
+    ]
+  }
+}
