@@ -10,6 +10,7 @@
 
 <!-- Page-specific -->
   <link rel="stylesheet" href="../library/csslibrary/library.css">
+  <link rel="stylesheet" href="../library/csslibrary/vignette.css">
 
 <!-- Shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
@@ -36,6 +37,8 @@
 
 
 <main id="library" class="library-page">
+  
+  
 
   <!-- Hero Section -->
   <section id="hero-image">
@@ -63,80 +66,15 @@
     </p>
   </header>
 
+<!-- Inside <main>, replace everything after the hero image with this: -->
+
   <img src="/pictures/library-pic/hapi-syncronisation.jpg" alt="hapi-syncronisation" class="library-hero-image">
 
-  <!-- Article List (CATALOG, not direct downloads) -->
-  <section class="article-list" aria-labelledby="article-heading">
-    
-    <!-- FREE ARTICLE 1 -->
-    <article class="article-item free">
-      <h3 class="article-title">Mensonges démographiques</h3>
-      <!--this is linked to the catalog.json via: fr/nosarticles > articles.js > fr/nosarticles/articles.json 
-      (Qst: can we add any id=#nbrid so to each sheet text, 
-      so, when Visitor click on any link "Lire l'article" fr/nosarticles/text# is oppended)
-      Then we also can add "free" in the tag list.
-      -->
-      <div class="badge">🔑 Accès libre</div>
-      <p class="article-abstract">
-        Ancien ambassadeur en Amérique, ancien représentant permanent au 
-        Conseil de sécurité de l'ONU, il est l'auteur du livre 
-        « <u>Nous étions seuls</u> ». Analyse critique des manipulations des chiffres 
-        de population en Afrique.
-      </p>
-      <p class="article-meta">PDF — 12 pages</p>
-      <a href="/fr/nosarticles/" class="read-link">Lire l'article →</a>
-    </article>
 
-    <!-- FREE ARTICLE 2 -->
-    <article class="article-item free">
-      <h3 class="article-title">Se synchroniser à Hapi</h3>
-      <div class="badge">🔑 Accès libre</div>
-      <p class="article-abstract">
-        L'article éclaire les divinités-poissons peu connues et explore la temporalité de 
-        Hapi, leurs représentations et leurs cultes. Dimension opérative des pratiques 
-        kamites, offrandes et célébrations.
-      </p>
-      <p class="article-meta">PDF — 2 pages</p>
-      <a href="/fr/nosarticles/" class="read-link">Lire l'article →</a>
-    </article>
 
-    <!-- PREMIUM ARTICLE 1 -->
-    <article class="article-item premium">
-      <h3 class="article-title">Richesse et Sorcellerie</h3>
-      <div class="badge">🔒 Contenu premium</div>
-      <p class="article-abstract">
-        Dynamiques invisibles et blocages dans les projets collectifs. Exploration des 
-        forces visibles et invisibles perçues comme entravant la réussite des projets 
-        collectifs.
-      </p>
-      <p class="article-meta">PDF — 10 pages</p>
-      <a href="/fr/premium/" class="read-link">S'abonner pour lire →</a>
-    </article>
-
-    <!-- PREMIUM ARTICLE 2 -->
-    <article class="article-item premium">
-      <h3 class="article-title">Mélanine et bienfaits du sélénium</h3>
-      <div class="badge">🔒 Contenu premium</div>
-      <p class="article-abstract">
-        Exploration des propriétés de la mélanine et son interaction avec le sélénium. 
-        Découvrez les bienfaits méconnus de ces éléments essentiels.
-      </p>
-      <p class="article-meta">PDF — 8 pages</p>
-      <a href="/fr/premium/" class="read-link">S'abonner pour lire →</a>
-    </article>
-
-    <!-- PREMIUM ARTICLE 3 -->
-    <article class="article-item premium">
-      <h3 class="article-title">Se synchroniser à EBA</h3>
-      <div class="badge">🔒 Contenu premium</div>
-      <p class="article-abstract">
-        Essaie sur une méthodologie avancée pour la synchronisation énergétique en 
-        spiritualite kamite. 
-      </p>
-      <p class="article-meta">Document — 15 pages</p>
-      <a href="/fr/premium/" class="read-link">S'abonner pour lire →</a>
-    </article>
-
+  <!-- Dynamic article list (loaded by JavaScript) -->
+  <section class="article-list" id="library-container">
+    <p>Chargement de la bibliothèque...</p>
   </section>
 
   <section>
@@ -147,6 +85,8 @@
   </section>
 
 </main>
+
+  
 
 <!-- GDPR Consent Banner -->
 <div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
@@ -171,6 +111,6 @@
         <script src="/navbar/jsnavbar/navbar.js" defer></script>
         <script src="/shared/jsshared/gdpr.js" defer></script>
         <script src="/shared/jsfooter/load-footer.js" defer></script>
-        <script src="/fr/library/js/library.js" defer></script>
+        <script src="/fr/library/js/load-articles.js" defer></script>
     </body>
 </html>
