@@ -1,19 +1,30 @@
-✅ generate Serial Numbers dynamically in JavaScript by taking into account phycological, political, antropological, ... texts
-✅ I've created a separate fr/library/js/serialnb.js
+✅ thumbnails will stay in 747civilbarb/pictures/library-pic/
+✅ 
+✅ 
+✅ 
+✅ 
+✅ 
+✅ 
+✅ 
+✅ 
 
-✅ I don't know what COB means
-✅ There's already a /fr/library/catalog.json instead of 
-✅ There's already a library.js Do you want to see it or do you already have it in your memory ?
-✅ For you: 🔑 Accès libre and 🔒 Contenu premium
-✅ Maybe we need to check the CSS and the html to make sure they are aligned
-✅ What about create a separate CSS vignette layout ?
-✅ A separate js file has been created fr/library/js/load-articles.js instead of 2. New /fr/library/js/library.js
+✅ 
+✅ 
+✅ thumbnail test doesn't work:
+"articles": [
+    {
+      "id": "mensonges-demographiques",
+      "title": "Mensonges démographiques",
+      "subtitle": "Afrique : les chiffres de la population sont-ils manipulés ?",
+      "abstract": "Analyse critique des manipulations des chiffres de population en Afrique. Ancien ambassadeur aux États-Unis, ancien représentant permanent au Conseil de sécurité de l'ONU...",
+      "type": "free",
+      "pages": 12,
+      "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/library-pic/hapi-syncronisation.jpg"
+    },
 
-✅ the tree needs to be update. But it takes time. Sorry about that.
-✅ NOTHING HAPPENED
-✅ please check html, css, load-articles.js, 
 
-Cannot GET /fr/library/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf
 
 
 CONSOLE MESSAGE:
