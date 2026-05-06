@@ -72,10 +72,13 @@
   color: #e65100;
 }
 
-/* Article title and subtitle */
+/* ==== Article title and subtitle ==== */
+
+/* IT WORKS */
 .article-title {
   margin: 0 0 4px 0;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .article-subtitle {
@@ -85,6 +88,7 @@
   font-weight: normal;
 }
 
+/* it works */
 .article-abstract {
   margin: 8px 0;
   font-size: 0.85rem;
@@ -92,6 +96,7 @@
   color: #333;
 }
 
+/*NOT WORKING */
 .article-meta {
   margin: 8px 0;
   font-size: 0.75rem;
