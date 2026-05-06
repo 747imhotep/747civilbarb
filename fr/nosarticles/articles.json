@@ -2,7 +2,7 @@
   {
     "title": "MENSONGES DEMOGRAPHIQUES",
     "subtitle": "Mensonge d'État et manipulation des chiffres de la population en Afrique",
-    "pdf": "/biblio/MENSONGES_DEMOGRAPHIQUES_V2.pdf",
+    "pdf": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
     "abstract": "(...) Ancien ambassadeur en Amérique, ancien représentant permanent au Conseil de sécurité de l'ONU, il est l'auteur du livre « Nous étions seuls ». Gérard Araud, lui aussi, estime que la population africaine « double tous les 30 ans ».\n\nIl emploie le mot-clé « explosion » démographique et présente la situation suivante :\n⟶ 4 millions de Nigériens en 1960\n⟶ 25 millions de Nigériens aujourd'hui\n⟶ 50 millions dans 30 ans.\n\nLe site web The True Size, mentionné plus haut, permet de glisser-déposer, avec la souris, un pays sur n'importe quel continent, afin de mieux appréhender sa taille.",
     "image": "/pictures/articles/niger_01.PNG",
     "imageAlt": "Comparaison démographique Niger et France",
@@ -13,12 +13,23 @@
   {
     "title": "RICHESSE ET SORCELLERIE",
     "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
-    "pdf": "/biblio/Richesse_et_Sorcellerie.pdf",
+    "pdf": "/fr/library/biblio/fr/free/richesse_et_sorcellerie.pdf",
     "abstract": "(...) En mars 2010, dans le sillage de l'élection de Barack Obama, aux Etats Désunis d'Amérique - pour employer l'expression de la Dr. S. Mumbi - un symposium important était organisé à Chicago, sur le campus de Chicago State University, à l'initiative du journaliste et intellectuel Tavis Smiley. Cet événement visait à lancer l'ouvrage collectif 'The Covenant with Black America' et à ouvrir un débat critique sur l'absence perçue d'un 'agenda noir' dans la politique de la nouvelle administration.",
     "image": "/pictures/articles/sorcellerie01.jpg",
     "imageAlt": "Dynamiques et blocages collectifs",
     "meta": "PDF — 12 pages — Accès libre",
     "tags": ["sorcellerie", "richesse", "collectif"],
     "date": "2026-02-15"
+  },
+  {
+    "title": "COULEUR DE PEAU",
+    "subtitle": "Mécanismes de destruction de la mélanine",
+    "pdf": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
+    "abstract": "(...) Les enfants sont particulièrement vulnérables à la destruction de la mélanine, ce qui soulève des préoccupations majeures en matière de santé publique. La mélanine joue un rôle crucial dans la protection de la peau contre les rayons UV nocifs du soleil, et sa destruction peut entraîner une augmentation du risque de cancers de la peau, ainsi que d'autres problèmes dermatologiques.",
+    "image": "/pictures/library-pic/couleur-peau .jpg",
+    "imageAlt": "Mécanismes de destruction de la mélanine",
+    "meta": "PDF — 10 pages — Accès libre",
+    "tags": ["mélanine", "santé", "enfants"],
+    "date": "2026-03-01"
   }
 ]
