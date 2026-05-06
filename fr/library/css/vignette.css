@@ -3,6 +3,8 @@
 /*:::::::::::::::::::::::::::::::::::::::::::::*/
 
 
+/* Vignette Layout CSS for Library Page */
+
 /* Article preview container - vignette layout */
 .article-preview {
   display: flex;
@@ -17,6 +19,7 @@
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .article-thumbnail.placeholder {
