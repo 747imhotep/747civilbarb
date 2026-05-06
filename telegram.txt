@@ -1,4 +1,4 @@
-✅ thumbnails will stay in 747civilbarb/pictures/library-pic/
+✅ Test thumbnails  747civilbarb/pictures/library-pic/thumb-mensonge.png
 ✅ 
 ✅ 
 ✅ 
@@ -10,105 +10,107 @@
 
 ✅ 
 ✅ 
-✅ thumbnail test doesn't work:
-"articles": [
-    {
-      "id": "mensonges-demographiques",
-      "title": "Mensonges démographiques",
-      "subtitle": "Afrique : les chiffres de la population sont-ils manipulés ?",
-      "abstract": "Analyse critique des manipulations des chiffres de population en Afrique. Ancien ambassadeur aux États-Unis, ancien représentant permanent au Conseil de sécurité de l'ONU...",
-      "type": "free",
-      "pages": 12,
-      "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
-      "hasImage": true,
-      "imagePath": "/pictures/library-pic/hapi-syncronisation.jpg"
-    },
 
 
+//:::::::::::::::::::::::::::::::::::::::::::::::::::
+// load-articles.js
+// Script to load and render articles from catalog.json
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
 
+// load-articles.js
+// Script to load and render articles from catalog.json
 
-CONSOLE MESSAGE:
-GET
-http://127.0.0.1:5500/fr/library/
-[HTTP/1.1 304 Not Modified 17ms]
+let articlesData = [];
 
-GET
-http://127.0.0.1:5500/shared/cssshared/base.css
-[HTTP/1.1 304 Not Modified 0ms]
+async function loadArticles() {
+  try {
+    // ✅ FIXED: correct path to catalog.json
+    const response = await fetch('/fr/library/catalog.json');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    articlesData = await response.json();
+    renderLibrary();
+  } catch (error) {
+    console.error('Error loading articles:', error);
+    const container = document.getElementById('library-container');
+    if (container) {
+      container.innerHTML = '<p>Erreur lors du chargement de la bibliothèque. Veuillez rafraîchir la page.</p>';
+    }
+  }
+}
 
-GET
-http://127.0.0.1:5500/fr/library/csslibrary/library.css
-[HTTP/1.1 304 Not Modified 1ms]
+function getSerialNumber(index, type) {
+  // Generate serial numbers based on content type
+  const prefixes = {
+    'free': 'LIB',
+    'premium': 'PREM'
+  };
+  
+  const prefix = prefixes[type] || 'DOC';
+  const num = String(index + 1).padStart(3, '0');
+  
+  return `${prefix}-${num}`;
+}
 
-GET
-http://127.0.0.1:5500/fr/library/csslibrary/vignette.css
-NS_ERROR_CORRUPTED_CONTENT
+function renderLibrary() {
+  const container = document.getElementById('library-container');
+  if (!container) return;
+  
+  if (!articlesData.articles || articlesData.articles.length === 0) {
+    container.innerHTML = '<p>Aucun article trouvé.</p>';
+    return;
+  }
+  
+  let html = '';
+  
+  articlesData.articles.forEach((article, index) => {
+    // Generate serial number dynamically
+    const serialNumber = getSerialNumber(index, article.type);
+    
+    // Badge configuration
+    const isFree = article.type === 'free';
+    const badgeIcon = isFree ? '🔑' : '🔒';
+    const badgeText = isFree ? 'Accès libre' : 'Contenu premium';
+    const linkText = isFree ? 'Lire l\'article →' : 'S\'abonner pour lire →';
+    
+    // Subtitle fallback
+    const subtitle = article.subtitle || '';
+    
+    // Thumbnail (placeholder for now)
+    const thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    
+    html += `
+      <article class="article-item ${article.type}">
+        <div class="article-preview">
+          ${thumbnailHtml}
+          <div class="article-info">
+            <div class="article-meta-top">
+              <span class="serial-number">${serialNumber}</span>
+              <span class="badge ${article.type}">${badgeIcon} ${badgeText}</span>
+            </div>
+            <h3 class="article-title">${escapeHtml(article.title)}</h3>
+            ${subtitle ? `<h4 class="article-subtitle">${escapeHtml(subtitle)}</h4>` : ''}
+            <p class="article-abstract">${escapeHtml(article.abstract)}</p>
+            <p class="article-meta">PDF — ${article.pages} pages</p>
+            <a href="${article.path}" class="read-link" ${article.type === 'premium' ? 'target="_blank"' : ''}>${linkText}</a>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+  
+  container.innerHTML = html;
+}
 
-GET
-http://127.0.0.1:5500/navbar/cssnavbar/navbar.css
-[HTTP/1.1 304 Not Modified 1ms]
+// Helper function to prevent XSS attacks
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
 
-GET
-http://127.0.0.1:5500/navbar/csssnippet/snippet.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/shared/cssshared/cta.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/shared/cssshared/footer.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/shared/cssshared/gdpr.css
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/navbar/jsnavbar/load-navbar.js
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/shared/jsshared/gdpr.js
-[HTTP/1.1 304 Not Modified 0ms]
-
-GET
-http://127.0.0.1:5500/shared/jsfooter/load-footer.js
-[HTTP/1.1 304 Not Modified 1ms]
-
-GET
-http://127.0.0.1:5500/fr/library/js/load-articles.js
-[HTTP/1.1 304 Not Modified 0ms]
-
-The resource from “http://127.0.0.1:5500/fr/library/csslibrary/vignette.css” was blocked due to MIME type (“text/html”) mismatch (X-Content-Type-Options: nosniff). library
-GET
-http://127.0.0.1:5500/pictures/library-pic/hapi-syncronisation.jpg
-NS_BINDING_ABORTED
-
-Waiting for navbar elements (attempt 1)... navbar.js:20:17
-GET
-http://127.0.0.1:5500/pictures/hero/hero_library01.jpg
-NS_BINDING_ABORTED
-
-GET
-ws://127.0.0.1:5500/fr/library//ws
-[HTTP/1.1 101 Switching Protocols 1ms]
-
-Navbar found, attaching event listeners navbar.js:26:13
-GET
-http://127.0.0.1:5500/pictures/fav-icone/fav-icone03.png
-[HTTP/1.1 200 OK 0ms]
-
-GET
-http://127.0.0.1:5500/navbar/jsnavbar/navbar.js
-[HTTP/1.1 304 Not Modified 2ms]
-
-GET
-http://127.0.0.1:5500/pictures/logo/logo_T7.png
-NS_BINDING_ABORTED
-
-Navbar found, attaching event listeners
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadArticles);
