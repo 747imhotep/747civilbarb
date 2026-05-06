@@ -1,0 +1,131 @@
+/*::::::::::::::::::::::::::::::::::::::::::::*/
+/*    Vignette Layout CSS for Library Page    */
+/*:::::::::::::::::::::::::::::::::::::::::::::*/
+
+
+/* Article preview container - vignette layout */
+.article-preview {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Thumbnail styling - 80x100px */
+.article-thumbnail {
+  width: 80px;
+  height: 100px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.article-thumbnail.placeholder {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #999;
+}
+
+/* Article info takes remaining space */
+.article-info {
+  flex: 1;
+}
+
+/* Meta top row: serial + badge */
+.article-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serial-number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+/* Badge styles */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.article-item.free .badge {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.article-item.premium .badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* Article title and subtitle */
+.article-title {
+  margin: 0 0 4px 0;
+  font-size: 1.2rem;
+}
+
+.article-subtitle {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: normal;
+}
+
+.article-abstract {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+.article-meta {
+  margin: 8px 0;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.read-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.read-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+  .article-preview {
+    flex-direction: column;
+  }
+  .article-thumbnail,
+  .article-thumbnail.placeholder {
+    width: 60px;
+    height: 75px;
+    margin-bottom: 10px;
+  }
+  .article-meta-top {
+    justify-content: flex-start;
+  }
+}
+
+/* Article spacing */
+.article-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
