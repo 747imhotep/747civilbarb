@@ -1,0 +1,102 @@
+//:::::::::::::::::::::::::::::::::::::::::::::::::::
+// load-articles.js
+// Script to load and render articles from catalog.json
+// :::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// load-articles.js
+// Script to load and render articles from catalog.json
+
+let articlesData = [];
+
+async function loadArticles() {
+  try {
+    // ✅ FIXED: correct path to catalog.json
+    const response = await fetch('/fr/library/catalog.json');
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    articlesData = await response.json();
+    renderLibrary();
+  } catch (error) {
+    console.error('Error loading articles:', error);
+    const container = document.getElementById('library-container');
+    if (container) {
+      container.innerHTML = '<p>Erreur lors du chargement de la bibliothèque. Veuillez rafraîchir la page.</p>';
+    }
+  }
+}
+
+function getSerialNumber(index, type) {
+  // Generate serial numbers based on content type
+  const prefixes = {
+    'free': 'LIB',
+    'premium': 'PREM'
+  };
+  
+  const prefix = prefixes[type] || 'DOC';
+  const num = String(index + 1).padStart(3, '0');
+  
+  return `${prefix}-${num}`;
+}
+
+function renderLibrary() {
+  const container = document.getElementById('library-container');
+  if (!container) return;
+  
+  if (!articlesData.articles || articlesData.articles.length === 0) {
+    container.innerHTML = '<p>Aucun article trouvé.</p>';
+    return;
+  }
+  
+  let html = '';
+  
+  articlesData.articles.forEach((article, index) => {
+    // Generate serial number dynamically
+    const serialNumber = getSerialNumber(index, article.type);
+    
+    // Badge configuration
+    const isFree = article.type === 'free';
+    const badgeIcon = isFree ? '🔑' : '🔒';
+    const badgeText = isFree ? 'Accès libre' : 'Contenu premium';
+    const linkText = isFree ? 'Lire l\'article →' : 'S\'abonner pour lire →';
+    
+    // Subtitle fallback
+    const subtitle = article.subtitle || '';
+    
+    // Thumbnail (placeholder for now)
+    const thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    
+    html += `
+      <article class="article-item ${article.type}">
+        <div class="article-preview">
+          ${thumbnailHtml}
+          <div class="article-info">
+            <div class="article-meta-top">
+              <span class="serial-number">${serialNumber}</span>
+              <span class="badge ${article.type}">${badgeIcon} ${badgeText}</span>
+            </div>
+            <h3 class="article-title">${escapeHtml(article.title)}</h3>
+            ${subtitle ? `<h4 class="article-subtitle">${escapeHtml(subtitle)}</h4>` : ''}
+            <p class="article-abstract">${escapeHtml(article.abstract)}</p>
+            <p class="article-meta">PDF — ${article.pages} pages</p>
+            <a href="${article.path}" class="read-link" ${article.type === 'premium' ? 'target="_blank"' : ''}>${linkText}</a>
+          </div>
+        </div>
+      </article>
+    `;
+  });
+  
+  container.innerHTML = html;
+}
+
+// Helper function to prevent XSS attacks
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Load when page is ready
+document.addEventListener('DOMContentLoaded', loadArticles);
