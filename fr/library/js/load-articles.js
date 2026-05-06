@@ -65,8 +65,13 @@ function renderLibrary() {
     // Subtitle fallback
     const subtitle = article.subtitle || '';
     
-    // Thumbnail (placeholder for now)
-    const thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    // Thumbnail: placeholder or real image
+    let thumbnailHtml = '';
+    if (article.hasImage && article.imagePath) {
+    thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="article-thumbnail" loading="lazy" onerror="this.onerror=null; this.src=''; this.classList.add('placeholder'); this.innerText='📄'">`;
+    } else {
+    thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    }
     
     html += `
       <article class="article-item ${article.type}">
