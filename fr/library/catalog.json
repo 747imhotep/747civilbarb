@@ -9,7 +9,7 @@
       "pages": 12,
       "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-mensonge.png"
+      "imagePath": "/pictures/articles-pic/thumb-mensonge02.png"
     },
     {
       "id": "melanine-selenium",
@@ -19,7 +19,8 @@
       "type": "premium",
       "pages": 8,
       "path": "/fr/premium/",
-      "hasImage": false
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-selenium.png"
     },
     {
       "id": "richesse-sorcellerie",
@@ -29,7 +30,8 @@
       "type": "free",
       "pages": 10,
       "path": "/fr/library/biblio/fr/free/Richesse_et_Sorcellerie.pdf",
-      "hasImage": false
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie.png"
     },
     {
       "id": "couleur-de-peau",
@@ -39,7 +41,8 @@
       "type": "free",
       "pages": 10,
       "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
-      "hasImage": false
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-nopicture.png"
     },
     {
       "id": "se-synchroniser-eba",
@@ -49,7 +52,8 @@
       "type": "premium",
       "pages": 10,
       "path": "/fr/premium/",
-      "hasImage": false
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-ebale.png"
     }
   ]
 }
