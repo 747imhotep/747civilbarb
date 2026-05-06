@@ -4,48 +4,51 @@
       "id": "mensonges-demographiques",
       "title": "Mensonges démographiques",
       "subtitle": "Afrique : les chiffres de la population sont-ils manipulés ?",
-      "abstract": "Analyse critique des manipulations des chiffres de population en Afrique...",
+      "abstract": "Analyse critique des manipulations des chiffres de population en Afrique. Ancien ambassadeur aux États-Unis, ancien représentant permanent au Conseil de sécurité de l'ONU...",
       "type": "free",
       "pages": 12,
-      "path": "fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf"
+      "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/fiche-article-sn001.png"
     },
     {
       "id": "melanine-selenium",
       "title": "Mélanine et bienfaits du sélénium",
-      "subtitle": "Effets bénéfiques de la mélanine et du sélénium sur la santé",
-      "abstract": "Exploration des propriétés de la mélanine et son interaction avec le sélénium...",
+      "subtitle": "Propriétés méconnues de la mélanine",
+      "abstract": "Exploration des propriétés de la mélanine et son interaction avec le sélénium. Découvrez les bienfaits méconnus de ces éléments essentiels.",
       "type": "premium",
       "pages": 8,
-      "path": "/../../my-worker/premium-files/fr/files/melanine-bienfaits-selenium-v003.pdf"
+      "path": "/fr/premium/",
+      "hasImage": false
     },
     {
-      "id": "richesse et sorcellerie",
-      "title": "RICHESSE ET SORCELLERIE",
-      "subtitle": "Dynamique invisibles et blocages dans les projets collectifs.",
-      "abstract": "Dynamique invisibles et blocages dans les projets collectifs.",
+      "id": "richesse-sorcellerie",
+      "title": "Richesse et Sorcellerie",
+      "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
+      "abstract": "Exploration des forces visibles et invisibles perçues comme entravant la réussite des projets collectifs.",
       "type": "free",
       "pages": 10,
       "path": "/fr/library/biblio/fr/free/Richesse_et_Sorcellerie.pdf",
       "hasImage": false
     },
     {
-      "id": "couleur de peau",
+      "id": "couleur-de-peau",
       "title": "Couleur de peau",
-      "subtitle": "Mecanysmes de destruction de la melanine, les enfants en ligne de mire.",
-      "abstract": "Mecanysmes de destruction de la melanine, les enfants en ligne de mire.",
+      "subtitle": "Mécanismes de destruction de la mélanine",
+      "abstract": "Mécanismes de destruction de la mélanine, les enfants en ligne de mire.",
       "type": "free",
       "pages": 10,
       "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
       "hasImage": false
     },
     {
-      "id": "se syncrhoniser a eba",
-      "title": "Se synchroniser a EBA (HAPI)",
-      "subtitle": "Guide pratique pour se connecter à EBA.",
-      "abstract": "Comment pouvons-nous nous connecter a EBA et par quel rituel efficace.",
+      "id": "se-synchroniser-eba",
+      "title": "Se synchroniser à EBA (HAPI)",
+      "subtitle": "Rituels et connexion énergétique",
+      "abstract": "Comment pouvons-nous nous connecter à EBA et par quel rituel efficace.",
       "type": "premium",
       "pages": 10,
-      "path": "/../../my-worker/premium-files/fr/files/Se_synchroniser_a_EBA.odt",
+      "path": "/fr/premium/",
       "hasImage": false
     }
   ]
