@@ -1,139 +1,231 @@
-/*::::::::::::::::::::::::::::::::::::::::::::*/
-/*    Vignette Layout CSS for Library Page    */
-/*:::::::::::::::::::::::::::::::::::::::::::::*/
+/* ============================================ */
+/* COMPACT LIBRARY LAYOUT - LIBRARY CATALOG STYLE */
+/* ============================================ */
 
-
-/* Vignette Layout CSS for Library Page */
-
-/* Article preview container - vignette layout */
-.article-preview {
+/* Container */
+.compact-library-container {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
 }
 
-/* Thumbnail styling - 80x100px */
-.article-thumbnail {
+/* Individual article card */
+.library-compact {
+  background: #fff;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.library-compact:hover {
+  border-color: #8b0000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Compact row */
+.compact-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Serial number - ROTATED 90 DEGREES */
+.serial {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #5a3a2a;
+  background: #f5efe8;
+  padding: 8px 4px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  min-width: 28px;
+  text-align: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Badge (icon only in compact mode) */
+.badge {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Title - BIGGER */
+.compact-title {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+  letter-spacing: -0.3px;
+}
+
+.compact-title:hover {
+  color: #8b0000;
+}
+
+/* Toggle button - "Consulter" */
+.toggle-btn {
+  background: none;
+  border: 1px solid #c0a080;
+  color: #5a3a2a;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.toggle-btn:hover {
+  background: #8b0000;
+  border-color: #8b0000;
+  color: white;
+}
+
+/* ============================================ */
+/* EXPANDED DETAILS */
+/* ============================================ */
+
+.expanded-details {
+  padding: 0 20px 20px 20px;
+  border-top: 1px dashed #e0d6cc;
+  background: #fefcf8;
+}
+
+.expanded-inner {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px 0 10px 0;
+}
+
+/* Thumbnail */
+.expanded-thumbnail {
   width: 80px;
   height: 100px;
-  border-radius: 7px;
-  box-shadow: 0 2px 8px rgba(90, 0, 0, 0.5);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
   object-fit: cover;
+  background: #f0ebe4;
 }
 
-.article-thumbnail.placeholder {
-  background: #f5f5f5;
+.expanded-thumbnail.placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 32px;
-  color: #999;
+  background: #f0ebe4;
 }
 
-/* Article info takes remaining space */
-.article-info {
+/* Expanded content */
+.expanded-content {
   flex: 1;
 }
 
-/* Meta top row: serial + badge */
-.article-meta-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-  flex-wrap: wrap;
-  gap: 8px;
+.expanded-subtitle {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: #2c3e2a;
+  font-weight: 600;
+  font-style: italic;
 }
 
-.serial-number {
-  font-family: monospace;
-  font-size: 0.75rem;
-  color: #666;
-  letter-spacing: 1px;
-}
-
-/* Badge styles */
-.badge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: bold;
-}
-
-.article-item.free .badge {
-  background: #e3f2fd;
-  color: #0d47a1;
-}
-
-.article-item.premium .badge {
-  background: #fff3e0;
-  color: #e65100;
-}
-
-/* ==== Article title and subtitle ==== */
-
-/* IT WORKS */
-.article-title {
-  margin: 0 0 4px 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.article-subtitle {
-  margin: 0 0 8px 0;
+.expanded-abstract {
+  margin: 0 0 12px 0;
   font-size: 0.9rem;
-  color: #555;
-  font-weight: normal;
+  line-height: 1.5;
+  color: #2a2a2a;
 }
 
-/* it works */
-.article-abstract {
-  margin: 8px 0;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  color: #333;
-}
-
-/*NOT WORKING */
-.article-meta {
-  margin: 8px 0;
+.expanded-meta {
+  margin: 0 0 16px 0;
   font-size: 0.75rem;
-  color: #777;
+  color: #7a6a5a;
+  font-family: monospace;
 }
 
+/* Read link button */
 .read-link {
   display: inline-block;
-  margin-top: 4px;
-  font-weight: 500;
+  padding: 8px 18px;
+  background: #8b0000;
+  color: white;
   text-decoration: none;
-  color: #0066cc;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s;
 }
 
 .read-link:hover {
-  text-decoration: underline;
+  background: #5a0000;
+  text-decoration: none;
 }
 
-/* Responsive: stack on mobile */
-@media (max-width: 600px) {
-  .article-preview {
-    flex-direction: column;
+/* ============================================ */
+/* RESPONSIVE: Mobile */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .compact-row {
+    gap: 10px;
+    padding: 12px 12px;
+    flex-wrap: wrap;
   }
-  .article-thumbnail,
-  .article-thumbnail.placeholder {
+  
+  .serial {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    min-width: auto;
+  }
+  
+  .compact-title {
+    font-size: 1rem;
+    width: 100%;
+    order: 3;
+    margin-top: 6px;
+  }
+  
+  .badge {
+    order: 1;
+  }
+  
+  .toggle-btn {
+    order: 2;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+  }
+  
+  .expanded-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .expanded-thumbnail {
     width: 60px;
     height: 75px;
-    margin-bottom: 10px;
-  }
-  .article-meta-top {
-    justify-content: flex-start;
   }
 }
 
-/* Article spacing */
-.article-item {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #eee;
+/* ============================================ */
+/* PREMIUM ARTICLES STYLING */
+/* ============================================ */
+
+.library-compact.premium .compact-title {
+  color: #4a2a1a;
+}
+
+.library-compact.premium .badge {
+  filter: drop-shadow(0 0 1px #c08040);
 }
