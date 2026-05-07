@@ -2,110 +2,30 @@
 ✅ 
 ✅ 
 ✅ 
-✅ Don't forget that I need to update all trees to make sure.
 ✅ 
 ✅ 
-✅ Let's check all documents
 ✅ 
-✅ Let's take if the file is correctly setup
+✅ the JSON file has been created for both, FR and EN
+✅ 
+✅ I need this in English please.
 
-//:::::::::::::::::::::::::::::::::::::::::::::::::::
-// load-articles.js
-// Script to load and render articles from catalog.json
-// :::::::::::::::::::::::::::::::::::::::::::::::::::
-
-// Compact row → clean, lots of articles visible
-// Expanded view → full details + thumbnail
-// Script to load and render articles from catalog.json
-
-function renderLibrary() {
-  const container = document.getElementById('library-container');
-  if (!container) return;
-
-  if (!articlesData.articles || articlesData.articles.length === 0) {
-    container.innerHTML = '<p>Aucun article trouvé.</p>';
-    return;
-  }
-
-  let html = '<div class="compact-library-container">';
-
-  articlesData.articles.forEach((article, index) => {
-    // Generate serial number
-    const serialNumber = getSerialNumber(index, article.type);
-    
-    // Badge configuration
-    const isFree = article.type === 'free';
-    const badgeIcon = isFree ? '🔑' : '🔒';
-    const badgeClass = article.type;
-    const linkText = isFree ? 'Lire l\'article →' : 'S\'abonner pour lire →';
-    
-    // Subtitle fallback
-    const subtitle = article.subtitle || '';
-    
-    // Thumbnail for expanded view
-    let thumbnailHtml = '';
-    if (article.hasImage && article.imagePath) {
-      thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="expanded-thumbnail" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\"expanded-thumbnail placeholder\">📄</div>';">`;
-    } else {
-      thumbnailHtml = `<div class="expanded-thumbnail placeholder">📄</div>`;
+{
+  "articles": [
+    {
+      "id": "se-synchroniser-eba",
+      "title": "Se synchroniser à EBA",
+      "subtitle": "Comment se réapproprier le rite, aujourd'hui ?",
+      "abstract": "L’article jette un éclairage sur la divinités poissons, peu connues, et explore la temporalité de EBA, alias Hapi, leurs représentations et leurs cultes. Il souligne la dimension opérative des pratiques kamites, les offrandes et célébrations, et leur continuité dans la culture ancestrale.",
+      "fileType": "ODT",
+      "pages": 2
+    },
+    {
+      "id": "melanine-selenium",
+      "title": "Mélanine et bienfaits du sélénium",
+      "subtitle": "Exploration des propriétés de la mélanine",
+      "abstract": "Exploration des propriétés de la mélanine et son interaction avec le sélénium. Découvrez les bienfaits méconnus de ces éléments essentiels. L’article explore les detail lies aux mécanismes de production de la mélanine (mélanogenese) et de leurs implications dans les besoins essentiels en vitamine et mineraux pour le bon fonctinnement de la melanine. Il vient clore le debat sur le cancer de la peau chez les melanodermes (noirs) et les danger de l'emploi abusif de creme solaire, notamment chez les enfants en bas ages.",
+      "fileType": "PDF",
+      "pages": 12
     }
-
-    html += `
-      <article class="library-compact ${badgeClass}" data-article-id="${article.id}">
-        <div class="compact-row">
-          <span class="serial">${serialNumber}</span>
-          <span class="badge ${badgeClass}">${badgeIcon}</span>
-          <h3 class="compact-title">${escapeHtml(article.title)}</h3>
-          <button class="toggle-btn">Lire plus →</button>
-        </div>
-        <div class="expanded-details" style="display: none;">
-          <div class="expanded-inner">
-            ${thumbnailHtml}
-            <div class="expanded-content">
-              ${subtitle ? `<h4 class="expanded-subtitle">${escapeHtml(subtitle)}</h4>` : ''}
-              <p class="expanded-abstract">${escapeHtml(article.abstract)}</p>
-              <p class="expanded-meta">PDF — ${article.pages} pages</p>
-              <a href="${article.path}" class="read-link" ${article.type === 'premium' ? 'target="_blank"' : ''}>${linkText}</a>
-            </div>
-          </div>
-        </div>
-      </article>
-    `;
-  });
-
-  html += '</div>';
-  container.innerHTML = html;
-  
-  // Attach toggle listeners after DOM is updated
-  attachToggleListeners();
+  ]
 }
-
-
-// attachToggleListeners() function
-function attachToggleListeners() {
-  document.querySelectorAll('.library-compact').forEach(item => {
-    const row = item.querySelector('.compact-row');
-    const btn = item.querySelector('.toggle-btn');
-    const details = item.querySelector('.expanded-details');
-
-    function toggle() {
-      const isOpen = details.style.display === 'block';
-      details.style.display = isOpen ? 'none' : 'block';
-      btn.textContent = isOpen ? 'Lire plus →' : 'Réduire ↑';
-    }
-
-    // Click on row (but not on the button itself)
-    row.addEventListener('click', (e) => {
-      if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
-        toggle();
-      }
-    });
-    
-    // Click on button
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggle();
-    });
-  });
-}
-
