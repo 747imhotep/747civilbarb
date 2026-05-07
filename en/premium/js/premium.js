@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!msg) {
           msg = document.createElement('div');
           msg.className = 'access-warning';
-          msg.textContent = "⚠️ Vous devez être abonné pour accéder à ce contenu.";
+          msg.textContent = "⚠️ You need to be subscribed to access this content.";
           msg.style.color = '#d30b83';
           msg.style.fontWeight = 'bold';
           msg.style.marginBottom = '10px';
