@@ -91,7 +91,7 @@ function renderLibrary() {
               ${subtitle ? `<h4 class="expanded-subtitle">${escapeHtml(subtitle)}</h4>` : ''}
               <p class="expanded-abstract">${escapeHtml(article.abstract)}</p>
               <p class="expanded-meta">PDF — ${article.pages} pages</p>
-              <a href="${article.path}" class="read-link" ${article.type === 'premium' ? 'target="_blank"' : ''}>${linkText}</a>
+              <a href="${article.path}" class="read-link">${linkText}</a>
             </div>
           </div>
         </div>
