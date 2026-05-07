@@ -223,6 +223,20 @@
   font-style: italic;
 }
 
+/* ===== Thumbnail Styles ===== */
+.article-thumbnail {
+  width: 80px;
+  height: 100px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+
 /* ===== Responsive ===== */
 @media (hover: hover) {
   .library-page #hero-image .manifesto:hover,

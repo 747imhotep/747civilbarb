@@ -1,0 +1,59 @@
+{
+  "articles": [
+    {
+      "id": "demographic-distortions",
+      "title": "Demographic Distortions",
+      "subtitle": "State deception and manipulation of population figures in Africa",
+      "abstract": "Critical analysis of population figure manipulations in Africa. Former ambassador to the United States, former permanent representative to the UN Security Council... He argues that Africa's population 'doubles every 30 years' and uses the keyword 'explosion' to describe demographic growth.",
+      "type": "free",
+      "pages": 6,
+      "path": "/en/library/biblio/en/free/Demographic_Distortions.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-mensonge02.png"
+    },
+    {
+      "id": "melanin-selenium",
+      "title": "Melanin and Selenium Benefits",
+      "subtitle": "Lesser-known properties of melanin",
+      "abstract": "Exploration of melanin properties and its interaction with selenium. Discover the unrecognized benefits of these essential elements.",
+      "type": "premium",
+      "pages": 8,
+      "path": "/en/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-selenium.png"
+    },
+    {
+      "id": "wealth-and-witchcraft",
+      "title": "Wealth and Witchcraft",
+      "subtitle": "Invisible dynamics and blockages in collective projects",
+      "abstract": "Exploration of visible and invisible forces perceived as hindering the success of collective projects. Examination of beliefs, historical legacies, and group dynamics that shape these blockages.",
+      "type": "free",
+      "pages": 12,
+      "path": "/en/library/biblio/en/free/Wealth_and_Invisible_Powers.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie.png"
+    },
+    {
+      "id": "skin-color",
+      "title": "Skin Color",
+      "subtitle": "Mechanisms of melanin destruction",
+      "abstract": "Mechanisms of melanin destruction, with children in the crosshairs.",
+      "type": "free",
+      "pages": 10,
+      "path": "/en/library/biblio/en/free/Couleur_de_peau_v_005.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-nopicture.png"
+    },
+    {
+      "id": "synchronize-eba",
+      "title": "Synchronizing with EBA (HAPI)",
+      "subtitle": "Rituals and energetic connection",
+      "abstract": "This article sheds light on the little-known fish deities and explores the temporality of EBA, also known as Hapi, their representations and worship. It emphasizes the operational dimension of Kamitic practices, offerings, and celebrations.",
+      "type": "premium",
+      "pages": 10,
+      "path": "/en/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-ebale02.png"
+    }
+  ]
+}

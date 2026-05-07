@@ -1,0 +1,344 @@
+/* ============================================ */
+/* COMPACT LIBRARY LAYOUT - LIBRARY CATALOG STYLE */
+/* ============================================ */
+
+/* Container */
+.compact-library-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+/* Individual article card - BOOK STYLE */
+.library-compact {
+  background: #fff;
+  border-left: 6px solid;
+  border-radius: 0 8px 8px 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
+}
+
+/* Free articles - Blue/Green border */
+.library-compact.free {
+  border-left-color: #2c7a4d;
+}
+
+/* Premium articles - Gold/Amber border */
+.library-compact.premium {
+  border-left-color: #c47a2e;
+}
+
+/* Hover effect - like lifting a book */
+.library-compact:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fefef7;
+}
+
+/* Compact row */
+.compact-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Serial number - BOOK SPINE LABEL */
+.serial {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  font-weight: bold;
+  background: #f0ebe4;
+  padding: 6px 6px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  min-width: 70px;
+  text-align: center;
+  color: #4a3520;
+}
+
+/* Title - BIGGER, BOOK TITLE */
+.compact-title {
+  flex: 1;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* Free title subtle underline */
+.library-compact.free .compact-title {
+  text-decoration: underline;
+  text-decoration-color: #2c7a4d;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Premium title subtle underline */
+.library-compact.premium .compact-title {
+  text-decoration: underline;
+  text-decoration-color: #c47a2e;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Toggle button - "Consulter" refined */
+.toggle-btn {
+  background: none;
+  border: 1px solid #c0a080;
+  color: #5a3a2a;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.toggle-btn:hover {
+  background: #8b0000;
+  border-color: #8b0000;
+  color: white;
+  transform: scale(1.02);
+}
+
+/* Free badge - subtle */
+.library-compact.free .badge {
+  opacity: 0.85;
+}
+
+/* Premium badge - glowing */
+.library-compact.premium .badge {
+  filter: drop-shadow(0 0 2px #c47a2e);
+}
+
+/* ============================================ */
+/* EXPANDED DETAILS */
+/* ============================================ */
+
+.expanded-details {
+  padding: 0 20px 20px 20px;
+  border-top: 1px dashed #e0d6cc;
+  background: #fefcf8;
+}
+
+.expanded-inner {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px 0 10px 0;
+}
+
+/* Thumbnail */
+.expanded-thumbnail {
+  width: 80px;
+  height: 100px;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+  object-fit: cover;
+  background: #f0ebe4;
+}
+
+.expanded-thumbnail.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: #f0ebe4;
+}
+
+/* Expanded content */
+.expanded-content {
+  flex: 1;
+}
+
+.expanded-subtitle {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: #2c3e2a;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.expanded-abstract {
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+
+.expanded-meta {
+  margin: 0 0 16px 0;
+  font-size: 0.75rem;
+  color: #7a6a5a;
+  font-family: monospace;
+}
+
+/* Read link button */
+.read-link {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #8b0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.read-link:hover {
+  background: #5a0000;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: solid 1px #53f5df;
+  color: white;
+}
+
+
+/* ============================================ */
+/* HANDLE BROKEN IMAGES */
+/* ============================================ */
+
+/* Handle broken images */
+.expanded-thumbnail {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-thumbnail[src=""] {
+  display: none;
+}
+
+
+/*============================================= */
+/* DESKTOP LAYOUT ADJUSTMENTS */
+/*============================================= */
+
+/* Expanded content - relative positioning for button */
+.expanded-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Read link button - bottom right */
+.read-link {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #8b0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.4s;
+  margin-top: 16px;
+}
+
+/*============================================= */
+/* SMARTPHONE LAYOUT ADJUSTMENTS */
+/*============================================= */
+
+/* Align button to bottom right on desktop */
+@media (min-width: 769px) {
+  .expanded-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .read-link {
+    align-self: flex-end;
+    margin-top: auto;
+  }
+  
+  .expanded-meta {
+    margin-bottom: auto;
+  }
+}
+
+/* Transition delay for smooth close */
+.expanded-details {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  max-height: 500px;
+  opacity: 1;
+}
+
+.expanded-details[style*="display: none"] {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  margin: 0;
+}
+
+
+
+/* ============================================ */
+/* RESPONSIVE: Mobile */
+/* ============================================ */
+
+@media (max-width: 768px) {
+  .compact-row {
+    gap: 10px;
+    padding: 12px 12px;
+    flex-wrap: wrap;
+  }
+  
+  .serial {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    min-width: auto;
+  }
+  
+  .compact-title {
+    font-size: 1rem;
+    width: 100%;
+    order: 3;
+    margin-top: 6px;
+  }
+  
+  .badge {
+    order: 1;
+  }
+  
+  .toggle-btn {
+    order: 2;
+    font-size: 0.7rem;
+    padding: 4px 12px;
+  }
+  
+  .expanded-inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .expanded-thumbnail {
+    width: 60px;
+    height: 75px;
+  }
+}
+
+/* ============================================ */
+/* PREMIUM ARTICLES STYLING */
+/* ============================================ */
+
+.library-compact.premium .compact-title {
+  color: #4a2a1a;
+}
+
+.library-compact.premium .badge {
+  filter: drop-shadow(0 0 1px #c08040);
+}
