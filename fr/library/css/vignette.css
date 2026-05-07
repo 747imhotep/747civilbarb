@@ -198,6 +198,9 @@
 .read-link:hover {
   background: #5a0000;
   text-decoration: none;
+  font-size: 1rem;
+  border: solid 1px #f79494;
+  color: white;
 }
 
 
