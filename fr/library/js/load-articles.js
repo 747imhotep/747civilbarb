@@ -68,10 +68,10 @@ function renderLibrary() {
     // Subtitle fallback
     const subtitle = article.subtitle || '';
     
-    // Thumbnail for expanded view
+    // Thumbnail for expanded view - SIMPLE VERSION
     let thumbnailHtml = '';
     if (article.hasImage && article.imagePath) {
-      thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="expanded-thumbnail" loading="lazy" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\"expanded-thumbnail placeholder\">📄</div>';">`;
+      thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="expanded-thumbnail" loading="lazy">`;
     } else {
       thumbnailHtml = `<div class="expanded-thumbnail placeholder">📄</div>`;
     }
@@ -82,7 +82,7 @@ function renderLibrary() {
           <span class="serial">${serialNumber}</span>
           <span class="badge ${badgeClass}">${badgeIcon}</span>
           <h3 class="compact-title">${escapeHtml(article.title)}</h3>
-          <button class="toggle-btn">Lire plus →</button>
+          <button class="toggle-btn">Consulter →</button>
         </div>
         <div class="expanded-details" style="display: none;">
           <div class="expanded-inner">
@@ -116,7 +116,7 @@ function attachToggleListeners() {
     function toggle() {
       const isOpen = details.style.display === 'block';
       details.style.display = isOpen ? 'none' : 'block';
-      btn.textContent = isOpen ? 'Lire plus →' : 'Réduire ↑';
+      btn.textContent = isOpen ? 'Consulter →' : 'Réduire ↑';
     }
 
     // Click on row (but not on the button itself or links)

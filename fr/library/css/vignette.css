@@ -10,18 +10,31 @@
   margin: 20px 0;
 }
 
-/* Individual article card */
+/* Individual article card - BOOK STYLE */
 .library-compact {
   background: #fff;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
+  border-left: 6px solid;
+  border-radius: 0 8px 8px 0;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  margin-bottom: 8px;
 }
 
+/* Free articles - Blue/Green border */
+.library-compact.free {
+  border-left-color: #2c7a4d;
+}
+
+/* Premium articles - Gold/Amber border */
+.library-compact.premium {
+  border-left-color: #c47a2e;
+}
+
+/* Hover effect - like lifting a book */
 .library-compact:hover {
-  border-color: #8b0000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fefef7;
 }
 
 /* Compact row */
@@ -29,65 +42,81 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 16px 20px;
+  padding: 14px 20px;
   cursor: pointer;
   position: relative;
 }
 
-/* Serial number - ROTATED 90 DEGREES */
+/* Serial number - BOOK SPINE LABEL */
 .serial {
   font-family: 'Courier New', monospace;
   font-size: 0.7rem;
   font-weight: bold;
-  color: #5a3a2a;
-  background: #f5efe8;
-  padding: 8px 4px;
-  border-radius: 3px;
+  background: #f0ebe4;
+  padding: 6px 6px;
+  border-radius: 4px;
   letter-spacing: 1px;
-  min-width: 28px;
+  min-width: 70px;
   text-align: center;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  color: #4a3520;
 }
 
-/* Badge (icon only in compact mode) */
-.badge {
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-
-/* Title - BIGGER */
+/* Title - BIGGER, BOOK TITLE */
 .compact-title {
   flex: 1;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 0;
   color: #1a1a1a;
-  letter-spacing: -0.3px;
 }
 
-.compact-title:hover {
-  color: #8b0000;
+/* Free title subtle underline */
+.library-compact.free .compact-title {
+  text-decoration: underline;
+  text-decoration-color: #2c7a4d;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
-/* Toggle button - "Consulter" */
+/* Premium title subtle underline */
+.library-compact.premium .compact-title {
+  text-decoration: underline;
+  text-decoration-color: #c47a2e;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Toggle button - "Consulter" refined */
 .toggle-btn {
   background: none;
   border: 1px solid #c0a080;
   color: #5a3a2a;
   cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 16px;
   border-radius: 20px;
   transition: all 0.2s;
   flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .toggle-btn:hover {
   background: #8b0000;
   border-color: #8b0000;
   color: white;
+  transform: scale(1.02);
+}
+
+/* Free badge - subtle */
+.library-compact.free .badge {
+  opacity: 0.85;
+}
+
+/* Premium badge - glowing */
+.library-compact.premium .badge {
+  filter: drop-shadow(0 0 2px #c47a2e);
 }
 
 /* ============================================ */
@@ -111,7 +140,7 @@
 .expanded-thumbnail {
   width: 80px;
   height: 100px;
-  border-radius: 4px;
+  border-radius: 7px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
   object-fit: cover;
@@ -169,6 +198,23 @@
 .read-link:hover {
   background: #5a0000;
   text-decoration: none;
+}
+
+
+/* ============================================ */
+/* HANDLE BROKEN IMAGES */
+/* ============================================ */
+
+/* Handle broken images */
+.expanded-thumbnail {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.expanded-thumbnail[src=""] {
+  display: none;
 }
 
 /* ============================================ */
