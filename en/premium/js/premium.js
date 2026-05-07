@@ -4,10 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
 
-  const API_BASE = 'https://api.deadanglesinstitute.org';
+  // Use relative path (same domain) instead of separate API subdomain
+  const API_BASE = '';
 
   // Retrieve email stored from subscribe page
-  const userEmail = sessionStorage.getItem('userEmail');
+  const userEmail = sessionStorage.getItem('userEmail') || localStorage.getItem('userEmail');
 
   // ---------------------------
   // 1️⃣ Check user entitlement
@@ -16,11 +17,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!email) return { entitled: false };
 
     try {
-      const res = await fetch(`${API_BASE}/api/me?email=${encodeURIComponent(email)}`, {
+      const res = await fetch(`/api/me?email=${encodeURIComponent(email)}`, {
         credentials: 'include'
       });
 
-      if (!res.ok) throw new Error("Impossible de récupérer les droits de l'utilisateur.");
+      if (!res.ok) throw new Error("Impossible to retrieve the user's entitlements.");
 
       return await res.json();
     } catch (err) {
@@ -61,25 +62,30 @@ document.addEventListener('DOMContentLoaded', async () => {
   // ---------------------------
   document.querySelectorAll('.subscribe-button').forEach(btn => {
     btn.addEventListener('click', (e) => {
+      e.preventDefault();
 
       if (!entitlement.entitled) {
-        // Show a small inline message above the button instead of alert
+        // Show inline message
         let msg = btn.parentNode.querySelector('.access-warning');
         if (!msg) {
           msg = document.createElement('div');
           msg.className = 'access-warning';
-          msg.textContent = "⚠️ You need to be subscribed to access this content.";
+          msg.textContent = "⚠️ You must be subscribed to access this content.";
           msg.style.color = '#d30b83';
           msg.style.fontWeight = 'bold';
           msg.style.marginBottom = '10px';
           btn.parentNode.insertBefore(msg, btn);
         }
-        return; // handled the spacing
+        return;
       }
 
-      console.log('Accéder clicked:', e.currentTarget);
-      // Optional: add analytics or tracking here
+      // If entitled, redirect to premium file
+      const articleId = btn.dataset.article;
+      if (articleId) {
+        window.location.href = `/api/premium-file/en/files/${articleId}.pdf`;
+      } else {
+        console.log('Access clicked:', e.currentTarget);
+      }
     });
   });
-
 });
