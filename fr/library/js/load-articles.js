@@ -1,5 +1,5 @@
 //:::::::::::::::::::::::::::::::::::::::::::::::::::
-// load-articles.js
+// fr - load-articles.js
 // Compact library with expand/collapse
 //:::::::::::::::::::::::::::::::::::::::::::::::::::
 
