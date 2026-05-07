@@ -1,17 +1,602 @@
-✅ Test thumbnails  747civilbarb/pictures/library-pic/thumb-mensonge.png
+✅ thumbnails works perfectly
+✅ 
+✅ That would be great if we could customize vignettes on library.html
+zoom effect or background, or a nice disposition look and feel.
+Imagine there's 120 articles, it would be nice if by just passing with the mouse, on the thumbnail, a large vignette come out with all details. After that I don't know how it would be rendered on Smartphone. Do you think it's a good direcction ?
+✅ 
+✅ Don't forget that I need to update all trees to make sure.
 ✅ 
 ✅ 
-✅ 
-✅ 
-✅ 
-✅ 
-✅ 
-✅ 
-
-✅ 
-✅ 
+✅ Let's check all documents
 
 
+✅ 
+
+
+
+
+
+✅ 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Premium — Civilisation ou Barbarie</title>
+
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+  
+  <!-- Page-specific CSS -->
+  <link rel="stylesheet" href="../premium/csspremium/premium.css">
+  
+  <!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css"> 
+
+  <!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+</head>
+
+<!-- ============================ --> 
+<!--       CIVILBARB PREMIUM      --> 
+<!-- ============================ -->
+
+<body class="has-fixed-nav">
+
+<!-- Navbar placeholder -->
+<div id="navbar-placeholder"></div>
+
+<main class="premium-page">
+
+  <!-- Hero Section -->
+  <section id="hero-premium">
+    <h1>Accès Premium</h1>
+    <div class="hero-text-box">
+      <p class="manifesto">
+        Explorez la bibliothèque dans son intégralité et accédez à des articles exclusifs, 
+        des analyses approfondies et des archives rares. L’accès Premium vous ouvre un 
+        monde de connaissance et d’exploration méthodique.
+      </p>
+      <blockquote class="quote">
+        <p><em>Investir dans la connaissance, c’est multiplier sa puissance 
+          intellectuelle.</em></p>
+        — Civilisation ou Barbarie
+      </blockquote>
+    </div>
+  </section>
+
+  <!---------------------------- Premium Articles Section ---------------------------->
+  <header class="premium-header">
+    <h2>Articles Premium</h2>
+    <p class="premium-intro">
+      Les articles suivants sont disponibles dans votre abonnement Premium. <br> Cliquez sur 
+      « Accéder » pour lire ou télécharger.
+    </p>
+  </header>
+
+  <section class="premium-list" aria-labelledby="premium-articles-heading">
+
+    <!------- Premium Article 001 ------->
+    <article class="premium-item">
+      <div class="premium-badge">Premium</div>
+      <h3 class="premium-title">
+        <a href="/my-worker/premium-files/fr/files/Se_synchroniser_a_EBA.odt">
+          Se synchroniser à EBA</a>
+      </h3>
+      <h4 class="premium-subtitle">
+        Comment se réapproprier le rite, aujourd’hui ?
+      </h4>
+      <p class="premium-abstract">
+        L’article jette un éclairage sur la divinités poissons, peu connues, et 
+        explore la temporalité de EBA, alias Hapi, leurs représentations et leurs 
+        cultes. Il souligne la dimension opérative des pratiques kamites, les 
+        offrandes et célébrations, et leur continuité dans la culture ancestrale.
+      </p>
+      <p class="premium-meta">
+        ODT — 2 pages — Accès Premium
+      </p>
+      <button type="button" class="subscribe-button">
+        Accéder
+      </button>
+    </article>
+
+    <!--------- Premium Article 002 --------->
+    <article class="premium-item">
+      <div class="premium-badge">Premium</div>
+      <h3 class="premium-title">
+        <a href="/my-worker/premium-files/fr/files/melanine-bienfaits-selenium-v003.pdf">
+          Mélanine et bienfaits du sélénium"</a>
+      </h3>
+      <h4 class="premium-subtitle">
+        Exploration des propriétés de la mélanine et son interaction avec le sélénium. 
+        Découvrez les bienfaits méconnus de ces éléments essentiels.
+      </h4>
+      <p class="premium-abstract">
+        L’article explore les detail lies aux mécanismes de production de la mélanine (mélanogenese) 
+        et de leurs implications dans les besoins essentiels en vitamine et mineraux pour le bon fonctinnement 
+        de la melanine. Il vient clore le debat sur le cancer de la peau chez les melanodermes (noirs) et les danger
+        de l'emploi abusif de creme solaire, notamment chez les enfants en bas ages.
+      </p>
+      <p class="premium-meta">
+        PDF — 12 pages — Accès Premium
+      </p>
+      <button type="button" class="subscribe-button">
+        Accéder
+      </button>
+    </article>
+
+<!------- Premium Article 003 ------->
+<!--
+    <article class="premium-item">
+      <div class="premium-badge">Premium</div>
+      <h3 class="premium-title">
+        <a href="/articles/exemple-article.html">Richesse et Sorcellerie</a>
+      </h3>
+      <h4 class="premium-subtitle">
+        Dynamiques invisibles et blocages dans les projets collectifs
+      </h4>
+      <p class="premium-abstract">
+        L’article explore les forces visibles et invisibles perçues comme entravant la 
+        réussite des projets collectifs. Il interroge les croyances, les héritages 
+        historiques et les dynamiques de groupe qui façonnent ces blocages, et ouvre 
+        la réflexion sur leurs effets profonds sur la coopération et le développement 
+        communautaire.
+      </p>
+      <p class="premium-meta">
+        PDF — 12 pages — Accès Premium
+      </p>
+-->
+<!--
+      <button type="button" class="subscribe-button">
+        Accéder
+      </button>
+      
+    </article>
+    
+-->        
+
+    <!------- ADDITIONAL PREMIUM ARTICLES SHALL BE ADDED HERE  ------->
+    
+  </section>
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+
+<!-- Footer -->
+        <div id="footer-placeholder"></div>
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+        <script src="/shared/jsfooter/load-footer.js" defer></script>
+        <script src="/shared/jsfooter/footer.js" defer></script>
+    </body>
+
+<!-- Scripts -->
+<script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+<script src="/navbar/jsnavbar/navbar.js" defer></script>
+
+<!-- Premium entitlement / access control -->
+<script src="/premium/endpoint/endpoint.js" defer></script>
+
+<!-- GDPR -->
+<script src="/shared/jsshared/gdpr.js" defer></script>
+
+</body>
+</html>
+
+
+
+
+
+
+✅ 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bibliothèque — Civilisation ou Barbarie</title>
+  <!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+<!-- Page-specific -->
+  <link rel="stylesheet" href="../library/css/library.css">
+  <link rel="stylesheet" href="../library/css/vignette.css">
+
+<!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/cta.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+  
+</head>
+<!-- ============================ -->
+<!--        CIVILBARB LIBRARY     -->
+<!-- ============================ --> 
+
+<body class="has-fixed-nav">
+
+<!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+
+
+<main id="library" class="library-page">
+  
+  
+
+  <!-- Hero Section -->
+  <section id="hero-image">
+    <h1>Bibliothèque</h1>
+    <div class="hero-text-box">
+        <p class="manifesto">
+        La bibliothèque de <em>Civilisation ou Barbarie</em> rassemble l'ensemble des textes, 
+        articles et archives publiés. Chaque document est une exploration de la pensée, 
+        de la culture et de la mémoire humaine — un espace où le lecteur devient chercheur et 
+        la lecture, une aventure méthodique.
+        </p>
+        <p class="quote">
+            <em>Les idées traversent le temps, les textes en sont les véhicules.</em>
+            <br>— Civilisation ou Barbarie
+        </p>
+    </div>
+  </section>
+
+  <!-- Library Header -->
+  <header class="library-header">
+    <h2 id="articles-heading">Catalogue des ressources</h2>
+    <p class="library-intro">
+      Voici l'ensemble des textes publiés par <em>Civilisation ou Barbarie</em>. 
+      Cliquez sur "Lire" pour accéder au contenu.
+    </p>
+  </header>
+
+<!-- Inside <main>, replace everything after the hero image with this: -->
+
+  <img src="/pictures/library-pic/hapi-syncronisation.jpg" alt="hapi-syncronisation" class="library-hero-image">
+
+
+
+  <!-- Dynamic article list (loaded by JavaScript) -->
+  <section class="article-list" id="library-container">
+    <p>Chargement de la bibliothèque...</p>
+  </section>
+
+  <section>
+    <nav class="cta">
+      <a href="/fr/premium/">Voir les offres d'abonnement</a>
+      <a href="/fr/nosarticles/">Découvrir tous les articles gratuits</a>
+    </nav>
+  </section>
+
+</main>
+
+  
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+<!-- Footer -->
+        <div id="footer-placeholder"></div>
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/navbar/jsnavbar/navbar.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+        <script src="/shared/jsfooter/load-footer.js" defer></script>
+        <script src="/fr/library/js/load-articles.js" defer></script>
+    </body>
+</html>
+
+
+
+
+
+
+✅ 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="description" content="Articles d'analyse publiés par Civilisation ou Barbarie. Consultation gratuite en ligne.">
+  <title>Nos Articles — Civilisation ou Barbarie</title>
+<!-- Global foundation -->
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+<!-- Page-specific -->
+ <link rel="stylesheet" href="/fr/nosarticles/css/articles.css">
+
+<!-- Shared UI components -->
+  <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+<!-- Overlays / fixed UI LAST -->
+  <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+<!-- Optional: Favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+</head>
+<!-- ============================ -->
+<!--    CIVILBARB NOS ARTICLES    -->
+<!-- ============================ -->
+
+<body class="has-fixed-nav">
+
+    <!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+
+
+<main id="articles" class="article-page">
+
+  <!-- Hero Section -->
+  <section id="hero-image">
+  <h1>Nos Articles</h1>
+
+  <div class="hero-text-box">
+    <p class="manifesto">
+      Vous avez un accès libre aux articles présentés ici.  
+      Plongez dans un travail d’enquête qui scrute les angles morts,
+      les zones abandonnées. Un événement est souvent la suite de faits
+      qui, mis bout à bout, éclairent autrement les récits établis
+      et les discours convenus.
+    </p>
+
+    <p class="quote">
+      <em>Le déplacement du regard transforme parfois un fait ordinaire en information décisive.</em>
+      <br>— Civilisation ou Barbarie
+    </p>
+  </div>
+</section>
+
+
+<!---------------------------- Article Reasearch ---------------------------->
+  
+  <header class="article-header">
+    <h2 id="article-heading">Nos articles</h2> 
+    
+    <div class="search-box">
+  <input 
+    type="search" 
+    id="article-search" 
+    placeholder="Rechercher un article, un thème, un mot-clé..."
+    aria-label="Rechercher un article"
+  >
+  <button id="search-clear" aria-label="Effacer la recherche">✕</button>
+</div>
+      <p class="article-intro">
+        Cette page permet la consultation en ligne de documents mis à disposition
+        gratuitement par <em>Civilisation ou Barbarie</em>.  
+        Les textes peuvent être lus directement dans le navigateur, sans téléchargement,
+        afin de préserver l’intégrité des publications et de favoriser une lecture continue
+        et réfléchie.
+      </p>
+  </header>
+
+
+
+  <!-- ARTICLES WILL BE GENERATED HERE -->
+  <section class="article-list" aria-labelledby="article-heading"></section>
+  
+
+</main>
+<!---------------------------- Free Articles (JSON library)  ---------------------------->
+<template id="article-template">
+  <article class="article-item">
+    <h3 class="article-title">
+      <a class="pdf-link" href="#" target="_blank"></a>
+    </h3>
+    <h4 class="article-subtitle"></h4>
+
+    <div class="pdf-viewer" style="display:none; margin:20px 0; border:1px solid #ccc; height:650px;">
+      <button type="button" class="pdf-close-btn" aria-label="Fermer le PDF">Fermer le PDF</button>
+      <iframe class="pdf-frame" width="100%" height="100%" style="border:none;" title="PDF Viewer"></iframe>
+    </div>
+
+    <p class="article-abstract"></p>
+
+    <div class="article-image-wrapper">
+      <img class="article-hero-image" loading="lazy">
+    </div>
+
+    <p class="article-meta"></p>
+  </article>
+</template>
+
+  
+   
+
+  
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+  <p>
+    Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+    ainsi que des services tiers optionnels.
+    Vous pouvez accepter ou refuser les cookies non essentiels.
+    <a href="/privacy/">En savoir plus</a>
+  </p>
+
+  <div class="gdpr-actions">
+    <button id="gdpr-accept">Accepter</button>
+    <button id="gdpr-refuse" class="secondary">Refuser</button>
+  </div>
+</div>
+<!-- GDPR Consent Banner END -->
+
+<!-- Footer -->
+        <div id="footer-placeholder"></div>
+
+        <script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+        <script src="/shared/jsshared/center_zoom.js" defer></script>
+        <script src="/shared/jsshared/gdpr.js" defer></script>
+        <script src="/fr/nosarticles/articles.js" defer></script>
+        <script src="/shared/jsfooter/load-footer.js" defer></script>
+    </body>
+</html>
+
+
+
+
+
+✅ 
+// =====================================================================
+//  articles.js — main JS for "Nos articles" page
+// =====================================================================
+
+let articles = []; // global variable to hold all JSON articles
+const category = null; // optional: can be dynamic
+
+  let currentQuery = "";
+
+// 1️⃣ Fetch JSON and render articles
+fetch("/fr/nosarticles/articles.json")
+  .then(res => res.json())
+  .then(data => {
+    articles = data;
+
+    // Sort articles by date (newest first)
+    articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    renderArticles(articles);
+  })
+  .catch(err => {
+    console.error("Erreur lors du chargement des articles :", err);
+  });
+
+// 2️⃣ Render function
+function renderArticles(listToRender) {
+  const list = document.querySelector('.article-list');
+  const template = document.getElementById('article-template');
+  if (!list || !template) return;
+
+  list.innerHTML = ''; // clear existing articles
+
+  listToRender.forEach(article => {
+    const clone = template.content.cloneNode(true);
+
+    function highlightText(text, query){
+
+  if(!query) return text;
+
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, "gi");
+
+  return text.replace(regex, '<span class="search-highlight">$1</span>');
+}
+
+    // Populate fields
+    const link = clone.querySelector('.pdf-link');
+    link.innerHTML = highlightText(article.title, currentQuery);
+    link.href = article.pdf;
+
+    
+    clone.querySelector('.article-subtitle').innerHTML = highlightText(article.subtitle, currentQuery);
+    clone.querySelector('.article-abstract').innerHTML = highlightText(article.abstract, currentQuery);
+    const img = clone.querySelector('.article-hero-image');
+    img.src = article.image;
+    img.alt = article.imageAlt || '';
+
+    clone.querySelector('.article-meta').textContent = article.meta;
+
+    // Lazy PDF loading
+    const viewer = clone.querySelector('.pdf-viewer');
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const iframe = viewer.querySelector('iframe');
+      iframe.src = article.pdf; // load iframe only on click
+      viewer.style.display = 'block';
+    });
+
+    viewer.querySelector('.pdf-close-btn').addEventListener('click', () => {
+      viewer.style.display = 'none';
+      viewer.querySelector('iframe').src = ''; // clear iframe to save memory
+    });
+
+    list.appendChild(clone);
+  });
+}
+
+// 3️⃣ Search/filter
+const searchInput = document.getElementById('article-search');
+
+if (searchInput) {
+
+  searchInput.addEventListener('input', e => {
+
+    currentQuery = e.target.value.toLowerCase();
+    const query = currentQuery;
+
+    const filtered = articles.filter(a => {
+
+      const title = (a.title || "").toLowerCase();
+      const subtitle = (a.subtitle || "").toLowerCase();
+      const abstract = (a.abstract || "").toLowerCase();
+      const tags = (a.tags || []).map(tag => tag.toLowerCase());
+
+      return (
+        (!category || tags.includes(category.toLowerCase())) &&
+        (
+          title.includes(query) ||
+          subtitle.includes(query) ||
+          abstract.includes(query) ||
+          tags.some(tag => tag.includes(query))
+        )
+      );
+
+    });
+
+    renderArticles(filtered);
+
+  });
+
+}
+
+
+
+
+✅ 
 //:::::::::::::::::::::::::::::::::::::::::::::::::::
 // load-articles.js
 // Script to load and render articles from catalog.json
@@ -79,8 +664,13 @@ function renderLibrary() {
     // Subtitle fallback
     const subtitle = article.subtitle || '';
     
-    // Thumbnail (placeholder for now)
-    const thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    // Thumbnail: placeholder or real image
+    let thumbnailHtml = '';
+    if (article.hasImage && article.imagePath) {
+    thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="article-thumbnail" loading="lazy" onerror="this.onerror=null; this.src=''; this.classList.add('placeholder'); this.innerText='📄'">`;
+    } else {
+    thumbnailHtml = `<div class="article-thumbnail placeholder">📄</div>`;
+    }
     
     html += `
       <article class="article-item ${article.type}">
@@ -114,3 +704,289 @@ function escapeHtml(text) {
 
 // Load when page is ready
 document.addEventListener('DOMContentLoaded', loadArticles);
+
+
+
+
+✅ 
+/*::::::::::::::::::::::::::::::::::::::::::::*/
+/*    Vignette Layout CSS for Library Page    */
+/*:::::::::::::::::::::::::::::::::::::::::::::*/
+
+
+/* Vignette Layout CSS for Library Page */
+
+/* Article preview container - vignette layout */
+.article-preview {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Thumbnail styling - 80x100px */
+.article-thumbnail {
+  width: 80px;
+  height: 100px;
+  border-radius: 7px;
+  box-shadow: 0 2px 8px rgba(90, 0, 0, 0.5);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.article-thumbnail.placeholder {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #999;
+}
+
+/* Article info takes remaining space */
+.article-info {
+  flex: 1;
+}
+
+/* Meta top row: serial + badge */
+.article-meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.serial-number {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+/* Badge styles */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.article-item.free .badge {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+
+.article-item.premium .badge {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* ==== Article title and subtitle ==== */
+
+/* IT WORKS */
+.article-title {
+  margin: 0 0 4px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.article-subtitle {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: normal;
+}
+
+/* it works */
+.article-abstract {
+  margin: 8px 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/*NOT WORKING */
+.article-meta {
+  margin: 8px 0;
+  font-size: 0.75rem;
+  color: #777;
+}
+
+.read-link {
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #0066cc;
+}
+
+.read-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+  .article-preview {
+    flex-direction: column;
+  }
+  .article-thumbnail,
+  .article-thumbnail.placeholder {
+    width: 60px;
+    height: 75px;
+    margin-bottom: 10px;
+  }
+  .article-meta-top {
+    justify-content: flex-start;
+  }
+}
+
+/* Article spacing */
+.article-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+
+
+
+✅ catalog.json
+{
+  "articles": [
+    {
+      "id": "mensonges-demographiques",
+      "title": "Mensonges démographiques",
+      "subtitle": "Afrique : les chiffres de la population sont-ils manipulés ?",
+      "abstract": "Analyse critique des manipulations des chiffres de population en Afrique. Ancien ambassadeur aux États-Unis, ancien représentant permanent au Conseil de sécurité de l'ONU...",
+      "type": "free",
+      "pages": 6,
+      "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-mensonge02.png"
+    },
+    {
+      "id": "melanine-selenium",
+      "title": "Mélanine et bienfaits du sélénium",
+      "subtitle": "Propriétés méconnues de la mélanine",
+      "abstract": "Exploration des propriétés de la mélanine et son interaction avec le sélénium. Découvrez les bienfaits méconnus de ces éléments essentiels.",
+      "type": "premium",
+      "pages": 8,
+      "path": "/fr/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-selenium.png"
+    },
+    {
+      "id": "richesse-sorcellerie",
+      "title": "Richesse et Sorcellerie",
+      "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
+      "abstract": "Exploration des forces visibles et invisibles perçues comme entravant la réussite des projets collectifs.",
+      "type": "free",
+      "pages": 12,
+      "path": "/fr/library/biblio/fr/free/richesse_et_sorcellerie.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie.png"
+    },
+    {
+      "id": "couleur-de-peau",
+      "title": "Couleur de peau",
+      "subtitle": "Mécanismes de destruction de la mélanine",
+      "abstract": "Mécanismes de destruction de la mélanine, les enfants en ligne de mire.",
+      "type": "free",
+      "pages": 10,
+      "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-nopicture.png"
+    },
+    {
+      "id": "se-synchroniser-eba",
+      "title": "Se synchroniser à EBA (HAPI)",
+      "subtitle": "Rituels et connexion énergétique",
+      "abstract": "L’article jette un éclairage sur la divinités poissons, peu connues, et explore la temporalité de EBA, alias Hapi, leurs représentations et leurs cultes.",
+      "type": "premium",
+      "pages": 10,
+      "path": "/fr/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-ebale02.png"
+    }
+  ]
+}
+
+
+
+✅ articles.json
+[
+  {
+    "title": "MENSONGES DEMOGRAPHIQUES",
+    "subtitle": "Mensonge d'État et manipulation des chiffres de la population en Afrique",
+    "pdf": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
+    "abstract": "(...) Ancien ambassadeur en Amérique, ancien représentant permanent au Conseil de sécurité de l'ONU, il est l'auteur du livre « Nous étions seuls ». Gérard Araud, lui aussi, estime que la population africaine « double tous les 30 ans ».\n\nIl emploie le mot-clé « explosion » démographique et présente la situation suivante :\n⟶ 4 millions de Nigériens en 1960\n⟶ 25 millions de Nigériens aujourd'hui\n⟶ 50 millions dans 30 ans.\n\nLe site web The True Size, mentionné plus haut, permet de glisser-déposer, avec la souris, un pays sur n'importe quel continent, afin de mieux appréhender sa taille.",
+    "image": "/pictures/articles/niger_01.PNG",
+    "imageAlt": "Comparaison démographique Niger et France",
+    "meta": "PDF — 6 pages — Accès libre",
+    "tags": ["démographie", "Afrique"],
+    "date": "2026-02-01"
+  },
+  {
+    "title": "RICHESSE ET SORCELLERIE",
+    "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
+    "pdf": "/fr/library/biblio/fr/free/richesse_et_sorcellerie.pdf",
+    "abstract": "(...) En mars 2010, dans le sillage de l'élection de Barack Obama, aux Etats Désunis d'Amérique - pour employer l'expression de la Dr. S. Mumbi - un symposium important était organisé à Chicago, sur le campus de Chicago State University, à l'initiative du journaliste et intellectuel Tavis Smiley. Cet événement visait à lancer l'ouvrage collectif 'The Covenant with Black America' et à ouvrir un débat critique sur l'absence perçue d'un 'agenda noir' dans la politique de la nouvelle administration.",
+    "image": "/pictures/articles/sorcellerie01.jpg",
+    "imageAlt": "Dynamiques et blocages collectifs",
+    "meta": "PDF — 12 pages — Accès libre",
+    "tags": ["sorcellerie", "richesse", "collectif"],
+    "date": "2026-02-15"
+  },
+  {
+    "title": "COULEUR DE PEAU",
+    "subtitle": "Mécanismes de destruction de la mélanine",
+    "pdf": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
+    "abstract": "(...) Les enfants sont particulièrement vulnérables à la destruction de la mélanine, ce qui soulève des préoccupations majeures en matière de santé publique. La mélanine joue un rôle crucial dans la protection de la peau contre les rayons UV nocifs du soleil, et sa destruction peut entraîner une augmentation du risque de cancers de la peau, ainsi que d'autres problèmes dermatologiques.",
+    "image": "/pictures/library-pic/couleur-peau .jpg",
+    "imageAlt": "Mécanismes de destruction de la mélanine",
+    "meta": "PDF — 10 pages — Accès libre",
+    "tags": ["mélanine", "santé", "enfants"],
+    "date": "2026-03-01"
+  }
+]
+
+
+
+✅ free_index.json
+
+{
+  "en": {
+    "free": [
+      {
+        "title": "Skin Color",
+        "file": "couleur-de-peau-v005.pdf"
+      },
+      {
+        "title": "Demographic Distortions",
+        "file": "Demographic_Distortions.pdf"
+      },
+      {
+        "title": "Wealth and invisible powers",
+        "file": "Wealth_and_Invisible_Powers.pdf"
+      }
+    ]
+  },
+  "fr": {
+    "free": [
+      {
+        "title": "Couleur de peau",
+        "file": "couleur-de-peau-v005.pdf"
+      },
+      {
+        "title": "Mensonges démographiques",
+        "file": "mensonges_demographiques_v2.pdf"
+      },
+      {
+        "title": "Richesse et Sorcellerie",
+        "file": "richesse_et_sorcellerie.pdf"
+      }
+    ]
+  }
+}
