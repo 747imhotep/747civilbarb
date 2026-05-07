@@ -134,5 +134,48 @@ function attachToggleListeners() {
   });
 }
 
+function attachToggleListeners() {
+  const allItems = document.querySelectorAll('.library-compact');
+  
+  allItems.forEach(item => {
+    const row = item.querySelector('.compact-row');
+    const btn = item.querySelector('.toggle-btn');
+    const details = item.querySelector('.expanded-details');
+
+    function toggle() {
+      const isOpen = details.style.display === 'block';
+      
+      // Auto-close ALL other expanded vignettes
+      if (!isOpen) {
+        allItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherDetails = otherItem.querySelector('.expanded-details');
+            const otherBtn = otherItem.querySelector('.toggle-btn');
+            if (otherDetails && otherDetails.style.display === 'block') {
+              otherDetails.style.display = 'none';
+              if (otherBtn) otherBtn.textContent = 'Consulter →';
+            }
+          }
+        });
+      }
+      
+      // Toggle current
+      details.style.display = isOpen ? 'none' : 'block';
+      btn.textContent = isOpen ? 'Consulter →' : 'Réduire ↑';
+    }
+
+    row.addEventListener('click', (e) => {
+      if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
+        toggle();
+      }
+    });
+    
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle();
+    });
+  });
+}
+
 // Start everything when page is ready
 document.addEventListener('DOMContentLoaded', loadArticles);

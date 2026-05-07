@@ -141,7 +141,7 @@
   width: 80px;
   height: 100px;
   border-radius: 7px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
   object-fit: cover;
   background: #f0ebe4;
@@ -198,8 +198,9 @@
 .read-link:hover {
   background: #5a0000;
   text-decoration: none;
-  font-size: 1rem;
-  border: solid 1px #f79494;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: solid 1px #53f5df;
   color: white;
 }
 
@@ -219,6 +220,69 @@
 .expanded-thumbnail[src=""] {
   display: none;
 }
+
+
+/*============================================= */
+/* DESKTOP LAYOUT ADJUSTMENTS */
+/*============================================= */
+
+/* Expanded content - relative positioning for button */
+.expanded-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Read link button - bottom right */
+.read-link {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #8b0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.4s;
+  margin-top: 16px;
+}
+
+/*============================================= */
+/* SMARTPHONE LAYOUT ADJUSTMENTS */
+/*============================================= */
+
+/* Align button to bottom right on desktop */
+@media (min-width: 769px) {
+  .expanded-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .read-link {
+    align-self: flex-end;
+    margin-top: auto;
+  }
+  
+  .expanded-meta {
+    margin-bottom: auto;
+  }
+}
+
+/* Transition delay for smooth close */
+.expanded-details {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  max-height: 500px;
+  opacity: 1;
+}
+
+.expanded-details[style*="display: none"] {
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  margin: 0;
+}
+
+
 
 /* ============================================ */
 /* RESPONSIVE: Mobile */
