@@ -8,7 +8,9 @@ let articlesData = [];
 // Load articles from catalog.json
 async function loadArticles() {
   try {
-    const response = await fetch('/en/library/catalog.json');
+    // Detect language from path
+    const lang = window.location.pathname.startsWith('/en/') ? 'en' : 'fr';
+    const response = await fetch(`/${lang}/library/catalog.json`);
     
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
@@ -29,7 +31,8 @@ async function loadArticles() {
 function getSerialNumber(index, type) {
   const prefixes = {
     'free': 'LIB',
-    'premium': 'PREM'
+    'premium': 'PREM',
+    'non-editing': 'NED'
   };
   const prefix = prefixes[type] || 'DOC';
   const num = String(index + 1).padStart(3, '0');
@@ -43,6 +46,11 @@ function escapeHtml(text) {
   return div.innerHTML;
 }
 
+// Get language for button texts
+function getLang() {
+  return window.location.pathname.startsWith('/en/') ? 'en' : 'fr';
+}
+
 // Render the library with compact rows
 function renderLibrary() {
   const container = document.getElementById('library-container');
@@ -53,6 +61,7 @@ function renderLibrary() {
     return;
   }
 
+  const lang = getLang();
   let html = '<div class="compact-library-container">';
 
   articlesData.articles.forEach((article, index) => {
@@ -60,20 +69,43 @@ function renderLibrary() {
     const serialNumber = getSerialNumber(index, article.type);
     
     // Badge configuration
-    const isFree = article.type === 'free';
-    const badgeIcon = isFree ? '🔑' : '🔒';
-    const badgeClass = article.type;
-    const linkText = isFree ? 'Learn more →' : 'Subscribe to read →';
+    let badgeIcon = '';
+    let badgeText = '';
+    let linkText = '';
     
-    // Subtitle fallback
+    if (article.type === 'free') {
+      badgeIcon = lang === 'fr' ? '🔑' : '🔓';
+      badgeText = lang === 'fr' ? 'Accès libre' : 'Free access';
+      linkText = lang === 'fr' ? 'Consulter →' : 'Browse →';
+    } else if (article.type === 'premium') {
+      badgeIcon = '🔒';
+      badgeText = lang === 'fr' ? 'Contenu premium' : 'Premium content';
+      linkText = lang === 'fr' ? 'S\'abonner pour lire →' : 'Subscribe to read →';
+    } else if (article.type === 'non-editing') {
+      badgeIcon = '⏳';
+      badgeText = lang === 'fr' ? 'À venir' : 'Coming soon';
+      linkText = lang === 'fr' ? 'Aperçu →' : 'Preview →';
+    }
+    
+    const badgeClass = article.type;
     const subtitle = article.subtitle || '';
     
-    // Thumbnail for expanded view - SIMPLE VERSION
+    // Thumbnail for expanded view
     let thumbnailHtml = '';
     if (article.hasImage && article.imagePath) {
       thumbnailHtml = `<img src="${article.imagePath}" alt="${article.title}" class="expanded-thumbnail" loading="lazy">`;
     } else {
       thumbnailHtml = `<div class="expanded-thumbnail placeholder">📄</div>`;
+    }
+
+    // Determine target link based on article type
+    let targetLink = '';
+    if (article.type === 'free') {
+      targetLink = article.path;
+    } else if (article.type === 'premium') {
+      targetLink = `/${lang}/premium/?article=${article.id}`;
+    } else if (article.type === 'non-editing') {
+      targetLink = '#'; // No link, just preview
     }
 
     html += `
@@ -82,7 +114,7 @@ function renderLibrary() {
           <span class="serial">${serialNumber}</span>
           <span class="badge ${badgeClass}">${badgeIcon}</span>
           <h3 class="compact-title">${escapeHtml(article.title)}</h3>
-          <button class="toggle-btn">View →</button>
+          <button class="toggle-btn">${lang === 'fr' ? 'Consulter →' : 'Browse →'}</button>
         </div>
         <div class="expanded-details" style="display: none;">
           <div class="expanded-inner">
@@ -90,8 +122,11 @@ function renderLibrary() {
             <div class="expanded-content">
               ${subtitle ? `<h4 class="expanded-subtitle">${escapeHtml(subtitle)}</h4>` : ''}
               <p class="expanded-abstract">${escapeHtml(article.abstract)}</p>
-              <p class="expanded-meta">PDF — ${article.pages} pages</p>
-              <a href="${article.path}" class="read-link">${linkText}</a>
+              <p class="expanded-meta">${article.fileType || 'PDF'} — ${article.pages} pages</p>
+              ${article.type === 'non-editing' ? 
+                `<p class="coming-soon-note">${lang === 'fr' ? '📝 Texte en cours de rédaction. Version complète à venir.' : '📝 Text being written. Full version coming soon.'}</p>` : 
+                `<a href="${targetLink}" class="read-link">${linkText}</a>`
+              }
             </div>
           </div>
         </div>
@@ -107,33 +142,6 @@ function renderLibrary() {
 }
 
 // Attach click listeners for expand/collapse
-function attachToggleListeners() {
-  document.querySelectorAll('.library-compact').forEach(item => {
-    const row = item.querySelector('.compact-row');
-    const btn = item.querySelector('.toggle-btn');
-    const details = item.querySelector('.expanded-details');
-
-    function toggle() {
-      const isOpen = details.style.display === 'block';
-      details.style.display = isOpen ? 'none' : 'block';
-      btn.textContent = isOpen ? 'View →' : 'Collapse ↑';
-    }
-
-    // Click on row (but not on the button itself or links)
-    row.addEventListener('click', (e) => {
-      if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
-        toggle();
-      }
-    });
-    
-    // Click on button
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggle();
-    });
-  });
-}
-
 function attachToggleListeners() {
   const allItems = document.querySelectorAll('.library-compact');
   
@@ -153,7 +161,7 @@ function attachToggleListeners() {
             const otherBtn = otherItem.querySelector('.toggle-btn');
             if (otherDetails && otherDetails.style.display === 'block') {
               otherDetails.style.display = 'none';
-              if (otherBtn) otherBtn.textContent = 'View →';
+              if (otherBtn) otherBtn.textContent = getLang() === 'fr' ? 'Consulter →' : 'Browse →';
             }
           }
         });
@@ -161,15 +169,17 @@ function attachToggleListeners() {
       
       // Toggle current
       details.style.display = isOpen ? 'none' : 'block';
-      btn.textContent = isOpen ? 'View →' : 'Collapse ↑';
+      btn.textContent = isOpen ? (getLang() === 'fr' ? 'Consulter →' : 'Browse →') : (getLang() === 'fr' ? 'Réduire ↑' : 'Collapse ↑');
     }
 
+    // Click on row (but not on the button itself or links)
     row.addEventListener('click', (e) => {
       if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
         toggle();
       }
     });
     
+    // Click on button
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       toggle();

@@ -1,5 +1,5 @@
 // ============================
-// PREMIUM PAGE JS (Dynamic + Entitlement)
+// PREMIUM PAGE JS (Dynamic + Entitlement + URL Parameter)
 // ============================
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -12,6 +12,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Retrieve email stored from subscribe page
   const userEmail = sessionStorage.getItem('userEmail') || localStorage.getItem('userEmail');
+
+  // ---------------------------
+  // Get article ID from URL parameter
+  // ---------------------------
+  function getArticleIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('article');
+  }
+
+  const targetArticleId = getArticleIdFromUrl();
 
   // ---------------------------
   // 1️⃣ Check user entitlement
@@ -68,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const buttonText = lang === 'fr' ? 'Accéder' : 'Access';
       
       html += `
-        <article class="premium-item" data-index="${index}">
+        <article class="premium-item" data-index="${index}" data-article-id="${article.id}">
           <div class="premium-badge">${badgeText}</div>
           <h3 class="premium-title">${escapeHtml(article.title)}</h3>
           <h4 class="premium-subtitle">${escapeHtml(article.subtitle)}</h4>
@@ -95,6 +105,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Attach click handlers to buttons
     attachButtonListeners();
+    
+    // Scroll to and highlight target article if specified
+    if (targetArticleId) {
+      setTimeout(() => {
+        const targetArticle = document.querySelector(`.subscribe-button[data-article="${targetArticleId}"]`);
+        if (targetArticle) {
+          targetArticle.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          targetArticle.style.backgroundColor = '#ffeb3b';
+          targetArticle.style.transition = 'background-color 0.5s ease';
+          setTimeout(() => {
+            targetArticle.style.backgroundColor = '';
+          }, 2000);
+        } else {
+          console.log('Target article not found:', targetArticleId);
+        }
+      }, 600); // Wait for animation to complete
+    }
   }
 
   // ---------------------------
