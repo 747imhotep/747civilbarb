@@ -21,5 +21,16 @@
   "meta": "PDF — 12 pages — Free access",
   "tags": ["sorcellerie", "richesse", "collectif"],
   "date": "2026-02-15"
+  },
+    {
+    "title": "SKIN COLOR",
+    "subtitle": "Mechanisms of Melanin Destruction in black children",
+    "pdf": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
+    "abstract": "(...) Children are particularly vulnerable to the destruction of melanin, which raises major concerns in terms of public health. Melanin plays a crucial role in protecting the skin from the harmful UV rays of the sun, and its destruction can lead to an increase in the risk of skin cancers, as well as other dermatological problems.",
+    "image": "/pictures/library-pic/couleur-peau03.png",
+    "imageAlt": " Mechanisms of Melanin Destruction",
+    "meta": "PDF — 10 pages — Free access",
+    "tags": ["melanin", "health", "children"],
+    "date": "2026-03-01"
   }
 ]
