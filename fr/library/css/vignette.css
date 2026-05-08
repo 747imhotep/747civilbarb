@@ -68,6 +68,9 @@
   font-weight: 600;
   margin: 0;
   color: #1a1a1a;
+  font-weight: 700;
+  font-variant: uppercase;
+  font-size: 17px;
 }
 
 /* Free title subtle underline */
@@ -203,6 +206,42 @@
   border: solid 1px #53f5df;
   color: white;
 }
+
+
+
+/* ============================================ */
+/* NON-EDITING ARTICLES STYLING */  
+/* Non-editing articles - Purple/Violet accent  */
+/*============================================= */
+/* Non-editing articles - Purple/Violet accent */
+.library-compact.non-editing {
+  border-left-color: #9b59b6;
+}
+
+.library-compact.non-editing .compact-title {
+  text-decoration: underline;
+  text-decoration-color: #9b59b6;
+  text-decoration-thickness: 2px;font-display: ;
+  text-underline-offset: 6px;
+}
+
+.library-compact.non-editing .badge {
+  filter: drop-shadow(0 0 1px #9b59b6);
+}
+
+/* Coming soon note in expanded view */
+.coming-soon-note {
+  margin: 12px 0 0 0;
+  padding: 8px 12px;
+  background: #f3e8ff;
+  border-left: 3px solid #9b59b6;
+  font-size: 0.8rem;
+  color: #6c3483;
+  font-style: italic;
+  border-radius: 4px;
+}
+
+
 
 
 /* ============================================ */
