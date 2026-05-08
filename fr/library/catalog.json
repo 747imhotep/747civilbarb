@@ -54,6 +54,30 @@
       "path": "/fr/premium/",
       "hasImage": true,
       "imagePath": "/pictures/articles-pic/thumb-ebale02.png"
-    }
+    },
+    {
+  "id": "intelligence-hors-sol",
+  "title": "L'intelligence hors-sol",
+  "subtitle": "L'intelligence hors-sol — Chronique d'une culture déracinée",
+  "abstract": "Entre ciel et terre circule une énergie invisible qui influence le vivant depuis toujours. Dans la symbolique égyptienne, Shou et Tefnout incarnent cette polarité fondamentale : le ciel chargé d'énergie positive et la terre porteuse d'une force réceptrice. Des plantes qui puisent leur vitalité dans cet échange au simple fait de marcher pieds nus pour se reconnecter au sol, cette dynamique énergétique nous rappelle que Kalala Omotunde avait beaucoup insisté là-dessus avant de nous quitter.",
+  "type": "non-editing",
+  "pages": 0,
+  "path": "#",
+  "hasImage": true,
+  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "fileType": "À venir"
+  },
+{
+  "id": "cavernes-jamais-mortes",
+  "title": "Les Cavernes ne Sont Jamais Mortes",
+  "subtitle": "Pourquoi certains comportements humains semblent encore prisonniers de réflexes hérités de l'âge glaciaire",
+  "abstract": "Et si leur modernité n'était qu'un décor fragile posé sur des instincts millénaires ? À travers l'hygiène, l'intimité et les comportements collectifs, ce texte explore les survivances invisibles de la vie primitive dans certaines sociétés actuelles. Une plongée provocante, anthropologique et dérangeante dans ce que les humains croient avoir abandonné… sans jamais réellement s'en détacher.",
+  "type": "non-editing",
+  "pages": 0,
+  "path": "#",
+  "hasImage": true,
+  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "fileType": "À venir"
+}
   ]
 }

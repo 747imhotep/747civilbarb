@@ -54,6 +54,30 @@
       "path": "/en/premium/",
       "hasImage": true,
       "imagePath": "/pictures/articles-pic/thumb-ebale02.png"
-    }
+    },
+    {
+    "id": "intelligence-hors-sol",
+    "title": "Off-Ground Intelligence",
+    "subtitle": "Off-ground intelligence — Chronicle of a uprooted culture",
+    "abstract": "Between heaven and earth circulates an invisible energy that has always influenced the living. In Egyptian symbolism, Shou and Tefnut embody this fundamental polarity: the sky charged with positive energy and the earth carrying a receptive force. From plants drawing their vitality from this exchange to simply walking barefoot to reconnect with the ground, this energetic dynamic reminds us that Kalala Omotunde had insisted a lot on this before leaving us.",
+    "type": "non-editing",
+    "pages": 0,
+    "path": "#",
+    "hasImage": true,
+    "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+    "fileType": "Coming soon"
+    },
+{
+  "id": "caverns-never-died",
+  "title": "The Caverns Are Never Dead",
+  "subtitle": "Why some human behaviors still seem trapped by reflexes inherited from the Ice Age",
+  "abstract": "What if their modernity was only a fragile decor placed upon millennial instincts? Through hygiene, intimacy, and collective behaviors, this text explores the invisible survivals of primitive life in certain current societies. A provocative, anthropological, and disturbing dive into what humans believe they have abandoned... without ever truly detaching from it.",
+  "type": "non-editing",
+  "pages": 0,
+  "path": "#",
+  "hasImage": true,
+  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "fileType": "Coming soon"
+  }
   ]
 }
