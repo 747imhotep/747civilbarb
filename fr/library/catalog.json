@@ -9,7 +9,7 @@
       "pages": 6,
       "path": "/fr/library/biblio/fr/free/mensonges_demographiques_v2.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-mensonge02.png"
+      "imagePath": "/pictures/articles-pic/thumb-mensonge03.png"
     },
     {
       "id": "melanine-selenium",
@@ -20,7 +20,7 @@
       "pages": 8,
       "path": "/fr/premium/",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-selenium.png"
+      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
     },
     {
       "id": "richesse-sorcellerie",
@@ -31,7 +31,7 @@
       "pages": 12,
       "path": "/fr/library/biblio/fr/free/richesse_et_sorcellerie.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie.png"
+      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie02.png"
     },
     {
       "id": "couleur-de-peau",
@@ -42,7 +42,7 @@
       "pages": 10,
       "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-nopicture.png"
+      "imagePath": "/pictures/articles-pic/thumb-target01.png"
     },
     {
       "id": "se-synchroniser-eba",
@@ -64,7 +64,7 @@
   "pages": 0,
   "path": "#",
   "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
   "fileType": "À venir"
   },
 {
@@ -76,7 +76,7 @@
   "pages": 0,
   "path": "#",
   "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
   "fileType": "À venir"
 }
   ]

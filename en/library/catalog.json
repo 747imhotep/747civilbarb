@@ -9,7 +9,7 @@
       "pages": 6,
       "path": "/en/library/biblio/en/free/Demographic_Distortions.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-mensonge02.png"
+      "imagePath": "/pictures/articles-pic/thumb-mensonge03.png"
     },
     {
       "id": "melanin-selenium",
@@ -20,7 +20,7 @@
       "pages": 8,
       "path": "/en/premium/",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-selenium.png"
+      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
     },
     {
       "id": "wealth-and-witchcraft",
@@ -31,7 +31,7 @@
       "pages": 12,
       "path": "/en/library/biblio/en/free/Wealth_and_Invisible_Powers.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie.png"
+      "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie02.png"
     },
     {
       "id": "skin-color",
@@ -42,7 +42,7 @@
       "pages": 10,
       "path": "/en/library/biblio/en/free/Couleur_de_peau_v_005.pdf",
       "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-nopicture.png"
+      "imagePath": "/pictures/articles-pic/thumb-target01.png"
     },
     {
       "id": "synchronize-eba",
@@ -64,7 +64,7 @@
     "pages": 0,
     "path": "#",
     "hasImage": true,
-    "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+    "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
     "fileType": "Coming soon"
     },
 {
@@ -76,7 +76,7 @@
   "pages": 0,
   "path": "#",
   "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
+  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
   "fileType": "Coming soon"
   }
   ]
