@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writer's Workspace — Civilization or Barbarism</title>
+  
+  <link rel="stylesheet" href="/shared/cssshared/base.css">
+  <link rel="stylesheet" href="css/writer.css">
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+</head>
+<body>
+
+  <div class="workspace-container">
+    <header>
+      <h1>✍🏾 Editorial Studio</h1>
+      <p class="subtitle">Collaborative dashboard for French & English writers</p>
+      <p>Tableau de bord collaboratif pour les rédacteurs français et anglais</p>
+    </header>
+
+    <!-- Progress Table -->
+    <section class="progress-section">
+      <h2>📊 Article Progress</h2>
+      <div class="progress-table-wrapper">
+        <table class="progress-table" id="progress-table">
+          <thead>
+            <tr>
+              <th>Article</th>
+              <th>French 🇫🇷</th>
+              <th>English 🇬🇧</th>
+            </tr>
+          </thead>
+          <tbody id="progress-tbody">
+            <tr><td colspan="3">Loading progress...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- File Upload Section -->
+    <section class="upload-section">
+      <h2>📤 Upload Document</h2>
+      <div class="upload-grid">
+        <div class="upload-card">
+          <h3>Français 🇫🇷</h3>
+          <form id="upload-french" action="https://formspree.io/f/xpqbjeor" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_language" value="fr">
+            <input type="hidden" name="writer" value="french">
+            <input type="file" name="document" accept=".pdf,.docx,.odt,.txt" required>
+            <select name="article_id" required>
+              <option value="">Selectionner un article</option>
+            </select>
+            <button type="submit">📤 Uploader en français</button>
+          </form>
+        </div>
+        <div class="upload-card">
+          <h3>English 🇬🇧</h3>
+          <form id="upload-english" action="https://formspree.io/f/xpqbjeor" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_language" value="en">
+            <input type="hidden" name="writer" value="english">
+            <input type="file" name="document" accept=".pdf,.docx,.odt,.txt" required>
+            <select name="article_id" required>
+              <option value="">Select article</option>
+            </select>
+            <button type="submit">📤 Upload English</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+      <h2>📥 Recent Documents</h2>
+      <div class="download-grid" id="download-lists">
+        <div class="download-card">
+          <h3>Document français 🇫🇷</h3>
+          <ul id="french-files"><li>Aucun document disponible</li></ul>
+        </div>
+        <div class="download-card">
+          <h3>English Documents 🇬🇧</h3>
+          <ul id="english-files"><li>No files yet</li></ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/writer.js"></script>
+</body>
+</html>
