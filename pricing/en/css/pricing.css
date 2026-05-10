@@ -62,6 +62,7 @@ body {
     border-color: #cbbc8c;
 }
 
+/* Remove featured from Writer - add to Premium */
 .plan.featured {
     border: 2px solid #cbbc8c;
     background: #fffef8;
