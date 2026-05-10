@@ -1,23 +1,23 @@
-✅ thumbnails
+✅ YOUR QUESTIONS
+✅ MY ANSWERS
 ✅ 
 ✅ 
-✅ new Text being written. Full version coming soon.
+✅ Your website / project
+✅ Name: Civilisation ou Barbarie (seems to be a publication/editorial project)
+✅ You have different access levels: Free, Premium, Volunteer, Writer
+✅ Writers help with redaction and get their name on publications
+
+You understand well, congratulation.
+So, we can start with a nice pricing html page.
 ✅ 
-✅ "imagePath": "/pictures/articles-pic/thumb-nopicture.png",
-✅ 
 
-✅ **Title :**
-**Les Cavernes ne Sont Jamais Mortes**
+✅ ❓ The writer portal needs:
 
-**Subtitle :**
-Pourquoi certains comportements humains semblent encore prisonniers de réflexes hérités de l’âge glaciaire.
+1. → Pricing page
+2. → Login protection → Cloudflare
+3. → Signup flow → Sender.net (email + pseudonym, once only, select a plan )
+4. → writer html → page File uploads → Formspree → email (Option A, you preferred email)
+5. → 
+6. → 
 
-**Summary (3 lignes) :**
-Et si leur modernité n’était qu’un décor fragile posé sur des instincts millénaires ?
-À travers l’hygiène, l’intimité et les comportements collectifs, ce texte explore les survivances invisibles de la vie primitive dans certaines sociétés actuelles.
-Une plongée provocante, anthropologique et dérangeante dans ce que les humains croient avoir abandonné… sans jamais réellement s’en détacher.
-
-
-
-
-
+So, we can start now
