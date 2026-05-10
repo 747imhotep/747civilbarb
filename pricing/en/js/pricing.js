@@ -1,13 +1,13 @@
 //=================================================
-// 747 Civil Barbarians - Pricing Page JS
-//==============================================
+// 747 Civil Barbarians - Page Tarifs JS
+//=================================================
 
-// This script handles the interactive behavior of the pricing page, including:
-// - Opening and customizing the signup modal based on the selected plan
-// - Submitting the signup form to a backend (e.g., Sender.net) and providing user feedback
+// Ce script gère le comportement interactif de la page des tarifs :
+// - Ouverture et personnalisation de la popup d'inscription selon le forfait choisi
+// - Soumission du formulaire d'inscription vers Sender.net et retour utilisateur
 
 
-// MODAL HANDLING
+// GESTION DE LA POPUP
 const modal = document.getElementById('signupModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalPlanBadge = document.getElementById('modalPlanBadge');
@@ -21,29 +21,29 @@ function openModal(plan) {
     selectedPlanInput.value = plan;
     
     if (plan === 'writer') {
-        modalTitle.innerText = '✍️ Become a Writer';
-        modalPlanBadge.innerText = 'Writer application';
+        modalTitle.innerText = '✍🏾 Devenir Rédacteur';
+        modalPlanBadge.innerText = 'Candidature rédacteur';
         pseudonymGroup.style.display = 'block';
         document.getElementById('pseudonym').required = true;
     } else if (plan === 'premium') {
-        modalTitle.innerText = '✨ Choose Premium – 12 texts / year';
-        modalPlanBadge.innerText = 'Annual donation €12–30';
+        modalTitle.innerText = '✨ Premium – 12 textes / an';
+        modalPlanBadge.innerText = 'Don annuel 12–30€';
         pseudonymGroup.style.display = 'none';
         if(document.getElementById('pseudonym')) document.getElementById('pseudonym').required = false;
     } else if (plan === 'volunteer') {
-        modalTitle.innerText = '🤝 Volunteer – full archive';
-        modalPlanBadge.innerText = 'Donation > €30 / year';
+        modalTitle.innerText = '🫴🏾 Bénévole – archives complètes';
+        modalPlanBadge.innerText = 'Don > 30€ / an';
         pseudonymGroup.style.display = 'none';
     } else {
-        modalTitle.innerText = '📖 Free access';
-        modalPlanBadge.innerText = 'No payment needed';
+        modalTitle.innerText = '📖 Accès Libre';
+        modalPlanBadge.innerText = 'Aucun paiement requis';
         pseudonymGroup.style.display = 'none';
     }
     
     modal.style.display = 'flex';
 }
 
-// attach to all plan buttons
+// attacher les événements aux boutons des forfaits
 document.querySelectorAll('.plan-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const plan = btn.getAttribute('data-plan');
@@ -51,7 +51,7 @@ document.querySelectorAll('.plan-btn').forEach(btn => {
     });
 });
 
-// close modal
+// fermer la popup
 document.querySelector('.close-modal').addEventListener('click', () => {
     modal.style.display = 'none';
     document.getElementById('signupForm').reset();
@@ -62,7 +62,7 @@ window.addEventListener('click', (e) => {
     if (e.target === modal) modal.style.display = 'none';
 });
 
-// SUBMIT FORM (Sender.net integration)
+// SOUMISSION DU FORMULAIRE (intégration Sender.net)
 const signupForm = document.getElementById('signupForm');
 const statusDiv = document.getElementById('formStatus');
 
@@ -75,24 +75,24 @@ signupForm.addEventListener('submit', async (e) => {
     const pseudonym = document.getElementById('pseudonym')?.value.trim() || '';
     
     if (!name || !email) {
-        statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Please fill name and email.</div>';
+        statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Veuillez remplir le nom et l\'email.</div>';
         return;
     }
     if (plan === 'writer' && !pseudonym) {
-        statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Writers must choose a pseudonym.</div>';
+        statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Les rédacteurs doivent choisir un pseudonyme.</div>';
         return;
     }
     
-    // store pseudonym in localStorage for writer dashboard
+    // stocker le pseudonyme dans localStorage pour le tableau rédacteur
     if (plan === 'writer' && pseudonym) {
         localStorage.setItem('cob_writer_pseudonym', pseudonym);
         localStorage.setItem('cob_writer_email', email);
     }
     
-    // TODO: Replace with your actual Sender.net form endpoint
-    // Example:
+    // À remplacer par votre véritable endpoint Sender.net
+    // Exemple :
     // const formData = new FormData(signupForm);
-    // await fetch('https://sender.net/your-form-endpoint', { method: 'POST', body: formData });
+    // await fetch('https://sender.net/votre-endpoint', { method: 'POST', body: formData });
     
     const signupData = {
         plan: plan,
@@ -103,18 +103,18 @@ signupForm.addEventListener('submit', async (e) => {
         timestamp: new Date().toISOString()
     };
     
-    console.log('Signup submitted:', signupData);
+    console.log('Inscription soumise :', signupData);
     
-    statusDiv.innerHTML = '<div class="success-msg">✅ Signup received! ' + 
-        (plan === 'writer' ? 'You will receive an email from Cloudflare to access the Writer Dashboard.' : 
-        'You will receive a payment link and access details.') + '</div>';
+    statusDiv.innerHTML = '<div class="success-msg">✅ Inscription reçue ! ' + 
+        (plan === 'writer' ? 'Vous recevrez un email de Cloudflare pour accéder au Tableau Rédacteur.' : 
+        'Vous recevrez un lien de paiement et les détails d\'accès.') + '</div>';
     
     setTimeout(() => {
         modal.style.display = 'none';
         signupForm.reset();
         statusDiv.innerHTML = '';
         if (plan === 'writer') {
-            alert('✍️ Welcome! As a writer, you will receive an invite from Cloudflare Zero Trust to log in to the dashboard.');
+            alert('✍🏾 Bienvenue ! En tant que rédacteur, vous recevrez une invitation Cloudflare Zero Trust pour vous connecter au tableau de bord.');
         }
     }, 2500);
 });
