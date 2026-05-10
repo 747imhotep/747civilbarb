@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs — Civilisation ou Barbarie</title>
+
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="/pricing/fr/css/pricing.css">
+
+    <!-- Global foundation -->
+    <link rel="stylesheet" href="/shared/cssshared/base.css">
+
+    <!-- Shared UI components -->
+    <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
+    <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
+    <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+    <!-- Overlays / fixed UI LAST -->
+    <link rel="stylesheet" href="/shared/cssshared/gdpr.css">
+
+    <!-- Optional: Favicon -->
+    <link rel="icon" href="/pictures/fav-icone/fav-icone03.png">
+</head>
+
+<body class="has-fixed-nav">
+
+<!-- Navigation Bar -->
+<div id="navbar-placeholder"></div>
+
+<main class="pricing-page">
+    <div class="container">
+        <div class="header">
+            <h1>Choisissez votre voie</h1>
+            <p>Soutenez Civilisation ou Barbarie — accédez aux textes, contribuez, ou devenez rédacteur</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- FREE plan -->
+            <div class="plan">
+                <div class="plan-name">📖 Libre</div>
+                <div class="plan-price">€0 <span>/ à vie</span></div>
+                <div class="plan-description">Découvrir notre mission</div>
+                <ul class="features">
+                    <li>Lire les articles publics</li>
+                    <li>Newsletter hebdomadaire</li>
+                    <li>Commenter les essais</li>
+                </ul>
+                <button class="plan-btn" data-plan="free">Choisir Libre</button>
+            </div>
+
+            <!-- PREMIUM plan with "Most Popular" badge -->
+            <div class="plan featured">
+                <div class="plan-name">✨ Premium</div>
+                <div class="plan-price">12–30€ <span>/ an</span></div>
+                <div class="plan-description">Don annuel — accès à 12 textes exclusifs</div>
+                <ul class="features">
+                    <li>12 textes approfondis / an</li>
+                    <li>Lecture sans publicité</li>
+                    <li>Téléchargement PDF</li>
+                </ul>
+                <button class="plan-btn" data-plan="premium">Donner & accéder</button>
+            </div>
+
+            <!-- VOLUNTEER plan -->
+            <div class="plan">
+                <div class="plan-name">🫴🏾 Bénévole</div>
+                <div class="plan-price">30€+ <span>/ an</span></div>
+                <div class="plan-description">Soutien durable</div>
+                <ul class="features">
+                    <li>Tout de Premium</li>
+                    <li>Accès complet aux archives</li>
+                    <li>Invitation au salon annuel</li>
+                </ul>
+                <button class="plan-btn" data-plan="volunteer">Devenir Bénévole</button>
+            </div>
+
+            <!-- WRITER plan -->
+            <div class="plan">
+                <div class="plan-name">✍🏾 Rédacteur</div>
+                <div class="plan-price">Contribution<span> / temps & talent</span></div>
+                <div class="plan-description">Rejoindre l'équipe éditoriale</div>
+                <ul class="features">
+                    <li>Co‑rédiger des articles</li>
+                    <li>Nom sur les publications</li>
+                    <li>Accès au tableau rédacteur</li>
+                    <li>Voir la progression de l'équipe</li>
+                </ul>
+                <button class="plan-btn writer-btn" data-plan="writer">Postuler comme Rédacteur</button>
+            </div>
+        </div>
+        <div class="footer-note">
+            Tous les dons soutiennent l'édition indépendante. Les rédacteurs sont sélectionnés après un bref échange.
+        </div>
+    </div>
+
+    <!-- MODAL POPUP for signup -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modalTitle">Inscription</h3>
+            <div id="modalPlanBadge" class="plan-badge"></div>
+
+            <form id="signupForm">
+                <input type="hidden" id="selectedPlan" name="plan">
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" id="fullName" name="name" required placeholder="ex., Nzinga Mbemba">
+                </div>
+                <div class="form-group">
+                    <label>Adresse email</label>
+                    <input type="email" id="email" name="email" required placeholder="nzinga@exemple.com">
+                </div>
+                <div class="form-group" id="pseudonymGroup" style="display: none;">
+                    <label>Choisissez un pseudonyme public (visible sur le tableau)</label>
+                    <input type="text" id="pseudonym" name="pseudonym" placeholder="ex., PlumeNomade">
+                </div>
+                <div class="form-group">
+                    <label>Téléphone (optionnel — pour les actualités éditoriales urgentes)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+33 6 12 34 56 78">
+                </div>
+                <button type="submit" class="submit-signup">S'inscrire → recevoir les infos de connexion</button>
+                <div id="formStatus"></div>
+            </form>
+            <p style="font-size: 0.7rem; margin-top: 1rem; color: #9b8e78;">Après inscription, vous recevrez un email avec les instructions de paiement ou une invitation Cloudflare Access (pour les rédacteurs).</p>
+        </div>
+    </div>
+</main>
+
+<!-- GDPR Consent Banner -->
+<div id="gdpr-banner" role="dialog" aria-live="polite" aria-modal="true">
+    <p>
+        Ce site utilise des cookies strictement nécessaires au fonctionnement du site,
+        ainsi que des services tiers optionnels.
+        Vous pouvez accepter ou refuser les cookies non essentiels.
+        <a href="/privacy/">En savoir plus</a>
+    </p>
+    <div class="gdpr-actions">
+        <button id="gdpr-accept">Accepter</button>
+        <button id="gdpr-refuse" class="secondary">Refuser</button>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script src="/navbar/jsnavbar/load-navbar.js" defer></script>
+<script src="/shared/jsshared/center_zoom.js" defer></script>
+<script src="/shared/jsshared/gdpr.js" defer></script>
+<script src="/shared/jsfooter/load-footer.js" defer></script>
+<script src="/pricing/js/pricing.js" defer></script>
+</body>
+</html>
