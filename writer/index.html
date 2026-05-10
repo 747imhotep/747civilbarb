@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing — Civilisation ou Barbarie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #faf8f3;
+            color: #1a1a1a;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #2c3e2f;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #6b5e4a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* pricing grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #e6dfd3;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plan:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+            border-color: #cbbc8c;
+        }
+
+        .plan.featured {
+            border: 2px solid #cbbc8c;
+            background: #fffef8;
+            position: relative;
+        }
+
+        .plan.featured::before {
+            content: "⭐ MOST POPULAR";
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #cbbc8c;
+            color: #2c3e2f;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+        }
+
+        .plan-name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2c3e2f;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2e21;
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .plan-price span {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #8b8070;
+        }
+
+        .plan-description {
+            color: #6b5e4a;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #efeadf;
+            padding-bottom: 1rem;
+        }
+
+        .features {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .features li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5b3e;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #7f9f6e;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .plan-btn {
+            background: #2c3e2f;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .plan-btn:hover {
+            background: #1f2e21;
+        }
+
+        .plan-btn.writer-btn {
+            background: #8f6a3c;
+        }
+
+        .plan-btn.writer-btn:hover {
+            background: #6e502d;
+        }
+
+        /* modal popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 32px;
+            padding: 2rem;
+            position: relative;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.96);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #aa9f8c;
+        }
+
+        .modal h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            color: #2c3e2f;
+        }
+
+        .modal .plan-badge {
+            display: inline-block;
+            background: #efe2d0;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-bottom: 1.5rem;
+            color: #6b5a44;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: #4b5e46;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid #d4c9b8;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            background: #fffdf9;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #8faa7b;
+        }
+
+        .submit-signup {
+            background: #2c3e2f;
+            color: white;
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .success-msg {
+            background: #e6f0e3;
+            color: #2c5e2a;
+            padding: 0.75rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #aa9f8c;
+            border-top: 1px solid #e2d9cd;
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Choose your path</h1>
+        <p>Support Civilisation ou Barbarie — access texts, contribute, or become a writer</p>
+    </div>
+
+    <div class="pricing-grid">
+        <!-- FREE plan -->
+        <div class="plan">
+            <div class="plan-name">📖 Free</div>
+            <div class="plan-price">€0 <span>/ forever</span></div>
+            <div class="plan-description">Discover our mission</div>
+            <ul class="features">
+                <li>Read public articles</li>
+                <li>Weekly newsletter</li>
+                <li>Comment on essays</li>
+            </ul>
+            <button class="plan-btn" data-plan="free">Select Free</button>
+        </div>
+
+        <!-- PREMIUM plan -->
+        <div class="plan">
+            <div class="plan-name">✨ Premium</div>
+            <div class="plan-price">€12–30 <span>/ year</span></div>
+            <div class="plan-description">Annual donation — access 12 exclusive texts</div>
+            <ul class="features">
+                <li>12 in‑depth texts / year</li>
+                <li>Ad‑free reading</li>
+                <li>PDF downloads</li>
+            </ul>
+            <button class="plan-btn" data-plan="premium">Donate & access</button>
+        </div>
+
+        <!-- VOLUNTEER plan -->
+        <div class="plan">
+            <div class="plan-name">🤝 Volunteer</div>
+            <div class="plan-price">€30+ <span>/ year</span></div>
+            <div class="plan-description">Sustaining support</div>
+            <ul class="features">
+                <li>Everything in Premium</li>
+                <li>Full archive access</li>
+                <li>Invite to annual salon</li>
+            </ul>
+            <button class="plan-btn" data-plan="volunteer">Become a Volunteer</button>
+        </div>
+
+        <!-- WRITER plan - featured -->
+        <div class="plan featured">
+            <div class="plan-name">✍️ Writer</div>
+            <div class="plan-price">Contribution<span> / time & talent</span></div>
+            <div class="plan-description">Join the editorial team</div>
+            <ul class="features">
+                <li>Co‑write articles</li>
+                <li>Name on publications</li>
+                <li>Access writer dashboard</li>
+                <li>See team progress</li>
+            </ul>
+            <button class="plan-btn writer-btn" data-plan="writer">Apply as Writer</button>
+        </div>
+    </div>
+    <div class="footer-note">
+        All donations support independent publishing. Writers are selected after a short conversation.
+    </div>
+</div>
+
+<!-- MODAL POPUP for signup (Sender.net simulation + store pseudonym) -->
+<div id="signupModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modalTitle">Sign up</h3>
+        <div id="modalPlanBadge" class="plan-badge"></div>
+
+        <form id="signupForm">
+            <input type="hidden" id="selectedPlan" name="plan">
+            <div class="form-group">
+                <label>Full name</label>
+                <input type="text" id="fullName" name="name" required placeholder="e.g., Marie Curie">
+            </div>
+            <div class="form-group">
+                <label>Email address</label>
+                <input type="email" id="email" name="email" required placeholder="marie@example.com">
+            </div>
+            <div class="form-group" id="pseudonymGroup" style="display: none;">
+                <label>Choose a public pseudonym (visible on leaderboard)</label>
+                <input type="text" id="pseudonym" name="pseudonym" placeholder="e.g., ScribeNomad">
+            </div>
+            <div class="form-group">
+                <label>Phone (optional — for urgent editorial news)</label>
+                <input type="tel" id="phone" name="phone" placeholder="+123 456 789">
+            </div>
+            <button type="submit" class="submit-signup">Complete signup → receive login info</button>
+            <div id="formStatus"></div>
+        </form>
+        <p style="font-size: 0.7rem; margin-top: 1rem; color: #9b8e78;">After signup, you will receive an email with payment instructions or Cloudflare Access invite (for Writer).</p>
+    </div>
+</div>
+
+<script>
+    // ---------- MODAL HANDLING ----------------
+    const modal = document.getElementById('signupModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPlanBadge = document.getElementById('modalPlanBadge');
+    const selectedPlanInput = document.getElementById('selectedPlan');
+    const pseudonymGroup = document.getElementById('pseudonymGroup');
+    
+    let currentPlan = '';
+
+    function openModal(plan) {
+        currentPlan = plan;
+        selectedPlanInput.value = plan;
+        
+        if (plan === 'writer') {
+            modalTitle.innerText = '✍️ Become a Writer';
+            modalPlanBadge.innerText = 'Writer application';
+            pseudonymGroup.style.display = 'block';
+            document.getElementById('pseudonym').required = true;
+        } else if (plan === 'premium') {
+            modalTitle.innerText = '✨ Choose Premium – 12 texts / year';
+            modalPlanBadge.innerText = 'Annual donation €12–30';
+            pseudonymGroup.style.display = 'none';
+            if(document.getElementById('pseudonym')) document.getElementById('pseudonym').required = false;
+        } else if (plan === 'volunteer') {
+            modalTitle.innerText = '🤝 Volunteer – full archive';
+            modalPlanBadge.innerText = 'Donation > €30 / year';
+            pseudonymGroup.style.display = 'none';
+        } else { // free
+            modalTitle.innerText = '📖 Free access';
+            modalPlanBadge.innerText = 'No payment needed';
+            pseudonymGroup.style.display = 'none';
+        }
+        
+        modal.style.display = 'flex';
+    }
+
+    // attach to all plan buttons
+    document.querySelectorAll('.plan-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const plan = btn.getAttribute('data-plan');
+            openModal(plan);
+        });
+    });
+
+    // close modal
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.getElementById('signupForm').reset();
+        document.getElementById('formStatus').innerHTML = '';
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+
+    // ---------- SUBMIT FORM (Sender.net simulation + store writer pseudonym for future dashboard)
+    const signupForm = document.getElementById('signupForm');
+    const statusDiv = document.getElementById('formStatus');
+
+    signupForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const plan = document.getElementById('selectedPlan').value;
+        const name = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const pseudonym = document.getElementById('pseudonym')?.value.trim() || '';
+        
+        if (!name || !email) {
+            statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Please fill name and email.</div>';
+            return;
+        }
+        if (plan === 'writer' && !pseudonym) {
+            statusDiv.innerHTML = '<div class="success-msg" style="background:#fce8e6; color:#a13e2d;">Writers must choose a pseudonym.</div>';
+            return;
+        }
+        
+        // store pseudonym in localStorage for later writer dashboard redirection
+        if (plan === 'writer' && pseudonym) {
+            localStorage.setItem('cob_writer_pseudonym', pseudonym);
+            localStorage.setItem('cob_writer_email', email);
+        }
+        
+        // Simulate Sender.net webhook or email notification: 
+        // In real integration you would send a POST to Sender.net form endpoint.
+        // Here we just show success and simulate notification to you.
+        
+        // Prepare data object for your reference (you will receive this via Sender.net)
+        const signupData = {
+            plan: plan,
+            name: name,
+            email: email,
+            phone: phone,
+            pseudonym: pseudonym || null,
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log('Signup submitted (Sender.net replacement):', signupData);
+        
+        // If you have Sender.net form action URL, you can replace this fetch:
+        // For now, we show a success message and will send a notification to you (the admin)
+        
+        // Actually notify admin via a simple fetch to a webhook? You said "Sender.net send me a notification, don't worry"
+        // So we skip external call. But for real integration:
+        /*
+        try {
+            await fetch('https://sender.net/your-form-endpoint', { method: 'POST', body: new FormData(signupForm) });
+        } catch(err) { console.warn('Sender.net not configured') }
+        */
+        
+        statusDiv.innerHTML = '<div class="success-msg">✅ Signup received! ' + 
+            (plan === 'writer' ? 'You will receive an email from Cloudflare to access the Writer Dashboard.' : 
+            'You will receive a payment link and access details.') + '</div>';
+        
+        // clear form after 2 seconds and close modal
+        setTimeout(() => {
+            modal.style.display = 'none';
+            signupForm.reset();
+            statusDiv.innerHTML = '';
+            if (plan === 'writer') {
+                // redirect to writer dashboard if needed? optionally show a message
+                alert('✍️ Welcome! As a writer, you will receive an invite from Cloudflare Zero Trust to log in to the dashboard.');
+            }
+        }, 2500);
+    });
+</script>
+</body>
+</html>
