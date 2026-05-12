@@ -1,18 +1,58 @@
 ✅ YOUR QUESTIONS
 ✅ MY ANSWERS
 
-Step 1 ✅ link problem
-which one is the good one ?
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*
-or
-https://www.deadanglesinstitute.org/cdn-cgi/access/login
-
-Step 2 ✅ CONSOLE
+Step 1 ✅ 
 
 
+Steps ✅ CONSOLE
 
- ✅ 
- → 
+
+ → fetch('/writer/workspace-9xK2mP/data/drafts.json')
+  .then(r => {
+    console.log('Status:', r.status);
+    console.log('OK?', r.ok);
+    return r.json();…
+Promise { <state>: "pending" }
+
+Status: 200 debugger eval code:3:13
+OK? true debugger eval code:4:13
+Data: 
+Object { drafts: (3) […] }
+debugger eval code:7:25
+fetch('/writer/workspace-9xK2mP/data/progress.json')
+  .then(r => {
+    console.log('Status:', r.status);
+    return r.json();
+  })…
+Promise { <state>: "pending" }
+
+Status: 200 debugger eval code:3:13
+Progress: 
+Object { progress: (2) […] }
+debugger eval code:6:25
+console.log('draftsData length:', draftsData?.length);
+console.log('Full draftsData:', draftsData);
+draftsData length: 0 debugger eval code:1:9
+Full draftsData: 
+Array []
+debugger eval code:2:9
+undefined
+console.log('French select:', document.getElementById('frenchArticleSelect'));
+console.log('English select:', document.getElementById('englishArticleSelect'));
+French select: 
+<select id="frenchArticleSelect">
+debugger eval code:1:9
+English select: 
+<select id="englishArticleSelect">
+debugger eval code:2:9
+undefined
+if (draftsData && draftsData.length > 0) {
+  const select = document.getElementById('frenchArticleSelect');
+  select.innerHTML = '<option value="">-- Sélectionner --</option>';
+  draftsData.forEach(draft => {
+    const option = document.createElement('option');…
+No draftsData available debugger eval code:12:11
+undefined 
  
  ✅ 
  → 
