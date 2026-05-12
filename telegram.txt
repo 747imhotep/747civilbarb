@@ -1,98 +1,75 @@
 ✅ YOUR QUESTIONS
 ✅ MY ANSWERS
 
-Step 1 ✅ Done
-Step 2 ✅ Done
+Step 1 ✅ link problem
+which one is the good one ?
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*
+or
+https://www.deadanglesinstitute.org/cdn-cgi/access/login
 
-GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
-[HTTP/3 304  155ms]
+Step 2 ✅ CONSOLE
 
-GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer.css
-[HTTP/3 200 OK 0ms]
 
-GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer.js
-[HTTP/3 200  0ms]
 
-GET
-https://www.deadanglesinstitute.org/favicon.ico
-[HTTP/2 404  0ms]
-
-XHRGET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/drafts.json
-[HTTP/3 404  21ms]
-
-const response = await fetch('/writer/workspace-9xK2mP/data/drafts.json');
-const data = await response.json();
-console.log('Drafts count:', data.drafts.length);
-console.log('First draft:', data.drafts[0]);
-XHRGET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/data/drafts.json
-[HTTP/3 404  32ms]
-
-Uncaught (in promise) SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data
-console.log('draftsData length:', draftsData?.length);
-draftsData length: 0 debugger eval code:1:9
-undefined
-const select = document.getElementById('frenchArticleSelect');
-const frenchDrafts = draftsData.filter(d => d.title_fr && d.status === 'unlocked');
-console.log('French drafts found:', frenchDrafts.length);
-select.innerHTML = '<option value="">-- Sélectionner un article --</option>';
-frenchDrafts.forEach(draft => {…
-French drafts found: 0 debugger eval code:3:9
-Dropdown now has: 1 options debugger eval code:11:9
-undefined
-console.table(draftsData);
-console.table() debugger eval code:1:9
-undefined 
-
-✅ Issues 1 spotted in your JSON
- → where in the html shoul I see the draft ?
+ ✅ 
+ → 
  
- ✅ Updated JavaScript for your file-based drafts
- → We hould check all JavaScript updates that needs to be done.
- can you check above for all JavaScript and build a complete final writer.js
- 
- ✅ Issues 3 Dashboard page
-  → please check the picture.
+ ✅ 
+ → 
  
 
 
-
-✅ 
-├── writer/
-│	│
-│   	└─ workspace-9xK2mP/
-│	
-│   		├─ css/
-│		│	│
-│   		│	└─ writer.css
-│		│
-│   		├─ data/
-│		│	│
-│		│	│
-│		│	├─ drafts.json
-│		│	│
-│   		│	└─ progress.json
-│		│
-│   		├─ index.html
-│		│
-│   		├─ js/
-│		│	│
-│		│	└─ writer.js
-│		│
-│		│
-│   		└─ uploads/
-│		
-│			│
-│   			├─ en/		<-- empty
-│			│
-│   			└─ fr/		<-- empty
+ 
+ ✅ You shared this:
+/www/ (or your webroot)
+   /writer/
+      /workspace-9xK2mP/
+         /data/
+            drafts.json    <-- MUST be here
 
 
-progress.json
+ → here below, part of my tree
+│
+└─  writer/
+   	│	
+   	└─ workspace-9xK2mP/
+   		│
+   		├─ css/
+   		│
+   		│	│
+   		│	├─ writer.css
+   		│	│
+   		│	├─ writer-base.css
+   		│	│
+   		│	├─ writer-components.css
+   		│	│
+   		│	├─ writer-layout.css
+   		│	│
+   		│	└─ writer-modal.css
+   		│
+   		│
+   		├─ data/
+   		│	├─ drafts/		<-- contains few docs
+   		│	│
+   		│	├─ drafts.json
+   		│	│
+   		│	├─ progress/		<-- contains few docs
+   		│	│
+   		│	└─ progress.json
+   		│
+   		│
+   		├─ index.html
+   		│
+   		│
+   		├─ js/
+   		│	│
+   		│	└─  writer.js
+   		│
+   		└─  uploads/
+   			│
+   		   	├─ en/		<-- empty for the moment
+   			│
+   			└─  fr/		<-- empty for the moment
 
 
 
