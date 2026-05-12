@@ -8,7 +8,7 @@
       "assigned_writer_email": null,
       "content_fr": "Introduction : Juste deux questions pour analyser cette orientation raciste",
       "content_en": "Introduction: Only two questions to analyze this racist orientation",
-      "path": "/writer/workspace-9xK2mP/drafts/foot-stad-singe.docx",
+      "path": "/writer/workspace-9xK2mP/data/drafts/foot-stad-singe.docx",
       "word_count_target": 600,
       "deadline": "2026-06-15"
     },
@@ -20,7 +20,7 @@
       "assigned_writer_email": null,
       "content_fr": "",
       "content_en": "",
-      "path": "/writer/workspace-9xK2mP/drafts/intelligence-hor-sol.docx",
+      "path": "/writer/workspace-9xK2mP/data/drafts/intelligence-hor-sol.docx",
       "word_count_target": 800,
       "deadline": "2026-06-30"
     },
@@ -32,7 +32,7 @@
       "assigned_writer_email": "marie@example.com",
       "content_fr": "À compléter par le rédacteur...",
       "content_en": "To be completed by the writer...",
-      "path": "/writer/workspace-9xK2mP/drafts/draft.txt",
+      "path": "/writer/workspace-9xK2mP/data/drafts/draft.txt",
       "word_count_target": 1500,
       "deadline": "2026-05-30"
     }
