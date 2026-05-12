@@ -469,8 +469,6 @@ async function initWriterDashboard() {
     const email = await getWriterIdentity();
     if (!email) {
         console.log('Writer not identified - Cloudflare login required');
-        
-        // Show login button/message
         const container = document.querySelector('.dashboard-container');
         if (container) {
             container.innerHTML = `
@@ -480,7 +478,7 @@ async function initWriterDashboard() {
                     🔐 Please log in via Cloudflare to access this dashboard.
                     <br><br>
 
-                    <a href="https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*" class="login-btn">Accéder au tableau de bord</a>
+                    <a href="https://www.deadanglesinstitute.org/cdn-cgi/access/login" class="login-btn">Accéder au tableau de bord</a>
                     <br><br>
 
                     <small>Si vous n'avez pas reçu d'invitation, contactez l'équipe éditoriale.</small>
@@ -493,6 +491,8 @@ async function initWriterDashboard() {
         return;
     }
     
+    console.log('✅ Writer email:', email);
+    
     // Display writer info
     const writerInfo = document.getElementById('writerInfo');
     if (writerInfo) {
@@ -500,15 +500,25 @@ async function initWriterDashboard() {
     }
     
     // Load data
+    console.log('📥 Loading drafts.json...');
     await loadDrafts();
+    console.log('✅ Drafts loaded:', draftsData.length, 'drafts');
+    
+    console.log('📥 Loading progress.json...');
     await loadProgress();
+    console.log('✅ Progress loaded:', progressData.length, 'entries');
     
     // Populate dropdowns
+    console.log('📋 Populating French dropdown...');
     populateFrenchDropdown(draftsData);
+    
+    console.log('📋 Populating English dropdown...');
     populateEnglishDropdown(draftsData);
     
     // Setup file uploads
     setupFileUploads();
+    
+    console.log('🎉 Dashboard initialized successfully');
 }
 
 // Run when page loads
