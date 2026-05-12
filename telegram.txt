@@ -8,8 +8,18 @@ Step 4 ✅ ???
 Step 5 ✅ only managable Access policies
 Step 6 ✅ Done
 
-✅ 
+✅ please check this out
 
+✅ Issues 1 spotted in your JSON
+ → where in the html shoul I see the draft ?
+ 
+ ✅ Updated JavaScript for your file-based drafts
+ → We hould check all JavaScript updates that needs to be done.
+ can you check above for all JavaScript and build a complete final writer.js
+ 
+ ✅ Issues 3 Dashboard page
+  → please check the picture.
+ 
 
 
 
