@@ -12,17 +12,6 @@
       "imagePath": "/pictures/articles-pic/thumb-mensonge03.png"
     },
     {
-      "id": "melanine-selenium",
-      "title": "Mélanine et bienfaits du sélénium",
-      "subtitle": "Propriétés méconnues de la mélanine",
-      "abstract": "Exploration des propriétés de la mélanine et son interaction avec le sélénium. Découvrez les bienfaits méconnus de ces éléments essentiels.",
-      "type": "premium",
-      "pages": 8,
-      "path": "/fr/premium/",
-      "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
-    },
-    {
       "id": "richesse-sorcellerie",
       "title": "Richesse et Sorcellerie",
       "subtitle": "Dynamiques invisibles et blocages dans les projets collectifs",
@@ -32,17 +21,6 @@
       "path": "/fr/library/biblio/fr/free/richesse_et_sorcellerie.pdf",
       "hasImage": true,
       "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie02.png"
-    },
-    {
-      "id": "couleur-de-peau",
-      "title": "Couleur de peau",
-      "subtitle": "Mécanismes de destruction de la mélanine chez les enfants noirs",
-      "abstract": "Mécanismes de destruction de la mélanine, les enfants en ligne de mire.",
-      "type": "free",
-      "pages": 10,
-      "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
-      "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-target01.png"
     },
     {
       "id": "se-synchroniser-eba",
