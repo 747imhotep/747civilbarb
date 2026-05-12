@@ -1,0 +1,159 @@
+/* =================================================
+   Civilisation ou Barbarie - Writer's Workspace CSS
+   COMPONENT STYLES FOR PROGRESS CARDS, 
+   upload section, and recent documents
+   ================================================= */
+
+
+
+
+.progress-container {
+    margin-bottom: 1.5rem;
+}
+
+.progress-card {
+    background: #faf8f3;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+.progress-card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #2c3e2f;
+}
+
+.progress-bar-container {
+    background: #e6dfd3;
+    border-radius: 20px;
+    height: 10px;
+    margin: 0.75rem 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: #8faa7b;
+    height: 100%;
+    border-radius: 20px;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.word-count {
+    font-size: 0.8rem;
+    color: #6b5e4a;
+    margin: 0.5rem 0;
+}
+
+.deadline {
+    font-size: 0.75rem;
+    color: #c97e5a;
+}
+
+.update-progress-fr,
+.update-progress-en,
+.view-document-fr,
+.view-document-en {
+    background: #2c3e2f;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.update-progress-fr:hover,
+.update-progress-en:hover,
+.view-document-fr:hover,
+.view-document-en:hover {
+    background: #1f2e21;
+}
+
+/* Upload section */
+.upload-section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #faf8f3;
+    border-radius: 20px;
+}
+
+.form-row {
+    margin-bottom: 0.75rem;
+}
+
+.form-row label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: #4b5e46;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d4c9b8;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
+
+button[type="submit"] {
+    background: #8f6a3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+button[type="submit"]:hover {
+    background: #6e502d;
+}
+
+/* Recent documents */
+.recent-docs {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: #faf8f3;
+    border-radius: 16px;
+    min-height: 100px;
+}
+
+.recent-docs-list {
+    list-style: none;
+}
+
+.recent-docs-list li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #e6dfd3;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+}
+
+.recent-docs-list a {
+    color: #2c3e2f;
+    text-decoration: none;
+}
+
+.recent-docs-list a:hover {
+    text-decoration: underline;
+}
+
+.upload-date {
+    color: #aa9f8c;
+    font-size: 0.7rem;
+}
+
+.no-article,
+.no-documents {
+    color: #aa9f8c;
+    text-align: center;
+    padding: 1rem;
+}

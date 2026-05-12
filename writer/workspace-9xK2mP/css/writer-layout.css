@@ -1,0 +1,46 @@
+/* =================================================
+   Civilisation ou Barbarie - Writer's Workspace CSS
+   LAYOUT STYLES FOR THE WRITER'S DASHBOARD
+   ================================================= */
+
+
+
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.column {
+    background: white;
+    border-radius: 28px;
+    padding: 1.5rem;
+    border: 1px solid #e6dfd3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.column h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #3b4b3a;
+    border-left: 4px solid #8faa7b;
+    padding-left: 0.75rem;
+}
+
+.column h3 {
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem 0;
+    color: #6b5e4a;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    body {
+        padding: 1rem;
+    }
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

@@ -1,0 +1,56 @@
+/* =================================================
+   Civilisation ou Barbarie - Writer's Workspace CSS
+   BASE STYLES AND TYPOGRAPHY 
+   for the writer's dashboard
+   ================================================= */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f2eb;
+    color: #1a1a1a;
+    padding: 2rem;
+}
+
+.dashboard-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #d4c9b8;
+}
+
+.dashboard-header h1 {
+    color: #2c3e2f;
+    font-size: 1.6rem;
+}
+
+.writer-info {
+    background: #e8e2d6;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    font-size: 0.85rem;
+}
+
+.writer-pseudo {
+    font-weight: 600;
+    color: #2c3e2f;
+}
+
+.writer-email {
+    color: #8b8070;
+    font-size: 0.75rem;
+}
