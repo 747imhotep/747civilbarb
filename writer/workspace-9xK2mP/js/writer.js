@@ -1,15 +1,13 @@
 // =================================================
 // Civilisation ou Barbarie - Writer Dashboard JS
-// Complete version with two-column layout
+// Complete version - French/English columns
 // =================================================
 
 // Global variables
-let currentWriterEmail = null;
-let currentWriterPseudonym = null;
-let currentFrenchDraft = null;
-let currentEnglishDraft = null;
 let draftsData = [];
 let progressData = [];
+let currentWriterEmail = null;
+let currentWriterPseudonym = null;
 
 // =================================================
 // 1. GET WRITER IDENTITY from Cloudflare
@@ -22,9 +20,9 @@ async function getWriterIdentity() {
         if (response.ok) {
             const identity = await response.json();
             currentWriterEmail = identity.email;
-            // Try to get pseudonym from localStorage
             currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || identity.email.split('@')[0];
-            return identity.email;
+            console.log('✅ Writer identified:', currentWriterEmail);
+            return currentWriterEmail;
         }
     } catch (error) {
         console.log('Could not fetch Cloudflare identity');
@@ -40,13 +38,27 @@ async function loadDrafts() {
         const response = await fetch('/writer/workspace-9xK2mP/data/drafts.json');
         if (response.ok) {
             const data = await response.json();
-            draftsData = data.drafts;
-            return draftsData;
+            console.log('📥 Drafts.json loaded:', data);
+            
+            if (data && data.drafts) {
+                draftsData = data.drafts;
+                console.log('✅ Drafts assigned:', draftsData.length, 'articles');
+                return draftsData;
+            } else {
+                console.error('❌ drafts.json missing "drafts" key');
+                draftsData = [];
+                return [];
+            }
+        } else {
+            console.error('❌ Failed to load drafts.json:', response.status);
+            draftsData = [];
+            return [];
         }
     } catch (error) {
-        console.error('Error loading drafts:', error);
+        console.error('❌ Error loading drafts:', error);
+        draftsData = [];
+        return [];
     }
-    return [];
 }
 
 async function loadProgress() {
@@ -54,57 +66,41 @@ async function loadProgress() {
         const response = await fetch('/writer/workspace-9xK2mP/data/progress.json');
         if (response.ok) {
             const data = await response.json();
-            progressData = data.progress;
-            return progressData;
+            console.log('📥 Progress.json loaded:', data);
+            
+            if (data && data.progress) {
+                progressData = data.progress;
+                console.log('✅ Progress assigned:', progressData.length, 'entries');
+                return progressData;
+            } else {
+                console.error('❌ progress.json missing "progress" key');
+                progressData = [];
+                return [];
+            }
+        } else {
+            console.error('❌ Failed to load progress.json:', response.status);
+            progressData = [];
+            return [];
         }
     } catch (error) {
-        console.error('Error loading progress:', error);
+        console.error('❌ Error loading progress:', error);
+        progressData = [];
+        return [];
     }
-    return [];
 }
 
 // =================================================
-// 3. SAVE PROGRESS (simulated - replace with actual endpoint)
-// =================================================
-async function saveProgressToServer(draftId, wordsWritten, comment) {
-    // In a real implementation, this would POST to an endpoint
-    // that writes to progress.json
-    console.log('Saving progress:', { draftId, wordsWritten, comment, writer: currentWriterEmail });
-    
-    // Update local progressData
-    const existingIndex = progressData.findIndex(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
-    
-    if (existingIndex >= 0) {
-        progressData[existingIndex].words_written = wordsWritten;
-        progressData[existingIndex].last_update = new Date().toISOString();
-        if (comment) progressData[existingIndex].comment = comment;
-    } else {
-        progressData.push({
-            writer_email: currentWriterEmail,
-            writer_pseudonym: currentWriterPseudonym,
-            draft_id: draftId,
-            words_written: wordsWritten,
-            last_update: new Date().toISOString(),
-            comment: comment || null,
-            status: 'in_progress'
-        });
-    }
-    
-    // TODO: Replace with actual fetch POST to your backend
-    // await fetch('/api/save-progress', { method: 'POST', body: JSON.stringify(progressData) });
-    
-    return true;
-}
-
-// =================================================
-// 4. POPULATE FRENCH DROPDOWN
+// 3. POPULATE DROPDOWNS
 // =================================================
 function populateFrenchDropdown(drafts) {
     const select = document.getElementById('frenchArticleSelect');
-    if (!select) return;
+    if (!select) {
+        console.error('❌ French select not found');
+        return;
+    }
     
-    // Filter drafts that have French content
     const frenchDrafts = drafts.filter(d => d.title_fr && d.status === 'unlocked');
+    console.log('🇫🇷 French drafts found:', frenchDrafts.length);
     
     select.innerHTML = '<option value="">-- Sélectionner un article --</option>';
     
@@ -115,26 +111,22 @@ function populateFrenchDropdown(drafts) {
         select.appendChild(option);
     });
     
+    console.log('✅ French dropdown has', select.options.length, 'options');
+    
     // Add change event listener
-    select.addEventListener('change', (e) => {
-        const draftId = e.target.value;
-        if (draftId) {
-            loadFrenchArticleProgress(draftId);
-        } else {
-            clearFrenchProgress();
-        }
-    });
+    select.removeEventListener('change', handleFrenchChange);
+    select.addEventListener('change', handleFrenchChange);
 }
 
-// =================================================
-// 5. POPULATE ENGLISH DROPDOWN
-// =================================================
 function populateEnglishDropdown(drafts) {
     const select = document.getElementById('englishArticleSelect');
-    if (!select) return;
+    if (!select) {
+        console.error('❌ English select not found');
+        return;
+    }
     
-    // Filter drafts that have English content
     const englishDrafts = drafts.filter(d => d.title_en && d.status === 'unlocked');
+    console.log('🇬🇧 English drafts found:', englishDrafts.length);
     
     select.innerHTML = '<option value="">-- Select an article --</option>';
     
@@ -145,46 +137,66 @@ function populateEnglishDropdown(drafts) {
         select.appendChild(option);
     });
     
-    select.addEventListener('change', (e) => {
-        const draftId = e.target.value;
-        if (draftId) {
-            loadEnglishArticleProgress(draftId);
-        } else {
-            clearEnglishProgress();
-        }
-    });
+    console.log('✅ English dropdown has', select.options.length, 'options');
+    
+    select.removeEventListener('change', handleEnglishChange);
+    select.addEventListener('change', handleEnglishChange);
 }
 
 // =================================================
-// 6. LOAD FRENCH ARTICLE PROGRESS
+// 4. HANDLE ARTICLE SELECTION
+// =================================================
+async function handleFrenchChange(e) {
+    const draftId = e.target.value;
+    if (draftId) {
+        await loadFrenchArticleProgress(draftId);
+    } else {
+        clearFrenchProgress();
+    }
+}
+
+async function handleEnglishChange(e) {
+    const draftId = e.target.value;
+    if (draftId) {
+        await loadEnglishArticleProgress(draftId);
+    } else {
+        clearEnglishProgress();
+    }
+}
+
+// =================================================
+// 5. LOAD ARTICLE PROGRESS
 // =================================================
 async function loadFrenchArticleProgress(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
-    if (!draft) return;
+    if (!draft) {
+        console.error('❌ Draft not found:', draftId);
+        return;
+    }
     
-    currentFrenchDraft = draft;
+    console.log('🇫🇷 Loading French article:', draft.title_fr);
     
     const progress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
     const wordsWritten = progress ? progress.words_written : 0;
     const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
     
-    // Update progress display
     const progressDiv = document.getElementById('frenchProgress');
     if (progressDiv) {
         progressDiv.innerHTML = `
             <div class="progress-card">
-                <h4>${draft.title_fr}</h4>
+                <h4>📄 ${draft.title_fr}</h4>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: ${percentComplete}%;"></div>
                 </div>
                 <p class="word-count">📝 ${wordsWritten} / ${draft.word_count_target} mots</p>
                 ${draft.deadline ? `<p class="deadline">⏰ Échéance: ${new Date(draft.deadline).toLocaleDateString('fr-FR')}</p>` : ''}
-                <button class="update-progress-fr" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Mettre à jour ma progression</button>
-                <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
+                <div class="button-group">
+                    <button class="update-progress-fr" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Mettre à jour</button>
+                    <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
+                </div>
             </div>
         `;
         
-        // Add event listeners
         document.querySelector('.update-progress-fr')?.addEventListener('click', () => {
             openProgressModal(draft.id, draft.word_count_target, 'fr');
         });
@@ -193,25 +205,17 @@ async function loadFrenchArticleProgress(draftId) {
         });
     }
     
-    // Update recent documents list (French)
     await updateRecentDocuments('fr', draftId);
 }
 
-function clearFrenchProgress() {
-    const progressDiv = document.getElementById('frenchProgress');
-    if (progressDiv) {
-        progressDiv.innerHTML = '<p class="no-article">Sélectionnez un article pour voir la progression.</p>';
-    }
-}
-
-// =================================================
-// 7. LOAD ENGLISH ARTICLE PROGRESS
-// =================================================
 async function loadEnglishArticleProgress(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
-    if (!draft) return;
+    if (!draft) {
+        console.error('❌ Draft not found:', draftId);
+        return;
+    }
     
-    currentEnglishDraft = draft;
+    console.log('🇬🇧 Loading English article:', draft.title_en);
     
     const progress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
     const wordsWritten = progress ? progress.words_written : 0;
@@ -221,14 +225,16 @@ async function loadEnglishArticleProgress(draftId) {
     if (progressDiv) {
         progressDiv.innerHTML = `
             <div class="progress-card">
-                <h4>${draft.title_en}</h4>
+                <h4>📄 ${draft.title_en}</h4>
                 <div class="progress-bar-container">
                     <div class="progress-bar" style="width: ${percentComplete}%;"></div>
                 </div>
                 <p class="word-count">📝 ${wordsWritten} / ${draft.word_count_target} words</p>
                 ${draft.deadline ? `<p class="deadline">⏰ Deadline: ${new Date(draft.deadline).toLocaleDateString('en-US')}</p>` : ''}
-                <button class="update-progress-en" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Update my progress</button>
-                <button class="view-document-en" data-path="${draft.path}">📖 View document</button>
+                <div class="button-group">
+                    <button class="update-progress-en" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Update</button>
+                    <button class="view-document-en" data-path="${draft.path}">📖 View document</button>
+                </div>
             </div>
         `;
         
@@ -243,6 +249,13 @@ async function loadEnglishArticleProgress(draftId) {
     await updateRecentDocuments('en', draftId);
 }
 
+function clearFrenchProgress() {
+    const progressDiv = document.getElementById('frenchProgress');
+    if (progressDiv) {
+        progressDiv.innerHTML = '<p class="no-article">Sélectionnez un article pour voir la progression.</p>';
+    }
+}
+
 function clearEnglishProgress() {
     const progressDiv = document.getElementById('englishProgress');
     if (progressDiv) {
@@ -251,13 +264,9 @@ function clearEnglishProgress() {
 }
 
 // =================================================
-// 8. UPDATE RECENT DOCUMENTS
+// 6. UPDATE RECENT DOCUMENTS
 // =================================================
 async function updateRecentDocuments(language, draftId) {
-    const draft = draftsData.find(d => d.id === draftId);
-    if (!draft) return;
-    
-    // Get upload history for this draft (from localStorage or server)
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
     const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
     
@@ -285,7 +294,7 @@ async function updateRecentDocuments(language, draftId) {
 }
 
 // =================================================
-// 9. PROGRESS MODAL
+// 7. PROGRESS MODAL
 // =================================================
 function openProgressModal(draftId, targetWords, language) {
     let modal = document.getElementById('progressModal');
@@ -350,25 +359,23 @@ function openProgressModal(draftId, targetWords, language) {
         const currentLanguage = modal.getAttribute('data-language');
         
         if (isNaN(wordsToday) || wordsToday < 0) {
-            progressStatus.innerHTML = '<div class="error-msg">Please enter a valid number.</div>';
+            progressStatus.innerHTML = '<div class="error-msg">Veuillez entrer un nombre valide.</div>';
             return;
         }
         
-        // Get current progress
         const existingProgress = progressData.find(p => p.draft_id === currentDraftId && p.writer_email === currentWriterEmail);
         const currentWords = existingProgress ? existingProgress.words_written : 0;
         const newTotal = currentWords + wordsToday;
         
         await saveProgressToServer(currentDraftId, newTotal, comment);
         
-        progressStatus.innerHTML = '<div class="success-msg">✅ Progress saved! ' + wordsToday + ' words added.</div>';
+        progressStatus.innerHTML = '<div class="success-msg">✅ Progression enregistrée ! ' + wordsToday + ' mots ajoutés.</div>';
         
         setTimeout(() => {
             modal.style.display = 'none';
             progressStatus.innerHTML = '';
             newForm.reset();
             
-            // Refresh the progress display
             if (currentLanguage === 'fr') {
                 loadFrenchArticleProgress(currentDraftId);
             } else {
@@ -378,8 +385,32 @@ function openProgressModal(draftId, targetWords, language) {
     });
 }
 
+async function saveProgressToServer(draftId, wordsWritten, comment) {
+    const existingIndex = progressData.findIndex(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
+    
+    if (existingIndex >= 0) {
+        progressData[existingIndex].words_written = wordsWritten;
+        progressData[existingIndex].last_update = new Date().toISOString();
+        if (comment) progressData[existingIndex].comment = comment;
+    } else {
+        progressData.push({
+            writer_email: currentWriterEmail,
+            writer_pseudonym: currentWriterPseudonym,
+            draft_id: draftId,
+            words_written: wordsWritten,
+            last_update: new Date().toISOString(),
+            comment: comment || null,
+            status: 'in_progress'
+        });
+    }
+    
+    console.log('Progress saved locally:', progressData);
+    // TODO: Add fetch POST to save to server
+    return true;
+}
+
 // =================================================
-// 10. FILE UPLOAD HANDLING (Formspree)
+// 8. FILE UPLOAD HANDLING
 // =================================================
 function setupFileUploads() {
     const frenchUploadForm = document.getElementById('frenchUploadForm');
@@ -425,7 +456,6 @@ function setupFileUploads() {
 }
 
 async function uploadFile(file, draftId, language) {
-    // Formspree upload
     const formData = new FormData();
     formData.append('file', file);
     formData.append('draft_id', draftId);
@@ -434,12 +464,8 @@ async function uploadFile(file, draftId, language) {
     formData.append('language', language);
     
     // TODO: Replace with your actual Formspree endpoint
-    // const response = await fetch('https://formspree.io/f/YOUR_ID', { method: 'POST', body: formData });
-    
-    // Simulate success
     console.log('Uploading:', file.name, 'for draft:', draftId);
     
-    // Save to localStorage for recent documents
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
     const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
     uploads.unshift({
@@ -452,76 +478,68 @@ async function uploadFile(file, draftId, language) {
     
     alert(language === 'fr' ? 'Fichier envoyé avec succès !' : 'File uploaded successfully!');
     
-    // Reset file input
     const fileInput = language === 'fr' ? document.getElementById('frenchFile') : document.getElementById('englishFile');
     if (fileInput) fileInput.value = '';
     
-    // Refresh recent documents
     await updateRecentDocuments(language, draftId);
 }
 
 // =================================================
-// 11. INITIALIZE DASHBOARD
+// 9. INITIALIZE DASHBOARD
 // =================================================
-// Replace the existing initWriterDashboard function with this:
-
 async function initWriterDashboard() {
+    console.log('🚀 Initializing writer dashboard...');
+    
     const email = await getWriterIdentity();
     if (!email) {
-        console.log('Writer not identified - Cloudflare login required');
+        console.log('❌ Writer not identified - Cloudflare login required');
         const container = document.querySelector('.dashboard-container');
         if (container) {
             container.innerHTML = `
                 <div class="login-error">
-                    🔐 Veuillez vous connecter via Cloudflare pour accéder à ce tableau de bord.
+                    🔐 Accès protégé par Cloudflare Zero Trust.
                     <br><br>
-                    🔐 Please log in via Cloudflare to access this dashboard.
+                    Cette page est réservée aux rédacteurs approuvés.
                     <br><br>
-
-                    <a href="https://www.deadanglesinstitute.org/cdn-cgi/access/login" class="login-btn">Accéder au tableau de bord</a>
-                    <br><br>
-
-                    <small>Si vous n'avez pas reçu d'invitation, contactez l'équipe éditoriale.</small>
-                    <br><br>
-
-                    <small>If you haven't received an invitation, please contact the editorial team.</small>
+                    <small>Si vous devriez avoir accès, contactez l'équipe éditoriale.</small>
                 </div>
             `;
         }
         return;
     }
     
-    console.log('✅ Writer email:', email);
+    console.log('✅ Writer email:', currentWriterEmail);
+    console.log('✅ Writer pseudonym:', currentWriterPseudonym);
     
-    // Display writer info
     const writerInfo = document.getElementById('writerInfo');
     if (writerInfo) {
         writerInfo.innerHTML = `<span class="writer-pseudo">✍️ ${currentWriterPseudonym}</span> <span class="writer-email">(${currentWriterEmail})</span>`;
     }
     
-    // Load data
     console.log('📥 Loading drafts.json...');
     await loadDrafts();
-    console.log('✅ Drafts loaded:', draftsData.length, 'drafts');
     
     console.log('📥 Loading progress.json...');
     await loadProgress();
-    console.log('✅ Progress loaded:', progressData.length, 'entries');
     
-    // Populate dropdowns
+    console.log('📋 Final draftsData:', draftsData);
+    console.log('📋 Final progressData:', progressData);
+    
     console.log('📋 Populating French dropdown...');
     populateFrenchDropdown(draftsData);
     
     console.log('📋 Populating English dropdown...');
     populateEnglishDropdown(draftsData);
     
-    // Setup file uploads
+    console.log('📤 Setting up file uploads...');
     setupFileUploads();
     
-    console.log('🎉 Dashboard initialized successfully');
+    console.log('🎉 Dashboard initialized successfully!');
 }
 
-// Run when page loads
+// =================================================
+// 10. START THE DASHBOARD
+// =================================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWriterDashboard);
 } else {
