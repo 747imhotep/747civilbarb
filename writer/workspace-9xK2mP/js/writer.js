@@ -37,7 +37,7 @@ async function getWriterIdentity() {
 // =================================================
 async function loadDrafts() {
     try {
-        const response = await fetch('/writer/workspace-9xK2mP/drafts.json');
+        const response = await fetch('/writer/workspace-9xK2mP/data/drafts.json');
         if (response.ok) {
             const data = await response.json();
             draftsData = data.drafts;
