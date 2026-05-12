@@ -219,13 +219,61 @@ pay attention it migh contain some minor errors.
 │
 │   
 │      
-└─  terms_of_use/
-   	 │	
-   	 ├─ csstermsofuse/
-   	 │   │   
-   	 │   └─ terms_of_use.css
-   	 │
-   	 └─ index.html		<-- In the futur, needs EN & FR terms of use maybe to place in shared.
+├─  terms_of_use/
+│   	 │	
+│   	 ├─ csstermsofuse/
+│   	 │   │   
+│   	 │   └─ terms_of_use.css
+│   	 │
+│   	 └─ index.html		<-- In the futur, needs EN & FR terms of use maybe to place in shared.
+│
+│
+│
+└─  writer/
+   	│	
+   	└─ workspace-9xK2mP/
+   		│
+   		├─ css/
+   		│
+   		│	│
+   		│	├─ writer.css
+   		│	│
+   		│	├─ writer-base.css
+   		│	│
+   		│	├─ writer-components.css
+   		│	│
+   		│	├─ writer-layout.css
+   		│	│
+   		│	└─ writer-modal.css
+   		│
+   		│
+   		├─ data/
+   		│	├─ drafts/		<-- contains few docs
+   		│	│
+   		│	├─ drafts.json
+   		│	│
+   		│	├─ progress/		<-- contains few docs
+   		│	│
+   		│	└─ progress.json
+   		│
+   		│
+   		├─ index.html
+   		│
+   		│
+   		├─ js/
+   		│	│
+   		│	└─  writer.js
+   		│
+   		└─  uploads/
+   			│
+   		   	├─ en/		<-- empty for the moment
+   			│
+   			└─  fr/		<-- empty for the moment
+   		
+
+
+
+
 
 
 
