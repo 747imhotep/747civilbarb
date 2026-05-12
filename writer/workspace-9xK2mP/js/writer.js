@@ -478,9 +478,9 @@ async function initWriterDashboard() {
                     🔐 Veuillez vous connecter via Cloudflare pour accéder à ce tableau de bord.
                     <br><br>
                     🔐 Please log in via Cloudflare to access this dashboard.
-                    br><br>
+                    <br><br>
 
-                    <a href="https://deadanglesinstitute.org/writer/workspace-9xK2mP/*" class="login-btn">Accéder au tableau de bord</a>
+                    <a href="https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*" class="login-btn">Accéder au tableau de bord</a>
                     <br><br>
 
                     <small>Si vous n'avez pas reçu d'invitation, contactez l'équipe éditoriale.</small>
