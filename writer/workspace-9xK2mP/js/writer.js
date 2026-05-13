@@ -497,11 +497,22 @@ async function initWriterDashboard() {
         if (container) {
             container.innerHTML = `
                 <div class="login-error">
-                    🔐 Accès protégé par Cloudflare Zero Trust.
+                    🔐 Veuillez vous connecter via Cloudflare pour accéder à ce tableau de bord.
                     <br><br>
-                    Cette page est réservée aux rédacteurs approuvés.
+                    🔐 Please log in via Cloudflare to access this dashboard.
                     <br><br>
-                    <small>Si vous devriez avoir accès, contactez l'équipe éditoriale.</small>
+
+                    <a href="https://www.deadanglesinstitute.org/cdn-cgi/access/login" 
+                    class="login-btn">
+                    Accéder au tableau de bord
+                    / Access the dashboard
+                    </a>
+                    <br><br>
+
+                    <small>Si vous n'avez pas reçu d'invitation, contactez l'équipe éditoriale.</small>
+                    <br><br>
+
+                    <small>If you haven't received an invitation, please contact the editorial team.</small>
                 </div>
             `;
         }
@@ -513,7 +524,7 @@ async function initWriterDashboard() {
     
     const writerInfo = document.getElementById('writerInfo');
     if (writerInfo) {
-        writerInfo.innerHTML = `<span class="writer-pseudo">✍️ ${currentWriterPseudonym}</span> <span class="writer-email">(${currentWriterEmail})</span>`;
+        writerInfo.innerHTML = `<span class="writer-pseudo">✍🏾 ${currentWriterPseudonym}</span> <span class="writer-email">(${currentWriterEmail})</span>`;
     }
     
     console.log('📥 Loading drafts.json...');
