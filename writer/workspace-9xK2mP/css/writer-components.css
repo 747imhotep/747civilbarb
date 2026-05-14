@@ -184,4 +184,57 @@ button[type="submit"]:hover {
     margin: 0.3rem 0;
 }
 
+/* =================================================
+   Tooltip styles for writer's dashboard
+   Tooltips provide additional information on hover
+   ================================================= */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: #2c3e2f;
+    color: white;
+    text-align: center;
+    padding: 0.5rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    width: auto;
+    min-width: 200px;
+    white-space: normal;
+    line-height: 1.4;
+}
+
+.tooltip .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2c3e2f transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
 /* === END === */
