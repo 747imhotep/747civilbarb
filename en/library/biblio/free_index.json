@@ -3,7 +3,7 @@
     "free": [
       {
         "title": "Skin Color",
-        "file": "couleur-de-peau-v005.pdf"
+        "file": "Couleur_de_peau-v.005.pdf"
       },
       {
         "title": "Demographic Distortions",
@@ -17,10 +17,6 @@
   },
   "fr": {
     "free": [
-      {
-        "title": "Couleur de peau",
-        "file": "couleur-de-peau-v005.pdf"
-      },
       {
         "title": "Mensonges démographiques",
         "file": "mensonges_demographiques_v2.pdf"
