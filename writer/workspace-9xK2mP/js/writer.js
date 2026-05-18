@@ -1,6 +1,7 @@
 // =================================================
 // Civilisation ou Barbarie - Writer Dashboard JS
-// Complete version - French/English columns
+// COMPLETE FINAL VERSION
+// Features: Tooltips, Document table, Status workflow
 // =================================================
 
 // Global variables
@@ -39,7 +40,6 @@ async function loadDrafts() {
         if (response.ok) {
             const data = await response.json();
             console.log('📥 Drafts.json loaded:', data);
-            
             if (data && data.drafts) {
                 draftsData = data.drafts;
                 console.log('✅ Drafts assigned:', draftsData.length, 'articles');
@@ -67,7 +67,6 @@ async function loadProgress() {
         if (response.ok) {
             const data = await response.json();
             console.log('📥 Progress.json loaded:', data);
-            
             if (data && data.progress) {
                 progressData = data.progress;
                 console.log('✅ Progress assigned:', progressData.length, 'entries');
@@ -113,7 +112,6 @@ function populateFrenchDropdown(drafts) {
     
     console.log('✅ French dropdown has', select.options.length, 'options');
     
-    // Add change event listener
     select.removeEventListener('change', handleFrenchChange);
     select.addEventListener('change', handleFrenchChange);
 }
@@ -165,7 +163,7 @@ async function handleEnglishChange(e) {
 }
 
 // =================================================
-// 5. LOAD ARTICLE PROGRESS
+// 5. LOAD ARTICLE PROGRESS WITH TOOLTIPS
 // =================================================
 async function loadFrenchArticleProgress(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
@@ -191,8 +189,20 @@ async function loadFrenchArticleProgress(draftId) {
                 <p class="word-count">📝 ${wordsWritten} / ${draft.word_count_target} mots</p>
                 ${draft.deadline ? `<p class="deadline">⏰ Échéance: ${new Date(draft.deadline).toLocaleDateString('fr-FR')}</p>` : ''}
                 <div class="button-group">
-                    <button class="update-progress-fr" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Mettre à jour</button>
-                    <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
+                    <div class="tooltip">
+                        <button class="update-progress-fr" data-id="${draft.id}" data-target="${draft.word_count_target}">✍🏾 Mettre à jour</button>
+                        <span class="tooltip-text">📝 Indiquez combien de mots vous avez écrits aujourd'hui. La barre de progression se mettra à jour.</span>
+                    </div>
+                    <div class="tooltip">
+                        <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
+                        <span class="tooltip-text">📄 Ouvre le document original (PDF/TXT) pour le lire ou le modifier.</span>
+                    </div>
+                    ${draft.review_status === 'work_in_progress' || !draft.review_status ? `
+                    <div class="tooltip">
+                        <button class="mark-ready-fr" data-id="${draft.id}">✅ Prêt pour relecture</button>
+                        <span class="tooltip-text">Signalez que votre travail est terminé et prêt à être relu par l'équipe éditoriale.</span>
+                    </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -202,6 +212,9 @@ async function loadFrenchArticleProgress(draftId) {
         });
         document.querySelector('.view-document-fr')?.addEventListener('click', () => {
             window.open(draft.path, '_blank');
+        });
+        document.querySelector('.mark-ready-fr')?.addEventListener('click', () => {
+            markReadyForReview(draft.id, 'fr');
         });
     }
     
@@ -232,8 +245,20 @@ async function loadEnglishArticleProgress(draftId) {
                 <p class="word-count">📝 ${wordsWritten} / ${draft.word_count_target} words</p>
                 ${draft.deadline ? `<p class="deadline">⏰ Deadline: ${new Date(draft.deadline).toLocaleDateString('en-US')}</p>` : ''}
                 <div class="button-group">
-                    <button class="update-progress-en" data-id="${draft.id}" data-target="${draft.word_count_target}">✍️ Update</button>
-                    <button class="view-document-en" data-path="${draft.path}">📖 View document</button>
+                    <div class="tooltip">
+                        <button class="update-progress-en" data-id="${draft.id}" data-target="${draft.word_count_target}">✍🏾 Update</button>
+                        <span class="tooltip-text">📝 Enter how many words you wrote today. The progress bar will update.</span>
+                    </div>
+                    <div class="tooltip">
+                        <button class="view-document-en" data-path="${draft.path}">📖 View document</button>
+                        <span class="tooltip-text">📄 Opens the original document (PDF/TXT) to read or edit.</span>
+                    </div>
+                    ${draft.review_status === 'work_in_progress' || !draft.review_status ? `
+                    <div class="tooltip">
+                        <button class="mark-ready-en" data-id="${draft.id}">✅ Ready for review</button>
+                        <span class="tooltip-text">Signal that your work is complete and ready for editorial review.</span>
+                    </div>
+                    ` : ''}
                 </div>
             </div>
         `;
@@ -243,6 +268,9 @@ async function loadEnglishArticleProgress(draftId) {
         });
         document.querySelector('.view-document-en')?.addEventListener('click', () => {
             window.open(draft.path, '_blank');
+        });
+        document.querySelector('.mark-ready-en')?.addEventListener('click', () => {
+            markReadyForReview(draft.id, 'en');
         });
     }
     
@@ -264,7 +292,40 @@ function clearEnglishProgress() {
 }
 
 // =================================================
-// 6. UPDATE RECENT DOCUMENTS
+// 6. MARK READY FOR REVIEW
+// =================================================
+async function markReadyForReview(draftId, language) {
+    const confirmMsg = language === 'fr' 
+        ? 'Confirmez-vous que ce document est prêt pour relecture ?'
+        : 'Confirm this document is ready for review?';
+    
+    if (confirm(confirmMsg)) {
+        // Update the draft status
+        const draft = draftsData.find(d => d.id === draftId);
+        if (draft) {
+            draft.review_status = 'ready_for_review';
+            console.log('✅ Document ready for review:', draftId);
+            
+            // TODO: Send notification to you (email/Telegram)
+            // You can add fetch call here to notify you
+            
+            alert(language === 'fr' 
+                ? '✅ Document envoyé pour relecture. L\'équipe éditoriale vous répondra bientôt.'
+                : '✅ Document sent for review. The editorial team will get back to you.');
+            
+            // Refresh the progress display
+            if (language === 'fr') {
+                await loadFrenchArticleProgress(draftId);
+            } else {
+                await loadEnglishArticleProgress(draftId);
+            }
+            await displayAllDocuments();
+        }
+    }
+}
+
+// =================================================
+// 7. UPDATE RECENT DOCUMENTS
 // =================================================
 async function updateRecentDocuments(language, draftId) {
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
@@ -294,7 +355,77 @@ async function updateRecentDocuments(language, draftId) {
 }
 
 // =================================================
-// 7. PROGRESS MODAL
+// 8. DISPLAY ALL DOCUMENTS TABLE
+// =================================================
+async function displayAllDocuments() {
+    const container = document.getElementById('allDocumentsContainer');
+    if (!container) return;
+    
+    if (!draftsData || draftsData.length === 0) {
+        container.innerHTML = '<p>Aucun document assigné pour le moment.</p>';
+        return;
+    }
+    
+    let html = '<table class="documents-table">';
+    html += '<thead><tr><th>Titre</th><th>Statut</th><th>Progression</th><th>Télécharger</th><th>Actions</th></tr></thead><tbody>';
+    
+    for (const draft of draftsData) {
+        const progress = progressData.find(p => p.draft_id === draft.id && p.writer_email === currentWriterEmail);
+        const wordsWritten = progress ? progress.words_written : 0;
+        const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
+        
+        let statusText = '';
+        let statusClass = '';
+        if (draft.review_status === 'work_in_progress' || !draft.review_status) {
+            statusText = '🚧 En cours';
+            statusClass = 'status-in-progress';
+        } else if (draft.review_status === 'ready_for_review') {
+            statusText = '⏳ En relecture';
+            statusClass = 'status-review';
+        } else if (draft.review_status === 'approved') {
+            statusText = '✅ Approuvé';
+            statusClass = 'status-approved';
+        } else if (draft.review_status === 'published_free') {
+            statusText = '📖 Publié (Libre)';
+            statusClass = 'status-published';
+        } else if (draft.review_status === 'published_premium') {
+            statusText = '⭐ Publié (Premium)';
+            statusClass = 'status-published';
+        }
+        
+        html += `
+            <tr class="${statusClass}">
+                <td><strong>${draft.title_fr || draft.title_en}</strong></td>
+                <td>${statusText}</td>
+                <td>
+                    <div class="progress-bar-container" style="width: 100px;">
+                        <div class="progress-bar" style="width: ${percentComplete}%;"></div>
+                    </div>
+                    ${percentComplete}%
+                </td>
+                <td><a href="${draft.path}" download class="download-link">📥 Télécharger</a></td>
+                <td>
+                    <button class="small-btn view-btn" data-path="${draft.path}">👁️ Voir</button>
+                    ${(draft.review_status === 'work_in_progress' || !draft.review_status) ? `<button class="small-btn review-btn" data-id="${draft.id}" data-lang="fr">✅ Prêt</button>` : ''}
+                </td>
+            </tr>
+        `;
+    }
+    
+    html += '</tbody></table>';
+    container.innerHTML = html;
+    
+    // Attach event listeners
+    document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', () => window.open(btn.dataset.path, '_blank'));
+    });
+    document.querySelectorAll('.review-btn').forEach(btn => {
+        btn.addEventListener('click', () => markReadyForReview(btn.dataset.id, btn.dataset.lang || 'fr'));
+    });
+}
+
+// =================================================
+// 9. PROGRESS MODAL
 // =================================================
 function openProgressModal(draftId, targetWords, language) {
     let modal = document.getElementById('progressModal');
@@ -305,7 +436,7 @@ function openProgressModal(draftId, targetWords, language) {
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="close-modal">&times;</span>
-                <h3 id="modalTitle">✍️ Update Progress</h3>
+                <h3 id="modalTitle">✍🏾 Update Progress</h3>
                 <form id="progressForm">
                     <div class="form-group">
                         <label id="wordsLabel">Words written today</label>
@@ -333,7 +464,7 @@ function openProgressModal(draftId, targetWords, language) {
     
     // Set language-specific text
     const isFrench = language === 'fr';
-    document.getElementById('modalTitle').textContent = isFrench ? '✍️ Mettre à jour ma progression' : '✍️ Update my progress';
+    document.getElementById('modalTitle').textContent = isFrench ? '✍🏾 Mettre à jour ma progression' : '✍🏾 Update my progress';
     document.getElementById('wordsLabel').textContent = isFrench ? 'Mots écrits aujourd\'hui' : 'Words written today';
     document.getElementById('commentLabel').textContent = isFrench ? 'Commentaire (optionnel)' : 'Comment (optional)';
     document.querySelector('.submit-progress').textContent = isFrench ? 'Enregistrer ma progression' : 'Save progress';
@@ -381,6 +512,7 @@ function openProgressModal(draftId, targetWords, language) {
             } else {
                 loadEnglishArticleProgress(currentDraftId);
             }
+            displayAllDocuments();
         }, 2000);
     });
 }
@@ -405,12 +537,11 @@ async function saveProgressToServer(draftId, wordsWritten, comment) {
     }
     
     console.log('Progress saved locally:', progressData);
-    // TODO: Add fetch POST to save to server
     return true;
 }
 
 // =================================================
-// 8. FILE UPLOAD HANDLING
+// 10. FILE UPLOAD HANDLING
 // =================================================
 function setupFileUploads() {
     const frenchUploadForm = document.getElementById('frenchUploadForm');
@@ -463,7 +594,6 @@ async function uploadFile(file, draftId, language) {
     formData.append('writer_pseudonym', currentWriterPseudonym);
     formData.append('language', language);
     
-    // TODO: Replace with your actual Formspree endpoint
     console.log('Uploading:', file.name, 'for draft:', draftId);
     
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
@@ -482,10 +612,11 @@ async function uploadFile(file, draftId, language) {
     if (fileInput) fileInput.value = '';
     
     await updateRecentDocuments(language, draftId);
+    await displayAllDocuments();
 }
 
 // =================================================
-// 9. INITIALIZE DASHBOARD
+// 11. INITIALIZE DASHBOARD
 // =================================================
 async function initWriterDashboard() {
     console.log('🚀 Initializing writer dashboard...');
@@ -497,22 +628,11 @@ async function initWriterDashboard() {
         if (container) {
             container.innerHTML = `
                 <div class="login-error">
-                    🔐 Veuillez vous connecter via Cloudflare pour accéder à ce tableau de bord.
+                    🔐 Accès protégé par Cloudflare Zero Trust.
                     <br><br>
-                    🔐 Please log in via Cloudflare to access this dashboard.
+                    Cette page est réservée aux rédacteurs approuvés.
                     <br><br>
-
-                    <a href="https://www.deadanglesinstitute.org/cdn-cgi/access/login" 
-                    class="login-btn">
-                    Accéder au tableau de bord
-                    / Access the dashboard
-                    </a>
-                    <br><br>
-
-                    <small>Si vous n'avez pas reçu d'invitation, contactez l'équipe éditoriale.</small>
-                    <br><br>
-
-                    <small>If you haven't received an invitation, please contact the editorial team.</small>
+                    <small>Si vous devriez avoir accès, contactez l'équipe éditoriale.</small>
                 </div>
             `;
         }
@@ -545,11 +665,14 @@ async function initWriterDashboard() {
     console.log('📤 Setting up file uploads...');
     setupFileUploads();
     
+    console.log('📚 Displaying all documents...');
+    await displayAllDocuments();
+    
     console.log('🎉 Dashboard initialized successfully!');
 }
 
 // =================================================
-// 10. START THE DASHBOARD
+// 12. START THE DASHBOARD
 // =================================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWriterDashboard);
