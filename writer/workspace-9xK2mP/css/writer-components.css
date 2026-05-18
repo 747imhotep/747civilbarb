@@ -241,7 +241,7 @@ button[type="submit"]:hover {
     All Documents Section Styles
      - Displays a table of all documents with options to view or download
    ================================================= */
-   .documents-table {
+.documents-table {
     width: 100%;
     border-collapse: collapse;
     background: white;
