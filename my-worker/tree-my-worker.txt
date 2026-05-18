@@ -1,13 +1,12 @@
 📌my worker tree IN PC
+Updated on mai 18 2026
 
 🌳 my-worker/
 │
 │
-│
-│
 ├── data/     	      <- 
-│   │
-│   └─ entitlements.json	 
+│	│
+│	└─ entitlements.json	 
 │   
 │
 ├── endpoint.js		<-- it's empty  / Placeholder for entitlement logic.
@@ -16,13 +15,10 @@
 ├── .env     	        <- 
 │
 │
-├── node_modules/     <- many folders (not shown here)
+├── package.json
 │
 │
-├── package.json      <- confirm the "type": "module" status. We are officially in ES Modules mode.
-│
-│
-├── package-lock.json <- 
+├── package-lock.json	<- confirm the "type": "module" status. We are officially in ES Modules mode.
 │
 │
 ├── premium-files/			
@@ -40,7 +36,7 @@
 │		│	
 │		└── files/
 │			│	
-│   			├── melanine-bienfaits-selenium-v003.pdf
+│   			├── 
 │   			│
 │   			└── Se_synchroniser_a_EBA.odt
 │
@@ -142,21 +138,10 @@
 │	│
 │	├── premium/				
 │	│	│
-│	│	└── index.html		<---📍 "s'abonner" button always points to here
-
-│	│	│
-│	│	│subscribe/
-│	│	│		
-│	│	│		
-│	│	├──  files/			<--- ⚠️ has been moved to my-worker/premium-files/ 
-│	│	│				Node may: allow access to premium files
-│	│	│				← PDF, articles, resources 
-│	│	│				(Node serves only if entitled. Never in 747civilbarb)
-│	│	│				Later we will protect this route via server.js.
-│	│	│
 │	│	│	
-│	│	└──  index.html			<---Node server might see this one instead
-│	│					← template + editorial conten
+│	│	└──  index.html			📍 Node server might see this one instead
+│	│					📍 "s'abonner" button always points to here
+│	│					📍 template + editorial content
 │	│
 │	│
 │	├──── privacy/         

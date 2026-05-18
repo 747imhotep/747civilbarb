@@ -1,5 +1,5 @@
-here is my Root tree
-pay attention it migh contain some minor errors.
+here is the 1st Root tree
+Updated on mai 18 2026
 
 🌳 747civilcarb/	<-- this stands in GitHub via GitHub Deskstop
 │
@@ -8,13 +8,12 @@ pay attention it migh contain some minor errors.
 │
 ├── articles/		<-- Few drafts texts for me
 │
-
-│			
 │
 ├── CNAME
 │
 │
 ├── en/			<-- detailed tree in another Tree File. Public
+│
 │
 ├── fr/			<-- detailed tree in another Tree File. Public
 │
@@ -35,6 +34,9 @@ pay attention it migh contain some minor errors.
 │	│
 │	│
 │	├─ imhotepjs/
+│	│	│
+│	│	│
+│   	│	├─ charCount.js		<-- backup file
 │	│	│
 │	│	│
 │   	│	├─ cmt-modal.js		<-- New file
@@ -67,9 +69,8 @@ pay attention it migh contain some minor errors.
 │
 ├── .env.example
 │
+│
 ├── .gitignore
-│
-│
 │
 │
 │
@@ -79,13 +80,22 @@ pay attention it migh contain some minor errors.
 │
 │
 ├── live/		<-- here, visitor click on "access" to open cloudflare
-│   │
-│   ├─ css/site.css	<-- 
-│   │ 
-│   ├─ index.html	<-- coming soon page with private access (to be setup)
-│   │ 
-│   │ 
-│   └─ js/		<-- empty for the moment
+│	│
+│   	├─ css/
+│   	│	│
+│   	│	└─ site.css	<-- 
+│   	│
+│   	│  
+│   	├─ index.html	<-- coming soon page with private access (to be setup)
+│   	│ 
+│   	│ 
+│   	└─ js/		
+│   		│
+│   		├─ lazy.js
+│   		│
+│   		├─ sender-init.js
+│   		│
+│   		└─ transition.js
 │
 │
 ├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
@@ -108,6 +118,9 @@ pay attention it migh contain some minor errors.
 │   	│	├─ load-navbar.js
 │   	│	│
 │   	│	└─ navbar.js
+│   	│
+│   	├─ navbar.html
+│   	│
 │   	│
 │   	├─ navbar-en.html		<-- 👉 I forgot to update those files
 │   	│	
@@ -135,6 +148,36 @@ pay attention it migh contain some minor errors.
 │   	│	
 │   	└─ pages/
 │
+│
+
+├── pricing/
+│   	│
+│   	├─ en/
+│   	│	│
+│   	│	├─ css/
+│   	│	│	│
+│   	│	│	└─ pricing.css
+│   	│	│
+│   	│	├─ index.html
+│   	│	│
+│   	│	│
+│   	│	└─ js/
+│   	│		│
+│   	│		└─ pricing.js
+│	│
+│   	└─ fr/
+│   		│
+│   		├─ css/
+│   		│	│
+│   		│	└─ pricing.css
+│   		│
+│   		├─ index.html
+│   		│
+│   		│
+│   		└─ js/
+│   			│
+│   			└─ pricing.js
+│   	
 │
 ├── privacy/
 │   	│
@@ -166,7 +209,7 @@ pay attention it migh contain some minor errors.
 │   	│
 │   	├─ cssshared/
 │   	│	│
-│   	│	├─ 404.css	
+│   	│	├─ 404.css
 │   	│	│
 │   	│	├─ base.css	
 │   	│	│
@@ -269,6 +312,8 @@ pay attention it migh contain some minor errors.
    		   	├─ en/		<-- empty for the moment
    			│
    			└─  fr/		<-- empty for the moment
+   			   	│
+   				└─ foot-stad-singe02.docx
    		
 
 

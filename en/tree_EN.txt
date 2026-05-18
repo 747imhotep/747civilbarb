@@ -1,21 +1,31 @@
 here is my EN tree
+Updated on mai 18 2026
+
 🌳 747civilcarb/en
 │
 │
 │
 ├── about/
-│   	├─ css/about.css
+│   	├─ css/
+│	│	│
+│   	│	└─ about.css
 │	│
 │   	└─ index.html
 │
 │
 │
 ├── contact/
-│   	├─ css/contact.css
+│	│
+│   	├─ css/
+│	│	│
+│   	│	└─ contact.css
 │	│
 │   	├─ index.html
 │	│
-│   	└─ js/jscontact.js
+│	│
+│   	└─ js/
+│		│
+│   		└─ jscontact.js
 │
 │
 ├── index.html
@@ -34,21 +44,30 @@ here is my EN tree
 │	├── biblio/		
 │	│	│
 │	│	│
-│	│	└──  en/
-│	│		│	
-│	│		│
-│	│		└──  free/
-│	│			│	
-│	│			├── Couleur de peau v. 005.pdf
-│	│			│
-│	│			├── Demographic_Distortions.pdf
-│	│			│
-│	│			└── Wealth_and_Invisible_Powers.pdf
+│	│	├──  en/
+│	│	│	│	
+│	│	│	│
+│	│	│	└──  free/
+│	│	│		│	
+│	│	│		├── Couleur de peau v. 005.pdf
+│	│	│		│
+│	│	│		├── Demographic_Distortions.pdf
+│	│	│		│
+│	│	│		└── Wealth_and_Invisible_Powers.pdf
+│	│	│
+│	│	│
+│	│	└──  free_index.json
 │	│			
+│   	│
+│   	│
+│	├── catalog.json
+│   	│
 │   	│
 │   	├── css/
 │   	│	│
-│   	│	└─ library.css
+│   	│	├─ library.css
+│   	│	│
+│   	│	└─ vignette.css
 │   	│
 │   	│
 │   	├── index.html
@@ -56,7 +75,9 @@ here is my EN tree
 │   	│
 │   	└─ js/
 │   		│
-│   		└─ library.js
+│   		├─ library.js
+│   		│
+│   		└─ vignette.css
 │
 │
 │
@@ -64,6 +85,7 @@ here is my EN tree
 │   	│
 │	│
 │	├─ articles.js			<-- whitch one is the good one ?
+│	│
 │	│
 │	├─ articles.json
 │	│
@@ -73,29 +95,36 @@ here is my EN tree
 │   	│	└─ articles.css
 │   	│
 │   	├─ index.html		<-- 👉 Free articles here
+│	│
 │   	│
 │   	└─  js/
+│   		│
+│   		└─ articles.js
 │
 │
 │
 ├── premium/
 │   	│	
-│   	├─ csspremium/
-│   	│   │	
-│   	│   └─ premium.css
+│   	├─ css/
+│   	│	│
+│   	│	└─ premium.css
+│   	│	
 │   	│   
 │   	├─ endpoint/
 │   	│	│
 │   	│	└─ endpoint.js
 │   	│	
+│   	│	
 │   	├─ index.html		<---📍 It means: “I want to start a subscription”
 │   	│   				👉 The button "Acceder" doesn't work for the moment
 │   	│  
-│   	└─ js/
-│       	│ 
-│       	└─ premium.js
+│   	├─ js/
+│       │	│ 
+│       │	└─ premium.js
+│   	│
+│   	│
+│       └─ premium.json
 │      		
-│      
 │
 │
 ├── subscribe/

@@ -1,4 +1,5 @@
 📌my worker tree IN VPS
+Updated on mai 18 2026
 
 
 🌳 my-worker/public/
@@ -13,33 +14,32 @@
 │
 ├── css/
 │	│
-│	└─ cancel.html
-│	    │
-│	    ├── base.css
-│	    │
-│	    ├── cancel.css
-│	    │
-│	    ├── footer.css
-│	    │
-│	    ├── gdpr.css
-│	    │
-│	    ├── index.css
-│	    │
-│	    ├── library.css
-│	    │
-│	    ├── navbar.css
-│	    │
-│	    ├── premium.css
-│	    │
-│	    ├── privacy.css
-│	    │
-│	    ├── snippet.css
-│	    │
-│	    ├── subscribe.css
-│	    │
-│	    ├── succes.css
-│	    │
-│	    └── terms.css
+│	│
+│	├── base.css
+│	│
+│	├── cancel.css
+│	│
+│	├── footer.css
+│	│
+│	├── gdpr.css
+│	│
+│	├── index.css
+│	│
+│	├── library.css
+│	│
+│	├── navbar.css
+│	│
+│	├── premium.css
+│	│
+│	├── privacy.css
+│	│
+│	├── snippet.css
+│	│
+│	├── subscribe.css
+│	│
+│	├── succes.css
+│	│
+│	└── terms.css
 │	    
 │
 ├── index/
@@ -120,4 +120,12 @@
 └── terms/
 	│
 	└──  terms.html 
+
+
+HOW TO UPDATE THIS TREE:
+1. 
+2. 
+3. 
+4. 
+5. 
 

@@ -1,24 +1,31 @@
 here is my FR tree
+Updated on mai 18 2026
+
 🌳 747civilcarb/fr/
 │
 │
 │
 ├── about/
-│   	├─ css/about.css
+│   	├─ css/
+│	│	│
+│   	│	└─ about.css
 │	│
 │   	└─ index.html
 │
 │
 ├── contact/
 │	│
-│   	├─ css/contact.css
-│	│
-│   	├─ index.html
-│	│
-│   	└─ js/jscontact.js
+│   	├─ css/
+│	│	│
+│   	│	└─ contact.css
+│   	│
+│   	└─ js
+│		│
+│   		└─ jscontact.js
 │
 │
 ├── index.html
+│
 │
 │
 ├── library/	<-- 🚨 I think this needs to be connected to biblio/ as a list of all articles (free, premium,..)
@@ -33,30 +40,37 @@ here is my FR tree
 │	├── biblio/		
 │	│	│
 │	│	│
-│   	│	├── free_index.json 		<-- list of free texts: title and file name.
+│   	│	├── fr/
+│	│	│	│	
+│	│	│	└── free/
+│	│	│		│	
+│	│	│		├── 
+│	│	│		│
+│	│	│		├── mensonges_demographiques_v2.pdf
+│	│	│		│
+│	│	│		└── richesse_et_sorcellerie.pdf
 │	│	│
 │	│	│
-│	│	└─ fr/
-│	│		│	
-│	│		└── free/
-│	│			│	
-│	│			├── couleur-de-peau-v005.pdf
-│	│			│
-│	│			├── MENSONGES_DEMOGRAPHIQUES_V2.pdf
-│	│			│
-│	│			└── MENSONGES_DEMOGRAPHIQUES_V2.pdf
+│	│	└─ free_index.json 		<-- list of free texts: title and file name.
+│	│
+│	│
+│	├── catalog.json
+│	│
 │	│
 │   	│
-│   	├── csslibrary/
-│   	│	│
-│   	│	└─ library.css
+│   	├── css/
 │   	│
+│   	│	├─ library.css
+│   	│	│
+│   	│	└─ vignette.css
+│   	│
+│	│
 │   	├── index.html
 │   	│	
 │   	│
 │   	└─ js/
 │   		│
-│   		└─ library.js
+│   		└─ load-articles.js
 │
 │
 ├── nosarticles/			<-- FOLDER NEEDS TO BE CLEAN
@@ -74,16 +88,16 @@ here is my FR tree
 │   	├── js/ 			<-- 🚨This Folder is empty for the moment.
 │   	│
 │   	│
-│   	└─  jsarticles.js/ 		<-- This Folder needs to be verified before removed.
+│   	└─  jsarticles.js/ 		<-- This Folder needs to be verified before REMOVED.
 │   		│
 │   		│
-│   		└─ articles.js		<-- 🚨 compare files
+│   		└─ articles.js		<-- 🚨 compare files for CLEANING !
 │
 │
 │
 ├── premium/
 │   	│	
-│   	├── csspremium/
+│   	├── css/
 │   	│	│	
 │   	│	└─ premium.css
 │   	│   
@@ -96,9 +110,12 @@ here is my FR tree
 │   	│   				👉 The button "Acceder" doesn't work for the moment. Probably endpoint.js
 │   	│
 │   	│  
-│   	└─ jspremium/
-│   	    	│ 
-│   	    	└─ premium.js
+│   	├─ js/
+│   	│    	│ 
+│   	│    	└─ premium.js
+│   	│  
+│   	│  
+│   	└─ premium.json
 │      		
 │      
 │   
