@@ -237,4 +237,59 @@ button[type="submit"]:hover {
     flex-wrap: wrap;
 }
 
+/* =================================================
+    All Documents Section Styles
+     - Displays a table of all documents with options to view or download
+   ================================================= */
+   .documents-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.documents-table th,
+.documents-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e6dfd3;
+}
+
+.documents-table th {
+    background: #f0ede5;
+    font-weight: 600;
+}
+
+.download-link {
+    color: #2c3e2f;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+.small-btn {
+    background: #e8e2d6;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-right: 0.25rem;
+}
+
+.small-btn:hover {
+    background: #d4c9b8;
+}
+
+.all-documents-section {
+    margin-top: 2rem;
+    background: white;
+    border-radius: 28px;
+    padding: 1.5rem;
+    border: 1px solid #e6dfd3;
+}
+
 /* === END === */
