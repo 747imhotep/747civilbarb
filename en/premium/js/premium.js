@@ -135,12 +135,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!entitlement.entitled) {
           // Show inline message
           let msg = btn.parentNode.querySelector('.access-warning');
+
           if (!msg) {
             msg = document.createElement('div');
             msg.className = 'access-warning';
-            msg.textContent = lang === 'fr' 
-              ? "⚠️ Vous devez être abonné pour accéder à ce contenu."
-              : "⚠️ You must be subscribed to access this content.";
+
+            msg.innerHTML = lang === 'fr'
+              ? '⚠️ Vous devez être abonné pour accéder à ce contenu. → ' + '<a href="/fr/premium/" class="subscribe-link">S’abonner</a>'
+              : '⚠️ You must be subscribed to access this content. → ' + '<a href="/en/subscribe/#checkout-button">subscribe</a>';
             msg.style.color = '#d30b83';
             msg.style.fontWeight = 'bold';
             msg.style.marginBottom = '10px';
