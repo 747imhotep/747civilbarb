@@ -6,21 +6,21 @@ my-worker/
 	│	
 	└── premium-files/
 		│	
-	   	├─ biblio-en/
+	   	├─ en/
 		│	│	
-		│	└── premium-files/
+		│	└── files/
 		│		│	
-	   	│		├── Melanin, benefits of selenium 003.pdf
+	   	│		├── Melanin-benefits_of_selenium_003.pdf
 	   	│		│
-	   	│		└── Synchronizing with EBA.docx
+	   	│		└── Synchronizing_with_EBA.docx
 		│
-	   	└─ biblio-fr/
+	   	└─ fr/
 			│	
-			└── premium-files/
+			└── files/
 				│	
-	   			├── Mélanine, bienfaits du sélénium 003.pdf
+	   			├── 
 	   			│
-	   			└── Se synchroniser a EBA.docx
+	   			└── Se_synchroniser_a_EBA.docx
 
 
 files folder is runtime-only. 
@@ -28,3 +28,27 @@ files folder is runtime-only.
 747civilcarb/ does not touch it.
 
 This must NEVER exist in 747civilcarb.
+
+
+free articles:
+
+fr/
+	│
+	├── library/	
+	(...)
+	│	│
+	│	├── biblio/		
+	│	│	│
+	│   	│	├── fr/
+	│	│	│	│	
+	│	│	│	└── free/
+	│	│	│		│	
+	│	│	│		├── 
+	│	│	│		│
+	│	│	│		├── mensonges_demographiques_v2.pdf
+	│	│	│		│
+	│	│	│		└── richesse_et_sorcellerie.pdf
+
+
+
+
