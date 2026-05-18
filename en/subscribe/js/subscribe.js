@@ -81,22 +81,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const email = emailInput.value.trim();
     if (!email) {
-      alert('Veuillez saisir votre email.');
+      alert('Please enter your email.');
       return;
     }
 
     checkoutButton.disabled = true;
-    checkoutButton.textContent = "Vérification en cours…";
+    checkoutButton.textContent = "Checking…";
 
     const entitlement = await checkEntitlement(email);
 
     if (entitlement.entitled) {
-      checkoutButton.textContent = "Vous êtes déjà abonné !";
+      checkoutButton.textContent = "You are already subscribed !";
       checkoutButton.style.cursor = "not-allowed";
       return;
     }
 
-    checkoutButton.textContent = "Création de session…";
+    checkoutButton.textContent = "Creating session…";
 
     // ---------------------------
     // 6️⃣ Create Stripe Checkout session
