@@ -1,77 +1,22 @@
 ✅ YOUR QUESTIONS
 ✅ MY ANSWERS
 
-Step 1 ✅ 📖 Explanation of each button (for your writers)
- → I need a buble that explains the utilitie of this function when mouse passes on it.
-  → for both en and fr
+Step 1 ✅ Replace the button section in loadFrenchArticleProgress() with:
+ → help me to find the section to replace
+ → use this icone: ✍🏾   instead of that icon:✍️
 
-Steps 2 ✅ 
- → Your explaination is not easy to understand. Or maybe the all setup is too complicated.
- → How to make it easy for the writer ?
- 1. I share drafts documents for improvement
- 2. Writer can see all of them in one place. Writer can downolad it.
- 3. Writer can work on it.
- 4. Writer can store it as the work goes on in a store place.
- 5. I can check the writer's job
- 6. The document should be mark as a) work in progress b) ready to publish waiting for approval
- 7. The document shall be move to publish in a) free b) premium 
+Steps 2 ✅ Add these buttons to writer's dashboard (after they upload a file):
+ → Same as above, I don't know where to place this section.
+ → 
+ 1. 
+ 2. 
+ 3. 
+ 4. 
+ 5. 
+ 6. 
+ 7. 
  
- ✅ 
+ 
+Steps 3 ✅ 
  → 
  
-
-
- 
- ✅ You shared this:
-/www/ (or your webroot)
-   /writer/
-      /workspace-9xK2mP/
-         /data/
-            drafts.json    <-- MUST be here
-
-
- → here below, part of my tree
-│
-└─  writer/
-   	│	
-   	└─ workspace-9xK2mP/
-   		│
-   		├─ css/
-   		│
-   		│	│
-   		│	├─ writer.css
-   		│	│
-   		│	├─ writer-base.css
-   		│	│
-   		│	├─ writer-components.css
-   		│	│
-   		│	├─ writer-layout.css
-   		│	│
-   		│	└─ writer-modal.css
-   		│
-   		│
-   		├─ data/
-   		│	├─ drafts/		<-- contains few docs
-   		│	│
-   		│	├─ drafts.json
-   		│	│
-   		│	├─ progress/		<-- contains few docs
-   		│	│
-   		│	└─ progress.json
-   		│
-   		│
-   		├─ index.html
-   		│
-   		│
-   		├─ js/
-   		│	│
-   		│	└─  writer.js
-   		│
-   		└─  uploads/
-   			│
-   		   	├─ en/		<-- empty for the moment
-   			│
-   			└─  fr/		<-- empty for the moment
-
-
-
