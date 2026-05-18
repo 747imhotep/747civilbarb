@@ -12,17 +12,6 @@
       "imagePath": "/pictures/articles-pic/thumb-mensonge03.png"
     },
     {
-      "id": "melanin-selenium",
-      "title": "Melanin and Selenium Benefits",
-      "subtitle": "Lesser-known properties of melanin",
-      "abstract": "Exploration of melanin properties and its interaction with selenium. Discover the unrecognized benefits of these essential elements.",
-      "type": "premium",
-      "pages": 8,
-      "path": "/en/premium/",
-      "hasImage": true,
-      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
-    },
-    {
       "id": "wealth-and-witchcraft",
       "title": "Wealth and Witchcraft",
       "subtitle": "Invisible dynamics and blockages in collective projects",
@@ -43,6 +32,17 @@
       "path": "/en/library/biblio/en/free/Couleur_de_peau_v_005.pdf",
       "hasImage": true,
       "imagePath": "/pictures/articles-pic/thumb-target01.png"
+    },
+    {
+      "id": "melanin-selenium",
+      "title": "Melanin and Selenium Benefits",
+      "subtitle": "Lesser-known properties of melanin",
+      "abstract": "Exploration of melanin properties and its interaction with selenium. Discover the unrecognized benefits of these essential elements.",
+      "type": "premium",
+      "pages": 8,
+      "path": "/en/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
     },
     {
       "id": "synchronize-eba",
@@ -67,17 +67,17 @@
     "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
     "fileType": "Coming soon"
     },
-{
-  "id": "caverns-never-died",
-  "title": "The Caverns Are Never Dead",
-  "subtitle": "Why some human behaviors still seem trapped by reflexes inherited from the Ice Age",
-  "abstract": "What if their modernity was only a fragile decor placed upon millennial instincts? Through hygiene, intimacy, and collective behaviors, this text explores the invisible survivals of primitive life in certain current societies. A provocative, anthropological, and disturbing dive into what humans believe they have abandoned... without ever truly detaching from it.",
-  "type": "non-editing",
-  "pages": 0,
-  "path": "#",
-  "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
-  "fileType": "Coming soon"
-  }
+    {
+      "id": "caverns-never-died",
+      "title": "The Caverns Are Never Dead",
+      "subtitle": "Why some human behaviors still seem trapped by reflexes inherited from the Ice Age",
+      "abstract": "What if their modernity was only a fragile decor placed upon millennial instincts? Through hygiene, intimacy, and collective behaviors, this text explores the invisible survivals of primitive life in certain current societies. A provocative, anthropological, and disturbing dive into what humans believe they have abandoned... without ever truly detaching from it.",
+      "type": "non-editing",
+      "pages": 0,
+      "path": "#",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
+      "fileType": "Coming soon"
+      }
   ]
 }

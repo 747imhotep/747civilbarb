@@ -23,6 +23,28 @@
       "imagePath": "/pictures/articles-pic/thumb-richesse-sorcellerie02.png"
     },
     {
+      "id": "couleur-de-peau",
+      "title": "Couleur de peau",
+      "subtitle": "Mécanismes de destruction de la mélanine chez les enfants noirs",
+      "abstract": "Mécanismes de destruction de la mélanine, avec les enfants dans le viseur.",
+      "type": "free",
+      "pages": 10,
+      "path": "/fr/library/biblio/fr/free/couleur-de-peau-v005.pdf",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-target01.png"
+    },
+    {
+      "id": "melanine-selenium",
+      "title": "Mélanine et Sélénium : Bienfaits insoupçonnés",
+      "subtitle": "Propriétés méconnues de la mélanine",
+      "abstract": "Exploration des propriétés de la mélanine et de son interaction avec le sélénium. Découvrez les bienfaits méconnus de ces éléments essentiels.",
+      "type": "premium",
+      "pages": 8,
+      "path": "/fr/premium/",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-selenium02.png"
+    },
+    {
       "id": "se-synchroniser-eba",
       "title": "Se synchroniser à EBA (HAPI)",
       "subtitle": "Rituels et connexion énergétique",
@@ -34,28 +56,28 @@
       "imagePath": "/pictures/articles-pic/thumb-ebale02.png"
     },
     {
-  "id": "intelligence-hors-sol",
-  "title": "L'intelligence hors-sol",
-  "subtitle": "L'intelligence hors-sol — Chronique d'une culture déracinée",
-  "abstract": "Entre ciel et terre circule une énergie invisible qui influence le vivant depuis toujours. Dans la symbolique kamite, Shou et Tefnout incarnent cette polarité fondamentale : le ciel chargé d'énergie positive et la terre porteuse d'une force réceptrice. Des plantes qui puisent leur vitalité dans cet échange au simple fait de marcher pieds nus pour se reconnecter au sol, cette dynamique énergétique nous rappelle que Kalala Omotunde avait beaucoup insisté là-dessus avant de nous quitter.",
-  "type": "non-editing",
-  "pages": 0,
-  "path": "#",
-  "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
-  "fileType": "À venir"
-  },
-{
-  "id": "cavernes-jamais-mortes",
-  "title": "Les Cavernes ne Sont Jamais Mortes",
-  "subtitle": "Pourquoi certains comportements humains semblent encore prisonniers de réflexes hérités de l'âge glaciaire",
-  "abstract": "Et si leur modernité n'était qu'un décor fragile posé sur des instincts millénaires ? À travers l'hygiène, l'intimité et les comportements collectifs, ce texte explore les survivances invisibles de la vie primitive dans certaines sociétés actuelles. Une plongée provocante, anthropologique et dérangeante dans ce que les humains croient avoir abandonné… sans jamais réellement s'en détacher.",
-  "type": "non-editing",
-  "pages": 0,
-  "path": "#",
-  "hasImage": true,
-  "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
-  "fileType": "À venir"
-}
+    "id": "intelligence-hors-sol",
+    "title": "L'intelligence hors-sol",
+    "subtitle": "L'intelligence hors-sol — Chronique d'une culture déracinée",
+    "abstract": "Entre ciel et terre circule une énergie invisible qui influence le vivant depuis toujours. Dans la symbolique kamite, Shou et Tefnout incarnent cette polarité fondamentale : le ciel chargé d'énergie positive et la terre porteuse d'une force réceptrice. Des plantes qui puisent leur vitalité dans cet échange au simple fait de marcher pieds nus pour se reconnecter au sol, cette dynamique énergétique nous rappelle que Kalala Omotunde avait beaucoup insisté là-dessus avant de nous quitter.",
+    "type": "non-editing",
+    "pages": 0,
+    "path": "#",
+    "hasImage": true,
+    "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
+    "fileType": "À venir"
+    },
+    {
+      "id": "cavernes-jamais-mortes",
+      "title": "Les Cavernes ne Sont Jamais Mortes",
+      "subtitle": "Pourquoi certains comportements humains semblent encore prisonniers de réflexes hérités de l'âge glaciaire",
+      "abstract": "Et si leur modernité n'était qu'un décor fragile posé sur des instincts millénaires ? À travers l'hygiène, l'intimité et les comportements collectifs, ce texte explore les survivances invisibles de la vie primitive dans certaines sociétés actuelles. Une plongée provocante, anthropologique et dérangeante dans ce que les humains croient avoir abandonné… sans jamais réellement s'en détacher.",
+      "type": "non-editing",
+      "pages": 0,
+      "path": "#",
+      "hasImage": true,
+      "imagePath": "/pictures/articles-pic/thumb-nopicture02.png",
+      "fileType": "À venir"
+    }
   ]
 }
