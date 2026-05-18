@@ -19,4 +19,26 @@ Steps 2 ✅ Add these buttons to writer's dashboard (after they upload a file):
  
 Steps 3 ✅ 
  → 
+ on this part of code, in the premium.js
+ how to add a link to the subscribe page?
  
+ if (!entitlement.entitled) {
+          // Show inline message
+          let msg = btn.parentNode.querySelector('.access-warning');
+          if (!msg) {
+            msg = document.createElement('div');
+            msg.className = 'access-warning';
+            msg.textContent = lang === 'fr' 
+              ? "⚠️ Vous devez être abonné pour accéder à ce contenu."
+              : "⚠️ You must be subscribed to access this content.";
+            msg.style.color = '#d30b83';
+            msg.style.fontWeight = 'bold';
+            msg.style.marginBottom = '10px';
+            btn.parentNode.insertBefore(msg, btn);
+          }
+          return;
+        }
+        
+For example:
+? "⚠️ Vous devez être abonné pour accéder à ce contenu.  → link"
+: "⚠️ You must be subscribed to access this content.  → subscribed";
