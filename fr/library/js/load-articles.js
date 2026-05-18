@@ -74,7 +74,7 @@ function renderLibrary() {
     let linkText = '';
     
     if (article.type === 'free') {
-      badgeIcon = lang === 'fr' ? '🔑' : '🔓';
+      badgeIcon = lang === 'fr' ? '🔑' : '🔑';
       badgeText = lang === 'fr' ? 'Accès libre' : 'Free access';
       linkText = lang === 'fr' ? 'Consulter →' : 'Browse →';
     } else if (article.type === 'premium') {
@@ -82,7 +82,7 @@ function renderLibrary() {
       badgeText = lang === 'fr' ? 'Contenu premium' : 'Premium content';
       linkText = lang === 'fr' ? 'S\'abonner pour lire →' : 'Subscribe to read →';
     } else if (article.type === 'non-editing') {
-      badgeIcon = '⏳';
+      badgeIcon = '✍🏾';
       badgeText = lang === 'fr' ? 'À venir' : 'Coming soon';
       linkText = lang === 'fr' ? 'Aperçu →' : 'Preview →';
     }
