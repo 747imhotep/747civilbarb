@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             msg.className = 'access-warning';
 
             msg.innerHTML = lang === 'fr'
-              ? '⚠️ Vous devez être abonné pour accéder à ce contenu. → ' + '<a href="/fr/premium/" class="subscribe-link">S’abonner</a>'
+              ? '⚠️ Vous devez être abonné pour accéder à ce contenu. → ' + '<a href="/fr/subscribe/" class="subscribe-link">S’abonner</a>'
               : '⚠️ You must be subscribed to access this content. → ' + '<a href="/en/subscribe/#checkout-button" class="subscribe-link">subscribe</a>';
             msg.style.color = '#d30b83';
             msg.style.fontWeight = 'bold';

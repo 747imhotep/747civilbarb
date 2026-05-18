@@ -205,9 +205,15 @@ footer { ... }  /* unless explicitly scoped */
 
 .subscribe-link { /* used in fr/ JS-generated buttons */
   margin-left: 8px;
-  color: #d30b83;
+  color: #e7008a;
   text-decoration: underline;
   font-weight: bold;
+}
+
+.subscribe-link:hover {
+  text-decoration: none;
+  color: #016dbfdc;
+  font-weight: 600;
 }
 
 /* ===== Access Warning Message ===== */
