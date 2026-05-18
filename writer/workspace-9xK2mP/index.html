@@ -11,139 +11,116 @@
     <link rel="icon" href="/pictures/fav-icone/fav-icone04.png" type="image/png">
 </head>
 
-
 <body>
 
 <div class="dashboard-container">
     <header class="dashboard-header">
         <h1>
-        <img src="/pictures/fav-icone/fav-icone04.png" 
-        alt="Logo" class="logo">
-        Civilisation ou Barbarie
-    </h1>
+            <img src="/pictures/fav-icone/fav-icone04.png" alt="Logo" class="logo">
+            Civilisation ou Barbarie
+        </h1>
         <div id="writerInfo" class="writer-info"></div>
     </header>
 
+    <!-- INFO BOX FRENCH -->
+    <div class="info-box">
+        <h3>📌 Comment utiliser ce tableau de bord ?</h3>
+        <ul>
+            <li><strong>Sélectionner un article</strong> → Choisissez le texte sur lequel vous travaillez.</li>
+            <li><strong>Voir le document</strong> → Ouvre le PDF/TXT à lire ou modifier.</li>
+            <li><strong>Mettre à jour</strong> → Indiquez combien de mots vous avez écrits aujourd'hui. La barre de progression se mettra à jour.</li>
+            <li><strong>Envoyer ma révision</strong> → Envoyez votre version révisée du document par email à l'équipe éditoriale.</li>
+            <li><strong>Documents récents</strong> → Liste des fichiers que vous avez déjà envoyés.</li>
+        </ul>
+    </div>
 
+    <!-- INFO BOX ENGLISH -->
+    <div class="info-box">
+        <h3>📌 How to use this dashboard?</h3>
+        <ul>
+            <li><strong>Select an article</strong> → Choose the text you are working on.</li>
+            <li><strong>View the document</strong> → Opens the PDF/TXT to read or modify.</li>
+            <li><strong>Update</strong> → Indicate how many words you have written today. The progress bar will update.</li>
+            <li><strong>Send my revision</strong> → Send your revised version of the document by email to the editorial team.</li>
+            <li><strong>Recent Documents</strong> → List of files you have already sent.</li>
+        </ul>
+    </div>
 
     <div class="two-columns">
 
-
-
-
         <!-- LEFT COLUMN: FRENCH -->
         <div class="column french-column">
-            <h2>🇫🇷 Article Progress</h2>
+            <h2>🇫🇷 Progression de l'article</h2>
             <div id="frenchProgress" class="progress-container">
-                <p class="no-article">Loading progress...</p>
+                <p class="no-article">Chargement...</p>
             </div>
 
-            <h2>📤 Charger un document n</h2>
+            <h2>📤 Envoyer ma révision</h2>
             <div class="upload-section">
-                <h3>Charger un document</h3>
                 <form id="frenchUploadForm">
                     <div class="form-row">
-                        <label>Français</label>
-                        <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
-                    </div>
-                    <div class="form-row">
-                        <label>Sélectionner un article</label>
+                        <label>Article concerné</label>
                         <select id="frenchArticleSelect">
-                            <option value="">-- Chargement... --</option>
+                            <option value="">-- Sélectionner un article --</option>
                         </select>
                     </div>
-                    <button type="submit">en français, Charger</button>
+                    <div class="form-row">
+                        <label>Votre fichier révisé (PDF, DOCX, TXT)</label>
+                        <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
+                    </div>
+                    <button type="submit">📧 Envoyer ma révision</button>
                 </form>
             </div>
 
-            <br>
             <h2>📄 Documents récents</h2>
             <div id="frenchRecentDocuments" class="recent-docs">
                 <p>Aucun document disponible</p>
             </div>
         </div>
 
-        
-
         <!-- RIGHT COLUMN: ENGLISH -->
         <div class="column english-column">
             <h2>🇬🇧 Article Progress</h2>
             <div id="englishProgress" class="progress-container">
-                <p class="no-article">Loading progress...</p>
+                <p class="no-article">Loading...</p>
             </div>
 
-            <h2>📤 Upload Document</h2>
+            <h2>📤 Send my revision</h2>
             <div class="upload-section">
-                <h3>Upload document</h3>
                 <form id="englishUploadForm">
                     <div class="form-row">
-                        <label>English</label>
-                        <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
-                    </div>
-                    <div class="form-row">
-                        <label>Select article</label>
+                        <label>Article</label>
                         <select id="englishArticleSelect">
-                            <option value="">-- Loading... --</option>
+                            <option value="">-- Select an article --</option>
                         </select>
                     </div>
-                    <button type="submit">Upload in English</button>
+                    <div class="form-row">
+                        <label>Your revised file (PDF, DOCX, TXT)</label>
+                        <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
+                    </div>
+                    <button type="submit">📧 Send my revision</button>
                 </form>
             </div>
 
-            <br>
             <h2>📄 Recent Documents</h2>
             <div id="englishRecentDocuments" class="recent-docs">
                 <p>No documents available</p>
             </div>
         </div>
 
+    </div> <!-- END two-columns -->
 
-        <!----------- tooltip/info box ----------->
-        <div class="info-box">
-            <h3>📌 Comment utiliser ce tableau de bord ?</h3>
-            <ul>
-                <li><strong>Sélectionner un article</strong> → Choisissez le texte sur lequel vous travaillez.</li>
-                <li><strong>Voir le document</strong> → Ouvre le PDF/TXT à lire ou modifier.</li>
-                <li><strong>Mettre à jour</strong> → Indiquez combien de mots vous avez écrits aujourd'hui. La barre de progression se mettra à jour.</li>
-                <li><strong>Uploader en français</strong> → Envoyez votre version révisée du document. Elle arrivera par email à l'équipe éditoriale.</li>
-                <li><strong>Documents récents</strong> → Liste des fichiers que vous avez déjà envoyés.</li>
-            </ul>
+    <!-- ALL DOCUMENTS SECTION (single, not duplicated) -->
+    <div class="all-documents-section">
+        <h2>📚 Tous mes articles / All my documents</h2>
+        <div id="allDocumentsContainer">
+            <p>Chargement / Loading...</p>
         </div>
-
-        <!----------- tooltip/info box ENGLISH  ----------->
-        <div class="info-box">
-            <h3>📌 How to use this dashboard ?</h3>
-            <ul>
-                <li><strong>Select an article</strong> → Choose the text you are working on.</li>
-                <li><strong>View the document</strong> → Opens the PDF/TXT to read or modify.</li>
-                <li><strong>Update</strong> → Indicate how many words you have written today. The progress bar will update.</li>
-                <li><strong>Upload in English</strong> → Send your revised version of the document. It will be sent by email to the editorial team.</li>
-                <li><strong>Recent Documents</strong> → List of files you have already sent.</li>
-            </ul>
-        </div>
-
-
-        <!-- ALL DOCUMENTS SECTION -->
-        <div class="all-documents-section">
-            <h2>📚 Tous mes documents</h2>
-            <div id="allDocumentsContainer">
-                <p>Chargement...</p>
-            </div>
-        </div>
-
-        <!-- ALL DOCUMENTS SECTION -->
-        <div class="all-documents-section">
-            <h2>📚 All my documents</h2>
-            <div id="allDocumentsContainer">
-                <p>Loading...</p>
-            </div>
-        </div>
-
-
     </div>
-</div>
+
+</div> <!-- END dashboard-container -->
 
 <!-- Only dashboard JS -->
-    <script src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
+<script src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
 </body>
 </html>
