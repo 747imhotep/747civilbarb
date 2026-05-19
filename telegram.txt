@@ -17,6 +17,18 @@ Steps 2 ✅ Add these buttons to writer's dashboard (after they upload a file):
  7. 
  
  
-Steps 3 ✅ 
- → 
+Steps 3 ✅ <!----------- tooltip/info box ----------->
+        
 
+ → 
+ • 
+ → 
+ • 
+ → 
+ • 
+ → 
+ • 
+  → 
+ • 
+  → 
+ • 
