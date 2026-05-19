@@ -4,7 +4,9 @@
    ================================================= */
 
 
-
+/*=================================================
+   Global Styles for Writer's Dashboard
+   ================================================= */
 
 .two-columns {
     display: grid;
@@ -34,7 +36,28 @@
     color: #6b5e4a;
 }
 
-/* Responsive */
+
+/* ====================== */
+/*     CENTERED TITLE     */
+/* ====================== */
+
+.workspace-title {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+}
+
+.workspace-title h2 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #2c3e2f;
+    font-weight: 600;
+}
+
+
+/* =================================================
+        RESPONSIVE DESIGN FOR WRITER'S DASHBOARD
+   ================================================= */
+
 @media (max-width: 900px) {
     body {
         padding: 1rem;
