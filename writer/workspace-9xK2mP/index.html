@@ -42,114 +42,112 @@
         </div>
     </div>
 
-    <br><br>
-
-    <!-- WRITER PLATFORM: 3 FIELDS -->
-    <div class="writer-platform">
+    <!-- WRITER PLATFORM: 2 SEPARATE COLUMNS -->
+    <div class="two-columns writer-platform">
         
-        <!-- FIELD 1: SELECT ARTICLE -->
-        <div class="platform-section select-article-section">
-            <h2>📋 1. Sélectionner un article</h2>
-            <div class="two-columns">
-                <div class="column">
-                    <label>Français</label>
-                    <select id="frenchArticleSelect" class="article-select">
-                        <option value="">-- Sélectionner --</option>
-                    </select>
-                    <div id="frenchArticleInfo" class="article-info">
-                        <p class="no-article">Choisissez un article pour voir ses informations</p>
+        <!-- LEFT COLUMN: FRENCH -->
+        <div class="column field-box">
+            <h2>🇫🇷 Français</h2>
+            
+            <!-- FIELD 1: SELECT ARTICLE -->
+            <div class="field-group">
+                <label>📋 Sélectionner un article</label>
+                <select id="frenchArticleSelect" class="article-select">
+                    <option value="">-- Sélectionner --</option>
+                </select>
+                <div id="frenchArticleInfo" class="article-info">
+                    <p class="no-article">Choisissez un article pour voir ses informations</p>
+                </div>
+            </div>
+
+            <!-- FIELD 2: VIEW DOCUMENT (appears after selection) -->
+            <div id="frenchViewDocument" class="field-group">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- FIELD 3: SUBMIT REVISION -->
+            <div class="field-group">
+                <label>✉️ Envoyer votre révision</label>
+                <form id="frenchSubmitForm">
+                    <div class="form-group">
+                        <label>📝 Mots écrits aujourd'hui</label>
+                        <input type="number" id="frenchWordsToday" min="0" placeholder="ex: 350">
                     </div>
-                </div>
-
-            <h2>📋 1. Select an article</h2>
-                <div class="column">
-                    <label>English</label>
-                    <select id="englishArticleSelect" class="article-select">
-                        <option value="">-- Select --</option>
-                    </select>
-                    <div id="englishArticleInfo" class="article-info">
-                        <p class="no-article">Choose an article to see its information</p>
+                    <div class="form-group">
+                        <label>💬 Commentaire (optionnel)</label>
+                        <textarea id="frenchComment" rows="2" placeholder="Difficultés rencontrées, questions..."></textarea>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label>📎 Votre fichier révisé (PDF, DOCX, TXT)</label>
+                        <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="frenchReadyForReview">
+                            ✅ Prêt pour relecture (terminé)
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">✉️ Envoyer votre révision</button>
+                </form>
             </div>
         </div>
 
-        <br><br>
-
-        <!-- FIELD 2: SUBMIT ARTICLE -->
-        <div class="platform-section submit-article-section">
-            <h2>✉️ 2. Envoyer votre révision</h2>
-            <div class="two-columns">
-                <div class="column">
-                    <form id="frenchSubmitForm">
-                        <div class="form-group">
-                            <label>Article concerné</label>
-                            <input type="text" id="frenchSelectedArticle" readonly placeholder="Aucun article sélectionné">
-                        </div>
-                        <div class="form-group">
-                            <label>📝 Mots écrits aujourd'hui</label>
-                            <input type="number" id="frenchWordsToday" min="0" placeholder="ex: 350">
-                        </div>
-                        <div class="form-group">
-                            <label>💬 Commentaire (optionnel)</label>
-                            <textarea id="frenchComment" rows="2" placeholder="Difficultés rencontrées, questions..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>📎 Votre fichier révisé (PDF, DOCX, TXT)</label>
-                            <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
-                        </div>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="frenchReadyForReview">
-                                ✅ Prêt pour relecture (terminé)
-                            </label>
-                        </div>
-                        <button type="submit" class="submit-btn">✉️ Envoyer votre révision</button>
-                    </form>
-                </div>
-
-            <h2>✉️ 2. Submit your revision</h2>
-                <div class="column">
-                    <form id="englishSubmitForm">
-                        <div class="form-group">
-                            <label>Article</label>
-                            <input type="text" id="englishSelectedArticle" readonly placeholder="No article selected">
-                        </div>
-                        <div class="form-group">
-                            <label>📝 Words written today</label>
-                            <input type="number" id="englishWordsToday" min="0" placeholder="ex: 350">
-                        </div>
-                        <div class="form-group">
-                            <label>💬 Comment (optional)</label>
-                            <textarea id="englishComment" rows="2" placeholder="Difficulties, questions..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>📎 Your revised file (PDF, DOCX, TXT)</label>
-                            <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
-                        </div>
-                        <div class="checkbox-group">
-                            <label>
-                                <input type="checkbox" id="englishReadyForReview">
-                                ✅ Ready for review (completed)
-                            </label>
-                        </div>
-                        <button type="submit" class="submit-btn">✉️ Submit your revision</button>
-                    </form>
+        <!-- RIGHT COLUMN: ENGLISH -->
+        <div class="column field-box">
+            <h2>🇬🇧 English</h2>
+            
+            <!-- FIELD 1: SELECT ARTICLE -->
+            <div class="field-group">
+                <label>📋 Select an article</label>
+                <select id="englishArticleSelect" class="article-select">
+                    <option value="">-- Select --</option>
+                </select>
+                <div id="englishArticleInfo" class="article-info">
+                    <p class="no-article">Choose an article to see its information</p>
                 </div>
             </div>
-        </div>
 
-        <br><br>
+            <!-- FIELD 2: VIEW DOCUMENT (appears after selection) -->
+            <div id="englishViewDocument" class="field-group">
+                <!-- Dynamically populated -->
+            </div>
 
-        <!-- FIELD 3: ALL AVAILABLE ARTICLES (improved) -->
-        <div class="platform-section all-articles-section">
-            <h2>📚 3. Tous les articles disponibles / All available articles</h2>
-            <div id="allDocumentsContainer">
-                <p>Chargement / Loading...</p>
+            <!-- FIELD 3: SUBMIT REVISION -->
+            <div class="field-group">
+                <label>✉️ Submit your revision</label>
+                <form id="englishSubmitForm">
+                    <div class="form-group">
+                        <label>📝 Words written today</label>
+                        <input type="number" id="englishWordsToday" min="0" placeholder="ex: 350">
+                    </div>
+                    <div class="form-group">
+                        <label>💬 Comment (optional)</label>
+                        <textarea id="englishComment" rows="2" placeholder="Difficulties, questions..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>📎 Your revised file (PDF, DOCX, TXT)</label>
+                        <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="englishReadyForReview">
+                            ✅ Ready for review (completed)
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">✉️ Submit your revision</button>
+                </form>
             </div>
         </div>
-
     </div>
+
+    <!-- ALL AVAILABLE ARTICLES TABLE -->
+    <div class="all-articles-section">
+        <h2>📚 Tous les articles disponibles / All available articles</h2>
+        <div id="allDocumentsContainer">
+            <p>Chargement / Loading...</p>
+        </div>
+    </div>
+
 </div>
 
 <script src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
