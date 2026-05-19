@@ -1,26 +1,142 @@
 /* =================================================
    Civilisation ou Barbarie - Writer's Workspace CSS
    COMPONENT STYLES FOR PROGRESS CARDS, 
-   upload section, and recent documents
+   WRITER COMPONENTS - Forms, Buttons, Modals, Tables
    ================================================= */
 
 
 
+/* ===== ARTICLE SELECTOR ===== */
+.article-select {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #d4c9b8;
+    border-radius: 16px;
+    background: #fffdf9;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
 
+.article-select:focus {
+    outline: none;
+    border-color: #8faa7b;
+    box-shadow: 0 0 0 3px rgba(143, 170, 123, 0.2);
+}
+
+/* Article info box */
+.article-info {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: #faf8f3;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    color: #6b5e4a;
+    border-left: 3px solid #8faa7b;
+}
+
+/* ===== FORMS ===== */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    color: #4a5b3e;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #d4c9b8;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    background: #fffdf9;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #8faa7b;
+    box-shadow: 0 0 0 3px rgba(143, 170, 123, 0.1);
+}
+
+/* Checkbox */
+.checkbox-group {
+    margin: 1rem 0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: normal;
+    font-size: 0.85rem;
+    color: #4a5b3e;
+}
+
+.checkbox-group input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* ===== BUTTONS ===== */
+.submit-btn {
+    background: #2c3e2f;
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.05s ease, background 0.2s ease;
+}
+
+.submit-btn:hover {
+    background: #1f2e21;
+}
+
+.submit-btn:active {
+    transform: scale(0.97);
+}
+
+.view-doc-btn {
+    background: #8f6a3c;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.85rem;
+    transition: transform 0.05s ease, background 0.2s ease;
+}
+
+.view-doc-btn:hover {
+    background: #6e502d;
+}
+
+.view-doc-btn:active {
+    transform: scale(0.97);
+}
+
+/* ===== PROGRESS BAR ===== */
 .progress-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .progress-card {
     background: #faf8f3;
     border-radius: 20px;
     padding: 1rem;
-}
-
-.progress-card h4 {
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-    color: #2c3e2f;
 }
 
 .progress-bar-container {
@@ -50,79 +166,13 @@
     color: #c97e5a;
 }
 
-.update-progress-fr,
-.update-progress-en,
-.view-document-fr,
-.view-document-en {
-    background: #2c3e2f;
-    color: white;
-    border: none;
-    padding: 0.4rem 0.8rem;
-    border-radius: 40px;
-    cursor: pointer;
-    font-size: 0.75rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-.update-progress-fr:hover,
-.update-progress-en:hover,
-.view-document-fr:hover,
-.view-document-en:hover {
-    background: #1f2e21;
-}
-
-/* Upload section */
-.upload-section {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: #faf8f3;
-    border-radius: 20px;
-}
-
-.form-row {
-    margin-bottom: 0.75rem;
-}
-
-.form-row label {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-bottom: 0.25rem;
-    color: #4b5e46;
-}
-
-.form-row input,
-.form-row select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #d4c9b8;
-    border-radius: 12px;
-    font-size: 0.85rem;
-}
-
-button[type="submit"] {
-    background: #8f6a3c;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 40px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 0.5rem;
-}
-
-button[type="submit"]:hover {
-    background: #6e502d;
-}
-
-/* Recent documents */
+/* ===== RECENT DOCUMENTS ===== */
 .recent-docs {
     margin-top: 0.5rem;
     padding: 0.5rem;
     background: #faf8f3;
     border-radius: 16px;
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .recent-docs-list {
@@ -151,48 +201,71 @@ button[type="submit"]:hover {
     font-size: 0.7rem;
 }
 
-.no-article,
-.no-documents {
-    color: #aa9f8c;
-    text-align: center;
-    padding: 1rem;
+/* ===== ALL DOCUMENTS TABLE ===== */
+.documents-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
-/* === info box === */
+.documents-table th,
+.documents-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e6dfd3;
+}
 
-.info-box {
-    background: #e8f0e5;
-    border-left: 5px solid #2c3e2f;
-    padding: 1rem 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 16px;
+.documents-table th {
+    background: #f0ede5;
+    font-weight: 600;
     font-size: 0.85rem;
 }
 
-.info-box h3 {
-    margin-bottom: 0.5rem;
+.download-link {
     color: #2c3e2f;
-    font-size: 1rem;
+    text-decoration: none;
 }
 
-.info-box ul {
-    margin-left: 1.2rem;
-    line-height: 1.6;
+.download-link:hover {
+    text-decoration: underline;
 }
 
-.info-box li {
-    margin: 0.3rem 0;
+.small-btn {
+    background: #e8e2d6;
+    border: none;
+    padding: 0.25rem 0.6rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    margin-right: 0.25rem;
+    transition: transform 0.05s ease;
 }
 
-/* =================================================
-   Tooltip styles for writer's dashboard
-   Tooltips provide additional information on hover
-   ================================================= */
+.small-btn:active {
+    transform: scale(0.95);
+}
 
+.small-btn:hover {
+    background: #d4c9b8;
+}
+
+/* ===== STATUS COLORS ===== */
+.status-red { color: #e74c3c; }
+.status-orange { color: #e67e22; }
+.status-green { color: #27ae60; }
+.status-blue { color: #3498db; }
+.status-amber { color: #f39c12; }
+.status-purple { color: #9b59b6; }
+.status-gray { color: #95a5a6; }
+
+/* ===== TOOLTIP ===== */
 .tooltip {
     position: relative;
     display: inline-block;
     cursor: help;
+    width: 100%;
 }
 
 .tooltip .tooltip-text {
@@ -200,18 +273,16 @@ button[type="submit"]:hover {
     background-color: #2c3e2f;
     color: white;
     text-align: center;
-    padding: 0.5rem 0.8rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 12px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     position: absolute;
     z-index: 100;
     bottom: 125%;
     left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap;
-    width: auto;
-    min-width: 200px;
     white-space: normal;
+    width: 180px;
     line-height: 1.4;
 }
 
@@ -237,678 +308,95 @@ button[type="submit"]:hover {
     flex-wrap: wrap;
 }
 
-/* =================================================
-    All Documents Section Styles
-     - Displays a table of all documents with options to view or download
-   ================================================= */
-.documents-table {
+/* ===== MODAL ===== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.documents-table th,
-.documents-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #e6dfd3;
-}
-
-.documents-table th {
-    background: #f0ede5;
-    font-weight: 600;
-}
-
-.download-link {
-    color: #2c3e2f;
-    text-decoration: none;
-}
-
-.download-link:hover {
-    text-decoration: underline;
-}
-
-.small-btn {
-    background: #e8e2d6;
-    border: none;
-    padding: 0.25rem 0.5rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    margin-right: 0.25rem;
-}
-
-.small-btn:hover {
-    background: #d4c9b8;
-}
-
-.all-documents-section {
-    margin-top: 2rem;
-    background: white;
-    border-radius: 28px;
-    padding: 1.5rem;
-    border: 1px solid #e6dfd3;
-}
-
-/* === END === */
-/* Field boxes - shadow effect */
-.field-box {
-    background: white;
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: box-shadow 0.3s ease;
-}
-
-.field-box:hover {
-    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-
-/* Field groups - more space between */
-.field-group {
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
-}
-
-.field-group:last-child {
-    margin-bottom: 0;
-}
-
-.field-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    color: #2c3e2f;
-}
-
-/* Article select dropdown */
-.article-select {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 2px solid #e6dfd3;
-    border-radius: 20px;
-    font-size: 1rem;
-    background: #fffdf9;
-    transition: all 0.2s ease;
-}
-
-.article-select:focus {
-    outline: none;
-    border-color: #8faa7b;
-    box-shadow: 0 0 0 3px rgba(143,170,123,0.2);
-}
-
-/* Article info box */
-.article-info {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #faf8f3;
-    border-radius: 20px;
-    border-left: 4px solid #8faa7b;
-}
-
-.article-info p {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-}
-
-/* Form groups inside submit section */
-.form-group {
-    margin-bottom: 1.25rem;
-}
-
-.form-group label {
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #d4c9b8;
-    border-radius: 16px;
-    font-family: inherit;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #8faa7b;
-    box-shadow: 0 0 0 3px rgba(143,170,123,0.1);
-}
-
-/* ======================*/
-/* == CHECKBOX GROUP == */
-/* ======================*/
-
-/* Custom checkbox - no emoji */
-.checkbox-label {
-    display: flex;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
     align-items: center;
-    gap: 0.6rem;
-    cursor: pointer;
-    font-weight: normal;
+    justify-content: center;
+    z-index: 1000;
 }
 
-.checkbox-label input {
+.modal-content {
+    background: white;
+    border-radius: 28px;
+    padding: 2rem;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+}
+
+.close-modal {
     position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.checkmark {
-    width: 20px;
-    height: 20px;
-    background-color: #f0ede5;
-    border: 2px solid #d4c9b8;
-    border-radius: 6px;
-    display: inline-block;
-    transition: all 0.2s ease;
-}
-
-.checkbox-label input:checked + .checkmark {
-    background-color: #2c3e2f;
-    border-color: #2c3e2f;
-}
-
-.checkbox-label input:checked + .checkmark::after {
-    content: "";
-    display: block;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    margin: 2px 0 0 6px;
-}
-
-.checkbox-label:hover .checkmark {
-    border-color: #8faa7b;
-}
-
-/* Below, older */
-
-.checkbox-group {
-    margin: 1.25rem 0;
-}
-
-.checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    font-weight: normal;
+    color: #aa9f8c;
 }
 
-.checkbox-group input {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
-
-/* Submit button with PRESS EFFECT */
-.submit-btn {
-    background: #2c3e2f;
-    color: white;
-    border: none;
-    padding: 0.9rem 1.5rem;
-    border-radius: 60px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform 0.05s ease, background 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.submit-btn:hover {
-    background: #1f2e21;
-}
-
-.submit-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* All articles section */
-.all-articles-section {
-    margin-top: 2rem;
-    background: white;
-    border-radius: 28px;
-    padding: 1.5rem;
-    border: 1px solid #e6dfd3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.all-articles-section h2 {
+.modal .form-group {
     margin-bottom: 1rem;
-    color: #2c3e2f;
 }
 
-/* Two columns layout for writer platform */
-.writer-platform {
-    gap: 2rem;
-    margin-top: 0;
-}
-
-/* Column spacing */
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-/* View document button */
-.view-doc-btn {
-    background: #8f6a3c;
-    color: white;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 40px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: transform 0.05s ease;
-}
-
-.view-doc-btn:active {
-    transform: scale(0.97);
-}
-
-/* Status colors */
-.status-red { color: #e74c3c; }
-.status-orange { color: #e67e22; }
-.status-green { color: #27ae60; }
-.status-blue { color: #3498db; }
-.status-amber { color: #f39c12; }
-.status-purple { color: #9b59b6; }
-.status-gray { color: #95a5a6; }
-
-
-/* =================================================
-   FIELD BOXES WITH SHADOW
-   ================================================= */
-.field-box {
-    background: white;
-    border-radius: 28px;
-    padding: 1.8rem;
-    margin-bottom: 0;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: box-shadow 0.3s ease;
-}
-
-.field-box:hover {
-    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
-}
-
-/* Field groups - more space between */
-.field-group {
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
-}
-
-.field-group:last-child {
-    margin-bottom: 0;
-}
-
-.field-group label {
+.modal label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    font-size: 1rem;
-    color: #2c3e2f;
-}
-
-/* Column header for FR / EN */
-.column-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #e6dfd3;
-}
-
-.column-header h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #2c3e2f;
-    margin: 0;
-}
-
-/* Article select dropdown */
-.article-select {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    border: 2px solid #e6dfd3;
-    border-radius: 20px;
-    font-size: 1rem;
-    background: #fffdf9;
-    transition: all 0.2s ease;
-}
-
-.article-select:focus {
-    outline: none;
-    border-color: #8faa7b;
-    box-shadow: 0 0 0 3px rgba(143,170,123,0.2);
-}
-
-/* Article info box */
-.article-info {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #faf8f3;
-    border-radius: 20px;
-    border-left: 4px solid #8faa7b;
-}
-
-.article-info p {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-}
-
-/* Form groups inside submit section */
-.form-group {
-    margin-bottom: 1.25rem;
-}
-
-.form-group label {
     font-size: 0.85rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #d4c9b8;
-    border-radius: 16px;
-    font-family: inherit;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #8faa7b;
-    box-shadow: 0 0 0 3px rgba(143,170,123,0.1);
-}
-
-/* Custom checkbox - no emoji redundancy */
-.checkbox-group {
-    margin: 1.25rem 0;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    cursor: pointer;
-    font-weight: normal;
-}
-
-.checkbox-label input {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.checkmark {
-    width: 20px;
-    height: 20px;
-    background-color: #f0ede5;
-    border: 2px solid #d4c9b8;
-    border-radius: 6px;
-    display: inline-block;
-    transition: all 0.2s ease;
-}
-
-.checkbox-label input:checked + .checkmark {
-    background-color: #2c3e2f;
-    border-color: #2c3e2f;
-}
-
-.checkbox-label input:checked + .checkmark::after {
-    content: "";
-    display: block;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    margin: 2px 0 0 6px;
-}
-
-.checkbox-label:hover .checkmark {
-    border-color: #8faa7b;
-}
-
-/* Submit button with PRESS EFFECT */
-.submit-btn {
-    background: #2c3e2f;
-    color: white;
-    border: none;
-    padding: 0.9rem 1.5rem;
-    border-radius: 60px;
-    cursor: pointer;
-    width: 100%;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: transform 0.05s ease, background 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.submit-btn:hover {
-    background: #1f2e21;
-}
-
-.submit-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-/* View document button */
-.view-doc-btn {
-    background: #8f6a3c;
-    color: white;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 40px;
-    cursor: pointer;
-    margin-top: 0.5rem;
-    transition: transform 0.05s ease;
-    width: 100%;
-}
-
-.view-doc-btn:active {
-    transform: scale(0.97);
-}
-
-/* All articles section */
-.all-articles-section {
-    margin-top: 2rem;
-    background: white;
-    border-radius: 28px;
-    padding: 1.5rem;
-    border: 1px solid #e6dfd3;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.all-articles-section h2 {
-    margin-bottom: 1rem;
-    color: #2c3e2f;
-    font-size: 1.3rem;
-}
-
-/* Status colors */
-.status-red { color: #e74c3c; font-weight: 600; }
-.status-orange { color: #e67e22; font-weight: 600; }
-.status-green { color: #27ae60; font-weight: 600; }
-.status-blue { color: #3498db; font-weight: 600; }
-.status-amber { color: #f39c12; font-weight: 600; }
-.status-purple { color: #9b59b6; font-weight: 600; }
-.status-gray { color: #95a5a6; font-weight: 600; }
-
-/* Documents table */
-.documents-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-}
-
-.documents-table th,
-.documents-table td {
-    padding: 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid #e6dfd3;
-}
-
-.documents-table th {
-    background: #f0ede5;
-    font-weight: 600;
-}
-
-.download-link {
-    color: #2c3e2f;
-    text-decoration: none;
-}
-
-.download-link:hover {
-    text-decoration: underline;
-}
-
-.small-btn {
-    background: #e8e2d6;
-    border: none;
-    padding: 0.3rem 0.7rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.7rem;
-    margin-right: 0.3rem;
-}
-
-.small-btn:active {
-    transform: scale(0.97);
-}
-
-
-
-/* === probably need to remove the next part here below === */
-
-
-/* =================================================
-   3 Fields Layout for Writer Platform
-   - Structured layout for article selection, information display, and submission
-     - Ensures a clean and organized interface for writers to manage their work
-     - Utilizes consistent styling with the rest of the dashboard for a cohesive experience
-   ================================================= */
-   
-.writer-platform {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.platform-section {
-    background: white;
-    border-radius: 28px;
-    padding: 1.5rem;
-    border: 1px solid #e6dfd3;
-}
-
-.platform-section h2 {
-    margin-bottom: 1.5rem;
-    color: #2c3e2f;
-    font-size: 1.3rem;
-}
-
-.article-select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #d4c9b8;
-    border-radius: 16px;
-    font-size: 1rem;
-    background: #fffdf9;
-}
-
-.article-info {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #faf8f3;
-    border-radius: 16px;
-}
-
-.article-info p {
-    margin: 0.25rem 0;
-}
-
-.article-info .status-red { color: #e74c3c; }
-.article-info .status-orange { color: #e67e22; }
-.article-info .status-green { color: #27ae60; }
-.article-info .status-blue { color: #3498db; }
-.article-info .status-amber { color: #f39c12; }
-.article-info .status-purple { color: #9b59b6; }
-
-.submit-btn {
-    background: #2c3e2f;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 40px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 1rem;
-    font-weight: 600;
-}
-
-.submit-btn:hover {
-    background: #1f2e21;
-}
-
-.checkbox-group {
-    margin: 1rem 0;
-}
-
-.checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    display: block;
     margin-bottom: 0.25rem;
-    font-weight: 500;
-    font-size: 0.85rem;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
+.modal input,
+.modal textarea {
     width: 100%;
-    padding: 0.6rem;
+    padding: 0.5rem;
     border: 1px solid #d4c9b8;
     border-radius: 12px;
-    font-family: inherit;
 }
 
-.form-group input[readonly] {
-    background: #f0ede5;
-    cursor: default;
+.submit-progress {
+    background: #2c3e2f;
+    color: white;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 40px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 0.5rem;
 }
+
+.success-msg {
+    background: #e6f0e3;
+    color: #2c5e2a;
+    padding: 0.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.error-msg {
+    background: #fce8e6;
+    color: #a13e2d;
+    padding: 0.5rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.no-article,
+.no-documents {
+    color: #aa9f8c;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+}
+
+
 
 /* === END === */
