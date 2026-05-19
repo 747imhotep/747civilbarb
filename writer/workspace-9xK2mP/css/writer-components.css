@@ -292,4 +292,110 @@ button[type="submit"]:hover {
     border: 1px solid #e6dfd3;
 }
 
+/* =================================================
+   3 Fields Layout for Writer Platform
+   - Structured layout for article selection, information display, and submission
+     - Ensures a clean and organized interface for writers to manage their work
+     - Utilizes consistent styling with the rest of the dashboard for a cohesive experience
+   ================================================= */
+   
+.writer-platform {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.platform-section {
+    background: white;
+    border-radius: 28px;
+    padding: 1.5rem;
+    border: 1px solid #e6dfd3;
+}
+
+.platform-section h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e2f;
+    font-size: 1.3rem;
+}
+
+.article-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d4c9b8;
+    border-radius: 16px;
+    font-size: 1rem;
+    background: #fffdf9;
+}
+
+.article-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #faf8f3;
+    border-radius: 16px;
+}
+
+.article-info p {
+    margin: 0.25rem 0;
+}
+
+.article-info .status-red { color: #e74c3c; }
+.article-info .status-orange { color: #e67e22; }
+.article-info .status-green { color: #27ae60; }
+.article-info .status-blue { color: #3498db; }
+.article-info .status-amber { color: #f39c12; }
+.article-info .status-purple { color: #9b59b6; }
+
+.submit-btn {
+    background: #2c3e2f;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 40px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.submit-btn:hover {
+    background: #1f2e21;
+}
+
+.checkbox-group {
+    margin: 1rem 0;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #d4c9b8;
+    border-radius: 12px;
+    font-family: inherit;
+}
+
+.form-group input[readonly] {
+    background: #f0ede5;
+    cursor: default;
+}
+
 /* === END === */
