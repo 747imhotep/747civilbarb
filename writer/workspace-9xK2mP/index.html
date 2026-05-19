@@ -24,112 +24,122 @@
         <div class="info-box">
             <h3>📌 Comment utiliser ce tableau de bord ?</h3>
             <ul>
-                <li><strong>1. Choisir un article</strong> → Menu déroulant "Sélectionner un article"</li>
-                <li><strong>2. Télécharger</strong> → Cliquez sur "Télécharger" dans la liste des articles</li>
-                <li><strong>3. Travailler</strong> → Modifiez le document sur votre ordinateur</li>
-                <li><strong>4. Envoyer votre révision</strong> → Sélectionnez l'article, joignez votre fichier, puis "Envoyer"</li>
-                <li><strong>5. Suivre</strong> → Mettez à jour votre progression</li>
+                <li><strong>1. Sélectionner un article</strong> → Choisissez le texte dans le menu déroulant</li>
+                <li><strong>2. Voir le document</strong> → Téléchargez l'original pour travailler dessus</li>
+                <li><strong>3. Envoyer votre révision</strong> → Remplissez le formulaire et envoyez votre travail</li>
+                <li><strong>4. Suivre vos articles</strong> → Consultez le tableau "Tous les articles disponibles"</li>
             </ul>
         </div>
 
         <div class="info-box">
             <h3>📌 How to use this dashboard?</h3>
             <ul>
-                <li><strong>1. Choose an article</strong> → "Select article" dropdown menu</li>
-                <li><strong>2. Download</strong> → Click "Download" in the articles list</li>
-                <li><strong>3. Work</strong> → Edit the document on your computer</li>
-                <li><strong>4. Send your revision</strong> → Select article, attach file, then "Submit"</li>
-                <li><strong>5. Track</strong> → Update your progress</li>
+                <li><strong>1. Select an article</strong> → Choose the text from the dropdown menu</li>
+                <li><strong>2. View the document</strong> → Download the original to work on it</li>
+                <li><strong>3. Submit your revision</strong> → Fill out the form and send your work</li>
+                <li><strong>4. Track your articles</strong> → Check the "All available articles" table</li>
             </ul>
         </div>
     </div>
 
-    <!-- FIELD 1: ARTICLE SELECTOR + PROGRESS -->
-    <div class="two-columns">
-        <div class="column french-column">
-            <h2>📖 Sélectionner un article à modifier</h2>
-            <select id="frenchArticleSelect" class="article-select">
-                <option value="">-- Sélectionner --</option>
-            </select>
-
-            <div id="frenchProgress" class="progress-container">
-                <p class="no-article">Choisissez un article ci-dessus</p>
-            </div>
-
-            <br><br>
-
-            <!-- FIELD 2: FILE UPLOAD -->
-            <h2>📤 Envoyer votre révision</h2>
-            <div class="upload-section">
-                <form id="frenchUploadForm">
-                    <div class="form-row">
-                        <label>Article concerné</label>
-                        <select id="frenchUploadArticleSelect">
-                            <option value="">-- Sélectionner --</option>
-                        </select>
+    <!-- WRITER PLATFORM: 3 FIELDS -->
+    <div class="writer-platform">
+        
+        <!-- FIELD 1: SELECT ARTICLE -->
+        <div class="platform-section select-article-section">
+            <h2>📋 1. Sélectionner un article</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <label>Français</label>
+                    <select id="frenchArticleSelect" class="article-select">
+                        <option value="">-- Sélectionner --</option>
+                    </select>
+                    <div id="frenchArticleInfo" class="article-info">
+                        <p class="no-article">Choisissez un article pour voir ses informations</p>
                     </div>
-                    <div class="form-row">
-                        <label>Votre fichier révisé (PDF, DOCX, TXT)</label>
-                        <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
+                </div>
+                <div class="column">
+                    <label>English</label>
+                    <select id="englishArticleSelect" class="article-select">
+                        <option value="">-- Select --</option>
+                    </select>
+                    <div id="englishArticleInfo" class="article-info">
+                        <p class="no-article">Choose an article to see its information</p>
                     </div>
-                    <button type="submit">✉️ Envoyer votre révision</button>
-                </form>
-            </div>
-
-            <br><br>
-
-            <h2>📄 Mes envois récents</h2>
-            <div id="frenchRecentDocuments" class="recent-docs">
-                <p>Aucun envoi</p>
+                </div>
             </div>
         </div>
 
-        <div class="column english-column">
-            <h2>📖 Select article to edit</h2>
-            <select id="englishArticleSelect" class="article-select">
-                <option value="">-- Select --</option>
-            </select>
-
-            <div id="englishProgress" class="progress-container">
-                <p class="no-article">Choose an article above</p>
-            </div>
-
-            <br><br>
-
-            <h2>📤 Submit your revision</h2>
-            <div class="upload-section">
-                <form id="englishUploadForm">
-                    <div class="form-row">
-                        <label>Article</label>
-                        <select id="englishUploadArticleSelect">
-                            <option value="">-- Select --</option>
-                        </select>
-                    </div>
-                    <div class="form-row">
-                        <label>Your revised file (PDF, DOCX, TXT)</label>
-                        <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
-                    </div>
-                    <button type="submit">✉️ Submit your revision</button>
-                </form>
-            </div>
-
-            <br><br>
-
-            <h2>📄 My recent submissions</h2>
-            <div id="englishRecentDocuments" class="recent-docs">
-                <p>No submissions</p>
+        <!-- FIELD 2: SUBMIT ARTICLE -->
+        <div class="platform-section submit-article-section">
+            <h2>✉️ 2. Envoyer votre révision / Submit your revision</h2>
+            <div class="two-columns">
+                <div class="column">
+                    <form id="frenchSubmitForm">
+                        <div class="form-group">
+                            <label>Article concerné</label>
+                            <input type="text" id="frenchSelectedArticle" readonly placeholder="Aucun article sélectionné">
+                        </div>
+                        <div class="form-group">
+                            <label>📝 Mots écrits aujourd'hui</label>
+                            <input type="number" id="frenchWordsToday" min="0" placeholder="ex: 350">
+                        </div>
+                        <div class="form-group">
+                            <label>💬 Commentaire (optionnel)</label>
+                            <textarea id="frenchComment" rows="2" placeholder="Difficultés rencontrées, questions..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>📎 Votre fichier révisé (PDF, DOCX, TXT)</label>
+                            <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
+                        </div>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="frenchReadyForReview">
+                                ✅ Prêt pour relecture (terminé)
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn">✉️ Envoyer votre révision</button>
+                    </form>
+                </div>
+                <div class="column">
+                    <form id="englishSubmitForm">
+                        <div class="form-group">
+                            <label>Article</label>
+                            <input type="text" id="englishSelectedArticle" readonly placeholder="No article selected">
+                        </div>
+                        <div class="form-group">
+                            <label>📝 Words written today</label>
+                            <input type="number" id="englishWordsToday" min="0" placeholder="ex: 350">
+                        </div>
+                        <div class="form-group">
+                            <label>💬 Comment (optional)</label>
+                            <textarea id="englishComment" rows="2" placeholder="Difficulties, questions..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>📎 Your revised file (PDF, DOCX, TXT)</label>
+                            <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
+                        </div>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="englishReadyForReview">
+                                ✅ Ready for review (completed)
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn">✉️ Submit your revision</button>
+                    </form>
+                </div>
             </div>
         </div>
+
+        <!-- FIELD 3: ALL AVAILABLE ARTICLES (improved) -->
+        <div class="platform-section all-articles-section">
+            <h2>📚 3. Tous les articles disponibles / All available articles</h2>
+            <div id="allDocumentsContainer">
+                <p>Chargement / Loading...</p>
+            </div>
+        </div>
+
     </div>
-
-    <!-- FIELD 3: SHOW ARTICLES (All available documents) -->
-    <div class="all-documents-section">
-        <h2>📚 Tous les articles disponibles</h2>
-        <div id="allDocumentsContainer">
-            <p>Chargement...</p>
-        </div>
-    </div>
-
 </div>
 
 <script src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
