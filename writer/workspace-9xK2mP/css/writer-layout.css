@@ -55,6 +55,61 @@
 
 
 /* =================================================
+   WRITER PLATFORM LAYOUT
+   ================================================= */
+.writer-platform {
+    gap: 2rem;
+    margin-top: 0;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Info boxes */
+.info-boxes {
+    margin-bottom: 2rem;
+}
+
+.info-box {
+    background: #faf8f3;
+    border-radius: 20px;
+    padding: 1rem 1.2rem;
+    border-left: 4px solid #8faa7b;
+}
+
+.info-box h3 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: #2c3e2f;
+}
+
+.info-box ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.info-box li {
+    font-size: 0.8rem;
+    margin: 0.25rem 0;
+    color: #4a5b3e;
+}
+
+/* Column spacing fix */
+@media (max-width: 900px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .writer-platform {
+        gap: 1rem;
+    }
+}
+
+
+/* =================================================
         RESPONSIVE DESIGN FOR WRITER'S DASHBOARD
    ================================================= */
 
