@@ -188,22 +188,12 @@ async function loadFrenchArticleProgress(draftId) {
                 </div>
                 <p class="word-count">📝 ${wordsWritten} / ${draft.word_count_target} mots</p>
                 ${draft.deadline ? `<p class="deadline">⏰ Échéance: ${new Date(draft.deadline).toLocaleDateString('fr-FR')}</p>` : ''}
-                <div class="button-group">
-                    <div class="tooltip">
-                        <button class="update-progress-fr" data-id="${draft.id}" data-target="${draft.word_count_target}">✍🏾 Mettre à jour</button>
-                        <span class="tooltip-text">📝 Indiquez combien de mots vous avez écrits aujourd'hui. La barre de progression se mettra à jour.</span>
+                    <div class="button-group">
+                        <div class="tooltip">
+                            <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
+                            <span class="tooltip-text">📄 Ouvre le document original (PDF/TXT) pour le lire ou le modifier.</span>
+                        </div>
                     </div>
-                    <div class="tooltip">
-                        <button class="view-document-fr" data-path="${draft.path}">📖 Voir le document</button>
-                        <span class="tooltip-text">📄 Ouvre le document original (PDF/TXT) pour le lire ou le modifier.</span>
-                    </div>
-                    ${draft.review_status === 'work_in_progress' || !draft.review_status ? `
-                    <div class="tooltip">
-                        <button class="mark-ready-fr" data-id="${draft.id}">✅ Prêt pour relecture</button>
-                        <span class="tooltip-text">Signalez que votre travail est terminé et prêt à être relu par l'équipe éditoriale.</span>
-                    </div>
-                    ` : ''}
-                </div>
             </div>
         `;
         
@@ -246,19 +236,9 @@ async function loadEnglishArticleProgress(draftId) {
                 ${draft.deadline ? `<p class="deadline">⏰ Deadline: ${new Date(draft.deadline).toLocaleDateString('en-US')}</p>` : ''}
                 <div class="button-group">
                     <div class="tooltip">
-                        <button class="update-progress-en" data-id="${draft.id}" data-target="${draft.word_count_target}">✍🏾 Update</button>
-                        <span class="tooltip-text">📝 Enter how many words you wrote today. The progress bar will update.</span>
-                    </div>
-                    <div class="tooltip">
                         <button class="view-document-en" data-path="${draft.path}">📖 View document</button>
                         <span class="tooltip-text">📄 Opens the original document (PDF/TXT) to read or edit.</span>
                     </div>
-                    ${draft.review_status === 'work_in_progress' || !draft.review_status ? `
-                    <div class="tooltip">
-                        <button class="mark-ready-en" data-id="${draft.id}">✅ Ready for review</button>
-                        <span class="tooltip-text">Signal that your work is complete and ready for editorial review.</span>
-                    </div>
-                    ` : ''}
                 </div>
             </div>
         `;
