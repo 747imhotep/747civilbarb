@@ -4,6 +4,6 @@
    ================================================= */
 
 @import url('writer-base.css');
-@import url('writer-layout.css');
 @import url('writer-components.css');
+@import url('writer-layout.css');
 @import url('writer-modal.css');
