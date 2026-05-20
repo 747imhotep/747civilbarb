@@ -135,17 +135,37 @@
 /*     CENTERED TITLE     */
 /* ====================== */
 
+/* Elegant title box */
 .workspace-title {
     text-align: center;
-    margin: 1rem 0 2rem 0;
+    margin: 1.5rem 0 2rem 0;
+    position: relative;
 }
 
 .workspace-title h2 {
     font-size: 1.6rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: #2c3e2f;
-    font-weight: 600;
+    font-weight: 400;
+    display: inline-block;
+    background: white;
+    padding: 0.5rem 2rem;
+    border-radius: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e6dfd3;
 }
+
+.workspace-title::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4c9b8, transparent);
+    z-index: -1;
+}
+
 
 
 /* =================================================
