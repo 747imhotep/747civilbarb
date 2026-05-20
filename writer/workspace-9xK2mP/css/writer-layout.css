@@ -5,9 +5,6 @@
 
 
 
-h3 {
-    background-color: linear-gradient(135deg, #cfc1ab, #f5f2eb);
-}
 
 /* Two columns side by side */
 
@@ -170,6 +167,12 @@ h3 {
 /* ====================== */
 
 /* Elegant title box */
+
+h3 {
+    background-color: linear-gradient(135deg, #cfc1ab, #f5f2eb);
+}
+
+
 .workspace-title {
     text-align: center;
     margin: 1.5rem 0 2rem 0;
@@ -197,6 +200,10 @@ h3 {
     border-radius: 60px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #e6dfd3;
+}
+
+.workspace-title h3{
+    background-color: #003d7a;
 }
 
 .workspace-title::before {
