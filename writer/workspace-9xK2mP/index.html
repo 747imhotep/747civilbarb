@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord rédacteur — Civilisation ou Barbarie</title>
-
-    <!-- Layout CSS -->
     <link rel="stylesheet" href="/writer/workspace-9xK2mP/css/writer.css">
-
-    <!-- Favicon -->
     <link rel="icon" href="/pictures/fav-icone/fav-icone04.png" type="image/png">
 </head>
 
@@ -28,106 +24,97 @@
         <h2>WRITER WORKSPACE</h2>
     </div>
 
-    <!-- TWO COLUMNS SIDE BY SIDE -->
+    <!-- ============================================ -->
+    <!-- FIELD 1: ARTICLE SELECTION (Two Columns)     -->
+    <!-- ============================================ -->
     <div class="two-columns">
         
-        <!-- ========== LEFT COLUMN: FRENCH ========== -->
+        <!-- LEFT COLUMN: FRENCH -->
         <div class="column field-box">
-            <h3>Français</h3>
-            
-            <!-- Field 1: Select article -->
-            <div class="field-group">
-                <h3>Sélection d'article</h3>
-                <label>Sélectionner un article</label>
-                <select id="frenchArticleSelect" class="article-select">
-                    <option value="">-- Sélectionner --</option>
-                </select>
-                <div id="frenchArticleInfo" class="article-info">
-                    <p>Aucun article sélectionné</p>
-                </div>
+            <h3>Français - Sélectionner un article</h3>
+            <select id="frenchArticleSelect" class="article-select">
+                <option value="">-- Sélectionner --</option>
+            </select>
+            <div id="frenchArticleInfo" class="article-info">
+                <p>Aucun article sélectionné</p>
             </div>
-
-            <!-- View document button (appears after selection) -->
             <div id="frenchViewDocument" class="field-group"></div>
-
-            <!-- Field 2: Submit revision -->
-            <div class="field-group">
-                <h3>Envoie d'article</h3>
-                <label>Envoyer votre révision</label>
-                <form id="frenchSubmitForm">
-                    <div class="form-group">
-                        <label>Mots écrits aujourd'hui</label>
-                        <input type="number" id="frenchWordsToday" min="0" placeholder="ex: 350">
-                    </div>
-                    <div class="form-group">
-                        <label>Commentaire (optionnel)</label>
-                        <textarea id="frenchComment" rows="2" placeholder="Difficultés rencontrées, questions..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Votre fichier révisé (PDF, DOCX, TXT)</label>
-                        <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
-                    </div>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="frenchReadyForReview">
-                            Prêt pour relecture (terminé)
-                        </label>
-                    </div>
-                    <button type="submit" class="submit-btn">Envoyer votre révision</button>
-                </form>
-            </div>
         </div>
 
-        <!-- ========== RIGHT COLUMN: ENGLISH ========== -->
+        <!-- RIGHT COLUMN: ENGLISH -->
         <div class="column field-box">
-            <h3>English</h3>
-            
-            <!-- Field 1: Select article -->
-            <div class="field-group">
-                <h3>Article selection</h3>
-                <label>Select an article</label>
-                <select id="englishArticleSelect" class="article-select">
-                    <option value="">-- Select --</option>
-                </select>
-                <div id="englishArticleInfo" class="article-info">
-                    <p>No article selected</p>
-                </div>
+            <h3>English - Select an article</h3>
+            <select id="englishArticleSelect" class="article-select">
+                <option value="">-- Select --</option>
+            </select>
+            <div id="englishArticleInfo" class="article-info">
+                <p>No article selected</p>
             </div>
-
-            <!-- View document button (appears after selection) -->
             <div id="englishViewDocument" class="field-group"></div>
+        </div>
+    </div>
 
-            <!-- Field 2: Submit revision -->
-            <div class="field-group">
-                <h3>Revision Submission</h3>
-                <label>Submit your revision</label>
-                <form id="englishSubmitForm">
-                    <div class="form-group">
-                        <label>Words written today</label>
-                        <input type="number" id="englishWordsToday" min="0" placeholder="ex: 350">
-                    </div>
-                    <div class="form-group">
-                        <label>Comment (optional)</label>
-                        <textarea id="englishComment" rows="2" placeholder="Difficulties, questions..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Your revised file (PDF, DOCX, TXT)</label>
-                        <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
-                    </div>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="englishReadyForReview">
-                            Ready for review (completed)
-                        </label>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit your revision</button>
-                </form>
-            </div>
+    <!-- ============================================ -->
+    <!-- FIELD 2: ARTICLE SUBMISSION (Two Columns)    -->
+    <!-- ============================================ -->
+    <div class="two-columns">
+        
+        <!-- LEFT COLUMN: FRENCH SUBMISSION -->
+        <div class="column field-box">
+            <h3>Français - Envoyer votre révision</h3>
+            <form id="frenchSubmitForm">
+                <div class="form-group">
+                    <label>Mots écrits aujourd'hui</label>
+                    <input type="number" id="frenchWordsToday" min="0" placeholder="ex: 350">
+                </div>
+                <div class="form-group">
+                    <label>Commentaire (optionnel)</label>
+                    <textarea id="frenchComment" rows="2" placeholder="Difficultés rencontrées, questions..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Votre fichier révisé (PDF, DOCX, TXT)</label>
+                    <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="frenchReadyForReview">
+                        Prêt pour relecture (terminé)
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer votre révision</button>
+            </form>
         </div>
 
-    </div> <!-- END two-columns -->
+        <!-- RIGHT COLUMN: ENGLISH SUBMISSION -->
+        <div class="column field-box">
+            <h3>English - Submit your revision</h3>
+            <form id="englishSubmitForm">
+                <div class="form-group">
+                    <label>Words written today</label>
+                    <input type="number" id="englishWordsToday" min="0" placeholder="ex: 350">
+                </div>
+                <div class="form-group">
+                    <label>Comment (optional)</label>
+                    <textarea id="englishComment" rows="2" placeholder="Difficulties, questions..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Your revised file (PDF, DOCX, TXT)</label>
+                    <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="englishReadyForReview">
+                        Ready for review (completed)
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Submit your revision</button>
+            </form>
+        </div>
+    </div>
 
-    <!-- ALL ARTICLES TABLE (full width, below columns) -->
+    <!-- ============================================ -->
+    <!-- FIELD 3: REFRESHED DASHBOARD (Full Width)    -->
+    <!-- ============================================ -->
     <div class="all-articles-section">
         <h3>Tous les articles disponibles / All available articles</h3>
         <div id="allDocumentsContainer">
@@ -135,17 +122,16 @@
         </div>
     </div>
 
-    <br><br>
-
-    <!-- INFO BOXES (full width, below table) -->
+    <!-- INFO BOXES (Full Width) -->
     <div class="info-boxes two-columns">
         <div class="info-box">
             <h3>📌 Comment utiliser ce tableau de bord ?</h3>
             <ul>
                 <li><strong>1. Sélectionner un article</strong> → Choisissez le texte dans le menu déroulant</li>
-                <li><strong>2. Voir le document</strong> → Téléchargez l'original pour travailler dessus</li>
-                <li><strong>3. Envoyer votre révision</strong> → Remplissez le formulaire et envoyez votre travail</li>
-                <li><strong>4. Suivre vos articles</strong> → Consultez le tableau "Tous les articles disponibles"</li>
+                <li><strong>2. Voir le document</strong> → Téléchargez l'original (déclenche le verrouillage 🔴)</li>
+                <li><strong>3. Travailler</strong> → Modifiez le document sur votre ordinateur (statut 🟠)</li>
+                <li><strong>4. Envoyer votre révision</strong> → Remplissez le formulaire et envoyez (statut 🟢)</li>
+                <li><strong>5. Suivre</strong> → Consultez le tableau "Tous les articles disponibles" pour voir tous les statuts</li>
             </ul>
         </div>
 
@@ -153,14 +139,15 @@
             <h3>📌 How to use this dashboard?</h3>
             <ul>
                 <li><strong>1. Select an article</strong> → Choose the text from the dropdown menu</li>
-                <li><strong>2. View the document</strong> → Download the original to work on it</li>
-                <li><strong>3. Submit your revision</strong> → Fill out the form and send your work</li>
-                <li><strong>4. Track your articles</strong> → Check the "All available articles" table</li>
+                <li><strong>2. View the document</strong> → Download the original (triggers lock 🔴)</li>
+                <li><strong>3. Work</strong> → Edit the document on your computer (status 🟠)</li>
+                <li><strong>4. Submit your revision</strong> → Fill out the form and send (status 🟢)</li>
+                <li><strong>5. Track</strong> → Check the "All available articles" table for all statuses</li>
             </ul>
         </div>
     </div>
 
-</div> <!-- END dashboard-container -->
+</div>
 
 <script src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
 </body>
