@@ -6,6 +6,11 @@ Step 1  ✅ We have 3 fields:
  → Articles Selection	two columns	Writer selects article
  → Article Submission	two colomns	Writer submit article
  → Refreshed Dashboard	one colomn	Shows ALL articles status updated
+ 
+  → Title box
+ 	we can improve the render of title.
+ 	something like this picture. Not too much 
+	disigned like this image. Please suggest. 
 
 
 
@@ -21,43 +26,48 @@ Steps 2 ✅
 
  
  
-Steps 3 ✅ <!----------- WRITER PLATFORM ----------->
+Steps 3 ✅ 
+Can we improve a little bit this part ?
+Maybe a duble checkbox or a toggle switch button
+with two indicator shows: green/blue
+make sense ?
 
-If you look at the last HTML, you will see two Fields.
-It shouldn't be like that.
-Do you see:
-<!-- Field 2: Submit revision -->
-?
-it should be a new box. 
+	<label>
+		<input type="checkbox" id="frenchReadyForReview">
+		Prêt pour relecture (terminé)
+	</label>
 
-and
-<label>Select an article</label>
-	and
-<label>Submit your revision</label>
-
-should be like:
-<h3>Tous les articles disponibles / All available articles</h3>
-        and
-<h3>📌 Comment utiliser ce tableau de bord ?</h3>
-
- → Select Article
- • Here, the visitor have the possibility to select documents.
- • where do we stock all the documents, on GitHub, VPS server,  ?
- • Informations details about any document should be available and uptodate in the "Tous les articles disponibles / All available articles" Field
  • 
  • 
  • 
  
- 
+
  	
- → "Tous les articles disponibles" Field (bottom page)
- • We will significativaly improve this later 
- • Ref.=	Color Status with a dropdown on mouse contact.
- • Titre=	All articles availables
- • Statut=	Color status 
- • Progression=	can we keep the progress visible in this Field?
- • Actions:	"voir" is ok. Should opened in a new Tab.
- • Ambre=	Can we have it like an diod light ?
+ → space between boxes in the HTML
+ for example:
+ 
+  </div>
+  <br> <br>
+
+    <!-- ============================================ -->
+    <!-- FIELD 3: REFRESHED DASHBOARD (Full Width)    -->
+    <!-- ============================================ -->
+    <div class="all-articles-section">
+
+
+ • So, it's ok. You can share the HTML. 
+ Your HTML is great. Just add some spaces.
+ But we need to continue the conversation 
+on other matters.
+ • Instead of "Français" we can say "FR" inside a blue circle
+ and "EN" inside red circle. But I'd like graduated color, not
+ simple color. Then, we will add a tiny solid border color for 
+ each boxe.
+ • 
+ • 
+ • 
+ • 
+ • 
  
  
  
