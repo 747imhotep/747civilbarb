@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord rédacteur — Civilisation ou Barbarie</title>
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="/writer/workspace-9xK2mP/css/writer.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/writer/workspace-9xK2mP/css/writer-layout.css">
+    <link rel="stylesheet" href="/writer/workspace-9xK2mP/css/writer-components.css">
     
     <!-- Favicon -->
     <link rel="icon" href="/pictures/fav-icone/fav-icone04.png" type="image/png">
@@ -46,6 +47,9 @@
                 <p>Aucun article sélectionné</p>
             </div>
             <div id="frenchViewDocument" class="field-group"></div>
+            <div id="frenchRecentDocuments" class="recent-docs">
+                <p class="no-documents">Aucun document récent</p>
+            </div>
         </div>
 
         <!-- RIGHT COLUMN: ENGLISH SELECTION -->
@@ -61,6 +65,9 @@
                 <p>No article selected</p>
             </div>
             <div id="englishViewDocument" class="field-group"></div>
+            <div id="englishRecentDocuments" class="recent-docs">
+                <p class="no-documents">No recent documents</p>
+            </div>
         </div>
     </div>
 
@@ -91,10 +98,13 @@
                     <input type="file" id="frenchFile" accept=".pdf,.txt,.docx">
                 </div>
                 
-                <!-- TOGGLE SWITCH instead of checkbox -->
+                <!-- Hidden field to track selected article -->
+                <input type="hidden" id="frenchSelectedArticle" value="Aucun article sélectionné">
+                
+                <!-- TOGGLE SWITCH -->
                 <div class="toggle-label">
                     <span class="toggle-text">Prêt pour relecture ?</span>
-                    <label class="toggle-switch" id="frenchToggleSwitch">
+                    <label class="toggle-switch">
                         <input type="checkbox" id="frenchReadyForReview">
                         <span class="toggle-slider"></span>
                     </label>
@@ -124,10 +134,13 @@
                     <input type="file" id="englishFile" accept=".pdf,.txt,.docx">
                 </div>
                 
-                <!-- TOGGLE SWITCH instead of checkbox -->
+                <!-- Hidden field to track selected article -->
+                <input type="hidden" id="englishSelectedArticle" value="No article selected">
+                
+                <!-- TOGGLE SWITCH -->
                 <div class="toggle-label">
                     <span class="toggle-text">Ready for review ?</span>
-                    <label class="toggle-switch" id="englishToggleSwitch">
+                    <label class="toggle-switch">
                         <input type="checkbox" id="englishReadyForReview">
                         <span class="toggle-slider"></span>
                     </label>
@@ -152,13 +165,27 @@
 
     <br><br>
 
+    <!-- ============================================ -->
+    <!-- REVIEWER PANEL (only visible for reviewer)   -->
+    <!-- ============================================ -->
+    <div id="reviewerPanel" class="reviewer-panel" style="display: none;">
+        <div class="all-articles-section">
+            <h3>🔍 Panneau de relecture / Reviewer Panel</h3>
+            <div id="reviewerActionsContainer">
+                <p>Chargement...</p>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
     <!-- INFO BOXES (Full Width) -->
     <div class="info-boxes two-columns">
         <div class="info-box">
             <h3>📌 Comment utiliser ce tableau de bord ?</h3>
             <ul>
                 <li><strong>1. Sélectionner un article</strong> → Choisissez le texte dans le menu déroulant</li>
-                <li><strong>2. Voir le document</strong> → Téléchargez l'original (déclenche le verrouillage 🔴)</li>
+                <li><strong>2. Voir le document</strong> → Téléchargez l'original (déclenche le verrouillage 🟠)</li>
                 <li><strong>3. Travailler</strong> → Modifiez le document sur votre ordinateur (statut 🟡)</li>
                 <li><strong>4. Envoyer votre révision</strong> → Remplissez le formulaire et envoyez (statut 🟢)</li>
                 <li><strong>5. Suivre</strong> → Consultez le tableau ci-dessus pour voir tous les statuts</li>
@@ -169,7 +196,7 @@
             <h3>📌 How to use this dashboard?</h3>
             <ul>
                 <li><strong>1. Select an article</strong> → Choose the text from the dropdown menu</li>
-                <li><strong>2. View the document</strong> → Download the original (triggers lock 🔴)</li>
+                <li><strong>2. View the document</strong> → Download the original (triggers lock 🟠)</li>
                 <li><strong>3. Work</strong> → Edit the document on your computer (status 🟡)</li>
                 <li><strong>4. Submit your revision</strong> → Fill out the form and send (status 🟢)</li>
                 <li><strong>5. Track</strong> → Check the table above for all statuses</li>
