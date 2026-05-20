@@ -8,9 +8,9 @@ Step 1  ✅ We have 3 fields:
  → Refreshed Dashboard	one colomn	Shows ALL articles status updated
  
   → Title box
- 	we can improve the render of title.
- 	something like this picture. Not too much 
-	disigned like this image. Please suggest. 
+	we can improve the render of box-title <h3>.
+	Something professional, a background or lines.
+
 
 
 
@@ -23,46 +23,36 @@ Steps 2 ✅
 | Published				| 🟣 Purple				| 🟣 Purple			|
 
 
+Green is default for available articles in the table.
 
+Toggle default = GREEN (meaning: in progress, not ready yet)
+
+Toggle when checked = BLUE (meaning: ready for review)
+
+
+
+Writer selects article to work on it (x times). → Toggle is GREEN (Under Review / In Progress)
+                          ↓
+Writer finishes work → Clicks toggle → Turns BLUE (Ready for review)
+                          ↓
+How I receive notification → Text is ready for revision
+                          ↓
+I review text → Should I manually set status, where ?
  
  
-Steps 3 ✅ 
-Can we improve a little bit this part ?
-Maybe a duble checkbox or a toggle switch button
-with two indicator shows: green/blue
-make sense ?
+ 
+ The css is already done in writer-components.css
+ The writer.js for the toggle
+ 
 
-	<label>
-		<input type="checkbox" id="frenchReadyForReview">
-		Prêt pour relecture (terminé)
-	</label>
 
+Steps 3 ✅ I need to share 3 files to you 
+
+ • HTML
+ • writer.js
+ • writer-components.css
  • 
  • 
- • 
- 
-
- 	
- → space between boxes in the HTML
- for example:
- 
-  </div>
-  <br> <br>
-
-    <!-- ============================================ -->
-    <!-- FIELD 3: REFRESHED DASHBOARD (Full Width)    -->
-    <!-- ============================================ -->
-    <div class="all-articles-section">
-
-
- • So, it's ok. You can share the HTML. 
- Your HTML is great. Just add some spaces.
- But we need to continue the conversation 
-on other matters.
- • Instead of "Français" we can say "FR" inside a blue circle
- and "EN" inside red circle. But I'd like graduated color, not
- simple color. Then, we will add a tiny solid border color for 
- each boxe.
  • 
  • 
  • 
