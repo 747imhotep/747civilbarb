@@ -3,6 +3,8 @@
 // COMPLETE CORRECTED VERSION
 // =================================================
 
+// THERE IS A MESSAGE FOR YOU AT LINE 777 - PLEASE READ IT
+
 // Global variables
 let draftsData = [];
 let progressData = [];
@@ -772,7 +774,7 @@ async function displayAllDocuments() {
     
     let html = '<table class="documents-table">';
     html += '<thead><tr>';
-    html += '<th>REF</th>';
+    html += '<th>REF</th>'; // Colored reference column. Color are missing because of the CSS class applied to the <td> in the loop below, which is based on the draft status. You need to define CSS classes like .ref-green, .ref-red, .ref-amber, etc. to see the colors.
     html += '<th>Titre / Title</th>';
     html += '<th>Statut / Status</th>';
     html += '<th>Progression / Progress</th>';
