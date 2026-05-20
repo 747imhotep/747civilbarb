@@ -1,7 +1,6 @@
 // =================================================
 // Civilisation ou Barbarie - Writer Dashboard JS
-// COMPLETE FINAL VERSION (CORRECTED)
-// Two columns with FR/EN, status colors, tooltips
+// COMPLETE CORRECTED VERSION
 // =================================================
 
 // Global variables
@@ -12,8 +11,20 @@ let currentWriterPseudonym = null;
 let currentFrenchDraftId = null;
 let currentEnglishDraftId = null;
 
-// Reviewer email address (change this to your email)
+// =================================================
+// CONFIGURATION - CHANGE THESE VALUES
+// =================================================
+
+// Replace with your actual email address for reviewer access
 const REVIEWER_EMAIL = "your-email@example.com";
+
+// API endpoints (adjust these to match your backend)
+const API_BASE_URL = "/api";
+const ENDPOINTS = {
+    updateDraftStatus: `${API_BASE_URL}/update-draft-status`,
+    saveProgress: `${API_BASE_URL}/save-progress`,
+    notifyReviewer: `${API_BASE_URL}/notify-reviewer`
+};
 
 // =================================================
 // 1. GET WRITER IDENTITY from Cloudflare
@@ -192,7 +203,6 @@ async function showFrenchArticleInfo(draftId) {
     const wordsWritten = progress ? progress.words_written : 0;
     const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
     
-    // Determine status color and text for display
     let statusClass = 'status-gray';
     let statusText = 'Disponible';
     let isReadyForReview = false;
@@ -273,7 +283,6 @@ async function showEnglishArticleInfo(draftId) {
         statusText = 'Published (premium)';
     }
     
-    // Set toggle checkbox based on status
     const readyCheckbox = document.getElementById('englishReadyForReview');
     if (readyCheckbox) {
         readyCheckbox.checked = isReadyForReview;
@@ -294,7 +303,41 @@ async function showEnglishArticleInfo(draftId) {
 }
 
 // =================================================
-// 6. SHOW VIEW DOCUMENT BUTTON (with lock trigger)
+// 6. TOGGLE EVENT LISTENERS (FIXED)
+// =================================================
+function setupToggleListeners() {
+    const frenchToggle = document.getElementById('frenchReadyForReview');
+    const englishToggle = document.getElementById('englishReadyForReview');
+    
+    if (frenchToggle) {
+        frenchToggle.addEventListener('change', async (e) => {
+            if (currentFrenchDraftId) {
+                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                await updateDraftStatus(currentFrenchDraftId, newStatus);
+                await showFrenchArticleInfo(currentFrenchDraftId);
+                await displayAllDocuments();
+                await showReviewerPanel();
+                console.log(`📝 French article status updated to: ${newStatus}`);
+            }
+        });
+    }
+    
+    if (englishToggle) {
+        englishToggle.addEventListener('change', async (e) => {
+            if (currentEnglishDraftId) {
+                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                await updateDraftStatus(currentEnglishDraftId, newStatus);
+                await showEnglishArticleInfo(currentEnglishDraftId);
+                await displayAllDocuments();
+                await showReviewerPanel();
+                console.log(`📝 English article status updated to: ${newStatus}`);
+            }
+        });
+    }
+}
+
+// =================================================
+// 7. SHOW VIEW DOCUMENT BUTTON (with lock trigger)
 // =================================================
 function showFrenchViewDocumentButton(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
@@ -313,33 +356,22 @@ function showFrenchViewDocumentButton(draftId) {
         viewBtn?.addEventListener('click', async (e) => {
             e.preventDefault();
             
-            // Lock the article for this writer if not already locked
             if (draft.review_status !== 'in_progress' && 
                 draft.review_status !== 'ready_for_review' && 
                 draft.review_status !== 'under_review') {
                 
-                draft.review_status = 'in_progress';
                 await updateDraftStatus(draftId, 'in_progress');
                 
-                // Create progress entry if doesn't exist
                 const existingProgress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
                 if (!existingProgress) {
-                    progressData.push({
-                        writer_email: currentWriterEmail,
-                        writer_pseudonym: currentWriterPseudonym,
-                        draft_id: draftId,
-                        words_written: 0,
-                        last_update: new Date().toISOString(),
-                        status: 'in_progress'
-                    });
+                    await saveProgressToServer(draftId, 0, 'Started working on this article');
                 }
                 
-                // Refresh displays
                 await showFrenchArticleInfo(draftId);
                 await displayAllDocuments();
+                await showReviewerPanel();
             }
             
-            // Open the document
             window.open(draft.path, '_blank');
         });
     }
@@ -366,23 +398,16 @@ function showEnglishViewDocumentButton(draftId) {
                 draft.review_status !== 'ready_for_review' && 
                 draft.review_status !== 'under_review') {
                 
-                draft.review_status = 'in_progress';
                 await updateDraftStatus(draftId, 'in_progress');
                 
                 const existingProgress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
                 if (!existingProgress) {
-                    progressData.push({
-                        writer_email: currentWriterEmail,
-                        writer_pseudonym: currentWriterPseudonym,
-                        draft_id: draftId,
-                        words_written: 0,
-                        last_update: new Date().toISOString(),
-                        status: 'in_progress'
-                    });
+                    await saveProgressToServer(draftId, 0, 'Started working on this article');
                 }
                 
                 await showEnglishArticleInfo(draftId);
                 await displayAllDocuments();
+                await showReviewerPanel();
             }
             
             window.open(draft.path, '_blank');
@@ -401,7 +426,7 @@ function clearEnglishViewDocumentButton() {
 }
 
 // =================================================
-// 7. UPDATE SELECTED ARTICLE IN SUBMIT FORM
+// 8. UPDATE SELECTED ARTICLE IN SUBMIT FORM
 // =================================================
 function updateFrenchSelectedArticle(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
@@ -444,7 +469,7 @@ function clearEnglishArticleInfo() {
 }
 
 // =================================================
-// 8. RECENT DOCUMENTS
+// 9. RECENT DOCUMENTS (FIXED - stores filenames only)
 // =================================================
 async function updateRecentDocuments(language, draftId) {
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
@@ -464,7 +489,7 @@ async function updateRecentDocuments(language, draftId) {
     uploads.slice(0, 5).forEach(upload => {
         html += `
             <li>
-                <a href="${upload.path}" target="_blank">📄 ${upload.filename}</a>
+                <span>📄 ${upload.filename}</span>
                 <span class="upload-date">${new Date(upload.date).toLocaleDateString()}</span>
             </li>
         `;
@@ -474,7 +499,7 @@ async function updateRecentDocuments(language, draftId) {
 }
 
 // =================================================
-// 9. SUBMIT REVISION FORM
+// 10. SUBMIT REVISION FORM
 // =================================================
 function setupSubmitForms() {
     const frenchForm = document.getElementById('frenchSubmitForm');
@@ -514,31 +539,28 @@ async function submitRevision(language) {
         return;
     }
     
-    // Save progress
     const existingProgress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
     const currentWords = existingProgress ? existingProgress.words_written : 0;
     const newTotal = currentWords + wordsToday;
     
-    await saveProgressToServer(draftId, newTotal, comment);
+    const saved = await saveProgressToServer(draftId, newTotal, comment);
+    if (!saved) {
+        alert(isFrench ? 'Erreur lors de la sauvegarde' : 'Error saving progress');
+        return;
+    }
     
-    // Update status if ready for review
     if (readyForReview) {
         const draft = draftsData.find(d => d.id === draftId);
-        if (draft) {
-            draft.review_status = 'ready_for_review';
+        if (draft && draft.review_status !== 'ready_for_review') {
             await updateDraftStatus(draftId, 'ready_for_review');
-            
-            // Send notification to reviewer
             await notifyReviewer(draftId, draft.title_fr || draft.title_en, currentWriterPseudonym);
         }
     }
     
-    // Handle file upload
     if (fileInput.files.length > 0) {
         await uploadRevisionFile(fileInput.files[0], draftId, language);
     }
     
-    // Show success message
     const submitBtn = isFrench ? document.querySelector('#frenchSubmitForm .submit-btn') : document.querySelector('#englishSubmitForm .submit-btn');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = isFrench ? '✓ Envoyé !' : '✓ Sent!';
@@ -549,12 +571,10 @@ async function submitRevision(language) {
         submitBtn.style.background = '#2c3e2f';
     }, 2000);
     
-    // Clear form fields
     document.getElementById(`${language}WordsToday`).value = '';
     document.getElementById(`${language}Comment`).value = '';
     document.getElementById(`${language}File`).value = '';
     
-    // Refresh displays
     if (isFrench) {
         await showFrenchArticleInfo(draftId);
         await updateRecentDocuments('fr', draftId);
@@ -563,8 +583,12 @@ async function submitRevision(language) {
         await updateRecentDocuments('en', draftId);
     }
     await displayAllDocuments();
+    await showReviewerPanel();
 }
 
+// =================================================
+// 11. SERVER SYNC FUNCTIONS (FIXED - with fetch)
+// =================================================
 async function saveProgressToServer(draftId, wordsWritten, comment) {
     const existingIndex = progressData.findIndex(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
     
@@ -584,20 +608,83 @@ async function saveProgressToServer(draftId, wordsWritten, comment) {
         });
     }
     
-    console.log('Progress saved:', progressData);
-    return true;
+    // Save to localStorage as backup
+    localStorage.setItem('cob_progress_backup', JSON.stringify(progressData));
+    
+    // Try to save to server
+    try {
+        const response = await fetch(ENDPOINTS.saveProgress, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                writer_email: currentWriterEmail,
+                writer_pseudonym: currentWriterPseudonym,
+                draft_id: draftId,
+                words_written: wordsWritten,
+                comment: comment,
+                timestamp: new Date().toISOString()
+            })
+        });
+        
+        if (response.ok) {
+            console.log('✅ Progress saved to server');
+            return true;
+        } else {
+            console.log('⚠️ Server save failed, but progress saved locally');
+            return true;
+        }
+    } catch (error) {
+        console.log('⚠️ Could not reach server, progress saved locally');
+        return true;
+    }
 }
 
 async function updateDraftStatus(draftId, status) {
     const draft = draftsData.find(d => d.id === draftId);
     if (draft) {
         draft.review_status = status;
-        console.log(`Draft ${draftId} status updated to: ${status}`);
+        console.log(`📝 Draft ${draftId} status updated to: ${status}`);
     }
-    return true;
+    
+    localStorage.setItem('cob_drafts_backup', JSON.stringify(draftsData));
+    
+    try {
+        const response = await fetch(ENDPOINTS.updateDraftStatus, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                draft_id: draftId,
+                status: status,
+                writer_email: currentWriterEmail,
+                timestamp: new Date().toISOString()
+            })
+        });
+        
+        if (response.ok) {
+            console.log('✅ Status saved to server');
+            return true;
+        } else {
+            console.log('⚠️ Server save failed, status saved locally');
+            return true;
+        }
+    } catch (error) {
+        console.log('⚠️ Could not reach server, status saved locally');
+        return true;
+    }
 }
 
 async function uploadRevisionFile(file, draftId, language) {
+    const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
+    const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
+    
+    uploads.unshift({
+        filename: file.name,
+        date: new Date().toISOString(),
+        draftId: draftId,
+        language: language
+    });
+    localStorage.setItem(uploadHistoryKey, JSON.stringify(uploads.slice(0, 10)));
+    
     const formData = new FormData();
     formData.append('file', file);
     formData.append('draft_id', draftId);
@@ -605,54 +692,74 @@ async function uploadRevisionFile(file, draftId, language) {
     formData.append('writer_pseudonym', currentWriterPseudonym);
     formData.append('language', language);
     
-    console.log('Uploading revision:', file.name, 'for draft:', draftId);
+    try {
+        const response = await fetch(`${API_BASE_URL}/upload-revision`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            console.log('✅ File uploaded to server:', file.name);
+        } else {
+            console.log('⚠️ File saved locally only');
+        }
+    } catch (error) {
+        console.log('⚠️ Could not upload to server, file saved locally');
+    }
     
-    // Store in localStorage for recent documents
-    const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
-    const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
-    const fileUrl = URL.createObjectURL(file);
-    uploads.unshift({
-        filename: file.name,
-        path: fileUrl,
-        date: new Date().toISOString(),
-        draftId: draftId
-    });
-    localStorage.setItem(uploadHistoryKey, JSON.stringify(uploads.slice(0, 10)));
-    
-    // Update recent documents display
     await updateRecentDocuments(language, draftId);
 }
 
 // =================================================
-// 10. NOTIFICATION (Email / Webhook)
+// 12. NOTIFICATION (with fallback)
 // =================================================
 async function notifyReviewer(draftId, title, writerPseudonym) {
     try {
-        // Option A: Send to your backend endpoint
-        const response = await fetch('/api/notify-reviewer', {
+        const response = await fetch(ENDPOINTS.notifyReviewer, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 draft_id: draftId,
                 title: title,
                 writer: writerPseudonym,
-                message: `L'article "${title}" est prêt pour relecture.`
+                message: `L'article "${title}" est prêt pour relecture.`,
+                timestamp: new Date().toISOString()
             })
         });
         
         if (response.ok) {
             console.log('✅ Notification sent to reviewer');
         } else {
-            console.log('⚠️ Notification failed, but progress saved');
+            console.log('⚠️ Notification failed - check endpoint');
+            showLocalNotification(title, writerPseudonym);
         }
     } catch (error) {
-        console.log('Could not send notification:', error);
-        // Don't block the user - notification is optional
+        console.log('⚠️ Could not send notification');
+        showLocalNotification(title, writerPseudonym);
+    }
+}
+
+function showLocalNotification(title, writerPseudonym) {
+    const notificationArea = document.getElementById('notificationArea');
+    if (notificationArea) {
+        notificationArea.innerHTML = `
+            <div class="notification-banner">
+                ⚠️ ${writerPseudonym} a marqué "${title}" comme prêt pour relecture.
+                <button onclick="this.parentElement.remove()">✖</button>
+            </div>
+        `;
+        setTimeout(() => {
+            if (notificationArea.firstChild) {
+                notificationArea.firstChild.remove();
+            }
+        }, 5000);
+    } else {
+        console.log(`📧 [NOTIFICATION] ${writerPseudonym} marked "${title}" as ready for review`);
     }
 }
 
 // =================================================
-// 11. DISPLAY ALL DOCUMENTS TABLE (with colored REF column)
+// 13. DISPLAY ALL DOCUMENTS TABLE (with colored REF column)
 // =================================================
 async function displayAllDocuments() {
     const container = document.getElementById('allDocumentsContainer');
@@ -679,7 +786,6 @@ async function displayAllDocuments() {
         const wordsWritten = progress ? progress.words_written : 0;
         const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
         
-        // Determine status color based on who is working
         let statusClass = 'status-green';
         let statusText = 'Disponible / Available';
         let refColorClass = 'ref-green';
@@ -714,6 +820,10 @@ async function displayAllDocuments() {
             statusClass = 'status-purple';
             statusText = 'Publié (premium) / Published (premium)';
             refColorClass = 'ref-purple';
+        } else if (draft.review_status === 'unlocked' || !draft.review_status) {
+            statusClass = 'status-green';
+            statusText = 'Disponible / Available';
+            refColorClass = 'ref-green';
         }
         
         html += `
@@ -741,20 +851,22 @@ async function displayAllDocuments() {
     html += '</tbody></table>';
     container.innerHTML = html;
     
-    // Attach view button events
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(btn.dataset.path, '_blank'));
     });
 }
 
 // =================================================
-// 12. REVIEWER PANEL (for reviewer only)
+// 14. REVIEWER PANEL (FIXED - refreshes properly)
 // =================================================
 async function showReviewerPanel() {
     const isReviewer = (currentWriterEmail === REVIEWER_EMAIL);
     const panel = document.getElementById('reviewerPanel');
     
-    if (!isReviewer || !panel) return;
+    if (!isReviewer || !panel) {
+        if (panel) panel.style.display = 'none';
+        return;
+    }
     
     panel.style.display = 'block';
     const container = document.getElementById('reviewerActionsContainer');
@@ -767,17 +879,20 @@ async function showReviewerPanel() {
         const progress = progressData.find(p => p.draft_id === draft.id);
         const writerName = progress ? progress.writer_pseudonym : '—';
         
+        let currentStatus = draft.review_status || 'unlocked';
+        
         html += `
             <tr>
-                <td class="ref-${getRefColorClass(draft.review_status)}"><strong>${draft.id}</strong></td>
+                <td class="ref-${getRefColorClass(currentStatus)}"><strong>${draft.id}</strong></td>
                 <td>${draft.title_fr}<br><small>${draft.title_en}</small></td>
-                <td><span class="status-${getStatusClass(draft.review_status)}">${draft.review_status || 'unlocked'}</span></td>
+                <td><span class="status-${getStatusClass(currentStatus)}">${currentStatus}</span></td>
                 <td>${writerName}</td>
                 <td class="reviewer-actions-cell">
-                    ${draft.review_status === 'ready_for_review' ? '<button class="reviewer-btn approve-btn" data-id="'+draft.id+'">✅ Approuver (relecture)</button>' : ''}
-                    ${draft.review_status === 'under_review' ? '<button class="reviewer-btn publish-free-btn" data-id="'+draft.id+'">📢 Publier (gratuit)</button> <button class="reviewer-btn publish-premium-btn" data-id="'+draft.id+'">⭐ Publier (premium)</button>' : ''}
-                    ${draft.review_status === 'under_review' ? '<button class="reviewer-btn sendback-btn" data-id="'+draft.id+'">↩️ Renvoyer à l\'auteur</button>' : ''}
-                    ${draft.review_status === 'in_progress' ? '<button class="reviewer-btn unlock-btn" data-id="'+draft.id+'">🔓 Déverrouiller</button>' : ''}
+                    ${currentStatus === 'ready_for_review' ? '<button class="reviewer-btn approve-btn" data-id="'+draft.id+'">✅ Approuver (relecture)</button>' : ''}
+                    ${currentStatus === 'under_review' ? '<button class="reviewer-btn publish-free-btn" data-id="'+draft.id+'">📢 Publier (gratuit)</button> <button class="reviewer-btn publish-premium-btn" data-id="'+draft.id+'">⭐ Publier (premium)</button>' : ''}
+                    ${currentStatus === 'under_review' ? '<button class="reviewer-btn sendback-btn" data-id="'+draft.id+'">↩️ Renvoyer</button>' : ''}
+                    ${currentStatus === 'in_progress' ? '<button class="reviewer-btn unlock-btn" data-id="'+draft.id+'">🔓 Déverrouiller</button>' : ''}
+                    ${currentStatus === 'locked_by_other' ? '<span class="status-red">Verrouillé</span>' : ''}
                 </td>
             </tr>
         `;
@@ -786,27 +901,31 @@ async function showReviewerPanel() {
     html += '</tbody></table>';
     container.innerHTML = html;
     
-    // Attach reviewer button events
     document.querySelectorAll('.reviewer-btn').forEach(btn => {
         btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
             const draftId = btn.dataset.id;
-            const action = btn.classList.contains('approve-btn') ? 'under_review' :
-                          btn.classList.contains('publish-free-btn') ? 'published_free' :
-                          btn.classList.contains('publish-premium-btn') ? 'published_premium' :
-                          btn.classList.contains('sendback-btn') ? 'in_progress' :
-                          btn.classList.contains('unlock-btn') ? 'unlocked' : null;
+            let action = null;
+            
+            if (btn.classList.contains('approve-btn')) action = 'under_review';
+            else if (btn.classList.contains('publish-free-btn')) action = 'published_free';
+            else if (btn.classList.contains('publish-premium-btn')) action = 'published_premium';
+            else if (btn.classList.contains('sendback-btn')) action = 'in_progress';
+            else if (btn.classList.contains('unlock-btn')) action = 'unlocked';
             
             if (action && draftId) {
                 await updateDraftStatus(draftId, action);
                 await displayAllDocuments();
                 await showReviewerPanel();
+                console.log(`✅ Reviewer action: ${action} on ${draftId}`);
             }
         });
     });
 }
 
 function getRefColorClass(status) {
-    if (status === 'locked_by_other' || status === 'in_progress') return 'red';
+    if (status === 'locked_by_other') return 'red';
+    if (status === 'in_progress') return 'amber';
     if (status === 'ready_for_review') return 'green';
     if (status === 'under_review') return 'blue';
     if (status === 'published_free' || status === 'published_premium') return 'purple';
@@ -823,10 +942,34 @@ function getStatusClass(status) {
 }
 
 // =================================================
-// 13. INITIALIZE DASHBOARD
+// 15. LOAD BACKUP DATA ON STARTUP
+// =================================================
+function loadBackupData() {
+    const savedDrafts = localStorage.getItem('cob_drafts_backup');
+    const savedProgress = localStorage.getItem('cob_progress_backup');
+    
+    if (savedDrafts && draftsData.length === 0) {
+        try {
+            draftsData = JSON.parse(savedDrafts);
+            console.log('📦 Loaded drafts from backup');
+        } catch(e) {}
+    }
+    
+    if (savedProgress && progressData.length === 0) {
+        try {
+            progressData = JSON.parse(savedProgress);
+            console.log('📦 Loaded progress from backup');
+        } catch(e) {}
+    }
+}
+
+// =================================================
+// 16. INITIALIZE DASHBOARD
 // =================================================
 async function initWriterDashboard() {
     console.log('🚀 Initializing writer dashboard...');
+    
+    loadBackupData();
     
     const email = await getWriterIdentity();
     if (!email) {
@@ -859,17 +1002,16 @@ async function initWriterDashboard() {
     populateEnglishDropdown(draftsData);
     
     setupSubmitForms();
+    setupToggleListeners();
     
     await displayAllDocuments();
-    
-    // Show reviewer panel if applicable
     await showReviewerPanel();
     
     console.log('🎉 Dashboard initialized successfully!');
 }
 
 // =================================================
-// 14. START THE DASHBOARD
+// 17. START THE DASHBOARD
 // =================================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWriterDashboard);
