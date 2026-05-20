@@ -26,6 +26,18 @@
     },
     {
       "id": "draft_03",
+      "title_fr": "identite",
+      "title_en": "identity",
+      "status": "unlocked",
+      "assigned_writer_email": null,
+      "content_fr": "",
+      "content_en": "",
+      "path": "/writer/workspace-9xK2mP/data/drafts/identite.docx",
+      "word_count_target": 1400,
+      "deadline": "2026-06-20"
+    },
+    {
+      "id": "draft_04",
       "title_fr": "Le rôle du rédacteur indépendant",
       "title_en": "The role of the independent writer",
       "status": "locked",
