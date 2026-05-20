@@ -1,10 +1,7 @@
 /* =================================================
    Civilisation ou Barbarie - Writer's Workspace CSS
-   COMPONENT STYLES FOR PROGRESS CARDS, 
-   WRITER COMPONENTS - Forms, Buttons, Modals, Tables
+   COMPONENT STYLES ONLY
    ================================================= */
-
-
 
 /* ===== ARTICLE SELECTOR ===== */
 .article-select {
@@ -23,7 +20,7 @@
     box-shadow: 0 0 0 3px rgba(143, 170, 123, 0.2);
 }
 
-/* Article info box */
+/* ===== ARTICLE INFO BOX ===== */
 .article-info {
     margin-top: 0.75rem;
     padding: 0.75rem;
@@ -44,6 +41,7 @@
     font-size: 0.8rem;
     margin-bottom: 0.3rem;
     color: #4a5b3e;
+    display: block;
 }
 
 .form-group input,
@@ -65,33 +63,12 @@
     box-shadow: 0 0 0 3px rgba(143, 170, 123, 0.1);
 }
 
-/* Checkbox */
-.checkbox-group {
-    margin: 1rem 0;
-}
-
-.checkbox-group label {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-weight: normal;
-    font-size: 0.85rem;
-    color: #4a5b3e;
-}
-
-.checkbox-group input {
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
-
 /* ===== BUTTONS ===== */
 .submit-btn {
     background: #2c3e2f;
     color: white;
     border: none;
-    margin-top: 50px;
+    margin-top: 0.5rem;
     padding: 0.7rem 1rem;
     border-radius: 40px;
     cursor: pointer;
@@ -178,6 +155,8 @@
 
 .recent-docs-list {
     list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
 .recent-docs-list li {
@@ -252,14 +231,41 @@
     background: #d4c9b8;
 }
 
-/* ===== STATUS COLORS ===== */
+/* ===== STATUS COLORS (text) ===== */
 .status-red { color: #e74c3c; }
 .status-orange { color: #e67e22; }
+.status-amber { color: #f39c12; }
 .status-green { color: #27ae60; }
 .status-blue { color: #3498db; }
-.status-amber { color: #f39c12; }
 .status-purple { color: #9b59b6; }
 .status-gray { color: #95a5a6; }
+
+/* ===== REF COLUMN COLORS (background) ===== */
+.ref-red { 
+    background-color: #fee; 
+    color: #e74c3c;
+    font-weight: bold;
+}
+.ref-amber { 
+    background-color: #fff3e0; 
+    color: #f39c12;
+    font-weight: bold;
+}
+.ref-green { 
+    background-color: #e8f5e9; 
+    color: #27ae60;
+    font-weight: bold;
+}
+.ref-blue { 
+    background-color: #e3f2fd; 
+    color: #3498db;
+    font-weight: bold;
+}
+.ref-purple { 
+    background-color: #f3e5f5; 
+    color: #9b59b6;
+    font-weight: bold;
+}
 
 /* ===== TOOLTIP ===== */
 .tooltip {
@@ -398,62 +404,7 @@
     font-size: 0.85rem;
 }
 
-/* ===================== */
-/*     Toggle Switch     */
-/* ===================== */
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggle-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.3s;
-    border-radius: 34px;
-}
-
-.toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.3s;
-    border-radius: 50%;
-}
-
-input:checked + .toggle-slider {
-    background-color: #27ae60; /* Green when checked */
-}
-
-input:checked + .toggle-slider:before {
-    transform: translateX(26px);
-}
-
-/*==================================================
-   Status Colors for Toggle Switch (via JavaScript)
-   ==================================================*/
-
-.toggle-switch.under-review .toggle-slider {
-    background-color: #3498db;
-}
-
+/* ===== TOGGLE SWITCH ===== */
 .toggle-label {
     display: flex;
     align-items: center;
@@ -472,7 +423,7 @@ input:checked + .toggle-slider:before {
     color: #4a5b3e;
 }
 
-.toggle-switch{
+.toggle-switch {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -480,7 +431,7 @@ input:checked + .toggle-slider:before {
     flex-shrink: 0;
 }
 
-.toggle-switch{
+.toggle-switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -493,12 +444,12 @@ input:checked + .toggle-slider:before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #3498db;
+    background-color: #27ae60;
     transition: 0.3s;
     border-radius: 34px;
 }
 
-.toggle-slider:before{
+.toggle-slider:before {
     position: absolute;
     content: "";
     height: 24px;
@@ -510,32 +461,77 @@ input:checked + .toggle-slider:before {
     border-radius: 50%;
 }
 
-
-
-/* === CHEKCKED STATE - Green for "Ready for Review" === */
-
-   .toggle-switch input:checked + .toggle-slider {
-    background-color: #27ae60; /* Green when checked */
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #3498db;
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
     transform: translateX(30px);
 }
 
-/* === LABEL INSIDE TOGGLE SWITCH === */
-.toggle-switch::after {
-    content: "🔵";
-    position: absolute;
-    left: 8px;
-    top: 6px;
-    font-size: 12px;
+/* ===== REVIEWER PANEL BUTTONS ===== */
+.reviewer-panel {
+    margin-top: 2rem;
+}
+
+.reviewer-actions-cell {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.reviewer-btn {
+    background: #2c3e2f;
     color: white;
-    opacity: 0.7;
-    pointer-events: none;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: background 0.2s ease;
 }
 
-.toggle-switch input:checked + .toggle-slider + .toggle-switch::after {
-    content: "🟢";
+.reviewer-btn:hover {
+    background: #1f2e21;
 }
 
-/* === END === */
+.approve-btn {
+    background: #27ae60;
+}
+
+.approve-btn:hover {
+    background: #1e8449;
+}
+
+.publish-free-btn {
+    background: #8e44ad;
+}
+
+.publish-free-btn:hover {
+    background: #6c3483;
+}
+
+.publish-premium-btn {
+    background: #f1c40f;
+    color: #2c3e2f;
+}
+
+.publish-premium-btn:hover {
+    background: #d4ac0d;
+}
+
+.sendback-btn {
+    background: #e67e22;
+}
+
+.sendback-btn:hover {
+    background: #ca6f1e;
+}
+
+.unlock-btn {
+    background: #95a5a6;
+}
+
+.unlock-btn:hover {
+    background: #7f8c8d;
+}
