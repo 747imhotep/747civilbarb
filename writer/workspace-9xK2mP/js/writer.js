@@ -1,6 +1,6 @@
 // =================================================
 // Civilisation ou Barbarie - Writer Dashboard JS
-// COMPLETE FINAL VERSION
+// COMPLETE FINAL VERSION (CORRECTED)
 // Two columns with FR/EN, status colors, tooltips
 // =================================================
 
@@ -11,6 +11,9 @@ let currentWriterEmail = null;
 let currentWriterPseudonym = null;
 let currentFrenchDraftId = null;
 let currentEnglishDraftId = null;
+
+// Reviewer email address (change this to your email)
+const REVIEWER_EMAIL = "your-email@example.com";
 
 // =================================================
 // 1. GET WRITER IDENTITY from Cloudflare
@@ -154,6 +157,7 @@ async function handleFrenchChange(e) {
         await showFrenchArticleInfo(draftId);
         showFrenchViewDocumentButton(draftId);
         updateFrenchSelectedArticle(draftId);
+        await updateRecentDocuments('fr', draftId);
     } else {
         clearFrenchArticleInfo();
         clearFrenchViewDocumentButton();
@@ -169,6 +173,7 @@ async function handleEnglishChange(e) {
         await showEnglishArticleInfo(draftId);
         showEnglishViewDocumentButton(draftId);
         updateEnglishSelectedArticle(draftId);
+        await updateRecentDocuments('en', draftId);
     } else {
         clearEnglishArticleInfo();
         clearEnglishViewDocumentButton();
@@ -187,27 +192,37 @@ async function showFrenchArticleInfo(draftId) {
     const wordsWritten = progress ? progress.words_written : 0;
     const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
     
-    // Determine status color
+    // Determine status color and text for display
     let statusClass = 'status-gray';
     let statusText = 'Disponible';
+    let isReadyForReview = false;
+    
     if (draft.review_status === 'locked_by_other') {
         statusClass = 'status-red';
         statusText = 'Occupé par un autre rédacteur';
     } else if (draft.review_status === 'in_progress') {
-        statusClass = 'status-orange';
-        statusText = 'En cours';
+        statusClass = 'status-amber';
+        statusText = 'En cours (vous)';
     } else if (draft.review_status === 'ready_for_review') {
         statusClass = 'status-green';
         statusText = 'Prêt pour relecture';
+        isReadyForReview = true;
     } else if (draft.review_status === 'under_review') {
         statusClass = 'status-blue';
         statusText = 'En relecture';
+        isReadyForReview = true;
     } else if (draft.review_status === 'published_free') {
         statusClass = 'status-purple';
         statusText = 'Publié (libre)';
     } else if (draft.review_status === 'published_premium') {
         statusClass = 'status-purple';
         statusText = 'Publié (premium)';
+    }
+    
+    // Set toggle checkbox based on status
+    const readyCheckbox = document.getElementById('frenchReadyForReview');
+    if (readyCheckbox) {
+        readyCheckbox.checked = isReadyForReview;
     }
     
     const infoDiv = document.getElementById('frenchArticleInfo');
@@ -234,24 +249,34 @@ async function showEnglishArticleInfo(draftId) {
     
     let statusClass = 'status-gray';
     let statusText = 'Available';
+    let isReadyForReview = false;
+    
     if (draft.review_status === 'locked_by_other') {
         statusClass = 'status-red';
         statusText = 'Locked by another writer';
     } else if (draft.review_status === 'in_progress') {
-        statusClass = 'status-orange';
-        statusText = 'In progress';
+        statusClass = 'status-amber';
+        statusText = 'In progress (you)';
     } else if (draft.review_status === 'ready_for_review') {
         statusClass = 'status-green';
         statusText = 'Ready for review';
+        isReadyForReview = true;
     } else if (draft.review_status === 'under_review') {
         statusClass = 'status-blue';
         statusText = 'Under review';
+        isReadyForReview = true;
     } else if (draft.review_status === 'published_free') {
         statusClass = 'status-purple';
         statusText = 'Published (free)';
     } else if (draft.review_status === 'published_premium') {
         statusClass = 'status-purple';
         statusText = 'Published (premium)';
+    }
+    
+    // Set toggle checkbox based on status
+    const readyCheckbox = document.getElementById('englishReadyForReview');
+    if (readyCheckbox) {
+        readyCheckbox.checked = isReadyForReview;
     }
     
     const infoDiv = document.getElementById('englishArticleInfo');
@@ -269,7 +294,7 @@ async function showEnglishArticleInfo(draftId) {
 }
 
 // =================================================
-// 6. SHOW VIEW DOCUMENT BUTTON
+// 6. SHOW VIEW DOCUMENT BUTTON (with lock trigger)
 // =================================================
 function showFrenchViewDocumentButton(draftId) {
     const draft = draftsData.find(d => d.id === draftId);
@@ -280,10 +305,41 @@ function showFrenchViewDocumentButton(draftId) {
         container.innerHTML = `
             <div class="tooltip">
                 <button class="view-doc-btn" data-path="${draft.path}">📖 Voir le document</button>
-                <span class="tooltip-text">Ouvre le document original à lire ou modifier</span>
+                <span class="tooltip-text">Ouvre le document original à lire ou modifier (verrouille l'article)</span>
             </div>
         `;
-        container.querySelector('.view-doc-btn')?.addEventListener('click', () => {
+        
+        const viewBtn = container.querySelector('.view-doc-btn');
+        viewBtn?.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            // Lock the article for this writer if not already locked
+            if (draft.review_status !== 'in_progress' && 
+                draft.review_status !== 'ready_for_review' && 
+                draft.review_status !== 'under_review') {
+                
+                draft.review_status = 'in_progress';
+                await updateDraftStatus(draftId, 'in_progress');
+                
+                // Create progress entry if doesn't exist
+                const existingProgress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
+                if (!existingProgress) {
+                    progressData.push({
+                        writer_email: currentWriterEmail,
+                        writer_pseudonym: currentWriterPseudonym,
+                        draft_id: draftId,
+                        words_written: 0,
+                        last_update: new Date().toISOString(),
+                        status: 'in_progress'
+                    });
+                }
+                
+                // Refresh displays
+                await showFrenchArticleInfo(draftId);
+                await displayAllDocuments();
+            }
+            
+            // Open the document
             window.open(draft.path, '_blank');
         });
     }
@@ -298,10 +354,37 @@ function showEnglishViewDocumentButton(draftId) {
         container.innerHTML = `
             <div class="tooltip">
                 <button class="view-doc-btn" data-path="${draft.path}">📖 View document</button>
-                <span class="tooltip-text">Opens the original document to read or edit</span>
+                <span class="tooltip-text">Opens the original document to read or edit (locks the article)</span>
             </div>
         `;
-        container.querySelector('.view-doc-btn')?.addEventListener('click', () => {
+        
+        const viewBtn = container.querySelector('.view-doc-btn');
+        viewBtn?.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            if (draft.review_status !== 'in_progress' && 
+                draft.review_status !== 'ready_for_review' && 
+                draft.review_status !== 'under_review') {
+                
+                draft.review_status = 'in_progress';
+                await updateDraftStatus(draftId, 'in_progress');
+                
+                const existingProgress = progressData.find(p => p.draft_id === draftId && p.writer_email === currentWriterEmail);
+                if (!existingProgress) {
+                    progressData.push({
+                        writer_email: currentWriterEmail,
+                        writer_pseudonym: currentWriterPseudonym,
+                        draft_id: draftId,
+                        words_written: 0,
+                        last_update: new Date().toISOString(),
+                        status: 'in_progress'
+                    });
+                }
+                
+                await showEnglishArticleInfo(draftId);
+                await displayAllDocuments();
+            }
+            
             window.open(draft.path, '_blank');
         });
     }
@@ -361,7 +444,37 @@ function clearEnglishArticleInfo() {
 }
 
 // =================================================
-// 8. SUBMIT REVISION FORM
+// 8. RECENT DOCUMENTS
+// =================================================
+async function updateRecentDocuments(language, draftId) {
+    const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
+    const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
+    
+    const containerId = language === 'fr' ? 'frenchRecentDocuments' : 'englishRecentDocuments';
+    const container = document.getElementById(containerId);
+    
+    if (!container) return;
+    
+    if (uploads.length === 0) {
+        container.innerHTML = '<p class="no-documents">Aucun document récent</p>';
+        return;
+    }
+    
+    let html = '<ul class="recent-docs-list">';
+    uploads.slice(0, 5).forEach(upload => {
+        html += `
+            <li>
+                <a href="${upload.path}" target="_blank">📄 ${upload.filename}</a>
+                <span class="upload-date">${new Date(upload.date).toLocaleDateString()}</span>
+            </li>
+        `;
+    });
+    html += '</ul>';
+    container.innerHTML = html;
+}
+
+// =================================================
+// 9. SUBMIT REVISION FORM
 // =================================================
 function setupSubmitForms() {
     const frenchForm = document.getElementById('frenchSubmitForm');
@@ -414,6 +527,9 @@ async function submitRevision(language) {
         if (draft) {
             draft.review_status = 'ready_for_review';
             await updateDraftStatus(draftId, 'ready_for_review');
+            
+            // Send notification to reviewer
+            await notifyReviewer(draftId, draft.title_fr || draft.title_en, currentWriterPseudonym);
         }
     }
     
@@ -433,17 +549,18 @@ async function submitRevision(language) {
         submitBtn.style.background = '#2c3e2f';
     }, 2000);
     
-    // Clear form fields (keep file input)
+    // Clear form fields
     document.getElementById(`${language}WordsToday`).value = '';
     document.getElementById(`${language}Comment`).value = '';
-    document.getElementById(`${language}ReadyForReview`).checked = false;
     document.getElementById(`${language}File`).value = '';
     
     // Refresh displays
     if (isFrench) {
         await showFrenchArticleInfo(draftId);
+        await updateRecentDocuments('fr', draftId);
     } else {
         await showEnglishArticleInfo(draftId);
+        await updateRecentDocuments('en', draftId);
     }
     await displayAllDocuments();
 }
@@ -493,9 +610,10 @@ async function uploadRevisionFile(file, draftId, language) {
     // Store in localStorage for recent documents
     const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
     const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
+    const fileUrl = URL.createObjectURL(file);
     uploads.unshift({
         filename: file.name,
-        path: URL.createObjectURL(file),
+        path: fileUrl,
         date: new Date().toISOString(),
         draftId: draftId
     });
@@ -505,35 +623,36 @@ async function uploadRevisionFile(file, draftId, language) {
     await updateRecentDocuments(language, draftId);
 }
 
-async function updateRecentDocuments(language, draftId) {
-    const uploadHistoryKey = `cob_uploads_${draftId}_${language}`;
-    const uploads = JSON.parse(localStorage.getItem(uploadHistoryKey) || '[]');
-    
-    const containerId = language === 'fr' ? 'frenchRecentDocuments' : 'englishRecentDocuments';
-    const container = document.getElementById(containerId);
-    
-    if (!container) return;
-    
-    if (uploads.length === 0) {
-        container.innerHTML = '<p class="no-documents">Aucun document disponible</p>';
-        return;
+// =================================================
+// 10. NOTIFICATION (Email / Webhook)
+// =================================================
+async function notifyReviewer(draftId, title, writerPseudonym) {
+    try {
+        // Option A: Send to your backend endpoint
+        const response = await fetch('/api/notify-reviewer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                draft_id: draftId,
+                title: title,
+                writer: writerPseudonym,
+                message: `L'article "${title}" est prêt pour relecture.`
+            })
+        });
+        
+        if (response.ok) {
+            console.log('✅ Notification sent to reviewer');
+        } else {
+            console.log('⚠️ Notification failed, but progress saved');
+        }
+    } catch (error) {
+        console.log('Could not send notification:', error);
+        // Don't block the user - notification is optional
     }
-    
-    let html = '<ul class="recent-docs-list">';
-    uploads.slice(0, 5).forEach(upload => {
-        html += `
-            <li>
-                <a href="${upload.path}" target="_blank">📄 ${upload.filename}</a>
-                <span class="upload-date">${new Date(upload.date).toLocaleDateString()}</span>
-            </li>
-        `;
-    });
-    html += '</ul>';
-    container.innerHTML = html;
 }
 
 // =================================================
-// 9. DISPLAY ALL DOCUMENTS TABLE
+// 11. DISPLAY ALL DOCUMENTS TABLE (with colored REF column)
 // =================================================
 async function displayAllDocuments() {
     const container = document.getElementById('allDocumentsContainer');
@@ -545,36 +664,65 @@ async function displayAllDocuments() {
     }
     
     let html = '<table class="documents-table">';
-    html += '<thead><tr><th>Titre / Title</th><th>Statut / Status</th><th>Progression / Progress</th><th></th><th>Actions</th></tr></thead><tbody>';
+    html += '<thead><tr>';
+    html += '<th>REF</th>';
+    html += '<th>Titre / Title</th>';
+    html += '<th>Statut / Status</th>';
+    html += '<th>Progression / Progress</th>';
+    html += '<th>Fichier</th>';
+    html += '<th>Actions</th>';
+    html += '</tr></thead><tbody>';
     
     for (const draft of draftsData) {
         const progress = progressData.find(p => p.draft_id === draft.id && p.writer_email === currentWriterEmail);
+        const isCurrentWriterWorking = progress && progress.writer_email === currentWriterEmail;
         const wordsWritten = progress ? progress.words_written : 0;
         const percentComplete = draft.word_count_target ? Math.round((wordsWritten / draft.word_count_target) * 100) : 0;
         
-        let statusClass = 'status-gray';
+        // Determine status color based on who is working
+        let statusClass = 'status-green';
         let statusText = 'Disponible / Available';
+        let refColorClass = 'ref-green';
         
         if (draft.review_status === 'locked_by_other') {
             statusClass = 'status-red';
             statusText = 'Occupé / Locked';
+            refColorClass = 'ref-red';
         } else if (draft.review_status === 'in_progress') {
-            statusClass = 'status-orange';
-            statusText = 'En cours / In progress';
+            if (isCurrentWriterWorking) {
+                statusClass = 'status-amber';
+                statusText = 'En cours (vous) / In progress (you)';
+                refColorClass = 'ref-amber';
+            } else {
+                statusClass = 'status-red';
+                statusText = 'Occupé par un autre / Locked by another';
+                refColorClass = 'ref-red';
+            }
         } else if (draft.review_status === 'ready_for_review') {
             statusClass = 'status-green';
             statusText = 'Prêt / Ready';
+            refColorClass = 'ref-green';
         } else if (draft.review_status === 'under_review') {
             statusClass = 'status-blue';
             statusText = 'En relecture / Under review';
-        } else if (draft.review_status === 'published_free' || draft.review_status === 'published_premium') {
+            refColorClass = 'ref-blue';
+        } else if (draft.review_status === 'published_free') {
             statusClass = 'status-purple';
-            statusText = 'Publié / Published';
+            statusText = 'Publié (libre) / Published (free)';
+            refColorClass = 'ref-purple';
+        } else if (draft.review_status === 'published_premium') {
+            statusClass = 'status-purple';
+            statusText = 'Publié (premium) / Published (premium)';
+            refColorClass = 'ref-purple';
         }
         
         html += `
             <tr>
-                <td><strong>${draft.title_fr || draft.title_en}</strong><br><small>${draft.title_en || draft.title_fr}</small></td>
+                <td class="${refColorClass}"><strong>${draft.id || '—'}</strong></td>
+                <td>
+                    <strong>${draft.title_fr || draft.title_en}</strong><br>
+                    <small>${draft.title_en || draft.title_fr}</small>
+                </td>
                 <td><span class="${statusClass}">${statusText}</span></td>
                 <td>
                     <div class="progress-bar-container" style="width: 100px;">
@@ -582,7 +730,7 @@ async function displayAllDocuments() {
                     </div>
                     ${percentComplete}%
                 </td>
-                <td><a href="${draft.path}" download class="download-link">📥</a></td>
+                <td><a href="${draft.path}" download class="download-link" title="Télécharger l'original">📥 Original</a></td>
                 <td>
                     <button class="small-btn view-btn" data-path="${draft.path}">👁️ Voir</button>
                 </td>
@@ -593,13 +741,89 @@ async function displayAllDocuments() {
     html += '</tbody></table>';
     container.innerHTML = html;
     
+    // Attach view button events
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(btn.dataset.path, '_blank'));
     });
 }
 
 // =================================================
-// 10. INITIALIZE DASHBOARD
+// 12. REVIEWER PANEL (for reviewer only)
+// =================================================
+async function showReviewerPanel() {
+    const isReviewer = (currentWriterEmail === REVIEWER_EMAIL);
+    const panel = document.getElementById('reviewerPanel');
+    
+    if (!isReviewer || !panel) return;
+    
+    panel.style.display = 'block';
+    const container = document.getElementById('reviewerActionsContainer');
+    if (!container) return;
+    
+    let html = '<table class="documents-table">';
+    html += '<thead><tr><th>REF</th><th>Titre</th><th>Statut actuel</th><th>Rédacteur</th><th>Actions</th></tr></thead><tbody>';
+    
+    for (const draft of draftsData) {
+        const progress = progressData.find(p => p.draft_id === draft.id);
+        const writerName = progress ? progress.writer_pseudonym : '—';
+        
+        html += `
+            <tr>
+                <td class="ref-${getRefColorClass(draft.review_status)}"><strong>${draft.id}</strong></td>
+                <td>${draft.title_fr}<br><small>${draft.title_en}</small></td>
+                <td><span class="status-${getStatusClass(draft.review_status)}">${draft.review_status || 'unlocked'}</span></td>
+                <td>${writerName}</td>
+                <td class="reviewer-actions-cell">
+                    ${draft.review_status === 'ready_for_review' ? '<button class="reviewer-btn approve-btn" data-id="'+draft.id+'">✅ Approuver (relecture)</button>' : ''}
+                    ${draft.review_status === 'under_review' ? '<button class="reviewer-btn publish-free-btn" data-id="'+draft.id+'">📢 Publier (gratuit)</button> <button class="reviewer-btn publish-premium-btn" data-id="'+draft.id+'">⭐ Publier (premium)</button>' : ''}
+                    ${draft.review_status === 'under_review' ? '<button class="reviewer-btn sendback-btn" data-id="'+draft.id+'">↩️ Renvoyer à l\'auteur</button>' : ''}
+                    ${draft.review_status === 'in_progress' ? '<button class="reviewer-btn unlock-btn" data-id="'+draft.id+'">🔓 Déverrouiller</button>' : ''}
+                </td>
+            </tr>
+        `;
+    }
+    
+    html += '</tbody></table>';
+    container.innerHTML = html;
+    
+    // Attach reviewer button events
+    document.querySelectorAll('.reviewer-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const draftId = btn.dataset.id;
+            const action = btn.classList.contains('approve-btn') ? 'under_review' :
+                          btn.classList.contains('publish-free-btn') ? 'published_free' :
+                          btn.classList.contains('publish-premium-btn') ? 'published_premium' :
+                          btn.classList.contains('sendback-btn') ? 'in_progress' :
+                          btn.classList.contains('unlock-btn') ? 'unlocked' : null;
+            
+            if (action && draftId) {
+                await updateDraftStatus(draftId, action);
+                await displayAllDocuments();
+                await showReviewerPanel();
+            }
+        });
+    });
+}
+
+function getRefColorClass(status) {
+    if (status === 'locked_by_other' || status === 'in_progress') return 'red';
+    if (status === 'ready_for_review') return 'green';
+    if (status === 'under_review') return 'blue';
+    if (status === 'published_free' || status === 'published_premium') return 'purple';
+    return 'green';
+}
+
+function getStatusClass(status) {
+    if (status === 'locked_by_other') return 'red';
+    if (status === 'in_progress') return 'amber';
+    if (status === 'ready_for_review') return 'green';
+    if (status === 'under_review') return 'blue';
+    if (status === 'published_free' || status === 'published_premium') return 'purple';
+    return 'gray';
+}
+
+// =================================================
+// 13. INITIALIZE DASHBOARD
 // =================================================
 async function initWriterDashboard() {
     console.log('🚀 Initializing writer dashboard...');
@@ -638,11 +862,14 @@ async function initWriterDashboard() {
     
     await displayAllDocuments();
     
+    // Show reviewer panel if applicable
+    await showReviewerPanel();
+    
     console.log('🎉 Dashboard initialized successfully!');
 }
 
 // =================================================
-// 11. START THE DASHBOARD
+// 14. START THE DASHBOARD
 // =================================================
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initWriterDashboard);
