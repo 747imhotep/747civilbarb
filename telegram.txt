@@ -1,54 +1,64 @@
 ✅ YOUR QUESTIONS
 ✅ MY ANSWERS
+Thank you for the html and the js files. It's too early. We need to discuss first.
 
-Step 1 ✅ in writer.js please replace the button section in loadFrenchArticleProgress() with:
- → help me to find the section to replace
- → use this icone: ✍🏾   instead of that icon:✍️
+Step 1  ✅ We have 3 fields:
+ → Articles Selection	two columns	Writer selects article
+ → Article Submission	two colomns	Writer submit article
+ → Refreshed Dashboard	one colomn	Shows ALL articles status updated
 
 
-Steps 2 ✅ We have 3 fields:
- → Select Article
- → Submit Article
- → Recent submission
+
+Steps 2 ✅ 
+| Action				| Color in table (for all writers)	| Color for current writer	|
+| Writer sees "Voir le document"	| 🟢 Green, still available		| 🟠 Orange			|
+| Writer is working			| 🔴 Red (locked)			| 🟡 Amber (in progress)	|
+| Writer finishes & checks "Prêt"	| 🟢 Green				| 🟢 Green			|
+| Text is reviewing			| 🔵 Bleue				| 🔵 Blue			|
+| Published				| 🟣 Purple				| 🟣 Purple			|
+
+
 
  
  
 Steps 3 ✅ <!----------- WRITER PLATFORM ----------->
-        
+
+If you look at the last HTML, you will see two Fields.
+It shouldn't be like that.
+Do you see:
+<!-- Field 2: Submit revision -->
+?
+it should be a new box. 
+
+and
+<label>Select an article</label>
+	and
+<label>Submit your revision</label>
+
+should be like:
+<h3>Tous les articles disponibles / All available articles</h3>
+        and
+<h3>📌 Comment utiliser ce tableau de bord ?</h3>
 
  → Select Article
  • Here, the visitor have the possibility to select documents.
- • where to stock all the documents, on GitHub, VPS server,  ?
- • "measure" of text should go to the next field. Unless we give
- 	information about selected text status. (nbre words, deadline, locked or not, ...)
- • "mettre a jour" should also go to the next field.
- • "voir le document" can stay in this field.
- • "pret pour relecture" should go to next field.
- 
- → Submit Article
- • When sending the job, it's relevant to have this follow:
- • "Mots écrits aujourd'hui"
- • "Commentaire (optionnel)"
- • "pret pour relecture"
+ • where do we stock all the documents, on GitHub, VPS server,  ?
+ • Informations details about any document should be available and uptodate in the "Tous les articles disponibles / All available articles" Field
  • 
-
- → Recent submission
- • no need because, all documents are already in 
- 	"Tous les articles disponibles"
+ • 
+ • 
+ 
+ 
  	
- → Tous les articles disponibles
+ → "Tous les articles disponibles" Field (bottom page)
  • We will significativaly improve this later 
- • Titre:	All articles availables
- • Statut:	I would like 5 status (5 colors)
- • Progression:	can we keep the progress visible ?
- • Télécharger:	only one icone is enough
- • Actions:	"voir" is ok. "pret" should be unchecked
- • 
+ • Ref.=	Color Status with a dropdown on mouse contact.
+ • Titre=	All articles availables
+ • Statut=	Color status 
+ • Progression=	can we keep the progress visible in this Field?
+ • Actions:	"voir" is ok. Should opened in a new Tab.
+ • Ambre=	Can we have it like an diod light ?
  
- 1. red		: kept by another writer
- 2. orange	: on going
- 3. green	: finished ready for review
- 4. blue	: under review - 
- 5. ambre	: busy today
- 6. blue *	: published
- 7. 
+ 
+ 
+
