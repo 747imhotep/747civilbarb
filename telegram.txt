@@ -1,7 +1,5 @@
 ✅ YOUR QUESTIONS
 ✅ MY ANSWERS
-Thank you for the html and the js files. It's too early. We need to discuss first.
-
 Step 1  ✅ We have 3 fields:
  → Articles Selection	two columns	Writer selects article
  → Article Submission	two colomns	Writer submit article
@@ -41,24 +39,39 @@ I review text → Should I manually set status, where ?
  
  
  
- The css is already done in writer-components.css
- The writer.js for the toggle
+Steps 3 ✅ When a writer selects an article, should it automatically lock (red) so others cannot take it? 
+ → Yes
  
 
 
-Steps 3 ✅ I need to share 3 files to you 
+Steps 4 ✅ I need to divide writer.js into multiple js files because, it's too havy 
 
- • HTML
- • writer.js
- • writer-components.css
- • 
- • 
- • 
- • 
- • 
- • 
- • 
- 
- 
- 
 
+Steps 5 ✅ Admin panel: Do you want a simple admin web page to change article statuses, or will you edit progress.json manually?
+ → Yes, that would be great. With an admin access that controls all documents instead of open each json file one at a time. If it's possible, we can work on it separatly. Maybe, it will take time and effort, just let me know. I never done this.
+ 
+Steps 6 ✅ Email notifications: Do you want email alerts when:
+ •     Writer marks "Ready for review"
+  → Yes. Just to be precise. "review" means controled by Chief of Redaction.
+  
+ • 
+ • 
+ • 
+ • 
+ • 
+ 
+ 
+ 🔄 WHERE DATA IS STORED 
+ 
+ | DATA			| LOCATION		| FORMAT		| WHO WRITES	|
+ |			|			|			|		|
+ | Original drafts	| /data/drafts/		| PDF/TXT/DOCX		| Me (manual)	|
+ | Drafts metadata	| drafts.json		| JSON			| Me (manual)	|
+ | Writer revisions	| /uploads/fr/ or /en/	| Any format		| Writer (auto)	|
+ | Progress + Status	| progress.json		| JSON			| Writer + You	|
+ | Published articles	| /fr/articles/ or /en/	| HTML / MD		| Me (manual)	|     
+ • 
+ • 
+ • 
+ • 
+ • 
