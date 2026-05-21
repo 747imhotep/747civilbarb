@@ -2,6 +2,7 @@
 // CONFIGURATION FILE
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+// 25 lines - 1.5 KB
 
 // Reviewer email address - CHANGE THIS TO YOUR EMAIL
 export const REVIEWER_EMAIL = "your-email@example.com";
