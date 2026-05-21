@@ -2,6 +2,7 @@
 // STORAGE MODULE - localStorage backup functions
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+// 107 lines - 3.5 KB
 
 /**
  * Save data to localStorage
