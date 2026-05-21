@@ -1,0 +1,245 @@
+// =================================================
+// FORMS MODULE - Form submission and toggle handling
+// Civilisation ou Barbarie - Writer Dashboard
+// =================================================
+
+import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
+import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
+import { saveProgressOnServer, updateDraftStatusOnServer, notifyReviewerOnServer, uploadRevisionOnServer } from './api.js';
+import { saveUploadRecord } from './storage.js';
+import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, showReviewerPanel } from './ui.js';
+import { showSuccessMessage, showLocalNotification } from './utils.js';
+
+// Store current draft IDs from UI
+let getCurrentFrenchDraftId = null;
+let getCurrentEnglishDraftId = null;
+
+/**
+ * Set the getter functions for current draft IDs
+ * @param {Function} getFrenchId - Function to get current French draft ID
+ * @param {Function} getEnglishId - Function to get current English draft ID
+ */
+export function setDraftIdGetters(getFrenchId, getEnglishId) {
+    getCurrentFrenchDraftId = getFrenchId;
+    getCurrentEnglishDraftId = getEnglishId;
+}
+
+/**
+ * Setup toggle change listeners
+ * @param {HTMLElement} notificationContainer - Container for local notifications
+ */
+export function setupToggleListeners(notificationContainer) {
+    const frenchToggle = document.getElementById('frenchReadyForReview');
+    const englishToggle = document.getElementById('englishReadyForReview');
+    
+    if (frenchToggle) {
+        frenchToggle.addEventListener('change', async (e) => {
+            const draftId = getCurrentFrenchDraftId ? getCurrentFrenchDraftId() : null;
+            if (draftId) {
+                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                await updateDraftStatus(draftId, newStatus);
+                await showFrenchArticleInfo(draftId);
+                await displayAllDocuments();
+                if (typeof showReviewerPanel === 'function') await showReviewerPanel();
+                console.log(`📝 French article status updated to: ${newStatus}`);
+            }
+        });
+    }
+    
+    if (englishToggle) {
+        englishToggle.addEventListener('change', async (e) => {
+            const draftId = getCurrentEnglishDraftId ? getCurrentEnglishDraftId() : null;
+            if (draftId) {
+                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                await updateDraftStatus(draftId, newStatus);
+                await showEnglishArticleInfo(draftId);
+                await displayAllDocuments();
+                if (typeof showReviewerPanel === 'function') await showReviewerPanel();
+                console.log(`📝 English article status updated to: ${newStatus}`);
+            }
+        });
+    }
+}
+
+/**
+ * Update draft status (local + server)
+ * @param {string} draftId - Draft identifier
+ * @param {string} status - New status
+ */
+async function updateDraftStatus(draftId, status) {
+    const writerEmail = getCurrentWriterEmail();
+    
+    // Update local
+    updateLocalDraftStatus(draftId, status);
+    
+    // Update server (fire and forget)
+    await updateDraftStatusOnServer(draftId, status, writerEmail);
+}
+
+/**
+ * Setup form submission handlers
+ */
+export function setupSubmitForms() {
+    const frenchForm = document.getElementById('frenchSubmitForm');
+    const englishForm = document.getElementById('englishSubmitForm');
+    
+    if (frenchForm) {
+        frenchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await submitRevision('fr');
+        });
+    }
+    
+    if (englishForm) {
+        englishForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await submitRevision('en');
+        });
+    }
+}
+
+/**
+ * Submit revision for an article
+ * @param {string} language - 'fr' or 'en'
+ */
+async function submitRevision(language) {
+    const isFrench = language === 'fr';
+    const draftId = isFrench ? getCurrentFrenchDraftId() : getCurrentEnglishDraftId();
+    
+    if (!draftId) {
+        alert(isFrench ? 'Veuillez sélectionner un article' : 'Please select an article');
+        return;
+    }
+    
+    const wordsToday = parseInt(document.getElementById(`${language}WordsToday`).value);
+    const comment = document.getElementById(`${language}Comment`).value;
+    const fileInput = document.getElementById(`${language}File`);
+    const readyForReview = document.getElementById(`${language}ReadyForReview`).checked;
+    
+    if (isNaN(wordsToday) || wordsToday < 0) {
+        alert(isFrench ? 'Veuillez entrer un nombre valide de mots' : 'Please enter a valid word count');
+        return;
+    }
+    
+    const writerEmail = getCurrentWriterEmail();
+    const writerPseudonym = getCurrentWriterPseudonym();
+    const existingProgress = getProgress(draftId, writerEmail);
+    const currentWords = existingProgress ? existingProgress.words_written : 0;
+    const newTotal = currentWords + wordsToday;
+    
+    // Save progress
+    const progressSaved = await saveProgress(draftId, newTotal, comment, writerEmail, writerPseudonym);
+    if (!progressSaved) {
+        alert(isFrench ? 'Erreur lors de la sauvegarde' : 'Error saving progress');
+        return;
+    }
+    
+    // Handle ready for review
+    if (readyForReview) {
+        const draft = getDraftById(draftId);
+        if (draft && draft.review_status !== 'ready_for_review') {
+            await updateDraftStatus(draftId, 'ready_for_review');
+            
+            // Send notification
+            const notified = await notifyReviewerOnServer(draftId, draft.title_fr || draft.title_en, writerPseudonym);
+            if (!notified) {
+                const notificationContainer = document.getElementById('notificationArea');
+                showLocalNotification(draft.title_fr || draft.title_en, writerPseudonym, notificationContainer);
+            }
+        }
+    }
+    
+    // Handle file upload
+    if (fileInput.files.length > 0) {
+        await uploadRevision(fileInput.files[0], draftId, writerEmail, writerPseudonym, language);
+    }
+    
+    // Show success message
+    const submitBtn = isFrench ? document.querySelector('#frenchSubmitForm .submit-btn') : document.querySelector('#englishSubmitForm .submit-btn');
+    const originalText = submitBtn.textContent;
+    showSuccessMessage(submitBtn, originalText, isFrench ? '✓ Envoyé !' : '✓ Sent!');
+    
+    // Clear form fields
+    document.getElementById(`${language}WordsToday`).value = '';
+    document.getElementById(`${language}Comment`).value = '';
+    document.getElementById(`${language}File`).value = '';
+    
+    // Refresh displays
+    if (isFrench) {
+        await showFrenchArticleInfo(draftId);
+        await updateRecentDocuments('fr', draftId);
+    } else {
+        await showEnglishArticleInfo(draftId);
+        await updateRecentDocuments('en', draftId);
+    }
+    await displayAllDocuments();
+    if (typeof showReviewerPanel === 'function') await showReviewerPanel();
+}
+
+/**
+ * Save progress locally and to server
+ * @param {string} draftId - Draft identifier
+ * @param {number} wordsWritten - Total words written
+ * @param {string} comment - Optional comment
+ * @param {string} writerEmail - Writer's email
+ * @param {string} writerPseudonym - Writer's pseudonym
+ * @returns {Promise<boolean>}
+ */
+async function saveProgress(draftId, wordsWritten, comment, writerEmail, writerPseudonym) {
+    const progressEntry = {
+        writer_email: writerEmail,
+        writer_pseudonym: writerPseudonym,
+        draft_id: draftId,
+        words_written: wordsWritten,
+        comment: comment || null,
+        status: 'in_progress'
+    };
+    
+    // Update local
+    updateProgress(progressEntry);
+    
+    // Update server (fire and forget)
+    await saveProgressOnServer(progressEntry);
+    
+    return true;
+}
+
+/**
+ * Upload revision file
+ * @param {File} file - The file to upload
+ * @param {string} draftId - Draft identifier
+ * @param {string} writerEmail - Writer's email
+ * @param {string} writerPseudonym - Writer's pseudonym
+ * @param {string} language - 'fr' or 'en'
+ */
+async function uploadRevision(file, draftId, writerEmail, writerPseudonym, language) {
+    // Save record locally
+    saveUploadRecord(draftId, language, {
+        filename: file.name,
+        date: new Date().toISOString()
+    });
+    
+    // Upload to server (fire and forget)
+    await uploadRevisionOnServer(file, draftId, writerEmail, writerPseudonym, language);
+}
+
+/**
+ * Handle view document click (lock article)
+ * @param {string} draftId - Draft identifier
+ * @param {Object} draft - Draft object
+ */
+export async function onViewDocument(draftId, draft) {
+    const writerEmail = getCurrentWriterEmail();
+    
+    if (draft.review_status !== 'in_progress' && 
+        draft.review_status !== 'ready_for_review' && 
+        draft.review_status !== 'under_review') {
+        
+        await updateDraftStatus(draftId, 'in_progress');
+        
+        const existingProgress = getProgress(draftId, writerEmail);
+        if (!existingProgress) {
+            await saveProgress(draftId, 0, 'Started working on this article', writerEmail, getCurrentWriterPseudonym());
+        }
+    }
+}
