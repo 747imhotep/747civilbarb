@@ -1,0 +1,30 @@
+contact@deadangles.org
+support@deadangles.org
+
+
+Hello Dear,
+
+Last time we worked with your technicien to solve the problem of my emails.
+They are linked to Cloudflare.
+email
+email
+
+I'm not a developper.
+
+Since the bigining I just have a lot of problems with this configuration.
+
+I'd like my email be managed only by HOVER, just like my other emails/domains.
+They work great and I never had any problem.
+
+How can I do that ?Hello,
+
+Last time, we worked with one of your technicians to solve issues with my email configuration. My emails are currently linked to Cloudflare.
+
+I am not a developer, and since the beginning I have experienced many problems with this setup.
+
+I would like my emails to be managed only by Hover, just like my other domains and email accounts. Those work perfectly, and I have never had any issues with them.
+
+Could you please let me know how I can switch back to a configuration managed entirely by Hover?
+
+Thank you in advance for your help.
+
