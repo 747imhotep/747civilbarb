@@ -2,6 +2,8 @@
 // UTILS MODULE - Helper functions
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+// 182 lines
+
 
 /**
  * Get CSS class for REF column based on status
