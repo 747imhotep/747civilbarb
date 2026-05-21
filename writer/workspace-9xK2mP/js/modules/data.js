@@ -2,6 +2,7 @@
 // DATA MODULE - Load and manage drafts & progress
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+// 192 lines - Last edited: 2024-06-15
 
 import { DATA_PATHS } from './config.js';
 import { loadFromLocal, saveToLocal } from './storage.js';
