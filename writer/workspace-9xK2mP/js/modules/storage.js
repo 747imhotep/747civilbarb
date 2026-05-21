@@ -1,0 +1,106 @@
+// =================================================
+// STORAGE MODULE - localStorage backup functions
+// Civilisation ou Barbarie - Writer Dashboard
+// =================================================
+
+/**
+ * Save data to localStorage
+ * @param {string} key - Storage key
+ * @param {any} data - Data to save (will be JSON.stringify'd)
+ */
+export function saveToLocal(key, data) {
+    try {
+        const serialized = JSON.stringify(data);
+        localStorage.setItem(key, serialized);
+        console.log(`💾 Saved to localStorage: ${key}`);
+    } catch (error) {
+        console.error(`❌ Failed to save to localStorage (${key}):`, error);
+    }
+}
+
+/**
+ * Load data from localStorage
+ * @param {string} key - Storage key
+ * @param {any} defaultValue - Default value if not found
+ * @returns {any} - Parsed data or defaultValue
+ */
+export function loadFromLocal(key, defaultValue = null) {
+    try {
+        const serialized = localStorage.getItem(key);
+        if (serialized) {
+            const data = JSON.parse(serialized);
+            console.log(`📦 Loaded from localStorage: ${key}`);
+            return data;
+        }
+    } catch (error) {
+        console.error(`❌ Failed to load from localStorage (${key}):`, error);
+    }
+    return defaultValue;
+}
+
+/**
+ * Remove data from localStorage
+ * @param {string} key - Storage key
+ */
+export function removeFromLocal(key) {
+    try {
+        localStorage.removeItem(key);
+        console.log(`🗑️ Removed from localStorage: ${key}`);
+    } catch (error) {
+        console.error(`❌ Failed to remove from localStorage (${key}):`, error);
+    }
+}
+
+/**
+ * Clear all writer-related data from localStorage
+ */
+export function clearAllWriterData() {
+    const keys = [
+        'cob_writer_pseudonym',
+        'cob_drafts_backup',
+        'cob_progress_backup'
+    ];
+    
+    keys.forEach(key => {
+        localStorage.removeItem(key);
+        console.log(`🗑️ Cleared: ${key}`);
+    });
+}
+
+/**
+ * Save upload record to localStorage
+ * @param {string} draftId - Draft identifier
+ * @param {string} language - 'fr' or 'en'
+ * @param {Object} uploadRecord - { filename, date }
+ */
+export function saveUploadRecord(draftId, language, uploadRecord) {
+    const key = `cob_uploads_${draftId}_${language}`;
+    const existing = loadFromLocal(key, []);
+    
+    existing.unshift(uploadRecord);
+    
+    // Keep only last 10 records
+    const trimmed = existing.slice(0, 10);
+    saveToLocal(key, trimmed);
+}
+
+/**
+ * Get upload records for a draft
+ * @param {string} draftId - Draft identifier
+ * @param {string} language - 'fr' or 'en'
+ * @returns {Array} - Array of upload records
+ */
+export function getUploadRecords(draftId, language) {
+    const key = `cob_uploads_${draftId}_${language}`;
+    return loadFromLocal(key, []);
+}
+
+/**
+ * Clear upload records for a draft
+ * @param {string} draftId - Draft identifier
+ * @param {string} language - 'fr' or 'en'
+ */
+export function clearUploadRecords(draftId, language) {
+    const key = `cob_uploads_${draftId}_${language}`;
+    removeFromLocal(key);
+}
