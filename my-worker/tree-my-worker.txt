@@ -21,7 +21,7 @@ Updated on mai 18 2026
 ├── package-lock.json	<- confirm the "type": "module" status. We are officially in ES Modules mode.
 │
 │
-├── premium-files/			
+├── premium-files/			<--  [NEEDS TO BE UPDATED]
 │	│			 
 │	│
 │	├─ en/
@@ -50,7 +50,7 @@ Updated on mai 18 2026
 │	│    └─ cancel.html
 │	│   
 │	│   
-│	├── css/
+│	├── css/		<--  [NEEDS TO BE UPDATED]
 │	│    ├
 │	│    │
 │	│    ├── base.css
@@ -85,7 +85,7 @@ Updated on mai 18 2026
 │	│
 │	├── index/
 │	│	│	
-│	│	└──  index.html
+│	│	└──  index.html		<--  [NEEDS TO BE UPDATED]
 │	│
 │	│
 │	├── js/
@@ -108,10 +108,10 @@ Updated on mai 18 2026
 │	│
 │	├── library/
 │	│	│	
-│	│	└──  index.html
+│	│	└──  index.html		<--  [NEEDS TO BE UPDATED]
 │	│
 │	│
-│	├── navbar/
+│	├── navbar/			<--  [NEEDS TO BE UPDATED]
 │	│	│
 │	│	│
 │	│	├── jsnavbar/
@@ -123,7 +123,7 @@ Updated on mai 18 2026
 │	│	
 │	│
 │	│
-│	├── pictures/	      			<- same images as 747cililbarb/
+│	├── pictures/	      			<- same images as 747cililbarb/ [NEEDS TO BE UPDATED]
 │	│	│
 │	│	├──  articles/
 │	│	│
