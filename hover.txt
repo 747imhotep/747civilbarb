@@ -6,8 +6,8 @@ Hello Dear,
 
 Last time we worked with your technicien to solve the problem of my emails.
 They are linked to Cloudflare.
-email
-email
+contact@deadangles.org
+support@deadangles.org
 
 I'm not a developper.
 

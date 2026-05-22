@@ -1,51 +1,7 @@
-I think VPS has never be reached.
-only GitHup
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
 
-I'd like to refresh pm2
+doesn't work
 
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
 
-
-
-GET
-https://www.deadanglesinstitute.org/public/writer/workspace-9xK2mP/
-[HTTP/3 404  183ms]
-
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/base.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/csssnippet/snippet.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/404.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/footer.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js
-[HTTP/3 200  0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
-[HTTP/3 200  0ms]
-
-Waiting for navbar elements (attempt 1)... navbar.js:20:17
-GET
-https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
-[HTTP/2 200  0ms]
-
-GET
-https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
-[HTTP/3 200  0ms]
-
-Navbar found, attaching event listeners 2 navbar.js:26:13
-
+works 
