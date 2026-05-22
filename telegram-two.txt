@@ -1,11 +1,19 @@
-For practical reason, 
-We can stat with
-• auth.js    
-• api.js     
-• data.js    
+drwxrwxr-x  9 deploy deploy   4096 May 22 00:29 .
+drwxr-x---  9 deploy deploy   4096 May 22 00:30 ..
+-rw-rw-r--  1 deploy deploy   1295 Mar 25 11:19 .env
+drwxrwxr-x  7 deploy deploy   4096 May 22 00:29 .git
+-rw-rw-r--  1 deploy deploy   1714 Feb 19 02:10 Readme.txt
+drwxrwxr-x  2 deploy deploy   4096 Feb 19 02:10 data
+-rw-rw-r--  1 deploy deploy      0 Feb 19 02:10 endpoint.js
+drwxrwxr-x 85 deploy deploy   4096 Feb 21 12:32 node_modules
+-rw-rw-r--  1 deploy deploy 101758 Mar 25 12:06 package-lock.json
+-rw-rw-r--  1 deploy deploy    517 Feb 21 12:32 package.json
+drwxrwxr-x  4 deploy deploy   4096 Apr 30 22:57 premium-files
+drwxrwxr-x 14 deploy deploy   4096 Feb 20 05:33 public
+-rw-rw-r--  1 deploy deploy  13249 Apr 30 23:36 server.js
+-rw-rw-r--  1 deploy deploy   6666 Feb 20 09:02 server.js.save
+-rw-rw-r--  1 deploy deploy  10066 May  1 01:34 server.js.save.1
+drwxrwxr-x  2 deploy deploy   4096 Feb 19 02:10 success-backup
+-rw-rw-r--  1 deploy deploy     70 Feb 27 10:39 test-payload.json
+drwxrwxr-x  2 deploy deploy   4096 Feb 20 21:02 tools
 
-Then, when I'm ready we will continue with:
-• ui.js      
-• forms.js   
-• reviewer.js
-• utils.js   
