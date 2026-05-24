@@ -1,0 +1,69 @@
+Open F12 CONSOLE:
+
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/auth.js
+[HTTP/1.1 200 OK 164ms]
+
+The character encoding of the document was not declared, so the encoding was guessed from content. The character encoding needs to be declared in the Content-Type HTTP header or using a byte order mark. auth.js
+GET
+https://www.deadanglesinstitute.org/favicon.ico
+[HTTP/1.1 404 Not Found 0ms]
+
+	
+GET
+	https://www.deadanglesinstitute.org/favicon.ico
+Status
+404
+Not Found
+VersionHTTP/1.1
+Transferred137 B (150 B size)
+Referrer Policystrict-origin-when-cross-origin
+DNS ResolutionSystem
+
+    	
+    Access-Control-Allow-Credentials
+    	true
+    Connection
+    	keep-alive
+    Content-Encoding
+    	gzip
+    Content-Security-Policy
+    	default-src 'none'
+    Content-Type
+    	text/html; charset=utf-8
+    Date
+    	Sun, 24 May 2026 12:01:44 GMT
+    Server
+    	nginx/1.18.0 (Ubuntu)
+    Transfer-Encoding
+    	chunked
+    Vary
+    	Origin
+    X-Content-Type-Options
+    	nosniff
+    X-Powered-By
+    	Express
+    	
+    Accept
+    	image/avif,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5
+    Accept-Encoding
+    	gzip, deflate, br, zstd
+    Accept-Language
+    	en-US,en;q=0.9
+    Connection
+    	keep-alive
+    Host
+    	www.deadanglesinstitute.org
+    Referer
+    	https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/auth.js
+    Sec-Fetch-Dest
+    	image
+    Sec-Fetch-Mode
+    	no-cors
+    Sec-Fetch-Site
+    	same-origin
+    Sec-GPC
+    	1
+    User-Agent
+    	Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:150.0) Gecko/20100101 Firefox/150.0
