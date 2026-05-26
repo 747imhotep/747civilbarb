@@ -6,8 +6,8 @@ writer/
     │	│
     │   ├── writer.css
     │   ├── writer-base.css
-    │   ├── writer-components.css	✅ present in Network Tab, File list 
-    │   ├── writer-layout.css		✅ present in Network Tab, File list
+    │   ├── writer-components.css	 
+    │   ├── writer-layout.css		
     │   └── writer-modal.css
     │  
     ├── data/
@@ -22,19 +22,18 @@ writer/
     ├── js/
     │   │
     │   ├── modules/
-    │   │    ├── api.js		✅ present in Network Tab, File list
-    │   │    ├── auth.js	✅ present in Network Tab, File list
-    │   │    ├── config.js	✅ present in Network Tab, File list
-    │   │    ├── data.js	✅ present in Network Tab, File list
-    │   │    ├── forms.js	✅ present in Network Tab, File list
-    │   │    ├── reviewer.js	✅ present in Network Tab, File list
-    │   │    ├── storage.js	✅ present in Network Tab, File list
-    │   │    ├── ui.js		✅ present in Network Tab, File list
-    │   │    ├── utils.js	✅ present in Network Tab, File list
-    │   │    └── writer-main.js	✅ present in Network Tab, File list
+    │   │    ├── api.js		
+    │   │    ├── auth.js	
+    │   │    ├── config.js	
+    │   │    ├── data.js	
+    │   │    ├── forms.js	
+    │   │    ├── reviewer.js	
+    │   │    ├── storage.js	
+    │   │    ├── ui.js		
+    │   │    └── utils.js	
     │	│
     │   ├── writer.js
-    │   └── writer-main.js	<-- duble file. To delete ?
+    │   └── writer-main.js	<-- we keep this one
     │  
     └── uploads/
     	├── en/

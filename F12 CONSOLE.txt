@@ -25,30 +25,31 @@ import { setupSubmitForms, setupToggleListeners, setDraftIdGetters, onViewDocume
 → 
 GET
 https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js/
-[HTTP/1.1 304 Not Modified 163ms]
+[HTTP/1.1 200 OK 968ms]
 
 GET
 https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
-[HTTP/1.1 200 OK 0ms]
+[HTTP/1.1 200 OK 167ms]
 
 GET
 https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
-[HTTP/1.1 200 OK 0ms]
+[HTTP/1.1 200 OK 321ms]
 
 GET
 https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/writer-main.js
-[HTTP/1.1 200 OK 0ms]
+[HTTP/1.1 200 OK 563ms]
 
 GET
 https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
-NS_BINDING_ABORTED
+[HTTP/1.1 200 OK 734ms]
 
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. node.js:416:1
 GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js
 NS_ERROR_CORRUPTED_CONTENT
 
 GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js
 NS_ERROR_CORRUPTED_CONTENT
 
 GET
@@ -64,19 +65,19 @@ https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/u
 NS_ERROR_CORRUPTED_CONTENT
 
 GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js
-NS_ERROR_CORRUPTED_CONTENT
-
-GET
 https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/forms.js
 NS_ERROR_CORRUPTED_CONTENT
 
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js
+NS_ERROR_CORRUPTED_CONTENT
+
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js”. writer-main.js
 Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
 Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js”. writer-main.js
 Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/data.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
 Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/data.js”. writer-main.js
-Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
-Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js”. writer-main.js
 Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/storage.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
 Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/storage.js”. writer-main.js
 Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/ui.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
@@ -87,7 +88,8 @@ Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2
 Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js”. writer-main.js
 GET
 https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
-[HTTP/1.1 200 OK 0ms]
+[HTTP/1.1 200 OK 175ms]
+
 
 4. 
 
