@@ -1,0 +1,47 @@
+I've Run the Quick Tests in Console:
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
+[HTTP/1.1 304 Not Modified 829ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/3 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js
+[HTTP/3 200  0ms]
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+NS_BINDING_ABORTED
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 0ms]
+
+fetch('/writer/workspace-9xK2mP/data/drafts.json')
+  .then(r => r.json())
+  .then(d => console.log('✅ Drafts:', d))
+  .catch(e => console.error('❌ Drafts error:', e))
+Promise { <state>: "pending" }
+
+✅ Drafts: 
+Object { drafts: (4) […] }
+debugger eval code:3:22
+fetch('/writer/workspace-9xK2mP/data/progress.json')
+  .then(r => r.json())
+  .then(p => console.log('✅ Progress:', p))
+  .catch(e => console.error('❌ Progress error:', e))
+Promise { <state>: "pending" }
+
+✅ Progress: 
+Object { progress: (2) […] }
+debugger eval code:3:22
+console.log('Checking for errors...');
+Checking for errors... debugger eval code:1:9
+undefined 

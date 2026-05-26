@@ -1,22 +1,3 @@
-1. AFTER:
-Open F12 → Console 
-→
-
-END OF RESPONSE
-==================================
-
-
-2. AFTER:
-Open F12 → Network 
-→ 
-take a look at the picture
-END OF RESPONSE
-==================================
-
-
-3. AFTER:
-I forgot to share writer tree
-→ 
 writer/
 │  
 └── workspace-9xK2mP/
@@ -62,32 +43,3 @@ writer/
         
         
         
-END OF RESPONSE]
-==================================
-
-5. AFTER:
-
-→
-
-END OF RESPONSE
-==================================
-
-6. AFTER:
-
-
-→ 
-
-END OF RESPONSE
-==================================
-
-7. AFTER:
-
-→ 
-
-END OF RESPONSE
-==================================
-
-
-
-
-

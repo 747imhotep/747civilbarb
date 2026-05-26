@@ -3,6 +3,8 @@
 // Civilisation ou Barbarie
 // =================================================
 
+// 187 lines
+
 // Import modules
 import { REVIEWER_EMAIL } from './modules/config.js';
 import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './modules/auth.js';
@@ -138,10 +140,8 @@ function showLoginError() {
 async function initWriterDashboard() {
     console.log('🚀 Initializing writer dashboard...');
     
-    // Load backup data first
     loadBackupData();
     
-    // Get writer identity
     const email = await getWriterIdentity();
     if (!email) {
         console.log('❌ Writer not identified');
@@ -152,35 +152,24 @@ async function initWriterDashboard() {
     console.log('✅ Writer email:', getCurrentWriterEmail());
     console.log('✅ Writer pseudonym:', getCurrentWriterPseudonym());
     
-    // Display writer info in header
     const writerInfoContainer = document.getElementById('writerInfo');
     displayWriterInfo(writerInfoContainer);
     
-    // Load data from server
     await loadDrafts();
     await loadProgress();
     
-    // Set up draft ID getters for forms module
     setDraftIdGetters(getCurrentFrenchDraftId, getCurrentEnglishDraftId);
     
-    // Populate dropdowns
     populateDropdowns();
-    
-    // Attach dropdown event listeners
     attachDropdownListeners();
-    
-    // Setup form submissions
     setupSubmitForms();
     
-    // Setup toggle listeners
     const notificationContainer = document.getElementById('notificationArea');
     setupToggleListeners(notificationContainer);
     
-    // Display all documents table
     await displayAllDocuments();
     
-    // Show reviewer panel if current user is reviewer
-    if (isReviewer()) {
+    if (isReviewer(REVIEWER_EMAIL)) {
         await showReviewerPanel();
         console.log('🔍 Reviewer mode enabled');
     }
@@ -194,3 +183,4 @@ if (document.readyState === 'loading') {
 } else {
     initWriterDashboard();
 }
+

@@ -3,15 +3,12 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 250 lines
-
 import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { saveProgressOnServer, updateDraftStatusOnServer, notifyReviewerOnServer, uploadRevisionOnServer } from './api.js';
 import { saveUploadRecord } from './storage.js';
 import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, showReviewerPanel } from './reviewer.js';
 import { showSuccessMessage, showLocalNotification } from './utils.js';
-
 
 // Store current draft IDs from UI
 let getCurrentFrenchDraftId = null;
@@ -246,3 +243,4 @@ export async function onViewDocument(draftId, draft) {
         }
     }
 }
+
