@@ -1,25 +1,88 @@
 1. AFTER:
 Open F12 → Console 
 →
-We will verify later.
+please check below
 END OF RESPONSE
 ==================================
 
 
 2. AFTER:
-First, I need to verify index.html
-then, writer.js and writer-main.js
-After that, we check F12
+We test index.html to:
+<script type="module" src="/writer/workspace-9xK2mP/js/writer-main.js" defer></script>
 
-Then you wait new instructions
 → 
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
+[HTTP/1.1 200 OK 835ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js
+[HTTP/1.1 304 Not Modified 166ms]
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 304 Not Modified 323ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/config.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/auth.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/data.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/storage.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/ui.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/forms.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/reviewer.js
+NS_ERROR_CORRUPTED_CONTENT
+
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/data.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/data.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/ui.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/ui.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/reviewer.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/reviewer.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/config.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/config.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/auth.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/auth.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/forms.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/forms.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/storage.js” was blocked because of a disallowed MIME type (“text/html”). workspace-9xK2mP
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/storage.js”. writer-main.js
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 0ms]
 
 END OF RESPONSE
 ==================================
 
 
 3. AFTER:
-
+just to Remember 
 → 
 writer/
 │  
@@ -29,8 +92,8 @@ writer/
     │	│
     │   ├── writer.css
     │   ├── writer-base.css
-    │   ├── writer-components.css	✅  
-    │   ├── writer-layout.css		✅ 
+    │   ├── writer-components.css	 
+    │   ├── writer-layout.css		
     │   └── writer-modal.css
     │  
     ├── data/
@@ -45,19 +108,18 @@ writer/
     ├── js/
     │   │
     │   ├── modules/
-    │   │    ├── api.js		✅ 
-    │   │    ├── auth.js	✅ 
-    │   │    ├── config.js	✅ 
-    │   │    ├── data.js	✅ 
-    │   │    ├── forms.js	✅ 
-    │   │    ├── reviewer.js	✅ 
-    │   │    ├── storage.js	✅ 
-    │   │    ├── ui.js		✅ 
-    │   │    ├── utils.js	✅ 
-    │   │    └── writer-main.js	✅ 
+    │   │    ├── api.js		
+    │   │    ├── auth.js	
+    │   │    ├── config.js	
+    │   │    ├── data.js	
+    │   │    ├── forms.js	
+    │   │    ├── reviewer.js	
+    │   │    ├── storage.js	
+    │   │    ├── ui.js		
+    │   │    └── utils.js	
     │	│
-    │   ├── writer.js
-    │   └── writer-main.js	<-- duble file. To delete ?
+    │   ├── writer.js		<-- we need to decide to keep this one
+    │   └── writer-main.js	<-- we need to decide to keep this one
     │  
     └── uploads/
     	├── en/
@@ -70,17 +132,51 @@ END OF RESPONSE]
 ==================================
 
 5. AFTER:
-
+Now we checked F12 CONSOLE:
+<script  src="/writer/workspace-9xK2mP/js/writer.js" defer></script>
 →
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/
+[HTTP/1.1 200 OK 592ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 304 Not Modified 171ms]
+
+🚀 Initializing writer dashboard... writer.js:972:13
+XHR
+GET
+https://www.deadanglesinstitute.org/cdn-cgi/access/get-identity
+[HTTP/1.1 404 Not Found 168ms]
+
+❌ Writer not identified writer.js:978:17
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 0ms]
+
 
 END OF RESPONSE
 ==================================
 
 6. AFTER:
-
-
+What the visitor sees:
+(but no way to click and access to Cloudflare Access)
 → 
+🔐 Accès protégé par Cloudflare Zero Trust.
 
+Cette page est réservée aux rédacteurs approuvés. 
 END OF RESPONSE
 ==================================
 
