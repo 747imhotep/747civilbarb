@@ -2,14 +2,13 @@
 // MAIN ENTRY POINT - Writer Dashboard
 // Civilisation ou Barbarie
 // =================================================
+// 188 lines - 2026-05-27
 
-// 187 lines
-
-// Import modules
-import { REVIEWER_EMAIL } from './modules/config.js';
-import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './modules/auth.js';
-import { loadDrafts, loadProgress, draftsData, progressData } from './modules/data.js';
-import { loadFromLocal, saveToLocal } from './modules/storage.js';
+// Import modules - CORRECTED PATHS (no './modules/')
+import { REVIEWER_EMAIL } from './config.js';
+import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './auth.js';
+import { loadDrafts, loadProgress, draftsData, progressData } from './data.js';
+import { loadFromLocal, saveToLocal } from './storage.js';
 import { 
     populateFrenchDropdown, 
     populateEnglishDropdown, 
@@ -29,14 +28,18 @@ import {
     getCurrentEnglishDraftId,
     setCurrentFrenchDraftId,
     setCurrentEnglishDraftId
-} from './modules/ui.js';
+} from './ui.js';
 import { 
     setupSubmitForms, 
     setupToggleListeners, 
     setDraftIdGetters,
     onViewDocument 
-} from './modules/forms.js';
-import { showReviewerPanel, isReviewer } from './modules/reviewer.js';
+} from './forms.js';
+import { showReviewerPanel, isReviewer } from './reviewer.js';
+
+// =================================================
+// HANDLERS
+// =================================================
 
 /**
  * Handle French article selection change
@@ -183,4 +186,3 @@ if (document.readyState === 'loading') {
 } else {
     initWriterDashboard();
 }
-
