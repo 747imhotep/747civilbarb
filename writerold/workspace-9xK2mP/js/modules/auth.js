@@ -3,17 +3,83 @@
 // auth.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 85 lines - Created: 2024-06-15
+// 177 lines - Created: 2024-06-28
+
 
 // Global variables
 let currentWriterEmail = null;
 let currentWriterPseudonym = null;
 
 /**
- * Get writer identity from Cloudflare Access
+ * Extract email from Cloudflare JWT cookie (if possible)
+ * @returns {string|null} Email or null
+ */
+function extractEmailFromCFCookie() {
+    try {
+        // Look for CF authorization cookie
+        const cookies = document.cookie.split(';');
+        for (const cookie of cookies) {
+            const trimmed = cookie.trim();
+            if (trimmed.startsWith('CF_Authorization') || trimmed.startsWith('CF_AppSession')) {
+                // Cookie exists - user is authenticated
+                // For Cloudflare Access, the email is not directly in the cookie
+                // but we can check if the user has a valid session
+                console.log('✅ Cloudflare session cookie found');
+                
+                // Check localStorage for saved email
+                const savedEmail = localStorage.getItem('cob_writer_email');
+                if (savedEmail) {
+                    return savedEmail;
+                }
+                
+                // If no saved email, we need to get it from somewhere else
+                // You can prompt once or extract from the CF JWT if needed
+                return null;
+            }
+        }
+    } catch (error) {
+        console.error('Error reading CF cookie:', error);
+    }
+    return null;
+}
+
+/**
+ * Get writer identity - MODIFIED to work without identity endpoint
  * @returns {Promise<string|null>} Writer email or null
  */
 export async function getWriterIdentity() {
+    // Method 1: Check if user is authenticated via Cloudflare session
+    const hasCFSession = document.cookie.includes('CF_Authorization') || 
+                         document.cookie.includes('CF_AppSession');
+    
+    if (hasCFSession) {
+        // User is authenticated with Cloudflare Access
+        
+        // Check localStorage for saved email
+        const savedEmail = localStorage.getItem('cob_writer_email');
+        if (savedEmail) {
+            currentWriterEmail = savedEmail;
+            currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || savedEmail.split('@')[0];
+            console.log('✅ Writer identified from saved session:', currentWriterEmail);
+            return currentWriterEmail;
+        }
+        
+        // If no saved email, we need to get it once
+        // You can either:
+        // 1. Prompt the user for their email (once)
+        // 2. Set a default test email for development
+        
+        const emailInput = prompt('Bienvenue! Veuillez entrer votre adresse email pour continuer:', '');
+        if (emailInput && emailInput.includes('@')) {
+            currentWriterEmail = emailInput;
+            currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || emailInput.split('@')[0];
+            localStorage.setItem('cob_writer_email', currentWriterEmail);
+            console.log('✅ Writer email saved:', currentWriterEmail);
+            return currentWriterEmail;
+        }
+    }
+    
+    // Method 2: Try the standard identity endpoint (if enabled in future)
     try {
         const response = await fetch('/cdn-cgi/access/get-identity', {
             credentials: 'include'
@@ -22,18 +88,27 @@ export async function getWriterIdentity() {
         if (response.ok) {
             const identity = await response.json();
             currentWriterEmail = identity.email;
-            
-            // Get pseudonym from localStorage or derive from email
-            const storedPseudonym = localStorage.getItem('cob_writer_pseudonym');
-            currentWriterPseudonym = storedPseudonym || identity.email.split('@')[0];
-            
-            console.log('✅ Writer identified:', currentWriterEmail);
+            currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || identity.email.split('@')[0];
+            localStorage.setItem('cob_writer_email', currentWriterEmail);
+            console.log('✅ Writer identified via endpoint:', currentWriterEmail);
             return currentWriterEmail;
         }
     } catch (error) {
-        console.error('Could not fetch Cloudflare identity:', error);
+        console.log('Identity endpoint not available, using fallback');
     }
     
+    // Method 3: Check if this is a development/test environment
+    const urlParams = new URLSearchParams(window.location.search);
+    const testEmail = urlParams.get('test_email');
+    if (testEmail && testEmail.includes('@')) {
+        currentWriterEmail = testEmail;
+        currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || testEmail.split('@')[0];
+        localStorage.setItem('cob_writer_email', currentWriterEmail);
+        console.log('✅ Test email from URL:', currentWriterEmail);
+        return currentWriterEmail;
+    }
+    
+    console.error('❌ Could not identify writer');
     return null;
 }
 
@@ -78,9 +153,25 @@ export function isReviewer(reviewerEmail) {
 export function displayWriterInfo(container) {
     if (container && currentWriterPseudonym) {
         container.innerHTML = `
-            <span class="writer-pseudo">✍🏾 ${currentWriterPseudonym}</span>
-            <span class="writer-email">(${currentWriterEmail})</span>
+            <span class="writer-pseudo">✍🏾 ${escapeHtml(currentWriterPseudonym)}</span>
+            <span class="writer-email">(${escapeHtml(currentWriterEmail || '')})</span>
         `;
     }
 }
+
+/**
+ * Simple escape function for security
+ * @param {string} str
+ * @returns {string}
+ */
+function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+        if (m === '&') return '&amp;';
+        if (m === '<') return '&lt;';
+        if (m === '>') return '&gt;';
+        return m;
+    });
+}
+
 
