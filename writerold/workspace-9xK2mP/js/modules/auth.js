@@ -1,8 +1,9 @@
 // =================================================
 // AUTHENTICATION MODULE
+// auth.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 84 lines - Created: 2024-06-15
+// 85 lines - Created: 2024-06-15
 
 // Global variables
 let currentWriterEmail = null;
@@ -82,3 +83,4 @@ export function displayWriterInfo(container) {
         `;
     }
 }
+
