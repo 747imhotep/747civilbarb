@@ -1,14 +1,15 @@
 // =================================================
 // MAIN ENTRY POINT - Writer Dashboard
+// writer-main.js
 // Civilisation ou Barbarie
 // =================================================
-// 188 lines - 2026-05-27
+// 190 lines - 2026-05-28
 
-// Import modules - CORRECTED PATHS (no './modules/')
-import { REVIEWER_EMAIL } from './config.js';
-import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './auth.js';
-import { loadDrafts, loadProgress, draftsData, progressData } from './data.js';
-import { loadFromLocal, saveToLocal } from './storage.js';
+// Import modules from the modules folder - FIXED PATHS
+import { REVIEWER_EMAIL } from './modules/config.js';
+import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './modules/auth.js';
+import { loadDrafts, loadProgress, draftsData, progressData } from './modules/data.js';
+import { loadFromLocal, saveToLocal } from './modules/storage.js';
 import { 
     populateFrenchDropdown, 
     populateEnglishDropdown, 
@@ -28,14 +29,16 @@ import {
     getCurrentEnglishDraftId,
     setCurrentFrenchDraftId,
     setCurrentEnglishDraftId
-} from './ui.js';
+} from './modules/ui.js';
 import { 
     setupSubmitForms, 
     setupToggleListeners, 
     setDraftIdGetters,
     onViewDocument 
-} from './forms.js';
-import { showReviewerPanel, isReviewer } from './reviewer.js';
+} from './modules/forms.js';
+import { showReviewerPanel, isReviewer } from './modules/reviewer.js';
+
+// Rest of the file remains the same (handlers, initWriterDashboard, etc.)
 
 // =================================================
 // HANDLERS
