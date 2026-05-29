@@ -1,0 +1,37 @@
+I have few questions for you.
+You said erlier:
+
+Root Cause
+
+Cloudflare Access's identity endpoint /cdn-cgi/access/get-identity is not available on your zone. This endpoint only works when:
+
+    1. Cloudflare Access is properly configured for the application
+
+    2. The user is authenticated through Cloudflare Access
+
+    3. The endpoint is not blocked by firewall rules
+    
+    
+    Concerning point 1. I can confirm that Cloudfare Access is properly configured for the application. 
+    Before yesterday May 28th, before you updated forms.js, everything used to work find and Clouldflare 
+    Access was accessible.
+    
+    
+    Concerning point 2., le me show you what happended right now in three points
+    → http://127.0.0.1:5500/writerold/workspace-9xK2mP/login.html [my login page]
+    → click on : https://deadangles.cloudflareaccess.com/#/NoAuth [click on button]
+    → https://deadangles.cloudflareaccess.com/#/Launcher
+    → the page proposes two choices: 1) "CP" and 2) "CW"
+    → Let's click on "CW"
+    → https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*    
+    → I can see the Dashboard page for 1 sec. Then...
+    → Blanck page with this message: 
+    	" 🔐 Accès protégé par Cloudflare Zero Trust. "
+    	" Cette page est réservée aux rédacteurs approuvés. "
+    	
+	
+    Concerning point 3. Since the setup was functionning correctly, about 1 month ago, firewall never been an issue.
+    So, this remarque is not relevant.
+    
+    
+    I stop right here for now.
