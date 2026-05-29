@@ -3,7 +3,7 @@
 // auth.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 159 lines - Created: 2024-06-28
+// 159 lines - Updated: 2026-05-29
 
 
 
