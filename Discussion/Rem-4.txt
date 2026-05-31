@@ -1,0 +1,32 @@
+What happended ?
+Everything works now.
+That's amazing
+
+"Select" shows documents
+
+"All available articles"
+are finally shown
+
+    →  F12 CONSOLE:
+🚀 Initializing writer dashboard... writer-main.js:147:13
+📦 Loaded from localStorage: cob_drafts_backup storage.js:33:21
+📦 Found drafts backup, will use if network fails writer-main.js:119:17
+✅ Writer identified from localStorage: lunywholesaler@yahoo.com auth.js:85:17
+✅ Writer email: lunywholesaler@yahoo.com writer-main.js:158:13
+✅ Writer pseudonym: PlumeKamite writer-main.js:159:13
+📥 Drafts.json loaded: 
+Object { drafts: (4) […] }
+data.js:28:21
+💾 Saved to localStorage: cob_drafts_backup storage.js:16:17
+✅ Drafts assigned: 4 articles data.js:34:25
+📥 Progress.json loaded: 
+Object { progress: (2) […] }
+data.js:77:21
+💾 Saved to localStorage: cob_progress_backup storage.js:16:17
+✅ Progress assigned: 2 entries data.js:83:25
+🇫🇷 French drafts found: 3 ui.js:27:13
+🇬🇧 English drafts found: 3 ui.js:50:13
+🎉 Dashboard initialized successfully! writer-main.js:183:13
+    	
+	
+   

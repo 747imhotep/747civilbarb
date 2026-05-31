@@ -1,0 +1,146 @@
+You asked me to check on a new Private Window
+
+    →  F12 CONSOLE:
+http://127.0.0.1:5500/writerold/workspace-9xK2mP/login.html (only accessible via VS Live Server)
+
+https://deadangles.cloudflareaccess.com/#/NoAuth
+
+click on login then inserting email
+
+receiving nbr code access
+
+insert six digit code
+
+https://deadangles.cloudflareaccess.com/#/Launcher
+
+POST
+https://deadangles.cloudflareaccess.com/cdn-cgi/access/callback
+[HTTP/2 302  372ms]
+
+GET
+https://deadangles.cloudflareaccess.com/cdn-cgi/access/authorized?nonce=fb46a036d89fe2cb1e3dc38acdd8cda2cb3527c34e78ede57763dd3fafaafc48.1780266226&state=8abbb12736d6def06c7c78b2e0217a262aa4dcc9785cc5ace406e6ba0f257032.JTdCJTIyaWF0JTIyJTNBMTc4MDI2NjE2NiUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIycmVkaXJlY3RVUkwlMjIlM0ElMjIlMkYlMjIlMkMlMjJhdWQlMjIlM0ElMjJjODdkNDZhZmIwN2IyY2Q2Y2VjYzg5NTgwYzNjY2Y1OWEwMjliNDc5YmY2YTRhYzk3NWRmYTdmY2IxZTg3MmJhJTIyJTJDJTIyaWRwSWQlMjIlM0ElMjIlMjIlMkMlMjJpc09UUCUyMiUzQXRydWUlMkMlMjJpc1JlZnJlc2glMjIlM0FmYWxzZSUyQyUyMmlzU2FtZVNpdGVOb25lQ29tcGF0aWJsZSUyMiUzQXRydWUlMkMlMjJzZXJ2aWNlX3Rva2VuX2lkJTIyJTNBJTIyJTIyJTJDJTIyc2VydmljZV90b2tlbl9zdGF0dXMlMjIlM0FmYWxzZSUyQyUyMmF1dGhfc3RhdHVzJTIyJTNBJTIyJTIyJTJDJTIyY29tbW9uX25hbWUlMjIlM0ElMjIlMjIlMkMlMjJpc19nYXRld2F5JTIyJTNBZmFsc2UlMkMlMjJpc193YXJwJTIyJTNBZmFsc2UlMkMlMjJkZXZpY2VfaWQlMjIlM0ElMjIlMjIlMkMlMjJub25jZSUyMiUzQSUyMm5UN3lLM0tpWEVnQms5QmtnJTIyJTdE
+[HTTP/2 302  84ms]
+
+GET
+https://deadangles.cloudflareaccess.com/
+[HTTP/2 200  58ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/index-uYP-oJTH.js
+[HTTP/2 200  90ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/index-B7P_19NB.css
+[HTTP/2 200  49ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/favicon-MJ23V8hi.ico
+[HTTP/2 200  37ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/zt-logo-BIoPutDp.svg
+[HTTP/2 200  42ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/pingboard-BWTcxJXU.js
+[HTTP/2 200  49ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/greenhouse-5WvL-Xnv.js
+[HTTP/2 200  47ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/default-D_OQoRHf.js
+[HTTP/2 200  55ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/dash-VjGoU2Wn.js
+[HTTP/2 200  54ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/email-DuGtJc4m.js
+[HTTP/2 200  49ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/db-CkIGxMIG.js
+[HTTP/2 200  49ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/board-DXvu9my3.js
+[HTTP/2 200  58ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/firewall-DENH6---.js
+[HTTP/2 200  48ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/film-B97Bvgg9.js
+[HTTP/2 200  54ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/monitor-hIn_b3Fl.js
+[HTTP/2 200  49ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/report-C4fK7eYU.js
+[HTTP/2 200  47ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/setting-DiX5R6Hn.js
+[HTTP/2 200  50ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/config-Baj-fomE.js
+[HTTP/2 200  50ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/inspiretec-holistic-DfnAV8Ji.js
+[HTTP/2 200  41ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/inspiretec-agency-0aqbPXS-.js
+[HTTP/2 200  46ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/inspiretec-sequence-Czuf2uGJ.js
+[HTTP/2 200  46ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/inspiretec-crm-B9Y5uVNT.js
+[HTTP/2 200  44ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/inspiretec-reservations-teng2gSe.js
+[HTTP/2 200  47ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/travelink-CaqAaxD5.js
+[HTTP/2 200  44ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/logentries-BjOC7fXq.js
+[HTTP/2 200  308ms]
+
+GET
+https://deadangles.cloudflareaccess.com/assets/traefik-Ct3hzt9N.js
+[HTTP/2 200  45ms]
+
+
+Click on CW 
+
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*
+
+Dashboard in a new tab for one sec
+
+Error page appear " 🔐 Accès protégé par Cloudflare Zero Trust. "
+
+🚀 Initializing writer dashboard... writer-main.js:147:13
+❌ Could not identify writer auth.js:100:13
+❌ Writer not identified writer-main.js:153:17
+
+
+
+
+    	
+	
+   

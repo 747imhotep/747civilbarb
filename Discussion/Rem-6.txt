@@ -1,0 +1,90 @@
+I cannot change address in policy.
+The policy take the address from the App setup.
+Should I change the App Address Setup ?
+
+
+Also,
+Please check the HTML file here above.
+at the top of the page, we have the pseudo name and the email address of the writer.
+In the principal browser, the email address shown do not match with the email use for 
+login in.
+
+
+    →  F12 CONSOLE:
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/*
+[HTTP/1.1 304 Not Modified 170ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 304 Not Modified 169ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/config.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/auth.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/data.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/storage.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/ui.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/forms.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/reviewer.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/api.js
+[HTTP/1.1 200 OK 0ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/utils.js
+[HTTP/1.1 200 OK 0ms]
+
+ →  →  →  →  →  →  →  THEN REDIRECTED TO ERROR PAGE
+
+🚀 Initializing writer dashboard... writer-main.js:147:13
+XHR
+GET
+https://www.deadanglesinstitute.org/cdn-cgi/access/get-identity
+[HTTP/1.1 404 Not Found 168ms]
+
+❌ Could not identify writer auth.js:100:13
+❌ Writer not identified writer-main.js:153:17
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 0ms]
+
+
+
+
+
+    	
+	
+   
