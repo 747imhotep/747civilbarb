@@ -1,0 +1,97 @@
+1. 
+Open F12 CONSOLE:	
+→ RESULT:
+
+→ 
+
+
+
+2. Does this part is correct in forms.js like that ?
+This stands at the top of the file
+→ 
+import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
+import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
+import { saveProgressOnServer, updateDraftStatusOnServer, notifyReviewerOnServer, uploadRevisionOnServer } from './api.js';
+import { saveUploadRecord } from './storage.js';
+import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, showReviewerPanel } from './reviewer.js';
+import { showSuccessMessage, showLocalNotification } from './utils.js';
+import { showReviewerPanel, isReviewer } from './reviewer.js';
+import { setupSubmitForms, setupToggleListeners, setDraftIdGetters, onViewDocument } from './forms.js';
+
+3.
+ It's a mess.
+ I think we need to check all files one by one.
+ Please check the tree. Note that js/writer-main.js
+→ 
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js/
+[HTTP/1.1 200 OK 968ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/1.1 200 OK 167ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/1.1 200 OK 321ms]
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/writer-main.js
+[HTTP/1.1 200 OK 563ms]
+
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 734ms]
+
+Layout was forced before the page was fully loaded. If stylesheets are not yet loaded this may cause a flash of unstyled content. node.js:416:1
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/data.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/storage.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/ui.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/forms.js
+NS_ERROR_CORRUPTED_CONTENT
+
+GET
+https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js
+NS_ERROR_CORRUPTED_CONTENT
+
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/auth.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/config.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/data.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/data.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/storage.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/storage.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/ui.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/ui.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/forms.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/forms.js”. writer-main.js
+Loading module from “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js” was blocked because of a disallowed MIME type (“text/html”). writer-main.js
+Loading failed for the module with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/modules/reviewer.js”. writer-main.js
+GET
+https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/1.1 200 OK 175ms]
+
+
+4. 
+
+→ 
+
