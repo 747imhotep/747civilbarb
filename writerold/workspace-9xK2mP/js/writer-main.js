@@ -3,13 +3,14 @@
 // writer-main.js
 // Civilisation ou Barbarie
 // =================================================
-// 190 lines - 2026-05-28
+// 198 lines - 2026-05-28
 
 // Import modules from the modules folder - FIXED PATHS
 import { REVIEWER_EMAIL } from './modules/config.js';
 import { getWriterIdentity, getCurrentWriterEmail, getCurrentWriterPseudonym, displayWriterInfo } from './modules/auth.js';
 import { loadDrafts, loadProgress, draftsData, progressData } from './modules/data.js';
 import { loadFromLocal, saveToLocal } from './modules/storage.js';
+import { initLogoutButton, setLogoutButtonVisibility } from './modules/logout.js';
 import { 
     populateFrenchDropdown, 
     populateEnglishDropdown, 
@@ -180,6 +181,12 @@ async function initWriterDashboard() {
         console.log('🔍 Reviewer mode enabled');
     }
     
+    // ===================================================
+    //  INITIALIZE LOGOUT BUTTON
+    // =================================================
+    initLogoutButton();
+    setLogoutButtonVisibility(true);
+
     console.log('🎉 Dashboard initialized successfully!');
 }
 
