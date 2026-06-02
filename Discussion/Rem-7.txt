@@ -1,0 +1,30 @@
+You proposed me to test 2 sets of code inside auth.js
+could you please share one single and complete auth.js
+I will share with you the actual auth.js for checking.
+
+There are 14 files in total. Do you want me to share it ?
+
+
+
+
+    →  F12 CONSOLE:
+
+nitializing writer dashboard... writer-main.js:147:13
+❌ Could not identify writer auth.js:100:13
+    getWriterIdentity https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/auth.js:100
+❌ Writer not identified writer-main.js:153:17
+ 
+ →  
+ 
+ →  
+ 
+ →  
+ 
+ →  
+
+
+
+
+    	
+	
+   
