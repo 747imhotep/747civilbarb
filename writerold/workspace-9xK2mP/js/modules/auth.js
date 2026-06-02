@@ -1,36 +1,37 @@
 // =================================================
-// AUTHENTICATION MODULE
+// AUTHENTICATION MODULE - COMPLETE FIXED VERSION
 // auth.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 159 lines - Updated: 2026-05-29
-
-
+// 210 lines - Updated: 2026-06-02
 
 let currentWriterEmail = null;
 let currentWriterPseudonym = null;
 
 /**
+ * Redirect to Cloudflare Access login page
+ * @param {string} returnUrl - URL to return to after login
+ */
+function redirectToCloudflareLogin(returnUrl) {
+    const encodedReturnUrl = encodeURIComponent(returnUrl);
+    const loginUrl = `https://deadangles.cloudflareaccess.com/#/NoAuth?redirect_uri=${encodedReturnUrl}`;
+    console.log('🔐 No Cloudflare session, redirecting to login...');
+    window.location.href = loginUrl;
+}
+
+/**
  * Extract email from Cloudflare Access JWT cookie
- * The CF_Authorization cookie contains a JWT with the user's email
  */
 function extractEmailFromCFCookie() {
     try {
-        // Look for Cloudflare Access session cookie
         const cookies = document.cookie.split(';');
         for (const cookie of cookies) {
             const trimmed = cookie.trim();
             if (trimmed.startsWith('CF_Authorization')) {
-                // The cookie value is a JWT token
                 const token = trimmed.substring('CF_Authorization='.length);
-                
-                // JWT format: header.payload.signature
                 const parts = token.split('.');
                 if (parts.length === 3) {
-                    // Decode payload (base64url)
                     const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
-                    
-                    // Cloudflare Access puts email in 'email' claim
                     if (payload.email) {
                         console.log('✅ Email extracted from CF JWT:', payload.email);
                         return payload.email;
@@ -45,13 +46,46 @@ function extractEmailFromCFCookie() {
 }
 
 /**
- * Get writer identity - CORRECTED VERSION
+ * Clear all writer data from localStorage (used on email mismatch)
+ */
+function clearWriterLocalStorage() {
+    const keysToRemove = [
+        'cob_writer_email',
+        'cob_writer_pseudonym',
+        'cob_drafts_backup',
+        'cob_progress_backup'
+    ];
+    keysToRemove.forEach(key => localStorage.removeItem(key));
+    console.log('🔄 Cleared old localStorage data due to email mismatch');
+}
+
+/**
+ * Get writer identity - COMPLETE FIXED VERSION
  * @returns {Promise<string|null>}
  */
 export async function getWriterIdentity() {
-    // Method 1: Extract email directly from CF JWT cookie
+    // =============================================
+    // STEP 1: Check if we have ANY Cloudflare session cookie
+    // =============================================
+    const hasCFSession = document.cookie.includes('CF_Authorization') || 
+                         document.cookie.includes('CF_AppSession');
+    
+    // If no session cookie AND no saved email in localStorage, redirect to login
+    const savedEmail = localStorage.getItem('cob_writer_email');
+    if (!hasCFSession && !savedEmail) {
+        redirectToCloudflareLogin(window.location.href);
+        return null; // Execution stops here
+    }
+    
+    // =============================================
+    // STEP 2: Try to extract email from JWT cookie
+    // =============================================
     const emailFromJWT = extractEmailFromCFCookie();
     if (emailFromJWT) {
+        // Check if this is a different user than the one saved
+        if (savedEmail && savedEmail !== emailFromJWT) {
+            clearWriterLocalStorage();
+        }
         currentWriterEmail = emailFromJWT;
         currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || emailFromJWT.split('@')[0];
         localStorage.setItem('cob_writer_email', currentWriterEmail);
@@ -59,7 +93,9 @@ export async function getWriterIdentity() {
         return currentWriterEmail;
     }
     
-    // Method 2: Try identity endpoint (if available)
+    // =============================================
+    // STEP 3: Try identity endpoint (if available)
+    // =============================================
     try {
         const response = await fetch('/cdn-cgi/access/get-identity', {
             credentials: 'include'
@@ -67,6 +103,9 @@ export async function getWriterIdentity() {
         
         if (response.ok) {
             const identity = await response.json();
+            if (savedEmail && savedEmail !== identity.email) {
+                clearWriterLocalStorage();
+            }
             currentWriterEmail = identity.email;
             currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || identity.email.split('@')[0];
             localStorage.setItem('cob_writer_email', currentWriterEmail);
@@ -77,8 +116,9 @@ export async function getWriterIdentity() {
         console.log('Identity endpoint not available');
     }
     
-    // Method 3: Check localStorage for previously saved email
-    const savedEmail = localStorage.getItem('cob_writer_email');
+    // =============================================
+    // STEP 4: Check localStorage for previously saved email
+    // =============================================
     if (savedEmail && savedEmail.includes('@')) {
         currentWriterEmail = savedEmail;
         currentWriterPseudonym = localStorage.getItem('cob_writer_pseudonym') || savedEmail.split('@')[0];
@@ -86,7 +126,9 @@ export async function getWriterIdentity() {
         return currentWriterEmail;
     }
     
-    // Method 4: Development fallback (remove for production)
+    // =============================================
+    // STEP 5: Development fallback (URL parameter)
+    // =============================================
     const urlParams = new URLSearchParams(window.location.search);
     const testEmail = urlParams.get('test_email');
     if (testEmail && testEmail.includes('@')) {
@@ -97,7 +139,11 @@ export async function getWriterIdentity() {
         return currentWriterEmail;
     }
     
-    console.error('❌ Could not identify writer');
+    // =============================================
+    // STEP 6: No identity found — redirect to login
+    // =============================================
+    console.error('❌ Could not identify writer, redirecting to login...');
+    redirectToCloudflareLogin(window.location.href);
     return null;
 }
 
@@ -148,6 +194,11 @@ export function displayWriterInfo(container) {
     }
 }
 
+/**
+ * Escape HTML to prevent XSS
+ * @param {string} str
+ * @returns {string}
+ */
 function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
