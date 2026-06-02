@@ -1,7 +1,11 @@
 // =================================================
 // REVIEWER MODULE - Reviewer panel logic
+// reviewer.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+
+// 153 lines - Last edited: 2026-06-02
+
 
 import { draftsData, progressData, updateLocalDraftStatus } from './data.js';
 import { getCurrentWriterEmail } from './auth.js';
@@ -149,3 +153,5 @@ async function handleReviewerAction(draftId, action) {
     
     console.log(`✅ Status updated to: ${newStatus}`);
 }
+
+
