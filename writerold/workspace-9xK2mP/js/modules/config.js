@@ -1,13 +1,15 @@
 // =================================================
-// CONFIGURATION FILE
+// CONFIGURATION FILE - UPDATED 2026-06-02
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 25 lines - 1.5 KB
+// 33 lines - 1.5 KB
+
+
 
 // Reviewer email address - CHANGE THIS TO YOUR EMAIL
 export const REVIEWER_EMAIL = "your-email@example.com";
 
-// API base URL - CHANGE THIS TO YOUR BACKEND URL
+// API base URL
 export const API_BASE_URL = "/api";
 
 // API endpoints
@@ -23,3 +25,11 @@ export const DATA_PATHS = {
     drafts: '/writer/workspace-9xK2mP/data/drafts.json',
     progress: '/writer/workspace-9xK2mP/data/progress.json'
 };
+
+// NEW: Cloudflare Access configuration
+export const CF_ACCESS = {
+    loginUrl: 'https://deadangles.cloudflareaccess.com/#/NoAuth',
+    identityEndpoint: '/cdn-cgi/access/get-identity'
+};
+
+
