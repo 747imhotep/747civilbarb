@@ -1,110 +1,27 @@
 // =================================================
-// AUTHENTICATION MODULE - BOUNCE TRACKER RESILIENT
+// AUTHENTICATION MODULE - MANUAL EMAIL ENTRY
+// For private windows where cookies are blocked
 // auth.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 157 lines - Updated: 2026-06-02
+// 128 lines - Updated: 2026-06-02  21h04
 
 
-import { CF_ACCESS } from './config.js';
 
 let currentWriterEmail = null;
 let currentWriterPseudonym = null;
 
 /**
- * Extract email from URL parameters (most reliable after redirect)
- * Cloudflare Access can pass user email as a query parameter
- */
-function extractEmailFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const email = urlParams.get('email') || urlParams.get('user_email');
-    if (email && email.includes('@')) {
-        console.log('✅ Email extracted from URL:', email);
-        // Clean the URL to remove the email parameter (security)
-        if (window.history.replaceState) {
-            const cleanUrl = window.location.pathname + window.location.hash;
-            window.history.replaceState({}, document.title, cleanUrl);
-        }
-        return email;
-    }
-    return null;
-}
-
-/**
- * Try to get email from Cloudflare identity endpoint
- */
-async function fetchFromIdentityEndpoint() {
-    try {
-        const response = await fetch(CF_ACCESS.identityEndpoint, {
-            credentials: 'include',
-            cache: 'no-store'
-        });
-        if (response.ok) {
-            const identity = await response.json();
-            if (identity.email) {
-                console.log('✅ Email from identity endpoint:', identity.email);
-                return identity.email;
-            }
-        }
-    } catch (error) {
-        console.log('Identity endpoint not available:', error.message);
-    }
-    return null;
-}
-
-/**
- * Try to extract from JWT cookie (fallback)
- */
-function extractFromJWT() {
-    try {
-        const cookies = document.cookie.split(';');
-        for (const cookie of cookies) {
-            const trimmed = cookie.trim();
-            if (trimmed.startsWith('CF_Authorization')) {
-                const token = trimmed.substring('CF_Authorization='.length);
-                const parts = token.split('.');
-                if (parts.length === 3) {
-                    const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));
-                    if (payload.email) return payload.email;
-                }
-            }
-        }
-    } catch (e) {}
-    return null;
-}
-
-/**
- * Get writer identity - Resilient to bounce tracker purging
+ * Get writer identity - with manual email fallback
  * @returns {Promise<string|null>}
  */
 export async function getWriterIdentity() {
-    // METHOD 1: Check URL parameters (most reliable for bounce tracker case)
-    const urlEmail = extractEmailFromUrl();
-    if (urlEmail) {
-        currentWriterEmail = urlEmail;
-        currentWriterPseudonym = urlEmail.split('@')[0];
-        // Don't save to localStorage - it will be purged anyway
-        console.log('✅ Writer from URL (bounce tracker resilient):', currentWriterEmail);
+    // Check if we already have email in memory
+    if (currentWriterEmail) {
         return currentWriterEmail;
     }
     
-    // METHOD 2: Identity endpoint
-    const endpointEmail = await fetchFromIdentityEndpoint();
-    if (endpointEmail) {
-        currentWriterEmail = endpointEmail;
-        currentWriterPseudonym = endpointEmail.split('@')[0];
-        return currentWriterEmail;
-    }
-    
-    // METHOD 3: JWT cookie
-    const jwtEmail = extractFromJWT();
-    if (jwtEmail) {
-        currentWriterEmail = jwtEmail;
-        currentWriterPseudonym = jwtEmail.split('@')[0];
-        return currentWriterEmail;
-    }
-    
-    // METHOD 4: SessionStorage (more persistent than localStorage in some browsers)
+    // Check sessionStorage (survives page reloads within the same tab)
     const sessionEmail = sessionStorage.getItem('cob_writer_email');
     if (sessionEmail && sessionEmail.includes('@')) {
         currentWriterEmail = sessionEmail;
@@ -113,7 +30,7 @@ export async function getWriterIdentity() {
         return currentWriterEmail;
     }
     
-    // METHOD 5: localStorage (last resort, may be purged)
+    // Check localStorage (may be purged but try anyway)
     const savedEmail = localStorage.getItem('cob_writer_email');
     if (savedEmail && savedEmail.includes('@')) {
         currentWriterEmail = savedEmail;
@@ -122,21 +39,75 @@ export async function getWriterIdentity() {
         return currentWriterEmail;
     }
     
-    // No identity found - redirect to Cloudflare login
-    console.error('❌ Could not identify writer, redirecting to Cloudflare Access...');
-    const returnUrl = encodeURIComponent(window.location.href);
-    window.location.href = `${CF_ACCESS.loginUrl}?redirect_uri=${returnUrl}`;
+    // If we reach here, we need to ask the user for their email
+    // Only ask once per session to avoid annoying the user
+    if (!sessionStorage.getItem('email_prompt_shown')) {
+        sessionStorage.setItem('email_prompt_shown', 'true');
+        
+        const email = prompt(
+            'Bienvenue! Veuillez entrer votre adresse email pour continuer.\n\n' +
+            'Welcome! Please enter your email address to continue.',
+            ''
+        );
+        
+        if (email && email.includes('@')) {
+            currentWriterEmail = email;
+            currentWriterPseudonym = email.split('@')[0];
+            
+            // Save to sessionStorage for this browsing session
+            sessionStorage.setItem('cob_writer_email', currentWriterEmail);
+            sessionStorage.setItem('cob_writer_pseudonym', currentWriterPseudonym);
+            
+            console.log('✅ Writer from manual entry:', currentWriterEmail);
+            return currentWriterEmail;
+        } else {
+            console.error('❌ No valid email provided');
+            return null;
+        }
+    }
+    
+    console.error('❌ Could not identify writer');
     return null;
 }
 
-export function getCurrentWriterEmail() { return currentWriterEmail; }
-export function getCurrentWriterPseudonym() { return currentWriterPseudonym; }
+/**
+ * Get current writer's email
+ * @returns {string|null}
+ */
+export function getCurrentWriterEmail() {
+    return currentWriterEmail;
+}
+
+/**
+ * Get current writer's pseudonym
+ * @returns {string|null}
+ */
+export function getCurrentWriterPseudonym() {
+    return currentWriterPseudonym;
+}
+
+/**
+ * Set writer's pseudonym
+ * @param {string} pseudonym
+ */
 export function setWriterPseudonym(pseudonym) {
     currentWriterPseudonym = pseudonym;
     sessionStorage.setItem('cob_writer_pseudonym', pseudonym);
 }
-export function isReviewer(reviewerEmail) { return currentWriterEmail === reviewerEmail; }
 
+/**
+ * Check if current user is the reviewer
+ * @param {string} reviewerEmail
+ * @returns {boolean}
+ */
+export function isReviewer(reviewerEmail) {
+    return currentWriterEmail === reviewerEmail;
+}
+
+/**
+ * Display writer info in DOM
+ * @param {HTMLElement} container
+ */
 export function displayWriterInfo(container) {
     if (container && currentWriterPseudonym) {
         container.innerHTML = `
@@ -155,6 +126,3 @@ function escapeHtml(str) {
         return m;
     });
 }
-
-
-
