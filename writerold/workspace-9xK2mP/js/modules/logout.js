@@ -4,61 +4,47 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 62 lines - Updated: 2026-06-02 - 00h50
+// 48 lines - Updated: 2026-06-02 - 01h38
 
 
 
-/**
- * Initialize logout button functionality
- */
 export function initLogoutButton() {
+    console.log('🔘 Initializing logout button...');
+    
     const logoutBtn = document.getElementById('logoutBtn');
     
     if (!logoutBtn) {
-        console.warn('⚠️ Logout button not found');
+        console.error('❌ Logout button not found in DOM');
         return;
     }
     
-    // Remove any existing listeners to avoid duplicates
-    const newLogoutBtn = logoutBtn.cloneNode(true);
-    logoutBtn.parentNode.replaceChild(newLogoutBtn, logoutBtn);
+    console.log('✅ Logout button found');
     
-    newLogoutBtn.addEventListener('click', function(e) {
+    // Simple click handler
+    logoutBtn.onclick = function(e) {
         e.preventDefault();
         
-        const confirmLogout = confirm('Êtes-vous sûr de vouloir vous déconnecter?\n\nAre you sure you want to logout?');
-        if (!confirmLogout) {
-            return;
+        if (confirm('Déconnexion / Logout?')) {
+            console.log('🚪 Logging out...');
+            
+            // Clear storage
+            sessionStorage.clear();
+            localStorage.clear();
+            
+            // Clear cookies
+            document.cookie.split(";").forEach(function(c) {
+                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/");
+            });
+            
+            // Redirect
+            window.location.href = 'https://deadangles.cloudflareaccess.com/#/NoAuth';
         }
-        
-        console.log('🚪 Logging out...');
-        
-        // Clear all storage
-        sessionStorage.clear();
-        localStorage.clear();
-        
-        // Clear cookies
-        document.cookie.split(";").forEach(function(c) {
-            const cookieName = c.split("=")[0].trim();
-            document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        });
-        
-        // Redirect to Cloudflare login
-        window.location.href = 'https://deadangles.cloudflareaccess.com/#/NoAuth';
-    });
-    
-    // Always show the button
-    newLogoutBtn.style.display = 'inline-block';
+    };
 }
 
-/**
- * Show/hide logout button (kept for compatibility)
- */
 export function setLogoutButtonVisibility(visible) {
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.style.display = visible ? 'inline-block' : 'none';
-    }
+    const btn = document.getElementById('logoutBtn');
+    if (btn) btn.style.display = visible ? 'inline-block' : 'none';
 }
 
 
