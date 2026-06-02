@@ -1,5 +1,5 @@
 // =================================================
-// CONFIGURATION FILE - UPDATED 2026-06-02
+// CONFIGURATION FILE - CORRECTED
 // config.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
@@ -27,10 +27,9 @@ export const DATA_PATHS = {
     progress: '/writer/workspace-9xK2mP/data/progress.json'
 };
 
-// NEW: Cloudflare Access configuration
+// Cloudflare Access configuration
 export const CF_ACCESS = {
     loginUrl: 'https://deadangles.cloudflareaccess.com/#/NoAuth',
     identityEndpoint: '/cdn-cgi/access/get-identity'
 };
-
 
