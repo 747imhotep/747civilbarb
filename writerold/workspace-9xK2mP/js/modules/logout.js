@@ -1,10 +1,12 @@
 // =================================================
-// LOGOUT MODULE
+// LOGOUT MODULE - SIMPLIFIED
 // logout.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 80 lines - Updated: 2026-06-02 - 22h50
+// 62 lines - Updated: 2026-06-02 - 00h50
+
+
 
 /**
  * Initialize logout button functionality
@@ -13,69 +15,50 @@ export function initLogoutButton() {
     const logoutBtn = document.getElementById('logoutBtn');
     
     if (!logoutBtn) {
-        console.warn('⚠️ Logout button not found in DOM');
+        console.warn('⚠️ Logout button not found');
         return;
     }
     
-    logoutBtn.addEventListener('click', function(e) {
+    // Remove any existing listeners to avoid duplicates
+    const newLogoutBtn = logoutBtn.cloneNode(true);
+    logoutBtn.parentNode.replaceChild(newLogoutBtn, logoutBtn);
+    
+    newLogoutBtn.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Optional: Show confirmation dialog
-        const confirmLogout = confirm('Êtes-vous sûr de vouloir vous déconnecter ?\n\nAre you sure you want to logout?');
+        const confirmLogout = confirm('Êtes-vous sûr de vouloir vous déconnecter?\n\nAre you sure you want to logout?');
         if (!confirmLogout) {
             return;
         }
         
         console.log('🚪 Logging out...');
         
-        // Clear sessionStorage
+        // Clear all storage
         sessionStorage.clear();
+        localStorage.clear();
         
-        // Clear all writer-related items from localStorage
-        const localStorageKeys = [
-            'cob_writer_email',
-            'cob_writer_pseudonym',
-            'cob_drafts_backup',
-            'cob_progress_backup'
-        ];
-        
-        localStorageKeys.forEach(key => {
-            localStorage.removeItem(key);
-            console.log(`🗑️ Removed localStorage: ${key}`);
-        });
-        
-        // Clear all upload records from localStorage/sessionStorage
-        // Find all keys that start with 'cob_uploads_'
-        const allKeys = [...Object.keys(localStorage), ...Object.keys(sessionStorage)];
-        allKeys.forEach(key => {
-            if (key.startsWith('cob_uploads_')) {
-                localStorage.removeItem(key);
-                sessionStorage.removeItem(key);
-                console.log(`🗑️ Removed upload records: ${key}`);
-            }
-        });
-        
-        // Clear all cookies
+        // Clear cookies
         document.cookie.split(";").forEach(function(c) {
             const cookieName = c.split("=")[0].trim();
             document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/writer/;";
         });
         
-        console.log('✅ All data cleared. Redirecting to login...');
-        
-        // Redirect to Cloudflare Access launcher
+        // Redirect to Cloudflare login
         window.location.href = 'https://deadangles.cloudflareaccess.com/#/NoAuth';
     });
+    
+    // Always show the button
+    newLogoutBtn.style.display = 'inline-block';
 }
 
 /**
- * Show/hide logout button based on login state
- * @param {boolean} isLoggedIn - Whether user is logged in
+ * Show/hide logout button (kept for compatibility)
  */
-export function setLogoutButtonVisibility(isLoggedIn) {
+export function setLogoutButtonVisibility(visible) {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
-        logoutBtn.style.display = isLoggedIn ? 'inline-block' : 'none';
+        logoutBtn.style.display = visible ? 'inline-block' : 'none';
     }
 }
+
+
