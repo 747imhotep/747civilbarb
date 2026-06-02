@@ -1,5 +1,6 @@
 // =================================================
 // CONFIGURATION FILE - UPDATED 2026-06-02
+// config.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 // 33 lines - 1.5 KB
