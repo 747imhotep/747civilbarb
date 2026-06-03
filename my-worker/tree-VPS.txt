@@ -3,6 +3,11 @@ Updated on mai 18 2026
 
 
 🌳 my-worker/public/
+
+/home/username/
+    └── 
+747civilbarb/        ← Renamed from my-worker
+        └── my-worker/       ← Inner folder (still exists)
 │
 │
 │

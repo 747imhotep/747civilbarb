@@ -1,0 +1,54 @@
+
+
+I CONFIRM:
+Check						Status
+No error page / no bounce			✅
+Dashboard stays visible				✅
+Prompt appears for email			✅
+Email and pseudonym appear in top right		✅
+Dropdowns populate with articles		✅
+All available articles table			✅
+
+
+
+
+    →  F12 CONSOLE:
+
+🚀 Initializing writer dashboard... writer-main.js:147:13
+“deadanglesinstitute.org” has been classified as a bounce tracker. If it does not receive user activation within the next 3,600 seconds it will have its state purged.
+✅ Writer from manual entry: contact@lunyns.com auth.js:61:21
+✅ Writer email: contact@lunyns.com writer-main.js:158:13
+✅ Writer pseudonym: contact writer-main.js:159:13
+📥 Drafts.json loaded: 
+Object { drafts: (4) […] }
+data.js:28:21
+💾 Saved to sessionStorage: cob_drafts_backup storage.js:24:17
+✅ Drafts assigned: 4 articles data.js:34:25
+📥 Progress.json loaded: 
+Object { progress: (2) […] }
+data.js:77:21
+💾 Saved to sessionStorage: cob_progress_backup storage.js:24:17
+✅ Progress assigned: 2 entries data.js:83:25
+🇫🇷 French drafts found: 3 ui.js:27:13
+🇬🇧 English drafts found: 3 ui.js:50:13
+🎉 Dashboard initialized successfully! writer-main.js:183:13
+ 
+ →  
+NEXT IMPROVEMENTS:
+1. Add a "logout" button to clear sessionStorage
+2. Remove the prompt entirely — if Cloudflare can pass the email via URL parameter after login
+3. Pre-fill the writer's name from a known list based on email
+
+
+ →  How to make sure that Cloudflare can pass the email via URL parameter after login ?
+ 
+ →  
+ 
+ →  
+
+
+
+
+    	
+	
+   
