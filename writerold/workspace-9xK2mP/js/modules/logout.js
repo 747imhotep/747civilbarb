@@ -4,7 +4,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 66 lines - Updated: 2026-06-02 - 03h45
+// 63 lines - Updated: 2026-06-02 - 03h45
 
 
 export function initLogoutButton() {
@@ -17,9 +17,9 @@ export function initLogoutButton() {
         return;
     }
     
-    console.log('✅ Logout button found, attaching event listener');
+    console.log('✅ Logout button found');
     
-    // Remove any existing listeners
+    // Remove any existing listeners to avoid conflicts
     const newBtn = logoutBtn.cloneNode(true);
     logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
     
@@ -32,13 +32,13 @@ export function initLogoutButton() {
         const confirmLogout = confirm('Déconnexion / Logout?\n\nVous allez être redirigé vers le portail d\'accès.');
         
         if (confirmLogout) {
-            console.log('✅ User confirmed logout');
+            console.log('✅ User confirmed logout, clearing data...');
             
             // Clear all storage
             sessionStorage.clear();
             localStorage.clear();
             
-            // Clear all cookies
+            // Clear cookies
             try {
                 document.cookie.split(";").forEach(function(c) {
                     document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/");
@@ -47,13 +47,10 @@ export function initLogoutButton() {
                 console.log('Error clearing cookies:', e);
             }
             
-            // REDIRECT TO YOUR LOGIN PAGE
-            // Update this path to match your actual login page URL
-            const loginUrl = '/writer/workspace-9xK2mP/login/index.html';
+            // CORRECT REDIRECT TO YOUR LOGIN PAGE
+            const loginUrl = 'https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/login/';
             console.log('Redirecting to:', loginUrl);
             window.location.href = loginUrl;
-        } else {
-            console.log('User cancelled logout');
         }
     });
 }
