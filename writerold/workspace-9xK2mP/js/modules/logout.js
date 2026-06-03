@@ -36,10 +36,10 @@ export function initLogoutButton() {
             
             // Redirect to login page
             // Option 1: If you have login.html in the same directory
-            window.location.href = '/writer/workspace-9xK2mP/login.html';
+            // window.location.href = '/writer/workspace-9xK2mP/login.html';
             
             // Option 2: If you prefer a login folder with index.html
-            // window.location.href = '/writer/workspace-9xK2mP/login/index.html';
+            window.location.href = '/writer/workspace-9xK2mP/login/index.html';
         }
     };
 }
