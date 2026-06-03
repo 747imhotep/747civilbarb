@@ -4,9 +4,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 50 lines - Updated: 2026-06-02 - 02h13
-
-
+// 66 lines - Updated: 2026-06-02 - 03h45
 
 
 export function initLogoutButton() {
@@ -15,36 +13,54 @@ export function initLogoutButton() {
     const logoutBtn = document.getElementById('logoutBtn');
     
     if (!logoutBtn) {
-        console.error('❌ Logout button not found');
+        console.error('❌ Logout button not found in DOM');
         return;
     }
     
-    logoutBtn.onclick = function(e) {
+    console.log('✅ Logout button found, attaching event listener');
+    
+    // Remove any existing listeners
+    const newBtn = logoutBtn.cloneNode(true);
+    logoutBtn.parentNode.replaceChild(newBtn, logoutBtn);
+    
+    newBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         
-        if (confirm('Déconnexion / Logout?\n\nVous allez être redirigé vers la page de connexion.')) {
-            console.log('🚪 Logging out and redirecting to login page...');
+        console.log('🚪 Logout button clicked');
+        
+        const confirmLogout = confirm('Déconnexion / Logout?\n\nVous allez être redirigé vers le portail d\'accès.');
+        
+        if (confirmLogout) {
+            console.log('✅ User confirmed logout');
             
-            // Clear storage
+            // Clear all storage
             sessionStorage.clear();
             localStorage.clear();
             
-            // Clear cookies
-            document.cookie.split(";").forEach(function(c) {
-                document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/");
-            });
+            // Clear all cookies
+            try {
+                document.cookie.split(";").forEach(function(c) {
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/");
+                });
+            } catch(e) {
+                console.log('Error clearing cookies:', e);
+            }
             
-            // Redirect to login page
-            // Option 1: If you have login.html in the same directory
-            // window.location.href = '/writer/workspace-9xK2mP/login.html';
-            
-            // Option 2: If you prefer a login folder with index.html
-            window.location.href = '/writer/workspace-9xK2mP/login/index.html';
+            // REDIRECT TO YOUR LOGIN PAGE
+            // Update this path to match your actual login page URL
+            const loginUrl = '/writer/workspace-9xK2mP/login/index.html';
+            console.log('Redirecting to:', loginUrl);
+            window.location.href = loginUrl;
+        } else {
+            console.log('User cancelled logout');
         }
-    };
+    });
 }
 
 export function setLogoutButtonVisibility(visible) {
     const btn = document.getElementById('logoutBtn');
-    if (btn) btn.style.display = visible ? 'inline-block' : 'none';
+    if (btn) {
+        btn.style.display = visible ? 'inline-block' : 'none';
+    }
 }
