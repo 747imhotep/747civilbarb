@@ -1,54 +1,85 @@
 
-
-I CONFIRM:
-Check						Status
-No error page / no bounce			✅
-Dashboard stays visible				✅
-Prompt appears for email			✅
-Email and pseudonym appear in top right		✅
-Dropdowns populate with articles		✅
-All available articles table			✅
-
-
-
-
-    →  F12 CONSOLE:
-
-🚀 Initializing writer dashboard... writer-main.js:147:13
-“deadanglesinstitute.org” has been classified as a bounce tracker. If it does not receive user activation within the next 3,600 seconds it will have its state purged.
-✅ Writer from manual entry: contact@lunyns.com auth.js:61:21
-✅ Writer email: contact@lunyns.com writer-main.js:158:13
-✅ Writer pseudonym: contact writer-main.js:159:13
-📥 Drafts.json loaded: 
-Object { drafts: (4) […] }
-data.js:28:21
-💾 Saved to sessionStorage: cob_drafts_backup storage.js:24:17
-✅ Drafts assigned: 4 articles data.js:34:25
-📥 Progress.json loaded: 
-Object { progress: (2) […] }
-data.js:77:21
-💾 Saved to sessionStorage: cob_progress_backup storage.js:24:17
-✅ Progress assigned: 2 entries data.js:83:25
-🇫🇷 French drafts found: 3 ui.js:27:13
-🇬🇧 English drafts found: 3 ui.js:50:13
-🎉 Dashboard initialized successfully! writer-main.js:183:13
- 
- →  
-NEXT IMPROVEMENTS:
-1. Add a "logout" button to clear sessionStorage
-2. Remove the prompt entirely — if Cloudflare can pass the email via URL parameter after login
-3. Pre-fill the writer's name from a known list based on email
-
-
- →  How to make sure that Cloudflare can pass the email via URL parameter after login ?
- 
- →  
- 
+git remote -v
  →  
 
 
+1.
+ → it was a mistake. the correct name is 747civilbarb  
+
+2. 
+ → The goal is to mach Git 
+
+3. ls -la /home/deploy/747civibarb/
+→   
+drwxrwxr-x 30 deploy deploy   4096 Jun  2 21:20 .
+drwxr-x--x 10 deploy deploy   4096 Jun  3 10:29 ..
+-rw-rw-r--  1 deploy deploy   1295 Mar 25 11:19 .env
+-rw-rw-r--  1 deploy deploy    356 May 24 12:47 .env.example
+drwxrwxr-x  8 deploy deploy   4096 Jun  3 10:12 .git
+-rw-rw-r--  1 deploy deploy    176 May 24 12:47 .gitignore
+-rw-rw-r--  1 deploy deploy      0 May 24 12:47 .htaccess
+-rw-rw-r--  1 deploy deploy      0 May 24 12:47 .htpasswd
+drwxrwxr-x  2 deploy deploy   4096 May 24 12:47 00_home_b
+-rw-rw-r--  1 deploy deploy   1551 May 24 12:47 404.html
+-rw-rw-r--  1 deploy deploy     27 May 24 12:47 CNAME
+drwxrwxr-x  2 deploy deploy   4096 Jun  2 21:15 Discussion
+-rw-rw-r--  1 deploy deploy   2862 May 24 12:47 Readme.txt
+drwxrwxr-x  8 deploy deploy   4096 May 24 12:47 articles
+drwxrwxr-x  2 deploy deploy   4096 May 24 12:47 backup-IndexCSS
+drwxrwxr-x  2 deploy deploy   4096 Jun  2 17:51 check
+drwxrwxr-x  2 deploy deploy   4096 Feb 19 02:10 data
+drwxrwxr-x  8 deploy deploy   4096 May 24 12:47 en
+-rw-rw-r--  1 deploy deploy      0 Feb 19 02:10 endpoint.js
+drwxrwxr-x  8 deploy deploy   4096 May 24 12:47 fr
+-rw-rw-r--  1 deploy deploy    434 Jun  2 21:20 github_to_VPS.txt
+-rw-rw-r--  1 deploy deploy    435 Jun  2 17:51 github_to_VPS_2.txt
+-rw-rw-r--  1 deploy deploy   2391 May 24 12:47 htmlDraft.html
+drwxrwxr-x  5 deploy deploy   4096 May 24 12:47 imhotep
+-rw-rw-r--  1 deploy deploy  10525 May 24 12:47 index.html.txt
+drwxrwxr-x  2 deploy deploy   4096 May 24 12:47 indexcss
+drwxrwxr-x  4 deploy deploy   4096 May 24 12:47 live
+drwxrwxr-x  8 deploy deploy   4096 Jun  3 10:05 my-worker
+drwxrwxr-x  5 deploy deploy   4096 May 24 12:47 navbar
+drwxrwxr-x 85 deploy deploy   4096 Feb 21 12:32 node_modules
+-rw-rw-r--  1 deploy deploy 101758 Mar 25 12:06 package-lock.json
+-rw-rw-r--  1 deploy deploy    517 Feb 21 12:32 package.json
+drwxrwxr-x 11 deploy deploy   4096 May 24 12:47 pictures
+drwxrwxr-x  4 deploy deploy   4096 Apr 30 22:57 premium-files
+drwxrwxr-x  4 deploy deploy   4096 May 24 12:47 pricing
+drwxrwxr-x  3 deploy deploy   4096 May 24 12:47 privacy
+drwxrwxr-x  4 deploy deploy   4096 May 24 12:47 private
+drwxrwxr-x 16 deploy deploy   4096 May 22 01:23 public
+-rw-rw-r--  1 deploy deploy    965 May 24 12:47 revolutionaire.txt
+-rw-rw-r--  1 deploy deploy  13327 May 24 11:44 server.js
+-rw-rw-r--  1 deploy deploy   6666 Feb 20 09:02 server.js.save
+-rw-rw-r--  1 deploy deploy  10066 May  1 01:34 server.js.save.1
+drwxrwxr-x  6 deploy deploy   4096 May 24 12:47 shared
+drwxrwxr-x  2 deploy deploy   4096 Feb 19 02:10 success-backup
+drwxrwxr-x 20 deploy deploy   4096 May 22 01:23 temp-repo
+drwxrwxr-x  3 deploy deploy   4096 May 24 12:47 terms
+drwxrwxr-x  3 deploy deploy   4096 May 24 12:47 terms_of_use
+-rw-rw-r--  1 deploy deploy     70 Feb 27 10:39 test-payload.json
+drwxrwxr-x  2 deploy deploy   4096 Feb 20 21:02 tools
+drwxrwxr-x  3 deploy deploy   4096 May 27 11:19 writerold
 
 
-    	
-	
-   
+4. ls -la /home/deploy/747civibarb/my-worker 
+→  
+drwxrwxr-x  8 deploy deploy  4096 Jun  3 10:05 .
+drwxrwxr-x 30 deploy deploy  4096 Jun  2 21:20 ..
+drwxrwxr-x  2 deploy deploy  4096 May 24 12:47 Draft
+-rw-rw-r--  1 deploy deploy  1714 May 24 12:47 Readme.txt
+drwxrwxr-x  2 deploy deploy  4096 May 24 12:47 data
+-rw-rw-r--  1 deploy deploy     0 May 24 12:47 endpoint.js
+drwxrwxr-x  4 deploy deploy  4096 Jun  3 10:05 live
+-rw-rw-r--  1 deploy deploy 97365 May 24 12:47 package-lock.json
+-rw-rw-r--  1 deploy deploy   461 May 24 12:47 package.json
+drwxrwxr-x  4 deploy deploy  4096 May 24 12:47 premium-files
+drwxrwxr-x 14 deploy deploy  4096 May 24 12:47 public
+-rw-rw-r--  1 deploy deploy  1246 May 24 12:47 server.js
+drwxrwxr-x  2 deploy deploy  4096 May 24 12:47 success-backup
+-rw-rw-r--  1 deploy deploy  1269 May 24 12:47 test-env.js
+-rw-rw-r--  1 deploy deploy  1846 May 24 12:47 tree-VPS.txt
+-rw-rw-r--  1 deploy deploy  3874 May 24 12:47 tree-my-worker.txt
+ 
+
