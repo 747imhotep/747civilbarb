@@ -89,6 +89,30 @@
     opacity: 0.8;
 }
 
+/* ===== AHEADER LAYOUT ===== */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+}
+
+/* Push the right section to the far right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+/* Make sure h1 doesn't take all space */
+.dashboard-header h1 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
 /* ===== FORMS ===== */
 .form-group {
     margin-bottom: 1rem;
