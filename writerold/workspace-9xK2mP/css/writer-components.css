@@ -4,7 +4,7 @@
    COMPONENT STYLES ONLY
    ================================================= */
 
-/* ====== 595 lines updated 2026-06-02 01h42 ======= */
+/* ====== 637 lines updated 2026-06-03 10h27 ======= */
 
 /* ===== ARTICLE SELECTOR ===== */
 .article-select {
@@ -36,18 +36,42 @@
 
 /* ===== HEADER RIGHT SECTION ===== */
 
+/* Header layout */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+/* Push the right section to the far right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+/* Make sure h1 doesn't take all space */
+.dashboard-header h1 {
+    margin: 0;
+    flex-shrink: 0;
+}
+
 /* Logout Button Styles */
 .logout-btn {
     background: linear-gradient(135deg, #2c3e2f 0%, #1a2a1d 100%);
     border: none;
     color: white;
-    font-size: 1.3rem;
+    font-size: 1rem;
     cursor: pointer;
-    padding: 10px 16px;
+    padding: 10px 20px;
     border-radius: 50px;
     transition: all 0.2s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    margin-left: 10px;
+    font-weight: 500;
 }
 
 /* Hover effect */
@@ -61,14 +85,6 @@
 .logout-btn:active {
     transform: translateY(1px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-/* Header right container */
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-left: auto;
 }
 
 /* Writer info styling */
@@ -88,6 +104,8 @@
     font-size: 0.8rem;
     opacity: 0.8;
 }
+
+
 
 /* ===== AHEADER LAYOUT ===== */
 
