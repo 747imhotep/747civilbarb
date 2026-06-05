@@ -1,0 +1,49 @@
+LET'S GO DEAPER ON THE WRITER WORKSPACE.
+
+I need your advise:
+When Visitor select a document.
+Where this document supposed to be kept ?
+For the moment, they are in workspace-9xK2mP/data/drafts/	
+Then, we have workspace-9xK2mP/data/progress/			<
+And, workspace-9xK2mP/uploads/fr/				<
+
+For me that would be easier if we had a Storage Folder with all subfolders.
+
+
+├── storage-folder/        			✅ 
+│	│
+│	├─ draft/		<-- 	drafts documents from Chief Redaction
+│	│			<-- 	probably the actual draft/ folder.
+│	│
+│	├─ pseudojob/		<-- 	each writer should have its own folder ?
+│	│				Then empty it after the session.
+│	│				Probably the actual progress/ folder.
+│	│
+│	├─ allarticles/		<-- 	all articles that are a work in progress
+│	│				Probably the actual uploads/ folder.
+│	│
+
+
+
+
+
+Remarque:
+at the "All available articles" Field, the color code doesn't show up, when selecting 
+a document.
+Only after changing the switch "ready for review" in the "Envoyer votre révision"
+ Field, then color change.
+ 
+1st 	I didn't expect this type of behaviour. 
+2d 	I wanted to see a button color in the REF" column.
+3d	we should have:
+| REF	| ID.	 	| Title			| Status	|Progress	| Fichier	| Action |
+| 🔴	| draft_01	| oot-stade-singe	| Disponible	|Progress	| 13%		| voir	 |
+|	|		|			|		|		|		|	 |
+
+
+
+to change a JS file.
+Do you want me to share all js files from modules/ (10 files) ?
+Do you want me to share writer-main.js ?
+
+
