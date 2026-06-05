@@ -1,10 +1,11 @@
 // =================================================
 // REVIEWER MODULE - Reviewer panel logic
 // reviewer.js
+// Check if user is Reviewer and display appropriate controls
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 153 lines - Last edited: 2026-06-02
+// 156 lines - Last edited: 2026-06-02
 
 
 import { draftsData, progressData, updateLocalDraftStatus } from './data.js';

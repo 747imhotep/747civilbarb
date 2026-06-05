@@ -1,7 +1,12 @@
 // =================================================
 // UI MODULE - DOM updates and display functions
+// manage articles display and user interactions
+// ui.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
+
+// 381 lines - Last edited: 2026-06-05 23h57
+
 
 import { draftsData, progressData, getProgress, getFrenchDrafts, getEnglishDrafts, getDraftById, updateLocalDraftStatus } from './data.js';
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
@@ -374,3 +379,5 @@ export function setCurrentFrenchDraftId(id) {
 export function setCurrentEnglishDraftId(id) {
     currentEnglishDraftId = id;
 }
+
+

@@ -1,8 +1,11 @@
 // =================================================
 // API MODULE - All Server Calls
+// api.js
+// Functions to interact with server endpoints for status updates, progress saving, notifications, and file uploads.
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 136 lines - 
+
+// 136 lines - updated: 2026-06-06 00h20
 
 import { ENDPOINTS } from './config.js';
 

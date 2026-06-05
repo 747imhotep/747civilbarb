@@ -1,0 +1,32 @@
+1. Where should a document be kept when a visitor selects it?
+
+
+storage-folder/
+├── drafts/          # Editor’s raw materials (never shown to writer) 
+├── assignments/     # Documents explicitly assigned to all writers (one subfolder per writer, or per session)
+├── in_progress/     # Documents the writer has opened but not yet submitted (shared, not per-writer)
+└── archive/         # Completed (writer has finished) and ready for review (by Redaction), then publication
+
+So, documents travel between assignments/ and in_progress/ Folders.
+
+Mapping to your current folders:
+Don't worry about Mapping, since no writer has never start working for us.
+We can set it up whetheaver we want and test it.
+We just need to update the engine.
+
+Make sens ?
+
+
+2. Color code and REF column button behavior
+
+We select document in "Select an article " Field
+then in 
+"Tous les articles disponibles / All available articles" Field,
+we should see all text references.
+
+
+You're looking for a module that renders the article list.
+Maybe this is utils.js please check it.
+Now, probably, we need a JSON file that will update, for each text, 
+all references. What do you think ?
+And probably the possibility for the writer to update those references.

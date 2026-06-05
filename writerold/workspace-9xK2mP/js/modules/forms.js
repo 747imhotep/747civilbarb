@@ -1,11 +1,15 @@
 // =================================================
 // FORMS MODULE - Form submission and toggle handling
+// forms.js
+// 
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// =================================================
-// 291 lines - IMPORTS - CORRECTED (2026-05-28)
-// =================================================
+// 295 lines - IMPORTS - CORRECTED 2026-06-06 00h10
+
+
+
+
 // Data functions
 import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
 

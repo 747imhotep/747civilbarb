@@ -1,9 +1,11 @@
 // =================================================
 // CONFIGURATION FILE - CORRECTED
 // config.js
+// manage configuration for 
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 33 lines - 1.5 KB
+
+// 36 lines - 1.5 KB
 
 
 
@@ -32,4 +34,5 @@ export const CF_ACCESS = {
     loginUrl: 'https://deadangles.cloudflareaccess.com/#/NoAuth',
     identityEndpoint: '/cdn-cgi/access/get-identity'
 };
+
 

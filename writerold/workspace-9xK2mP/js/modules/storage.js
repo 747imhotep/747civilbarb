@@ -1,9 +1,11 @@
 // =================================================
 // STORAGE MODULE - SessionStorage preferred
+// Fallback to localStorage if sessionStorage is unavailable
 // storage.js
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 89 lines - 3.5 KB
+
+// 91 lines - Last edited: 2026-06-06 00h15
 
 
 
@@ -87,5 +89,6 @@ export function clearUploadRecords(draftId, language) {
     const key = `cob_uploads_${draftId}_${language}`;
     removeFromLocal(key);
 }
+
 
 

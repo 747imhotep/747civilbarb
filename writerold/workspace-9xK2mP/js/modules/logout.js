@@ -1,10 +1,11 @@
 // =================================================
 // LOGOUT MODULE - SIMPLIFIED - redirected to login page
 // logout.js
+// Logout button logic - Redirect to login page
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 63 lines - Updated: 2026-06-02 - 03h45
+// 64 lines - Updated: 2026-06-02 - 03h45
 
 
 export function initLogoutButton() {
@@ -61,3 +62,5 @@ export function setLogoutButtonVisibility(visible) {
         btn.style.display = visible ? 'inline-block' : 'none';
     }
 }
+
+

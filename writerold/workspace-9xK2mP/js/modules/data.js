@@ -1,9 +1,12 @@
 // =================================================
 // DATA MODULE - Load and manage drafts & progress
 // data.js
+// manage data for drafts and progress with localstorage.
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
-// 193 lines - Last edited: 2024-06-15
+
+// 194 lines - Last edited: 2024-06-15
+
 
 import { DATA_PATHS } from './config.js';
 import { loadFromLocal, saveToLocal } from './storage.js';
@@ -191,4 +194,5 @@ export async function reloadAllData() {
     const progress = await loadProgress();
     return { drafts, progress };
 }
+
 
