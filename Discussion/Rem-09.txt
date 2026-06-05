@@ -1,117 +1,42 @@
-Keep in mind that regarding your Summary of Commands, I'm still at #4
+
 
  →  
- I understand.
- previously, my-worker was created in GitHub:
-747civilbarb/my-worker/
 
-and a my-worker/public/ was also created in VPS
-
-After this change, the GitHub structue came above 
-all in the VPS.
-
-We need to make a choice.
-the 747civilbarb/my-worker/ have some file that cannot be shared.
-
-I don't see two my-worker/ 
-I see:
-1) /home/deploy/747civilbarb/my-worker/public/  --> [NO writer/]
-2) /home/deploy/747civilbarb/public/ 		--> [with writer/]
 
 
 1. please check for error
  → 
- ##
-# You should look at the following URL's in order to grasp a solid understanding
-# of Nginx configuration files in order to fully unleash the power of Nginx.
-# https://www.nginx.com/resources/wiki/start/
-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
-# https://wiki.debian.org/Nginx/DirectoryStructure
-#
-# In most cases, administrators will remove this file from sites-enabled/ and
-# leave it as reference inside of sites-available where it will continue to be
-# updated by the nginx packaging team.
-#
-# This file will automatically load configuration files provided by other
-# applications, such as Drupal or Wordpress. These applications will be made
-# available underneath a path with that package name, such as /drupal8.
-#
-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
-##
+2026/06/03 07:30:27 [error] 1653933#1653933: *31987 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 34.62.32.10, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 07:30:28 [error] 1653933#1653933: *31988 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 34.62.32.10, server: _, request: "HEAD / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 07:30:28 [error] 1653933#1653933: *31989 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 34.62.32.10, server: _, request: "POST / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 07:38:03 [crit] 1653933#1653933: *32024 SSL_do_handshake() failed (SSL: error:0A00006C:SSL routines::bad key share) while SSL handshaking, client: 143.198.69.60, server: 0.0.0.0:443
+2026/06/03 07:38:43 [error] 1653933#1653933: *32027 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 223.30.56.197, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 07:46:45 [crit] 1653933#1653933: *32045 SSL_do_handshake() failed (SSL: error:0A00006C:SSL routines::bad key share) while SSL handshaking, client: 45.148.10.200, server: 0.0.0.0:443
+2026/06/03 07:51:44 [error] 1653933#1653933: *32047 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 103.123.226.10, server: _, request: "GET / HTTP/1.0"
+2026/06/03 07:55:54 [error] 1653933#1653933: *32052 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 151.115.91.20, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 07:57:57 [error] 1653933#1653933: *32053 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 176.65.139.155, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80", referrer: "http://5.223.56.165:80/cgi-bin/index2.asp"
+2026/06/03 08:00:12 [notice] 1729249#1729249: signal process started
+2026/06/03 08:01:49 [error] 1729250#1729250: *32080 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 45.148.10.67, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 08:05:17 [error] 1729250#1729250: *32082 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 47.251.51.133, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 08:05:20 [error] 1729250#1729250: *32083 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 47.251.51.133, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 08:38:29 [error] 1729250#1729250: *32097 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 194.50.235.152, server: _, request: "GET / HTTP/1.1", host: "192.0.2.1"
+2026/06/03 08:47:55 [error] 1729250#1729250: *32123 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 81.19.219.252, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 09:01:54 [error] 1729250#1729250: *32130 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 8.219.100.182, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 09:01:57 [error] 1729250#1729250: *32131 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 8.219.100.182, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 09:02:21 [error] 1729250#1729250: *32132 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 123.160.223.72, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 09:36:33 [error] 1729250#1729250: *32173 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 45.148.10.67, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 09:42:11 [error] 1729250#1729250: *32175 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 43.165.198.5, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165:80"
+2026/06/03 09:56:49 [notice] 1754662#1754662: signal process started
+2026/06/03 10:04:02 [notice] 1756294#1756294: signal process started
+2026/06/03 10:13:48 [notice] 1758542#1758542: signal process started
+2026/06/03 10:16:19 [error] 1758543#1758543: *32247 directory index of "/home/deploy/my-worker/public/" is forbidden, client: 43.133.41.88, server: _, request: "GET / HTTP/1.1", host: "5.223.56.165"
+2026/06/03 11:28:57 [error] 1758543#1758543: *32616 rewrite or internal redirection cycle while internally redirecting to "/writer/workspace-9xK2mP/index.html", client: 193.190.46.17, server: deadanglesinstitute.org, request: "GET /writer/workspace-9xK2mP/* HTTP/1.1", host: "www.deadanglesinstitute.org"
+2026/06/03 11:29:04 [error] 1758543#1758543: *32617 rewrite or internal redirection cycle while internally redirecting to "/writer/workspace-9xK2mP/index.html", client: 193.190.46.17, server: deadanglesinstitute.org, request: "GET /writer/workspace-9xK2mP/login/ HTTP/1.1", host: "www.deadanglesinstitute.org"
+2026/06/03 12:35:10 [notice] 1764617#1764617: signal process started
+2026/06/03 12:35:18 [error] 1764619#1764619: *32671 rewrite or internal redirection cycle while internally redirecting to "/writer/workspace-9xK2mP/index.html", client: 193.190.46.17, server: deadanglesinstitute.org, request: "GET /writer/workspace-9xK2mP/* HTTP/1.1", host: "www.deadanglesinstitute.org"
+2026/06/03 12:35:22 [error] 1764619#1764619: *32672 rewrite or internal redirection cycle while internally redirecting to "/writer/workspace-9xK2mP/index.html", client: 193.190.46.17, server: deadanglesinstitute.org, request: "GET /writer/workspace-9xK2mP/login/ HTTP/1.1", host: "www.deadanglesinstitute.org"
+2026/06/03 12:38:08 [error] 1764619#1764619: *32673 rewrite or internal redirection cycle while internally redirecting to "/writer/workspace-9xK2mP/index.html", client: 193.190.46.17, server: deadanglesinstitute.org, request: "GET /writer/ HTTP/1.1", host: "www.deadanglesinstitute.org"
 
-# Default server configuration
-#
-server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-
-	# SSL configuration
-	#
-	# listen 443 ssl default_server;
-	# listen [::]:443 ssl default_server;
-	#
-	# Note: You should disable gzip for SSL traffic.
-	# See: https://bugs.debian.org/773332
-	#
-	# Read up on ssl_ciphers to ensure a secure configuration.
-	# See: https://bugs.debian.org/765782
-	#
-	# Self signed certs generated by the ssl-cert package
-	# Don't use them in a production server!
-	#
-	# include snippets/snakeoil.conf;
-
-	root /home/deploy/my-worker/public;
-
-	# Add index.php to the list if you are using PHP
-	index index.html index.htm index.nginx-debian.html;
-
-	server_name _;
-
-	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to displaying a 404.
-		try_files $uri $uri/ =404;
-	}
-
-	# pass PHP scripts to FastCGI server
-	#
-	#location ~ \.php$ {
-	#	include snippets/fastcgi-php.conf;
-	#
-	#	# With php-fpm (or other unix sockets):
-	#	fastcgi_pass unix:/run/php/php7.4-fpm.sock;
-	#	# With php-cgi (or other tcp sockets):
-	#	fastcgi_pass 127.0.0.1:9000;
-	#}
-
-	# deny access to .htaccess files, if Apache's document root
-	# concurs with nginx's one
-	#
-	#location ~ /\.ht {
-	#	deny all;
-	#}
-}
-
-
-# Virtual Host configuration for example.com
-#
-# You can move that to a different file under sites-available/ and symlink that
-# to sites-enabled/ to enable it.
-#
-#server {
-#	listen 80;
-#	listen [::]:80;
-#
-#	server_name example.com;
-#
-#	root /var/www/example.com;
-#	index index.html;
-#
-#	location / {
-#		try_files $uri $uri/ =404;
-#	}
-#}
 
 
 2. 

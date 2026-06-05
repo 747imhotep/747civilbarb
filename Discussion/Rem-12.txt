@@ -1,0 +1,28 @@
+in the VPS, the "my-worker/" Folder has changed the name into "747civilbarb/"
+Then, we synchronized 747civilbarb/ with GitHub 
+Now, in the 747civilbarb/, there are too many documents.
+example, data/ folder is in 747civilbarb/ and in 747civilbarb/my-worker/
+
+In the previous version, VPS my-worker/ was different thant PC my-worker/ (GitHub)
+Now, they are the same.
+
+writer/ Folder stands in 747civilbarb/public/ Folder
+
+This mean, they are duplicate files in both 747civilbarb/ and my-worker/
+in my-worker/ there are 5 Folders:
+Draft/
+data/
+live/
+premium-files/
+public/
+
+in 747civilbarb/ Folder, there are 4 same Folers:
+data/
+live/
+premium-files/
+public/
+
+Normaly, we need to verify which is the more uptodated folder.
+For my opinion, the last one are the ones in 747civilbarb/ Folder.
+Those where in VPS my-worker/ before any change.
+Make sense ?
