@@ -1,0 +1,23 @@
+// storage-folder/references.json
+{
+  "draft_01": {
+    "title": "oot-stade-singe",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "readyForReview": false,
+    "percentComplete": 13,
+    "assignedTo": null,
+    "inProgressBy": null
+  },
+  "draft_02": {
+    "title": "autre-article",
+    "currentStatus": "in_progress",
+    "lockedBy": "writer@email.com",
+    "lockedAt": "2026-06-06T10:30:00Z",
+    "readyForReview": false,
+    "percentComplete": 45,
+    "assignedTo": "writer@email.com",
+    "inProgressBy": "writer@email.com"
+  }
+}
