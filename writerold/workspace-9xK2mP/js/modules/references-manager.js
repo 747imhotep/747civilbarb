@@ -4,7 +4,9 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 262 lines creaeted on 2026-06-06 at 20h15
+// 264 lines creaeted on 2026-06-06 at 20h15
+
+
 
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getDraftById, updateLocalDraftStatus } from './data.js';
@@ -260,5 +262,7 @@ export async function cleanStaleLocks() {
         await saveReferences();
     }
 }
+
+
 
 
