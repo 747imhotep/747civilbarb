@@ -5,10 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 295 lines - IMPORTS - CORRECTED 2026-06-06 00h10
-
-
-
+// 317 lines - UPDATED with references-manager integration 2026-06-06
 
 // Data functions
 import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
@@ -23,13 +20,16 @@ import { saveProgressOnServer, updateDraftStatusOnServer, notifyReviewerOnServer
 import { saveUploadRecord } from './storage.js';
 
 // UI functions - IMPORTANT: from ui.js, NOT reviewer.js
-import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments } from './ui.js';
+import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, updateSingleDocumentRefColor } from './ui.js';
 
 // Reviewer functions
 import { showReviewerPanel } from './reviewer.js';
 
 // Utility functions
 import { showSuccessMessage, showLocalNotification } from './utils.js';
+
+// References manager
+import { markDocumentAsViewed, setReadyForReview } from './references-manager.js';
 
 
 // =================================================
@@ -83,6 +83,10 @@ export function setupToggleListeners(notificationContainer) {
             if (draftId) {
                 const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
                 await updateDraftStatus(draftId, newStatus);
+                
+                // Update references manager
+                await setReadyForReview(draftId, e.target.checked);
+                
                 await showFrenchArticleInfo(draftId);
                 await displayAllDocuments();
                 if (typeof showReviewerPanel === 'function') await showReviewerPanel();
@@ -98,6 +102,10 @@ export function setupToggleListeners(notificationContainer) {
             if (draftId) {
                 const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
                 await updateDraftStatus(draftId, newStatus);
+                
+                // Update references manager
+                await setReadyForReview(draftId, e.target.checked);
+                
                 await showEnglishArticleInfo(draftId);
                 await displayAllDocuments();
                 if (typeof showReviewerPanel === 'function') await showReviewerPanel();
@@ -229,6 +237,9 @@ async function submitRevision(language) {
         if (draft && draft.review_status !== 'ready_for_review') {
             await updateDraftStatus(draftId, 'ready_for_review');
             
+            // Update references manager
+            await setReadyForReview(draftId, true);
+            
             // Send notification to reviewer
             const notified = await notifyReviewerOnServer(draftId, draft.title_fr || draft.title_en, writerPseudonym);
             if (!notified) {
@@ -277,6 +288,17 @@ async function submitRevision(language) {
 // =================================================
 export async function onViewDocument(draftId, draft) {
     const writerEmail = getCurrentWriterEmail();
+    
+    // Mark document as viewed in references manager (this also updates color)
+    await markDocumentAsViewed(draftId);
+    
+    // Update the REF color in the table without full refresh
+    try {
+        await updateSingleDocumentRefColor(draftId);
+    } catch (e) {
+        console.log('Could not update single ref color, will refresh full table');
+        await displayAllDocuments();
+    }
     
     // Only lock if article is not already in progress/ready/under review
     if (draft.review_status !== 'in_progress' && 
