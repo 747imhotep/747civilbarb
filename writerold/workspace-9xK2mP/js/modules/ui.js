@@ -5,8 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 381 lines - Last edited: 2026-06-05 23h57
-
+// 420 lines - Updated with references-manager integration
 
 import { draftsData, progressData, getProgress, getFrenchDrafts, getEnglishDrafts, getDraftById, updateLocalDraftStatus } from './data.js';
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
@@ -88,7 +87,7 @@ export async function showFrenchArticleInfo(draftId) {
         readyCheckbox.checked = isReadyForReview;
     }
     
-    const statusText = getStatusText(draft.review_status, true, 'fr');
+    const statusText = getDocumentStatusText(draftId, 'fr');
     const statusClass = getStatusClass(draft.review_status);
     
     const infoDiv = document.getElementById('frenchArticleInfo');
@@ -126,7 +125,7 @@ export async function showEnglishArticleInfo(draftId) {
         readyCheckbox.checked = isReadyForReview;
     }
     
-    const statusText = getStatusText(draft.review_status, true, 'en');
+    const statusText = getDocumentStatusText(draftId, 'en');
     const statusClass = getStatusClass(draft.review_status);
     
     const infoDiv = document.getElementById('englishArticleInfo');
@@ -271,13 +270,25 @@ export async function displayAllDocuments() {
         const wordsWritten = progress ? progress.words_written : 0;
         const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target);
         
-        let statusClass = getStatusClass(draft.review_status);
-        let statusText = getStatusText(draft.review_status, isCurrentWriterWorking, 'fr');
-        let refColorClass = getRefColorClass(draft.review_status);
+        // Get real-time status and color from references manager
+        let refColorClass = await getDocumentRefColor(draft.id);
+        let statusText = getDocumentStatusText(draft.id, 'fr');
+        
+        // Determine if locked by another for special styling
+        const lockedByOther = isLockedByOther(draft.id);
+        let statusClass = lockedByOther ? 'status-red' : getStatusClass(draft.review_status);
+        
+        // Override status text if locked by another
+        if (lockedByOther) {
+            statusText = 'Occupé par un autre';
+        }
         
         html += `
-            <tr>
-                <td class="${refColorClass}"><strong>${escapeHtml(draft.id || '—')}</strong></td>
+            <tr data-draft-id="${escapeHtml(draft.id)}">
+                <td class="${refColorClass}">
+                    <span class="ref-indicator ${refColorClass}">●</span>
+                    <strong>${escapeHtml(draft.id || '—')}</strong>
+                </td>
                 <td>
                     <strong>${escapeHtml(draft.title_fr || draft.title_en)}</strong><br>
                     <small>${escapeHtml(draft.title_en || draft.title_fr)}</small>
@@ -300,6 +311,32 @@ export async function displayAllDocuments() {
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => window.open(btn.dataset.path, '_blank'));
     });
+}
+
+/**
+ * Update REF column color for a single document without re-rendering entire table
+ * @param {string} draftId - Document ID
+ */
+export async function updateSingleDocumentRefColor(draftId) {
+    const container = document.getElementById('allDocumentsContainer');
+    if (!container) return;
+    
+    const row = container.querySelector(`tr[data-draft-id="${draftId}"]`);
+    if (!row) return;
+    
+    const refCell = row.querySelector('td:first-child');
+    if (refCell) {
+        const newColor = await getDocumentRefColor(draftId);
+        // Remove existing color classes
+        refCell.className = refCell.className.replace(/ref-\w+/g, '');
+        refCell.classList.add(newColor);
+        
+        // Update the indicator span
+        const indicator = refCell.querySelector('.ref-indicator');
+        if (indicator) {
+            indicator.className = `ref-indicator ${newColor}`;
+        }
+    }
 }
 
 /**
@@ -380,5 +417,4 @@ export function setCurrentFrenchDraftId(id) {
 export function setCurrentEnglishDraftId(id) {
     currentEnglishDraftId = id;
 }
-
 
