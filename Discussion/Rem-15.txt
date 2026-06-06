@@ -1,0 +1,9 @@
+When it comes to modification, 
+
+it's not wise to ask to do small changes.
+The risk of error is big.
+
+modules/references-manager.js	NO PROBLEM
+modules/ui.js			Need complete file because it's a big one.
+modules/forms.js		Need complete file
+writer-main.js			Need complete file
