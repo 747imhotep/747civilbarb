@@ -3,7 +3,7 @@
 // writer-main.js
 // Civilisation ou Barbarie
 // =================================================
-// 198 lines - 2026-05-28
+// 201 lines - Updated with references-manager integration 2026-06-06
 
 // Import modules from the modules folder - FIXED PATHS
 import { REVIEWER_EMAIL } from './modules/config.js';
@@ -38,8 +38,7 @@ import {
     onViewDocument 
 } from './modules/forms.js';
 import { showReviewerPanel, isReviewer } from './modules/reviewer.js';
-
-// Rest of the file remains the same (handlers, initWriterDashboard, etc.)
+import { initReferences, cleanStaleLocks } from './modules/references-manager.js';
 
 // =================================================
 // HANDLERS
@@ -164,6 +163,10 @@ async function initWriterDashboard() {
     
     await loadDrafts();
     await loadProgress();
+    
+    // Initialize references manager (creates/loads references.json)
+    await initReferences();
+    await cleanStaleLocks();  // Clean any orphaned locks from previous sessions
     
     setDraftIdGetters(getCurrentFrenchDraftId, getCurrentEnglishDraftId);
     
