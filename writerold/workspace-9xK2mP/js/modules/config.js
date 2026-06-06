@@ -35,4 +35,7 @@ export const CF_ACCESS = {
     identityEndpoint: '/cdn-cgi/access/get-identity'
 };
 
+// Configurable link to storage folder
+export const STORAGE_FOLDER_PATH = 'workspace-9xK2mP/data/storage-folder'
+
 
