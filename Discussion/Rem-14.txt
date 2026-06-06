@@ -30,3 +30,36 @@ Maybe this is utils.js please check it.
 Now, probably, we need a JSON file that will update, for each text, 
 all references. What do you think ?
 And probably the possibility for the writer to update those references.
+
+
+ancien writer/ files stands in:
+~/747civilbarb/writerold/workspace-9xK2mP
+but, there is no writer/ Folder
+
+
+You proposed me to insert this code in ui.js :
+
+// In displayAllDocuments() or wherever you build the table rows
+function getCurrentDocumentStatus(draftId) {
+    // Quick check - is this doc in progress by current writer?
+    if (getCurrentFrenchDraftId() === draftId || getCurrentEnglishDraftId() === draftId) {
+        return 'in_progress';
+    }
+    // Check if locked by another writer (would need lock manager)
+    return 'available';
+}
+
+// When building REF column cell:
+const status = getCurrentDocumentStatus(draft.id);
+const refColorClass = getRefColorClass(status);
+refCell.innerHTML = `<span class="ref-indicator ${refColorClass}">●</span>`;
+
+
+Now you know my ui.js, where exactly shoudl I insert the part of code ?
+
+
+
+
+
+Yes, please write the complete references-manager.js module that handles reading/writing the JSON file and provides status lookups.
+Should I place it in js/modules/ ?
