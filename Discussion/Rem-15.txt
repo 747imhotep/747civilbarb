@@ -1,9 +1,28 @@
-When it comes to modification, 
 
-it's not wise to ask to do small changes.
-The risk of error is big.
 
-modules/references-manager.js	NO PROBLEM
-modules/ui.js			Need complete file because it's a big one.
-modules/forms.js		Need complete file
-writer-main.js			Need complete file
+This is ~747civilbarb/public/writer/workspace-9xK2mP/data/storage-folder
+
+drwxr-xr-x 6 root     root     4096 Jun  6 18:07 .
+drwxr-xr-x 5 www-data www-data 4096 Jun  6 18:00 ..
+drwxr-xr-x 2 root     root     4096 Jun  6 18:01 archive
+drwxr-xr-x 2 root     root     4096 Jun  6 18:02 assignments
+drwxr-xr-x 2 root     root     4096 Jun  6 18:02 draft
+drwxr-xr-x 2 root     root     4096 Jun  6 18:02 in_progress
+-rw-rw-r-- 1 deploy   deploy    569 Jun  6 16:57 references.json
+
+
+First, I need to move documents or copy document to respectives Folders.
+
+
+
+This is ~747civilbarb/public/writer/workspace-9xK2mP/data/
+
+drwxr-xr-x 5 www-data www-data 4096 Jun  6 18:00 .
+drwxr-xr-x 9 www-data www-data 4096 Jun  3 01:14 ..
+drwxr-xr-x 3 www-data www-data 4096 May 22 11:48 drafts
+-rwxr-xr-x 1 www-data www-data 1740 May 25 08:22 drafts.json
+drwxr-xr-x 2 www-data www-data 4096 May 22 01:20 progress
+-rwxr-xr-x 1 www-data www-data 1015 Jun  2 12:54 progress.json
+drwxr-xr-x 6 root     root     4096 Jun  6 18:07 storage-folder
+
+
