@@ -36,3 +36,18 @@ chmod: changing permissions of 'storage-folder/in_progress': Operation not permi
 chmod: changing permissions of 'storage-folder/archive': Operation not permitted
 
 
+sudo chown www-data:www-data workspace-9xK2mP/data/storage-folder/references.json
+sudo chmod 664 workspace-9xK2mP/data/storage-folder/references.json
+
+chown: cannot access 'workspace-9xK2mP/data/storage-folder/references.json': No such file or directory
+
+
+
+The test in the Browser works just like before.
+you need to switch the Ready button to see changes.
+When selecting another document, it doesn't change anything in the Bottom Field.
+And the first text (for example) doesn't return to the nutral state.
+When selecting the secund draft, it doesn't show up all details such as purcentage.
+
+
+
