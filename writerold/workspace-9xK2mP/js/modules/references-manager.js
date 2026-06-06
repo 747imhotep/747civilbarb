@@ -13,7 +13,7 @@ import { getDraftById, updateLocalDraftStatus } from './data.js';
 import { getRefColorClass } from './utils.js';
 
 // Configuration
-const STORAGE_BASE = 'workspace-9xK2mP/data/storage-folder/'; // Change to your actual path
+import { STORAGE_FOLDER_PATH } from './config.js'; // Change to your actual path
 const REFERENCES_FILE = `${STORAGE_BASE}/references.json`;
 
 // In-memory cache
