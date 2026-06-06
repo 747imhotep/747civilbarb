@@ -1,28 +1,38 @@
 
 
-This is ~747civilbarb/public/writer/workspace-9xK2mP/data/storage-folder
-
-drwxr-xr-x 6 root     root     4096 Jun  6 18:07 .
-drwxr-xr-x 5 www-data www-data 4096 Jun  6 18:00 ..
-drwxr-xr-x 2 root     root     4096 Jun  6 18:01 archive
-drwxr-xr-x 2 root     root     4096 Jun  6 18:02 assignments
-drwxr-xr-x 2 root     root     4096 Jun  6 18:02 draft
-drwxr-xr-x 2 root     root     4096 Jun  6 18:02 in_progress
--rw-rw-r-- 1 deploy   deploy    569 Jun  6 16:57 references.json
+chown -R www-data:www-data storage-folder/
 
 
-First, I need to move documents or copy document to respectives Folders.
+chown: changing ownership of 'storage-folder/draft/draft.txt': Operation not permitted
+chown: changing ownership of 'storage-folder/draft/test/intelligence-hor-sol.docx': Operation not permitted
+chown: changing ownership of 'storage-folder/draft/test': Operation not permitted
+chown: changing ownership of 'storage-folder/draft/identite.docx': Operation not permitted
+chown: changing ownership of 'storage-folder/draft/intelligence-hor-sol.docx': Operation not permitted
+chown: changing ownership of 'storage-folder/draft/foot-stad-singe.docx': Operation not permitted
+chown: changing ownership of 'storage-folder/draft': Operation not permitted
+chown: changing ownership of 'storage-folder/references.json': Operation not permitted
+chown: changing ownership of 'storage-folder/assignments': Operation not permitted
+chown: changing ownership of 'storage-folder/in_progress': Operation not permitted
+chown: changing ownership of 'storage-folder/archive': Operation not permitted
+chown: changing ownership of 'storage-folder/': Operation not permitted
 
 
 
-This is ~747civilbarb/public/writer/workspace-9xK2mP/data/
 
-drwxr-xr-x 5 www-data www-data 4096 Jun  6 18:00 .
-drwxr-xr-x 9 www-data www-data 4096 Jun  3 01:14 ..
-drwxr-xr-x 3 www-data www-data 4096 May 22 11:48 drafts
--rwxr-xr-x 1 www-data www-data 1740 May 25 08:22 drafts.json
-drwxr-xr-x 2 www-data www-data 4096 May 22 01:20 progress
--rwxr-xr-x 1 www-data www-data 1015 Jun  2 12:54 progress.json
-drwxr-xr-x 6 root     root     4096 Jun  6 18:07 storage-folder
+
+
+chmod -R 755 storage-folder/
+
+chmod: changing permissions of 'storage-folder/': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/draft.txt': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/test': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/test/intelligence-hor-sol.docx': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/identite.docx': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/intelligence-hor-sol.docx': Operation not permitted
+chmod: changing permissions of 'storage-folder/draft/foot-stad-singe.docx': Operation not permitted
+chmod: changing permissions of 'storage-folder/assignments': Operation not permitted
+chmod: changing permissions of 'storage-folder/in_progress': Operation not permitted
+chmod: changing permissions of 'storage-folder/archive': Operation not permitted
 
 
