@@ -1,23 +1,26 @@
-// storage-folder/references.json
 {
   "draft_01": {
-    "title": "oot-stade-singe",
+    "draftId": "draft_01",
     "currentStatus": "available",
     "lockedBy": null,
     "lockedAt": null,
+    "isViewing": false,
     "readyForReview": false,
-    "percentComplete": 13,
-    "assignedTo": null,
-    "inProgressBy": null
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-06T18:07:00Z",
+    "viewHistory": []
   },
+    
   "draft_02": {
-    "title": "autre-article",
+    "draftId": "draft_02",
     "currentStatus": "in_progress",
     "lockedBy": "writer@email.com",
     "lockedAt": "2026-06-06T10:30:00Z",
+    "isViewing": true,
     "readyForReview": false,
     "percentComplete": 45,
-    "assignedTo": "writer@email.com",
-    "inProgressBy": "writer@email.com"
+    "lastUpdated": "2026-06-06T18:00:00Z",
+    "viewHistory": ["writer@email.com"]
   }
 }
+
