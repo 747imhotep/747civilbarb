@@ -13,6 +13,7 @@ import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getRefColorClass, getStatusClass, getStatusText, calculatePercentComplete, formatDate, createProgressBar, escapeHtml } from './utils.js';
 import { saveUploadRecord, getUploadRecords } from './storage.js';
 import { updateDraftStatusOnServer } from './api.js';
+import { getDocumentRefColor, getDocumentStatusText, isLockedByOther } from './references-manager.js';
 
 // Current selected draft IDs
 let currentFrenchDraftId = null;
