@@ -1,0 +1,23 @@
+before continuing,
+
+maybe it's time to move 
+
+747civilbarb/public/writer/
+to 
+/home/deploy/747civilbarb/my-worker/writer/
+
+or to 
+/home/deploy/747civilbarb/writer/
+
+then we update nginx
+
+
+What you don't realize, (because you might don't have the entire picture 
+of my system) on GitHup, we have 747civilbarb/writerold/ which is a clone 
+of 747civilbarb/public/writer/
+
+Maybe we can just rename it and update nginx accordingly. 
+If everything work perfectly, we will then delete 747civilbarb/public/writer/
+
+
+make sense ?
