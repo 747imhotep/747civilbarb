@@ -32,13 +32,13 @@ writer/
     │	│
     │   └── storage-folder/  
     │		│
-    │  		├── archive/		<-- I don't like the name. Maybe "to-review"
+    │  		├── to-review/		<-- to review and publich
     │		│
-    │  		├── assignments/	<-- I don't like the name.
+    │  		├── available/		<-- docs writer can pick
     │		│
-    │  		├── draft/		<-- don't share to writer
+    │  		├── draft/		<-- raw materials (hidden from writer)
     │		│
-    │  		├── in_progress/	<-- 
+    │  		├── in_progress/	<-- Writer has opened but not submitted
     │		│
     │  		└── references.json 
     │      
