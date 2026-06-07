@@ -5,8 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 210 lines - Last edited: 2026-06-07
-
+// 209 lines - Updated 2026-06-07
 
 import { DATA_PATHS } from './config.js';
 import { loadFromLocal, saveToLocal } from './storage.js';
