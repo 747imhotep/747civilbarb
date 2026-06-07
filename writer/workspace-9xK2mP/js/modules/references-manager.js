@@ -5,7 +5,9 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 276 lines created on 2026-06-07
+
+
+// 279 lines - Updated 2026-06-07
 
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getDraftById, updateLocalDraftStatus } from './data.js';
@@ -275,7 +277,6 @@ export async function cleanStaleLocks() {
         await saveReferences();
     }
 }
-
 
 
 
