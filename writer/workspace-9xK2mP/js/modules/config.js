@@ -5,7 +5,8 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 37 lines - Last edited: 2026-07-07
+// 38 lines - Last edited: 2026-07-07
+
 
 
 
@@ -35,5 +36,4 @@ export const DOCUMENT_STATUS = {
     PUBLISHED_FREE: 'published_free',
     PUBLISHED_PREMIUM: 'published_premium'
 };
-
 
