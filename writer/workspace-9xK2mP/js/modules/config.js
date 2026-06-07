@@ -9,8 +9,23 @@
 
 
 
-// Reviewer email address - CHANGE THIS TO YOUR EMAIL
-export const REVIEWER_EMAIL = "your-email@example.com";
+// modules/config.js
+export const REVIEWER_EMAIL = 'support@deadangles.org';
+
+// Storage paths (web-accessible URLs)
+export const STORAGE_BASE_URL = '/writer-files';
+export const DRAFTS_URL = `${STORAGE_BASE_URL}/draft`;
+export const AVAILABLE_URL = `${STORAGE_BASE_URL}/available`;
+export const IN_PROGRESS_URL = `${STORAGE_BASE_URL}/in_progress`;
+export const TO_REVIEW_URL = `${STORAGE_BASE_URL}/to-review`;
+
+// Filesystem paths (for server operations if needed)
+export const STORAGE_FS_PATH = '/home/deploy/747civilbarb/writer/workspace-9xK2mP/data/storage-folder';
+export const REFERENCES_FILE = `${STORAGE_BASE_URL}/references.json`;
+
+// Legacy paths (to be phased out)
+export const LEGACY_DRAFTS_PATH = '/writer/workspace-9xK2mP/data/drafts';
+export const LEGACY_UPLOADS_PATH = '/writer/uploads';
 
 // API base URL
 export const API_BASE_URL = "/api";
