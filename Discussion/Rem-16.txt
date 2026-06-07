@@ -1,45 +1,98 @@
-before continuing,
+I'd like to clarify the new tree.
 
-maybe it's time to move 
-
-747civilbarb/public/writer/
-
-to 
-/home/deploy/747civilbarb/my-worker/writer/
-
-or to 
-/home/deploy/747civilbarb/writer/
-
-then we update nginx
+Everything looks good except that the 
+Dashboard can't find documents.
 
 
-What you don't realize, (because you might don't have the entire picture 
-of my system) on GitHup, we have 747civilbarb/writerold/ which is a clone 
-of 747civilbarb/public/writer/
-
-Maybe we can just rename it and update nginx accordingly. 
-If everything work perfectly, we will then delete 747civilbarb/public/writer/
-
-
-make sense ?
-====================================================
-For me, it's not clear.
-From what I understood:
-
-
-/home/deploy/747civilbarb/writerold/
-
-just modify the name from writerold to writer
-and we have 
-
-/home/deploy/747civilbarb/writer/
-
-
-
-Then we just can change the name, from
-747civilbarb/public/writer/
-
-to 
-747civilbarb/public/writeroldest/
-
-
+writer/
+│  
+└── workspace-9xK2mP/
+    │  
+    ├── css/
+    │	│
+    │   ├── logoff.css
+    │	│
+    │   ├── writer.css    
+    │	│
+    │   ├── writer-base.css
+    │	│
+    │   ├── writer-components.css	 
+    │	│
+    │   ├── writer-layout.css		
+    │	│
+    │   ├── login.css
+    │	│
+    │   └── writer-modal.css
+    │  
+    ├── data/			<-- few files to be removed
+    │	│
+    │  	├── drafts/
+    │	│
+    │   ├── drafts.json
+    │	│
+    │   ├── drafts.json.bak
+    │	│
+    │   ├── progress/		<-- few files to be removed.
+    │	│
+    │   ├── progress.json
+    │	│
+    │   └── storage-folder/  
+    │		│
+    │  		├── archive/		<-- I don't like the name. Maybe "to-review"
+    │		│
+    │  		├── assignments/	<-- I don't like the name.
+    │		│
+    │  		├── draft/		<-- don't share to writer
+    │		│
+    │  		├── in_progress/	<-- 
+    │		│
+    │  		└── references.json 
+    │      
+    │  
+    ├── index.html    
+    │  
+    │      
+    ├── js/
+    │   │
+    │   ├── modules/
+    │   │    │
+    │   │    ├── api.js		
+    │   │    │
+    │   │    ├── auth.js	
+    │   │    │
+    │   │    ├── config.js	
+    │   │    │
+    │   │    ├── data.js	
+    │   │    │
+    │   │    ├── forms.js	
+    │   │    │
+    │   │    ├── logout.js    
+    │   │    │
+    │   │    ├── reviewer.js	
+    │   │    │
+    │   │    ├── storage.js	
+    │   │    │
+    │   │    ├── ui.js		
+    │   │    │
+    │   │    └── utils.js	
+    │	│
+    │   ├── writer.js.bak
+    │   │    
+    │   └── writer-main.js	<-- we keep this one
+    │  
+    │  
+    ├── login/
+    │       │
+    │       ├── index.html		
+    │       │
+    │       └── login.html.bak
+    │  
+    │  
+    └── uploads/
+        │    
+    	├── en/		<-- ancients documents. to be deleted.
+    	│
+        └── fr/		<-- ancients documents. to be deleted.
+        
+        
+        
