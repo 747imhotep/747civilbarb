@@ -5,12 +5,20 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 38 lines - Last edited: 2026-07-07
+// 46 lines - Last edited: 2026-06-08  01h00
 
 
 
 
-export const REVIEWER_EMAIL = 'reviewer@deadanglesinstitute.org';
+export const REVIEWER_EMAIL = 'support@deadangles.org';
+
+// API Endpoints
+export const ENDPOINTS = {
+    SAVE_PROGRESS: '/api/writer/save-progress',
+    UPDATE_STATUS: '/api/writer/update-status',
+    NOTIFY_REVIEWER: '/api/writer/notify-reviewer',
+    UPLOAD_REVISION: '/api/writer/upload-revision'
+};
 
 // Data paths (relative to web root)
 export const DATA_PATHS = {
