@@ -1,7 +1,17 @@
-I'd like to clarify the new tree.
+the Dashboard is visible.
 
-Everything looks good except that the 
-Dashboard can't find documents.
+Few checks
+
+=======
+
+1. Deconnexion Button works
+
+2. in Sélectionner un article" Field, when selecting any article, nothing occured  in the "Tous les articles disponibles / All available articles" Field. To see something, you need to switch "Prêt pour relecture ?" toggle.  THIS MY CONFUSE WRITERS !!!
+
+
+3. it seems like "Sélectionner un article" Field doesn't look inside storage-folder/available/ Folder
+4. Where does "Tous les articles disponibles / All available articles" Field look for its documents ?
+
 
 
 
