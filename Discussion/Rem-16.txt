@@ -3,6 +3,7 @@ before continuing,
 maybe it's time to move 
 
 747civilbarb/public/writer/
+
 to 
 /home/deploy/747civilbarb/my-worker/writer/
 
@@ -21,3 +22,24 @@ If everything work perfectly, we will then delete 747civilbarb/public/writer/
 
 
 make sense ?
+====================================================
+For me, it's not clear.
+From what I understood:
+
+
+/home/deploy/747civilbarb/writerold/
+
+just modify the name from writerold to writer
+and we have 
+
+/home/deploy/747civilbarb/writer/
+
+
+
+Then we just can change the name, from
+747civilbarb/public/writer/
+
+to 
+747civilbarb/public/writeroldest/
+
+
