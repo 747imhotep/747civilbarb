@@ -5,7 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 194 lines - Last edited: 2024-06-15
+// 210 lines - Last edited: 2026-06-07
 
 
 import { DATA_PATHS } from './config.js';
@@ -25,6 +25,7 @@ const PROGRESS_STORAGE_KEY = 'cob_progress_backup';
  */
 export async function loadDrafts() {
     try {
+        console.log('📥 Loading drafts from:', DATA_PATHS.drafts);
         const response = await fetch(DATA_PATHS.drafts);
         
         if (response.ok) {
@@ -37,8 +38,14 @@ export async function loadDrafts() {
                 saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
                 console.log('✅ Drafts assigned:', draftsData.length, 'articles');
                 return draftsData;
+            } else if (Array.isArray(data)) {
+                // If JSON is an array directly
+                draftsData = data;
+                saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
+                console.log('✅ Drafts assigned (array format):', draftsData.length, 'articles');
+                return draftsData;
             } else {
-                console.error('❌ drafts.json missing "drafts" key');
+                console.error('❌ drafts.json unexpected format');
                 draftsData = [];
                 return [];
             }
@@ -74,6 +81,7 @@ function loadDraftsFromBackup() {
  */
 export async function loadProgress() {
     try {
+        console.log('📥 Loading progress from:', DATA_PATHS.progress);
         const response = await fetch(DATA_PATHS.progress);
         
         if (response.ok) {
@@ -86,8 +94,14 @@ export async function loadProgress() {
                 saveToLocal(PROGRESS_STORAGE_KEY, progressData);
                 console.log('✅ Progress assigned:', progressData.length, 'entries');
                 return progressData;
+            } else if (Array.isArray(data)) {
+                // If JSON is an array directly
+                progressData = data;
+                saveToLocal(PROGRESS_STORAGE_KEY, progressData);
+                console.log('✅ Progress assigned (array format):', progressData.length, 'entries');
+                return progressData;
             } else {
-                console.error('❌ progress.json missing "progress" key');
+                console.error('❌ progress.json unexpected format');
                 progressData = [];
                 return [];
             }
@@ -160,7 +174,7 @@ export function getDraftById(draftId) {
  * @returns {Array} - French drafts
  */
 export function getFrenchDrafts() {
-    return draftsData.filter(d => d.title_fr && d.status === 'unlocked');
+    return draftsData.filter(d => d.title_fr && d.status !== 'locked');
 }
 
 /**
@@ -168,7 +182,7 @@ export function getFrenchDrafts() {
  * @returns {Array} - English drafts
  */
 export function getEnglishDrafts() {
-    return draftsData.filter(d => d.title_en && d.status === 'unlocked');
+    return draftsData.filter(d => d.title_en && d.status !== 'locked');
 }
 
 /**
