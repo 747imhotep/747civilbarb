@@ -5,7 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 136 lines - updated: 2026-06-06 00h20
+// 139 lines - CORRECTED 2026-06-08
 
 import { ENDPOINTS } from './config.js';
 
@@ -20,7 +20,7 @@ export async function updateDraftStatusOnServer(draftId, status, writerEmail) {
     try {
         const response = await fetch(ENDPOINTS.updateDraftStatus, {
             method: 'POST',
-            headers: { 'Content-Type': application/json },
+            headers: { 'Content-Type': 'application/json' },  // Fixed: added quotes
             body: JSON.stringify({
                 draft_id: draftId,
                 status: status,
@@ -51,7 +51,7 @@ export async function saveProgressOnServer(progressData) {
     try {
         const response = await fetch(ENDPOINTS.saveProgress, {
             method: 'POST',
-            headers: { 'Content-Type': application/json },
+            headers: { 'Content-Type': 'application/json' },  // Fixed: added quotes
             body: JSON.stringify(progressData)
         });
         
@@ -79,7 +79,7 @@ export async function notifyReviewerOnServer(draftId, title, writerPseudonym) {
     try {
         const response = await fetch(ENDPOINTS.notifyReviewer, {
             method: 'POST',
-            headers: { 'Content-Type': application/json },
+            headers: { 'Content-Type': 'application/json' },  // Fixed: added quotes
             body: JSON.stringify({
                 draft_id: draftId,
                 title: title,
@@ -137,3 +137,5 @@ export async function uploadRevisionOnServer(file, draftId, writerEmail, writerP
         return false;
     }
 }
+
+
