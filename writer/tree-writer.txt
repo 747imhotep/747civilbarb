@@ -4,17 +4,44 @@ writer/
     │  
     ├── css/
     │	│
-    │   ├── writer.css
+    │   ├── logoff.css
+    │	│
+    │   ├── writer.css    
+    │	│
     │   ├── writer-base.css
+    │	│
     │   ├── writer-components.css	 
+    │	│
     │   ├── writer-layout.css		
+    │	│
+    │   ├── login.css
+    │	│
     │   └── writer-modal.css
     │  
-    ├── data/
+    ├── data/			<-- few files to be removed
+    │	│
     │  	├── drafts/
+    │	│
     │   ├── drafts.json
-    │   ├── progress/
-    │   └── progress.json 
+    │	│
+    │   ├── drafts.json.bak
+    │	│
+    │   ├── progress/		<-- few files to be removed.
+    │	│
+    │   ├── progress.json
+    │	│
+    │   └── storage-folder/  
+    │		│
+    │  		├── archive/		<-- I don't like the name. Maybe "to-review"
+    │		│
+    │  		├── assignments/	<-- I don't like the name.
+    │		│
+    │  		├── draft/		<-- don't share to writer
+    │		│
+    │  		├── in_progress/	<-- 
+    │		│
+    │  		└── references.json 
+    │      
     │  
     ├── index.html    
     │  
@@ -22,23 +49,44 @@ writer/
     ├── js/
     │   │
     │   ├── modules/
+    │   │    │
     │   │    ├── api.js		
+    │   │    │
     │   │    ├── auth.js	
+    │   │    │
     │   │    ├── config.js	
+    │   │    │
     │   │    ├── data.js	
+    │   │    │
     │   │    ├── forms.js	
+    │   │    │
+    │   │    ├── logout.js    
+    │   │    │
     │   │    ├── reviewer.js	
+    │   │    │
     │   │    ├── storage.js	
+    │   │    │
     │   │    ├── ui.js		
+    │   │    │
     │   │    └── utils.js	
     │	│
-    │   ├── writer.js
+    │   ├── writer.js.bak
+    │   │    
     │   └── writer-main.js	<-- we keep this one
     │  
+    │  
+    ├── login/
+    │       │
+    │       ├── index.html		
+    │       │
+    │       └── login.html.bak
+    │  
+    │  
     └── uploads/
-    	├── en/
+        │    
+    	├── en/		<-- ancients documents. to be deleted.
     	│
-        └── fr/
+        └── fr/		<-- ancients documents. to be deleted.
         
         
         
