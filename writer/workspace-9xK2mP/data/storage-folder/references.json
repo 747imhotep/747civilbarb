@@ -1,7 +1,7 @@
 {
   "draft_01": {
-    "draftId": "draft_01",
-    "currentStatus": "available",
+    "id": "draft_01",
+    "currentFolder": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
@@ -11,8 +11,8 @@
     "viewHistory": []
   },
   "draft_02": {
-    "draftId": "draft_02",
-    "currentStatus": "in_progress",
+    "id": "draft_02",
+    "currentFolder": "in_progress",
     "lockedBy": "writer@email.com",
     "lockedAt": "2026-06-06T10:30:00Z",
     "isViewing": false,
@@ -24,8 +24,8 @@
     ]
   },
   "draft_03": {
-    "draftId": "draft_03",
-    "currentStatus": "available",
+    "id": "draft_03",
+    "currentFolder": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
@@ -35,8 +35,8 @@
     "viewHistory": []
   },
     "draft_04": {
-    "draftId": "draft_04",
-    "currentStatus": "available",
+    "id": "draft_04",
+    "currentFolder": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
@@ -46,8 +46,8 @@
     "viewHistory": []
   },
     "draft_05": {
-    "draftId": "draft_05",
-    "currentStatus": "available",
+    "id": "draft_05",
+    "currentFolder": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
@@ -57,8 +57,8 @@
     "viewHistory": []
   },
   "draft_06": {
-    "draftId": "draft_06",
-    "currentStatus": "available",
+    "id": "draft_06",
+    "currentFolder": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
