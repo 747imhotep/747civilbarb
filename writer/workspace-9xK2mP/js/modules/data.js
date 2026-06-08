@@ -1,14 +1,16 @@
 // =================================================
 // DATA MODULE - Load and manage drafts & progress
 // data.js
-// manage data for drafts and progress with localstorage.
+// Dynamically scans available folder for documents
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 209 lines - Updated 2026-06-07
+// 239 lines - Updated 2026-06-08 at 14h10
+
 
 import { DATA_PATHS } from './config.js';
 import { loadFromLocal, saveToLocal } from './storage.js';
+import { scanAvailableDocuments } from './file-scanner.js';
 
 // Global data arrays
 export let draftsData = [];
@@ -19,38 +21,57 @@ const DRAFTS_STORAGE_KEY = 'cob_drafts_backup';
 const PROGRESS_STORAGE_KEY = 'cob_progress_backup';
 
 /**
- * Load drafts from JSON file or backup
+ * Load drafts from dynamic scanner or JSON file
+ * Priority: 1. Dynamic scanner (step1-available folder)
+ *           2. Static drafts.json (fallback)
+ *           3. localStorage backup (last resort)
  * @returns {Promise<Array>} - Drafts array
  */
-import { scanAvailableDocuments } from './file-scanner.js';
-
-export let draftsData = [];
-
 export async function loadDrafts() {
     try {
-        // First try to load from dynamic scanner
+        // FIRST: Try dynamic scanner from step1-available folder
+        console.log('📁 Scanning for documents in step1-available...');
         const scannedDocs = await scanAvailableDocuments();
         
         if (scannedDocs && scannedDocs.length > 0) {
             draftsData = scannedDocs;
-            console.log('✅ Loaded drafts from dynamic scanner:', draftsData.length);
+            // Save to localStorage as backup
+            saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
+            console.log('✅ Loaded drafts from dynamic scanner:', draftsData.length, 'documents');
             return draftsData;
         }
         
-        // Fallback to static drafts.json
+        // SECOND: Fallback to static drafts.json
+        console.log('📁 No documents in available folder, trying drafts.json...');
         const response = await fetch(DATA_PATHS.drafts);
+        
         if (response.ok) {
             const data = await response.json();
-            draftsData = data.drafts || data;
-            console.log('✅ Loaded drafts from drafts.json:', draftsData.length);
-            return draftsData;
+            console.log('📥 Drafts.json loaded:', data);
+            
+            if (data && data.drafts) {
+                draftsData = data.drafts;
+                saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
+                console.log('✅ Drafts assigned from JSON:', draftsData.length, 'articles');
+                return draftsData;
+            } else if (Array.isArray(data)) {
+                draftsData = data;
+                saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
+                console.log('✅ Drafts assigned from JSON (array format):', draftsData.length, 'articles');
+                return draftsData;
+            } else {
+                console.error('❌ drafts.json unexpected format');
+                draftsData = [];
+                return [];
+            }
+        } else {
+            console.error('❌ Failed to load drafts.json:', response.status);
+            return loadDraftsFromBackup();
         }
     } catch (error) {
-        console.error('Error loading drafts:', error);
+        console.error('❌ Error loading drafts:', error);
+        return loadDraftsFromBackup();
     }
-    
-    draftsData = [];
-    return [];
 }
 
 /**
@@ -65,6 +86,7 @@ function loadDraftsFromBackup() {
         return draftsData;
     }
     draftsData = [];
+    console.log('⚠️ No drafts found anywhere');
     return [];
 }
 
@@ -83,12 +105,10 @@ export async function loadProgress() {
             
             if (data && data.progress) {
                 progressData = data.progress;
-                // Save to localStorage as backup
                 saveToLocal(PROGRESS_STORAGE_KEY, progressData);
                 console.log('✅ Progress assigned:', progressData.length, 'entries');
                 return progressData;
             } else if (Array.isArray(data)) {
-                // If JSON is an array directly
                 progressData = data;
                 saveToLocal(PROGRESS_STORAGE_KEY, progressData);
                 console.log('✅ Progress assigned (array format):', progressData.length, 'entries');
@@ -197,9 +217,26 @@ export function updateLocalDraftStatus(draftId, status) {
  * @returns {Promise<{drafts: Array, progress: Array}>}
  */
 export async function reloadAllData() {
+    console.log('🔄 Reloading all data...');
     const drafts = await loadDrafts();
     const progress = await loadProgress();
     return { drafts, progress };
 }
+
+/**
+ * Force refresh drafts from scanner (bypasses cache)
+ * @returns {Promise<Array>}
+ */
+export async function refreshDrafts() {
+    console.log('🔄 Force refreshing drafts from scanner...');
+    const scannedDocs = await scanAvailableDocuments();
+    if (scannedDocs && scannedDocs.length > 0) {
+        draftsData = scannedDocs;
+        saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
+        console.log('✅ Drafts refreshed:', draftsData.length, 'documents');
+    }
+    return draftsData;
+}
+
 
 
