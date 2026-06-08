@@ -10,17 +10,63 @@
     "lastUpdated": "2026-06-06T18:07:00Z",
     "viewHistory": []
   },
-    
   "draft_02": {
     "draftId": "draft_02",
     "currentStatus": "in_progress",
     "lockedBy": "writer@email.com",
     "lockedAt": "2026-06-06T10:30:00Z",
-    "isViewing": true,
+    "isViewing": false,
     "readyForReview": false,
     "percentComplete": 45,
     "lastUpdated": "2026-06-06T18:00:00Z",
-    "viewHistory": ["writer@email.com"]
+    "viewHistory": [
+      "writer@email.com"
+    ]
+  },
+  "draft_03": {
+    "draftId": "draft_03",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-08T10:15:33.299Z",
+    "viewHistory": []
+  },
+    "draft_04": {
+    "draftId": "draft_04",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-08T10:15:33.299Z",
+    "viewHistory": []
+  },
+    "draft_05": {
+    "draftId": "draft_05",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-08T10:15:33.299Z",
+    "viewHistory": []
+  },
+  "draft_06": {
+    "draftId": "draft_06",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-08T10:15:16.428Z",
+    "viewHistory": []
   }
 }
+
 
