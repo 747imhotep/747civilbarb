@@ -6,14 +6,15 @@ Few checks
 
 1. Deconnexion Button works
 
-2. in Sélectionner un article" Field, when selecting any article, nothing occured  in the "Tous les articles disponibles / All available articles" Field. To see something, you need to switch "Prêt pour relecture ?" toggle.  THIS MY CONFUSE WRITERS !!!
+2. in Sélectionner un article" Field, is again blocked.
 
 
-3. it seems like "Sélectionner un article" Field doesn't look inside storage-folder/available/ Folder
-4. Where does "Tous les articles disponibles / All available articles" Field look for its documents ?
+3.  "Sélectionner un article" Field 
 
-5. I chose option 1
-references-manager.js has been updated.
+4. "Tous les articles disponibles / All available articles" show nothing too.
+
+5. CHECK FOR ERROR:
+pm2 logs 747civilbarb --lines 20
 
 [TAILING] Tailing last 20 lines for [747civilbarb] process (change the value with --lines option)
 /home/deploy/.pm2/logs/747civilbarb-error.log last 20 lines:
@@ -40,12 +41,17 @@ references-manager.js has been updated.
 2|747civil | 📧 Sender.net: ✅ Configured
 
 
-6. where to place the update code for server.js
-please find it here below:
+6. F12 CONSOLE:
+Uncaught SyntaxError: redeclaration of function loadReferences references-manager.js:86:23note: Previously declared at line 24, column 23references-manager.js:24:23
 
-// ============================
+
+7. Could you please cleanup server.js file
+for numbers and subtitle, so it's much easier to read.
+Please be carefull and check it twice before sharing it:
+
+// =================================
 // SERVER.JS - DEADANGLES INSTITUTE
-// ============================
+// =================================
 
 console.log("🔥 SERVER.JS ACTIVE VERSION LOADED");
 
@@ -476,6 +482,159 @@ app.get("/api/premium-files-list/:lang", async (req, res) => {
     console.error("❌ Premium file list error:", err);
     res.status(500).json({ error: "Server error" });
   }
+});
+
+// =======================================================
+// WRITER DASHBOARD API ENDPOINTS
+// =======================================================
+
+// Path to writer storage folder
+const WRITER_STORAGE_PATH = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data", "storage-folder");
+const REFERENCES_FILE_PATH = path.join(WRITER_STORAGE_PATH, "references.json");
+const DRAFTS_JSON_PATH = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data", "drafts.json");
+const PROGRESS_JSON_PATH = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data", "progress.json");
+
+/**
+ * Save references.json (POST)
+ * Allows writer dashboard to update document statuses
+ */
+app.post("/api/writer/save-references", async (req, res) => {
+    try {
+        // Ensure storage folder exists
+        if (!fs.existsSync(WRITER_STORAGE_PATH)) {
+            fs.mkdirSync(WRITER_STORAGE_PATH, { recursive: true });
+        }
+        
+        const data = req.body;
+        
+        // Write to references.json
+        fs.writeFileSync(REFERENCES_FILE_PATH, JSON.stringify(data, null, 2));
+        
+        console.log(`✅ Saved references.json (${Object.keys(data).length} documents)`);
+        res.json({ success: true });
+    } catch (error) {
+        console.error("❌ Failed to save references:", error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * Get references.json (GET)
+ * Allows writer dashboard to load document statuses
+ */
+app.get("/api/writer/references", async (req, res) => {
+    try {
+        if (fs.existsSync(REFERENCES_FILE_PATH)) {
+            const data = fs.readFileSync(REFERENCES_FILE_PATH, "utf-8");
+            res.json(JSON.parse(data));
+        } else {
+            res.json({});
+        }
+    } catch (error) {
+        console.error("❌ Failed to load references:", error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+/**
+ * Update draft status
+ */
+app.post("/api/writer/update-status", async (req, res) => {
+    try {
+        const { draft_id, status, writer_email, timestamp } = req.body;
+        
+        // Update drafts.json if needed
+        if (fs.existsSync(DRAFTS_JSON_PATH)) {
+            const draftsData = JSON.parse(fs.readFileSync(DRAFTS_JSON_PATH, "utf-8"));
+            
+            // Find and update draft status
+            if (draftsData.drafts) {
+                const draft = draftsData.drafts.find(d => d.id === draft_id);
+                if (draft) {
+                    draft.review_status = status;
+                    fs.writeFileSync(DRAFTS_JSON_PATH, JSON.stringify(draftsData, null, 2));
+                    console.log(`✅ Updated draft ${draft_id} status to ${status}`);
+                }
+            }
+        }
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error("❌ Failed to update status:", error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * Save progress
+ */
+app.post("/api/writer/save-progress", async (req, res) => {
+    try {
+        const progressEntry = req.body;
+        
+        let progressData = { progress: [] };
+        
+        if (fs.existsSync(PROGRESS_JSON_PATH)) {
+            progressData = JSON.parse(fs.readFileSync(PROGRESS_JSON_PATH, "utf-8"));
+        }
+        
+        // Find and update or add new entry
+        const existingIndex = progressData.progress.findIndex(p => 
+            p.draft_id === progressEntry.draft_id && 
+            p.writer_email === progressEntry.writer_email
+        );
+        
+        if (existingIndex >= 0) {
+            progressData.progress[existingIndex] = progressEntry;
+        } else {
+            progressData.progress.push(progressEntry);
+        }
+        
+        fs.writeFileSync(PROGRESS_JSON_PATH, JSON.stringify(progressData, null, 2));
+        console.log(`✅ Saved progress for ${progressEntry.draft_id}`);
+        
+        res.json({ success: true });
+    } catch (error) {
+        console.error("❌ Failed to save progress:", error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * Notify reviewer (email or webhook)
+ */
+app.post("/api/writer/notify-reviewer", async (req, res) => {
+    try {
+        const { draft_id, title, writer, message, timestamp } = req.body;
+        
+        console.log(`📧 [NOTIFICATION] Article "${title}" by ${writer} is ready for review`);
+        
+        // Here you can add email sending logic if needed
+        // For now, just log and return success
+        
+        res.json({ success: true, message: "Reviewer notified" });
+    } catch (error) {
+        console.error("❌ Failed to notify reviewer:", error);
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * Upload revision file
+ */
+app.post("/api/writer/upload-revision", async (req, res) => {
+    try {
+        // Note: For file uploads, you'll need multer or similar middleware
+        // This is a simplified version - you may need to add multer
+        
+        console.log("📁 File upload received");
+        
+        // For now, just acknowledge
+        res.json({ success: true, message: "File upload endpoint ready" });
+    } catch (error) {
+        console.error("❌ Failed to upload file:", error);
+        res.status(500).json({ success: false, error: error.message });
+    }
 });
 
 

@@ -7,24 +7,25 @@
 
 
 
-// 279 lines - Updated 2026-06-07
+// 280 lines - Updated 2026-06-08 12h13
+
+
 
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getDraftById, updateLocalDraftStatus } from './data.js';
 import { getRefColorClass } from './utils.js';
-import { REFERENCES_FILE } from './config.js';
 
 // In-memory cache
 let referencesCache = new Map();
 let isInitialized = false;
 
 /**
- * Load references from JSON file
+ * Load references from server API
  */
 export async function loadReferences() {
     try {
-        console.log('📚 Loading references from:', REFERENCES_FILE);
-        const response = await fetch(REFERENCES_FILE);
+        console.log('📚 Loading references from API...');
+        const response = await fetch('/api/writer/references');
         
         if (response.ok) {
             const data = await response.json();
@@ -52,11 +53,8 @@ export async function loadReferences() {
 }
 
 /**
- * Save references to JSON file
+ * Save references to server API
  */
-// Replace the saveReferences function
-// In modules/references-manager.js
-
 async function saveReferences() {
     try {
         const data = {};
@@ -81,30 +79,6 @@ async function saveReferences() {
         console.error('❌ Failed to save references:', error);
         return false;
     }
-}
-
-export async function loadReferences() {
-    try {
-        const response = await fetch('/api/writer/references');
-        
-        if (response.ok) {
-            const data = await response.json();
-            referencesCache.clear();
-            Object.entries(data).forEach(([id, ref]) => {
-                referencesCache.set(id, ref);
-            });
-            console.log(`📚 Loaded ${referencesCache.size} document references`);
-            isInitialized = true;
-            return data;
-        } else if (response.status === 404) {
-            console.log('📝 No references file yet, will create on first save');
-            isInitialized = true;
-            return {};
-        }
-    } catch (error) {
-        console.error('Failed to load references:', error);
-    }
-    return {};
 }
 
 /**
@@ -304,6 +278,5 @@ export async function cleanStaleLocks() {
         await saveReferences();
     }
 }
-
 
 
