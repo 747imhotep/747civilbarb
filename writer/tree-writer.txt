@@ -18,21 +18,20 @@ writer/
     │	│
     │   └── writer-modal.css
     │  
-    ├── data/			<-- few files to be removed
+    ├── data/
     │	│
-    │  	├── drafts/
+    │  	├── drafts/		<-- few files to be removed
     │	│
-    │   ├── drafts.json
+    │   ├── drafts.json		<-- needs to change the name ?
     │	│
     │   ├── drafts.json.bak
     │	│
     │   ├── progress/		<-- few files to be removed.
     │	│
-    │   ├── progress.json
+    │   ├── progress.json	<-- do we need this ?
     │	│
     │   └── storage-folder/  
     │		│
-    │  		├── to-review/		<-- to review and publich
     │		│
     │  		├── available/		<-- docs writer can pick
     │		│
@@ -40,7 +39,9 @@ writer/
     │		│
     │  		├── in_progress/	<-- Writer has opened but not submitted
     │		│
-    │  		└── references.json 
+    │  		├── references.json 
+    │		│
+    │  		└── to-review/		<-- to review and publich
     │      
     │  
     ├── index.html    
@@ -60,7 +61,9 @@ writer/
     │   │    │
     │   │    ├── forms.js	
     │   │    │
-    │   │    ├── logout.js    
+    │   │    ├── logout.js   
+    │   │    │
+    │   │    ├── references-manager.js 
     │   │    │
     │   │    ├── reviewer.js	
     │   │    │
@@ -82,7 +85,7 @@ writer/
     │       └── login.html.bak
     │  
     │  
-    └── uploads/
+    └── uploads/	<-- we probably don't need this folder anymore.
         │    
     	├── en/		<-- ancients documents. to be deleted.
     	│
