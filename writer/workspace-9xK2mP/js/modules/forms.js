@@ -5,10 +5,12 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 317 lines - UPDATED with references-manager integration 2026-06-06
+// 343 lines - UPDATED 2026-06-08 at 14h29
+
+
 
 // Data functions
-import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress } from './data.js';
+import { updateProgress, updateLocalDraftStatus, getDraftById, getProgress, refreshDrafts } from './data.js';
 
 // Authentication functions
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
@@ -19,8 +21,8 @@ import { saveProgressOnServer, updateDraftStatusOnServer, notifyReviewerOnServer
 // Storage functions (local)
 import { saveUploadRecord } from './storage.js';
 
-// UI functions - IMPORTANT: from ui.js, NOT reviewer.js
-import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, updateSingleDocumentRefColor } from './ui.js';
+// UI functions
+import { showFrenchArticleInfo, showEnglishArticleInfo, displayAllDocuments, updateRecentDocuments, updateSingleDocumentRefColor, populateFrenchDropdown, populateEnglishDropdown } from './ui.js';
 
 // Reviewer functions
 import { showReviewerPanel } from './reviewer.js';
@@ -30,6 +32,9 @@ import { showSuccessMessage, showLocalNotification } from './utils.js';
 
 // References manager
 import { markDocumentAsViewed, setReadyForReview } from './references-manager.js';
+
+// File scanner for moving documents
+import { moveDocument } from './file-scanner.js';
 
 
 // =================================================
@@ -42,8 +47,6 @@ let getCurrentEnglishDraftId = null;
 // =================================================
 // PUBLIC: Set draft ID getter functions
 // Called by writer-main.js during initialization
-// @param {Function} getFrenchId - Returns current French draft ID
-// @param {Function} getEnglishId - Returns current English draft ID
 // =================================================
 export function setDraftIdGetters(getFrenchId, getEnglishId) {
     getCurrentFrenchDraftId = getFrenchId;
@@ -53,8 +56,6 @@ export function setDraftIdGetters(getFrenchId, getEnglishId) {
 
 // =================================================
 // PRIVATE: Update draft status (local + server)
-// @param {string} draftId - Draft identifier
-// @param {string} status - New status (in_progress, ready_for_review, etc.)
 // =================================================
 async function updateDraftStatus(draftId, status) {
     const writerEmail = getCurrentWriterEmail();
@@ -62,15 +63,13 @@ async function updateDraftStatus(draftId, status) {
     // Update local data
     updateLocalDraftStatus(draftId, status);
     
-    // Update server (fire and forget - don't block UI)
+    // Update server
     await updateDraftStatusOnServer(draftId, status, writerEmail);
 }
 
 
 // =================================================
 // PUBLIC: Setup toggle (Ready for Review) listeners
-// Called by writer-main.js during initialization
-// @param {HTMLElement} notificationContainer - Where to show local notifications
 // =================================================
 export function setupToggleListeners(notificationContainer) {
     const frenchToggle = document.getElementById('frenchReadyForReview');
@@ -81,14 +80,27 @@ export function setupToggleListeners(notificationContainer) {
         frenchToggle.addEventListener('change', async (e) => {
             const draftId = getCurrentFrenchDraftId ? getCurrentFrenchDraftId() : null;
             if (draftId) {
-                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                const isReady = e.target.checked;
+                const newStatus = isReady ? 'ready_for_review' : 'in_progress';
+                
                 await updateDraftStatus(draftId, newStatus);
                 
                 // Update references manager
-                await setReadyForReview(draftId, e.target.checked);
+                await setReadyForReview(draftId, isReady);
+                
+                // If marked as ready, move document to to-review folder
+                if (isReady) {
+                    const draft = getDraftById(draftId);
+                    if (draft && draft.filename) {
+                        await moveDocument(draft.filename, 'step2-in-progress', 'step3-to-review', draftId);
+                    }
+                }
                 
                 await showFrenchArticleInfo(draftId);
                 await displayAllDocuments();
+                await populateFrenchDropdown();
+                await populateEnglishDropdown();
+                
                 if (typeof showReviewerPanel === 'function') await showReviewerPanel();
                 console.log(`📝 French article status updated to: ${newStatus}`);
             }
@@ -100,14 +112,27 @@ export function setupToggleListeners(notificationContainer) {
         englishToggle.addEventListener('change', async (e) => {
             const draftId = getCurrentEnglishDraftId ? getCurrentEnglishDraftId() : null;
             if (draftId) {
-                const newStatus = e.target.checked ? 'ready_for_review' : 'in_progress';
+                const isReady = e.target.checked;
+                const newStatus = isReady ? 'ready_for_review' : 'in_progress';
+                
                 await updateDraftStatus(draftId, newStatus);
                 
                 // Update references manager
-                await setReadyForReview(draftId, e.target.checked);
+                await setReadyForReview(draftId, isReady);
+                
+                // If marked as ready, move document to to-review folder
+                if (isReady) {
+                    const draft = getDraftById(draftId);
+                    if (draft && draft.filename) {
+                        await moveDocument(draft.filename, 'step2-in-progress', 'step3-to-review', draftId);
+                    }
+                }
                 
                 await showEnglishArticleInfo(draftId);
                 await displayAllDocuments();
+                await populateFrenchDropdown();
+                await populateEnglishDropdown();
+                
                 if (typeof showReviewerPanel === 'function') await showReviewerPanel();
                 console.log(`📝 English article status updated to: ${newStatus}`);
             }
@@ -118,7 +143,6 @@ export function setupToggleListeners(notificationContainer) {
 
 // =================================================
 // PUBLIC: Setup form submission handlers
-// Called by writer-main.js during initialization
 // =================================================
 export function setupSubmitForms() {
     const frenchForm = document.getElementById('frenchSubmitForm');
@@ -142,12 +166,6 @@ export function setupSubmitForms() {
 
 // =================================================
 // PRIVATE: Save progress (local + server)
-// @param {string} draftId - Draft identifier
-// @param {number} wordsWritten - Total words written
-// @param {string} comment - Optional comment
-// @param {string} writerEmail - Writer's email
-// @param {string} writerPseudonym - Writer's pseudonym
-// @returns {Promise<boolean>}
 // =================================================
 async function saveProgress(draftId, wordsWritten, comment, writerEmail, writerPseudonym) {
     const progressEntry = {
@@ -162,7 +180,7 @@ async function saveProgress(draftId, wordsWritten, comment, writerEmail, writerP
     // Update local data
     updateProgress(progressEntry);
     
-    // Update server (fire and forget)
+    // Update server
     await saveProgressOnServer(progressEntry);
     
     return true;
@@ -171,11 +189,6 @@ async function saveProgress(draftId, wordsWritten, comment, writerEmail, writerP
 
 // =================================================
 // PRIVATE: Upload revision file (local + server)
-// @param {File} file - The file to upload
-// @param {string} draftId - Draft identifier
-// @param {string} writerEmail - Writer's email
-// @param {string} writerPseudonym - Writer's pseudonym
-// @param {string} language - 'fr' or 'en'
 // =================================================
 async function uploadRevision(file, draftId, writerEmail, writerPseudonym, language) {
     // Save record locally (for recent documents list)
@@ -184,14 +197,13 @@ async function uploadRevision(file, draftId, writerEmail, writerPseudonym, langu
         date: new Date().toISOString()
     });
     
-    // Upload to server (fire and forget)
+    // Upload to server
     await uploadRevisionOnServer(file, draftId, writerEmail, writerPseudonym, language);
 }
 
 
 // =================================================
 // PRIVATE: Submit revision for an article
-// @param {string} language - 'fr' or 'en'
 // =================================================
 async function submitRevision(language) {
     const isFrench = language === 'fr';
@@ -240,10 +252,14 @@ async function submitRevision(language) {
             // Update references manager
             await setReadyForReview(draftId, true);
             
+            // Move document to to-review folder
+            if (draft && draft.filename) {
+                await moveDocument(draft.filename, 'step2-in-progress', 'step3-to-review', draftId);
+            }
+            
             // Send notification to reviewer
             const notified = await notifyReviewerOnServer(draftId, draft.title_fr || draft.title_en, writerPseudonym);
             if (!notified) {
-                // Fallback to local notification
                 const notificationContainer = document.getElementById('notificationArea');
                 showLocalNotification(draft.title_fr || draft.title_en, writerPseudonym, notificationContainer);
             }
@@ -276,6 +292,9 @@ async function submitRevision(language) {
         await updateRecentDocuments('en', draftId);
     }
     await displayAllDocuments();
+    await populateFrenchDropdown();
+    await populateEnglishDropdown();
+    
     if (typeof showReviewerPanel === 'function') await showReviewerPanel();
 }
 
@@ -283,14 +302,17 @@ async function submitRevision(language) {
 // =================================================
 // PUBLIC: Handle view document click (locks article)
 // Called when user clicks "Voir le document" button
-// @param {string} draftId - Draft identifier
-// @param {Object} draft - Draft object with review_status
 // =================================================
 export async function onViewDocument(draftId, draft) {
     const writerEmail = getCurrentWriterEmail();
     
-    // Mark document as viewed in references manager (this also updates color)
+    // Mark document as viewed in references manager
     await markDocumentAsViewed(draftId);
+    
+    // Move document from available to in_progress folder
+    if (draft && draft.filename) {
+        await moveDocument(draft.filename, 'step1-available', 'step2-in-progress', draftId);
+    }
     
     // Update the REF color in the table without full refresh
     try {
@@ -314,6 +336,9 @@ export async function onViewDocument(draftId, draft) {
             await saveProgress(draftId, 0, 'Started working on this article', writerEmail, getCurrentWriterPseudonym());
         }
     }
+    
+    // Refresh dropdowns to update available lists
+    await populateFrenchDropdown();
+    await populateEnglishDropdown();
 }
-
 
