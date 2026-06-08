@@ -55,6 +55,8 @@ export async function loadReferences() {
  * Save references to JSON file
  */
 // Replace the saveReferences function
+// In modules/references-manager.js
+
 async function saveReferences() {
     try {
         const data = {};
@@ -69,13 +71,40 @@ async function saveReferences() {
         });
         
         if (response.ok) {
-            console.log(`💾 Saved ${referencesCache.size} references`);
+            console.log(`💾 Saved ${referencesCache.size} references to server`);
             return true;
+        } else {
+            console.error('❌ Failed to save references:', response.status);
+            return false;
         }
     } catch (error) {
-        console.error('Failed to save references:', error);
+        console.error('❌ Failed to save references:', error);
+        return false;
     }
-    return false;
+}
+
+export async function loadReferences() {
+    try {
+        const response = await fetch('/api/writer/references');
+        
+        if (response.ok) {
+            const data = await response.json();
+            referencesCache.clear();
+            Object.entries(data).forEach(([id, ref]) => {
+                referencesCache.set(id, ref);
+            });
+            console.log(`📚 Loaded ${referencesCache.size} document references`);
+            isInitialized = true;
+            return data;
+        } else if (response.status === 404) {
+            console.log('📝 No references file yet, will create on first save');
+            isInitialized = true;
+            return {};
+        }
+    } catch (error) {
+        console.error('Failed to load references:', error);
+    }
+    return {};
 }
 
 /**
