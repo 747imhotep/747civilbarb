@@ -4,136 +4,61 @@ Few checks
 
 =======
 
-1. Deconnexion Button works
+1. At this stage, we don't overwrite all
 
-2. Despite all changes and updates, the entire process doesn't work. we should work on it to make the writer experience at it best.
+2. We can reset only storage-folder/
+
+3. Git status:
+
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step0-drafts/test-text.txt
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/available-test.txt
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/foot-stad-singe.docx
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/identite.docx
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/intelligence-hor-sol.docx
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/couleur-de-peau-v005.pdf
+	new file:   writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/melanine-bienfaits-selenium-v005.pdf
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+	modified:   writer/workspace-9xK2mP/data/drafts.json
+	deleted:    writer/workspace-9xK2mP/data/drafts/draft.txt
+	modified:   writer/workspace-9xK2mP/data/storage-folder/in_progress/couleur-de-peau-v005.pdf
+	modified:   writer/workspace-9xK2mP/data/storage-folder/in_progress/melanine-bienfaits-selenium-v005.pdf
+	deleted:    writer/workspace-9xK2mP/uploads/fr/draft.txt
+	deleted:    writer/workspace-9xK2mP/uploads/fr/foot-stad-singe.docx
+	deleted:    writer/workspace-9xK2mP/uploads/fr/intelligence-hor-sol.docx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	data/
+	endpoint.js
+	package-lock.json
+	package.json
+	premium-files/
+	public/
+	server.js
+	server.js.save
+	server.js.save.1
+	success-backup/
+	temp-repo/
+	test-payload.json
+	tools/
+	writer/workspace-9xK2mP/data/drafts.json.old
 
 
-3.  "Sélectionner un article" Field shows from drafts.json
-Is it possible for the system to populate automaticaly the drafts.json based on 
-what's on the storage-folder/available/ Folder ?
-Maybe we need to move and rename drafts.json
+4. The 5-step folder structure has been already created on my PC.
+Thats what I try to update.
 
-4. "Tous les articles disponibles / All available articles" all are available now.
-Still not auto-dynamique. This is the main concern for the moment.
-
-5. After that, we need to make sure 
-	that documents are available in the good place.
-	Documents would be save in in_progress/ Folder 
-	
-New proposition for storage-folder:
-5 folders:
-step0-drafts/
-step1-drafts-accessible/
-step2-in-progress/
-step3-to-review/
-step4-published/
-
-
-
-
-	
-	
+5. 	
 	
 
 6. F12 CONSOLE:
 
-7. writer-tree updated
-
-writer/
-│  
-└── workspace-9xK2mP/
-    │  
-    ├── css/
-    │	│
-    │   ├── logoff.css
-    │	│
-    │   ├── writer.css    
-    │	│
-    │   ├── writer-base.css
-    │	│
-    │   ├── writer-components.css	 
-    │	│
-    │   ├── writer-layout.css		
-    │	│
-    │   ├── login.css
-    │	│
-    │   └── writer-modal.css
-    │  
-    ├── data/
-    │	│
-    │  	├── drafts/		<-- few files to be removed
-    │	│
-    │   ├── drafts.json		<-- needs to change the name ?
-    │	│
-    │   ├── drafts.json.bak
-    │	│
-    │   ├── progress/		<-- few files to be removed.
-    │	│
-    │   ├── progress.json	<-- do we need this ?
-    │	│
-    │   └── storage-folder/  
-    │		│
-    │		│
-    │  		├── available/		<-- docs writer can pick
-    │		│
-    │  		├── draft/		<-- raw materials (hidden from writer)
-    │		│
-    │  		├── in_progress/	<-- Writer has opened but not submitted
-    │		│
-    │  		├── references.json 
-    │		│
-    │  		└── to-review/		<-- to review and publich
-    │      
-    │  
-    ├── index.html    
-    │  
-    │      
-    ├── js/
-    │   │
-    │   ├── modules/
-    │   │    │
-    │   │    ├── api.js		
-    │   │    │
-    │   │    ├── auth.js	
-    │   │    │
-    │   │    ├── config.js	
-    │   │    │
-    │   │    ├── data.js	
-    │   │    │
-    │   │    ├── forms.js	
-    │   │    │
-    │   │    ├── logout.js   
-    │   │    │
-    │   │    ├── references-manager.js 
-    │   │    │
-    │   │    ├── reviewer.js	
-    │   │    │
-    │   │    ├── storage.js	
-    │   │    │
-    │   │    ├── ui.js		
-    │   │    │
-    │   │    └── utils.js	
-    │	│
-    │   ├── writer.js.bak
-    │   │    
-    │   └── writer-main.js	<-- we keep this one
-    │  
-    │  
-    ├── login/
-    │       │
-    │       ├── index.html		
-    │       │
-    │       └── login.html.bak
-    │  
-    │  
-    └── uploads/	<-- we probably don't need this folder anymore.
-        │    
-    	├── en/		<-- ancients documents. to be deleted.
-    	│
-        └── fr/		<-- ancients documents. to be deleted.
-        
-        
-        
+7. 
 
 
