@@ -22,41 +22,35 @@ const PROGRESS_STORAGE_KEY = 'cob_progress_backup';
  * Load drafts from JSON file or backup
  * @returns {Promise<Array>} - Drafts array
  */
+import { scanAvailableDocuments } from './file-scanner.js';
+
+export let draftsData = [];
+
 export async function loadDrafts() {
     try {
-        console.log('📥 Loading drafts from:', DATA_PATHS.drafts);
-        const response = await fetch(DATA_PATHS.drafts);
+        // First try to load from dynamic scanner
+        const scannedDocs = await scanAvailableDocuments();
         
+        if (scannedDocs && scannedDocs.length > 0) {
+            draftsData = scannedDocs;
+            console.log('✅ Loaded drafts from dynamic scanner:', draftsData.length);
+            return draftsData;
+        }
+        
+        // Fallback to static drafts.json
+        const response = await fetch(DATA_PATHS.drafts);
         if (response.ok) {
             const data = await response.json();
-            console.log('📥 Drafts.json loaded:', data);
-            
-            if (data && data.drafts) {
-                draftsData = data.drafts;
-                // Save to localStorage as backup
-                saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
-                console.log('✅ Drafts assigned:', draftsData.length, 'articles');
-                return draftsData;
-            } else if (Array.isArray(data)) {
-                // If JSON is an array directly
-                draftsData = data;
-                saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
-                console.log('✅ Drafts assigned (array format):', draftsData.length, 'articles');
-                return draftsData;
-            } else {
-                console.error('❌ drafts.json unexpected format');
-                draftsData = [];
-                return [];
-            }
-        } else {
-            console.error('❌ Failed to load drafts.json:', response.status);
-            // Try to load from backup
-            return loadDraftsFromBackup();
+            draftsData = data.drafts || data;
+            console.log('✅ Loaded drafts from drafts.json:', draftsData.length);
+            return draftsData;
         }
     } catch (error) {
-        console.error('❌ Error loading drafts:', error);
-        return loadDraftsFromBackup();
+        console.error('Error loading drafts:', error);
     }
+    
+    draftsData = [];
+    return [];
 }
 
 /**
