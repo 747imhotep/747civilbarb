@@ -5,28 +5,39 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 420 lines - Updated with references-manager integration
+// 453 lines created on 2026-06-08 at 14h14
 
-import { draftsData, progressData, getProgress, getFrenchDrafts, getEnglishDrafts, getDraftById, updateLocalDraftStatus } from './data.js';
+import { draftsData, progressData, getProgress, getFrenchDrafts, getEnglishDrafts, getDraftById, updateLocalDraftStatus, refreshDrafts } from './data.js';
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getRefColorClass, getStatusClass, getStatusText, calculatePercentComplete, formatDate, createProgressBar, escapeHtml } from './utils.js';
 import { saveUploadRecord, getUploadRecords } from './storage.js';
 import { updateDraftStatusOnServer } from './api.js';
 import { getDocumentRefColor, getDocumentStatusText, isLockedByOther } from './references-manager.js';
+import { moveDocument } from './file-scanner.js';
 
 // Current selected draft IDs
 let currentFrenchDraftId = null;
 let currentEnglishDraftId = null;
 
+// Storage folders mapping
+const STORAGE_FOLDERS = {
+    AVAILABLE: 'step1-available',
+    IN_PROGRESS: 'step2-in-progress',
+    TO_REVIEW: 'step3-to-review'
+};
+
 /**
  * Populate French dropdown with available articles
  */
-export function populateFrenchDropdown() {
+export async function populateFrenchDropdown() {
     const select = document.getElementById('frenchArticleSelect');
     if (!select) {
         console.error('❌ French select not found');
         return;
     }
+    
+    // Refresh drafts before populating
+    await refreshDrafts();
     
     const frenchDrafts = getFrenchDrafts();
     console.log('🇫🇷 French drafts found:', frenchDrafts.length);
@@ -36,7 +47,7 @@ export function populateFrenchDropdown() {
     frenchDrafts.forEach(draft => {
         const option = document.createElement('option');
         option.value = draft.id;
-        option.textContent = draft.title_fr;
+        option.textContent = draft.title_fr || draft.filename || draft.id;
         select.appendChild(option);
     });
 }
@@ -44,12 +55,15 @@ export function populateFrenchDropdown() {
 /**
  * Populate English dropdown with available articles
  */
-export function populateEnglishDropdown() {
+export async function populateEnglishDropdown() {
     const select = document.getElementById('englishArticleSelect');
     if (!select) {
         console.error('❌ English select not found');
         return;
     }
+    
+    // Refresh drafts before populating
+    await refreshDrafts();
     
     const englishDrafts = getEnglishDrafts();
     console.log('🇬🇧 English drafts found:', englishDrafts.length);
@@ -59,7 +73,7 @@ export function populateEnglishDropdown() {
     englishDrafts.forEach(draft => {
         const option = document.createElement('option');
         option.value = draft.id;
-        option.textContent = draft.title_en;
+        option.textContent = draft.title_en || draft.filename || draft.id;
         select.appendChild(option);
     });
 }
@@ -70,12 +84,15 @@ export function populateEnglishDropdown() {
  */
 export async function showFrenchArticleInfo(draftId) {
     const draft = getDraftById(draftId);
-    if (!draft) return;
+    if (!draft) {
+        console.error('Draft not found:', draftId);
+        return;
+    }
     
     const writerEmail = getCurrentWriterEmail();
     const progress = getProgress(draftId, writerEmail);
     const wordsWritten = progress ? progress.words_written : 0;
-    const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target);
+    const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target || 1500);
     
     let isReadyForReview = false;
     if (draft.review_status === 'ready_for_review' || draft.review_status === 'under_review') {
@@ -88,13 +105,13 @@ export async function showFrenchArticleInfo(draftId) {
     }
     
     const statusText = getDocumentStatusText(draftId, 'fr');
-    const statusClass = getStatusClass(draft.review_status);
+    const statusClass = getStatusClass(draft.review_status || 'available');
     
     const infoDiv = document.getElementById('frenchArticleInfo');
     if (infoDiv) {
         infoDiv.innerHTML = `
-            <p><strong>${escapeHtml(draft.title_fr)}</strong></p>
-            <p>📝 ${wordsWritten} / ${draft.word_count_target} mots (${percentComplete}%)</p>
+            <p><strong>${escapeHtml(draft.title_fr || draft.filename || draft.id)}</strong></p>
+            <p>📝 ${wordsWritten} / ${draft.word_count_target || 1500} mots (${percentComplete}%)</p>
             ${draft.deadline ? `<p>⏰ Échéance: ${formatDate(draft.deadline, 'fr')}</p>` : ''}
             <p>Statut: <span class="${statusClass}">${statusText}</span></p>
             ${createProgressBar(percentComplete)}
@@ -108,12 +125,15 @@ export async function showFrenchArticleInfo(draftId) {
  */
 export async function showEnglishArticleInfo(draftId) {
     const draft = getDraftById(draftId);
-    if (!draft) return;
+    if (!draft) {
+        console.error('Draft not found:', draftId);
+        return;
+    }
     
     const writerEmail = getCurrentWriterEmail();
     const progress = getProgress(draftId, writerEmail);
     const wordsWritten = progress ? progress.words_written : 0;
-    const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target);
+    const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target || 1500);
     
     let isReadyForReview = false;
     if (draft.review_status === 'ready_for_review' || draft.review_status === 'under_review') {
@@ -126,13 +146,13 @@ export async function showEnglishArticleInfo(draftId) {
     }
     
     const statusText = getDocumentStatusText(draftId, 'en');
-    const statusClass = getStatusClass(draft.review_status);
+    const statusClass = getStatusClass(draft.review_status || 'available');
     
     const infoDiv = document.getElementById('englishArticleInfo');
     if (infoDiv) {
         infoDiv.innerHTML = `
-            <p><strong>${escapeHtml(draft.title_en)}</strong></p>
-            <p>📝 ${wordsWritten} / ${draft.word_count_target} words (${percentComplete}%)</p>
+            <p><strong>${escapeHtml(draft.title_en || draft.filename || draft.id)}</strong></p>
+            <p>📝 ${wordsWritten} / ${draft.word_count_target || 1500} words (${percentComplete}%)</p>
             ${draft.deadline ? `<p>⏰ Deadline: ${formatDate(draft.deadline, 'en')}</p>` : ''}
             <p>Status: <span class="${statusClass}">${statusText}</span></p>
             ${createProgressBar(percentComplete)}
@@ -153,7 +173,7 @@ export function showFrenchViewDocumentButton(draftId, onViewCallback) {
     if (container) {
         container.innerHTML = `
             <div class="tooltip">
-                <button class="view-doc-btn" data-path="${draft.path}">📖 Voir le document</button>
+                <button class="view-doc-btn" data-path="${draft.url || draft.path}" data-draft-id="${draftId}">📖 Voir le document</button>
                 <span class="tooltip-text">Ouvre le document original à lire ou modifier (verrouille l'article)</span>
             </div>
         `;
@@ -162,7 +182,7 @@ export function showFrenchViewDocumentButton(draftId, onViewCallback) {
         viewBtn?.addEventListener('click', async (e) => {
             e.preventDefault();
             if (onViewCallback) await onViewCallback(draftId, draft);
-            window.open(draft.path, '_blank');
+            window.open(draft.url || draft.path, '_blank');
         });
     }
 }
@@ -180,7 +200,7 @@ export function showEnglishViewDocumentButton(draftId, onViewCallback) {
     if (container) {
         container.innerHTML = `
             <div class="tooltip">
-                <button class="view-doc-btn" data-path="${draft.path}">📖 View document</button>
+                <button class="view-doc-btn" data-path="${draft.url || draft.path}" data-draft-id="${draftId}">📖 View document</button>
                 <span class="tooltip-text">Opens the original document to read or edit (locks the article)</span>
             </div>
         `;
@@ -189,7 +209,7 @@ export function showEnglishViewDocumentButton(draftId, onViewCallback) {
         viewBtn?.addEventListener('click', async (e) => {
             e.preventDefault();
             if (onViewCallback) await onViewCallback(draftId, draft);
-            window.open(draft.path, '_blank');
+            window.open(draft.url || draft.path, '_blank');
         });
     }
 }
@@ -247,8 +267,11 @@ export async function displayAllDocuments() {
     const container = document.getElementById('allDocumentsContainer');
     if (!container) return;
     
+    // Refresh drafts to get latest from available folder
+    await refreshDrafts();
+    
     if (!draftsData || draftsData.length === 0) {
-        container.innerHTML = '<p>Chargement / Loading...</p>';
+        container.innerHTML = '<p>Aucun document disponible. Veuillez ajouter des fichiers dans le dossier step1-available.</p>';
         return;
     }
     
@@ -268,7 +291,7 @@ export async function displayAllDocuments() {
         const progress = getProgress(draft.id, writerEmail);
         const isCurrentWriterWorking = progress && progress.writer_email === writerEmail;
         const wordsWritten = progress ? progress.words_written : 0;
-        const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target);
+        const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target || 1500);
         
         // Get real-time status and color from references manager
         let refColorClass = await getDocumentRefColor(draft.id);
@@ -276,12 +299,15 @@ export async function displayAllDocuments() {
         
         // Determine if locked by another for special styling
         const lockedByOther = isLockedByOther(draft.id);
-        let statusClass = lockedByOther ? 'status-red' : getStatusClass(draft.review_status);
+        let statusClass = lockedByOther ? 'status-red' : getStatusClass(draft.review_status || 'available');
         
         // Override status text if locked by another
         if (lockedByOther) {
             statusText = 'Occupé par un autre';
         }
+        
+        const displayTitle = draft.title_fr || draft.filename || draft.id;
+        const displaySubtitle = draft.title_en || '';
         
         html += `
             <tr data-draft-id="${escapeHtml(draft.id)}">
@@ -290,16 +316,16 @@ export async function displayAllDocuments() {
                     <strong>${escapeHtml(draft.id || '—')}</strong>
                 </td>
                 <td>
-                    <strong>${escapeHtml(draft.title_fr || draft.title_en)}</strong><br>
-                    <small>${escapeHtml(draft.title_en || draft.title_fr)}</small>
+                    <strong>${escapeHtml(displayTitle)}</strong><br>
+                    <small>${escapeHtml(displaySubtitle)}</small>
                 </td>
                 <td><span class="${statusClass}">${statusText}</span></td>
                 <td>
                     ${createProgressBar(percentComplete, 100)}
                 </td>
-                <td><a href="${draft.path}" download class="download-link" title="Télécharger l'original">📥 Original</a></td>
+                <td><a href="${draft.url || draft.path}" download class="download-link" title="Télécharger l'original">📥 Original</a></td>
                 <td>
-                    <button class="small-btn view-btn" data-path="${draft.path}">👁️ Voir</button>
+                    <button class="small-btn view-btn" data-path="${draft.url || draft.path}" data-draft-id="${draft.id}">👁️ Voir</button>
                 </td>
             </tr>
         `;
@@ -309,7 +335,14 @@ export async function displayAllDocuments() {
     container.innerHTML = html;
     
     document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', () => window.open(btn.dataset.path, '_blank'));
+        btn.addEventListener('click', async (e) => {
+            const draftId = btn.dataset.draftId;
+            const draft = getDraftById(draftId);
+            if (draft && window.onViewDocumentCallback) {
+                await window.onViewDocumentCallback(draftId, draft);
+            }
+            window.open(btn.dataset.path, '_blank');
+        });
     });
 }
 
@@ -369,7 +402,7 @@ export function updateSelectedArticle(draftId, language) {
     const inputId = language === 'fr' ? 'frenchSelectedArticle' : 'englishSelectedArticle';
     const input = document.getElementById(inputId);
     if (input && draft) {
-        const title = language === 'fr' ? draft.title_fr : draft.title_en;
+        const title = language === 'fr' ? (draft.title_fr || draft.filename) : (draft.title_en || draft.filename);
         input.value = title || 'No title';
     }
 }
@@ -417,4 +450,5 @@ export function setCurrentFrenchDraftId(id) {
 export function setCurrentEnglishDraftId(id) {
     currentEnglishDraftId = id;
 }
+
 
