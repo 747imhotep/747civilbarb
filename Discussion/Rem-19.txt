@@ -6,19 +6,134 @@ Few checks
 
 1. Deconnexion Button works
 
-2. in Sélectionner un article" Field, is again blocked.
+2. Despite all changes and updates, the entire process doesn't work. we should work on it to make the writer experience at it best.
 
 
 3.  "Sélectionner un article" Field shows from drafts.json
 Is it possible for the system to populate automaticaly the drafts.json based on 
 what's on the storage-folder/available/ Folder ?
+Maybe we need to move and rename drafts.json
 
 4. "Tous les articles disponibles / All available articles" all are available now.
+Still not auto-dynamique. This is the main concern for the moment.
 
-5. 
+5. After that, we need to make sure 
+	that documents are available in the good place.
+	Documents would be save in in_progress/ Folder 
+	
+New proposition for storage-folder:
+5 folders:
+step0-drafts/
+step1-drafts-accessible/
+step2-in-progress/
+step3-to-review/
+step4-published/
+
+
+
+
+	
+	
+	
 
 6. F12 CONSOLE:
 
-7. 
+7. writer-tree updated
+
+writer/
+│  
+└── workspace-9xK2mP/
+    │  
+    ├── css/
+    │	│
+    │   ├── logoff.css
+    │	│
+    │   ├── writer.css    
+    │	│
+    │   ├── writer-base.css
+    │	│
+    │   ├── writer-components.css	 
+    │	│
+    │   ├── writer-layout.css		
+    │	│
+    │   ├── login.css
+    │	│
+    │   └── writer-modal.css
+    │  
+    ├── data/
+    │	│
+    │  	├── drafts/		<-- few files to be removed
+    │	│
+    │   ├── drafts.json		<-- needs to change the name ?
+    │	│
+    │   ├── drafts.json.bak
+    │	│
+    │   ├── progress/		<-- few files to be removed.
+    │	│
+    │   ├── progress.json	<-- do we need this ?
+    │	│
+    │   └── storage-folder/  
+    │		│
+    │		│
+    │  		├── available/		<-- docs writer can pick
+    │		│
+    │  		├── draft/		<-- raw materials (hidden from writer)
+    │		│
+    │  		├── in_progress/	<-- Writer has opened but not submitted
+    │		│
+    │  		├── references.json 
+    │		│
+    │  		└── to-review/		<-- to review and publich
+    │      
+    │  
+    ├── index.html    
+    │  
+    │      
+    ├── js/
+    │   │
+    │   ├── modules/
+    │   │    │
+    │   │    ├── api.js		
+    │   │    │
+    │   │    ├── auth.js	
+    │   │    │
+    │   │    ├── config.js	
+    │   │    │
+    │   │    ├── data.js	
+    │   │    │
+    │   │    ├── forms.js	
+    │   │    │
+    │   │    ├── logout.js   
+    │   │    │
+    │   │    ├── references-manager.js 
+    │   │    │
+    │   │    ├── reviewer.js	
+    │   │    │
+    │   │    ├── storage.js	
+    │   │    │
+    │   │    ├── ui.js		
+    │   │    │
+    │   │    └── utils.js	
+    │	│
+    │   ├── writer.js.bak
+    │   │    
+    │   └── writer-main.js	<-- we keep this one
+    │  
+    │  
+    ├── login/
+    │       │
+    │       ├── index.html		
+    │       │
+    │       └── login.html.bak
+    │  
+    │  
+    └── uploads/	<-- we probably don't need this folder anymore.
+        │    
+    	├── en/		<-- ancients documents. to be deleted.
+    	│
+        └── fr/		<-- ancients documents. to be deleted.
+        
+        
+        
 
 
