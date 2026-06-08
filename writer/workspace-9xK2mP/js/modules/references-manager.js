@@ -54,6 +54,7 @@ export async function loadReferences() {
 /**
  * Save references to JSON file
  */
+// Replace the saveReferences function
 async function saveReferences() {
     try {
         const data = {};
@@ -61,7 +62,7 @@ async function saveReferences() {
             data[id] = ref;
         }
         
-        const response = await fetch(REFERENCES_FILE, {
+        const response = await fetch('/api/writer/save-references', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -70,14 +71,11 @@ async function saveReferences() {
         if (response.ok) {
             console.log(`💾 Saved ${referencesCache.size} references`);
             return true;
-        } else {
-            console.error('❌ Failed to save references:', response.status);
-            return false;
         }
     } catch (error) {
-        console.error('❌ Failed to save references:', error);
-        return false;
+        console.error('Failed to save references:', error);
     }
+    return false;
 }
 
 /**
