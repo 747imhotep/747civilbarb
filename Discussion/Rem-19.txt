@@ -1,0 +1,24 @@
+the Dashboard is visible.
+
+Few checks
+
+=======
+
+1. Deconnexion Button works
+
+2. in Sélectionner un article" Field, is again blocked.
+
+
+3.  "Sélectionner un article" Field shows from drafts.json
+Is it possible for the system to populate automaticaly the drafts.json based on 
+what's on the storage-folder/available/ Folder ?
+
+4. "Tous les articles disponibles / All available articles" all are available now.
+
+5. 
+
+6. F12 CONSOLE:
+
+7. 
+
+
