@@ -1,0 +1,13 @@
+ Discussion/Rem-19.txt                        | 179 +++++------------
+ .../data/storage-folder/draft/draft.txt      |   0
+ .../draft/foot-stad-singe.docx               | Bin 6325 -> 0 bytes
+ .../draft/intelligence-hor-sol.docx          | Bin 8667 -> 0 bytes
+ .../data/storage-folder/references.json      |   2 +-
+ .../test-text.txt}                           |   0
+ .../available-test.txt}                      |   0
+ .../foot-stad-singe.docx                     | Bin
+ .../identite.docx                            |   0
+ .../intelligence-hor-sol.docx                | Bin
+ .../couleur-de-peau-v005.pdf                 | Bin
+ .../melanine-bienfaits-selenium-v005.pdf     | Bin
+
