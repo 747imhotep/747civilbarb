@@ -3,6 +3,8 @@ delete mode 100644 writer/workspace-9xK2mP/data/storage-folder/draft/draft.txt
  delete mode 100644 writer/workspace-9xK2mP/data/storage-folder/draft/intelligence-hor-sol.docx
  rename writer/workspace-9xK2mP/data/storage-folder/{available/available-test.txt => step0-drafts/test-text.txt} (100%)
  rename writer/workspace-9xK2mP/data/storage-folder/{available/identite.docx => step1-drafts-accessible/available-test.txt} (100%)
+ 
+ 
  rename writer/workspace-9xK2mP/data/storage-folder/{available => step1-drafts-accessible}/foot-stad-singe.docx (100%)
  rename writer/workspace-9xK2mP/data/storage-folder/{draft => step1-drafts-accessible}/identite.docx (100%)
  rename writer/workspace-9xK2mP/data/storage-folder/{available => step1-drafts-accessible}/intelligence-hor-sol.docx (100%)
