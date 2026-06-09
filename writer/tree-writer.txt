@@ -20,28 +20,29 @@ writer/
     │  
     ├── data/
     │	│
-    │  	├── drafts/		<-- few files to be removed
     │	│
     │   ├── drafts.json		<-- needs to change the name ?
     │	│
     │   ├── drafts.json.bak
     │	│
-    │   ├── progress/		<-- few files to be removed.
+    │   ├── progress/		<-- this folder might need to be removed ?
     │	│
-    │   ├── progress.json	<-- do we need this ?
+    │   ├── progress.json	<-- this was made for library/index.html page
     │	│
     │   └── storage-folder/  
     │		│
     │		│
-    │  		├── available/		<-- docs writer can pick
+    │  		├── references.json
     │		│
-    │  		├── draft/		<-- raw materials (hidden from writer)
+    │  		├── step0-drafts/		<-- raw materials (hidden from writer)
     │		│
-    │  		├── in_progress/	<-- Writer has opened but not submitted
+    │  		├── step1-drafts-accessible/	<-- docs writer can pick
     │		│
-    │  		├── references.json 
+    │  		├── step2-in-progress/		<-- Writer has opened but not submitted
     │		│
-    │  		└── to-review/		<-- to review and publich
+    │  		├── step3-to-review 		<-- to review before publiching
+    │		│
+    │  		└── step4-published/		<-- Publiched
     │      
     │  
     ├── index.html    
@@ -58,6 +59,8 @@ writer/
     │   │    ├── config.js	
     │   │    │
     │   │    ├── data.js	
+    │   │    │
+    │   │    ├── file-scanner.js
     │   │    │
     │   │    ├── forms.js	
     │   │    │
@@ -87,9 +90,9 @@ writer/
     │  
     └── uploads/	<-- we probably don't need this folder anymore.
         │    
-    	├── en/		<-- ancients documents. to be deleted.
+    	├── en/		<-- ancients documents. to be deleted ?
     	│
-        └── fr/		<-- ancients documents. to be deleted.
+        └── fr/		<-- ancients documents. to be deleted ?
         
         
         
