@@ -4,57 +4,40 @@ Few checks
 
 =======
 
-1. At this stage, we don't overwrite all
+1. 
 
-2. We can reset only storage-folder/
+2. 
 
-3. Git status:
+3. data:www-data .
 
-On branch master
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step0-drafts/test-text.txt
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/available-test.txt
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/foot-stad-singe.docx
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/identite.docx
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/intelligence-hor-sol.docx
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/couleur-de-peau-v005.pdf
-	new file:   writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/melanine-bienfaits-selenium-v005.pdf
-
-Changes not staged for commit:
-  (use "git add/rm <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   .gitignore
-	modified:   writer/workspace-9xK2mP/data/drafts.json
-	deleted:    writer/workspace-9xK2mP/data/drafts/draft.txt
-	modified:   writer/workspace-9xK2mP/data/storage-folder/in_progress/couleur-de-peau-v005.pdf
-	modified:   writer/workspace-9xK2mP/data/storage-folder/in_progress/melanine-bienfaits-selenium-v005.pdf
-	deleted:    writer/workspace-9xK2mP/uploads/fr/draft.txt
-	deleted:    writer/workspace-9xK2mP/uploads/fr/foot-stad-singe.docx
-	deleted:    writer/workspace-9xK2mP/uploads/fr/intelligence-hor-sol.docx
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-	data/
-	endpoint.js
-	package-lock.json
-	package.json
-	premium-files/
-	public/
-	server.js
-	server.js.save
-	server.js.save.1
-	success-backup/
-	temp-repo/
-	test-payload.json
-	tools/
-	writer/workspace-9xK2mP/data/drafts.json.old
+chown: changing ownership of './step3-to-review/init_kamit.txt': Operation not permitted
+chown: changing ownership of './step3-to-review/step3_kamit.txt': Operation not permitted
+chown: changing ownership of './step3-to-review': Operation not permitted
+chown: changing ownership of './references.json': Operation not permitted
+chown: changing ownership of './step0-drafts/test-text.txt': Operation not permitted
+chown: changing ownership of './step0-drafts': Operation not permitted
+chown: changing ownership of './step4-published/init_kamit.txt': Operation not permitted
+chown: changing ownership of './step4-published': Operation not permitted
+chown: changing ownership of './step2-in-progress/melanine-bienfaits-selenium-v006.pdf': Operation not permitted
+chown: changing ownership of './step2-in-progress/kamit.txt': Operation not permitted
+chown: changing ownership of './step2-in-progress/couleur-de-peau-v006.pdf': Operation not permitted
+chown: changing ownership of './step2-in-progress': Operation not permitted
+chown: changing ownership of './step1-drafts-accessible/dra_identite.docx': Operation not permitted
+chown: changing ownership of './step1-drafts-accessible/dra_foot-stad-singe.docx': Operation not permitted
+chown: changing ownership of './step1-drafts-accessible/available-test.txt': Operation not permitted
+chown: changing ownership of './step1-drafts-accessible/dra_intelligence-hor-sol.docx': Operation not permitted
+chown: changing ownership of './step1-drafts-accessible': Operation not permitted
+chown: changing ownership of '.': Operation not permitted
 
 
-4. The 5-step folder structure has been already created on my PC.
-Thats what I try to update.
+4. chmod -R 755
 
-5. 	
+chmod: missing operand after ‘755’
+Try 'chmod --help' for more information.
+
+5. chmod 664 references.json
+
+chmod: cannot access 'references.json': No such file or directory	
 	
 
 6. F12 CONSOLE:
