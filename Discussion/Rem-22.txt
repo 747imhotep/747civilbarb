@@ -1,0 +1,173 @@
+BAD GETEWAY
+
+
+
+
+
+
+
+# 1. Check if Node.js is actually running
+pm2 list
+
+│ id │ name               │ mode     │ ↺    │ status    │ cpu     │  memory 	│
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼────────────┤
+│ 0  │ 747civilbarb       │ fork     │ 114  │ online    │ 0%       │ 27.7mb	│
+
+
+# 2. curl http://localhost:3000/health
+curl: (7) Failed to connect to localhost port 3000 after 0 ms: Connection refused
+
+
+# 3. Check if port 3000 is listening
+sudo netstat -tlnp | grep 3000
+	NOTHING
+
+# 4. curl -I https://deadanglesinstitute.org/private/css/selector.css
+HTTP/1.1 502 Bad Gateway
+Server: nginx/1.18.0 (Ubuntu)
+Date: Wed, 10 Jun 2026 00:15:01 GMT
+Content-Type: text/html
+Content-Length: 166
+Connection: keep-alive
+
+# 5. node --check server.js
+nothing shown
+
+
+# 6. Check Node.js error logs
+pm2 logs 747civilbarb --lines 20 --err
+
+[TAILING] Tailing last 20 lines for [747civilbarb] process (change the value with --lines option)
+/home/deploy/.pm2/logs/747civilbarb-error.log last 20 lines:
+0|747civil |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civil |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civil |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civil |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civil |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civil |   originalPath: '/private/*'
+0|747civil | }
+0|747civil | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civil |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civil |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civil |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civil |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civil |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civil |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civil |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civil |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civil |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civil |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civil |   originalPath: '/private/*'
+0|747civil | }
+
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+0|747civilbarb  | PathError [TypeError]: Missing parameter name at index 10: /private/*; visit https://git.new/pathToRegexpError for info
+0|747civilbarb  |     at name (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:96:19)
+0|747civilbarb  |     at parse (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:113:68)
+0|747civilbarb  |     at pathToRegexp (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:267:58)
+0|747civilbarb  |     at Object.match (/home/deploy/747civilbarb/node_modules/path-to-regexp/dist/index.js:237:30)
+0|747civilbarb  |     at matcher (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:86:23)
+0|747civilbarb  |     at new Layer (/home/deploy/747civilbarb/node_modules/router/lib/layer.js:93:62)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/router/index.js:428:17)
+0|747civilbarb  |     at Function.route (/home/deploy/747civilbarb/node_modules/express/lib/application.js:257:22)
+0|747civilbarb  |     at app.<computed> [as get] (/home/deploy/747civilbarb/node_modules/express/lib/application.js:478:22)
+0|747civilbarb  |     at file:///home/deploy/747civilbarb/server.js:110:5 {
+0|747civilbarb  |   originalPath: '/private/*'
+0|747civilbarb  | }
+
+
+
+
+curl http://localhost:3000/health
+{"status":"ok","timestamp":"2026-06-09T20:46:43.654Z","stripe":"configured"}
+
