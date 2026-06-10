@@ -85,7 +85,7 @@ Updated on mai 18 2026
 │	│
 │	├── index/
 │	│	│	
-│	│	└──  index.html		<--  [NEEDS TO BE UPDATED]
+│	│	└──  index.html		<--  [FOR ME IT NEEDS TO BE AT GITHUB]
 │	│
 │	│
 │	├── js/
@@ -108,7 +108,7 @@ Updated on mai 18 2026
 │	│
 │	├── library/
 │	│	│	
-│	│	└──  index.html		<--  [NEEDS TO BE UPDATED]
+│	│	└──  index.html		<--  [NEEDS TO STAY IN GITHUB]
 │	│
 │	│
 │	├── navbar/			<--  [NEEDS TO BE UPDATED]
