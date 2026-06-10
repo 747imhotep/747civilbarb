@@ -1,0 +1,42 @@
+[TAILING] Tailing last 10 lines for [my-worker] process (change the value with --lines option)
+/home/deploy/.pm2/logs/my-worker-error.log last 10 lines:
+0|my-worke |     at pathToRegexp (/home/deploy/my-worker/node_modules/path-to-regexp/dist/index.js:267:58)
+0|my-worke |     at Object.match (/home/deploy/my-worker/node_modules/path-to-regexp/dist/index.js:237:30)
+0|my-worke |     at matcher (/home/deploy/my-worker/node_modules/router/lib/layer.js:86:23)
+0|my-worke |     at new Layer (/home/deploy/my-worker/node_modules/router/lib/layer.js:93:62)
+0|my-worke |     at Function.route (/home/deploy/my-worker/node_modules/router/index.js:428:17)
+0|my-worke |     at Function.route (/home/deploy/my-worker/node_modules/express/lib/application.js:257:22)
+0|my-worke |     at app.<computed> [as options] (/home/deploy/my-worker/node_modules/express/lib/application.js:478:22)
+0|my-worke |     at file:///home/deploy/my-worker/server.js:442:5 {
+0|my-worke |   originalPath: '/*'
+0|my-worke | }
+
+/home/deploy/.pm2/logs/my-worker-out.log last 10 lines:
+0|my-worke | 📍 Stripe: ✅
+0|my-worke | 📍 Sender.net: ❌
+0|my-worke | ➡️ REQUEST: GET /health
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /private/*
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /fr/
+0|my-worke | ➡️ REQUEST: GET /en/
+
+0|my-worker  | ➡️ REQUEST: GET /private/
+0|my-worker  | ➡️ REQUEST: GET /private/index.html
+0|my-worker  | ➡️ REQUEST: GET /private/*
+0|my-worker  | ➡️ REQUEST: GET /private/
+
+
+
+F12 CONSOLE:
+GET
+https://deadanglesinstitute.org/
+[HTTP/1.1 403 Forbidden 173ms]
+
+This page is in Quirks Mode. Page layout may be impacted. For Standards Mode use “<!DOCTYPE html>”. deadanglesinstitute.org
+GET
+https://deadanglesinstitute.org/favicon.ico
+[HTTP/1.1 502 Bad Gateway 0ms]
+
