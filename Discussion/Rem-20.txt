@@ -1,0 +1,628 @@
+// =======================================================
+// SERVER.JS - DEADANGLES INSTITUTE
+// =======================================================
+
+console.log("🔥 SERVER.JS ACTIVE VERSION LOADED");
+
+// ---------------------------
+// IMPORTS
+// ---------------------------
+import dotenv from "dotenv";
+dotenv.config();
+
+import express from "express";
+import Stripe from "stripe";
+import fs from "fs";
+import path from "path";
+import session from "express-session";
+import cors from "cors";
+
+// ---------------------------
+// CONFIG
+// ---------------------------
+const PORT = process.env.PORT || 3000;
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
+const SENDER_API_KEY = process.env.SENDER_API_KEY;
+const ENTITLEMENTS_FILE = path.join(process.cwd(), "data", "entitlements.json");
+
+// ---------------------------
+// INITIALIZE STRIPE SAFELY
+// ---------------------------
+let stripe = null;
+if (STRIPE_SECRET_KEY) {
+  stripe = new Stripe(STRIPE_SECRET_KEY);
+}
+
+// ---------------------------
+// EXPRESS APP
+// ---------------------------
+const app = express();
+
+// ---------------------------
+// REQUEST LOGGER (DEBUGGING)
+// ---------------------------
+app.use((req, res, next) => {
+  console.log("➡️ REQUEST:", req.method, req.url);
+  next();
+});
+
+// =======================================================
+// 1. GLOBAL CORS
+// =======================================================
+app.use(cors({
+  origin: [
+    "https://www.deadanglesinstitute.org",
+    "https://deadanglesinstitute.org",
+    "https://deadangles.org",
+    "https://www.deadangles.org"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+// =======================================================
+// 2. JSON PARSER
+// =======================================================
+app.use(express.json());
+
+// =======================================================
+// 3. SESSION CONFIGURATION
+// =======================================================
+app.use(session({
+  secret: process.env.SESSION_SECRET || "supersecretkey",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+  }
+}));
+// =======================================================
+// 4. STATIC FILES
+// =======================================================
+app.use(express.static(path.join(process.cwd(), "public")));
+app.use("/private", express.static(path.join(process.cwd(), "private")));
+
+// Handle /private without trailing slash
+app.get("/private", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "private", "index.html"));
+});
+
+
+// =======================================================
+// 4.5 PRIVATE ROUTE (Cloudflare Access)
+// =======================================================
+app.get("/private/*", (req, res) => {
+    // This is a protected route via Cloudflare
+    // You can serve private content here or redirect
+    res.sendFile(path.join(process.cwd(), "private", "index.html"));
+});
+
+// Also handle /private (without trailing slash)
+app.get("/private", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "private", "index.html"));
+});
+
+
+
+
+// =======================================================
+// 4.6 SERVE PRIVATE FOLDER (Cloudflare Protected)
+// =======================================================
+app.use("/private", express.static(path.join(process.cwd(), "private")));
+
+
+// =======================================================
+// 5. STRIPE CHECKOUT SESSION
+// =======================================================
+app.post("/create-checkout-session", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!stripe) {
+      return res.status(500).json({ error: "Stripe not initialized" });
+    }
+
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price_data: {
+            currency: "eur",
+            product_data: {
+              name: "DeadAngles Institute Subscription",
+              description: "Monthly access to DeadAngles Institute content"
+            },
+            unit_amount: 1000,
+            recurring: { interval: "month" },
+          },
+          quantity: 1,
+        },
+      ],
+      customer_email: email,
+      success_url: "https://www.deadanglesinstitute.org/succes/succes.html",
+      cancel_url: "https://www.deadanglesinstitute.org/cancel/cancel.html",
+    });
+
+    console.log(`✅ Checkout session created for ${email}`);
+    return res.json({ url: session.url, id: session.id });
+  } catch (err) {
+    console.error("❌ Stripe checkout error:", err.message);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// =======================================================
+// 6. STRIPE WEBHOOK
+// =======================================================
+app.post(
+  "/api/webhook",
+  express.raw({ type: "application/json" }),
+  (req, res) => {
+    if (!stripe) return res.status(500).send("Stripe not configured");
+
+    const sig = req.headers["stripe-signature"];
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(req.body, sig, STRIPE_WEBHOOK_SECRET);
+      console.log("✅ Webhook verified:", event.type);
+    } catch (err) {
+      console.error("❌ Webhook error:", err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
+      const email = session.customer_details?.email || session.customer_email;
+      const customerId = session.customer || email;
+
+      if (customerId && email) {
+        grantEntitlement(customerId, email);
+      }
+    }
+
+    res.status(200).send("Received");
+  }
+);
+
+// =======================================================
+// 7. ENTITLEMENT CHECK
+// =======================================================
+app.get("/api/me", (req, res) => {
+  const email = req.query.email;
+
+  if (!email) {
+    return res.status(400).json({ error: "Missing email" });
+  }
+
+  try {
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    const record = Object.values(entitlements).find(r => r.email === email);
+
+    if (!record) {
+      return res.json({ authenticated: true, email, entitled: false });
+    }
+
+    console.log(`✅ Entitlement check: ${email} is entitled`);
+    return res.json({ authenticated: true, email, entitled: true, source: "stripe" });
+  } catch (err) {
+    console.error("❌ Entitlement check error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// =======================================================
+// 8. ENTITLEMENT GRANT FUNCTION
+// =======================================================
+function grantEntitlement(customerId, email) {
+  try {
+    const dataDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    if (!entitlements[customerId]) {
+      entitlements[customerId] = { customerId, email, grantedAt: new Date().toISOString() };
+      fs.writeFileSync(ENTITLEMENTS_FILE, JSON.stringify(entitlements, null, 2));
+      console.log("✅ Entitlement granted:", email);
+    } else {
+      console.log(`ℹ️ Entitlement already exists for: ${email}`);
+    }
+  } catch (err) {
+    console.error("❌ Entitlement grant error:", err);
+  }
+}
+
+// =======================================================
+// 9. SENDER SUBSCRIBE (NEWSLETTER)
+// =======================================================
+app.post("/api/sender-subscribe", async (req, res) => {
+  try {
+    const { email, name } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ error: "Email required" });
+    }
+
+    if (!SENDER_API_KEY) {
+      console.error("❌ SENDER_API_KEY not configured");
+      return res.status(500).json({ error: "Newsletter service not configured" });
+    }
+
+    const response = await fetch("https://api.sender.net/v2/subscribers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SENDER_API_KEY}`
+      },
+      body: JSON.stringify({ email, name: name || "" })
+    });
+
+    const result = await response.json();
+    
+    if (response.ok) {
+      console.log(`✅ Subscriber added: ${email}`);
+    } else {
+      console.error(`❌ Failed to add subscriber: ${email}`, result);
+    }
+    
+    return res.status(response.status).json(result);
+  } catch (err) {
+    console.error("❌ Sender subscribe error:", err);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// =======================================================
+// 10. HEALTH CHECK
+// =======================================================
+app.get("/health", (req, res) => {
+  res.json({ 
+    status: "ok",
+    timestamp: new Date().toISOString(),
+    stripe: stripe ? "configured" : "not configured"
+  });
+});
+
+// =======================================================
+// 11. SERVE PREMIUM FILES
+// =======================================================
+app.get("/api/premium-file/:lang/:filename", async (req, res) => {
+  const { lang, filename } = req.params;
+  const userEmail = req.query.email;
+
+  if (!["en", "fr"].includes(lang)) {
+    return res.status(400).json({ error: "Invalid language" });
+  }
+
+  if (!userEmail) {
+    return res.status(401).json({ error: "Email required" });
+  }
+
+  try {
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    const isEntitled = Object.values(entitlements).some(record => record.email === userEmail);
+
+    if (!isEntitled) {
+      console.log(`❌ Unauthorized attempt: ${userEmail} tried to access ${filename}`);
+      return res.status(403).json({ error: "Premium subscription required" });
+    }
+
+    const filePath = path.join(process.cwd(), "premium-files", lang, "files", filename);
+
+    if (!fs.existsSync(filePath)) {
+      console.log(`❌ File not found: ${filePath}`);
+      return res.status(404).json({ error: "File not found" });
+    }
+
+    console.log(`✅ Serving premium file: ${filename} to ${userEmail}`);
+    res.sendFile(filePath);
+  } catch (err) {
+    console.error("❌ Premium file error:", err);
+    return res.status(500).json({ error: "Server error" });
+  }
+});
+
+// =======================================================
+// 12. GET PREMIUM FILE LIST
+// =======================================================
+app.get("/api/premium-files-list/:lang", async (req, res) => {
+  const { lang } = req.params;
+  const userEmail = req.query.email;
+
+  if (!["en", "fr"].includes(lang)) {
+    return res.status(400).json({ error: "Invalid language" });
+  }
+
+  if (!userEmail) {
+    return res.status(401).json({ error: "Email required" });
+  }
+
+  try {
+    let entitlements = {};
+    if (fs.existsSync(ENTITLEMENTS_FILE)) {
+      entitlements = JSON.parse(fs.readFileSync(ENTITLEMENTS_FILE, "utf-8"));
+    }
+
+    const isEntitled = Object.values(entitlements).some(record => record.email === userEmail);
+
+    if (!isEntitled) {
+      return res.status(403).json({ error: "Premium subscription required" });
+    }
+
+    const premiumDir = path.join(process.cwd(), "premium-files", lang, "files");
+    
+    if (!fs.existsSync(premiumDir)) {
+      return res.json({ files: [] });
+    }
+
+    const files = fs.readdirSync(premiumDir).map(filename => ({
+      name: filename,
+      url: `/api/premium-file/${lang}/${encodeURIComponent(filename)}?email=${userEmail}`
+    }));
+
+    res.json({ files });
+  } catch (err) {
+    console.error("❌ Premium file list error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+// =======================================================
+// 13. WRITER DASHBOARD API ENDPOINTS
+// =======================================================
+
+const WRITER_BASE = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data");
+const STORAGE_PATH = path.join(WRITER_BASE, "storage-folder");
+const REFERENCES_FILE = path.join(STORAGE_PATH, "references.json");
+const DRAFTS_JSON = path.join(WRITER_BASE, "drafts.json");
+const PROGRESS_JSON = path.join(WRITER_BASE, "progress.json");
+
+// 13a. Get references.json
+app.get("/api/writer/references", async (req, res) => {
+  try {
+    if (fs.existsSync(REFERENCES_FILE)) {
+      const data = fs.readFileSync(REFERENCES_FILE, "utf-8");
+      res.json(JSON.parse(data));
+    } else {
+      res.json({});
+    }
+  } catch (error) {
+    console.error("❌ Failed to load references:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 13b. Save references.json
+app.post("/api/writer/save-references", async (req, res) => {
+  try {
+    if (!fs.existsSync(STORAGE_PATH)) {
+      fs.mkdirSync(STORAGE_PATH, { recursive: true });
+    }
+    fs.writeFileSync(REFERENCES_FILE, JSON.stringify(req.body, null, 2));
+    console.log(`✅ Saved references.json (${Object.keys(req.body).length} documents)`);
+    res.json({ success: true });
+  } catch (error) {
+    console.error("❌ Failed to save references:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 13c. SCAN DOCUMENTS IN step1-drafts-accessible FOLDER
+app.get("/api/writer/scan-documents", async (req, res) => {
+  try {
+    const accessiblePath = path.join(STORAGE_PATH, "step1-drafts-accessible");
+    
+    if (!fs.existsSync(accessiblePath)) {
+      fs.mkdirSync(accessiblePath, { recursive: true });
+      return res.json([]);
+    }
+    
+    const files = fs.readdirSync(accessiblePath);
+    const documents = [];
+    
+    for (const file of files) {
+      if (file.startsWith('.') || !file.match(/\.(md|txt|docx|pdf)$/i)) continue;
+      
+      const nameWithoutExt = file.replace(/\.[^/.]+$/, '');
+      const parts = nameWithoutExt.split('_');
+      
+      documents.push({
+        id: parts[0] || file.replace(/\.[^/.]+$/, ''),
+        filename: file,
+        path: path.join(accessiblePath, file),
+        url: `/writer-files/step1-drafts-accessible/${file}`,
+        title_fr: parts.slice(1).join(' ') || file,
+        title_en: parts.slice(1).join(' ') || file,
+        review_status: 'available',
+        word_count_target: 1500,
+        status: 'unlocked'
+      });
+    }
+    
+    console.log(`📁 Scanned ${documents.length} documents from step1-drafts-accessible`);
+    res.json(documents);
+  } catch (error) {
+    console.error("❌ Failed to scan documents:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 13d. MOVE DOCUMENT BETWEEN FOLDERS
+app.post("/api/writer/move-document", async (req, res) => {
+  try {
+    const { filename, sourceFolder, targetFolder, draftId } = req.body;
+    
+    const sourcePath = path.join(STORAGE_PATH, sourceFolder, filename);
+    const targetPath = path.join(STORAGE_PATH, targetFolder, filename);
+    
+    const targetDir = path.dirname(targetPath);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+    
+    if (fs.existsSync(sourcePath)) {
+      fs.renameSync(sourcePath, targetPath);
+      console.log(`📦 Moved ${filename} from ${sourceFolder} to ${targetFolder}`);
+    } else {
+      console.log(`⚠️ File not found: ${sourcePath}`);
+    }
+    
+    // Update references.json
+    let references = {};
+    if (fs.existsSync(REFERENCES_FILE)) {
+      references = JSON.parse(fs.readFileSync(REFERENCES_FILE, "utf-8"));
+    }
+    
+    references[draftId] = {
+      ...references[draftId],
+      currentFolder: targetFolder,
+      lastUpdated: new Date().toISOString()
+    };
+    
+    fs.writeFileSync(REFERENCES_FILE, JSON.stringify(references, null, 2));
+    
+    res.json({ success: true, newPath: `/writer-files/${targetFolder}/${filename}` });
+  } catch (error) {
+    console.error("❌ Failed to move document:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 13e. Update draft status
+app.post("/api/writer/update-status", async (req, res) => {
+  try {
+    const { draft_id, status, writer_email } = req.body;
+    
+    if (fs.existsSync(DRAFTS_JSON)) {
+      const draftsData = JSON.parse(fs.readFileSync(DRAFTS_JSON, "utf-8"));
+      const drafts = draftsData.drafts || draftsData;
+      const draft = drafts.find(d => d.id === draft_id);
+      if (draft) {
+        draft.review_status = status;
+        fs.writeFileSync(DRAFTS_JSON, JSON.stringify(draftsData, null, 2));
+        console.log(`✅ Updated draft ${draft_id} status to ${status}`);
+      }
+    }
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error("❌ Failed to update status:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 13f. Save progress
+app.post("/api/writer/save-progress", async (req, res) => {
+  try {
+    const progressEntry = req.body;
+    let progressData = { progress: [] };
+    
+    if (fs.existsSync(PROGRESS_JSON)) {
+      progressData = JSON.parse(fs.readFileSync(PROGRESS_JSON, "utf-8"));
+    }
+    
+    const existingIndex = progressData.progress.findIndex(p => 
+      p.draft_id === progressEntry.draft_id && 
+      p.writer_email === progressEntry.writer_email
+    );
+    
+    if (existingIndex >= 0) {
+      progressData.progress[existingIndex] = progressEntry;
+    } else {
+      progressData.progress.push(progressEntry);
+    }
+    
+    fs.writeFileSync(PROGRESS_JSON, JSON.stringify(progressData, null, 2));
+    console.log(`✅ Saved progress for ${progressEntry.draft_id}`);
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error("❌ Failed to save progress:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 13g. Notify reviewer
+app.post("/api/writer/notify-reviewer", async (req, res) => {
+  try {
+    const { title, writer } = req.body;
+    console.log(`📧 [NOTIFICATION] Article "${title}" by ${writer} is ready for review`);
+    res.json({ success: true, message: "Reviewer notified" });
+  } catch (error) {
+    console.error("❌ Failed to notify reviewer:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 13h. Upload revision (placeholder)
+app.post("/api/writer/upload-revision", async (req, res) => {
+  try {
+    console.log("📁 File upload received");
+    res.json({ success: true, message: "File upload endpoint ready" });
+  } catch (error) {
+    console.error("❌ Failed to upload file:", error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// 13i. Check if file exists
+app.get("/api/writer/check-file", async (req, res) => {
+  try {
+    const { filename, folder } = req.query;
+    const filePath = path.join(STORAGE_PATH, folder, filename);
+    const exists = fs.existsSync(filePath);
+    res.json({ exists });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// =======================================================
+// 14. SERVE STORAGE FILES (STATIC)
+// =======================================================
+app.use("/writer-files", express.static(STORAGE_PATH));
+
+// =======================================================
+// 15. ERROR HANDLING MIDDLEWARE
+// =======================================================
+app.use((err, req, res, next) => {
+  console.error("❌ Server error:", err.stack);
+  res.status(500).json({ 
+    error: "Internal server error",
+    message: process.env.NODE_ENV === "development" ? err.message : undefined
+  });
+});
+
+// =======================================================
+// 16. START SERVER
+// =======================================================
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`📍 Environment: ${process.env.NODE_ENV || "development"}`);
+  console.log(`💳 Stripe: ${stripe ? "✅ Configured" : "❌ Not configured"}`);
+  console.log(`📧 Sender.net: ${SENDER_API_KEY ? "✅ Configured" : "❌ Not configured"}`);
+});
+

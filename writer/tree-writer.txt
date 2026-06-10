@@ -21,11 +21,10 @@ writer/
     ├── data/
     │	│
     │	│
-    │   ├── drafts.json		<-- needs to change the name ?
+    │   ├── drafts.json		<-- 
     │	│
     │   ├── drafts.json.bak
     │	│
-    │   ├── progress/		<-- this folder might need to be removed ?
     │	│
     │   ├── progress.json	<-- this was made for library/index.html page
     │	│
@@ -81,18 +80,14 @@ writer/
     │   └── writer-main.js	<-- we keep this one
     │  
     │  
-    ├── login/
+    └── login/
     │       │
     │       ├── index.html		
     │       │
     │       └── login.html.bak
     │  
     │  
-    └── uploads/	<-- we probably don't need this folder anymore.
-        │    
-    	├── en/		<-- ancients documents. to be deleted ?
-    	│
-        └── fr/		<-- ancients documents. to be deleted ?
+
         
         
         

@@ -1,5 +1,5 @@
 here is the 1st Root tree
-Updated on mai 18 2026
+Updated on june 10 2026
 
 🌳 747civilcarb/	<-- this stands in GitHub via GitHub Deskstop
 │
@@ -136,6 +136,8 @@ Updated on mai 18 2026
 │   	│	
 │   	├─ articles/
 │   	│	
+│   	├─ articles-pic/
+│   	│	
 │   	├─ fav-icone/
 │   	│	
 │   	├─ hero/
@@ -244,6 +246,8 @@ Updated on mai 18 2026
 │   	│	│
 │   	│	├─ gdpr.js	
 │   	│	│
+│   	│	├─ lang-redirect.js	
+│   	│	│
 │   	│	└─ sender.js
 │   	│
 │   	│
@@ -272,48 +276,21 @@ Updated on mai 18 2026
 │
 │
 │
-└─  writer/
+└─  writer/			<-- more details in tree-writer.txt.
    	│	
    	└─ workspace-9xK2mP/
    		│
    		├─ css/
    		│
-   		│	│
-   		│	├─ writer.css
-   		│	│
-   		│	├─ writer-base.css
-   		│	│
-   		│	├─ writer-components.css
-   		│	│
-   		│	├─ writer-layout.css
-   		│	│
-   		│	└─ writer-modal.css
-   		│
-   		│
    		├─ data/
-   		│	├─ drafts/		<-- contains few docs
-   		│	│
-   		│	├─ drafts.json
-   		│	│
-   		│	├─ progress/		<-- contains few docs
-   		│	│
-   		│	└─ progress.json
-   		│
    		│
    		├─ index.html
    		│
-   		│
    		├─ js/
-   		│	│
-   		│	└─  writer.js
    		│
    		└─  uploads/
-   			│
-   		   	├─ en/		<-- empty for the moment
-   			│
-   			└─  fr/		<-- empty for the moment
-   			   	│
-   				└─ foot-stad-singe02.docx
+   			
+   		   	
    		
 
 

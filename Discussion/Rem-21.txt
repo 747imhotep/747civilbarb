@@ -1,0 +1,58 @@
+The Fix solution 
+	and
+Built-in Route
+	doesn't work.
+
+
+I just came back to the last good version of server.js
+
+After clicking "CP" we ended up at blanck page:
+	- https://deadanglesinstitute.org/private/*
+	- Cannot GET /private/*
+	F12 CONSOLE:
+	- Content-Security-Policy: The page’s settings blocked the loading of a resource (img-src) at https://deadanglesinstitute.org/favicon.ico because it violates the following directive: “default-src 'none'” FaviconLoader.sys.mjs:224:20
+
+
+# 1. Check if Node.js is actually running
+pm2 list
+
+│ id │ name               │ mode     │ ↺    │ status    │ cpu     │  memory 	│
+├────┼────────────────────┼──────────┼──────┼───────────┼──────────┼────────────┤
+│ 0  │ 747civilbarb       │ fork     │ 114  │ online    │ 0%       │ 27.7mb	│
+
+
+# 2. 
+
+
+
+# 3. Check if port 3000 is listening
+sudo netstat -tlnp | grep 3000
+tcp        0      0 0.0.0.0:3000            0.0.0.0:*               LISTEN      55235/node /home/de
+
+# 4. curl -I https://deadanglesinstitute.org/private/css/selector.css
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Tue, 09 Jun 2026 20:48:24 GMT
+Content-Type: text/css; charset=utf-8
+Content-Length: 764
+Connection: keep-alive
+X-Powered-By: Express
+Vary: Origin
+Access-Control-Allow-Credentials: true
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Sun, 24 May 2026 12:47:44 GMT
+ETag: W/"2fc-19e5a06ee5a"
+
+
+
+# 5. Check Node.js error logs
+pm2 logs 747civilbarb --lines 30 --err
+
+
+
+
+
+curl http://localhost:3000/health
+{"status":"ok","timestamp":"2026-06-09T20:46:43.654Z","stripe":"configured"}
+
