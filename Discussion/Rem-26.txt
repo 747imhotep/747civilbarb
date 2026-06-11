@@ -10,6 +10,8 @@
 	1) Git fetch origin
 	2) git pull origin main --allow-unrelated-histories
 	3) verify if 
+	
+	To start this point, show me which folder goes where.
 
 
 
