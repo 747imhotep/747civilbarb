@@ -32,10 +32,10 @@ Updated on mai 18 2026
 │
 │
 │
-├── library/			<-- ???
+├── library/		
 │   	│
 │   	│
-│   	├── anything/ 
+│   	├── anything/ 			<-- this is for what ???
 │   	│	│
 │   	│	├─ anything.html 
 │   	│	│
@@ -103,7 +103,7 @@ Updated on mai 18 2026
 │
 │
 │
-├── premium/
+├── premium/			<-- maybe it should be managed via VPS
 │   	│	
 │   	├─ css/
 │   	│	│
@@ -127,7 +127,7 @@ Updated on mai 18 2026
 │      		
 │
 │
-├── subscribe/
+├── subscribe/			<-- Maybe it should be managed under VPS
 │   	│	
 │   	├─ css/
 │   	│	│

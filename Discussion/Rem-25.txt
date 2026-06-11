@@ -1,0 +1,58 @@
+📍 ✅ ❌ ➡️
+-----------------------------------------------------------------
+
+
+📍 Normaly, I'd like to have: ~/747civilbarb/my-worker/public/
+➡️ 
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 cancel
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 css
+-rw-rw-r--  1 deploy deploy    0 May 24 12:47 file1.pdf
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 index
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 js
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 library		Not here
+drwxrwxr-x  3 deploy deploy 4096 May 24 12:47 navbar
+drwxrwxr-x  7 deploy deploy 4096 May 24 12:47 pictures
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 premium
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 privacy
+drwxrwxr-x  4 deploy deploy 4096 Jun 11 01:37 private		Not here
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 subscribe		
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 succes
+drwxrwxr-x  2 deploy deploy 4096 May 24 12:47 terms
+
+
+
+
+
+📍 I'd like to have, under GitHub this config:
+➡️ 
+drwxrwxr-x  3 deploy deploy  4096 May 24 12:47 about
+drwxrwxr-x  4 deploy deploy  4096 May 24 12:47 contact
+-rw-rw-r--  1 deploy deploy 10865 May 24 12:47 index.html
+drwxrwxr-x  7 deploy deploy  4096 May 24 12:47 library
+drwxrwxr-x  5 deploy deploy  4096 May 24 12:47 nosarticles
+drwxrwxr-x  5 deploy deploy  4096 May 24 12:47 premium		Not here
+drwxrwxr-x  4 deploy deploy  4096 May 24 12:47 subscribe	Not here
+-rw-rw-r--  1 deploy deploy  2891 May 24 12:47 tree_FR.txt
+
+
+
+
+
+📍For the moment, /writer/ is managed by VPS
+➡️ 
+Actually, the address is ~/747civilbarb/writer/workspace-9xK2mP/
+
+
+📍 Now, how do we manage surf from GitHub to VPS ?
+I'd like to understand how it works.
+➡️ 
+How visitor move from this link:
+http://www.deadanglesinstitute.org/en/
+to 
+http://127.0.0.1:5500/my-worker/public/premium/index.html
+How do we configure it ?
+
+
+F12 CONSOLE:
+
+

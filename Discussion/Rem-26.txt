@@ -1,0 +1,43 @@
+📍 ✅ ❌ ➡️
+-----------------------------------------------------------------
+7-Point Action Plan. Please read it carefully.
+
+📍 1. Move folders to VPS
+➡️ We're going to make changes in PC then push update like this:
+	PC → GitHub → VPS (so we've always a copy in the PC)
+	
+	Then:
+	1) Git fetch origin
+	2) git pull origin main --allow-unrelated-histories
+	3) verify if 
+
+
+
+📍 2. Update server.js with static routes
+➡️ You need to share a complete server.js clean and double checked to avoid any mistake.
+
+
+
+📍	3.1  Update Nginx config for VPS routes
+	3.2. Update Nginx config for GitHub routes
+➡️ You need to share a complete Nginx clean and double checked
+
+
+
+📍 4. Fix GitHub Pages custom domain
+➡️ 
+
+
+📍 5. Update DNS records (Cloudflare - DNS only)
+➡️ Make sure that email are controled and managed by Hover.com
+
+
+
+📍 6. Restart everything
+➡️ 
+
+
+
+F12 CONSOLE:
+
+
