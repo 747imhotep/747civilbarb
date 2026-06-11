@@ -3,77 +3,10 @@
 📍 Normaly, we should have: ~/747civilbarb/my-worker/public/
 maybe we need to move ~/747civilbarb/private to ~/747civilbarb/my-worker/public/private/
 ➡️ 
-server {
-    server_name deadanglesinstitute.org www.deadanglesinstitute.org;
-
-    # NEW: Serve writer from its new location (no symlink needed)
-    location /writer/ {
-        root /home/deploy/747civilbarb;  # Note: NO /public here
-        # This will look for files in /home/deploy/747civilbarb/writer/
-        try_files $uri $uri/ /writer/workspace-9xK2mP/index.html;
-    }
-
-    # Serve static files from public folder (main website)
-    location / {
-        root /home/deploy/747civilbarb/public;
-        try_files $uri $uri/ @node;
-    }
-
-    # Proxy to Node.js for API requests
-    location @node {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
-
-    # Also proxy API endpoints
-    location /api/ {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-
-    # Serve document files from storage-folder with proper MIME types
-    location /writer-files/ {
-        alias /home/deploy/747civilbarb/writer/workspace-9xK2mP/data/storage-folder/;
-        add_header Content-Type application/octet-stream;
-        add_header X-Content-Type-Options "nosniff";
-        
-        # For .docx files, allow download
-        if ($request_filename ~* \.(docx|md|txt)$) {
-            add_header Content-Disposition 'attachment';
-        }
-    }
-
-    listen 443 ssl; # managed by Certbot
-    ssl_certificate /etc/letsencrypt/live/deadanglesinstitute.org/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/deadanglesinstitute.org/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-}
-
-server {
-    if ($host = www.deadanglesinstitute.org) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    if ($host = deadanglesinstitute.org) {
-        return 301 https://$host$request_uri;
-    } # managed by Certbot
-
-    listen 80;
-    server_name deadanglesinstitute.org www.deadanglesinstitute.org;
-    return 404; # managed by Certbot
-}
-
-
 
 
 📍 
-➡️ 
+➡️ Articles disponibles / Available articles
 
 
 
