@@ -1,143 +1,43 @@
-# =======================================================
-# DEADANGLES INSTITUTE - MAIN DOMAIN + API SUBDOMAIN
-# =======================================================
+📍curl -I https://www.deadanglesinstitute.org/private/
+👉
+curl: (60) SSL certificate problem: certificate has expired
+More details here: https://curl.se/docs/sslcerts.html
 
-# =======================================================
-# API SUBDOMAIN - Proxy to Node.js Backend
-# =======================================================
-server {
-    server_name api.deadanglesinstitute.org;
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
 
-    location / {
-        proxy_pass http://127.0.0.1:3000;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
 
-    listen 443 ssl;
-    ssl_certificate /etc/letsencrypt/live/api.deadanglesinstitute.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/api.deadanglesinstitute.org/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-}
 
-# HTTP redirect to HTTPS for API subdomain
-server {
-    listen 80;
-    server_name api.deadanglesinstitute.org;
-    return 301 https://$server_name$request_uri;
-}
 
-# =======================================================
-# MAIN DOMAIN - Mix of VPS and GitHub Pages
-# =======================================================
-server {
-    server_name deadanglesinstitute.org www.deadanglesinstitute.org;
 
-    # ===========================================
-    # VPS ROUTES (Dynamic content)
-    # ===========================================
-    
-    # Payment pages
-    location /subscribe/ {
-        proxy_pass http://127.0.0.1:3000/subscribe/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    location /succes/ {
-        proxy_pass http://127.0.0.1:3000/succes/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    location /cancel/ {
-        proxy_pass http://127.0.0.1:3000/cancel/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    location /premium/ {
-        proxy_pass http://127.0.0.1:3000/premium/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    # Private gateway (served by VPS after move)
-    location /private/ {
-        proxy_pass http://127.0.0.1:3000/private/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    # Writer dashboard
-    location /writer/ {
-        proxy_pass http://127.0.0.1:3000/writer/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    # Writer files (documents)
-    location /writer-files/ {
-        proxy_pass http://127.0.0.1:3000/writer-files/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    # API calls
-    location /api/ {
-        proxy_pass http://127.0.0.1:3000/api/;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    location /health {
-        proxy_pass http://127.0.0.1:3000/health;
-        proxy_http_version 1.1;
-        proxy_set_header Host $host;
-    }
-    
-    # ===========================================
-    # GITHUB PAGES ROUTES (Static content)
-    # ===========================================
-    
-    # French and English content
-    location /fr/ {
-        proxy_pass https://747imhotep.github.io/747civilbarb/fr/;
-        proxy_set_header Host 747imhotep.github.io;
-        proxy_ssl_server_name on;
-    }
-    
-    location /en/ {
-        proxy_pass https://747imhotep.github.io/747civilbarb/en/;
-        proxy_set_header Host 747imhotep.github.io;
-        proxy_ssl_server_name on;
-    }
-    
-    # Everything else goes to GitHub Pages
-    location / {
-        proxy_pass https://747imhotep.github.io/747civilbarb;
-        proxy_set_header Host 747imhotep.github.io;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_ssl_server_name on;
-    }
+📍curl -I https://www.deadanglesinstitute.org/writer/
+👉
+curl: (60) SSL certificate problem: certificate has expired
+More details here: https://curl.se/docs/sslcerts.html
 
-    # ===========================================
-    # SSL Configuration
-    # ===========================================
-    listen 443 ssl;
-    ssl_certificate /etc/letsencrypt/live/deadanglesinstitute.org/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/deadanglesinstitute.org/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-}
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
 
-# HTTP redirect to HTTPS for main domain
-server {
-    listen 80;
-    server_name deadanglesinstitute.org www.deadanglesinstitute.org;
-    return 301 https://$server_name$request_uri;
-}
+
+
+
+📍curl -I https://api.deadanglesinstitute.org/health/
+👉
+HTTP/2 200 
+date: Sat, 13 Jun 2026 14:16:40 GMT
+content-type: application/json; charset=utf-8
+content-length: 76
+server: cloudflare
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+etag: W/"4c-Cye15dyWARst9ugQJqzyq4T+4yY"
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NwEKaLLU%2BxNGzVUlTkG%2BgoGAC3r3655CYdXT6VcTokhXRH0VHlvB%2BNjKH6B2uAXxW%2BXumKrgU2YcP65ZkGB%2FjIn%2BDDsrUbpKAOoj0IKTr5gFTh82WbO7VQxmGhLox%2BKzi256bi3T5dwDzMxs62XXc8e2CVMwP%2BRlq3I%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-ray: a0b1b6dfdf13fd3b-SIN
+alt-svc: h3=":443"; ma=86400
+
 
