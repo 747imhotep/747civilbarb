@@ -25,19 +25,40 @@ how to fix it, please visit the web page mentioned above.
 
 📍curl -I https://api.deadanglesinstitute.org/health/
 👉
-HTTP/2 200 
-date: Sat, 13 Jun 2026 14:16:40 GMT
-content-type: application/json; charset=utf-8
-content-length: 76
+HTTP/2 301 
+date: Sat, 13 Jun 2026 16:15:33 GMT
+content-type: text/html
+location: https://api.deadanglesinstitute.org/health/
 server: cloudflare
-x-powered-by: Express
-vary: Origin
-access-control-allow-credentials: true
-etag: W/"4c-Cye15dyWARst9ugQJqzyq4T+4yY"
-cf-cache-status: DYNAMIC
-report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NwEKaLLU%2BxNGzVUlTkG%2BgoGAC3r3655CYdXT6VcTokhXRH0VHlvB%2BNjKH6B2uAXxW%2BXumKrgU2YcP65ZkGB%2FjIn%2BDDsrUbpKAOoj0IKTr5gFTh82WbO7VQxmGhLox%2BKzi256bi3T5dwDzMxs62XXc8e2CVMwP%2BRlq3I%3D"}]}
 nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
-cf-ray: a0b1b6dfdf13fd3b-SIN
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Zr%2BO4J9zDGBz4q21UCyDhD%2F5n34m%2BOt0XBMf3Sehp2gLayFbopwRjvOFtt2zpTwE%2FcjyQT7P5jZJYXNV2EvWgncBCc7v74z06wFg2HBDQpGTWYArT0YwTBhkOetdoNGdH0o8LJml3tqyPi8Riy3WYkC29SnXcZKwzO0%3D"}]}
+cf-ray: a0b2650768a4fe04-SIN
 alt-svc: h3=":443"; ma=86400
 
+
+
+📍 openssl s_client -connect www.deadanglesinstitute.org:443 -servername www.deadanglesinstitute.org | grep "CN="
+👉
+depth=2 C = US, O = Internet Security Research Group, CN = ISRG Root X1
+verify return:1
+depth=1 C = US, O = Let's Encrypt, CN = R13
+verify return:1
+depth=0 CN = deadanglesinstitute.org
+verify error:num=10:certificate has expired
+notAfter=May 18 23:59:17 2026 GMT
+verify return:1
+depth=0 CN = deadanglesinstitute.org
+notAfter=May 18 23:59:17 2026 GMT
+verify return:1
+
+
+📍 curl -H "Host: www.deadanglesinstitute.org" http://5.223.56.165/writer/ -L
+👉
+curl: (60) SSL certificate problem: certificate has expired
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
 
