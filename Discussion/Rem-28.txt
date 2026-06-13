@@ -7,21 +7,23 @@
 ; <<>> DiG 9.18.39-0ubuntu0.22.04.4-Ubuntu <<>> deadanglesinstitute.org A
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 15422
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 29493
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
 ; EDNS: version: 0, flags:; udp: 65494
 ;; QUESTION SECTION:
 ;deadanglesinstitute.org.	IN	A
 
-;; AUTHORITY SECTION:
-deadanglesinstitute.org. 331	IN	SOA	rose.ns.cloudflare.com. dns.cloudflare.com. 2406857250 10000 2400 604800 1800
+;; ANSWER SECTION:
+deadanglesinstitute.org. 300	IN	A	172.67.130.182
+deadanglesinstitute.org. 300	IN	A	104.21.3.128
 
 ;; Query time: 4 msec
 ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
-;; WHEN: Sat Jun 13 17:56:40 UTC 2026
-;; MSG SIZE  rcvd: 114
+;; WHEN: Sat Jun 13 18:34:37 UTC 2026
+;; MSG SIZE  rcvd: 84
+
 
 
 
@@ -36,7 +38,7 @@ deadanglesinstitute.org. 331	IN	SOA	rose.ns.cloudflare.com. dns.cloudflare.com. 
 ; <<>> DiG 9.18.39-0ubuntu0.22.04.4-Ubuntu <<>> www.deadanglesinstitute.org A
 ;; global options: +cmd
 ;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 12270
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 42019
 ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
 ;; OPT PSEUDOSECTION:
@@ -48,10 +50,11 @@ deadanglesinstitute.org. 331	IN	SOA	rose.ns.cloudflare.com. dns.cloudflare.com. 
 www.deadanglesinstitute.org. 300 IN	A	172.67.130.182
 www.deadanglesinstitute.org. 300 IN	A	104.21.3.128
 
-;; Query time: 8 msec
+;; Query time: 12 msec
 ;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
-;; WHEN: Sat Jun 13 17:55:59 UTC 2026
+;; WHEN: Sat Jun 13 18:35:45 UTC 2026
 ;; MSG SIZE  rcvd: 88
+
 
 
 
@@ -64,10 +67,39 @@ www.deadanglesinstitute.org. 300 IN	A	104.21.3.128
 
 
 📍curl -I https://deadanglesinstitute.org/private/
-👉curl: (6) Could not resolve host: deadanglesinstitute.org
+👉
+HTTP/2 302 
+date: Sat, 13 Jun 2026 18:37:11 GMT
+content-type: text/html; charset=UTF-8
+location: https://deadangles.cloudflareaccess.com/cdn-cgi/access/login/deadanglesinstitute.org?kid=6a6b8743168aa60b3a48563e4b5d64b928096fcbc64794ab568a6eeff5e196bf&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6IjZhNmI4NzQzMTY4YWE2MGIzYTQ4NTYzZTRiNWQ2NGI5MjgwOTZmY2JjNjQ3OTRhYjU2OGE2ZWVmZjVlMTk2YmYiLCJob3N0bmFtZSI6ImRlYWRhbmdsZXNpbnN0aXR1dGUub3JnIiwicmVkaXJlY3RfdXJsIjoiL3ByaXZhdGUvIiwic2VydmljZV90b2tlbl9zdGF0dXMiOmZhbHNlLCJpc193YXJwIjpmYWxzZSwiaXNfZ2F0ZXdheSI6ZmFsc2UsImV4cCI6MTc4MTM3NjEzMSwibmJmIjoxNzgxMzc1ODMxLCJpYXQiOjE3ODEzNzU4MzEsImF1dGhfc3RhdHVzIjoiTk9ORSIsIm10bHNfYXV0aCI6eyJjZXJ0X2lzc3Vlcl9kbiI6IiIsImNlcnRfc2VyaWFsIjoiIiwiY2VydF9pc3N1ZXJfc2tpIjoiIiwiY2VydF9wcmVzZW50ZWQiOmZhbHNlLCJjb21tb25fbmFtZSI6IiIsImF1dGhfc3RhdHVzIjoiTk9ORSJ9LCJyZWFsX2NvdW50cnkiOiJTRyIsImFwcF9zZXNzaW9uX2hhc2giOiJlYTNkN2Y0NWU3M2FkNGI2NGZhYzMyNjU2YzU5MDEwMGMyNmFkMjQyZTdlYmYyYzRiNzFhNWNjMWNjMDk3OGQ2In0.gKqGy3hrrYExQDdVDpY175QjT1qTaFfgAGz6kxlEqQHf8EU8oaB7MoTSarS9Bo1sYPkQLvjTGHcSooKsRk9YCdeX3EB5k6wfEelMs7LcuK3X_Fie_OLSh5W6k5s92faDY2zly3QEB5W1TzUkueGdwkFX29-kMmWwbdhNh5JfoyWruW0sY61w6hjnEbmfhP-lGDosYsOJbMtkdG8NLn-tF704Y-cpwj5SFqkYNChcEOtSa3vPtlibTBfEbESOac564u5ZP5XaSnK4g-AqcVdr3Ph8mTtbJZGdYzsVvLbCp_7_a8ao28GrgIpqvE_Gqg7eN4KDJijE4GFCbLrq37YL1Q&redirect_url=%2Fprivate%2F
+set-cookie: CF_AppSession=42f79f0078c4bd00; Expires=Sun, 14 Jun 2026 18:37:11 GMT; Path=/; Secure; HttpOnly
+expires: Thu, 01 Jan 1970 00:00:01 GMT
+cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+access-control-allow-credentials: true
+www-authenticate: Cloudflare-Access resource_metadata="https://deadanglesinstitute.org/.well-known/cloudflare-access-protected-resource/private/"
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=dzc97e3a7xRcMBb5DwlcOpg8gCslx%2FZRfkszftHZNUn86Smt4ygfp286J1jcZIw%2FkAGwSPzFrcE6bWCpyTn3OYeljLn5IB%2FmIBngs4TSCB1t%2B%2B0qMnW4exEhMQdRg2Jv1KGL9xCP2sProfOMhIUiidSXBSplgA%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a0b334853ad83440-SIN
+alt-svc: h3=":443"; ma=86400
 
 
 
 
 📍curl -I https://deadanglesinstitute.org/writer/
-👉curl: (6) Could not resolve host: deadanglesinstitute.org
+👉
+HTTP/2 200 
+date: Sat, 13 Jun 2026 18:38:19 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+cache-control: public, max-age=0
+last-modified: Thu, 11 Jun 2026 00:07:50 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=FbWc4HOneHMGtCApgKgKrmsM%2FgSDBQ1Gw4X2rZ0dBRzSsltPyE%2FcJ9FvDE%2BwiinenTSVUJp62qTcGXhYauvjWKVnTxVnjHyPiF22q6MqcOULT6knBJqMO1ApsNXw6kDl7wNuzSlEXIF3n%2F9yLudP%2FWuFRR1SHw%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-cache-status: DYNAMIC
+cf-ray: a0b3362e7d1dfd0a-SIN
+alt-svc: h3=":443"; ma=86400
+
