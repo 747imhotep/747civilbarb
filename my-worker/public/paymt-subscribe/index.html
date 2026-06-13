@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscribe - Dead Angles Institute</title>
+    <style>
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .lang-btn {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .lang-btn.active {
+            background: #007bff;
+        }
+        .lang-section {
+            display: none;
+        }
+        .lang-section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle">
+        <button class="lang-btn active" data-lang="fr">🇫🇷 Français</button>
+        <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+    </div>
+
+    <!-- French Content -->
+    <div id="fr" class="lang-section active">
+        <h1>Souscription</h1>
+        <p>Abonnez-vous pour accéder au contenu premium.</p>
+        <!-- Add your French payment form here -->
+    </div>
+
+    <!-- English Content -->
+    <div id="en" class="lang-section">
+        <h1>Subscribe</h1>
+        <p>Subscribe to access premium content.</p>
+        <!-- Add your English payment form here -->
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const sections = {
+            fr: document.getElementById('fr'),
+            en: document.getElementById('en')
+        };
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                
+                // Update active button
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update active section
+                Object.values(sections).forEach(section => {
+                    section.classList.remove('active');
+                });
+                sections[lang].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
