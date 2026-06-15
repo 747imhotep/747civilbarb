@@ -4,7 +4,7 @@
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const delay = 6000;
+  const delay = 1800000; // 30 minutes
 
   const lang = navigator.language || navigator.userLanguage;
   const target = lang.startsWith("fr") ? "/fr/" : "/en/";
