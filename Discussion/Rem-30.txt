@@ -1,0 +1,129 @@
+
+
+
+======================================
+
+curl -I https://deadanglesinstitute.org/
+
+                    ↓
+HTTP/2 302 
+date: Mon, 15 Jun 2026 20:00:51 GMT
+content-type: text/html; charset=UTF-8
+location: https://www.deadanglesinstitute.org/live
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Z9%2FAAVSIDcwOJwcS9pO8vQsN9ipAAivNU52zhnkktuZ6OgSbw%2BVzosg4gtJlHWQaa%2Flql79WgPvgV6sokwDEwwRtA21jNurUODDPoQ9g2HWTSbhNpusdid8S7%2B4lJrPRM60MjIqM2Cw%2Fag0vd2ZdeA2zn3yMwg%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a0c429d18e27ddfc-SIN
+======================================
+
+ls -la 747civilbarb/my-worker/public/login
+
+                    ↓
+ls: cannot access '/home/deploy/747civilbarb/my-worker/public/login': No such file or directory
+
+
+ls -la ~/747civilbarb/my-worker/public/login
+                    ↓
+index.html
+======================================
+
+
+
+sudo tail -20 /var/log/nginx/error.log
+
+                    ↓
+
+2026/06/15 12:54:38 [warn] 132934#132934: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 12:54:38 [warn] 132934#132934: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 12:54:38 [warn] 132934#132934: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 12:54:46 [warn] 132941#132941: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 12:54:46 [warn] 132941#132941: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 12:54:46 [warn] 132941#132941: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 12:54:46 [warn] 132941#132941: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 12:54:46 [notice] 132941#132941: signal process started
+2026/06/15 13:54:53 [crit] 132942#132942: *12229 SSL_do_handshake() failed (SSL: error:0A00006C:SSL routines::bad key share) while SSL handshaking, client: 45.148.10.200, server: 0.0.0.0:443
+2026/06/15 14:36:00 [crit] 132942#132942: *12331 SSL_do_handshake() failed (SSL: error:0A00006C:SSL routines::bad key share) while SSL handshaking, client: 20.65.192.170, server: 0.0.0.0:443
+2026/06/15 18:27:04 [crit] 132942#132942: *12609 SSL_do_handshake() failed (SSL: error:0A00006C:SSL routines::bad key share) while SSL handshaking, client: 45.148.10.200, server: 0.0.0.0:443
+2026/06/15 19:47:26 [warn] 138432#138432: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 19:47:26 [warn] 138432#138432: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 19:47:26 [warn] 138432#138432: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 19:47:26 [warn] 138432#138432: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 19:47:36 [warn] 138441#138441: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 19:47:36 [warn] 138441#138441: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+2026/06/15 19:47:36 [warn] 138441#138441: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 19:47:36 [warn] 138441#138441: conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+2026/06/15 19:47:36 [notice] 138441#138441: signal process started
+======================================
+
+curl -I http://localhost:3000/login/
+
+                    ↓
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Vary: Origin
+Access-Control-Allow-Credentials: true
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Mon, 15 Jun 2026 20:21:37 GMT
+ETag: W/"c62-19eccf26087"
+Content-Type: text/html; charset=utf-8
+Content-Length: 3170
+Date: Mon, 15 Jun 2026 20:27:29 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+
+
+======================================
+sudo nginx -T | grep -A5 "location / {"
+
+                    ↓
+nginx: [warn] conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+nginx: [warn] conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:443, ignored
+nginx: [warn] conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+nginx: [warn] conflicting server name "api.deadanglesinstitute.org" on 0.0.0.0:80, ignored
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+--
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+--
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+--
+    location / {
+        proxy_pass http://127.0.0.1:3000/login/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+--
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+--
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+
+
+
+                    
