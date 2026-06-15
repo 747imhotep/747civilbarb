@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
       // Ignore anchors or empty links
       if (!href || href.startsWith("#")) return;
 
+      
+// Transition logic
       e.preventDefault();
 
       overlay.classList.add("active");
@@ -24,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(() => {
         window.location.href = href;
       }, 500); // match CSS duration
+// End of click handler
     });
   });
 

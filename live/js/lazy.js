@@ -33,7 +33,7 @@ if (link) {
 
     setTimeout(() => {
       window.location.href = link.href;
-    }, 500);
+    }, 200);
   });
 }
 
