@@ -1,0 +1,65 @@
+
+
+
+
+curl -I https://747imhotep.github.io/747civilbarb/fr/
+
+HTTP/2 301 
+server: GitHub.com
+content-type: text/html
+location: http://www.deadanglesinstitute.org/fr/
+x-github-request-id: 53D2:232C:D4607:DDBEA:6A312332
+accept-ranges: bytes
+age: 0
+date: Tue, 16 Jun 2026 10:19:30 GMT
+via: 1.1 varnish
+x-served-by: cache-sin-wsat1880089-SIN
+x-cache: MISS
+x-cache-hits: 0
+x-timer: S1781605170.255569,VS0,VE230
+vary: Accept-Encoding
+x-fastly-request-id: 1ca3d685e52a5348cded93a07f9ebf2b6623fefc
+content-length: 162
+
+=======================================
+
+
+curl -I https://www.deadanglesinstitute.org/fr/
+
+HTTP/2 301 
+date: Tue, 16 Jun 2026 10:20:50 GMT
+content-type: text/html
+location: http://www.deadanglesinstitute.org/fr/
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+x-github-request-id: C8C4:2FC0FB:B7229:BEDEB:6A3115B4
+accept-ranges: bytes
+age: 3532
+via: 1.1 varnish
+x-served-by: cache-sin-wsat1880060-SIN
+x-cache: HIT
+x-cache-hits: 0
+x-timer: S1781605250.007223,VS0,VE1
+vary: Accept-Encoding
+x-fastly-request-id: 3bcb57f60443a17a093ca44d2506d3c6ac924ff4
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vUoqrGinwcY3loxRAuz0hZc%2FKO1wR6s%2Bx%2BuI8mGMIubjIx3V8l1AuDP2gPXHwLoipxll3nDvka63GYv1%2FzEYUHbePk5RpvaGdqVUQa4QrCpYfZ2YedRpIFtQNfWG%2B9bFfGHJ6qRgYYCUv0TQ49r3xm1Fj8j1X%2F%2FNF2s%3D"}]}
+cf-ray: a0c9158c5b97fd2e-SIN
+alt-svc: h3=":443"; ma=86400
+
+=======================================
+
+# Test directly to your VPS (bypass Cloudflare)
+curl -H "Host: www.deadanglesinstitute.org" http://5.223.56.165/writer/ -L
+
+# Test private directly
+curl -H "Host: deadanglesinstitute.org" http://5.223.56.165/private/ -L
+
+both work
+=======================================
+
+
+
+
+
+=======================================

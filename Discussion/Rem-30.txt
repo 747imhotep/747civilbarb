@@ -1,183 +1,32 @@
-F12CONSOLE 
+I don't want to go true https://deadangles.cloudflareaccess.com/#/Launcher
 
-GET
-https://www.deadanglesinstitute.org/
-[HTTP/2 200  597ms]
+I want each door go true its own cloudflare authentication methods.
+sorry the shcema is not accurate.
 
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/base.css
-[HTTP/3 200  201ms]
 
-GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-login.css
-[HTTP/3 302  20ms]
 
-GET
-https://www.deadanglesinstitute.org/navbar/cssnavbar/navbar.css
-[HTTP/3 200  205ms]
 
-GET
-https://www.deadanglesinstitute.org/navbar/csssnippet/snippet.css
-[HTTP/3 200  204ms]
+Visitor → https://deadanglesinstitute.org/
 
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/cta.css
-[HTTP/3 200  195ms]
+              	↓
+         Portal (login/index.html)
+         - CSS/JS from /live/ (unprotected)
 
-GET
-https://www.deadanglesinstitute.org/shared/cssshared/footer.css
-[HTTP/3 200  208ms]
+		↓
+    ┌───────────┴─────────┐
+     ↓                		↓
+CP (Accès au site)   CW (Portail rédacteurs)
 
-GET
-https://www.deadanglesinstitute.org/live/js/sender-init.js
-[HTTP/3 200  189ms]
+    ↓                   	↓
+/private/            /writer/
 
-GET
-https://www.deadanglesinstitute.org/live/js/lazy.js
-[HTTP/3 200  209ms]
+(Cloudflare Access	(Cloudflare Access
+doesn't activate)  	doesn't activate)
 
-GET
-https://www.deadanglesinstitute.org/live/js/transition.js
-[HTTP/3 200  200ms]
+    ↓                   	↓
+Language selector    Writer dashboard
+(it works)		(it doesn't work)
 
-GET
-https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js
-[HTTP/3 200  210ms]
 
-GET
-https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js
-[HTTP/3 200  196ms]
-
-GET
-https://www.deadanglesinstitute.org/shared/jsshared/lang-redirect.js
-[HTTP/3 200  194ms]
-
-GET
-https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-login.js
-[HTTP/3 302  21ms]
-
-GET
-https://deadangles.cloudflareaccess.com/cdn-cgi/access/login/www.deadanglesinstitute.org?kid=96e380461d848f3144e6ee51fb68583d65d33d99683a3c5cded1d502db87ab09&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9jc3Mvd3JpdGVyLWxvZ2luLmNzcyIsInNlcnZpY2VfdG9rZW5fc3RhdHVzIjpmYWxzZSwiaXNfd2FycCI6ZmFsc2UsImlzX2dhdGV3YXkiOmZhbHNlLCJleHAiOjE3ODE1NzM3MTYsIm5iZiI6MTc4MTU3MzQxNiwiaWF0IjoxNzgxNTczNDE2LCJhdXRoX3N0YXR1cyI6Ik5PTkUiLCJtdGxzX2F1dGgiOnsiY2VydF9pc3N1ZXJfZG4iOiIiLCJjZXJ0X3NlcmlhbCI6IiIsImNlcnRfaXNzdWVyX3NraSI6IiIsImNlcnRfcHJlc2VudGVkIjpmYWxzZSwiY29tbW9uX25hbWUiOiIiLCJhdXRoX3N0YXR1cyI6Ik5PTkUifSwicmVhbF9jb3VudHJ5IjoiQkUiLCJhcHBfc2Vzc2lvbl9oYXNoIjoiYTI4ZjlhZWY1MWE4M2JlMzJhMWU0MTFmODFjZTdjM2ZhZWY5YjgyZjExMzc4MDFjM2YzNjViNDBkM2I1YzFkZiJ9.lYUWCev61cVtg9a2mtZ24TnNeTa61_Ok2uLnXZAdQJvEVyXPGxjmQ3ofBUxlVEEKrEiJWB08evHOOkNbHLyC7FR_h3vEVk-Uxp1YdL3jcs5PElS1av5nrqKsao2NqDCAPUdylplY43lJSvi4MVPBdwB_IC5ZmWAvkOYr5eCs4udz1MFepapHMsunt8uW_OXBI8FhAARizhvW63QrcQ-f9qIC_Cxh3gRYe0wRe8KK9n9vwoGF5xJTbOYEHBvz7BzaHjGHZ1VTUSnFS7xqLbnjDbXaMUQ0cG8-uA9yCEWBG8BA9C341PqbpAWJBnanVTcFMBr7JPJqtzrWXqWoCHtEQw&redirect_url=/writer/workspace-9xK2mP/css/writer-login.css
-[HTTP/2 302  131ms]
-
-GET
-https://deadangles.cloudflareaccess.com/cdn-cgi/access/login/www.deadanglesinstitute.org?kid=96e380461d848f3144e6ee51fb68583d65d33d99683a3c5cded1d502db87ab09&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9qcy93cml0ZXItbG9naW4uanMiLCJzZXJ2aWNlX3Rva2VuX3N0YXR1cyI6ZmFsc2UsImlzX3dhcnAiOmZhbHNlLCJpc19nYXRld2F5IjpmYWxzZSwiZXhwIjoxNzgxNTczNzE2LCJuYmYiOjE3ODE1NzM0MTYsImlhdCI6MTc4MTU3MzQxNiwiYXV0aF9zdGF0dXMiOiJOT05FIiwibXRsc19hdXRoIjp7ImNlcnRfaXNzdWVyX2RuIjoiIiwiY2VydF9zZXJpYWwiOiIiLCJjZXJ0X2lzc3Vlcl9za2kiOiIiLCJjZXJ0X3ByZXNlbnRlZCI6ZmFsc2UsImNvbW1vbl9uYW1lIjoiIiwiYXV0aF9zdGF0dXMiOiJOT05FIn0sInJlYWxfY291bnRyeSI6IkJFIiwiYXBwX3Nlc3Npb25faGFzaCI6ImEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYifQ.i5mI_NEX9SLJ8puF8U6dblhYfhJ-lLtauXTc5GN0aL5bgHxs-nk8yOol4i_6y2OvsWQ6cb96W_BXQoofmXMJDfS8KqHIQwchYOZ-AsHKHd8NyH6Ki2TXuW07s7qdGY1niJVvcq3xEI_zO8e9WLH0E67kMJmUO4MdPo9PeHHXaskjk4AtXBIoDXvRzddYxp93qOG-aiIRLRSn4ERgNNZKFE1ALKUeijA4Yp1bv3m01xS3UtnYJRv97cZX9J_e3O3xWcwsNg67e9Mz_vRrmCmgOgpV8wDTlm1aaEeFPfiXdsfStmFZuLFkYTDYbJLHqhenLagmP64FsWEGvYNUJcpUvg&redirect_url=/writer/workspace-9xK2mP/js/writer-login.js
-[HTTP/2 302  84ms]
-
-GET
-https://deadangles.cloudflareaccess.com/cdn-cgi/access/2fa?state=d5bfbf8aef216abf5fb8dc3c2072ec7df40b4f2823147f663c061ada1d0c55d8.JTdCJTIyaWF0JTIyJTNBMTc4MTU3MzQxNyUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJ3d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmclMjIlMkMlMjJyZWRpcmVjdFVSTCUyMiUzQSUyMiUyRndyaXRlciUyRndvcmtzcGFjZS05eEsybVAlMkZqcyUyRndyaXRlci1sb2dpbi5qcyUyMiUyQyUyMmF1ZCUyMiUzQSUyMjk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDklMjIlMkMlMjJpZHBJZCUyMiUzQSUyMjBmYWYwZDZmLWRjNTUtNGI5NC05MjBkLWRmNTFmMWY1OThiOCUyMiUyQyUyMmlzU2FtZVNpdGVOb25lQ29tcGF0aWJsZSUyMiUzQXRydWUlMkMlMjJpc1NTTyUyMiUzQXRydWUlMkMlMjJub25jZSUyMiUzQSUyMm5jQjk2Y1AwRGVjQTVUaEptJTIyJTJDJTIyYXBwU2Vzc2lvbkhhc2glMjIlM0ElMjJhMjhmOWFlZjUxYTgzYmUzMmExZTQxMWY4MWNlN2MzZmFlZjliODJmMTEzNzgwMWMzZjM2NWI0MGQzYjVjMWRmJTIyJTJDJTIyaXNfd2FycCUyMiUzQWZhbHNlJTdE&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9qcy93cml0ZXItbG9naW4uanMiLCJzZXJ2aWNlX3Rva2VuX3N0YXR1cyI6ZmFsc2UsImlzX3dhcnAiOmZhbHNlLCJpc19nYXRld2F5IjpmYWxzZSwiZXhwIjoxNzgxNTczNzE2LCJuYmYiOjE3ODE1NzM0MTYsImlhdCI6MTc4MTU3MzQxNiwiYXV0aF9zdGF0dXMiOiJOT05FIiwibXRsc19hdXRoIjp7ImNlcnRfaXNzdWVyX2RuIjoiIiwiY2VydF9zZXJpYWwiOiIiLCJjZXJ0X2lzc3Vlcl9za2kiOiIiLCJjZXJ0X3ByZXNlbnRlZCI6ZmFsc2UsImNvbW1vbl9uYW1lIjoiIiwiYXV0aF9zdGF0dXMiOiJOT05FIn0sInJlYWxfY291bnRyeSI6IkJFIiwiYXBwX3Nlc3Npb25faGFzaCI6ImEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYifQ.i5mI_NEX9SLJ8puF8U6dblhYfhJ-lLtauXTc5GN0aL5bgHxs-nk8yOol4i_6y2OvsWQ6cb96W_BXQoofmXMJDfS8KqHIQwchYOZ-AsHKHd8NyH6Ki2TXuW07s7qdGY1niJVvcq3xEI_zO8e9WLH0E67kMJmUO4MdPo9PeHHXaskjk4AtXBIoDXvRzddYxp93qOG-aiIRLRSn4ERgNNZKFE1ALKUeijA4Yp1bv3m01xS3UtnYJRv97cZX9J_e3O3xWcwsNg67e9Mz_vRrmCmgOgpV8wDTlm1aaEeFPfiXdsfStmFZuLFkYTDYbJLHqhenLagmP64FsWEGvYNUJcpUvg
-NS_ERROR_FAILURE
-
-GET
-https://deadangles.cloudflareaccess.com/cdn-cgi/access/2fa?state=c26cb68cb00b07f8232911bba1d5e3c127bc30ada639be6d9f9d895989d5ab6d.JTdCJTIyaWF0JTIyJTNBMTc4MTU3MzQxNyUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJ3d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmclMjIlMkMlMjJyZWRpcmVjdFVSTCUyMiUzQSUyMiUyRndyaXRlciUyRndvcmtzcGFjZS05eEsybVAlMkZjc3MlMkZ3cml0ZXItbG9naW4uY3NzJTIyJTJDJTIyYXVkJTIyJTNBJTIyOTZlMzgwNDYxZDg0OGYzMTQ0ZTZlZTUxZmI2ODU4M2Q2NWQzM2Q5OTY4M2EzYzVjZGVkMWQ1MDJkYjg3YWIwOSUyMiUyQyUyMmlkcElkJTIyJTNBJTIyMGZhZjBkNmYtZGM1NS00Yjk0LTkyMGQtZGY1MWYxZjU5OGI4JTIyJTJDJTIyaXNTYW1lU2l0ZU5vbmVDb21wYXRpYmxlJTIyJTNBdHJ1ZSUyQyUyMmlzU1NPJTIyJTNBdHJ1ZSUyQyUyMm5vbmNlJTIyJTNBJTIybmNCOTZjUDBEZWNBNVRoSm0lMjIlMkMlMjJhcHBTZXNzaW9uSGFzaCUyMiUzQSUyMmEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYlMjIlMkMlMjJpc193YXJwJTIyJTNBZmFsc2UlN0Q%3D&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9jc3Mvd3JpdGVyLWxvZ2luLmNzcyIsInNlcnZpY2VfdG9rZW5fc3RhdHVzIjpmYWxzZSwiaXNfd2FycCI6ZmFsc2UsImlzX2dhdGV3YXkiOmZhbHNlLCJleHAiOjE3ODE1NzM3MTYsIm5iZiI6MTc4MTU3MzQxNiwiaWF0IjoxNzgxNTczNDE2LCJhdXRoX3N0YXR1cyI6Ik5PTkUiLCJtdGxzX2F1dGgiOnsiY2VydF9pc3N1ZXJfZG4iOiIiLCJjZXJ0X3NlcmlhbCI6IiIsImNlcnRfaXNzdWVyX3NraSI6IiIsImNlcnRfcHJlc2VudGVkIjpmYWxzZSwiY29tbW9uX25hbWUiOiIiLCJhdXRoX3N0YXR1cyI6Ik5PTkUifSwicmVhbF9jb3VudHJ5IjoiQkUiLCJhcHBfc2Vzc2lvbl9oYXNoIjoiYTI4ZjlhZWY1MWE4M2JlMzJhMWU0MTFmODFjZTdjM2ZhZWY5YjgyZjExMzc4MDFjM2YzNjViNDBkM2I1YzFkZiJ9.lYUWCev61cVtg9a2mtZ24TnNeTa61_Ok2uLnXZAdQJvEVyXPGxjmQ3ofBUxlVEEKrEiJWB08evHOOkNbHLyC7FR_h3vEVk-Uxp1YdL3jcs5PElS1av5nrqKsao2NqDCAPUdylplY43lJSvi4MVPBdwB_IC5ZmWAvkOYr5eCs4udz1MFepapHMsunt8uW_OXBI8FhAARizhvW63QrcQ-f9qIC_Cxh3gRYe0wRe8KK9n9vwoGF5xJTbOYEHBvz7BzaHjGHZ1VTUSnFS7xqLbnjDbXaMUQ0cG8-uA9yCEWBG8BA9C341PqbpAWJBnanVTcFMBr7JPJqtzrWXqWoCHtEQw
-NS_ERROR_FAILURE
-
-The script from “https://deadangles.cloudflareaccess.com/cdn-cgi/access/2fa?state=d5bfbf8aef216abf5fb8dc3c2072ec7df40b4f2823147f663c061ada1d0c55d8.JTdCJTIyaWF0JTIyJTNBMTc4MTU3MzQxNyUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJ3d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmclMjIlMkMlMjJyZWRpcmVjdFVSTCUyMiUzQSUyMiUyRndyaXRlciUyRndvcmtzcGFjZS05eEsybVAlMkZqcyUyRndyaXRlci1sb2dpbi5qcyUyMiUyQyUyMmF1ZCUyMiUzQSUyMjk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDklMjIlMkMlMjJpZHBJZCUyMiUzQSUyMjBmYWYwZDZmLWRjNTUtNGI5NC05MjBkLWRmNTFmMWY1OThiOCUyMiUyQyUyMmlzU2FtZVNpdGVOb25lQ29tcGF0aWJsZSUyMiUzQXRydWUlMkMlMjJpc1NTTyUyMiUzQXRydWUlMkMlMjJub25jZSUyMiUzQSUyMm5jQjk2Y1AwRGVjQTVUaEptJTIyJTJDJTIyYXBwU2Vzc2lvbkhhc2glMjIlM0ElMjJhMjhmOWFlZjUxYTgzYmUzMmExZTQxMWY4MWNlN2MzZmFlZjliODJmMTEzNzgwMWMzZjM2NWI0MGQzYjVjMWRmJTIyJTJDJTIyaXNfd2FycCUyMiUzQWZhbHNlJTdE&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9qcy93cml0ZXItbG9naW4uanMiLCJzZXJ2aWNlX3Rva2VuX3N0YXR1cyI6ZmFsc2UsImlzX3dhcnAiOmZhbHNlLCJpc19nYXRld2F5IjpmYWxzZSwiZXhwIjoxNzgxNTczNzE2LCJuYmYiOjE3ODE1NzM0MTYsImlhdCI6MTc4MTU3MzQxNiwiYXV0aF9zdGF0dXMiOiJOT05FIiwibXRsc19hdXRoIjp7ImNlcnRfaXNzdWVyX2RuIjoiIiwiY2VydF9zZXJpYWwiOiIiLCJjZXJ0X2lzc3Vlcl9za2kiOiIiLCJjZXJ0X3ByZXNlbnRlZCI6ZmFsc2UsImNvbW1vbl9uYW1lIjoiIiwiYXV0aF9zdGF0dXMiOiJOT05FIn0sInJlYWxfY291bnRyeSI6IkJFIiwiYXBwX3Nlc3Npb25faGFzaCI6ImEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYifQ.i5mI_NEX9SLJ8puF8U6dblhYfhJ-lLtauXTc5GN0aL5bgHxs-nk8yOol4i_6y2OvsWQ6cb96W_BXQoofmXMJDfS8KqHIQwchYOZ-AsHKHd8NyH6Ki2TXuW07s7qdGY1niJVvcq3xEI_zO8e9WLH0E67kMJmUO4MdPo9PeHHXaskjk4AtXBIoDXvRzddYxp93qOG-aiIRLRSn4ERgNNZKFE1ALKUeijA4Yp1bv3m01xS3UtnYJRv97cZX9J_e3O3xWcwsNg67e9Mz_vRrmCmgOgpV8wDTlm1aaEeFPfiXdsfStmFZuLFkYTDYbJLHqhenLagmP64FsWEGvYNUJcpUvg” was loaded even though its MIME type (“text/html”) is not a valid JavaScript MIME type. www.deadanglesinstitute.org
-Loading failed for the <script> with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-login.js”. www.deadanglesinstitute.org:54:67
-Waiting for navbar elements (attempt 1)... navbar.js:20:17
-GET
-https://cdn.sender.net/accounts_resources/universal.js
-[HTTP/1.1 200 OK 96ms]
-
-GET
-https://www.deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
-[HTTP/3 200  737ms]
-
-Waiting for navbar elements (attempt 2)... navbar.js:20:17
-GET
-https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap
-[HTTP/2 200 OK 0ms]
-
-GET
-https://cdn.sender.net/accounts_resources/forms.css
-[HTTP/1.1 200 OK 0ms]
-
-GET
-https://cdn.sender.net/accounts_resources/logo-no-text.svg
-[HTTP/1.1 200 OK 0ms]
-
-Waiting for navbar elements (attempt 3)... navbar.js:20:17
-GET
-https://fonts.googleapis.com/css2?family=Roboto+Slab:ital,wght@0,700;1,700&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap
-[HTTP/2 200 OK 0ms]
-
-GET
-https://cdn.sender.net/accounts_resources/forms.css
-[HTTP/1.1 200 OK 0ms]
-
-GET
-https://cdn.sender.net/email_images/390125/images/all/favicon_02.png
-[HTTP/1.1 200 OK 0ms]
-
-GET
-https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap
-[HTTP/2 200 OK 0ms]
-
-GET
-https://cdn.sender.net/accounts_resources/forms.css
-[HTTP/1.1 200 OK 0ms]
-
-GET
-https://cdn.sender.net/accounts_resources/IntlTelInput.js
-[HTTP/1.1 200 OK 0ms]
-
-GET
-https://www.google.com/recaptcha/api.js?render=6Lf_JEgaAAAAAO_blQh_do9SoSt2syEArU8xG6Ev
-[HTTP/3 200  0ms]
-
-GET
-https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.13/build/css/intlTelInput.min.css
-[HTTP/2 200 OK 0ms]
-
-GET
-https://cdn.sender.net/email_images/390125/images/all/favicon_02.png
-[HTTP/1.1 200 OK 21ms]
-
-Waiting for navbar elements (attempt 4)... navbar.js:20:17
-GET
-https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/utils.min.js
-[HTTP/3 200  0ms]
-
-GET
-https://www.gstatic.com/recaptcha/releases/MerVUtRoajKEbP7pLiGXkL28/recaptcha__en.js
-[HTTP/2 200  0ms]
-
-Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.cloudflare.com/cdn-cgi/trace. (Reason: CORS request did not succeed). Status code: (null).
-Waiting for navbar elements (attempt 5)... navbar.js:20:17
-Waiting for navbar elements (attempt 6)... navbar.js:20:17
-GET
-https://www.google.com/recaptcha/api2/anchor?ar=1&k=6Lf_JEgaAAAAAO_blQh_do9SoSt2syEArU8xG6Ev&co=aHR0cHM6Ly93d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmc6NDQz&hl=en&v=MerVUtRoajKEbP7pLiGXkL28&size=invisible&anchor-ms=20000&execute-ms=30000&cb=cbbrldmnsvd0
-[HTTP/3 200  40ms]
-
-Content-Security-Policy warnings 4
-GET
-https://www.gstatic.com/recaptcha/releases/MerVUtRoajKEbP7pLiGXkL28/styles__ltr.css
-[HTTP/3 200 OK 0ms]
-
-GET
-https://www.gstatic.com/recaptcha/releases/MerVUtRoajKEbP7pLiGXkL28/recaptcha__en.js
-[HTTP/3 200  0ms]
-
-Waiting for navbar elements (attempt 7)... navbar.js:20:17
-Ignoring unsupported entryTypes: longtask. recaptcha__en.js:102:485
-Partitioned cookie or storage access was provided to “https://www.google.com/recaptcha/api2/anchor?ar=1&k=6Lf_JEgaAAAAAO_blQh_do9SoSt2syEArU8xG6Ev&co=aHR0cHM6Ly93d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmc6NDQz&hl=en&v=MerVUtRoajKEbP7pLiGXkL28&size=invisible&anchor-ms=20000&execute-ms=30000&cb=cbbrldmnsvd0” because it is loaded in the third-party context and dynamic state partitioning is enabled. recaptcha__en.js:582:346
-GET
-https://www.google.com/recaptcha/api2/webworker.js?hl=en&v=MerVUtRoajKEbP7pLiGXkL28
-[HTTP/3 200  0ms]
-
-GET
-https://www.gstatic.com/recaptcha/releases/MerVUtRoajKEbP7pLiGXkL28/recaptcha__en.js
-[HTTP/3 200  0ms]
-
-Waiting for navbar elements (attempt 8)... navbar.js:20:17
-Waiting for navbar elements (attempt 9)... navbar.js:20:17
-Waiting for navbar elements (attempt 10)... navbar.js:20:17
-Waiting for navbar elements (attempt 11)... navbar.js:20:17
-Waiting for navbar elements (attempt 12)... navbar.js:20:17
-Waiting for navbar elements (attempt 13)... navbar.js:20:17
-Waiting for navbar elements (attempt 14)... navbar.js:20:17
-Waiting for navbar elements (attempt 15)... navbar.js:20:17
-Waiting for navbar elements (attempt 16)... navbar.js:20:17
-Waiting for navbar elements (attempt 17)... navbar.js:20:17
-Waiting for navbar elements (attempt 18)... navbar.js:20:17
-Waiting for navbar elements (attempt 19)... navbar.js:20:17
+    ↓
+Website content
