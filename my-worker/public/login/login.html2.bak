@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>PORTAIL D'ACCÈS | Dead Angles Institute™</title>
+
+  <!-- global foundation -->
+  <link rel="stylesheet" href="../../../shared/cssshared/base.css">
+
+  <!-- site-specific styles -->
+  <link rel="stylesheet" href="/my-worker/public/css/writer-login.css"
+  
+
+  <!-- shared UI components -->
+  <link rel="stylesheet" href="../../../navbar/cssnavbar/navbar.css">
+  <link rel="stylesheet" href="../../../navbar/csssnippet/snippet.css">
+  <link rel="stylesheet" href="../../../shared/cssshared/cta.css">
+  <link rel="stylesheet" href="../../../shared/cssshared/footer.css">
+
+  <!-- favicon -->
+  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png" type="image/png">
+</head>
+
+
+
+<!-- ============================ -->
+<!--        PORTAIL D'ACCÈS       -->
+<!-- ============================ -->
+
+<!-- 98 lines -->
+
+
+<div id="page-transition"></div>
+
+<body class="has-fixed-nav">
+  <!-- Navigation Bar -->
+    <!--<div id="navbar-placeholder"></div>  Restricted access-->
+
+  <div class="coming-soon">
+    <h1>PORTAIL D'ACCÈS</h1>
+    <h2>Dead Angles Institute <span class="tm">™</span></h2>
+    <p>Le site sera prochainement accessible.</p> <!-- Needs authentication -->
+
+    <div class="lang-container">
+    
+      <p id="lang-text">The website will be available soon.</p>
+
+  </div>
+
+      <div class="cta-buttons">
+        <a href="https://deadanglesinstitute.org/private/" 
+        class="btn-primary">Accès au site</a>
+        
+        <button id="openAccessForm" class="btn-secondary">
+          Demande d’accès</button>
+        <br><br>
+
+        <a href="https://deadanglesinstitute.org/writer/" 
+        class="btn-primary">PORTAIL RÉDACTEURS</a>
+      </div>
+
+
+      <div id="sender-form-container" style="display:none;">
+          <a href="https://deadangles.cloudflareaccess.com/#/Launcher" 
+          class="btn-primary">Writer Dashboard (Accès privé)</a>
+      </div>
+
+    <br> 
+    <br>
+
+        
+            
+            
+
+        <div id="sender-form-container" style="display:none;">
+            <a href="https://deadangles.cloudflareaccess.com/#/Launcher" class="btn-primary">
+            Writer Dashboard (Accès privé)
+            </a>
+
+            <button id="openAccessForm" class="btn-secondary">
+            Demande d’accès
+            </button>
+        </div>
+
+    
+
+        <div id="sender-form-container" style="display:none;">
+            <div class="sender-form-field" data-sender-form-id="axk0lP"></div>
+        </div>
+    </div>
+
+
+    <script src="/my-worker/public/js/sender-init.js" defer></script>
+    <script src="../../../live/js/lazy.js" defer></script>
+    <script src="../../../live/js/transition.js" defer></script>
+    <script src="../../../navbar/jsnavbar/load-navbar.js" defer></script>
+    <script src="../../../navbar/jsnavbar/navbar.js" defer></script>
+    <script src="../../../shared/jsshared/lang-redirect.js" defer></script>
+    <script src="../../../writer/workspace-9xK2mP/js/writer-login.js" defer></script>
+    <script src="../../../writer/workspace-9xK2mP/js/writer-main.js" defer></script>
+    
+  </body>
+</html>
+
+
