@@ -1,106 +1,16 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>PORTAIL D'ACCÈS | Dead Angles Institute™</title>
+ls -ls ~/747civilbarb/my-worker/public/js
 
-  <!-- global foundation -->
-  <link rel="stylesheet" href="../../../shared/cssshared/base.css">
-
-  <!-- site-specific styles -->
-  <link rel="stylesheet" href="/my-worker/public/css/writer-login.css"
-  
-
-  <!-- shared UI components -->
-  <link rel="stylesheet" href="../../../navbar/cssnavbar/navbar.css">
-  <link rel="stylesheet" href="../../../navbar/csssnippet/snippet.css">
-  <link rel="stylesheet" href="../../../shared/cssshared/cta.css">
-  <link rel="stylesheet" href="../../../shared/cssshared/footer.css">
-
-  <!-- favicon -->
-  <link rel="icon" href="/pictures/fav-icone/fav-icone03.png" type="image/png">
-</head>
-
-
-
-<!-- ============================ -->
-<!--        PORTAIL D'ACCÈS       -->
-<!-- ============================ -->
-
-<!-- 98 lines -->
-
-
-<div id="page-transition"></div>
-
-<body class="has-fixed-nav">
-  <!-- Navigation Bar -->
-    <!--<div id="navbar-placeholder"></div>  Restricted access-->
-
-  <div class="coming-soon">
-    <h1>PORTAIL D'ACCÈS</h1>
-    <h2>Dead Angles Institute <span class="tm">™</span></h2>
-    <p>Le site sera prochainement accessible.</p> <!-- Needs authentication -->
-
-    <div class="lang-container">
-    
-      <p id="lang-text">The website will be available soon.</p>
-
-  </div>
-
-      <div class="cta-buttons">
-        <a href="https://deadanglesinstitute.org/private/" 
-        class="btn-primary">Accès au site</a>
-        
-        <button id="openAccessForm" class="btn-secondary">
-          Demande d’accès</button>
-        <br><br>
-
-        <a href="https://deadanglesinstitute.org/writer/" 
-        class="btn-primary">PORTAIL RÉDACTEURS</a>
-      </div>
-
-
-      <div id="sender-form-container" style="display:none;">
-          <a href="https://deadangles.cloudflareaccess.com/#/Launcher" 
-          class="btn-primary">Writer Dashboard (Accès privé)</a>
-      </div>
-
-    <br> 
-    <br>
-
-        
-            
-            
-
-        <div id="sender-form-container" style="display:none;">
-            <a href="https://deadangles.cloudflareaccess.com/#/Launcher" class="btn-primary">
-            Writer Dashboard (Accès privé)
-            </a>
-
-            <button id="openAccessForm" class="btn-secondary">
-            Demande d’accès
-            </button>
-        </div>
-
-    
-
-        <div id="sender-form-container" style="display:none;">
-            <div class="sender-form-field" data-sender-form-id="axk0lP"></div>
-        </div>
-    </div>
-
-
-    <script src="/my-worker/public/js/sender-init.js" defer></script>
-    <script src="../../../live/js/lazy.js" defer></script>
-    <script src="../../../live/js/transition.js" defer></script>
-    <script src="../../../navbar/jsnavbar/load-navbar.js" defer></script>
-    <script src="../../../navbar/jsnavbar/navbar.js" defer></script>
-    <script src="../../../shared/jsshared/lang-redirect.js" defer></script>
-    <script src="../../../writer/workspace-9xK2mP/js/writer-login.js" defer></script>
-    <script src="../../../writer/workspace-9xK2mP/js/writer-main.js" defer></script>
-    
-  </body>
-</html>
+4 -rw-rw-r-- 1 deploy deploy  622 May 24 12:47 center_zoom.js
+4 -rw-rw-r-- 1 deploy deploy 1186 May 24 12:47 gdpr.js
+4 -rw-rw-r-- 1 deploy deploy 1035 Jun 16 00:53 lazy.js
+4 -rw-rw-r-- 1 deploy deploy  961 May 24 12:47 load-navbar.js
+4 -rw-rw-r-- 1 deploy deploy 1441 May 24 12:47 navbar.js
+4 -rw-rw-r-- 1 deploy deploy  919 May 24 12:47 premium-entitlement.js
+4 -rw-rw-r-- 1 deploy deploy  893 Jun 16 00:20 sender-init.js
+4 -rw-rw-r-- 1 deploy deploy  485 May 24 12:47 snippet.js
+4 -rw-rw-r-- 1 deploy deploy 1421 May 24 12:47 subscribe.js
+4 -rw-rw-r-- 1 deploy deploy  754 Jun 16 00:53 transition.js
+0 -rw-rw-r-- 1 deploy deploy    0 Jun 16 00:53 writer-login.js
 
 
 
