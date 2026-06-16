@@ -1,6 +1,53 @@
 
+pm2 logs my-worker --lines 20
+
+[TAILING] Tailing last 20 lines for [my-worker] process (change the value with --lines option)
+/home/deploy/.pm2/logs/my-worker-out.log last 20 lines:
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /private/shared/jsshared/lang-redirect.js
+0|my-worke | ➡️ REQUEST: GET /Dr0v
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /login/wp-admin/install.php?step=1
+0|my-worke | ➡️ REQUEST: GET /wp-admin/install.php?step=1
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /wp-admin/install.php?step=1
+0|my-worke | ➡️ REQUEST: GET /login/robots.txt
+0|my-worke | ➡️ REQUEST: GET /login/sitemap.xml
+0|my-worke | ➡️ REQUEST: GET /writer/
+0|my-worke | ➡️ REQUEST: GET /private/
+0|my-worke | ➡️ REQUEST: GET /login/sitemap.txt
+0|my-worke | ➡️ REQUEST: GET /live/
+0|my-worke | ➡️ REQUEST: HEAD /
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /
+0|my-worke | ➡️ REQUEST: GET /
+
+/home/deploy/.pm2/logs/my-worker-error.log last 20 lines:
+0|my-worke |     at Function.route (/home/deploy/my-worker/node_modules/router/index.js:428:17)
+0|my-worke |     at Function.route (/home/deploy/my-worker/node_modules/express/lib/application.js:257:22)
+0|my-worke |     at app.<computed> [as options] (/home/deploy/my-worker/node_modules/express/lib/application.js:478:22)
+0|my-worke |     at file:///home/deploy/my-worker/server.js:442:5 {
+0|my-worke |   originalPath: '/*'
+0|my-worke | }
+0|my-worke | Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/home/deploy/747civilbarb/server.js' imported from /usr/lib/node_modules/pm2/lib/ProcessContainerFork.js
+0|my-worke |     at finalizeResolution (node:internal/modules/esm/resolve:283:11)
+0|my-worke |     at moduleResolve (node:internal/modules/esm/resolve:952:10)
+0|my-worke |     at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+0|my-worke |     at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)
+0|my-worke |     at #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)
+0|my-worke |     at ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)
+0|my-worke |     at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)
+0|my-worke |     at ModuleLoader.import (node:internal/modules/esm/loader:605:34)
+0|my-worke |     at defaultImportModuleDynamicallyForScript (node:internal/modules/esm/utils:234:31)
+0|my-worke |     at importModuleDynamicallyCallback (node:internal/modules/esm/utils:256:12) {
+0|my-worke |   code: 'ERR_MODULE_NOT_FOUND',
+0|my-worke |   url: 'file:///home/deploy/747civilbarb/server.js'
+0|my-worke | }
 
 
+=======================================
 
 curl -I https://747imhotep.github.io/747civilbarb/fr/
 
@@ -8,18 +55,19 @@ HTTP/2 301
 server: GitHub.com
 content-type: text/html
 location: http://www.deadanglesinstitute.org/fr/
-x-github-request-id: 53D2:232C:D4607:DDBEA:6A312332
+x-github-request-id: B1D6:2359E2:25A72:277C9:6A31318E
 accept-ranges: bytes
 age: 0
-date: Tue, 16 Jun 2026 10:19:30 GMT
+date: Tue, 16 Jun 2026 11:20:46 GMT
 via: 1.1 varnish
-x-served-by: cache-sin-wsat1880089-SIN
+x-served-by: cache-sin-wsat1880074-SIN
 x-cache: MISS
 x-cache-hits: 0
-x-timer: S1781605170.255569,VS0,VE230
+x-timer: S1781608846.462338,VS0,VE224
 vary: Accept-Encoding
-x-fastly-request-id: 1ca3d685e52a5348cded93a07f9ebf2b6623fefc
+x-fastly-request-id: 6824038c7b87966e58c067348b8bd02d198857e1
 content-length: 162
+
 
 =======================================
 
@@ -27,38 +75,47 @@ content-length: 162
 curl -I https://www.deadanglesinstitute.org/fr/
 
 HTTP/2 301 
-date: Tue, 16 Jun 2026 10:20:50 GMT
+date: Tue, 16 Jun 2026 11:21:25 GMT
 content-type: text/html
 location: http://www.deadanglesinstitute.org/fr/
 server: cloudflare
 nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
-x-github-request-id: C8C4:2FC0FB:B7229:BEDEB:6A3115B4
+x-github-request-id: A20C:24D2B:114002:11F9C3:6A3131B4
 accept-ranges: bytes
-age: 3532
+age: 0
 via: 1.1 varnish
-x-served-by: cache-sin-wsat1880060-SIN
-x-cache: HIT
+x-served-by: cache-sin-wsat1880051-SIN
+x-cache: MISS
 x-cache-hits: 0
-x-timer: S1781605250.007223,VS0,VE1
+x-timer: S1781608885.025801,VS0,VE252
 vary: Accept-Encoding
-x-fastly-request-id: 3bcb57f60443a17a093ca44d2506d3c6ac924ff4
+x-fastly-request-id: 9cd4b4346f3345c40d223c97aac5c8b36efb84fd
 cf-cache-status: DYNAMIC
-report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=vUoqrGinwcY3loxRAuz0hZc%2FKO1wR6s%2Bx%2BuI8mGMIubjIx3V8l1AuDP2gPXHwLoipxll3nDvka63GYv1%2FzEYUHbePk5RpvaGdqVUQa4QrCpYfZ2YedRpIFtQNfWG%2B9bFfGHJ6qRgYYCUv0TQ49r3xm1Fj8j1X%2F%2FNF2s%3D"}]}
-cf-ray: a0c9158c5b97fd2e-SIN
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JKfzXUUY9o8RYAYmdqqjvKjl5X8mebzBqK%2Bz3vKqSSL%2Fgdf0JCsevR%2B%2BUkbp9NCuU554NpEXId9Ab34o9Y3moHM2e3ZxX5CnTNSV9T3P36H7z34jkM5iqm%2BnkXmAYR71ZkDgAx73MiLRXxuxxseRtv4Bxm%2BygWGpeiY%3D"}]}
+cf-ray: a0c96e4b2b39f910-SIN
 alt-svc: h3=":443"; ma=86400
 
 =======================================
 
 # Test directly to your VPS (bypass Cloudflare)
 curl -H "Host: www.deadanglesinstitute.org" http://5.223.56.165/writer/ -L
+	error code: 502
 
 # Test private directly
 curl -H "Host: deadanglesinstitute.org" http://5.223.56.165/private/ -L
+	error code: 502
 
-both work
+
+=======================================
+
+pm2 logs my-worker --lines 30
+
+
+
 =======================================
 
 
+sudo tail -30 /var/log/nginx/error.log
 
 
 
