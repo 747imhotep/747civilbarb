@@ -2,52 +2,36 @@
 
 ======================================
 
-Question: Sender.net form not showing up
+redirected rool in cloudflare has been deleted.
 
-Looking at your login/index.html, you see:
-<div id="sender-form-container" style="display:none;">
-    <div class="sender-form-field" data-sender-form-id="axk0lP"></div>
-</div>
-
-but, you should see 
-<script src="../../../live/js/sender-init.js" defer></script>
-here's the code:
-//::::::::::::::::::::::::::::::::::
-// Sender Initialization Script
-// - Loads Sender script asynchronously
-// - Sets up basic Sender function and event listener system
-// - Should be included in the page head or before any Sender usage
-//::::::::::::::::::::::::::::::::::
+======================================
+curl -I https://deadanglesinstitute.org/
 
 
-
-  (function (s, e, n, d, er) {
-    s['Sender'] = er;
-    s[er] = s[er] || function () {
-      (s[er].q = s[er].q || []).push(arguments)
-    }, s[er].l = 1 * new Date();
-    s[er].on = function(event, callback) {
-      s[er].listeners = s[er].listeners || {};
-      (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
-    };
-    var a = e.createElement(n),
-        m = e.getElementsByTagName(n)[0];
-    a.async = 1;
-    a.src = d;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-  sender('8ff476a5273454')
-
+HTTP/2 200 
+date: Tue, 16 Jun 2026 00:10:37 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+cache-control: public, max-age=0
+last-modified: Tue, 16 Jun 2026 00:04:12 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=ASzCU3xSPxOS3%2BwpPPEL7jKC47ashzBSTRBpadZxlr9GyYZqIEA1wZSmDau8OZDrKAw3DBu6Xy1OXCaeRUS4rRGzmRitlSAZXl%2FINeU3JlJeMwL69vmwMEc8VGfl9YCH%2BMp9CPDmaD9qCGdRzsf7o1lsfxGvjQ%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-cache-status: DYNAMIC
+cf-ray: a0c597b1b9c5938e-SIN
+alt-svc: h3=":443"; ma=86400
 
 ======================================
 
-There is no JavaScript errors in the browser console (F12) when clicking the button.
-I don't know.
-
-this is manageable
-http://127.0.0.1:5500/my-worker/public/login/index.html
-
-I can't reach my portal online
-======================================
-
-
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/live/js/sender-init.js”. www.deadanglesinstitute.org:93:57
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/live/js/lazy.js”. www.deadanglesinstitute.org:94:50
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/live/js/transition.js”. www.deadanglesinstitute.org:95:56
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/navbar/jsnavbar/load-navbar.js”. www.deadanglesinstitute.org:96:65
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/navbar/jsnavbar/navbar.js”. www.deadanglesinstitute.org:97:60
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/shared/jsshared/lang-redirect.js”. www.deadanglesinstitute.org:98:67
+The script from “https://deadangles.cloudflareaccess.com/cdn-cgi/access/2fa?state=e43113210d51f7caa358eff52f6c678e158fb45844e217afbb5f5415c2f6d636.JTdCJTIyaWF0JTIyJTNBMTc4MTU2ODQyMiUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJ3d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmclMjIlMkMlMjJyZWRpcmVjdFVSTCUyMiUzQSUyMiUyRndyaXRlciUyRndvcmtzcGFjZS05eEsybVAlMkZqcyUyRndyaXRlci1tYWluLmpzJTIyJTJDJTIyYXVkJTIyJTNBJTIyOTZlMzgwNDYxZDg0OGYzMTQ0ZTZlZTUxZmI2ODU4M2Q2NWQzM2Q5OTY4M2EzYzVjZGVkMWQ1MDJkYjg3YWIwOSUyMiUyQyUyMmlkcElkJTIyJTNBJTIyMGZhZjBkNmYtZGM1NS00Yjk0LTkyMGQtZGY1MWYxZjU5OGI4JTIyJTJDJTIyaXNTYW1lU2l0ZU5vbmVDb21wYXRpYmxlJTIyJTNBdHJ1ZSUyQyUyMmlzU1NPJTIyJTNBdHJ1ZSUyQyUyMm5vbmNlJTIyJTNBJTIybmNCOTZjUDBEZWNBNVRoSm0lMjIlMkMlMjJhcHBTZXNzaW9uSGFzaCUyMiUzQSUyMmEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYlMjIlMkMlMjJpc193YXJwJTIyJTNBZmFsc2UlN0Q%253D&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9qcy93cml0ZXItbWFpbi5qcyIsInNlcnZpY2VfdG9rZW5fc3RhdHVzIjpmYWxzZSwiaXNfd2FycCI6ZmFsc2UsImlzX2dhdGV3YXkiOmZhbHNlLCJleHAiOjE3ODE1Njg3MjEsIm5iZiI6MTc4MTU2ODQyMSwiaWF0IjoxNzgxNTY4NDIxLCJhdXRoX3N0YXR1cyI6Ik5PTkUiLCJtdGxzX2F1dGgiOnsiY2VydF9pc3N1ZXJfZG4iOiIiLCJjZXJ0X3NlcmlhbCI6IiIsImNlcnRfaXNzdWVyX3NraSI6IiIsImNlcnRfcHJlc2VudGVkIjpmYWxzZSwiY29tbW9uX25hbWUiOiIiLCJhdXRoX3N0YXR1cyI6Ik5PTkUifSwicmVhbF9jb3VudHJ5IjoiQkUiLCJhcHBfc2Vzc2lvbl9oYXNoIjoiYTI4ZjlhZWY1MWE4M2JlMzJhMWU0MTFmODFjZTdjM2ZhZWY5YjgyZjExMzc4MDFjM2YzNjViNDBkM2I1YzFkZiJ9.SAXMDLN9rBot1RDby_-xmLWElaN3NnliRUipoyBa56TXx6mRXr9Mp5VaPrlArSQUnfDUs-APm1FhMNMhVqvVrCk827mTXtFufGyLDhdd1fdX5l5lQn6WyqAw7wCKObobZNLcR4JdQ1251ZDxmudaY-ifJHHzP4dV8ssaqlE89S67lQgQPUStamfgPyZQefMqTTSk6uON5pLrcFCdDGHy0t1NvIekyHCSWDORH_UTaqg7DGk_shuBrv-g_RXX8w4eHWOGmK4qhCPmG7OiI9_jnsJ1tWF2BoXxsmUZMb5XIaWGCBlJlmZendIoxpVlF6vyevMiwJn1MWoXUZCFDHJ7Sg” was loaded even though its MIME type (“text/html”) is not a valid JavaScript MIME type. www.deadanglesinstitute.org
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js”. www.deadanglesinstitute.org:100:76
+The script from “https://deadangles.cloudflareaccess.com/cdn-cgi/access/2fa?state=d54602b3e184e95c869c91278f0f15fc198f44fcac87d8b23a56663e4e800755.JTdCJTIyaWF0JTIyJTNBMTc4MTU2ODQyMiUyQyUyMmF1dGhEb21haW4lMjIlM0ElMjJkZWFkYW5nbGVzLmNsb3VkZmxhcmVhY2Nlc3MuY29tJTIyJTJDJTIyaG9zdG5hbWUlMjIlM0ElMjJ3d3cuZGVhZGFuZ2xlc2luc3RpdHV0ZS5vcmclMjIlMkMlMjJyZWRpcmVjdFVSTCUyMiUzQSUyMiUyRndyaXRlciUyRndvcmtzcGFjZS05eEsybVAlMkZqcyUyRndyaXRlci1sb2dpbi5qcyUyMiUyQyUyMmF1ZCUyMiUzQSUyMjk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDklMjIlMkMlMjJpZHBJZCUyMiUzQSUyMjBmYWYwZDZmLWRjNTUtNGI5NC05MjBkLWRmNTFmMWY1OThiOCUyMiUyQyUyMmlzU2FtZVNpdGVOb25lQ29tcGF0aWJsZSUyMiUzQXRydWUlMkMlMjJpc1NTTyUyMiUzQXRydWUlMkMlMjJub25jZSUyMiUzQSUyMm5jQjk2Y1AwRGVjQTVUaEptJTIyJTJDJTIyYXBwU2Vzc2lvbkhhc2glMjIlM0ElMjJhMjhmOWFlZjUxYTgzYmUzMmExZTQxMWY4MWNlN2MzZmFlZjliODJmMTEzNzgwMWMzZjM2NWI0MGQzYjVjMWRmJTIyJTJDJTIyaXNfd2FycCUyMiUzQWZhbHNlJTdE&meta=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjI1YmYyMzUzZmQ5ZDYwMDMxMTliYTBlNTMxZWNhMzNiYWJiMWQ0ZGQ3YWE2YmUxZTA2ZjczMGE0OGI0YjgyNmYifQ.eyJ0eXBlIjoibWV0YSIsImF1ZCI6Ijk2ZTM4MDQ2MWQ4NDhmMzE0NGU2ZWU1MWZiNjg1ODNkNjVkMzNkOTk2ODNhM2M1Y2RlZDFkNTAyZGI4N2FiMDkiLCJob3N0bmFtZSI6Ind3dy5kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZyIsInJlZGlyZWN0X3VybCI6Ii93cml0ZXIvd29ya3NwYWNlLTl4SzJtUC9qcy93cml0ZXItbG9naW4uanMiLCJzZXJ2aWNlX3Rva2VuX3N0YXR1cyI6ZmFsc2UsImlzX3dhcnAiOmZhbHNlLCJpc19nYXRld2F5IjpmYWxzZSwiZXhwIjoxNzgxNTY4NzIxLCJuYmYiOjE3ODE1Njg0MjEsImlhdCI6MTc4MTU2ODQyMSwiYXV0aF9zdGF0dXMiOiJOT05FIiwibXRsc19hdXRoIjp7ImNlcnRfaXNzdWVyX2RuIjoiIiwiY2VydF9zZXJpYWwiOiIiLCJjZXJ0X2lzc3Vlcl9za2kiOiIiLCJjZXJ0X3ByZXNlbnRlZCI6ZmFsc2UsImNvbW1vbl9uYW1lIjoiIiwiYXV0aF9zdGF0dXMiOiJOT05FIn0sInJlYWxfY291bnRyeSI6IkJFIiwiYXBwX3Nlc3Npb25faGFzaCI6ImEyOGY5YWVmNTFhODNiZTMyYTFlNDExZjgxY2U3YzNmYWVmOWI4MmYxMTM3ODAxYzNmMzY1YjQwZDNiNWMxZGYifQ.ZS9jxAqjjDFe8enH2kgmpFntHjl1ZfwajTBH1HThDZC1zAsOBKEhjzb_8AFqEHrHUx9JGQLzuZhLs-vydaXLCeieqFhJ10DgXY8XM_yFOcaapGlMfLC2Tr4HNYuE8JJaTzKkWXWMMiZPhWQLXG8Lyn6km5rnMWKNwkNg0lLpbrNjc9g1-LJOMC9c4ZyIbgHKNiGlaENS9b_z-xZG-htS1FgVc_yt2NqvgINrJRIpFTPrEhAGJCfAJy3ec_BNrz1U4P1Lr5r0Pyu2r24UIQKsZ3SjwcuRiFYBNAX0QFHLqJft0CAjUYuK4yHdpZVRgNMcPvyMShpImVzVOZI81tKYFQ” was loaded even though its MIME type (“text/html”) is not a valid JavaScript MIME type. www.deadanglesinstitute.org
+Loading failed for the <script> with source “https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-login.js”. www.deadanglesinstitute.org:99:77
