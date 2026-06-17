@@ -1,0 +1,170 @@
+So you need me to update nginx with new thos lines:
+ssl_certificate /etc/ssl/certs/cloudflare.crt;
+ssl_certificate_key /etc/ssl/private/cloudflare.key;
+
+Before that, please check it for any error.
+
+
+# =======================================================
+# DEADANGLES INSTITUTE - COMPLETE CONFIG
+# =======================================================
+
+# HTTP - redirect all traffic to HTTPS
+server {
+    listen 80;
+    server_name deadanglesinstitute.org www.deadanglesinstitute.org api.deadanglesinstitute.org;
+    return 301 https://$server_name$request_uri;
+}
+
+# =======================================================
+# MAIN DOMAIN - HTTPS with self-signed certificate
+# =======================================================
+server {
+    listen 443 ssl;
+    server_name deadanglesinstitute.org www.deadanglesinstitute.org;
+
+    # Self-signed certificate
+    ssl_certificate /etc/ssl/private/deadangles.crt;
+    ssl_certificate_key /etc/ssl/private/deadangles.key;
+
+    # ===========================================
+    # VPS ROUTES (Dynamic content)
+    # ===========================================
+    
+    # Root serves your custom login page
+    location / {
+        proxy_pass http://127.0.0.1:3000/login/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    # Private page (protected by Cloudflare Access)
+    location /private/ {
+        proxy_pass http://127.0.0.1:3000/private/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    # Writer dashboard
+    location /writer/ {
+        proxy_pass http://127.0.0.1:3000/writer/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    # Payment pages
+    location /subscribe/ {
+        proxy_pass http://127.0.0.1:3000/subscribe/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /succes/ {
+        proxy_pass http://127.0.0.1:3000/succes/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /cancel/ {
+        proxy_pass http://127.0.0.1:3000/cancel/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /premium/ {
+        proxy_pass http://127.0.0.1:3000/premium/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    # Writer files (documents)
+    location /writer-files/ {
+        proxy_pass http://127.0.0.1:3000/writer-files/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    # API calls
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /health {
+        proxy_pass http://127.0.0.1:3000/health;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    # ===========================================
+    # STATIC ASSETS (for login portal)
+    # ===========================================
+    
+    location /live/ {
+        proxy_pass http://127.0.0.1:3000/live/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /navbar/ {
+        proxy_pass http://127.0.0.1:3000/navbar/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /shared/ {
+        proxy_pass http://127.0.0.1:3000/shared/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    location /pictures/ {
+        proxy_pass http://127.0.0.1:3000/pictures/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+    
+    # ===========================================
+    # GITHUB PAGES ROUTES (Static content)
+    # ===========================================
+    
+    # French content
+    location /fr/ {
+        proxy_pass https://747imhotep.github.io/747civilbarb/fr/;
+        proxy_set_header Host 747imhotep.github.io;
+        proxy_ssl_server_name on;
+    }
+    
+    # English content
+    location /en/ {
+        proxy_pass https://747imhotep.github.io/747civilbarb/en/;
+        proxy_set_header Host 747imhotep.github.io;
+        proxy_ssl_server_name on;
+    }
+}
+
+# =======================================================
+# API SUBDOMAIN - HTTPS with self-signed certificate
+# =======================================================
+server {
+    listen 443 ssl;
+    server_name api.deadanglesinstitute.org;
+
+    # line 157
+    # Self-signed certificate
+    ssl_certificate /etc/ssl/private/deadangles.crt;
+    ssl_certificate_key /etc/ssl/private/deadangles.key;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
