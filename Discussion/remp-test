@@ -1,0 +1,74 @@
+please check for error
+
+
+
+# HTTP → HTTPS redirect
+server {
+    listen 80;
+    server_name www.deadanglesinstitute.org deadanglesinstitute.org;
+    return 301 https://$server_name$request_uri;
+}
+
+# HTTPS
+server {
+    listen 443 ssl;
+    server_name www.deadanglesinstitute.org deadanglesinstitute.org;
+
+    ssl_certificate /etc/letsencrypt/live/deadanglesinstitute.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/deadanglesinstitute.org/privkey.pem;
+
+    # ===========================================
+    # VPS ROUTES (Send to Node.js)
+    # ===========================================
+    
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    
+    location /private/ {
+        proxy_pass http://127.0.0.1:3000/private/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /writer/ {
+        proxy_pass http://127.0.0.1:3000/writer/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    location /health {
+        proxy_pass http://127.0.0.1:3000/health;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+    }
+
+    # ===========================================
+    # EVERYTHING ELSE → GitHub Pages
+    # ===========================================
+    location / {
+        proxy_pass https://747imhotep.github.io/747civilbarb;
+        proxy_set_header Host 747imhotep.github.io;
+        proxy_ssl_server_name on;
+    }
+}
+
