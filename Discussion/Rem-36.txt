@@ -1,0 +1,23 @@
+https://www.deadanglesinstitute.org/private/
+
+it works. selector page is shown
+
+
+
+https://www.deadanglesinstitute.org/fr/
+
+{"error":"Not found on VPS"}
+
+
+https://www.deadanglesinstitute.org/premium/
+
+{"error":"Not found on VPS"}
+
+
+https://www.deadanglesinstitute.org/writer/
+
+cloudflare Access (email + code)
+please see picture
+
+
+
