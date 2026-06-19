@@ -31,39 +31,43 @@ curl http://localhost:3000/health/
 
 
   # Test VPS directly
-1. curl -I https://deadanglesinstitute.org/writer/
+1. curl -I https://deadanglesinstitute.org/
 
-HTTP/1.1 200 OK
-Server: nginx/1.18.0 (Ubuntu)
-Date: Thu, 18 Jun 2026 22:54:57 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 9727
-Connection: keep-alive
-X-Powered-By: Express
-Vary: Origin
-Access-Control-Allow-Credentials: true
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0
-Last-Modified: Thu, 18 Jun 2026 14:57:33 GMT
-ETag: W/"25ff-19edb3cc661"
+HTTP/2 200 
+date: Fri, 19 Jun 2026 08:47:47 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+cache-control: public, max-age=0
+last-modified: Tue, 16 Jun 2026 09:21:05 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qCIFD1L%2Fyxmi09sDCc%2BClmAvQFfUv%2Bw8AbJBVsaO70u%2F%2BIlmRbWjhsAYQ1f0AKtyRWbVXvJvdKzGTY4w5tLTh4A3EclIZOalJmrMPxHzOEwly9VfMPFj2NxoOKNbPgii%2Bbj2axDJmliZ4wcgvbyXfNB%2BbIJVCQ%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-cache-status: DYNAMIC
+cf-ray: a0e145607a5fce55-SIN
+alt-svc: h3=":443"; ma=86400
 
 
 
-2. curl -I https://deadanglesinstitute.org/
 
-HTTP/1.1 200 OK
-Server: nginx/1.18.0 (Ubuntu)
-Date: Thu, 18 Jun 2026 23:17:18 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 2440
-Connection: keep-alive
-X-Powered-By: Express
-Vary: Origin
-Access-Control-Allow-Credentials: true
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0
-Last-Modified: Tue, 16 Jun 2026 09:21:05 GMT
-ETag: W/"988-19ecfbc0176"
+2. curl -I https://deadanglesinstitute.org/writer/
+
+HTTP/2 200 
+date: Fri, 19 Jun 2026 08:48:15 GMT
+content-type: text/html; charset=utf-8
+server: cloudflare
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+cache-control: public, max-age=0
+last-modified: Thu, 18 Jun 2026 14:57:33 GMT
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=xXnwU4Sm1grYJJ3ZP1k%2BoDZqY%2FzRszcJ3sovcyJhGy4Ftf2IbulHsPesirdXQjBKvC6Ntj%2BVwyh6%2F49pu4WYWv7UR9ZZ8COfBMnNp%2BFXpMZ9IifjwPkeKSmjM7OPNo8kymqCA59GaH80mdrgANphMVde6B9h2A%3D%3D"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-cache-status: DYNAMIC
+cf-ray: a0e14611d888fd24-SIN
+alt-svc: h3=":443"; ma=86400
+
 
 
 
@@ -71,19 +75,59 @@ ETag: W/"988-19ecfbc0176"
 
 3. curl -I https://deadanglesinstitute.org/private/
 
-HTTP/1.1 200 OK
-Server: nginx/1.18.0 (Ubuntu)
-Date: Thu, 18 Jun 2026 22:54:42 GMT
-Content-Type: text/html; charset=utf-8
-Content-Length: 844
-Connection: keep-alive
-X-Powered-By: Express
-Vary: Origin
-Access-Control-Allow-Credentials: true
-Accept-Ranges: bytes
-Cache-Control: public, max-age=0
-Last-Modified: Sat, 13 Jun 2026 21:59:04 GMT
-ETag: W/"34c-19ec2fee2cf"
+HTTP/2 301 
+date: Fri, 19 Jun 2026 08:48:46 GMT
+content-type: text/html; charset=UTF-8
+server: cloudflare
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+x-powered-by: Express
+vary: Origin
+access-control-allow-credentials: true
+content-security-policy: default-src 'none'
+x-content-type-options: nosniff
+location: /private/
+cf-cache-status: DYNAMIC
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=O1sgNDZ5Vd3geSfRDG8eEC6tSDX5T8B%2FPtCamAC3jI6rEzjIhs3Z2IGKnabF6X6xAotc5as2ebzITt25KBbeFPOP3sn98M29BasXDXuxhJCEuGM3G20xe9e2whwn2p52ZPNM3W43I7Y1xBXEgaVv9ItoMB4DyA%3D%3D"}]}
+cf-ray: a0e146d20e9b926c-SIN
+alt-svc: h3=":443"; ma=86400
 
+
+
+
+https://www.deadanglesinstitute.org/private/
+F12 CONSOLE:
+GET
+https://www.deadanglesinstitute.org/private/
+[HTTP/3 404  28ms]
+
+GET
+https://www.deadanglesinstitute.org/shared/cssshared/base.css
+[HTTP/3 200 OK 0ms]
+
+
+
+
+curl -I https://deadanglesinstitute.org/writer/
+GET
+https://deadanglesinstitute.org/writer/
+[HTTP/3 200  202ms]
+
+GET
+https://deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
+[HTTP/3 404  20ms]
+
+GET
+https://deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
+[HTTP/3 404  21ms]
+
+GET
+https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js
+NS_ERROR_CORRUPTED_CONTENT
+
+Loading module from “https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js” was blocked because of a disallowed MIME type (“application/json”). writer
+Loading failed for the module with source “https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js”. writer:231:78
+GET
+https://deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
+[HTTP/3 200  0ms]
 
 
