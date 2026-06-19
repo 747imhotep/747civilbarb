@@ -1,178 +1,26 @@
-NOW IT WORKS BUT NOT PROPERLY
+There are many bypass possibilities
 
 
-https://deadanglesinstitute.org/
-
-it opens Cloudflare Access 
-
-F12 CONSOLE:
-
-
-Waiting for navbar elements (attempt 1)... navbar.js:20:17
-Waiting for navbar elements (attempt 2)... navbar.js:20:17
-Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://www.cloudflare.com/cdn-cgi/trace. (Reason: CORS request did not succeed). Status code: (null).
-Waiting for navbar elements (attempt 3)... navbar.js:20:17
-Content-Security-Policy warnings 4
-Ignoring unsupported entryTypes: longtask. recaptcha__en.js:102:485
-Waiting for navbar elements (attempt 4)... navbar.js:20:17
-Partitioned cookie or storage access was provided to “https://www.google.com/recaptcha/api2/anchor?ar=1&k=6Lf_JEgaAAAAAO_blQh_do9SoSt2syEArU8xG6Ev&co=aHR0cHM6Ly9kZWFkYW5nbGVzaW5zdGl0dXRlLm9yZzo0NDM.&hl=en&v=MerVUtRoajKEbP7pLiGXkL28&size=invisible&anchor-ms=20000&execute-ms=30000&cb=al7atw3397jv” because it is loaded in the third-party context and dynamic state partitioning is enabled. recaptcha__en.js:582:346
-Waiting for navbar elements (attempt 5)... navbar.js:20:17
-Waiting for navbar elements (attempt 6)... navbar.js:20:17
-Waiting for navbar elements (attempt 7)... navbar.js:20:17
-Waiting for navbar elements (attempt 8)... navbar.js:20:17
-Waiting for navbar elements (attempt 9)... navbar.js:20:17
-Waiting for navbar elements (attempt 10)... navbar.js:20:17
-Waiting for navbar elements (attempt 11)... navbar.js:20:17
-Waiting for navbar elements (attempt 12)... navbar.js:20:17
-Waiting for navbar elements (attempt 13)... navbar.js:20:17
-Waiting for navbar elements (attempt 14)... navbar.js:20:17
-Waiting for navbar elements (attempt 15)... navbar.js:20:17
-Waiting for navbar elements (attempt 16)... navbar.js:20:17
-Waiting for navbar elements (attempt 17)... navbar.js:20:17
-Waiting for navbar elements (attempt 18)... navbar.js:20:17
-Waiting for navbar elements (attempt 19)... navbar.js:20:17
-
-
-
-Click on "Accès au site" button (deadanglesinstitue.org/private/)
-
-it opens language selector (it should open Cloudflare Access)
-
-F12 CONSOLE:
 GET
 https://deadanglesinstitute.org/private/
-[HTTP/3 304  200ms]
+[HTTP/3 200  205ms]
 
 GET
-https://deadanglesinstitute.org/private/css/selector.css
-[HTTP/3 200 OK 0ms]
+https://deadanglesinstitute.org/my-worker/public/private/css/selector.css
+[HTTP/3 404  21ms]
 
 GET
 https://deadanglesinstitute.org/private/shared/jsshared/lang-redirect.js
-[HTTP/3 404  532ms]
+[HTTP/3 404  25ms]
 
 GET
-https://deadanglesinstitute.org/private/js/select-lang.js
-[HTTP/3 200  0ms]
+https://deadanglesinstitute.org/my-worker/public/private/js/select-lang.js
+[HTTP/3 404  24ms]
 
+Loading failed for the <script> with source “https://deadanglesinstitute.org/my-worker/public/private/js/select-lang.js”. private:27:69
 Loading failed for the <script> with source “https://deadanglesinstitute.org/private/shared/jsshared/lang-redirect.js”. private:26:58
 GET
 https://deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
-[HTTP/1.1 200 OK 0ms]
-
-
-
-if click on "PORTAIL REDACTEURS" button (deadanglesinstitute.org/writer/)
-
-F12 CONSOLE:
-
-GET
-https://deadanglesinstitute.org/writer/
-[HTTP/3 200  563ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-layout.css
-[HTTP/3 200  572ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/css/writer-components.css
-[HTTP/3 200  760ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/writer-main.js
-[HTTP/3 200  535ms]
-
-GET
-https://deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
-[HTTP/3 200  572ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/config.js
-[HTTP/3 200  550ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/auth.js
-[HTTP/3 200  522ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/data.js
-[HTTP/3 200  587ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/storage.js
-[HTTP/3 200  554ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/logout.js
-[HTTP/3 200  563ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/ui.js
-[HTTP/3 200  731ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/forms.js
-[HTTP/3 200  734ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/reviewer.js
-[HTTP/3 200  557ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/references-manager.js
-[HTTP/3 200  585ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/api.js
-[HTTP/3 200  564ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/utils.js
-[HTTP/3 200  569ms]
-
-GET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/js/modules/file-scanner.js
-[HTTP/3 200  542ms]
-
-🚀 Initializing writer dashboard... writer-main.js:147:13
-GET
-https://deadanglesinstitute.org/pictures/fav-icone/fav-icone04.png
 [HTTP/3 200  0ms]
 
-✅ Writer from manual entry: imhotep@lunyns.com auth.js:61:21
-✅ Writer email: imhotep@lunyns.com writer-main.js:158:13
-✅ Writer pseudonym: imhotep writer-main.js:159:13
-📁 Scanning for documents in step1-available... data.js:33:17
-📁 Scanning for available documents... file-scanner.js:18:17
-📁 Found 4 documents in available folder file-scanner.js:23:21
-💾 Saved to sessionStorage: cob_drafts_backup storage.js:26:17
-✅ Loaded drafts from dynamic scanner: 4 documents data.js:40:21
-📥 Loading progress from: /writer/workspace-9xK2mP/data/progress.json data.js:99:17
-XHRGET
-https://deadanglesinstitute.org/writer/workspace-9xK2mP/data/progress.json
-[HTTP/3 404  200ms]
-
-❌ Failed to load progress.json: 404 data.js:122:21
-📚 Loading references from API... references-manager.js:27:17
-📚 Loaded 2 document references references-manager.js:36:21
-🔄 Force refreshing drafts from scanner... data.js:231:13
-📁 Scanning for available documents... file-scanner.js:18:17
-🔄 Force refreshing drafts from scanner... data.js:231:13
-📁 Scanning for available documents... file-scanner.js:18:17
-🔄 Force refreshing drafts from scanner... data.js:231:13
-📁 Scanning for available documents... file-scanner.js:18:17
-📁 Found 4 documents in available folder file-scanner.js:23:21
-💾 Saved to sessionStorage: cob_drafts_backup storage.js:26:17
-✅ Drafts refreshed: 4 documents data.js:236:17
-🇫🇷 French drafts found: 4 ui.js:43:13
-📁 Found 4 documents in available folder file-scanner.js:23:21
-💾 Saved to sessionStorage: cob_drafts_backup storage.js:26:17
-✅ Drafts refreshed: 4 documents data.js:236:17
-🇬🇧 English drafts found: 4 ui.js:69:13
-📁 Found 4 documents in available folder file-scanner.js:23:21
-💾 Saved to sessionStorage: cob_drafts_backup storage.js:26:17
-✅ Drafts refreshed: 4 documents data.js:236:17
-🔘 Initializing logout button... logout.js:12:13
-✅ Logout button found logout.js:21:13
-🎉 Dashboard initialized successfully! writer-main.js:193:13
 
