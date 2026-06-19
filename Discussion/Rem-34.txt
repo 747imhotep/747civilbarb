@@ -1,26 +1,11 @@
-There are many bypass possibilities
+curl -I https://deadanglesinstitute.org/writer/
+
+HTTP/2 200
 
 
-GET
-https://deadanglesinstitute.org/private/
-[HTTP/3 200  205ms]
+curl -I https://deadanglesinstitute.org/my-worker/
 
-GET
-https://deadanglesinstitute.org/my-worker/public/private/css/selector.css
-[HTTP/3 404  21ms]
+HTTP/2 404
 
-GET
-https://deadanglesinstitute.org/private/shared/jsshared/lang-redirect.js
-[HTTP/3 404  25ms]
-
-GET
-https://deadanglesinstitute.org/my-worker/public/private/js/select-lang.js
-[HTTP/3 404  24ms]
-
-Loading failed for the <script> with source “https://deadanglesinstitute.org/my-worker/public/private/js/select-lang.js”. private:27:69
-Loading failed for the <script> with source “https://deadanglesinstitute.org/private/shared/jsshared/lang-redirect.js”. private:26:58
-GET
-https://deadanglesinstitute.org/pictures/fav-icone/fav-icone03.png
-[HTTP/3 200  0ms]
 
 
