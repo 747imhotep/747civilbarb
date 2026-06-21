@@ -10,11 +10,14 @@
   <!-- site-specific styles -->
   <link rel="stylesheet" href="/live/css/writer-login.css">
 
-  <!-- shared UI components --->
+  <!-- shared UI components -->
   <link rel="stylesheet" href="/navbar/cssnavbar/navbar.css">
   <link rel="stylesheet" href="/navbar/csssnippet/snippet.css">
   <link rel="stylesheet" href="/shared/cssshared/cta.css">
   <link rel="stylesheet" href="/shared/cssshared/footer.css">
+
+  <!-- Portal custom styles -->
+  <link rel="stylesheet" href="/live/css/portal.css">
 
   <!-- favicon -->
   <link rel="icon" href="/pictures/fav-icone/fav-icone03.png" type="image/png">
@@ -24,20 +27,23 @@
   <div id="page-transition"></div>
 
   <div class="coming-soon">
-    <h1>PORTAIL D'ACCÈS</h1>
-    <h2>Dead Angles Institute <span class="tm">™</span></h2>
-    
+    <h1 id="portal-title">PORTAIL D'ACCÈS</h1>
+    <h2 id="portal-subtitle">Dead Angles Institute <span class="tm">™</span></h2>
 
-    <!-- I'd like to adapt  use the select-lang.js and lang-redirect.js  -->
     <div class="lang-container">
-      <p id="lang-text">The website will be available soon.</p>
+      <p id="portal-description">Le site sera prochainement accessible.</p>
+    </div>
+
+    <!-- Language toggle button -->
+    <div class="lang-toggle-wrapper">
+      <button id="lang-toggle" class="btn-toggle">🇬🇧 English</button>
     </div>
 
     <div class="cta-buttons">
-      <a href="https://deadanglesinstitute.org/private/" class="btn-primary">Accès au site</a>
-      <button id="openAccessForm" class="btn-secondary">Demande d’accès</button>
+      <a href="https://deadanglesinstitute.org/private/" id="btn-site" class="btn-primary">Accès au site</a>
+      <button id="btn-request" class="btn-secondary">Demande d’accès</button>
       <br><br>
-      <a href="https://deadanglesinstitute.org/writer/" class="btn-primary">PORTAIL RÉDACTEURS</a>
+      <a href="https://deadanglesinstitute.org/writer/" id="btn-writer" class="btn-primary">PORTAIL RÉDACTEURS</a>
     </div>
 
     <div id="sender-form-container" style="display:none;">
@@ -45,7 +51,7 @@
     </div>
   </div>
 
-  <!-- Corrected paths - using /live/ and /writer/ instead of /my-worker/public/ -->
+  <!-- Scripts -->
   <script src="/live/js/sender-init.js" defer></script>
   <script src="/live/js/portal.js" defer></script>
   <script src="/live/js/lazy.js" defer></script>
@@ -54,18 +60,5 @@
   <script src="/navbar/jsnavbar/navbar.js" defer></script>
   <script src="/shared/jsshared/lang-redirect.js" defer></script>
   <script src="/writer/workspace-9xK2mP/js/writer-login.js" defer></script>
-
-  <script>
-    document.getElementById('openAccessForm').addEventListener('click', function() {
-      var container = document.getElementById('sender-form-container');
-      if (container.style.display === 'none' || container.style.display === '') {
-        container.style.display = 'block';
-      } else {
-        container.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
-
-
