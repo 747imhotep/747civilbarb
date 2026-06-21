@@ -1,48 +1,88 @@
 // =======================================================
 // PORTAL JS - Dead Angles Institute
-// Handles: Language selection, access form toggle
+// Handles: Language toggle, text translations, form toggle
 // =======================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Language selection text animation
-    const texts = [
-        "The website will be available soon.",
-        "Le site sera prochainement accessible."
-    ];
+    let currentLang = 'fr'; // Default language
 
-    let index = 0;
-    const el = document.getElementById("lang-text");
+    // ===========================================
+    // Translation dictionary
+    // ===========================================
+    const translations = {
+        fr: {
+            title: 'PORTAIL D\'ACCÈS',
+            subtitle: 'Dead Angles Institute ™',
+            description: 'Le site sera prochainement accessible.',
+            btnSite: 'Accès au site',
+            btnRequest: 'Demande d\'accès',
+            btnWriter: 'PORTAIL RÉDACTEURS',
+            langToggle: '🇬🇧 English'
+        },
+        en: {
+            title: 'ACCESS PORTAL',
+            subtitle: 'Dead Angles Institute ™',
+            description: 'The website will be available soon.',
+            btnSite: 'Access the site',
+            btnRequest: 'Request access',
+            btnWriter: 'WRITERS PORTAL',
+            langToggle: '🇫🇷 Français'
+        }
+    };
 
-    if (el) {
-        setInterval(() => {
-            el.classList.add("fade-out");
+    // ===========================================
+    // Apply translations
+    // ===========================================
+    function applyTranslations(lang) {
+        const t = translations[lang];
+        if (!t) return;
 
-            setTimeout(() => {
-                index = (index + 1) % texts.length;
-                el.textContent = texts[index];
-                el.classList.remove("fade-out");
-            }, 500);
-        }, 2000);
+        document.getElementById('portal-title').textContent = t.title;
+        document.getElementById('portal-subtitle').innerHTML = t.subtitle;
+        document.getElementById('portal-description').textContent = t.description;
+        document.getElementById('btn-site').textContent = t.btnSite;
+        document.getElementById('btn-request').textContent = t.btnRequest;
+        document.getElementById('btn-writer').textContent = t.btnWriter;
+        document.getElementById('lang-toggle').textContent = t.langToggle;
+
+        currentLang = lang;
+        document.documentElement.lang = (lang === 'fr') ? 'fr' : 'en';
     }
 
+    // ===========================================
+    // Language toggle
+    // ===========================================
+    document.getElementById('lang-toggle').addEventListener('click', function() {
+        const newLang = (currentLang === 'fr') ? 'en' : 'fr';
+        applyTranslations(newLang);
+    });
+
+    // ===========================================
     // Access form toggle
-    const openAccessBtn = document.getElementById('openAccessForm');
+    // ===========================================
+    const openAccessBtn = document.getElementById('btn-request');
     const senderContainer = document.getElementById('sender-form-container');
 
     if (openAccessBtn && senderContainer) {
         openAccessBtn.addEventListener('click', function() {
             if (senderContainer.style.display === 'none' || senderContainer.style.display === '') {
                 senderContainer.style.display = 'block';
+                senderContainer.classList.add('form-success');
+                setTimeout(() => {
+                    senderContainer.classList.remove('form-success');
+                }, 1000);
             } else {
                 senderContainer.style.display = 'none';
             }
         });
     }
 
-    // Language redirect (after 30 minutes of inactivity)
+    // ===========================================
+    // Language redirect (after 30 minutes)
+    // ===========================================
     const delay = 1800000; // 30 minutes
-    const lang = navigator.language || navigator.userLanguage;
-    const target = lang.startsWith('fr') ? '/fr/' : '/en/';
+    const browserLang = navigator.language || navigator.userLanguage;
+    const target = browserLang.startsWith('fr') ? '/fr/' : '/en/';
     let redirected = false;
 
     const timer = setTimeout(() => {
@@ -58,4 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(timer);
         });
     });
+
+    // ===========================================
+    // Apply initial language (French by default)
+    // ===========================================
+    applyTranslations('fr');
 });
