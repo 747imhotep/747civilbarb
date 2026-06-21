@@ -1,0 +1,102 @@
+/* =======================================================
+   PORTAL CSS - Dead Angles Institute
+   Custom styles for the access portal
+   ======================================================= */
+
+/* Button enhancements */
+.btn-primary,
+.btn-secondary {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Glow effect on hover */
+.btn-primary::after,
+.btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover::after,
+.btn-secondary:hover::after {
+    opacity: 1;
+}
+
+/* Language text animation */
+#lang-text {
+    transition: opacity 0.5s ease;
+}
+
+#lang-text.fade-out {
+    opacity: 0;
+}
+
+/* Form container animation */
+#sender-form-container {
+    transition: all 0.3s ease;
+}
+
+#sender-form-container.form-success {
+    animation: successPulse 1s ease;
+}
+
+/* Language toggle button */
+.lang-toggle-wrapper {
+    margin: 15px 0;
+}
+
+.btn-toggle {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+
+@keyframes successPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
