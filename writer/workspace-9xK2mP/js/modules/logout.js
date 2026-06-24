@@ -1,12 +1,11 @@
 // =================================================
-// LOGOUT MODULE - SIMPLIFIED - redirected to login page
+// LOGOUT MODULE - Cloudflare Access Logout
 // logout.js
-// Logout button logic - Redirect to login page
+// Logout button logic - Redirect to Cloudflare Access logout
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 64 lines - Updated: 2026-06-02 - 03h45
-
+// 69 lines - Updated: 2026-06-24 - Redirect to gateway after Cloudflare logout
 
 export function initLogoutButton() {
     console.log('🔘 Initializing logout button...');
@@ -30,16 +29,20 @@ export function initLogoutButton() {
         
         console.log('🚪 Logout button clicked');
         
-        const confirmLogout = confirm('Déconnexion / Logout?\n\nVous allez être redirigé vers le portail d\'accès.');
+        const confirmLogout = confirm('Déconnexion / Logout?\n\nVous allez être déconnecté de Cloudflare Access et redirigé vers l\'accueil.');
         
         if (confirmLogout) {
-            console.log('✅ User confirmed logout, clearing data...');
+            console.log('✅ User confirmed logout, redirecting to Cloudflare Access logout...');
             
-            // Clear all storage
-            sessionStorage.clear();
-            localStorage.clear();
+            // Clear local and session storage
+            try {
+                sessionStorage.clear();
+                localStorage.clear();
+            } catch(e) {
+                console.log('Error clearing storage:', e);
+            }
             
-            // Clear cookies
+            // Clear cookies (including CF Access cookies)
             try {
                 document.cookie.split(";").forEach(function(c) {
                     document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/");
@@ -48,10 +51,12 @@ export function initLogoutButton() {
                 console.log('Error clearing cookies:', e);
             }
             
-            // CORRECT REDIRECT TO YOUR LOGIN PAGE
-            const loginUrl = 'https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/login/';
-            console.log('Redirecting to:', loginUrl);
-            window.location.href = loginUrl;
+            // Cloudflare Access logout URL
+            // Redirect to gateway page after logout
+            const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://www.deadanglesinstitute.org/w_gateway/w_gateway.html';
+            
+            console.log('🔓 Redirecting to Cloudflare Access logout:', logoutUrl);
+            window.location.href = logoutUrl;
         }
     });
 }
