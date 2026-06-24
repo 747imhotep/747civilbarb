@@ -12,14 +12,16 @@
 
     // ===== CONFIGURATION =====
     var CONFIG = {
-        // Cloudflare Access logout URL
-        LOGOUT_URL: 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout',
+    // Cloudflare Access logout URL (same as before)
+    LOGOUT_URL: 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout',
 
-        // Protected portal URL (where writers go after login)
-        PORTAL_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
+    // Protected portal URL (your new Access-protected path)
+    PORTAL_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
+    
+    // URL to check if logout worked
+    CHECK_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
 
-        // URL to check if logout worked (use production URL)
-        CHECK_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
+
 
         // How often to check if logout worked (ms)
         CHECK_INTERVAL: 800,
