@@ -2,97 +2,150 @@
    LOGOFF / LOGOUT STYLES
    Civilisation ou Barbarie - Writer Dashboard
    ================================================= */
+/* lines 293 - */
 
-
-
-   /* Logout Confirmation Modal (optional) */
-
+/* ===== LOGOUT CONFIRMATION MODAL ===== */
 .logoff-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2000;
-    backdrop-filter: blur(5px);
+    z-index: 99999;
+    animation: fadeInScale 0.25s ease;
 }
 
 .logoff-modal {
-    background: white;
-    border-radius: 28px;
-    padding: 2rem;
-    max-width: 400px;
-    width: 90%;
+    background: linear-gradient(145deg, #240046, #3c0a6d);
+    border-radius: 24px;
+    padding: 45px 50px 40px;
+    max-width: 420px;
+    width: 92%;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    animation: fadeInScale 0.2s ease;
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeInScale 0.3s ease;
 }
 
 .logoff-modal h3 {
-    color: #2c3e2f;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0.3px;
 }
 
 .logoff-modal p {
-    color: #6b5e4a;
-    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 4px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.logoff-modal .logoff-subtext {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 32px 0;
 }
 
 .logoff-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 14px;
     justify-content: center;
 }
 
-.logoff-confirm {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 40px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.logoff-confirm:hover {
-    background: #c0392b;
-    transform: scale(1.02);
-}
-
 .logoff-cancel {
-    background: #95a5a6;
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 11px 34px;
+    border-radius: 50px;
     cursor: pointer;
+    font-size: 15px;
     font-weight: 600;
-    transition: all 0.2s ease;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    transition: all 0.25s ease;
+    letter-spacing: 0.2px;
 }
 
 .logoff-cancel:hover {
-    background: #7f8c8d;
-    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    transform: translateY(-1px);
 }
 
-/* Logout button in header - additional styles */
+.logoff-confirm {
+    background: linear-gradient(135deg, #6c63ff, #5a4bd1);
+    color: #fff;
+    border: none;
+    padding: 11px 34px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.35);
+    transition: all 0.25s ease;
+    letter-spacing: 0.2px;
+}
+
+.logoff-confirm:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(108, 99, 255, 0.5);
+}
+
+.logoff-confirm:active {
+    transform: translateY(0px);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+    .logoff-modal {
+        padding: 35px 25px 30px;
+    }
+    
+    .logoff-modal h3 {
+        font-size: 20px;
+    }
+    
+    .logoff-modal p {
+        font-size: 14px;
+    }
+    
+    .logoff-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logoff-cancel,
+    .logoff-confirm {
+        padding: 12px 20px;
+        width: 100%;
+    }
+}
+
+/* ===== LOGOUT BUTTON IN HEADER ===== */
 .logout-btn {
     background: linear-gradient(135deg, #2c3e2f 0%, #1a2a1d 100%);
     border: none;
@@ -117,7 +170,7 @@
     transform: translateY(1px);
 }
 
-/* Exit page specific styles */
+/* ===== EXIT PAGE SPECIFIC STYLES ===== */
 .exit-page {
     min-height: 100vh;
     display: flex;
@@ -181,155 +234,4 @@
     margin-top: 1rem;
 }
 
-/* =============================================
-   NEW LOGOUT MODAL STYLES
-   Added: 2026-06-25
-   ============================================= */
 
-/* Overlay with blur effect */
-.logoff-overlay-new {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-    animation: fadeInScale 0.25s ease;
-}
-
-/* Modal with gradient background #240046 → #3c0a6d */
-.logoff-modal-new {
-    background: linear-gradient(145deg, #240046, #3c0a6d);
-    border-radius: 24px;
-    padding: 45px 50px 40px;
-    max-width: 420px;
-    width: 92%;
-    text-align: center;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    animation: fadeInScale 0.3s ease;
-}
-
-/* Icon */
-.logoff-modal-icon {
-    font-size: 52px;
-    margin-bottom: 12px;
-    display: block;
-}
-
-/* Title */
-.logoff-modal-title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0 0 10px 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    letter-spacing: 0.3px;
-}
-
-/* Main text */
-.logoff-modal-text {
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0 0 4px 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-/* Subtext */
-.logoff-modal-subtext {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0 0 32px 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-/* Buttons container */
-.logoff-buttons-new {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-}
-
-/* Cancel button */
-.logoff-cancel-new {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 11px 34px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    transition: all 0.25s ease;
-    letter-spacing: 0.2px;
-}
-
-.logoff-cancel-new:hover {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
-    transform: translateY(-1px);
-}
-
-/* Confirm button */
-.logoff-confirm-new {
-    background: linear-gradient(135deg, #6c63ff, #5a4bd1);
-    color: #fff;
-    border: none;
-    padding: 11px 34px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.35);
-    transition: all 0.25s ease;
-    letter-spacing: 0.2px;
-}
-
-.logoff-confirm-new:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(108, 99, 255, 0.5);
-}
-
-.logoff-confirm-new:active {
-    transform: translateY(0px);
-}
-
-/* ===== RESPONSIVE FOR NEW MODAL ===== */
-@media (max-width: 500px) {
-    .logoff-modal-new {
-        padding: 35px 25px 30px;
-    }
-    
-    .logoff-modal-icon {
-        font-size: 42px;
-    }
-    
-    .logoff-modal-title {
-        font-size: 20px;
-    }
-    
-    .logoff-modal-text {
-        font-size: 14px;
-    }
-    
-    .logoff-buttons-new {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .logoff-cancel-new,
-    .logoff-confirm-new {
-        padding: 12px 20px;
-        width: 100%;
-    }
-}
