@@ -5,7 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 69 lines - Updated: 2026-06-24 - Redirect to gateway after Cloudflare logout
+// 69 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
 
 export function initLogoutButton() {
     console.log('🔘 Initializing logout button...');
@@ -52,8 +52,8 @@ export function initLogoutButton() {
             }
             
             // Cloudflare Access logout URL
-            // Redirect to gateway page after logout
-            const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://www.deadanglesinstitute.org/w_gateway/w_gateway.html';
+            // Redirect to homepage after logout
+            const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://deadanglesinstitute.org/';
             
             console.log('🔓 Redirecting to Cloudflare Access logout:', logoutUrl);
             window.location.href = logoutUrl;
