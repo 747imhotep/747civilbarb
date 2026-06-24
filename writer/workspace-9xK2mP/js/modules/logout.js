@@ -5,8 +5,10 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 146 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
+// 148 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
 // Updated: 2026-06-24 - Custom modal with CSS separated - uses logoff.css for styles
+
+
 
 
 
@@ -44,7 +46,7 @@ export function setLogoutButtonVisibility(visible) {
 
 /**
  * Show custom logout confirmation modal
- * Uses classes from logoff.css
+ * Uses new CSS classes from logoff.css
  */
 function showLogoutModal() {
     // Check if modal already exists
@@ -52,16 +54,16 @@ function showLogoutModal() {
         return;
     }
     
-    // Create modal overlay
+    // Create modal overlay using NEW class
     const overlay = document.createElement('div');
     overlay.id = 'logoutModal';
-    overlay.className = 'logoff-overlay';
+    overlay.className = 'logoff-overlay-new';  // ← CHANGED
     
-    // Create modal box
+    // Create modal box using NEW class
     const modal = document.createElement('div');
-    modal.className = 'logoff-modal';
+    modal.className = 'logoff-modal-new';  // ← CHANGED
     
-    // Modal content with CSS classes
+    // Modal content with NEW classes
     modal.innerHTML = `
         <span class="logoff-modal-icon">🔐</span>
         <h3 class="logoff-modal-title">Déconnexion</h3>
@@ -71,9 +73,9 @@ function showLogoutModal() {
         <p class="logoff-modal-subtext">
             Vous serez redirigé vers la page d'accueil.
         </p>
-        <div class="logoff-buttons">
-            <button id="logoutCancelBtn" class="logoff-cancel">Annuler</button>
-            <button id="logoutConfirmBtn" class="logoff-confirm">Confirmer</button>
+        <div class="logoff-buttons-new">  <!-- ← CHANGED -->
+            <button id="logoutCancelBtn" class="logoff-cancel-new">Annuler</button>  <!-- ← CHANGED -->
+            <button id="logoutConfirmBtn" class="logoff-confirm-new">Confirmer</button>  <!-- ← CHANGED -->
         </div>
     `;
     
