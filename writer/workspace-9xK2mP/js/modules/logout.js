@@ -5,8 +5,10 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 151 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
-// Updated: 2026-06-24 - Custom modal with CSS separated
+// 142 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
+// Updated: 2026-06-24 - Custom modal with CSS separated - uses logoff.css for styles
+
+
 
 
 export function initLogoutButton() {
@@ -43,6 +45,7 @@ export function setLogoutButtonVisibility(visible) {
 
 /**
  * Show custom logout confirmation modal
+ * Uses classes from logoff.css
  */
 function showLogoutModal() {
     // Check if modal already exists
@@ -53,29 +56,20 @@ function showLogoutModal() {
     // Create modal overlay
     const overlay = document.createElement('div');
     overlay.id = 'logoutModal';
-    overlay.className = 'logout-modal-overlay';
+    overlay.className = 'logoff-overlay';
     
     // Create modal box
     const modal = document.createElement('div');
-    modal.className = 'logout-modal-box';
+    modal.className = 'logoff-modal';
     
     // Modal content
     modal.innerHTML = `
-        <div class="logout-modal-icon">🔐</div>
-        <h2 class="logout-modal-title">Déconnexion</h2>
-        <p class="logout-modal-text">
-            Vous allez être déconnecté de votre session rédacteur.
-        </p>
-        <p class="logout-modal-subtext">
-            Vous serez redirigé vers la page d'accueil.
-        </p>
-        <div class="logout-modal-actions">
-            <button id="logoutCancelBtn" class="logout-modal-btn logout-modal-btn-cancel">
-                Annuler
-            </button>
-            <button id="logoutConfirmBtn" class="logout-modal-btn logout-modal-btn-confirm">
-                Confirmer
-            </button>
+        <h3>🔐 Déconnexion</h3>
+        <p>Vous allez être déconnecté de votre session rédacteur.<br>
+        Vous serez redirigé vers la page d'accueil.</p>
+        <div class="logoff-buttons">
+            <button id="logoutCancelBtn" class="logoff-cancel">Annuler</button>
+            <button id="logoutConfirmBtn" class="logoff-confirm">Confirmer</button>
         </div>
     `;
     
@@ -113,10 +107,7 @@ function showLogoutModal() {
 function closeLogoutModal() {
     const modal = document.getElementById('logoutModal');
     if (modal) {
-        modal.style.animation = 'logoutFadeOut 0.2s ease';
-        setTimeout(function() {
-            modal.remove();
-        }, 200);
+        modal.remove();
     }
 }
 
@@ -144,7 +135,6 @@ function performLogout() {
     }
     
     // Cloudflare Access logout URL with redirect to homepage
-    // Using the full domain with https://
     const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://deadanglesinstitute.org/';
     
     console.log('🔓 Redirecting to Cloudflare Access logout:', logoutUrl);
