@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace Access</title>
+    <link rel="stylesheet" href="/w_gateway/css/w_gateway.css" />
+</head>
+<body>
+    <div class="gateway-container">
+        <div class="gateway-card">
+            <div class="gateway-icon">📖</div>
+            <h1>Workspace Access</h1>
+            <p class="gateway-description">
+                You are currently logged in as a visitor. To access the writer workspace,
+                you need to log in with your writer credentials.
+            </p>
+
+            <div id="status" class="gateway-status loading">
+                <span class="spinner"></span> Logging out of visitor session...
+            </div>
+
+            <button id="loginBtn" class="gateway-btn gateway-btn-primary" disabled>
+                🔐 Login to Workspace
+            </button>
+
+            <div class="gateway-footer">
+                <a href="/" class="gateway-btn gateway-btn-secondary">← Return to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/w_gateway/js/w_gateway.js"></script>
+</body>
+</html>
