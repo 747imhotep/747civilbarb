@@ -14,20 +14,19 @@ writer/
     │	│
     │   ├── writer-layout.css		
     │	│
-    │   ├── login.css
-    │	│
     │   └── writer-modal.css
     │  
     ├── data/
     │	│
     │	│
-    │   ├── drafts.json		<-- 
+    │   ├── drafts.json		<-- change name into: step1-drafts-accessible.json ?
     │	│
     │   ├── drafts.json.bak
     │	│
     │	│
-    │   ├── progress.json	<-- this was made for library/index.html page
-    │	│
+    │   ├── progress.json	<-- this was made for library/index.html 
+    │	│			 -- maybe we need to move it to 747imhotepR/747civilbarb/fr/library
+    │	│			 -- and 747imhotepR/747civilbarb/en/library
     │   └── storage-folder/  
     │		│
     │		│
@@ -80,7 +79,7 @@ writer/
     │   └── writer-main.js	<-- we keep this one
     │  
     │  
-    └── login/
+    └── login/			<-- has already moved to /747civilbarb/my-worker/public/login/
     │       │
     │       ├── index.html		
     │       │
