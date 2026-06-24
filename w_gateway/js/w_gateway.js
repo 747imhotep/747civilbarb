@@ -11,7 +11,7 @@
         LOGOUT_URL: 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout',
 
         // Protected portal URL (where writers go after login)
-        PORTAL_URL: '/my-worker/public/login/',
+        PORTAL_URL: 'https://deadanglesinstitute.org/',
 
         // How often to check if logout worked (ms)
         CHECK_INTERVAL: 800,
