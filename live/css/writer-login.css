@@ -24,7 +24,7 @@ body {
       justify-content: center;
       height: 100vh;
       /* background: radial-gradient(circle at center, #8f7676 0%, #6f5a5a 100%); */
-      background: radial-gradient(circle, #052466, #065f75);
+      background: radial-gradient(circle, #240046, #3c0a6d);
       color: #e6d8b5;
       text-align: center;
     }
@@ -113,8 +113,8 @@ body {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(149, 129, 129, 0.8);
-  color: white;
+  background: rgba(245, 194, 194, 0.8);
+  color: black;
   transition: 0.25s ease;
 }
 
@@ -128,7 +128,7 @@ body {
 
 .btn-secondary  {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(230, 203, 203, 0.15);
   padding: 10px 16px;
   margin-top: 20px;
   color: rgba(255,255,255,0.8);
