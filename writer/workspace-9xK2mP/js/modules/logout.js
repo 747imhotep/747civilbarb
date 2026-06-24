@@ -5,9 +5,8 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 240 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
+// 146 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
 // Updated: 2026-06-24 - Custom modal with CSS separated - uses logoff.css for styles
-
 
 
 
@@ -45,7 +44,7 @@ export function setLogoutButtonVisibility(visible) {
 
 /**
  * Show custom logout confirmation modal
- * Uses classes from logoff.css with inline fallback styles
+ * Uses classes from logoff.css
  */
 function showLogoutModal() {
     // Check if modal already exists
@@ -53,134 +52,41 @@ function showLogoutModal() {
         return;
     }
     
-    // Create modal overlay with inline styles for safety
+    // Create modal overlay
     const overlay = document.createElement('div');
     overlay.id = 'logoutModal';
     overlay.className = 'logoff-overlay';
     
-    // Force overlay styles inline to ensure it works
-    overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.75);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999;
-        animation: fadeInScale 0.25s ease;
-    `;
-    
-    // Create modal box with inline styles for safety
+    // Create modal box
     const modal = document.createElement('div');
     modal.className = 'logoff-modal';
-    modal.style.cssText = `
-        background: #1e1e2f;
-        border-radius: 24px;
-        padding: 40px 45px;
-        max-width: 420px;
-        width: 92%;
-        text-align: center;
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        animation: fadeInScale 0.3s ease;
-    `;
     
-    // Modal content
+    // Modal content with CSS classes
     modal.innerHTML = `
-        <h3 style="color: #fff; font-size: 24px; font-weight: 700; margin: 0 0 12px 0; font-family: -apple-system, sans-serif;">
-            🔐 Déconnexion
-        </h3>
-        <p style="color: rgba(255,255,255,0.8); font-size: 15px; line-height: 1.6; margin: 0 0 6px 0; font-family: -apple-system, sans-serif;">
+        <span class="logoff-modal-icon">🔐</span>
+        <h3 class="logoff-modal-title">Déconnexion</h3>
+        <p class="logoff-modal-text">
             Vous allez être déconnecté de votre session rédacteur.
         </p>
-        <p style="color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.5; margin: 0 0 28px 0; font-family: -apple-system, sans-serif;">
+        <p class="logoff-modal-subtext">
             Vous serez redirigé vers la page d'accueil.
         </p>
-        <div class="logoff-buttons" style="display: flex; gap: 12px; justify-content: center;">
-            <button id="logoutCancelBtn" class="logoff-cancel" style="
-                background: rgba(255,255,255,0.08);
-                color: rgba(255,255,255,0.7);
-                border: 1px solid rgba(255,255,255,0.08);
-                padding: 11px 30px;
-                border-radius: 50px;
-                cursor: pointer;
-                font-size: 15px;
-                font-weight: 600;
-                font-family: -apple-system, sans-serif;
-                transition: all 0.2s ease;
-            ">Annuler</button>
-            <button id="logoutConfirmBtn" class="logoff-confirm" style="
-                background: linear-gradient(135deg, #6c63ff, #5a4bd1);
-                color: #fff;
-                border: none;
-                padding: 11px 30px;
-                border-radius: 50px;
-                cursor: pointer;
-                font-size: 15px;
-                font-weight: 600;
-                font-family: -apple-system, sans-serif;
-                box-shadow: 0 4px 20px rgba(108, 99, 255, 0.35);
-                transition: all 0.2s ease;
-            ">Confirmer</button>
+        <div class="logoff-buttons">
+            <button id="logoutCancelBtn" class="logoff-cancel">Annuler</button>
+            <button id="logoutConfirmBtn" class="logoff-confirm">Confirmer</button>
         </div>
     `;
     
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
     
-    // Add keyframe animation if not exists
-    if (!document.getElementById('logoutModalStyles')) {
-        const style = document.createElement('style');
-        style.id = 'logoutModalStyles';
-        style.textContent = `
-            @keyframes fadeInScale {
-                from {
-                    opacity: 0;
-                    transform: scale(0.95) translateY(10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: scale(1) translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-    
-    // Handle cancel - hover effects
-    const cancelBtn = document.getElementById('logoutCancelBtn');
-    cancelBtn.addEventListener('mouseenter', function() {
-        this.style.background = 'rgba(255,255,255,0.15)';
-        this.style.color = '#fff';
-    });
-    cancelBtn.addEventListener('mouseleave', function() {
-        this.style.background = 'rgba(255,255,255,0.08)';
-        this.style.color = 'rgba(255,255,255,0.7)';
-    });
-    
-    // Handle confirm - hover effects
-    const confirmBtn = document.getElementById('logoutConfirmBtn');
-    confirmBtn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-        this.style.boxShadow = '0 6px 30px rgba(108, 99, 255, 0.5)';
-    });
-    confirmBtn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-        this.style.boxShadow = '0 4px 20px rgba(108, 99, 255, 0.35)';
-    });
-    
-    // Handle cancel click
-    cancelBtn.addEventListener('click', function() {
+    // Handle cancel
+    document.getElementById('logoutCancelBtn').addEventListener('click', function() {
         closeLogoutModal();
     });
     
-    // Handle confirm click
-    confirmBtn.addEventListener('click', function() {
+    // Handle confirm
+    document.getElementById('logoutConfirmBtn').addEventListener('click', function() {
         performLogout();
     });
     
