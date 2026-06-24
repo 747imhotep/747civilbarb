@@ -6,7 +6,7 @@ Updated on june 10 2026
 ├── 404.html
 │
 │
-├── articles/		<-- Few drafts texts for me
+├── discussion/		<-- Few drafts texts for me
 │
 │
 ├── CNAME
@@ -64,7 +64,7 @@ Updated on june 10 2026
 │	│
 │	│   
 │	│   
-│	└─ index.html	           	
+│	└─ index.html	           	<-- empty for the moment	
 │
 │
 ├── .env.example
@@ -79,11 +79,16 @@ Updated on june 10 2026
 │   	└─ index.css	<-- 🟢 This is not orphan. It is intentional.
 │
 │
-├── live/		<-- here, visitor click on "access" to open cloudflare
-│	│
-│   	├─ css/
-│   	│	│
-│   	│	└─ site.css	<-- 
+├── live/		<-- it has been replace by PORTAL
+│	│		 -- PORTAL IS AT: /747civilbarb/my-worker/public/login/index.html
+│   	├─ css/		 -- as soon as we're satisfy everything work well, we will delete this 
+│   	│	│	 -- folder.
+│	│	│
+│   	│	├─ portal.css
+│	│	│
+│   	│	├─ site.css
+│	│	│
+│   	│	└─ writer-login.css	<-- 
 │   	│
 │   	│  
 │   	├─ index.html	<-- coming soon page with private access (to be setup)
@@ -93,12 +98,15 @@ Updated on june 10 2026
 │   		│
 │   		├─ lazy.js
 │   		│
+│   		├─ portal.js
+│   		│
 │   		├─ sender-init.js
 │   		│
 │   		└─ transition.js
 │
 │
-├── my-worker/		<-- detailed tree in another Tree File: I can share with you. (https://accounts.hetzner.com/)
+├── my-worker/		<-- detailed tree in another Tree File: I can share with you. 
+│				(https://accounts.hetzner.com/)
 │
 │
 │
@@ -122,10 +130,10 @@ Updated on june 10 2026
 │   	├─ navbar.html
 │   	│
 │   	│
-│   	├─ navbar-en.html		<-- 👉 I forgot to update those files
+│   	├─ navbar-en.html		<-- 👉 
 │   	│	
 │   	│	
-│   	└─ navbar-fr.html		<-- 👉 I forgot to update those files
+│   	└─ navbar-fr.html		<-- 👉 
 │
 │
 │
@@ -151,7 +159,7 @@ Updated on june 10 2026
 │   	└─ pages/
 │
 │
-
+│
 ├── pricing/
 │   	│
 │   	├─ en/
@@ -273,6 +281,19 @@ Updated on june 10 2026
 │   	 │   └─ terms_of_use.css
 │   	 │
 │   	 └─ index.html		<-- In the futur, needs EN & FR terms of use maybe to place in shared.
+│
+│
+├── w_gateway/
+│   	 │
+│   	 ├── w_gateway.html    ← NEW (root level)
+│   	 │	
+│   	 ├── css/
+│   	 │   │
+│   	 │   └── w_gateway.css ← NEW
+│	 │
+│   	 └── js/
+│	     │	
+│   	     └── w_gateway.js  ← NEW
 │
 │
 │
