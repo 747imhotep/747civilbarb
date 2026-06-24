@@ -8,6 +8,7 @@
 // 151 lines - Updated: 2026-06-24 - Redirect to homepage after Cloudflare logout
 // Updated: 2026-06-24 - Custom modal with CSS separated
 
+
 export function initLogoutButton() {
     console.log('🔘 Initializing logout button...');
     
@@ -142,8 +143,8 @@ function performLogout() {
         console.log('Error clearing cookies:', e);
     }
     
-    // Cloudflare Access logout URL
-    // Redirect to homepage after logout
+    // Cloudflare Access logout URL with redirect to homepage
+    // Using the full domain with https://
     const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://deadanglesinstitute.org/';
     
     console.log('🔓 Redirecting to Cloudflare Access logout:', logoutUrl);
