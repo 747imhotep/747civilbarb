@@ -5,7 +5,8 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 175 lines updated: 2026-06-25 - Added inline style fallback for reliability
+// 191 lines updated: 2026-06-25 - Added inline style fallback for reliability
+// Added delay before redirecting to homepage
 
 export function initLogoutButton() {
     console.log('🔘 Initializing logout button...');
@@ -42,7 +43,6 @@ function showLogoutModal() {
         return;
     }
     
-    // Create overlay with BOTH class and inline styles
     const overlay = document.createElement('div');
     overlay.id = 'logoutModal';
     overlay.className = 'logoff-overlay';
@@ -63,7 +63,6 @@ function showLogoutModal() {
         padding: 0 !important;
     `;
     
-    // Create modal with BOTH class and inline styles
     const modal = document.createElement('div');
     modal.className = 'logoff-modal';
     modal.style.cssText = `
@@ -117,7 +116,6 @@ function showLogoutModal() {
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
     
-    // Add hover effects for buttons
     const cancelBtn = document.getElementById('logoutCancelBtn');
     const confirmBtn = document.getElementById('logoutConfirmBtn');
     
@@ -170,8 +168,27 @@ function performLogout() {
         });
     } catch(e) {}
     
-    const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://deadanglesinstitute.org/';
-    window.location.href = logoutUrl;
+    // First: Logout from Cloudflare Access
+    const logoutUrl = 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout';
+    
+    console.log('🔓 Logging out from Cloudflare Access...');
+    
+    // Use fetch to trigger logout
+    fetch(logoutUrl, {
+        method: 'GET',
+        credentials: 'include',
+        mode: 'no-cors'
+    }).catch(function() {
+        // Ignore errors - no-cors mode still clears cookies
+    });
+    
+    // Then redirect to homepage after a 1.5 second delay
+    console.log('⏳ Waiting 1.5 seconds before redirecting...');
+    setTimeout(function() {
+        console.log('🏠 Redirecting to homepage...');
+        window.location.href = 'https://deadanglesinstitute.org/';
+    }, 1500);
 }
+
 
 
