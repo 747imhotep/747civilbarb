@@ -1,3 +1,8 @@
+// =====================================
+//             w_gateway.js
+// =====================================
+
+
 (function() {
     'use strict';
 
@@ -11,7 +16,10 @@
         LOGOUT_URL: 'https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout',
 
         // Protected portal URL (where writers go after login)
-        PORTAL_URL: 'https://deadanglesinstitute.org/',
+        PORTAL_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
+
+        // URL to check if logout worked (use production URL)
+        CHECK_URL: 'https://deadanglesinstitute.org/my-worker/public/login/',
 
         // How often to check if logout worked (ms)
         CHECK_INTERVAL: 800,
@@ -20,7 +28,10 @@
         MAX_ATTEMPTS: 5,
 
         // Fallback timeout (ms)
-        FALLBACK_TIMEOUT: 8000
+        FALLBACK_TIMEOUT: 8000,
+
+        // Delay before redirecting to login (ms)
+        LOGIN_DELAY: 20000  // 20 seconds
     };
 
     // ===== STATUS HELPER =====
@@ -34,7 +45,17 @@
         loginBtn.disabled = false;
         loginBtn.textContent = '🔐 Login to Workspace';
         loginBtn.onclick = function() {
-            window.location.href = CONFIG.PORTAL_URL;
+            // Disable button immediately to prevent double-clicks
+            loginBtn.disabled = true;
+            loginBtn.textContent = '⏳ Redirecting in 20 seconds...';
+            
+            // Show status message
+            setStatus('⏳ Redirecting to Cloudflare Access in 20 seconds...', 'loading');
+            
+            // Wait 20 seconds, then redirect
+            setTimeout(function() {
+                window.location.href = CONFIG.PORTAL_URL;
+            }, CONFIG.LOGIN_DELAY);
         };
     }
 
@@ -69,7 +90,7 @@
         function checkLogoutStatus() {
             attempts++;
 
-            fetch(CONFIG.PORTAL_URL, {
+            fetch(CONFIG.CHECK_URL, {
                 method: 'HEAD',
                 credentials: 'include'
             })
@@ -100,8 +121,8 @@
             });
         }
 
-        // Start checking after 2 seconds
-        setTimeout(checkLogoutStatus, 2000);
+        // Start checking after 1.5 seconds
+        setTimeout(checkLogoutStatus, 1500);
 
         // --- Fallback: Show button anyway after timeout ---
         setTimeout(function() {
