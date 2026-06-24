@@ -132,7 +132,7 @@ function showLoginError() {
     if (container) {
         container.innerHTML = `
             <div class="login-error">
-                🔐 Accès protégé par Cloudflare Zero Trust.
+                🔐 Accès protégé par Cloudflare.
                 <br><br>
                 Cette page est réservée aux rédacteurs approuvés.
             </div>
