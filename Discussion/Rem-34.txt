@@ -1,11 +1,63 @@
-curl -I https://deadanglesinstitute.org/writer/
-
-HTTP/2 200
 
 
-curl -I https://deadanglesinstitute.org/my-worker/
 
-HTTP/2 404
+navbar-en.html
+	click on Workspace
+	http://127.0.0.1:5500/w_gateway/w_gateway.html (the delay is too short)
+	F12 CONSOLE:
+	GET
+http://127.0.0.1:5500/w_gateway/w_gateway.html
+[HTTP/1.1 304 Not Modified 1ms]
 
+GET
+http://127.0.0.1:5500/w_gateway/css/w_gateway.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/w_gateway/js/w_gateway.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout
+[HTTP/2 200  318ms]
+
+GET
+ws://127.0.0.1:5500/w_gateway/w_gateway.html/ws
+[HTTP/1.1 101 Switching Protocols 1ms]
+
+GET
+http://127.0.0.1:5500/favicon.ico
+[HTTP/1.1 404 Not Found 0ms]
+
+
+
+
+navbar-fr.html
+	click on Workspace
+	http://127.0.0.1:5500/w_gateway/w_gateway.html
+	F12 CONSOLE:
+GET
+http://127.0.0.1:5500/w_gateway/w_gateway.html
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/w_gateway/css/w_gateway.css
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+http://127.0.0.1:5500/w_gateway/js/w_gateway.js
+[HTTP/1.1 304 Not Modified 1ms]
+
+GET
+https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout
+[HTTP/2 200  63ms]
+
+GET
+ws://127.0.0.1:5500/w_gateway/w_gateway.html/ws
+[HTTP/1.1 101 Switching Protocols 1ms]
+
+GET
+http://127.0.0.1:5500/favicon.ico
+[HTTP/1.1 404 Not Found 0ms]
 
 
