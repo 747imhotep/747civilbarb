@@ -3,11 +3,7 @@
    Wrapper: .premium-page
 ================================== */
 
-/* ❌ In page CSS, rmove global styles like:
-body { ... }
-html { ... }
-a { ... }
-footer { ... }  /* unless explicitly scoped */
+
 
 /* ===== Page Container ===== */
 .premium-page {
