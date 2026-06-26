@@ -1,3 +1,11 @@
+// =================================================
+// SUBSCRIBE PAGE JS
+// Handles premium subscription with Stripe
+// Civilisation ou Barbarie
+// =================================================
+
+// 141 lines - Updated: 2026-06-26 - Preserves existing design
+
 // ---------------------------
 // SUBSCRIBE PAGE JS (SESSION AUTH + EMAIL INPUT + FINAL ERROR ABOVE BUTTON)
 // ---------------------------
@@ -20,13 +28,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     emailInput.type = 'email';
     emailInput.id = 'userEmail';
     emailInput.className = 'subscribe-email-input';
-    emailInput.placeholder = 'Votre email';
+    emailInput.placeholder = 'Your email';
     emailInput.required = true;
 
     const emailLabel = document.createElement('label');
     emailLabel.htmlFor = 'userEmail';
     emailLabel.className = 'subscribe-email-label';
-    emailLabel.textContent = 'Email pour votre abonnement :';
+    emailLabel.textContent = 'Email for your subscription:';
 
     // Insert above button
     checkoutButton.parentNode.insertBefore(emailLabel, checkoutButton);
@@ -62,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const res = await fetch(`https://api.deadanglesinstitute.org/api/me?email=${encodeURIComponent(email)}`, {
         credentials: 'include'
       });
-      if (!res.ok) throw new Error("Impossible de récupérer les droits de l'utilisateur.");
+      if (!res.ok) throw new Error("Unable to retrieve user rights.");
       return await res.json();
     } catch (err) {
       console.error('❌ Error fetching entitlement:', err);
@@ -91,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const entitlement = await checkEntitlement(email);
 
     if (entitlement.entitled) {
-      checkoutButton.textContent = "You are already subscribed !";
+      checkoutButton.textContent = "You are already subscribed!";
       checkoutButton.style.cursor = "not-allowed";
       return;
     }
@@ -109,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         body: JSON.stringify({ plan: checkoutButton.dataset.plan, email })
       });
 
-      if (!sessionRes.ok) throw new Error("Erreur création session Stripe.");
+      if (!sessionRes.ok) throw new Error("Error creating Stripe session.");
 
       const session = await sessionRes.json();
 
@@ -123,11 +131,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (err) {
       console.error('❌ Stripe Checkout Error:', err);
       // Show final error above button
-      messageDiv.textContent = "Impossible de lancer le paiement.";
+      messageDiv.textContent = "Unable to start payment.";
       messageDiv.style.display = 'block';
       checkoutButton.disabled = false;
-      checkoutButton.textContent = "S’abonner";
+      checkoutButton.textContent = "Subscribe";
     }
   });
 
 });
+
+
+
