@@ -13,3 +13,7 @@ We need this order:
 6. Cloudflare Access logs out the writer
 
 7. Redirects to homepage (https://deadanglesinstitute.org/)
+
+
+thanks, you don't need a css for that ?
+color background would be something between #240046  and  #3c0a6d
