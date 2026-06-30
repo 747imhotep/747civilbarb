@@ -8,21 +8,25 @@
       "assigned_writer_email": "nzing@example.com",
       "content_fr": "Introduction : Juste deux questions pour analyser cette orientation raciste",
       "content_en": "Introduction: Only two questions to analyze this racist orientation",
-      "path": "/writer/workspace-9xK2mP/data/drafts/foot-stad-singe.docx",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/draft_01/",
       "word_count_target": 800,
-      "deadline": "2026-06-15"
+      "deadline": "2026-06-15",
+      "fileType": "DOCX",
+      "pages": 12
     },
     {
       "id": "draft_02",
       "title_fr": "intelligence-hor-sol",
       "title_en": "out-of-sight-out-of-mind",
-      "status": "unlocked",
-      "assigned_writer_email": null,
+      "status": "locked",
+      "assigned_writer_email": "writer@email.com",
       "content_fr": "",
       "content_en": "",
-      "path": "/writer/workspace-9xK2mP/data/drafts/intelligence-hor-sol.docx",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/draft_02/",
       "word_count_target": 1400,
-      "deadline": "2026-06-30"
+      "deadline": "2026-06-30",
+      "fileType": "DOCX",
+      "pages": 18
     },
     {
       "id": "draft_03",
@@ -32,21 +36,53 @@
       "assigned_writer_email": null,
       "content_fr": "",
       "content_en": "",
-      "path": "/writer/workspace-9xK2mP/data/drafts/identite.docx",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/draft_03/",
       "word_count_target": 1400,
-      "deadline": "2026-06-20"
+      "deadline": "2026-06-20",
+      "fileType": "DOCX",
+      "pages": 15
     },
     {
       "id": "draft_04",
       "title_fr": "Le rôle du rédacteur indépendant",
       "title_en": "The role of the independent writer",
-      "status": "locked",
-      "assigned_writer_email": "kandace@example.com",
+      "status": "unlocked",
+      "assigned_writer_email": null,
       "content_fr": "À compléter par le rédacteur...",
       "content_en": "To be completed by the writer...",
-      "path": "/writer/workspace-9xK2mP/data/drafts/draft.txt",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step2-in-progress/draft_04/",
       "word_count_target": 1500,
-      "deadline": "2026-05-30"
+      "deadline": "2026-05-30",
+      "fileType": "TXT",
+      "pages": 8
+    },
+    {
+      "id": "draft_05",
+      "title_fr": "Article à réviser 1",
+      "title_en": "Article to review 1",
+      "status": "unlocked",
+      "assigned_writer_email": null,
+      "content_fr": "",
+      "content_en": "",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step3-to-review/draft_05/",
+      "word_count_target": 1200,
+      "deadline": "2026-07-15",
+      "fileType": "DOCX",
+      "pages": 14
+    },
+    {
+      "id": "draft_06",
+      "title_fr": "Nouvel article disponible",
+      "title_en": "New article available",
+      "status": "unlocked",
+      "assigned_writer_email": null,
+      "content_fr": "",
+      "content_en": "",
+      "path": "/writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/draft_06/",
+      "word_count_target": 1000,
+      "deadline": "2026-07-30",
+      "fileType": "DOCX",
+      "pages": 10
     }
   ]
 }
