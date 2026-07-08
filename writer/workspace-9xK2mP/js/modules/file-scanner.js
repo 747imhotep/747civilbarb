@@ -4,13 +4,11 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 140 lines created on 2026-06-08 at 14h04
-
-
+// 140 lines Updated: 2026-07-08 - Returns empty array when API fails (fallback only)
 
 /**
  * Scan available folder and build document list dynamically
- * This replaces static drafts.json
+ * This is a fallback when drafts.json is not available
  * @returns {Promise<Array>} - List of available documents
  */
 export async function scanAvailableDocuments() {
@@ -23,14 +21,15 @@ export async function scanAvailableDocuments() {
             console.log(`📁 Found ${data.length} documents in available folder`);
             return data;
         } else {
-            console.error('❌ Failed to scan documents:', response.status);
+            console.log('⚠️ Document scanner API unavailable, using drafts.json instead');
             return [];
         }
     } catch (error) {
-        console.error('❌ Failed to scan documents:', error);
+        console.log('⚠️ Document scanner error, using drafts.json instead');
         return [];
     }
 }
+
 
 /**
  * Parse filename to extract metadata
