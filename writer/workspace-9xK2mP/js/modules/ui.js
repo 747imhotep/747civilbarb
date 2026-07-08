@@ -292,7 +292,8 @@ export async function updateRecentDocuments(language, draftId) {
 // =================================================
 
 /**
- * Display all documents table
+ * Display all documents table - DEDUPLICATED
+ * Each document appears only once with combined FR/EN info
  */
 export async function displayAllDocuments() {
     const container = document.getElementById('allDocumentsContainer');
@@ -309,8 +310,43 @@ export async function displayAllDocuments() {
         return;
     }
     
+    // =====================================================
+    // DEDUPLICATE: Group drafts by ID to remove duplicates
+    // (Each document appears once with combined FR/EN data)
+    // =====================================================
+    const draftMap = new Map();
+    
+    for (const draft of draftsData) {
+        if (!draft.id) continue;
+        
+        // If draft already exists, merge the data
+        if (draftMap.has(draft.id)) {
+            const existing = draftMap.get(draft.id);
+            
+            // Merge French/English titles and content
+            if (draft.title_fr && !existing.title_fr) existing.title_fr = draft.title_fr;
+            if (draft.title_en && !existing.title_en) existing.title_en = draft.title_en;
+            if (draft.content_fr && !existing.content_fr) existing.content_fr = draft.content_fr;
+            if (draft.content_en && !existing.content_en) existing.content_en = draft.content_en;
+            
+            // Keep the first path if not set
+            if (!existing.path && draft.path) existing.path = draft.path;
+            if (!existing.url && draft.url) existing.url = draft.url;
+            
+            // Keep filename if not set
+            if (!existing.filename && draft.filename) existing.filename = draft.filename;
+            
+        } else {
+            // New draft - store it
+            draftMap.set(draft.id, { ...draft });
+        }
+    }
+    
+    // Convert map back to array
+    const uniqueDrafts = Array.from(draftMap.values());
+    console.log('📊 Displaying', uniqueDrafts.length, 'unique documents (deduplicated from', draftsData.length, 'entries)');
+    
     const writerEmail = getCurrentWriterEmail();
-    console.log('📊 Displaying', draftsData.length, 'documents in table');
     
     let html = '<table class="documents-table">';
     html += '<thead><tr>';
@@ -324,7 +360,7 @@ export async function displayAllDocuments() {
     
     let rowCount = 0;
     
-    for (const draft of draftsData) {
+    for (const draft of uniqueDrafts) {
         // Skip if no draft id
         if (!draft.id) {
             console.warn('⚠️ Skipping draft with no id:', draft);
@@ -356,6 +392,7 @@ export async function displayAllDocuments() {
             statusText = 'Occupé par un autre';
         }
         
+        // Get titles - use available values (FR as primary, EN as subtitle)
         const displayTitle = draft.title_fr || draft.filename || draft.id;
         const displaySubtitle = draft.title_en || '';
         
@@ -369,8 +406,8 @@ export async function displayAllDocuments() {
                     <strong>${escapeHtml(draft.id || '—')}</strong>
                 </td>
                 <td>
-                    <strong>${escapeHtml(displayTitle)}</strong><br>
-                    <small>${escapeHtml(displaySubtitle)}</small>
+                    <strong>${escapeHtml(displayTitle)}</strong>
+                    ${displaySubtitle ? `<br><small>${escapeHtml(displaySubtitle)}</small>` : ''}
                 </td>
                 <td><span class="${statusClass}">${escapeHtml(statusText)}</span></td>
                 <td>
