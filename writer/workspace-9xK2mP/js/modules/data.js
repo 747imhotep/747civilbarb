@@ -5,8 +5,8 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 239 lines - Updated 2026-06-08 at 14h10
-
+// 221 lines - Updated 2026-06-08 at 14h10
+// Updated: 2026-07-08 - Use drafts.json directly (bypass API scanner)
 
 import { DATA_PATHS } from './config.js';
 import { loadFromLocal, saveToLocal } from './storage.js';
@@ -21,33 +21,20 @@ const DRAFTS_STORAGE_KEY = 'cob_drafts_backup';
 const PROGRESS_STORAGE_KEY = 'cob_progress_backup';
 
 /**
- * Load drafts from dynamic scanner or JSON file
- * Priority: 1. Dynamic scanner (step1-available folder)
- *           2. Static drafts.json (fallback)
- *           3. localStorage backup (last resort)
+ * Load drafts from JSON file or backup
+ * Priority: 1. drafts.json (primary source)
+ *           2. localStorage backup (fallback)
  * @returns {Promise<Array>} - Drafts array
  */
 export async function loadDrafts() {
     try {
-        // FIRST: Try dynamic scanner from step1-available folder
-        console.log('📁 Scanning for documents in step1-available...');
-        const scannedDocs = await scanAvailableDocuments();
-        
-        if (scannedDocs && scannedDocs.length > 0) {
-            draftsData = scannedDocs;
-            // Save to localStorage as backup
-            saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
-            console.log('✅ Loaded drafts from dynamic scanner:', draftsData.length, 'documents');
-            return draftsData;
-        }
-        
-        // SECOND: Fallback to static drafts.json
-        console.log('📁 No documents in available folder, trying drafts.json...');
+        // PRIMARY: Load from drafts.json
+        console.log('📥 Loading drafts from:', DATA_PATHS.drafts);
         const response = await fetch(DATA_PATHS.drafts);
         
         if (response.ok) {
             const data = await response.json();
-            console.log('📥 Drafts.json loaded:', data);
+            console.log('📥 Drafts.json loaded');
             
             if (data && data.drafts) {
                 draftsData = data.drafts;
@@ -101,7 +88,7 @@ export async function loadProgress() {
         
         if (response.ok) {
             const data = await response.json();
-            console.log('📥 Progress.json loaded:', data);
+            console.log('📥 Progress.json loaded');
             
             if (data && data.progress) {
                 progressData = data.progress;
@@ -224,17 +211,12 @@ export async function reloadAllData() {
 }
 
 /**
- * Force refresh drafts from scanner (bypasses cache)
+ * Force refresh drafts from JSON (bypasses scanner)
  * @returns {Promise<Array>}
  */
 export async function refreshDrafts() {
-    console.log('🔄 Force refreshing drafts from scanner...');
-    const scannedDocs = await scanAvailableDocuments();
-    if (scannedDocs && scannedDocs.length > 0) {
-        draftsData = scannedDocs;
-        saveToLocal(DRAFTS_STORAGE_KEY, draftsData);
-        console.log('✅ Drafts refreshed:', draftsData.length, 'documents');
-    }
+    console.log('🔄 Force refreshing drafts from JSON...');
+    await loadDrafts();
     return draftsData;
 }
 
