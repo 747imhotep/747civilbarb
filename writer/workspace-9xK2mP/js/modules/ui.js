@@ -7,6 +7,13 @@
 
 // 453 lines created on 2026-06-08 at 14h14
 
+
+// Updated: 2026-07-08 - Fixed displayAllDocuments() function
+// - Added fallback for refColorClass (ref-gray)
+// - Added escapeHtml() around statusText
+// - Added check for !draft.id to skip invalid drafts
+// - Added missing CSS classes for REF colors
+
 import { draftsData, progressData, getProgress, getFrenchDrafts, getEnglishDrafts, getDraftById, updateLocalDraftStatus, refreshDrafts } from './data.js';
 import { getCurrentWriterEmail, getCurrentWriterPseudonym } from './auth.js';
 import { getRefColorClass, getStatusClass, getStatusText, calculatePercentComplete, formatDate, createProgressBar, escapeHtml } from './utils.js';
@@ -14,6 +21,10 @@ import { saveUploadRecord, getUploadRecords } from './storage.js';
 import { updateDraftStatusOnServer } from './api.js';
 import { getDocumentRefColor, getDocumentStatusText, isLockedByOther } from './references-manager.js';
 import { moveDocument } from './file-scanner.js';
+
+// =================================================
+// STATE
+// =================================================
 
 // Current selected draft IDs
 let currentFrenchDraftId = null;
@@ -25,6 +36,10 @@ const STORAGE_FOLDERS = {
     IN_PROGRESS: 'step2-in-progress',
     TO_REVIEW: 'step3-to-review'
 };
+
+// =================================================
+// DROPDOWN FUNCTIONS
+// =================================================
 
 /**
  * Populate French dropdown with available articles
@@ -78,6 +93,10 @@ export async function populateEnglishDropdown() {
     });
 }
 
+// =================================================
+// ARTICLE INFO FUNCTIONS
+// =================================================
+
 /**
  * Show French article information
  * @param {string} draftId - Draft identifier
@@ -113,7 +132,7 @@ export async function showFrenchArticleInfo(draftId) {
             <p><strong>${escapeHtml(draft.title_fr || draft.filename || draft.id)}</strong></p>
             <p>📝 ${wordsWritten} / ${draft.word_count_target || 1500} mots (${percentComplete}%)</p>
             ${draft.deadline ? `<p>⏰ Échéance: ${formatDate(draft.deadline, 'fr')}</p>` : ''}
-            <p>Statut: <span class="${statusClass}">${statusText}</span></p>
+            <p>Statut: <span class="${statusClass}">${escapeHtml(statusText)}</span></p>
             ${createProgressBar(percentComplete)}
         `;
     }
@@ -154,11 +173,15 @@ export async function showEnglishArticleInfo(draftId) {
             <p><strong>${escapeHtml(draft.title_en || draft.filename || draft.id)}</strong></p>
             <p>📝 ${wordsWritten} / ${draft.word_count_target || 1500} words (${percentComplete}%)</p>
             ${draft.deadline ? `<p>⏰ Deadline: ${formatDate(draft.deadline, 'en')}</p>` : ''}
-            <p>Status: <span class="${statusClass}">${statusText}</span></p>
+            <p>Status: <span class="${statusClass}">${escapeHtml(statusText)}</span></p>
             ${createProgressBar(percentComplete)}
         `;
     }
 }
+
+// =================================================
+// VIEW DOCUMENT BUTTON FUNCTIONS
+// =================================================
 
 /**
  * Show French view document button
@@ -230,6 +253,10 @@ export function clearEnglishViewDocumentButton() {
     if (container) container.innerHTML = '';
 }
 
+// =================================================
+// RECENT DOCUMENTS FUNCTIONS
+// =================================================
+
 /**
  * Update recent documents display
  * @param {string} language - 'fr' or 'en'
@@ -260,12 +287,19 @@ export async function updateRecentDocuments(language, draftId) {
     container.innerHTML = html;
 }
 
+// =================================================
+// DISPLAY ALL DOCUMENTS TABLE (FIXED)
+// =================================================
+
 /**
  * Display all documents table
  */
 export async function displayAllDocuments() {
     const container = document.getElementById('allDocumentsContainer');
-    if (!container) return;
+    if (!container) {
+        console.error('❌ Container #allDocumentsContainer not found');
+        return;
+    }
     
     // Refresh drafts to get latest from available folder
     await refreshDrafts();
@@ -276,6 +310,7 @@ export async function displayAllDocuments() {
     }
     
     const writerEmail = getCurrentWriterEmail();
+    console.log('📊 Displaying', draftsData.length, 'documents in table');
     
     let html = '<table class="documents-table">';
     html += '<thead><tr>';
@@ -287,15 +322,30 @@ export async function displayAllDocuments() {
     html += '<th>Actions</th>';
     html += '</tr></thead><tbody>';
     
+    let rowCount = 0;
+    
     for (const draft of draftsData) {
+        // Skip if no draft id
+        if (!draft.id) {
+            console.warn('⚠️ Skipping draft with no id:', draft);
+            continue;
+        }
+        
+        rowCount++;
+        
         const progress = getProgress(draft.id, writerEmail);
         const isCurrentWriterWorking = progress && progress.writer_email === writerEmail;
         const wordsWritten = progress ? progress.words_written : 0;
         const percentComplete = calculatePercentComplete(wordsWritten, draft.word_count_target || 1500);
         
         // Get real-time status and color from references manager
+        // FIX: Ensure refColorClass always has a value
         let refColorClass = await getDocumentRefColor(draft.id);
-        let statusText = getDocumentStatusText(draft.id, 'fr');
+        if (!refColorClass || refColorClass === '') {
+            refColorClass = 'ref-gray';
+        }
+        
+        let statusText = getDocumentStatusText(draft.id, 'fr') || 'Disponible';
         
         // Determine if locked by another for special styling
         const lockedByOther = isLockedByOther(draft.id);
@@ -309,6 +359,9 @@ export async function displayAllDocuments() {
         const displayTitle = draft.title_fr || draft.filename || draft.id;
         const displaySubtitle = draft.title_en || '';
         
+        // Build file URL - prefer url over path
+        const fileUrl = draft.url || draft.path || '#';
+        
         html += `
             <tr data-draft-id="${escapeHtml(draft.id)}">
                 <td class="${refColorClass}">
@@ -319,13 +372,13 @@ export async function displayAllDocuments() {
                     <strong>${escapeHtml(displayTitle)}</strong><br>
                     <small>${escapeHtml(displaySubtitle)}</small>
                 </td>
-                <td><span class="${statusClass}">${statusText}</span></td>
+                <td><span class="${statusClass}">${escapeHtml(statusText)}</span></td>
                 <td>
                     ${createProgressBar(percentComplete, 100)}
                 </td>
-                <td><a href="${draft.url || draft.path}" download class="download-link" title="Télécharger l'original">📥 Original</a></td>
+                <td><a href="${fileUrl}" download class="download-link" title="Télécharger l'original">📥 Original</a></td>
                 <td>
-                    <button class="small-btn view-btn" data-path="${draft.url || draft.path}" data-draft-id="${draft.id}">👁️ Voir</button>
+                    <button class="small-btn view-btn" data-path="${fileUrl}" data-draft-id="${draft.id}">👁️ Voir</button>
                 </td>
             </tr>
         `;
@@ -334,6 +387,9 @@ export async function displayAllDocuments() {
     html += '</tbody></table>';
     container.innerHTML = html;
     
+    console.log('✅ Rendered', rowCount, 'documents in table');
+    
+    // Attach view button event listeners
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', async (e) => {
             const draftId = btn.dataset.draftId;
@@ -345,6 +401,10 @@ export async function displayAllDocuments() {
         });
     });
 }
+
+// =================================================
+// SINGLE DOCUMENT UPDATE
+// =================================================
 
 /**
  * Update REF column color for a single document without re-rendering entire table
@@ -359,7 +419,7 @@ export async function updateSingleDocumentRefColor(draftId) {
     
     const refCell = row.querySelector('td:first-child');
     if (refCell) {
-        const newColor = await getDocumentRefColor(draftId);
+        const newColor = await getDocumentRefColor(draftId) || 'ref-gray';
         // Remove existing color classes
         refCell.className = refCell.className.replace(/ref-\w+/g, '');
         refCell.classList.add(newColor);
@@ -371,6 +431,10 @@ export async function updateSingleDocumentRefColor(draftId) {
         }
     }
 }
+
+// =================================================
+// CLEAR FUNCTIONS
+// =================================================
 
 /**
  * Clear French article info
@@ -418,6 +482,10 @@ export function clearSelectedArticle(language) {
         input.value = language === 'fr' ? 'Aucun article sélectionné' : 'No article selected';
     }
 }
+
+// =================================================
+// GETTERS / SETTERS
+// =================================================
 
 /**
  * Get current French draft ID
