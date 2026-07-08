@@ -4,7 +4,8 @@
    COMPONENT STYLES ONLY
    ================================================= */
 
-/* ====== 637 lines updated 2026-06-03 10h27 ======= */
+/* ====== 818 lines updated 2026-06-03 10h27 ======= */
+/* ====== Updated 2026-07-08 - Added REF color classes ======= */
 
 /* ===== ARTICLE SELECTOR ===== */
 .article-select {
@@ -104,8 +105,6 @@
     font-size: 0.8rem;
     opacity: 0.8;
 }
-
-
 
 /* ===== AHEADER LAYOUT ===== */
 
@@ -366,6 +365,28 @@
     color: #9b59b6;
     font-weight: bold;
 }
+.ref-gray { 
+    background-color: #f5f5f5; 
+    color: #95a5a6;
+    font-weight: bold;
+}
+
+/* Ref indicator dot */
+.ref-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    font-size: 0;
+}
+
+.ref-indicator.ref-red { background-color: #e74c3c; }
+.ref-indicator.ref-amber { background-color: #f39c12; }
+.ref-indicator.ref-green { background-color: #27ae60; }
+.ref-indicator.ref-blue { background-color: #3498db; }
+.ref-indicator.ref-purple { background-color: #9b59b6; }
+.ref-indicator.ref-gray { background-color: #95a5a6; }
 
 /* ===== TOOLTIP ===== */
 .tooltip {
@@ -569,10 +590,6 @@
     transform: translateX(30px);
 }
 
-
-
-
-
 /* ===== REVIEWER PANEL BUTTONS ===== */
 .reviewer-panel {
     margin-top: 2rem;
@@ -640,9 +657,8 @@
     background: #7f8c8d;
 }
 
-
 /* =============================================
-   LOGOUT MODAL STYLES
+   LOGOFF / LOGOUT STYLES
    Added: 2026-06-24
    ============================================= */
 
@@ -800,3 +816,6 @@
         width: 100%;
     }
 }
+
+
+
