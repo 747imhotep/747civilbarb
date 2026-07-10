@@ -23,7 +23,7 @@ export const ENDPOINTS = {
 
 // Data paths (relative to web root)
 export const DATA_PATHS = {
-    drafts: 'https://deadanglesinstitute.org/writer/workspace-9xK2mP/data/drafts.json',
+    drafts: 'https://www.deadanglesinstitute.org/writer/workspace-9xK2mP/data/drafts.json',
     progress: 'https://deadanglesinstitute.org/writer/workspace-9xK2mP/data/progress.json'
 };
 
