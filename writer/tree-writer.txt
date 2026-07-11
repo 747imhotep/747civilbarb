@@ -25,22 +25,51 @@ writer/
     │	│
     │	│
     │   ├── progress.json	<-- this was made for library/index.html 
-    │	│			 -- maybe we need to move it to 747imhotepR/747civilbarb/fr/library
-    │	│			 -- and 747imhotepR/747civilbarb/en/library
+    │	│			 -- maybe we need to move it to /747civilbarb/fr/library
+    │	│			 -- and /747civilbarb/en/library
     │   └── storage-folder/  
     │		│
     │		│
     │  		├── references.json
+    │		│	|
+    │		│	└── test-article-civilization-origins/
+    │		│
     │		│
     │  		├── step0-drafts/		<-- raw materials (hidden from writer)
     │		│
     │  		├── step1-drafts-accessible/	<-- docs writer can pick
+    │		│	│
+    │		│	├── draft_01/
+    │		│	│
+    │		│	├── draft_06/
+    │		│	│
+    │		│	├── test-article-001/
+    │		│	│
+    │		│	└── test-article-civilization-origins/
+    │		│	
     │		│
     │  		├── step2-in-progress/		<-- Writer has opened but not submitted
+    │		│	│
+    │		│	├── draft_02/
+    │		│	│
+    │		│	├── draft_03/
+    │		│	│
+    │		│	├── draft_04/
+    │		│	│
+    │		│	└── test-article-civilization-origins/
+    │		│	
     │		│
     │  		├── step3-to-review 		<-- to review before publiching
+    │		│	│
+    │		│	├── draft_05/
+    │		│	│
+    │		│	└── test-article-civilization-origins/
     │		│
     │  		└── step4-published/		<-- Publiched
+    │			│
+    │			└── test-article-civilization-origins/
+    │		
+    │  		
     │      
     │  
     ├── index.html    
