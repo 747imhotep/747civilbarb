@@ -1,19 +1,26 @@
-We need this order:
+Please go up and read from here until end:
 
-1. Writer clicks "Déconnexion"
+Document Journey: From Raw Material to Published Article
 
-2. Confirmation dialog appears (we need to customize the dialog box)
+Do you see when I said:
+"nothing appears in the dashboard
+despite the draft.json update."
 
-3. Local storage cleared
-
-4. Cookies cleared
-
-5. Redirect to: https://deadangles.cloudflareaccess.com/cdn-cgi/access/logout?redirect_url=https://deadanglesinstitute.org/
-
-6. Cloudflare Access logs out the writer
-
-7. Redirects to homepage (https://deadanglesinstitute.org/)
+I shared a picture.
+I wish we could come back to this state because it was possible to see documents and to select any of them.
 
 
-thanks, you don't need a css for that ?
-color background would be something between #240046  and  #3c0a6d
+For me, at the moment you said:
+"Quick Fix: Update displayAllDocuments() in ui.js
+
+Replace the displayAllDocuments() function with this fixed version:"
+
+	1. nothing changed fondamentaly
+	2. we even don't know how it was possible to see and select document previously
+	3.
+	
+We modify many files.
+We should have checked first to know how the setup works.
+Now, you ask to make modification without checking anything.
+It's scarry 
+
