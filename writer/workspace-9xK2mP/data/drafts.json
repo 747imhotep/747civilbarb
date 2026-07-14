@@ -86,8 +86,8 @@
     },
     {
       "id": "test-article-001",
-      "title_fr": "Article test - Origines de la civilisation",
-      "title_en": "Test article - Origins of civilization",
+      "title_fr": "Article test - Origines de la civilisation - test",
+      "title_en": "Test article - Origins of civilization - test",
       "status": "available",
       "assigned_writer_email": null,
       "content_fr": "Contenu à réviser par le rédacteur...",
