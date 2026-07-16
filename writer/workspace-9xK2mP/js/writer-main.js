@@ -179,9 +179,14 @@ async function initWriterDashboard() {
     
     await displayAllDocuments();
     
-    if (isReviewer(REVIEWER_EMAIL)) {
+    // ===================================================
+    // REVIEWER PANEL
+    // ===================================================
+    if (isReviewer()) {
         await showReviewerPanel();
         console.log('🔍 Reviewer mode enabled');
+    } else {
+        console.log('👤 Writer mode (not reviewer)');
     }
     
     // ===================================================
