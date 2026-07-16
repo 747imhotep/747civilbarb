@@ -1,0 +1,284 @@
+/* =================================================
+   REVIEWER PANEL STYLES
+   reviewer.css
+   Dedicated styles for the reviewer interface
+   Civilisation ou Barbarie - Writer Dashboard
+   ================================================= */
+
+/* ===== REVIEWER PANEL CONTAINER ===== */
+.reviewer-panel {
+    background: linear-gradient(145deg, rgba(108, 99, 255, 0.05), rgba(108, 99, 255, 0.02));
+    border: 2px solid #6c63ff;
+    border-radius: 20px;
+    padding: 25px 25px 30px;
+    margin-top: 30px;
+    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.reviewer-panel:hover {
+    box-shadow: 0 6px 30px rgba(108, 99, 255, 0.15);
+}
+
+/* ===== REVIEWER PANEL HEADER ===== */
+.reviewer-panel .all-articles-section h3 {
+    color: #6c63ff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.reviewer-panel .all-articles-section h3::before {
+    content: "🔍";
+    font-size: 1.4rem;
+}
+
+/* ===== REVIEWER BADGE (in header) ===== */
+.reviewer-badge {
+    background: linear-gradient(135deg, #6c63ff, #5a4bd1);
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-left: 12px;
+    box-shadow: 0 2px 12px rgba(108, 99, 255, 0.35);
+    animation: reviewerBadgePulse 2.5s infinite;
+    vertical-align: middle;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@keyframes reviewerBadgePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+/* ===== REVIEWER TABLE ===== */
+.reviewer-table-wrapper {
+    overflow-x: auto;
+    margin-top: 5px;
+}
+
+.reviewer-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffdf9;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.reviewer-table thead th {
+    background: linear-gradient(135deg, #6c63ff, #5a4bd1);
+    color: #fff;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0.3px;
+}
+
+.reviewer-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e6dfd3;
+    vertical-align: middle;
+    font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.reviewer-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.reviewer-table tbody tr:hover {
+    background: rgba(108, 99, 255, 0.04);
+}
+
+.reviewer-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===== REVIEWER ACTION BUTTONS ===== */
+.reviewer-actions-cell {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.reviewer-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: 0.2px;
+}
+
+.reviewer-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.reviewer-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.reviewer-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Approve button */
+.approve-btn {
+    background: #27ae60;
+    color: #fff;
+}
+
+.approve-btn:hover {
+    background: #1e8449;
+}
+
+/* Send back button */
+.sendback-btn {
+    background: #e67e22;
+    color: #fff;
+}
+
+.sendback-btn:hover {
+    background: #ca6f1e;
+}
+
+/* Publish Free button */
+.publish-free-btn {
+    background: #8e44ad;
+    color: #fff;
+}
+
+.publish-free-btn:hover {
+    background: #6c3483;
+}
+
+/* Publish Premium button */
+.publish-premium-btn {
+    background: #f1c40f;
+    color: #2c3e2f;
+}
+
+.publish-premium-btn:hover {
+    background: #d4ac0d;
+}
+
+/* Unlock button */
+.unlock-btn {
+    background: #3498db;
+    color: #fff;
+}
+
+.unlock-btn:hover {
+    background: #2e86c1;
+}
+
+/* ===== REVIEWER STATUS INDICATORS ===== */
+.reviewer-status-ready {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.reviewer-status-review {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.reviewer-status-published {
+    color: #8e44ad;
+    font-weight: 600;
+}
+
+.reviewer-status-locked {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* ===== EMPTY STATE ===== */
+.reviewer-empty {
+    color: #95a5a6;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.05rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.reviewer-empty .reviewer-empty-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .reviewer-panel {
+        padding: 15px;
+    }
+
+    .reviewer-panel .all-articles-section h3 {
+        font-size: 1.1rem;
+    }
+
+    .reviewer-table thead th,
+    .reviewer-table tbody td {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .reviewer-actions-cell {
+        gap: 5px;
+    }
+
+    .reviewer-btn {
+        padding: 4px 10px;
+        font-size: 0.65rem;
+    }
+
+    .reviewer-badge {
+        font-size: 0.6rem;
+        padding: 4px 12px;
+    }
+}
+
+@media (max-width: 500px) {
+    .reviewer-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .reviewer-table {
+        min-width: 500px;
+    }
+
+    .reviewer-actions-cell {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .reviewer-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
