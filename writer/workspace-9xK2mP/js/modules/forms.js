@@ -6,7 +6,7 @@
 // =================================================
 
 // 343 lines - UPDATED 2026-06-08 at 14h29
-
+// Updated: 2026-07-17 - Added onViewDocument function
 
 
 // Data functions
@@ -55,6 +55,63 @@ export function setDraftIdGetters(getFrenchId, getEnglishId) {
 
 
 // =================================================
+// PUBLIC: Handle document view (lock and track)
+// =================================================
+
+/**
+ * Handle document view - locks the document and moves it to in-progress
+ * @param {string} draftId - Draft identifier
+ * @param {Object} draft - Draft object
+ */
+export async function onViewDocument(draftId, draft) {
+    console.log('🔍 onViewDocument called for:', draftId);
+    
+    const writerEmail = getCurrentWriterEmail();
+    const writerPseudonym = getCurrentWriterPseudonym();
+    
+    if (!writerEmail) {
+        console.error('❌ No writer email found');
+        return;
+    }
+    
+    try {
+        // 1. Mark document as viewed in references
+        console.log(`🔒 Locking document: ${draftId} for ${writerEmail}`);
+        await markDocumentAsViewed(draftId, writerEmail, writerPseudonym);
+        
+        // 2. Update local status
+        updateLocalDraftStatus(draftId, 'in_progress');
+        
+        // 3. Update server status
+        await updateDraftStatusOnServer(draftId, 'in_progress', writerEmail);
+        
+        // 4. Move document to step2-in-progress folder
+        if (draft && draft.filename) {
+            console.log(`📦 Moving document to step2-in-progress: ${draft.filename}`);
+            await moveDocument(draft.filename, 'step1-drafts-accessible', 'step2-in-progress', draftId);
+        } else {
+            // Try to get filename from draft path
+            const filename = draft.path ? draft.path.split('/').pop() : null;
+            if (filename) {
+                console.log(`📦 Moving document to step2-in-progress: ${filename}`);
+                await moveDocument(filename, 'step1-drafts-accessible', 'step2-in-progress', draftId);
+            } else {
+                console.warn('⚠️ Could not determine filename for moving');
+            }
+        }
+        
+        // 5. Refresh displays
+        await displayAllDocuments();
+        await showReviewerPanel();
+        
+        console.log(`✅ Document ${draftId} locked and moved to in-progress`);
+    } catch (error) {
+        console.error('❌ Error in onViewDocument:', error);
+    }
+}
+
+
+// =================================================
 // PRIVATE: Update draft status (local + server)
 // =================================================
 async function updateDraftStatus(draftId, status) {
@@ -98,11 +155,10 @@ export function setupToggleListeners(notificationContainer) {
                 
                 await showFrenchArticleInfo(draftId);
                 await displayAllDocuments();
-                await populateFrenchDropdown();
-                await populateEnglishDropdown();
+                await showReviewerPanel();
                 
-                if (typeof showReviewerPanel === 'function') await showReviewerPanel();
-                console.log(`📝 French article status updated to: ${newStatus}`);
+                const message = isReady ? '📤 Article prêt pour relecture !' : '✏️ Article remis en cours de rédaction.';
+                showLocalNotification(notificationContainer, message, 'info');
             }
         });
     }
@@ -130,11 +186,10 @@ export function setupToggleListeners(notificationContainer) {
                 
                 await showEnglishArticleInfo(draftId);
                 await displayAllDocuments();
-                await populateFrenchDropdown();
-                await populateEnglishDropdown();
+                await showReviewerPanel();
                 
-                if (typeof showReviewerPanel === 'function') await showReviewerPanel();
-                console.log(`📝 English article status updated to: ${newStatus}`);
+                const message = isReady ? '📤 Article ready for review!' : '✏️ Article back in progress.';
+                showLocalNotification(notificationContainer, message, 'info');
             }
         });
     }
@@ -142,7 +197,7 @@ export function setupToggleListeners(notificationContainer) {
 
 
 // =================================================
-// PUBLIC: Setup form submission handlers
+// PUBLIC: Setup submit forms
 // =================================================
 export function setupSubmitForms() {
     const frenchForm = document.getElementById('frenchSubmitForm');
@@ -151,79 +206,59 @@ export function setupSubmitForms() {
     if (frenchForm) {
         frenchForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await submitRevision('fr');
+            await handleSubmit('fr');
         });
     }
     
     if (englishForm) {
         englishForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            await submitRevision('en');
+            await handleSubmit('en');
         });
     }
 }
 
 
 // =================================================
-// PRIVATE: Save progress (local + server)
+// PRIVATE: Handle form submission
 // =================================================
-async function saveProgress(draftId, wordsWritten, comment, writerEmail, writerPseudonym) {
-    const progressEntry = {
-        writer_email: writerEmail,
-        writer_pseudonym: writerPseudonym,
-        draft_id: draftId,
-        words_written: wordsWritten,
-        comment: comment || null,
-        status: 'in_progress'
-    };
-    
-    // Update local data
-    updateProgress(progressEntry);
-    
-    // Update server
-    await saveProgressOnServer(progressEntry);
-    
-    return true;
-}
-
-
-// =================================================
-// PRIVATE: Upload revision file (local + server)
-// =================================================
-async function uploadRevision(file, draftId, writerEmail, writerPseudonym, language) {
-    // Save record locally (for recent documents list)
-    saveUploadRecord(draftId, language, {
-        filename: file.name,
-        date: new Date().toISOString()
-    });
-    
-    // Upload to server
-    await uploadRevisionOnServer(file, draftId, writerEmail, writerPseudonym, language);
-}
-
-
-// =================================================
-// PRIVATE: Submit revision for an article
-// =================================================
-async function submitRevision(language) {
+async function handleSubmit(language) {
     const isFrench = language === 'fr';
-    const draftId = isFrench ? getCurrentFrenchDraftId() : getCurrentEnglishDraftId();
+    const prefix = isFrench ? 'french' : 'english';
     
-    // Validation: article selected
+    // Get draft ID
+    let draftId = null;
+    if (isFrench && getCurrentFrenchDraftId) {
+        draftId = getCurrentFrenchDraftId();
+    } else if (!isFrench && getCurrentEnglishDraftId) {
+        draftId = getCurrentEnglishDraftId();
+    }
+    
     if (!draftId) {
-        alert(isFrench ? 'Veuillez sélectionner un article' : 'Please select an article');
+        alert(isFrench ? 'Veuillez sélectionner un article.' : 'Please select an article.');
         return;
     }
     
-    // Get form values
-    const wordsToday = parseInt(document.getElementById(`${language}WordsToday`).value);
-    const comment = document.getElementById(`${language}Comment`).value;
-    const fileInput = document.getElementById(`${language}File`);
-    const readyForReview = document.getElementById(`${language}ReadyForReview`).checked;
+    const draft = getDraftById(draftId);
+    if (!draft) {
+        alert(isFrench ? 'Article non trouvé.' : 'Article not found.');
+        return;
+    }
     
-    // Validation: valid word count
-    if (isNaN(wordsToday) || wordsToday < 0) {
-        alert(isFrench ? 'Veuillez entrer un nombre valide de mots' : 'Please enter a valid word count');
+    // Get form data
+    const wordsInput = document.getElementById(`${prefix}WordsToday`);
+    const commentInput = document.getElementById(`${prefix}Comment`);
+    const fileInput = document.getElementById(`${prefix}File`);
+    const readyCheckbox = document.getElementById(`${prefix}ReadyForReview`);
+    
+    const wordsWritten = parseInt(wordsInput.value) || 0;
+    const comment = commentInput.value || '';
+    const file = fileInput.files[0];
+    const readyForReview = readyCheckbox ? readyCheckbox.checked : false;
+    
+    // Validate
+    if (wordsWritten <= 0) {
+        alert(isFrench ? 'Veuillez indiquer le nombre de mots écrits.' : 'Please enter the number of words written.');
         return;
     }
     
@@ -231,114 +266,82 @@ async function submitRevision(language) {
     const writerEmail = getCurrentWriterEmail();
     const writerPseudonym = getCurrentWriterPseudonym();
     
-    // Calculate new total words
-    const existingProgress = getProgress(draftId, writerEmail);
-    const currentWords = existingProgress ? existingProgress.words_written : 0;
-    const newTotal = currentWords + wordsToday;
+    // Prepare progress data
+    const progressData = {
+        draft_id: draftId,
+        writer_email: writerEmail,
+        writer_pseudonym: writerPseudonym,
+        words_written: wordsWritten,
+        comment: comment,
+        ready_for_review: readyForReview,
+        last_update: new Date().toISOString()
+    };
     
-    // 1. Save progress
-    const progressSaved = await saveProgress(draftId, newTotal, comment, writerEmail, writerPseudonym);
-    if (!progressSaved) {
-        alert(isFrench ? 'Erreur lors de la sauvegarde' : 'Error saving progress');
-        return;
-    }
-    
-    // 2. Handle "ready for review" toggle
-    if (readyForReview) {
-        const draft = getDraftById(draftId);
-        if (draft && draft.review_status !== 'ready_for_review') {
+    try {
+        // Save progress locally
+        updateProgress(progressData);
+        
+        // Save progress to server
+        await saveProgressOnServer(progressData);
+        
+        // Update draft status if ready for review
+        if (readyForReview) {
             await updateDraftStatus(draftId, 'ready_for_review');
-            
-            // Update references manager
             await setReadyForReview(draftId, true);
             
-            // Move document to to-review folder
-            if (draft && draft.filename) {
+            // Move document to step3-to-review
+            if (draft.filename) {
                 await moveDocument(draft.filename, 'step2-in-progress', 'step3-to-review', draftId);
             }
             
-            // Send notification to reviewer
-            const notified = await notifyReviewerOnServer(draftId, draft.title_fr || draft.title_en, writerPseudonym);
-            if (!notified) {
-                const notificationContainer = document.getElementById('notificationArea');
-                showLocalNotification(draft.title_fr || draft.title_en, writerPseudonym, notificationContainer);
-            }
+            // Notify reviewer
+            await notifyReviewerOnServer(draft.title_fr || draft.title_en || draftId, writerPseudonym);
         }
-    }
-    
-    // 3. Handle file upload (if any)
-    if (fileInput.files.length > 0) {
-        await uploadRevision(fileInput.files[0], draftId, writerEmail, writerPseudonym, language);
-    }
-    
-    // 4. Show success feedback on button
-    const submitBtn = isFrench 
-        ? document.querySelector('#frenchSubmitForm .submit-btn') 
-        : document.querySelector('#englishSubmitForm .submit-btn');
-    const originalText = submitBtn.textContent;
-    showSuccessMessage(submitBtn, originalText, isFrench ? '✓ Envoyé !' : '✓ Sent!');
-    
-    // 5. Clear form fields
-    document.getElementById(`${language}WordsToday`).value = '';
-    document.getElementById(`${language}Comment`).value = '';
-    document.getElementById(`${language}File`).value = '';
-    
-    // 6. Refresh all displays
-    if (isFrench) {
-        await showFrenchArticleInfo(draftId);
-        await updateRecentDocuments('fr', draftId);
-    } else {
-        await showEnglishArticleInfo(draftId);
-        await updateRecentDocuments('en', draftId);
-    }
-    await displayAllDocuments();
-    await populateFrenchDropdown();
-    await populateEnglishDropdown();
-    
-    if (typeof showReviewerPanel === 'function') await showReviewerPanel();
-}
-
-
-// =================================================
-// PUBLIC: Handle view document click (locks article)
-// Called when user clicks "Voir le document" button
-// =================================================
-export async function onViewDocument(draftId, draft) {
-    const writerEmail = getCurrentWriterEmail();
-    
-    // Mark document as viewed in references manager
-    await markDocumentAsViewed(draftId);
-    
-    // Move document from available to in_progress folder
-    if (draft && draft.filename) {
-        await moveDocument(draft.filename, 'step1-available', 'step2-in-progress', draftId);
-    }
-    
-    // Update the REF color in the table without full refresh
-    try {
-        await updateSingleDocumentRefColor(draftId);
-    } catch (e) {
-        console.log('Could not update single ref color, will refresh full table');
+        
+        // Upload file if present
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('draft_id', draftId);
+            formData.append('writer_email', writerEmail);
+            formData.append('language', language);
+            
+            await uploadRevisionOnServer(formData);
+            
+            // Save upload record locally
+            saveUploadRecord(draftId, language, file.name);
+            
+            // Update recent documents
+            await updateRecentDocuments(language, draftId);
+        }
+        
+        // Show success message
+        const message = isFrench 
+            ? '✅ Révision envoyée avec succès !' 
+            : '✅ Revision submitted successfully!';
+        alert(message);
+        
+        // Reset form
+        wordsInput.value = '';
+        commentInput.value = '';
+        fileInput.value = '';
+        if (readyCheckbox) readyCheckbox.checked = false;
+        
+        // Refresh displays
         await displayAllDocuments();
-    }
-    
-    // Only lock if article is not already in progress/ready/under review
-    if (draft.review_status !== 'in_progress' && 
-        draft.review_status !== 'ready_for_review' && 
-        draft.review_status !== 'under_review') {
+        await showReviewerPanel();
         
-        // Lock the article for this writer
-        await updateDraftStatus(draftId, 'in_progress');
-        
-        // Create initial progress entry if none exists
-        const existingProgress = getProgress(draftId, writerEmail);
-        if (!existingProgress) {
-            await saveProgress(draftId, 0, 'Started working on this article', writerEmail, getCurrentWriterPseudonym());
+        if (isFrench) {
+            await showFrenchArticleInfo(draftId);
+        } else {
+            await showEnglishArticleInfo(draftId);
         }
+        
+    } catch (error) {
+        console.error('❌ Error submitting form:', error);
+        alert(isFrench ? '❌ Erreur lors de l\'envoi.' : '❌ Error submitting.');
     }
-    
-    // Refresh dropdowns to update available lists
-    await populateFrenchDropdown();
-    await populateEnglishDropdown();
 }
+
+
 
