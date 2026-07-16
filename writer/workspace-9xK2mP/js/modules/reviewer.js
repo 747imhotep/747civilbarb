@@ -5,8 +5,7 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 156 lines - Last edited: 2026-06-02
-
+// 165 lines - Updated: 2026-07-16 - Fixed isReviewer() to check array of emails
 
 import { draftsData, progressData, updateLocalDraftStatus } from './data.js';
 import { getCurrentWriterEmail } from './auth.js';
@@ -16,13 +15,23 @@ import { getRefColorClass, getStatusClass, escapeHtml } from './utils.js';
 import { displayAllDocuments } from './ui.js';
 
 /**
- * Check if current user is the reviewer
+ * Check if current user is a reviewer
+ * Supports both single email (string) and multiple emails (array)
  * @returns {boolean}
  */
 export function isReviewer() {
     const currentEmail = getCurrentWriterEmail();
+    
+    // If REVIEWER_EMAIL is an array, check if current email is in it
+    if (Array.isArray(REVIEWER_EMAIL)) {
+        return REVIEWER_EMAIL.includes(currentEmail);
+    }
+    
+    // If REVIEWER_EMAIL is a string, compare directly
     return currentEmail === REVIEWER_EMAIL;
 }
+
+// ... rest of the file remains unchanged
 
 /**
  * Show or hide reviewer panel based on user role
