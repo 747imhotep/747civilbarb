@@ -3,7 +3,7 @@
 // writer-main.js
 // Civilisation ou Barbarie
 // =================================================
-// 201 lines - Updated with references-manager integration 2026-06-06
+// 244 lines - Updated: 2026-07-16 - Added reviewer badge and title change
 
 // Import modules from the modules folder - FIXED PATHS
 import { REVIEWER_EMAIL } from './modules/config.js';
@@ -39,6 +39,30 @@ import {
 } from './modules/forms.js';
 import { showReviewerPanel, isReviewer } from './modules/reviewer.js';
 import { initReferences, cleanStaleLocks } from './modules/references-manager.js';
+
+// =================================================
+// HELPER FUNCTIONS
+// =================================================
+
+/**
+ * Add reviewer badge to the header
+ */
+function addReviewerBadge() {
+    const header = document.querySelector('.dashboard-header');
+    if (!header) return;
+
+    // Check if badge already exists
+    if (document.getElementById('reviewerBadge')) return;
+
+    const h1 = header.querySelector('h1');
+    if (!h1) return;
+
+    const badge = document.createElement('span');
+    badge.id = 'reviewerBadge';
+    badge.className = 'reviewer-badge';
+    badge.textContent = '🔍 REVIEWER';
+    h1.appendChild(badge);
+}
 
 // =================================================
 // HANDLERS
@@ -182,7 +206,21 @@ async function initWriterDashboard() {
     // ===================================================
     // REVIEWER PANEL
     // ===================================================
+
     if (isReviewer()) {
+        // Change title to REVIEWER WORKSPACE
+        const titleElement = document.querySelector('.workspace-title h1');
+        if (titleElement) {
+            titleElement.textContent = '📋 REVIEWER WORKSPACE';
+            titleElement.style.color = '#6c63ff';
+        }
+        
+        // Add reviewer badge to header
+        addReviewerBadge();
+        
+        // Add reviewer class to body for CSS styling
+        document.body.classList.add('reviewer-mode');
+        
         await showReviewerPanel();
         console.log('🔍 Reviewer mode enabled');
     } else {
@@ -190,7 +228,7 @@ async function initWriterDashboard() {
     }
     
     // ===================================================
-    //  INITIALIZE LOGOUT BUTTON
+    // INITIALIZE LOGOUT BUTTON
     // =================================================
     initLogoutButton();
     setLogoutButtonVisibility(true);
