@@ -10,7 +10,7 @@
 
 
 
-export const REVIEWER_EMAIL = 'support@deadangles.org';
+export const REVIEWER_EMAIL = 'support@lunyns.com';
 
 
 // API Endpoints - MUST MATCH what api.js expects
