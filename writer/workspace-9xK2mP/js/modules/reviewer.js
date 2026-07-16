@@ -5,7 +5,9 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 165 lines - Updated: 2026-07-16 - Fixed isReviewer() to check array of emails
+// Updated: 2026-07-16 - Fixed duplicate function declaration
+// - Removed duplicate showReviewerPanel() function
+// - Added isReviewer() support for array of emails
 
 import { draftsData, progressData, updateLocalDraftStatus } from './data.js';
 import { getCurrentWriterEmail } from './auth.js';
@@ -31,19 +33,20 @@ export function isReviewer() {
     return currentEmail === REVIEWER_EMAIL;
 }
 
-// ... rest of the file remains unchanged
-
 /**
  * Show or hide reviewer panel based on user role
  */
 export async function showReviewerPanel() {
+    console.log('🔍 showReviewerPanel() called');
     const panel = document.getElementById('reviewerPanel');
     
     if (!isReviewer() || !panel) {
+        console.log('❌ Reviewer panel hidden: isReviewer=' + isReviewer() + ', panel=' + !!panel);
         if (panel) panel.style.display = 'none';
         return;
     }
     
+    console.log('✅ Reviewer panel showing');
     panel.style.display = 'block';
     const container = document.getElementById('reviewerActionsContainer');
     if (!container) return;
@@ -53,7 +56,7 @@ export async function showReviewerPanel() {
         return;
     }
     
-    let html = '<table class="documents-table">';
+    let html = '<div class="reviewer-table-wrapper"><table class="documents-table reviewer-table">';
     html += '<thead><tr>';
     html += '<th>REF</th>';
     html += '<th>Titre</th>';
@@ -62,10 +65,22 @@ export async function showReviewerPanel() {
     html += '<th>Actions</th>';
     html += '</tr></thead><tbody>';
     
+    let rowCount = 0;
+    
     for (const draft of draftsData) {
         const progress = progressData.find(p => p.draft_id === draft.id);
         const writerName = progress ? progress.writer_pseudonym : '—';
         const currentStatus = draft.review_status || 'unlocked';
+        
+        // Only show documents that need reviewer attention
+        if (currentStatus !== 'ready_for_review' && 
+            currentStatus !== 'under_review' && 
+            currentStatus !== 'in_progress' &&
+            currentStatus !== 'locked_by_other') {
+            continue; // Skip documents that don't need reviewer action
+        }
+        
+        rowCount++;
         
         html += `
             <tr>
@@ -80,7 +95,18 @@ export async function showReviewerPanel() {
         `;
     }
     
-    html += '</tbody></table>';
+    if (rowCount === 0) {
+        html += `
+            <tr>
+                <td colspan="5" class="reviewer-empty">
+                    <span class="reviewer-empty-icon">📭</span>
+                    Aucun document en attente de relecture.
+                </td>
+            </tr>
+        `;
+    }
+    
+    html += '</tbody></table></div>';
     container.innerHTML = html;
     
     // Attach event listeners to buttons
@@ -107,7 +133,7 @@ function getReviewerButtons(draftId, currentStatus) {
     const buttons = [];
     
     if (currentStatus === 'ready_for_review') {
-        buttons.push(`<button class="reviewer-btn approve-btn" data-id="${draftId}" data-action="under_review">✅ Approuver (relecture)</button>`);
+        buttons.push(`<button class="reviewer-btn approve-btn" data-id="${draftId}" data-action="under_review">✅ Approuver</button>`);
     }
     
     if (currentStatus === 'under_review') {
@@ -162,19 +188,4 @@ async function handleReviewerAction(draftId, action) {
     await showReviewerPanel();
     
     console.log(`✅ Status updated to: ${newStatus}`);
-}
-
-export async function showReviewerPanel() {
-    console.log('🔍 showReviewerPanel() called');
-    const panel = document.getElementById('reviewerPanel');
-    
-    if (!isReviewer() || !panel) {
-        console.log('❌ Reviewer panel hidden: isReviewer=' + isReviewer() + ', panel=' + !!panel);
-        if (panel) panel.style.display = 'none';
-        return;
-    }
-    
-    console.log('✅ Reviewer panel showing');
-    panel.style.display = 'block';
-    // ... rest of the function
 }
