@@ -164,4 +164,17 @@ async function handleReviewerAction(draftId, action) {
     console.log(`✅ Status updated to: ${newStatus}`);
 }
 
-
+export async function showReviewerPanel() {
+    console.log('🔍 showReviewerPanel() called');
+    const panel = document.getElementById('reviewerPanel');
+    
+    if (!isReviewer() || !panel) {
+        console.log('❌ Reviewer panel hidden: isReviewer=' + isReviewer() + ', panel=' + !!panel);
+        if (panel) panel.style.display = 'none';
+        return;
+    }
+    
+    console.log('✅ Reviewer panel showing');
+    panel.style.display = 'block';
+    // ... rest of the function
+}
