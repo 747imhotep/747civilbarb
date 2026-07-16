@@ -86,6 +86,53 @@ export async function onViewDocument(draftId, draft) {
         await updateDraftStatusOnServer(draftId, 'in_progress', writerEmail);
         
         // 4. Move document to step2-in-progress folder
+        // FIX: Extract the full relative path from draft.path
+        if (draft && draft.path) {
+            // Remove the base path to get the relative path
+            const basePath = '/writer/workspace-9xK2mP/data/storage-folder/step1-drafts-accessible/';
+            let relativePath = draft.path.replace(basePath, '');
+            
+            // Remove trailing slash if present
+            if (relativePath.endsWith('/')) {
+                relativePath = relativePath.slice(0, -1);
+            }
+            
+            console.log(`📦 Moving document to step2-in-progress: ${relativePath}`);
+            await moveDocument(relativePath, 'step1-drafts-accessible', 'step2-in-progress', draftId);
+        } else {
+            console.warn('⚠️ Could not determine file path for moving');
+        }
+        
+        // 5. Refresh displays
+        await displayAllDocuments();
+        await showReviewerPanel();
+        
+        console.log(`✅ Document ${draftId} locked and moved to in-progress`);
+    } catch (error) {
+        console.error('❌ Error in onViewDocument:', error);
+    }
+}
+    
+    const writerEmail = getCurrentWriterEmail();
+    const writerPseudonym = getCurrentWriterPseudonym();
+    
+    if (!writerEmail) {
+        console.error('❌ No writer email found');
+        return;
+    }
+    
+    try {
+        // 1. Mark document as viewed in references
+        console.log(`🔒 Locking document: ${draftId} for ${writerEmail}`);
+        await markDocumentAsViewed(draftId, writerEmail, writerPseudonym);
+        
+        // 2. Update local status
+        updateLocalDraftStatus(draftId, 'in_progress');
+        
+        // 3. Update server status
+        await updateDraftStatusOnServer(draftId, 'in_progress', writerEmail);
+        
+        // 4. Move document to step2-in-progress folder
         if (draft && draft.filename) {
             console.log(`📦 Moving document to step2-in-progress: ${draft.filename}`);
             await moveDocument(draft.filename, 'step1-drafts-accessible', 'step2-in-progress', draftId);
