@@ -68,7 +68,8 @@
       "word_count_target": 1200,
       "deadline": "2026-07-15",
       "fileType": "DOCX",
-      "pages": 14
+      "pages": 14,
+      "review_status": "unlocked"
     },
     {
       "id": "draft_06",
@@ -82,7 +83,8 @@
       "word_count_target": 1000,
       "deadline": "2026-07-30",
       "fileType": "DOCX",
-      "pages": 10
+      "pages": 10,
+      "review_status": "unlocked"
     },
     {
       "id": "test-article-001",
@@ -96,7 +98,8 @@
       "word_count_target": 800,
       "deadline": "2026-08-15",
       "fileType": "TXT",
-      "pages": 4
-}
+      "pages": 4,
+      "review_status": "unlocked"
+    }
   ]
 }

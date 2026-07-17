@@ -13,3 +13,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+writer/workspace-9xK2mP/data/storage-folder/*
+public/temp-repo/
+public/writeroldest/
+temp-repo/
