@@ -1,9 +1,15 @@
 // =======================================================
-// SERVER.JS - DEADANGLES INSTITUTE (API ONLY)
-// Handles: Stripe, Entitlements, Newsletter, Static Routes
+// SERVER.JS - DEADANGLES INSTITUTE (VPS ONLY)
 // Location: /home/deploy/747civilbarb/my-worker/server.js
+// Handles: Private gateway, Writer dashboard, API, Payments
+// GitHub Pages handles: /fr/, /en/, main website content
 // =======================================================
 
+console.log("🔥 SERVER.JS VPS ONLY VERSION LOADED");
+
+// ---------------------------
+// IMPORTS
+// ---------------------------
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -21,19 +27,7 @@ const PORT = process.env.PORT || 3000;
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 const SENDER_API_KEY = process.env.SENDER_API_KEY;
-
-// =======================================================
-// BASE PATHS
-// =======================================================
-const BASE_PATH = "/home/deploy/747civilbarb";
-const PREMIUM_FILES_PATH = path.join(BASE_PATH, "my-worker", "premium-files");
-const PUBLIC_PATH = path.join(BASE_PATH, "my-worker", "public");
-const STORAGE_PATH = path.join(BASE_PATH, "writer", "workspace-9xK2mP", "data", "storage-folder");
-const WRITER_BASE = path.join(BASE_PATH, "writer", "workspace-9xK2mP", "data");
-const ENTITLEMENTS_FILE = path.join(BASE_PATH, "my-worker", "data", "entitlements.json");
-const REFERENCES_FILE = path.join(STORAGE_PATH, "references.json");
-const DRAFTS_JSON = path.join(WRITER_BASE, "drafts.json");
-const PROGRESS_JSON = path.join(WRITER_BASE, "progress.json");
+const ENTITLEMENTS_FILE = path.join(process.cwd(), "data", "entitlements.json");
 
 // ---------------------------
 // INITIALIZE STRIPE
@@ -48,27 +42,37 @@ if (STRIPE_SECRET_KEY) {
 // ---------------------------
 const app = express();
 
-// Request logger
+// ---------------------------
+// REQUEST LOGGER
+// ---------------------------
 app.use((req, res, next) => {
   console.log("➡️ REQUEST:", req.method, req.url);
   next();
 });
 
-// CORS
+// =======================================================
+// 1. GLOBAL CORS
+// =======================================================
 app.use(cors({
   origin: [
     "https://www.deadanglesinstitute.org",
-    "https://deadanglesinstitute.org"
+    "https://deadanglesinstitute.org",
+    "https://deadangles.org",
+    "https://www.deadangles.org"
   ],
   credentials: true,
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// JSON parser
+// =======================================================
+// 2. JSON PARSER
+// =======================================================
 app.use(express.json());
 
-// Session
+// =======================================================
+// 3. SESSION CONFIGURATION
+// =======================================================
 app.use(session({
   secret: process.env.SESSION_SECRET || "supersecretkey",
   resave: false,
@@ -81,66 +85,24 @@ app.use(session({
 }));
 
 // =======================================================
-// STATIC FILES (VPS ONLY)
+// 4. STATIC FILES (VPS ONLY)
 // =======================================================
 
-// Payment and static pages
-app.use("/subscribe", express.static(path.join(PUBLIC_PATH, "payment-subscribe")));
-app.use("/succes", express.static(path.join(PUBLIC_PATH, "payment-succes")));
-app.use("/cancel", express.static(path.join(PUBLIC_PATH, "payment-cancel")));
+// Public assets (css, js, pictures, payment pages)
+app.use(express.static(path.join(process.cwd(), "public")));
 
-// Premium page
-app.use("/premium", express.static(path.join(PUBLIC_PATH, "payment-premium")));
+// Private gateway (CP button)
+app.use("/private", express.static(path.join(process.cwd(), "private")));
 
-// my-worker folder (for public assets)
-app.use("/my-worker/public", express.static(path.join(BASE_PATH, "my-worker", "public")));
-// Static assets for login portal
-app.use("/live", express.static(path.join(BASE_PATH, "live")));
-app.use("/navbar", express.static(path.join(BASE_PATH, "navbar")));
-app.use("/shared", express.static(path.join(BASE_PATH, "shared")));
-app.use("/pictures", express.static(path.join(BASE_PATH, "pictures")));
+// Writer dashboard (CW button)
+app.use("/writer", express.static(path.join(process.cwd(), "writer")));
 
-// General Access Portal
-app.use("/login", express.static(path.join(PUBLIC_PATH, "login")));
-
-// Private gateway (CP button) - FIXED
-app.get("/private", (req, res) => {
-    res.sendFile(path.join(PUBLIC_PATH, "private", "index.html"));
-});
-
-app.use("/private/", express.static(path.join(PUBLIC_PATH, "private")));
-
-// ⭐ NEW: Explicitly serve the data folder BEFORE the /writer route
-app.use("/writer/workspace-9xK2mP/data", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "data")));
-
-// Writer dashboard
-app.use("/writer", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP")));
-
-// Writer files (documents)
+// Serve writer files (documents)
+const STORAGE_PATH = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data", "storage-folder");
 app.use("/writer-files", express.static(STORAGE_PATH));
 
-// Public assets (CSS, JS, images)
-app.use("/css", express.static(path.join(PUBLIC_PATH, "css")));
-app.use("/js", express.static(path.join(PUBLIC_PATH, "js")));
-app.use("/pictures", express.static(path.join(PUBLIC_PATH, "pictures")));
-
-// French and English content (served from VPS)
-app.use("/fr", express.static(path.join(BASE_PATH, "fr")));
-app.use("/en", express.static(path.join(BASE_PATH, "en")));
-
 // =======================================================
-// ROOT ROUTE - Serve login page
-// =======================================================
-app.get("/", (req, res) => {
-    res.sendFile(path.join(PUBLIC_PATH, "login", "index.html"));
-});
-
-app.get("/login", (req, res) => {
-    res.sendFile(path.join(PUBLIC_PATH, "login", "index.html"));
-});
-
-// =======================================================
-// 1. STRIPE CHECKOUT
+// 5. STRIPE CHECKOUT SESSION
 // =======================================================
 app.post("/create-checkout-session", async (req, res) => {
   try {
@@ -185,7 +147,7 @@ app.post("/create-checkout-session", async (req, res) => {
 });
 
 // =======================================================
-// 2. STRIPE WEBHOOK
+// 6. STRIPE WEBHOOK
 // =======================================================
 app.post(
   "/api/webhook",
@@ -219,7 +181,7 @@ app.post(
 );
 
 // =======================================================
-// 3. ENTITLEMENT CHECK
+// 7. ENTITLEMENT CHECK
 // =======================================================
 app.get("/api/me", (req, res) => {
   const email = req.query.email;
@@ -249,12 +211,11 @@ app.get("/api/me", (req, res) => {
 });
 
 // =======================================================
-// 4. ENTITLEMENT GRANT FUNCTION
+// 8. ENTITLEMENT GRANT FUNCTION
 // =======================================================
 function grantEntitlement(customerId, email) {
   try {
-    const dataDir = path.join(BASE_PATH, "my-worker", "data");
-
+    const dataDir = path.join(process.cwd(), "data");
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
@@ -277,7 +238,7 @@ function grantEntitlement(customerId, email) {
 }
 
 // =======================================================
-// 5. SENDER SUBSCRIBE (NEWSLETTER)
+// 9. SENDER SUBSCRIBE (NEWSLETTER)
 // =======================================================
 app.post("/api/sender-subscribe", async (req, res) => {
   try {
@@ -317,7 +278,7 @@ app.post("/api/sender-subscribe", async (req, res) => {
 });
 
 // =======================================================
-// 6. HEALTH CHECK
+// 10. HEALTH CHECK
 // =======================================================
 app.get("/health", (req, res) => {
   res.json({ 
@@ -328,7 +289,7 @@ app.get("/health", (req, res) => {
 });
 
 // =======================================================
-// 7. PREMIUM FILES (ENTITLEMENT REQUIRED)
+// 11. PREMIUM FILES (ENTITLEMENT REQUIRED)
 // =======================================================
 app.get("/api/premium-file/:lang/:filename", async (req, res) => {
   const { lang, filename } = req.params;
@@ -354,7 +315,7 @@ app.get("/api/premium-file/:lang/:filename", async (req, res) => {
       return res.status(403).json({ error: "Premium subscription required" });
     }
 
-    const filePath = path.join(PREMIUM_FILES_PATH, lang, "files", filename);
+    const filePath = path.join(process.cwd(), "premium-files", lang, "files", filename);
 
     if (!fs.existsSync(filePath)) {
       return res.status(404).json({ error: "File not found" });
@@ -369,7 +330,7 @@ app.get("/api/premium-file/:lang/:filename", async (req, res) => {
 });
 
 // =======================================================
-// 8. PREMIUM FILE LIST
+// 12. PREMIUM FILE LIST
 // =======================================================
 app.get("/api/premium-files-list/:lang", async (req, res) => {
   const { lang } = req.params;
@@ -391,8 +352,8 @@ app.get("/api/premium-files-list/:lang", async (req, res) => {
       return res.status(403).json({ error: "Premium subscription required" });
     }
 
-    const premiumDir = path.join(PREMIUM_FILES_PATH, lang, "files");
-
+    const premiumDir = path.join(process.cwd(), "premium-files", lang, "files");
+    
     if (!fs.existsSync(premiumDir)) {
       return res.json({ files: [] });
     }
@@ -410,8 +371,13 @@ app.get("/api/premium-files-list/:lang", async (req, res) => {
 });
 
 // =======================================================
-// 9. WRITER DASHBOARD API ENDPOINTS
+// 13. WRITER DASHBOARD API ENDPOINTS
 // =======================================================
+
+const WRITER_BASE = path.join(process.cwd(), "writer", "workspace-9xK2mP", "data");
+const REFERENCES_FILE = path.join(STORAGE_PATH, "references.json");
+const DRAFTS_JSON = path.join(WRITER_BASE, "drafts.json");
+const PROGRESS_JSON = path.join(WRITER_BASE, "progress.json");
 
 app.get("/api/writer/references", async (req, res) => {
   try {
@@ -585,19 +551,16 @@ app.get("/api/writer/check-file", async (req, res) => {
   }
 });
 
-// Writer static files (CSS, JS)
-app.use("/writer/workspace-9xK2mP/css", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "css")));
-app.use("/writer/workspace-9xK2mP/js", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "js")));
-
 // =======================================================
-// 10. CATCH-ALL 404 (for undefined VPS routes)
+// 14. CATCH-ALL ROUTE (404 for undefined routes)
 // =======================================================
+// IMPORTANT: No "/*" wildcard that conflicts with static files
 app.use((req, res) => {
-  res.status(404).json({ error: "Not found on VPS" });
+  res.status(404).json({ error: "Not found" });
 });
 
 // =======================================================
-// 11. ERROR HANDLING
+// 15. ERROR HANDLING
 // =======================================================
 app.use((err, req, res, next) => {
   console.error("❌ Server error:", err.stack);
@@ -605,13 +568,15 @@ app.use((err, req, res, next) => {
 });
 
 // =======================================================
-// 12. START SERVER
+// 16. START SERVER
 // =======================================================
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`📍 Stripe: ${stripe ? "✅" : "❌"}`);
   console.log(`📍 Sender.net: ${SENDER_API_KEY ? "✅" : "❌"}`);
 });
+
+
 
 
 

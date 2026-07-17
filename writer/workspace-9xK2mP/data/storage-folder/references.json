@@ -1,72 +1,196 @@
 {
-  "draft_01": {
-    "id": "draft_01",
-    "currentFolder": "available",
-    "lockedBy": null,
-    "lockedAt": null,
+  "available-test": {
+    "draftId": "available-test",
+    "currentStatus": "in_progress",
+    "lockedBy": "contact@lunyns.com",
+    "lockedAt": "2026-06-24T17:21:28.251Z",
     "isViewing": false,
     "readyForReview": false,
     "percentComplete": 0,
-    "lastUpdated": "2026-06-06T18:07:00Z",
-    "viewHistory": []
-  },
-  "draft_02": {
-    "id": "draft_02",
-    "currentFolder": "in_progress",
-    "lockedBy": "writer@email.com",
-    "lockedAt": "2026-06-06T10:30:00Z",
-    "isViewing": false,
-    "readyForReview": false,
-    "percentComplete": 45,
-    "lastUpdated": "2026-06-06T18:00:00Z",
+    "lastUpdated": "2026-06-24T17:21:28.251Z",
     "viewHistory": [
-      "writer@email.com"
+      {
+        "writerEmail": "contact@lunyns.com",
+        "writerPseudonym": "contact",
+        "action": "view",
+        "timestamp": "2026-06-24T17:21:28.251Z"
+      }
     ]
   },
+  "dra": {
+    "draftId": "dra",
+    "currentStatus": "in_progress",
+    "lockedBy": "contact@lunyns.com",
+    "lockedAt": "2026-06-25T14:02:13.697Z",
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-06-25T14:02:15.201Z",
+    "viewHistory": [
+      {
+        "writerEmail": "contact@lunyns.com",
+        "writerPseudonym": "contact",
+        "action": "view",
+        "timestamp": "2026-06-24T17:26:38.086Z"
+      },
+      {
+        "writerEmail": "contact@lunyns.com",
+        "writerPseudonym": "contact",
+        "action": "view",
+        "timestamp": "2026-06-24T17:30:57.216Z"
+      },
+      {
+        "writerEmail": "contact@lunyns.com",
+        "writerPseudonym": "contact",
+        "action": "view",
+        "timestamp": "2026-06-25T14:02:13.697Z"
+      }
+    ],
+    "currentFolder": "step2-in-progress"
+  },
+  "draft_01": {
+    "draftId": "draft_01",
+    "currentStatus": "in_progress",
+    "lockedBy": "imhotep@lunyns.com",
+    "lockedAt": "2026-07-16T00:10:07.734Z",
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-07-16T00:10:07.734Z",
+    "viewHistory": [
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-16T00:10:07.734Z"
+      }
+    ]
+  },
+  "draft_02": {
+    "draftId": "draft_02",
+    "currentStatus": "available",
+    "lockedBy": null,
+    "lockedAt": null,
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-07-16T00:03:58.344Z",
+    "viewHistory": []
+  },
   "draft_03": {
-    "id": "draft_03",
-    "currentFolder": "in_progress",
+    "draftId": "draft_03",
+    "currentStatus": "in_progress",
+    "lockedBy": "imhotep@lunyns.com",
+    "lockedAt": "2026-07-16T00:10:34.530Z",
+    "isViewing": false,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-07-16T00:10:34.530Z",
+    "viewHistory": [
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-16T00:10:34.530Z"
+      }
+    ]
+  },
+  "draft_04": {
+    "draftId": "draft_04",
+    "currentStatus": "available",
     "lockedBy": null,
     "lockedAt": null,
     "isViewing": false,
     "readyForReview": false,
     "percentComplete": 0,
-    "lastUpdated": "2026-06-08T10:15:33.299Z",
+    "lastUpdated": "2026-07-16T00:03:58.344Z",
     "viewHistory": []
   },
-    "draft_04": {
-    "id": "draft_04",
-    "currentFolder": "in_progress",
-    "lockedBy": null,
-    "lockedAt": null,
+  "draft_05": {
+    "draftId": "draft_05",
+    "currentStatus": "in_progress",
+    "lockedBy": "support@lunyns.com",
+    "lockedAt": "2026-07-17T00:07:10.263Z",
     "isViewing": false,
     "readyForReview": false,
     "percentComplete": 0,
-    "lastUpdated": "2026-06-08T10:15:33.299Z",
-    "viewHistory": []
-  },
-    "draft_05": {
-    "id": "draft_05",
-    "currentFolder": "to_review",
-    "lockedBy": null,
-    "lockedAt": null,
-    "isViewing": false,
-    "readyForReview": false,
-    "percentComplete": 0,
-    "lastUpdated": "2026-06-08T10:15:33.299Z",
-    "viewHistory": []
+    "lastUpdated": "2026-07-17T00:07:10.794Z",
+    "viewHistory": [
+      {
+        "writerEmail": "support@lunyns.com",
+        "writerPseudonym": "support",
+        "action": "view",
+        "timestamp": "2026-07-17T00:07:10.263Z"
+      }
+    ],
+    "currentFolder": "step2-in-progress"
   },
   "draft_06": {
-    "id": "draft_06",
-    "currentFolder": "available",
-    "lockedBy": null,
-    "lockedAt": null,
+    "draftId": "draft_06",
+    "currentStatus": "in_progress",
+    "lockedBy": "support@lunyns.com",
+    "lockedAt": "2026-07-17T00:06:39.227Z",
     "isViewing": false,
     "readyForReview": false,
     "percentComplete": 0,
-    "lastUpdated": "2026-06-08T10:15:16.428Z",
-    "viewHistory": []
+    "lastUpdated": "2026-07-17T00:06:39.227Z",
+    "viewHistory": [
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-17T00:02:38.368Z"
+      },
+      {
+        "writerEmail": "support@lunyns.com",
+        "writerPseudonym": "support",
+        "action": "view",
+        "timestamp": "2026-07-17T00:06:39.227Z"
+      }
+    ],
+    "currentFolder": "step2-in-progress"
+  },
+  "test-article-001": {
+    "draftId": "test-article-001",
+    "currentStatus": "in_progress",
+    "lockedBy": "imhotep@lunyns.com",
+    "lockedAt": "2026-07-17T08:54:30.539Z",
+    "isViewing": true,
+    "readyForReview": false,
+    "percentComplete": 0,
+    "lastUpdated": "2026-07-17T08:54:31.116Z",
+    "viewHistory": [
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-16T09:20:14.854Z"
+      },
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-16T13:17:04.583Z"
+      },
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-16T23:16:29.603Z"
+      },
+      {
+        "writerEmail": "support@lunyns.com",
+        "writerPseudonym": "support",
+        "action": "view",
+        "timestamp": "2026-07-17T00:06:50.250Z"
+      },
+      {
+        "writerEmail": "imhotep@lunyns.com",
+        "writerPseudonym": "imhotep",
+        "action": "view",
+        "timestamp": "2026-07-17T08:54:30.539Z"
+      }
+    ],
+    "currentFolder": "step2-in-progress"
   }
 }
-
-

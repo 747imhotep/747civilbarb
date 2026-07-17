@@ -92,8 +92,6 @@ app.use("/cancel", express.static(path.join(PUBLIC_PATH, "payment-cancel")));
 // Premium page
 app.use("/premium", express.static(path.join(PUBLIC_PATH, "payment-premium")));
 
-// my-worker folder (for public assets)
-app.use("/my-worker/public", express.static(path.join(BASE_PATH, "my-worker", "public")));
 // Static assets for login portal
 app.use("/live", express.static(path.join(BASE_PATH, "live")));
 app.use("/navbar", express.static(path.join(BASE_PATH, "navbar")));
@@ -103,15 +101,8 @@ app.use("/pictures", express.static(path.join(BASE_PATH, "pictures")));
 // General Access Portal
 app.use("/login", express.static(path.join(PUBLIC_PATH, "login")));
 
-// Private gateway (CP button) - FIXED
-app.get("/private", (req, res) => {
-    res.sendFile(path.join(PUBLIC_PATH, "private", "index.html"));
-});
-
-app.use("/private/", express.static(path.join(PUBLIC_PATH, "private")));
-
-// ⭐ NEW: Explicitly serve the data folder BEFORE the /writer route
-app.use("/writer/workspace-9xK2mP/data", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "data")));
+// Private gateway (CP button)
+app.use("/private", express.static(path.join(PUBLIC_PATH, "private")));
 
 // Writer dashboard
 app.use("/writer", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP")));
@@ -584,10 +575,6 @@ app.get("/api/writer/check-file", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-// Writer static files (CSS, JS)
-app.use("/writer/workspace-9xK2mP/css", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "css")));
-app.use("/writer/workspace-9xK2mP/js", express.static(path.join(BASE_PATH, "writer", "workspace-9xK2mP", "js")));
 
 // =======================================================
 // 10. CATCH-ALL 404 (for undefined VPS routes)

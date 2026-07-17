@@ -1,0 +1,220 @@
+/* ==================================
+   Premium Page — Scoped Styles
+   Wrapper: .premium-page
+================================== */
+
+/* ❌ In page CSS, rmove global styles like:
+body { ... }
+html { ... }
+a { ... }
+footer { ... }  /* unless explicitly scoped */
+
+/* ===== Page Container ===== */
+.premium-page {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== Hero Section ===== */
+.premium-page #hero-premium {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(/pictures/hero/hero_premium.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 70vh;
+  margin-bottom: 80px;
+}
+
+.premium-page #hero-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.premium-page #hero-premium > * {
+  position: relative;
+  max-width: 900px;
+  padding: 40px;
+}
+
+.premium-page #hero-premium h1 {
+  max-width: 1000px;
+  color: #dfdfdf;
+  font-size: 61px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.premium-page #hero-premium .hero-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.premium-page #hero-premium .manifesto {
+  font-weight: 300;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 740px;
+  margin: 20px auto 30px;
+}
+
+.premium-page #hero-premium .quote {
+  color: #eeccf0;
+  font-size: 17px;
+  font-style: italic;
+  max-width: 800px;
+  margin-top: 20px;
+  background: rgba(50, 0, 50, 0.6);
+}
+
+.premium-page #hero-premium .manifesto,
+.premium-page #hero-premium .quote {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  max-width: 700px;
+  margin: 15px auto 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-page #hero-premium .manifesto:hover,
+.premium-page #hero-premium .quote:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.6),
+              0 0 15px rgba(255, 200, 200, 0.3);
+}
+
+.premium-page #hero-premium em {
+  color: #ffe0e0;
+}
+
+/* ===== Premium Header ===== */
+.premium-page .premium-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.premium-page .premium-header h2 {
+  font-size: 48px;
+  color: #641e1e;
+  margin-bottom: 15px;
+}
+
+.premium-page .premium-intro {
+  font-size: 18px;
+  color: #555;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.premium-page .premium-header em {
+  color: #d30b83;
+}
+
+/* ===== Premium List ===== */
+.premium-page .premium-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 60px;
+}
+
+.premium-page .premium-item {
+  position: relative;
+  border: 2px solid #d30b83;
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(240, 230, 250, 0.1);
+  box-shadow: 0 6px 15px rgba(200, 100, 200, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-page .premium-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(200, 100, 200, 0.4);
+}
+
+.premium-page .premium-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #d30b83;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+/* Text */
+.premium-page .premium-title {
+  font-size: 24px;
+}
+
+.premium-page .premium-title a {
+  color: #730101;
+  text-decoration: none;
+}
+
+.premium-page .premium-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.premium-page .premium-abstract {
+  font-size: 16px;
+  color: #444;
+}
+
+.premium-page .premium-meta {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+}
+
+/* ===== Subscribe Button ===== */
+.premium-page .subscribe-button {
+  display: inline-block;
+  background-color: #730101;
+  color: #fff;
+  padding: 10px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.premium-page .subscribe-button:hover {
+  background-color: #a00b0b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(200,0,0,0.4);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .premium-page #hero-premium h1 {
+    font-size: 40px;
+  }
+
+  .premium-page #hero-premium .manifesto,
+  .premium-page #hero-premium .quote {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .premium-page .premium-list {
+    max-width: 95%;
+  }
+}
