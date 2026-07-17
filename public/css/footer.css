@@ -1,0 +1,25 @@
+/* ==================================
+   Civilisation ou Barbarie
+   footer.css — Global footer styles
+   my-worker
+================================== */
+
+footer {
+  text-align: center;
+  padding-top: 7px;
+  padding-bottom: 30px; /* to avoid overlap with gdpr banner */
+  background-color: #e7e7e7;
+  color: #585858;
+  font-size: 14px;
+  margin: 90px 0 2px 0; /* top and bottom margin */
+}
+
+footer .footer-links a {
+  color: #690000;
+  text-decoration: none;
+  margin: 5px 5px;
+}
+
+footer .footer-links a:hover {
+  text-decoration: underline;
+}

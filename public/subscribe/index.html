@@ -1,0 +1,146 @@
+// ============================
+// DEADANGLES — SUBSCRIBE LOGIC (UPDATED)
+// ============================
+
+console.log("✅ subscribe.js loaded");
+
+// ---------------------------
+// CONFIG
+// ---------------------------
+const API_BASE = "https://api.deadanglesinstitute.org";
+let currentEmail = ""; // Will be set from input
+
+// Stripe init
+const stripe = Stripe('pk_test_51SmCfbDvGU56HDp7HNPUi8zQym7NgUbY4z4zVb4nqRcn0wMMWAgMx9Q4byfxS60TyF0DyYLMgF8MpCKBlOiovTuE00WUkvFpMI');
+
+// ---------------------------
+// ELEMENTS
+// ---------------------------
+const checkoutButton = document.getElementById('checkout-button');
+const emailInput = document.getElementById('email-input');
+
+// ---------------------------
+// 1️⃣ CHECK ENTITLEMENT
+// ---------------------------
+async function checkEntitlement() {
+  if (!currentEmail) {
+    console.warn("No email provided");
+    return;
+  }
+  
+  try {
+    console.log(`🔍 Checking entitlement for ${currentEmail}...`);
+
+    const response = await fetch(`${API_BASE}/api/me?email=${encodeURIComponent(currentEmail)}`, {
+      method: "GET",
+      credentials: "include"
+    });
+
+    const data = await response.json();
+
+    console.log("📦 Entitlement response:", data);
+
+    if (data.entitled) {
+      checkoutButton.innerText = "✅ Déjà abonné";
+      checkoutButton.disabled = true;
+    } else {
+      checkoutButton.innerText = "Subscribe Now";
+      checkoutButton.disabled = false;
+    }
+
+  } catch (err) {
+    console.error("❌ Error fetching entitlement:", err);
+    checkoutButton.innerText = "Subscribe Now";
+    checkoutButton.disabled = false;
+  }
+}
+
+// ---------------------------
+// 2️⃣ STRIPE CHECKOUT
+// ---------------------------
+async function startCheckout() {
+  if (!currentEmail) {
+    console.warn("No email provided");
+    alert("Please enter your email address first");
+    return;
+  }
+  
+  try {
+    console.log(`💳 Creating checkout session for ${currentEmail}...`);
+
+    const response = await fetch(`${API_BASE}/create-checkout-session`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "include",
+      body: JSON.stringify({ email: currentEmail })
+    });
+
+    const session = await response.json();
+
+    console.log("🧾 Session:", session);
+
+    if (!session.id && !session.url) {
+      throw new Error("Invalid session response");
+    }
+
+    if (session.id) {
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id
+      });
+
+      if (result.error) {
+        console.error("❌ Stripe redirect error:", result.error.message);
+      }
+    } else if (session.url) {
+      window.location.href = session.url;
+    }
+
+  } catch (err) {
+    console.error("❌ Stripe Checkout Error:", err);
+    alert("Failed to start checkout. Please try again.");
+  }
+}
+
+// ---------------------------
+// 3️⃣ EVENT LISTENERS
+// ---------------------------
+checkoutButton.addEventListener("click", startCheckout);
+
+// Handle Enter key on email input
+if (emailInput) {
+  emailInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const email = emailInput.value.trim();
+      if (email) {
+        currentEmail = email;
+        checkEntitlement();
+      } else {
+        emailInput.style.borderColor = 'red';
+        setTimeout(() => {
+          emailInput.style.borderColor = '';
+        }, 2000);
+      }
+    }
+  });
+  
+  emailInput.addEventListener('input', function() {
+    // Reset border color when typing
+    emailInput.style.borderColor = '';
+  });
+  
+  // Initialize with any pre-filled value
+  if (emailInput.value.trim()) {
+    currentEmail = emailInput.value.trim();
+    checkEntitlement();
+  }
+}
+
+// ---------------------------
+// INIT
+// ---------------------------
+if (!emailInput || !emailInput.value.trim()) {
+  console.log("Waiting for email input...");
+}

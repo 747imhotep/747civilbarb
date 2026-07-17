@@ -23,3 +23,11 @@ sudo nginx -t
 sudo systemctl reload nginx
 pm2 restart my-worker
 
+================================================
+GitHub to VPS
+git pull origin master --allow-unrelated-histories --no-rebase
+
+
+VPS to GitHub
+git push origin master
+
