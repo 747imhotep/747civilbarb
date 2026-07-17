@@ -5,8 +5,8 @@
 // Civilisation ou Barbarie - Writer Dashboard
 // =================================================
 
-// 343 lines - UPDATED 2026-06-08 at 14h29
-// Updated: 2026-07-17 - Added onViewDocument function
+// 347 lines - UPDATED 2026-06-08 at 14h29
+// Updated: 2026-07-17 - Added onViewDocument function (single copy)
 
 
 // Data functions
@@ -101,50 +101,6 @@ export async function onViewDocument(draftId, draft) {
             await moveDocument(relativePath, 'step1-drafts-accessible', 'step2-in-progress', draftId);
         } else {
             console.warn('⚠️ Could not determine file path for moving');
-        }
-        
-        // 5. Refresh displays
-        await displayAllDocuments();
-        await showReviewerPanel();
-        
-        console.log(`✅ Document ${draftId} locked and moved to in-progress`);
-    } catch (error) {
-        console.error('❌ Error in onViewDocument:', error);
-    }
-}
-    
-    const writerEmail = getCurrentWriterEmail();
-    const writerPseudonym = getCurrentWriterPseudonym();
-    
-    if (!writerEmail) {
-        console.error('❌ No writer email found');
-        return;
-    }
-    
-    try {
-        // 1. Mark document as viewed in references
-        console.log(`🔒 Locking document: ${draftId} for ${writerEmail}`);
-        await markDocumentAsViewed(draftId, writerEmail, writerPseudonym);
-        
-        // 2. Update local status
-        updateLocalDraftStatus(draftId, 'in_progress');
-        
-        // 3. Update server status
-        await updateDraftStatusOnServer(draftId, 'in_progress', writerEmail);
-        
-        // 4. Move document to step2-in-progress folder
-        if (draft && draft.filename) {
-            console.log(`📦 Moving document to step2-in-progress: ${draft.filename}`);
-            await moveDocument(draft.filename, 'step1-drafts-accessible', 'step2-in-progress', draftId);
-        } else {
-            // Try to get filename from draft path
-            const filename = draft.path ? draft.path.split('/').pop() : null;
-            if (filename) {
-                console.log(`📦 Moving document to step2-in-progress: ${filename}`);
-                await moveDocument(filename, 'step1-drafts-accessible', 'step2-in-progress', draftId);
-            } else {
-                console.warn('⚠️ Could not determine filename for moving');
-            }
         }
         
         // 5. Refresh displays
