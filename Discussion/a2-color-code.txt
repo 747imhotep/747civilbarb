@@ -1,0 +1,77 @@
+✅ YOUR QUESTIONS
+✅ MY ANSWERS
+Step 1  ✅ We have 3 fields:
+ → Articles Selection	two columns	Writer selects article
+ → Article Submission	two colomns	Writer submit article
+ → Refreshed Dashboard	one colomn	Shows ALL articles status updated
+ 
+  → Title box
+	we can improve the render of box-title <h3>.
+	Something professional, a background or lines.
+
+
+
+
+Steps 2 ✅ 
+| Action				| Color in table (for all writers)	| Color for current writer	|
+| Writer sees "Voir le document"	| 🟢 Green, still available		| 🟠 Orange			|
+| Writer is working			| 🔴 Red (locked)			| 🟡 Amber (in progress)	|
+| Writer finishes & checks "Prêt"	| 🟢 Green				| 🟢 Green			|
+| Text is reviewing			| 🔵 Bleue				| 🔵 Blue			|
+| Published				| 🟣 Purple				| 🟣 Purple			|
+
+
+Green is default for available articles in the table.
+
+Toggle default = GREEN (meaning: in progress, not ready yet)
+
+Toggle when checked = BLUE (meaning: ready for review)
+
+
+
+Writer selects article to work on it (x times). → Toggle is GREEN (Under Review / In Progress)
+                          ↓
+Writer finishes work → Clicks toggle → Turns BLUE (Ready for review)
+                          ↓
+How I receive notification → Text is ready for revision
+                          ↓
+I review text → Should I manually set status, where ?
+ 
+ 
+ 
+Steps 3 ✅ When a writer selects an article, should it automatically lock (red) so others cannot take it? 
+ → Yes
+ 
+
+
+Steps 4 ✅ I need to divide writer.js into multiple js files because, it's too havy 
+
+
+Steps 5 ✅ Admin panel: Do you want a simple admin web page to change article statuses, or will you edit progress.json manually?
+ → Yes, that would be great. With an admin access that controls all documents instead of open each json file one at a time. If it's possible, we can work on it separatly. Maybe, it will take time and effort, just let me know. I never done this.
+ 
+Steps 6 ✅ Email notifications: Do you want email alerts when:
+ •     Writer marks "Ready for review"
+  → Yes. Just to be precise. "review" means controled by Chief of Redaction.
+  
+ • 
+ • 
+ • 
+ • 
+ • 
+ 
+ 
+ 🔄 WHERE DATA IS STORED 
+ 
+ | DATA			| LOCATION		| FORMAT		| WHO WRITES	|
+ |			|			|			|		|
+ | Original drafts	| /data/drafts/		| PDF/TXT/DOCX		| Me (manual)	|
+ | Drafts metadata	| drafts.json		| JSON			| Me (manual)	|
+ | Writer revisions	| /uploads/fr/ or /en/	| Any format		| Writer (auto)	|
+ | Progress + Status	| progress.json		| JSON			| Writer + You	|
+ | Published articles	| /fr/articles/ or /en/	| HTML / MD		| Me (manual)	|     
+ • 
+ • 
+ • 
+ • 
+ • 
