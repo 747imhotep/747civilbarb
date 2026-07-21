@@ -1,0 +1,8 @@
+/home/kmt/Documents/747imhotepR/747civilbarb/writer/workspace-9xK2mP/data/storage-folder/step2-in-progress
+
+The folder is empty
+
+
+It should show it empty.
+
+This folder is not empty, yet.
