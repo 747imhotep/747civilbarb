@@ -4,3 +4,5 @@ The folder is empty
 
 
 It should show it empty.
+
+It should show empty folder.

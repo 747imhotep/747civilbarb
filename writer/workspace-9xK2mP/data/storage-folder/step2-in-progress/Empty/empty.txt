@@ -6,3 +6,5 @@ The folder is empty
 It should show it empty.
 
 This folder is not empty, yet.
+
+it supposed to be empty
