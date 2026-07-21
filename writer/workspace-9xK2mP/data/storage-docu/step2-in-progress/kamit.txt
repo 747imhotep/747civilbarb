@@ -6,3 +6,6 @@ The folder is empty
 It should show it empty.
 
 It should show empty folder.
+
+
+it doesn't work. we need to suppress the storage-folder/
